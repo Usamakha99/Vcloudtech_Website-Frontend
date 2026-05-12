@@ -28,7 +28,7 @@ const connectorCol = ["lg:col-start-2", "lg:col-start-4"] as const;
 export function HomeHowWeWorkSection() {
   return (
     <section
-      className="border-t border-slate-200/80 bg-white py-16 sm:py-20 lg:py-24"
+      className="border-t border-slate-200/80 bg-slate-100 py-16 sm:py-20 lg:py-24"
       aria-labelledby="how-heading"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
