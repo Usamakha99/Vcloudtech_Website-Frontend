@@ -1,0 +1,32 @@
+{
+  "name": "@vcloudtech/content-automation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Phase 1: RSS → AI → Sanity vendor update pipeline (separate from Next.js app)",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts --once",
+    "once": "tsx src/index.ts --once",
+    "daemon": "tsx src/index.ts --daemon"
+  },
+  "dependencies": {
+    "@sanity/client": "^7.13.1",
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "node-cron": "^4.2.1",
+    "openai": "^6.9.1",
+    "rss-parser": "^3.13.0",
+    "vcloudtech-test-website": "file:../.."
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.25",
+    "@types/node-cron": "^3.0.11",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

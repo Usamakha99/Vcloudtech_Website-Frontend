@@ -8,7 +8,7 @@ export const dataset = assertValue(
 
 export const projectId = assertValue(
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'
+  'a22v0g60'
 )
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {

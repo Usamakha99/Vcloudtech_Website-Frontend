@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "logo:knockout": "node scripts/knockout-logo-background.mjs"
+    "logo:knockout": "node scripts/knockout-logo-background.mjs",
+    "automation:install": "npm install --prefix services/content-automation",
+    "automation:build": "npm run build --prefix services/content-automation",
+    "automation:once": "npm run once --prefix services/content-automation",
+    "automation:daemon": "npm run daemon --prefix services/content-automation"
   },
   "dependencies": {
     "@portabletext/react": "^6.2.0",

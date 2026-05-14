@@ -24,3 +24,35 @@ export const POST_QUERY = defineQuery(`
     "author": author->{ name, image }
   }
 `);
+
+/** Vendor updates (AI pipeline → Sanity) */
+export const VENDOR_UPDATES_QUERY = defineQuery(`
+  *[_type == "vendorUpdate" && defined(slug.current)] | order(publishedAt desc) [0...50] {
+    _id,
+    title,
+    "slug": slug.current,
+    publishedAt,
+    vendor,
+    category,
+    tags,
+    summary,
+    businessImpact,
+    sourceUrl
+  }
+`);
+
+export const VENDOR_UPDATE_BY_SLUG_QUERY = defineQuery(`
+  *[_type == "vendorUpdate" && slug.current == $slug][0]{
+    _id,
+    title,
+    "slug": slug.current,
+    publishedAt,
+    vendor,
+    category,
+    tags,
+    summary,
+    businessImpact,
+    sourceUrl,
+    body
+  }
+`);
