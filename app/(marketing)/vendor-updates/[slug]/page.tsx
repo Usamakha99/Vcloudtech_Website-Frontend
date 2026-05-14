@@ -18,7 +18,7 @@ export default async function VendorUpdatePage({ params }: Props) {
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
       <Link href="/vendor-updates" className="text-sm font-medium text-slate-500 hover:text-slate-900">
-        ← Vendor updates
+        ← News
       </Link>
 
       <header className="mt-8">

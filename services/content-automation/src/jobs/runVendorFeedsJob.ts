@@ -7,11 +7,14 @@ import { ingestVendorFeed } from "../services/pipeline/ingestVendorFeed.js";
 
 /**
  * Top-level job: processes all configured vendor feeds sequentially.
- * Why sequential: reduces burst load on OpenAI and Sanity; easy to parallelize later per vendor.
+ * Why sequential: reduces burst load on OpenAI (when enabled) and Sanity; easy to parallelize later per vendor.
  */
 export async function runVendorFeedsJob(client: SanityClient): Promise<void> {
   const feeds = getVendorFeeds();
-  logger.info("job_vendor_feeds_start", { vendors: feeds.map((f) => f.vendor) });
+  logger.info("job_vendor_feeds_start", {
+    vendors: feeds.map((f) => f.vendor),
+    rssOnly: env.pipeline.rssOnly,
+  });
 
   for (const feed of feeds) {
     try {

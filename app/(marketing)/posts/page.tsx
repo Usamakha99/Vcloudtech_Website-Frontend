@@ -29,10 +29,14 @@ export default async function PostsPage() {
           ← Home
         </Link>
         <h1 className="mt-6 text-3xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
-          Posts
+          Blog
         </h1>
         <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-          Content from Sanity CMS.
+          Editorial content from Sanity CMS. For automated vendor RSS headlines, see{" "}
+          <Link href="/vendor-updates" className="font-medium text-sky-700 underline hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300">
+            News
+          </Link>
+          .
         </p>
       </header>
 
@@ -95,7 +99,7 @@ export default async function PostsPage() {
                     </div>
                   </article>
                 </li>
-              ) : null
+              ) : null,
           )}
         </ul>
       )}

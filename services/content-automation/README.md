@@ -1,6 +1,6 @@
 # Content automation service (Phase 1)
 
-Separate **Node.js + TypeScript** worker that ingests vendor **RSS**, enriches items with **OpenAI**, and publishes **`vendorUpdate`** documents to **Sanity**. The Next.js site stays a consumer only (ISR / live queries).
+Separate **Node.js + TypeScript** worker that ingests vendor **RSS** and publishes **`vendorUpdate`** documents to **Sanity**. By default it **maps RSS fields only** (no OpenAI). Set `RSS_ONLY=false` and provide `OPENAI_API_KEY` to enable AI summaries. The Next.js site stays a consumer only (ISR / live queries).
 
 ## Why this is a separate package
 
@@ -26,13 +26,14 @@ Separate **Node.js + TypeScript** worker that ingests vendor **RSS**, enriches i
 1. `fetchRssFeed` → normalized `{ title, link, snippet, pubDate }`.
 2. `hashSourceUrl(link)` → deterministic `sourceId`.
 3. `vendorUpdateExistsBySourceId` → skip if already in Sanity (**duplicate strategy**).
-4. `summarizeFeedItem` → JSON fields: SEO title, summary, business impact, category, tags.
+4. **RSS-only (default):** `buildVendorDraftFromRssItem` → title from RSS, summary from snippet (HTML stripped), tags `[vendor]`, category = feed label.  
+   **AI mode (`RSS_ONLY=false`):** `summarizeFeedItem` → SEO title, summary, business impact, category, tags.
 5. `createVendorUpdate` → Sanity `create()` with Portable Text body.
 
 ## Duplicate detection (no PostgreSQL)
 
 - **Primary key**: `sourceId` = SHA-256 of normalized URL (fragment stripped).
-- **Check**: GROQ `*[_type == "vendorUpdate" && sourceId == $sourceId][0]` before OpenAI call (saves cost).
+- **Check**: GROQ `*[_type == "vendorUpdate" && sourceId == $sourceId][0]` before create (in AI mode this avoids paying OpenAI for duplicates).
 - **Race guard**: `createVendorUpdate` re-checks before `create()` to reduce double-publish under concurrency.
 
 ## Environment
@@ -48,14 +49,15 @@ Env files are loaded in order (later overrides earlier):
 
 **Sanity project & dataset:** you can use either `SANITY_PROJECT_ID` / `SANITY_DATASET` **or** the same `NEXT_PUBLIC_SANITY_PROJECT_ID` / `NEXT_PUBLIC_SANITY_DATASET` values as the Next app (no duplication needed).
 
-`SANITY_API_WRITE_TOKEN` (or `SANITY_API_TOKEN`) and `OPENAI_API_KEY` must still be set somewhere in those files (they are not public in the browser).
+`SANITY_API_WRITE_TOKEN` (or `SANITY_API_TOKEN`) must be set somewhere in those files (not public in the browser). `OPENAI_API_KEY` is required only when `RSS_ONLY=false`.
 
 | Variable | Description |
 |----------|-------------|
+| `RSS_ONLY` | Default **`true`** — RSS → Sanity only, no OpenAI. Set `false` for AI summaries. |
 | `SANITY_PROJECT_ID` | Optional if `NEXT_PUBLIC_SANITY_PROJECT_ID` is set (root `.env.local`) |
 | `SANITY_DATASET` | Optional if `NEXT_PUBLIC_SANITY_DATASET` is set |
 | `SANITY_API_WRITE_TOKEN` | Required — token with **create** document permission (alias: `SANITY_API_TOKEN`) |
-| `OPENAI_API_KEY` | Required |
+| `OPENAI_API_KEY` | Required when `RSS_ONLY=false` |
 | `OPENAI_MODEL` | Default `gpt-4o-mini` |
 | `MAX_ITEMS_PER_VENDOR` | Cap per run (default `8`) |
 | `CRON_EXPRESSION` | Default every 6 hours: `0 */6 * * *` |

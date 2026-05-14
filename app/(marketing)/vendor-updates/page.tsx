@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { client } from "@/sanity/lib/client";
 import { VENDOR_UPDATES_QUERY } from "@/sanity/lib/queries";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "News",
+  description:
+    "Vendor technology headlines synced from official RSS feeds into Sanity CMS.",
+};
 
 function formatDate(iso: string | null) {
   if (!iso) return "";
@@ -26,17 +33,16 @@ export default async function VendorUpdatesPage() {
         >
           ← Home
         </Link>
-        <h1 className="mt-6 text-3xl font-semibold tracking-tight text-[#1B224B]">
-          Vendor technology updates
-        </h1>
+        <h1 className="mt-6 text-3xl font-semibold tracking-tight text-[#1B224B]">News</h1>
         <p className="mt-2 text-slate-600">
-          Summarized vendor news synced from RSS via the content-automation service and Sanity CMS.
+          Headlines from vendor RSS feeds (Microsoft, AWS, Dell, NVIDIA, Cisco), ingested by the
+          content-automation service and published here.
         </p>
       </header>
 
       {items.length === 0 ? (
         <p className="text-slate-600">
-          No vendor updates yet. Run the automation service after configuring environment variables.
+          No news items yet. Run the content-automation service after configuring environment variables.
         </p>
       ) : (
         <ul className="flex flex-col gap-6">

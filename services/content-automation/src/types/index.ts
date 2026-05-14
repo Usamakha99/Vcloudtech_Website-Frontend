@@ -1,5 +1,5 @@
 /**
- * Domain types for the vendor feed → AI → CMS pipeline.
+ * Domain types for the vendor feed → CMS pipeline (optional OpenAI enrichment).
  * Kept in one module so integrations and services share a single contract.
  */
 

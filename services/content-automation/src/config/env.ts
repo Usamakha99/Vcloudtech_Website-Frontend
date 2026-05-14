@@ -69,6 +69,16 @@ function optionalInt(name: string, fallback: number): number {
   return Number.isFinite(n) && n > 0 ? n : fallback;
 }
 
+function optionalBool(name: string, fallback: boolean): boolean {
+  const v = process.env[name]?.trim().toLowerCase();
+  if (!v) return fallback;
+  if (["1", "true", "yes", "on"].includes(v)) return true;
+  if (["0", "false", "no", "off"].includes(v)) return false;
+  return fallback;
+}
+
+const rssOnly = optionalBool("RSS_ONLY", true);
+
 /** Centralized runtime configuration — single place to read env vars. */
 export const env = {
   sanity: {
@@ -79,11 +89,12 @@ export const env = {
     writeToken: requiredFirst("SANITY_API_WRITE_TOKEN", "SANITY_API_TOKEN"),
   },
   openai: {
-    apiKey: required("OPENAI_API_KEY"),
+    apiKey: rssOnly ? (process.env.OPENAI_API_KEY?.trim() ?? "") : required("OPENAI_API_KEY"),
     model: optional("OPENAI_MODEL", "gpt-4o-mini"),
   },
   pipeline: {
     maxItemsPerVendor: optionalInt("MAX_ITEMS_PER_VENDOR", 8),
+    rssOnly,
   },
   cron: {
     expression: optional("CRON_EXPRESSION", "0 */6 * * *"),

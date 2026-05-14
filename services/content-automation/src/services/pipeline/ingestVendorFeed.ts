@@ -1,5 +1,6 @@
 import type { SanityClient } from "@sanity/client";
 
+import { env } from "../../config/env.js";
 import type { PipelineStats, VendorFeedConfig, VendorUpdateDraft } from "../../types/index.js";
 import { fetchRssFeed } from "../../integrations/rss/rssClient.js";
 import { summarizeFeedItem } from "../../integrations/openai/summarizer.js";
@@ -9,9 +10,10 @@ import { buildVendorUpdateBody } from "../../integrations/sanity/portableText.js
 import { hashSourceUrl } from "../../utils/hash.js";
 import { slugify, uniqueSlug } from "../../utils/slug.js";
 import { logger } from "../../lib/logger.js";
+import { buildVendorDraftFromRssItem } from "./rssVendorDraft.js";
 
 /**
- * Pipeline for one vendor feed: fetch → dedupe → enrich → publish.
+ * Pipeline for one vendor feed: fetch → dedupe → (optional AI) → publish.
  * Each step is delegated to a small integration to keep this function readable.
  */
 export async function ingestVendorFeed(
@@ -39,28 +41,33 @@ export async function ingestVendorFeed(
         continue;
       }
 
-      const ai = await summarizeFeedItem(item, feed.label);
-      const slugBase = slugify(ai.seoTitle);
-      const slugCurrent = uniqueSlug(slugBase, sourceId.slice(0, 14));
-      const publishedAt = item.pubDate
-        ? new Date(item.pubDate).toISOString()
-        : new Date().toISOString();
+      let doc: VendorUpdateDraft;
+      if (env.pipeline.rssOnly) {
+        doc = buildVendorDraftFromRssItem(item, feed, sourceId);
+      } else {
+        const ai = await summarizeFeedItem(item, feed.label);
+        const slugBase = slugify(ai.seoTitle);
+        const slugCurrent = uniqueSlug(slugBase, sourceId.slice(0, 14));
+        const publishedAt = item.pubDate
+          ? new Date(item.pubDate).toISOString()
+          : new Date().toISOString();
 
-      const doc: VendorUpdateDraft = {
-        _type: "vendorUpdate",
-        sourceId,
-        sourceUrl: item.link,
-        vendor: feed.vendor,
-        title: ai.seoTitle.slice(0, 120),
-        slug: { _type: "slug", current: slugCurrent },
-        summary: ai.summary,
-        businessImpact: ai.businessImpact,
-        category: ai.category,
-        tags: ai.tags,
-        publishedAt,
-        body: buildVendorUpdateBody(ai.summary, ai.businessImpact),
-        rawRssTitle: item.title,
-      };
+        doc = {
+          _type: "vendorUpdate",
+          sourceId,
+          sourceUrl: item.link,
+          vendor: feed.vendor,
+          title: ai.seoTitle.slice(0, 120),
+          slug: { _type: "slug", current: slugCurrent },
+          summary: ai.summary,
+          businessImpact: ai.businessImpact,
+          category: ai.category,
+          tags: ai.tags,
+          publishedAt,
+          body: buildVendorUpdateBody(ai.summary, ai.businessImpact),
+          rawRssTitle: item.title,
+        };
+      }
 
       await createVendorUpdate(client, doc);
       stats.created += 1;

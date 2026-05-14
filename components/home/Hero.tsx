@@ -97,7 +97,16 @@ export function Hero({ stats = defaultStats }: HeroProps) {
                 href="/posts"
                 className="font-semibold text-sky-700 underline-offset-4 hover:text-sky-800 hover:underline"
               >
-                View insights &amp; resources
+                Blog
+              </Link>
+              <span className="mx-2 text-slate-300" aria-hidden>
+                ·
+              </span>
+              <Link
+                href="/vendor-updates"
+                className="font-semibold text-sky-700 underline-offset-4 hover:text-sky-800 hover:underline"
+              >
+                News
               </Link>
               <span className="mx-2 text-slate-300" aria-hidden>
                 ·
