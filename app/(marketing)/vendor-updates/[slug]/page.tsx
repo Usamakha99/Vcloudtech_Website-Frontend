@@ -10,6 +10,7 @@ import {
   VENDOR_UPDATE_SEO_QUERY,
 } from "@/sanity/lib/queries";
 import { formatNewsDate, getVendorChrome } from "@/lib/vendor-news-ui";
+import { parseVendorFilter } from "@/lib/vendor-news-vendors";
 
 export const revalidate = 60;
 
@@ -40,29 +41,43 @@ export default async function VendorUpdatePage({ params }: Props) {
   if (!doc) notFound();
 
   const chrome = getVendorChrome(doc.vendor);
+  const vendorTab = parseVendorFilter(doc.vendor ?? undefined);
+  const newsIndexHref = vendorTab ? `/vendor-updates?vendor=${vendorTab}` : "/vendor-updates";
+
   const crumbs = [
     { label: "Home", href: "/" },
-    { label: "News", href: "/vendor-updates" },
-    { label: (doc.title ? String(doc.title).slice(0, 72) : "Article") },
+    { label: "News", href: newsIndexHref },
+    { label: doc.title ? String(doc.title).slice(0, 72) : "Article" },
   ] as const;
 
   return (
-    <div className="min-h-full bg-[linear-gradient(180deg,#f8fafc_0%,#ffffff_18%,#ffffff_100%)]">
-      <article className="mx-auto max-w-3xl px-4 pb-20 pt-8 sm:px-6 lg:px-8 lg:pb-24 lg:pt-12">
-        <NewsBreadcrumbs items={crumbs} />
+    <div className="min-h-full bg-[linear-gradient(180deg,#eef2f7_0%,#ffffff_20%,#ffffff_100%)]">
+      <article className="mx-auto max-w-5xl px-4 pb-16 pt-8 sm:px-6 lg:px-8 lg:pb-24 lg:pt-12">
+        <div className="mx-auto max-w-3xl">
+          <NewsBreadcrumbs items={crumbs} />
+        </div>
 
-        <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.04]">
-          <div className={`h-1 w-full ${chrome.bar}`} aria-hidden />
+        <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md ring-1 ring-slate-900/[0.05]">
+          <div className={`h-1.5 w-full ${chrome.bar}`} aria-hidden />
 
-          <div className="px-6 py-8 sm:px-10 sm:py-10">
-            <header>
+          <div className="px-5 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+            <header className="border-b border-slate-100 pb-8">
               <div className="flex flex-wrap items-center gap-2">
                 {doc.vendor ? (
-                  <span
-                    className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${chrome.badge}`}
-                  >
-                    {doc.vendor}
-                  </span>
+                  vendorTab ? (
+                    <Link
+                      href={newsIndexHref}
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide transition hover:opacity-90 ${chrome.badge}`}
+                    >
+                      {doc.vendor}
+                    </Link>
+                  ) : (
+                    <span
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${chrome.badge}`}
+                    >
+                      {doc.vendor}
+                    </span>
+                  )
                 ) : null}
                 {doc.category ? (
                   <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
@@ -70,7 +85,7 @@ export default async function VendorUpdatePage({ params }: Props) {
                   </span>
                 ) : null}
               </div>
-              <h1 className="mt-5 text-3xl font-semibold tracking-tight text-[#1B224B] sm:text-[2rem] sm:leading-tight">
+              <h1 className="mt-5 text-3xl font-semibold tracking-tight text-[#1B224B] sm:text-[2.125rem] sm:leading-[1.2]">
                 {doc.title}
               </h1>
               {doc.publishedAt ? (
@@ -85,7 +100,7 @@ export default async function VendorUpdatePage({ params }: Props) {
 
             <div className="mt-10 space-y-10">
               {doc.summary ? (
-                <section className="rounded-xl bg-slate-50/90 p-5 ring-1 ring-slate-200/80 sm:p-6">
+                <section className="rounded-xl bg-slate-50 p-5 ring-1 ring-slate-200/80 sm:p-6">
                   <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                     At a glance
                   </h2>
@@ -120,10 +135,9 @@ export default async function VendorUpdatePage({ params }: Props) {
               ) : null}
 
               {doc.sourceUrl ? (
-                <div className="flex flex-col gap-3 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="text-sm text-slate-600">
-                    Source material lives on the vendor&apos;s site—open the original announcement for
-                    full context and assets.
+                <div className="flex flex-col gap-4 rounded-xl border border-slate-200/90 bg-slate-50/50 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+                  <p className="text-sm leading-relaxed text-slate-600">
+                    Full announcement and assets live on the vendor&apos;s site.
                   </p>
                   <a
                     href={doc.sourceUrl}
@@ -141,9 +155,7 @@ export default async function VendorUpdatePage({ params }: Props) {
                   <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                     Full note
                   </h2>
-                  <div
-                    className="mt-4 max-w-none text-base leading-relaxed text-slate-700 [&_p]:mb-4 [&_p:last-child]:mb-0 [&_a]:font-medium [&_a]:text-sky-700 [&_a]:underline-offset-2 hover:[&_a]:underline [&_strong]:font-semibold [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:my-1"
-                  >
+                  <div className="mt-4 max-w-none text-base leading-relaxed text-slate-700 [&_p]:mb-4 [&_p:last-child]:mb-0 [&_a]:font-medium [&_a]:text-sky-700 [&_a]:underline-offset-2 hover:[&_a]:underline [&_strong]:font-semibold [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:my-1">
                     <PortableText value={doc.body} />
                   </div>
                 </section>
@@ -152,15 +164,18 @@ export default async function VendorUpdatePage({ params }: Props) {
           </div>
         </div>
 
-        <div className="mt-10 flex justify-between gap-4 border-t border-slate-200/90 pt-8">
+        <div className="mx-auto mt-10 flex max-w-3xl flex-col gap-4 border-t border-slate-200/90 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <Link
-            href="/vendor-updates"
+            href={newsIndexHref}
             className="text-sm font-semibold text-slate-600 transition hover:text-[#1B224B]"
           >
             ← Back to News
           </Link>
-          <Link href="/posts" className="text-sm font-semibold text-sky-700 transition hover:text-sky-800">
-            View editorial blog →
+          <Link
+            href="/posts"
+            className="text-sm font-semibold text-sky-700 transition hover:text-sky-800"
+          >
+            Editorial blog →
           </Link>
         </div>
       </article>

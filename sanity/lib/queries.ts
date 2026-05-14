@@ -25,7 +25,7 @@ export const POST_QUERY = defineQuery(`
   }
 `);
 
-/** Vendor updates (AI pipeline → Sanity) */
+/** Vendor updates (AI pipeline → Sanity) — legacy cap; prefer paginated queries below */
 export const VENDOR_UPDATES_QUERY = defineQuery(`
   *[_type == "vendorUpdate" && defined(slug.current)] | order(publishedAt desc) [0...50] {
     _id,
@@ -38,6 +38,39 @@ export const VENDOR_UPDATES_QUERY = defineQuery(`
     summary,
     businessImpact,
     sourceUrl
+  }
+`);
+
+const vendorNewsCardFields = `
+  _id,
+  title,
+  "slug": slug.current,
+  publishedAt,
+  vendor,
+  category,
+  tags,
+  summary,
+  businessImpact,
+  sourceUrl
+`;
+
+/** Total vendor news rows (optional vendor: use `"all"` when unfiltered). */
+export const VENDOR_UPDATES_COUNT_QUERY = defineQuery(`
+  count(*[
+    _type == "vendorUpdate" &&
+    defined(slug.current) &&
+    ($filterVendor == "all" || vendor == $filterVendor)
+  ])
+`);
+
+/** One page of vendor news — `$start` / `$end` GROQ slice (end exclusive), e.g. 0…10 for first 10. */
+export const VENDOR_UPDATES_PAGE_QUERY = defineQuery(`
+  *[
+    _type == "vendorUpdate" &&
+    defined(slug.current) &&
+    ($filterVendor == "all" || vendor == $filterVendor)
+  ] | order(publishedAt desc) [$start...$end] {
+    ${vendorNewsCardFields}
   }
 `);
 
