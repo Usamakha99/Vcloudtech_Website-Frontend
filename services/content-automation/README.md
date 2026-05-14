@@ -1,6 +1,6 @@
 # Content automation service (Phase 1)
 
-Separate **Node.js + TypeScript** worker that ingests vendor **RSS** and publishes **`vendorUpdate`** documents to **Sanity**. By default it **maps RSS fields only** (no OpenAI). Set `RSS_ONLY=false` and provide `OPENAI_API_KEY` to enable AI summaries. The Next.js site stays a consumer only (ISR / live queries).
+Separate **Node.js + TypeScript** worker that ingests vendor **RSS** and publishes **`vendorUpdate`** documents to **Sanity** (RSS fields → Portable Text). **OpenAI summarization** is implemented in `src/integrations/openai/summarizer.ts` but **not wired** from the pipeline (see commented blocks in `ingestVendorFeed.ts` and `config/env.ts`); restore those when you want AI summaries again. The Next.js site stays a consumer only (ISR / live queries).
 
 ## Why this is a separate package
 
@@ -26,14 +26,14 @@ Separate **Node.js + TypeScript** worker that ingests vendor **RSS** and publish
 1. `fetchRssFeed` → normalized `{ title, link, snippet, pubDate }`.
 2. `hashSourceUrl(link)` → deterministic `sourceId`.
 3. `vendorUpdateExistsBySourceId` → skip if already in Sanity (**duplicate strategy**).
-4. **RSS-only (default):** `buildVendorDraftFromRssItem` → title from RSS, summary from snippet (HTML stripped), tags `[vendor]`, category = feed label.  
-   **AI mode (`RSS_ONLY=false`):** `summarizeFeedItem` → SEO title, summary, business impact, category, tags.
+4. `buildVendorDraftFromRssItem` → title from RSS, summary from snippet (HTML stripped), tags `[vendor]`, category = feed label.  
+   **FUTURE — OpenAI:** uncomment branch in `ingestVendorFeed.ts` + env in `env.ts`; then `summarizeFeedItem` enriches fields before `createVendorUpdate`.
 5. `createVendorUpdate` → Sanity `create()` with Portable Text body.
 
 ## Duplicate detection (no PostgreSQL)
 
 - **Primary key**: `sourceId` = SHA-256 of normalized URL (fragment stripped).
-- **Check**: GROQ `*[_type == "vendorUpdate" && sourceId == $sourceId][0]` before create (in AI mode this avoids paying OpenAI for duplicates).
+- **Check**: GROQ `*[_type == "vendorUpdate" && sourceId == $sourceId][0]` before create (when OpenAI is re-enabled, this avoids paying for duplicates).
 - **Race guard**: `createVendorUpdate` re-checks before `create()` to reduce double-publish under concurrency.
 
 ## Environment
@@ -49,16 +49,16 @@ Env files are loaded in order (later overrides earlier):
 
 **Sanity project & dataset:** you can use either `SANITY_PROJECT_ID` / `SANITY_DATASET` **or** the same `NEXT_PUBLIC_SANITY_PROJECT_ID` / `NEXT_PUBLIC_SANITY_DATASET` values as the Next app (no duplication needed).
 
-`SANITY_API_WRITE_TOKEN` (or `SANITY_API_TOKEN`) must be set somewhere in those files (not public in the browser). `OPENAI_API_KEY` is required only when `RSS_ONLY=false`.
+`SANITY_API_WRITE_TOKEN` (or `SANITY_API_TOKEN`) must be set somewhere in those files (not public in the browser). **`OPENAI_API_KEY`** is unused until you restore the OpenAI branch in code (see `env.ts` / `ingestVendorFeed.ts`).
 
 | Variable | Description |
 |----------|-------------|
-| `RSS_ONLY` | Default **`true`** — RSS → Sanity only, no OpenAI. Set `false` for AI summaries. |
+| `RSS_ONLY` | **Ignored for now** (pipeline is RSS-only). Kept in `.env.example` for when OpenAI branch is restored. |
 | `SANITY_PROJECT_ID` | Optional if `NEXT_PUBLIC_SANITY_PROJECT_ID` is set (root `.env.local`) |
 | `SANITY_DATASET` | Optional if `NEXT_PUBLIC_SANITY_DATASET` is set |
 | `SANITY_API_WRITE_TOKEN` | Required — token with **create** document permission (alias: `SANITY_API_TOKEN`) |
-| `OPENAI_API_KEY` | Required when `RSS_ONLY=false` |
-| `OPENAI_MODEL` | Default `gpt-4o-mini` |
+| `OPENAI_API_KEY` | Optional until OpenAI path is re-enabled in source |
+| `OPENAI_MODEL` | Default `gpt-4o-mini` (used when OpenAI is re-enabled) |
 | `MAX_ITEMS_PER_VENDOR` | Cap per run (default `8`) |
 | `CRON_EXPRESSION` | Default every 6 hours: `0 */6 * * *` |
 | `LOG_LEVEL` | `debug` \| `info` \| `warn` \| `error` |

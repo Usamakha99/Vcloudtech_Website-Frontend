@@ -56,3 +56,11 @@ export const VENDOR_UPDATE_BY_SLUG_QUERY = defineQuery(`
     body
   }
 `);
+
+/** Lightweight fetch for `generateMetadata` on vendor news articles */
+export const VENDOR_UPDATE_SEO_QUERY = defineQuery(`
+  *[_type == "vendorUpdate" && slug.current == $slug][0]{
+    title,
+    summary
+  }
+`);

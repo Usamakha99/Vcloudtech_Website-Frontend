@@ -6,7 +6,7 @@ import { config } from "dotenv";
 
 /**
  * Resolve paths from this file so env loads correctly whether you run:
- * - `npm run automation:once` from repo root (`npm --prefix` sets cwd to **service** dir), or
+ * - `npm run automation:once` from repo root (`npm run once --prefix` sets cwd to **service** dir), or
  * - `npm run once` from inside `services/content-automation/`.
  *
  * `process.cwd()` alone breaks with `--prefix` because root `.env.local` is not under cwd.
@@ -32,13 +32,17 @@ function loadEnvFiles(): void {
 
 loadEnvFiles();
 
-function required(name: string): string {
-  const v = process.env[name];
-  if (!v?.trim()) {
-    throw new Error(`Missing required environment variable: ${name}`);
-  }
-  return v.trim();
-}
+/*
+ * FUTURE — restore with OpenAI env (do not delete helper):
+ *
+ * function required(name: string): string {
+ *   const v = process.env[name];
+ *   if (!v?.trim()) {
+ *     throw new Error(`Missing required environment variable: ${name}`);
+ *   }
+ *   return v.trim();
+ * }
+ */
 
 /** First non-empty env among candidates (shared vars with Next.js use `NEXT_PUBLIC_*`). */
 function requiredFirst(...names: string[]): string {
@@ -69,15 +73,20 @@ function optionalInt(name: string, fallback: number): number {
   return Number.isFinite(n) && n > 0 ? n : fallback;
 }
 
-function optionalBool(name: string, fallback: boolean): boolean {
-  const v = process.env[name]?.trim().toLowerCase();
-  if (!v) return fallback;
-  if (["1", "true", "yes", "on"].includes(v)) return true;
-  if (["0", "false", "no", "off"].includes(v)) return false;
-  return fallback;
-}
-
-const rssOnly = optionalBool("RSS_ONLY", true);
+/*
+ * FUTURE — RSS vs OpenAI toggle (do not delete). Restore when `ingestVendorFeed.ts` OpenAI branch is back:
+ *
+ * function optionalBool(name: string, fallback: boolean): boolean {
+ *   const v = process.env[name]?.trim().toLowerCase();
+ *   if (!v) return fallback;
+ *   if (["1", "true", "yes", "on"].includes(v)) return true;
+ *   if (["0", "false", "no", "off"].includes(v)) return false;
+ *   return fallback;
+ * }
+ * const rssOnly = optionalBool("RSS_ONLY", true);
+ */
+/** Pipeline is RSS-only until OpenAI path is re-enabled in `ingestVendorFeed.ts`. */
+const rssOnly = true;
 
 /** Centralized runtime configuration — single place to read env vars. */
 export const env = {
@@ -88,8 +97,16 @@ export const env = {
     /** Token with *create* (and read) permissions on the dataset */
     writeToken: requiredFirst("SANITY_API_WRITE_TOKEN", "SANITY_API_TOKEN"),
   },
+  /*
+   * FUTURE — OpenAI required when AI mode is on (do not delete). Replace `openai` below with:
+   *
+   * openai: {
+   *   apiKey: rssOnly ? (process.env.OPENAI_API_KEY?.trim() ?? "") : required("OPENAI_API_KEY"),
+   *   model: optional("OPENAI_MODEL", "gpt-4o-mini"),
+   * },
+   */
   openai: {
-    apiKey: rssOnly ? (process.env.OPENAI_API_KEY?.trim() ?? "") : required("OPENAI_API_KEY"),
+    apiKey: process.env.OPENAI_API_KEY?.trim() ?? "",
     model: optional("OPENAI_MODEL", "gpt-4o-mini"),
   },
   pipeline: {

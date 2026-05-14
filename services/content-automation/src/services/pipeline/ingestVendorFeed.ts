@@ -1,20 +1,23 @@
 import type { SanityClient } from "@sanity/client";
 
-import { env } from "../../config/env.js";
 import type { PipelineStats, VendorFeedConfig, VendorUpdateDraft } from "../../types/index.js";
 import { fetchRssFeed } from "../../integrations/rss/rssClient.js";
-import { summarizeFeedItem } from "../../integrations/openai/summarizer.js";
+// FUTURE (OpenAI): import { env } from "../../config/env.js";
+// FUTURE (OpenAI): import { summarizeFeedItem } from "../../integrations/openai/summarizer.js";
+// FUTURE (OpenAI): import { buildVendorUpdateBody } from "../../integrations/sanity/portableText.js";
+// FUTURE (OpenAI): import { slugify, uniqueSlug } from "../../utils/slug.js";
 import { vendorUpdateExistsBySourceId } from "../../integrations/sanity/duplicateChecker.js";
 import { createVendorUpdate } from "../../integrations/sanity/vendorUpdateRepository.js";
-import { buildVendorUpdateBody } from "../../integrations/sanity/portableText.js";
 import { hashSourceUrl } from "../../utils/hash.js";
-import { slugify, uniqueSlug } from "../../utils/slug.js";
 import { logger } from "../../lib/logger.js";
 import { buildVendorDraftFromRssItem } from "./rssVendorDraft.js";
 
 /**
- * Pipeline for one vendor feed: fetch → dedupe → (optional AI) → publish.
- * Each step is delegated to a small integration to keep this function readable.
+ * Pipeline for one vendor feed: fetch → dedupe → publish (RSS fields).
+ *
+ * OpenAI enrichment is **commented out** for now; full implementation stays in
+ * `integrations/openai/summarizer.ts`. To restore: uncomment imports above, uncomment the
+ * block at the bottom of this file, and re-enable `RSS_ONLY` / `openai.apiKey` logic in `env.ts`.
  */
 export async function ingestVendorFeed(
   client: SanityClient,
@@ -41,33 +44,7 @@ export async function ingestVendorFeed(
         continue;
       }
 
-      let doc: VendorUpdateDraft;
-      if (env.pipeline.rssOnly) {
-        doc = buildVendorDraftFromRssItem(item, feed, sourceId);
-      } else {
-        const ai = await summarizeFeedItem(item, feed.label);
-        const slugBase = slugify(ai.seoTitle);
-        const slugCurrent = uniqueSlug(slugBase, sourceId.slice(0, 14));
-        const publishedAt = item.pubDate
-          ? new Date(item.pubDate).toISOString()
-          : new Date().toISOString();
-
-        doc = {
-          _type: "vendorUpdate",
-          sourceId,
-          sourceUrl: item.link,
-          vendor: feed.vendor,
-          title: ai.seoTitle.slice(0, 120),
-          slug: { _type: "slug", current: slugCurrent },
-          summary: ai.summary,
-          businessImpact: ai.businessImpact,
-          category: ai.category,
-          tags: ai.tags,
-          publishedAt,
-          body: buildVendorUpdateBody(ai.summary, ai.businessImpact),
-          rawRssTitle: item.title,
-        };
-      }
+      const doc: VendorUpdateDraft = buildVendorDraftFromRssItem(item, feed, sourceId);
 
       await createVendorUpdate(client, doc);
       stats.created += 1;
@@ -83,3 +60,42 @@ export async function ingestVendorFeed(
 
   return stats;
 }
+
+/*
+ * ---------------------------------------------------------------------------
+ * FUTURE — OpenAI branch (do not delete). Paste above `createVendorUpdate` when re-enabling:
+ *
+ *      let doc: VendorUpdateDraft;
+ *      if (env.pipeline.rssOnly) {
+ *        doc = buildVendorDraftFromRssItem(item, feed, sourceId);
+ *      } else {
+ *        const ai = await summarizeFeedItem(item, feed.label);
+ *        const slugBase = slugify(ai.seoTitle);
+ *        const slugCurrent = uniqueSlug(slugBase, sourceId.slice(0, 14));
+ *        const publishedAt = item.pubDate
+ *          ? new Date(item.pubDate).toISOString()
+ *          : new Date().toISOString();
+ *
+ *        doc = {
+ *          _type: "vendorUpdate",
+ *          sourceId,
+ *          sourceUrl: item.link,
+ *          vendor: feed.vendor,
+ *          title: ai.seoTitle.slice(0, 120),
+ *          slug: { _type: "slug", current: slugCurrent },
+ *          summary: ai.summary,
+ *          businessImpact: ai.businessImpact,
+ *          category: ai.category,
+ *          tags: ai.tags,
+ *          publishedAt,
+ *          body: buildVendorUpdateBody(ai.summary, ai.businessImpact),
+ *          rawRssTitle: item.title,
+ *        };
+ *      }
+ *
+ *      await createVendorUpdate(client, doc);
+ *
+ * And replace the single `const doc = buildVendorDraft...` + `await createVendorUpdate`
+ * lines with that block. Restore `env` / OpenAI-related settings in `config/env.ts`.
+ * ---------------------------------------------------------------------------
+ */

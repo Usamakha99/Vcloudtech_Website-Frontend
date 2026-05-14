@@ -1,3 +1,7 @@
+/**
+ * OpenAI summarization — **not wired** from the pipeline right now (see `ingestVendorFeed.ts`).
+ * Implementation is kept intact for future use; uncomment imports / branch in the pipeline to enable.
+ */
 import OpenAI from "openai";
 
 import { env } from "../../config/env.js";
