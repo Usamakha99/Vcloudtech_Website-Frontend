@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { NewsBreadcrumbs } from "@/components/vendor-updates/NewsBreadcrumbs";
+import type { PaperItem } from "@/components/vendor-updates/news/NewsPaperColumns";
+import { NewsPaperColumns } from "@/components/vendor-updates/news/NewsPaperColumns";
+import { NewsPaperMasthead } from "@/components/vendor-updates/news/NewsPaperMasthead";
+import { NewsPaperSnapshot } from "@/components/vendor-updates/news/NewsPaperSnapshot";
 import { NewsPagination } from "@/components/vendor-updates/NewsPagination";
-import { VendorNewsToolbar } from "@/components/vendor-updates/VendorNewsToolbar";
 import { NEWS_PAGE_SIZE, parseNewsPage } from "@/lib/vendor-news-pagination";
+import { formatPaperMastheadDate } from "@/lib/vendor-news-ui";
+import { parseVendorFilter, VENDOR_NEWS_TABS } from "@/lib/vendor-news-vendors";
 import { client } from "@/sanity/lib/client";
 import {
+  VENDOR_NEWS_PLATFORM_COUNT_QUERY,
+  VENDOR_NEWS_TRENDING_QUERY,
   VENDOR_UPDATES_COUNT_QUERY,
   VENDOR_UPDATES_PAGE_QUERY,
 } from "@/sanity/lib/queries";
-import { formatNewsDate, getVendorChrome } from "@/lib/vendor-news-ui";
-import { parseVendorFilter, VENDOR_NEWS_TABS } from "@/lib/vendor-news-vendors";
 
 export const revalidate = 60;
 
@@ -36,22 +40,21 @@ export async function generateMetadata({ searchParams }: { searchParams: Search 
   };
 }
 
-type VendorRow = {
-  _id: string;
-  title: string | null;
-  slug: string | null;
-  publishedAt: string | null;
-  vendor: string | null;
-  category: string | null;
-  summary: string | null;
-};
-
 export default async function VendorUpdatesPage({ searchParams }: { searchParams: Search }) {
   const { vendor: vendorRaw, page: pageRaw } = await searchParams;
   const vendorFilter = parseVendorFilter(vendorRaw);
   const filterVendor = vendorFilter ?? "all";
 
-  const total = await client.fetch(VENDOR_UPDATES_COUNT_QUERY, { filterVendor });
+  const now = new Date();
+  const todayLabel = formatPaperMastheadDate(now);
+  const todayIso = now.toISOString().slice(0, 10);
+
+  const [total, platformCount, trendingRaw] = await Promise.all([
+    client.fetch(VENDOR_UPDATES_COUNT_QUERY, { filterVendor }),
+    client.fetch(VENDOR_NEWS_PLATFORM_COUNT_QUERY),
+    client.fetch(VENDOR_NEWS_TRENDING_QUERY),
+  ]);
+
   const totalPages = Math.max(1, Math.ceil(total / NEWS_PAGE_SIZE));
   const requestedPage = parseNewsPage(pageRaw);
   const page = Math.min(requestedPage, totalPages);
@@ -59,148 +62,91 @@ export default async function VendorUpdatesPage({ searchParams }: { searchParams
   const start = (page - 1) * NEWS_PAGE_SIZE;
   const end = start + NEWS_PAGE_SIZE;
 
-  const items = await client.fetch(VENDOR_UPDATES_PAGE_QUERY, {
+  const items = (await client.fetch(VENDOR_UPDATES_PAGE_QUERY, {
     filterVendor,
     start,
     end,
-  });
+  })) as PaperItem[];
 
   const tabLabel = vendorFilter ? VENDOR_NEWS_TABS.find((t) => t.id === vendorFilter)?.label : null;
+  const filterSnapshotLabel = tabLabel ? `${tabLabel} feed` : "All vendors";
+
+  const featured = items.find((row) => row.slug) ?? null;
+  const withoutFeatured = featured
+    ? items.filter((row) => row._id !== featured._id)
+    : items;
+  const thumbStories = withoutFeatured.slice(0, 3);
+  const latestStories = withoutFeatured.slice(3);
+
+  const trendingList = trendingRaw as PaperItem[];
+  const pageIds = new Set(items.map((i) => i._id));
+  let trendingForColumn = trendingList.filter((t) => !pageIds.has(t._id)).slice(0, 6);
+  if (trendingForColumn.length === 0) {
+    trendingForColumn = trendingList.slice(0, 6);
+  }
+
+  const leftTitle = tabLabel ? `${tabLabel} spotlight` : "Spotlight";
 
   return (
-    <div className="min-h-full bg-[linear-gradient(180deg,#eef2f7_0%,#ffffff_24%,#ffffff_100%)]">
-      <div className="mx-auto max-w-5xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-12">
-        <NewsBreadcrumbs items={[{ label: "Home", href: "/" }, { label: "News" }]} />
+    <div className="min-h-full bg-white text-neutral-950">
+      <NewsPaperMasthead todayLabel={todayLabel} todayIso={todayIso} activeVendor={vendorFilter} />
 
-        <header className="mt-8 border-b border-slate-200/90 pb-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-800/90">
-            Vendor intelligence
-          </p>
-          <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
-            <h1 className="text-4xl font-semibold tracking-tight text-[#1B224B] sm:text-[2.5rem] sm:leading-tight">
-              {tabLabel ? `${tabLabel} news` : "News"}
-            </h1>
-            {vendorFilter ? (
-              <Link
-                href="/vendor-updates"
-                className="shrink-0 text-sm font-semibold text-sky-700 hover:text-sky-800"
-              >
-                Clear filter
-              </Link>
-            ) : null}
-          </div>
-        </header>
-
-        <VendorNewsToolbar currentVendor={vendorFilter} />
-
-        <div className="mt-8">
-          {total === 0 && filterVendor === "all" ? (
-            <div className="rounded-2xl border border-dashed border-slate-300/90 bg-white/90 px-6 py-14 text-center shadow-sm">
-              <p className="text-base font-medium text-slate-800">No news items yet</p>
-              <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-600">
-                Run the content-automation service after configuring Sanity credentials. New items will
-                appear here automatically.
-              </p>
-            </div>
-          ) : total === 0 ? (
-            <div className="rounded-2xl border border-slate-200/90 bg-white px-6 py-12 text-center shadow-sm">
-              <p className="text-base font-medium text-slate-800">No items for this vendor yet</p>
-              <p className="mx-auto mt-2 max-w-md text-sm text-slate-600">
-                Try another tab or clear the filter to see all updates.
-              </p>
-              <Link
-                href="/vendor-updates"
-                className="mt-6 inline-flex rounded-full bg-[#1B224B] px-5 py-2 text-sm font-semibold text-white hover:bg-[#141a3d]"
-              >
-                View all news
-              </Link>
-            </div>
-          ) : (
-            <>
-              <ul className="mx-auto flex max-w-3xl flex-col gap-4">
-                {(items as VendorRow[]).map((item: VendorRow) => {
-                  if (!item.slug) return null;
-                  const chrome = getVendorChrome(item.vendor);
-                  return (
-                    <li key={item._id}>
-                      <Link
-                        href={`/vendor-updates/${item.slug}`}
-                        className="group relative flex overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.04] transition duration-200 hover:border-sky-200/90 hover:shadow-md"
-                      >
-                        <span className={`w-1 shrink-0 ${chrome.bar}`} aria-hidden />
-                        <div className="flex min-w-0 flex-1 flex-col p-5 sm:flex-row sm:items-stretch sm:gap-6 sm:p-6">
-                          <div className="min-w-0 flex-1">
-                            <div className="flex flex-wrap items-center gap-2">
-                              {item.vendor ? (
-                                <span
-                                  className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide ${chrome.badge}`}
-                                >
-                                  {item.vendor}
-                                </span>
-                              ) : null}
-                              {item.category ? (
-                                <span className="text-xs font-medium uppercase tracking-wide text-slate-500">
-                                  {item.category}
-                                </span>
-                              ) : null}
-                            </div>
-                            <h2 className="mt-3 text-lg font-semibold leading-snug text-slate-900 transition group-hover:text-[#1B224B] sm:text-xl">
-                              {item.title ?? "Untitled"}
-                            </h2>
-                            {item.summary ? (
-                              <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-600">
-                                {item.summary}
-                              </p>
-                            ) : null}
-                          </div>
-                          <div className="mt-4 flex shrink-0 flex-col justify-between border-t border-slate-100 pt-4 sm:mt-0 sm:w-32 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
-                            <time
-                              dateTime={item.publishedAt ?? undefined}
-                              className="text-xs font-medium text-slate-500"
-                            >
-                              {formatNewsDate(item.publishedAt)}
-                            </time>
-                            <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-sky-700 sm:mt-0">
-                              Read <span aria-hidden>→</span>
-                            </span>
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-              <NewsPagination page={page} totalPages={totalPages} vendor={vendorFilter} />
-            </>
-          )}
+      <div className="border-b border-neutral-100 bg-neutral-50">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
+          <NewsBreadcrumbs items={[{ label: "Home", href: "/" }, { label: "News" }]} />
+          {vendorFilter ? (
+            <p className="text-[12px] font-medium text-neutral-500">
+              Filtered: <span className="text-neutral-800">{tabLabel}</span>
+            </p>
+          ) : null}
         </div>
-
-        <aside className="mx-auto mt-16 max-w-3xl rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm ring-1 ring-slate-900/[0.03] sm:p-8">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-            How this feed works
-          </h2>
-          <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-600">
-            <li className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" aria-hidden />
-              <span>Each tab filters by vendor document field in Sanity—same data, clearer browsing.</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" aria-hidden />
-              <span>RSS sources are deduplicated before publish; editorial posts stay under Blog.</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" aria-hidden />
-              <span>News is paginated (10 items per page) for faster loading.</span>
-            </li>
-          </ul>
-          <Link
-            href="/contact"
-            className="mt-6 flex w-full items-center justify-center rounded-xl bg-[#1B224B] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#141a3d]"
-          >
-            Talk to solutions architecture
-          </Link>
-        </aside>
       </div>
+
+      <div className="border-b border-neutral-200 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-5 sm:px-6">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-950 sm:text-[2.15rem] sm:leading-tight">
+            Tech news desk
+          </h1>
+          <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-neutral-600">
+            Enterprise vendor intelligence in a dense, scan-friendly layout—inspired by global news desks.
+          </p>
+        </div>
+      </div>
+
+      {total === 0 && filterVendor === "all" ? (
+        <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">
+          <p className="text-lg font-semibold text-neutral-800">No news items yet</p>
+          <p className="mx-auto mt-2 max-w-md text-sm text-neutral-600">
+            Run the content-automation service with Sanity credentials. Headlines sync here automatically.
+          </p>
+        </div>
+      ) : total === 0 ? (
+        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6">
+          <p className="text-lg font-semibold text-neutral-800">No items for this vendor</p>
+          <p className="mt-2 text-sm text-neutral-600">Pick another vendor from the masthead.</p>
+        </div>
+      ) : featured?.slug ? (
+        <>
+          <NewsPaperColumns
+            featured={featured}
+            thumbStories={thumbStories}
+            latest={latestStories}
+            trending={trendingForColumn}
+            leftSectionTitle={leftTitle}
+          />
+
+          <div className="mx-auto max-w-6xl px-4 pb-6 sm:px-6">
+            <NewsPagination page={page} totalPages={totalPages} vendor={vendorFilter} />
+          </div>
+
+          <NewsPaperSnapshot
+            filterLabel={filterSnapshotLabel}
+            inViewCount={total}
+            platformCount={platformCount}
+            activeVendor={vendorFilter}
+          />
+        </>
+      ) : null}
     </div>
   );
 }

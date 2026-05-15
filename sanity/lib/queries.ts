@@ -74,6 +74,24 @@ export const VENDOR_UPDATES_PAGE_QUERY = defineQuery(`
   }
 `);
 
+/** Global recent items for “Trending” / right column (always unfiltered). */
+export const VENDOR_NEWS_TRENDING_QUERY = defineQuery(`
+  *[_type == "vendorUpdate" && defined(slug.current)] | order(publishedAt desc) [0...6] {
+    _id,
+    title,
+    "slug": slug.current,
+    publishedAt,
+    vendor,
+    category,
+    summary
+  }
+`);
+
+/** Platform article count for footer snapshot. */
+export const VENDOR_NEWS_PLATFORM_COUNT_QUERY = defineQuery(`
+  count(*[_type == "vendorUpdate" && defined(slug.current)])
+`);
+
 export const VENDOR_UPDATE_BY_SLUG_QUERY = defineQuery(`
   *[_type == "vendorUpdate" && slug.current == $slug][0]{
     _id,
