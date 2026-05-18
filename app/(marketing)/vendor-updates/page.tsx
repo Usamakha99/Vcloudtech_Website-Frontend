@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { NewsBreadcrumbs } from "@/components/vendor-updates/NewsBreadcrumbs";
 import type { PaperItem } from "@/components/vendor-updates/news/NewsPaperColumns";
 import { NewsPaperColumns } from "@/components/vendor-updates/news/NewsPaperColumns";
 import { NewsPaperMasthead } from "@/components/vendor-updates/news/NewsPaperMasthead";
@@ -91,27 +90,12 @@ export default async function VendorUpdatesPage({ searchParams }: { searchParams
     <div className="min-h-full bg-white text-neutral-950">
       <NewsPaperMasthead todayLabel={todayLabel} todayIso={todayIso} activeVendor={vendorFilter} />
 
-      <div className="border-b border-neutral-100 bg-neutral-50">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
-          <NewsBreadcrumbs items={[{ label: "Home", href: "/" }, { label: "News" }]} />
-          {vendorFilter ? (
-            <p className="text-[12px] font-medium text-neutral-500">
-              Filtered: <span className="text-neutral-800">{tabLabel}</span>
-            </p>
-          ) : null}
-        </div>
-      </div>
-
-      <div className="border-b border-neutral-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-5 sm:px-6">
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-950 sm:text-[2.15rem] sm:leading-tight">
-            Tech news desk
-          </h1>
-          <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-neutral-600">
-            Enterprise vendor intelligence in a dense, scan-friendly layout—inspired by global news desks.
-          </p>
-        </div>
-      </div>
+      <NewsPaperSnapshot
+        filterLabel={filterSnapshotLabel}
+        inViewCount={total}
+        platformCount={platformCount}
+        activeVendor={vendorFilter}
+      />
 
       {total === 0 && filterVendor === "all" ? (
         <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">
@@ -138,13 +122,6 @@ export default async function VendorUpdatesPage({ searchParams }: { searchParams
           <div className="mx-auto max-w-6xl px-4 pb-6 sm:px-6">
             <NewsPagination page={page} totalPages={totalPages} vendor={vendorFilter} />
           </div>
-
-          <NewsPaperSnapshot
-            filterLabel={filterSnapshotLabel}
-            inViewCount={total}
-            platformCount={platformCount}
-            activeVendor={vendorFilter}
-          />
         </>
       ) : null}
     </div>

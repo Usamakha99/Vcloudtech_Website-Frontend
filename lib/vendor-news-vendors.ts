@@ -9,6 +9,15 @@ export const VENDOR_NEWS_TABS = [
 
 export type VendorNewsTabId = (typeof VENDOR_NEWS_TABS)[number]["id"];
 
+/** Brand accents for snapshot strip, chips, and stat markers. */
+export const VENDOR_NEWS_BRAND_COLORS: Record<VendorNewsTabId, string> = {
+  microsoft: "#0078D4",
+  aws: "#FF9900",
+  dell: "#007DB8",
+  nvidia: "#76B900",
+  cisco: "#049FD9",
+};
+
 const TAB_IDS = new Set<string>(VENDOR_NEWS_TABS.map((t) => t.id));
 
 /** Normalize `?vendor=` query; returns `undefined` for All or invalid. */

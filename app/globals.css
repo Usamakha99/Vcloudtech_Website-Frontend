@@ -1,5 +1,8 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
 @config "../tailwind.config.js";
+@source "../app";
+@source "../components";
+@source "../stores";
 
 @keyframes partner-float {
   0%,
