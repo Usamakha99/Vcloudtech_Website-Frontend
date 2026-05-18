@@ -110,7 +110,10 @@ export const env = {
     model: optional("OPENAI_MODEL", "gpt-4o-mini"),
   },
   pipeline: {
+    /** Max new Sanity documents to create per vendor per run */
     maxItemsPerVendor: optionalInt("MAX_ITEMS_PER_VENDOR", 8),
+    /** How far down the feed to look for not-yet-imported items (AWS/NVIDIA have 100+ rows) */
+    maxFeedScanPerVendor: optionalInt("MAX_FEED_SCAN_PER_VENDOR", 60),
     rssOnly,
   },
   cron: {

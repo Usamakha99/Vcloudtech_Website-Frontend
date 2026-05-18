@@ -12,6 +12,8 @@ export interface VendorFeedConfig {
   label: string;
   /** RSS or Atom feed URL */
   feedUrl: string;
+  /** Used when primary feed returns malformed XML or HTTP errors */
+  feedUrlFallback?: string;
 }
 
 /** Normalized item from any RSS source */
@@ -50,7 +52,10 @@ export interface VendorUpdateDraft {
 
 export interface PipelineStats {
   vendor: VendorId;
+  /** Total items returned by the RSS parser */
   fetched: number;
+  /** How many feed rows we actually walked (may be less than fetched) */
+  scanned: number;
   created: number;
   skippedDuplicate: number;
   skippedError: number;

@@ -1,5 +1,6 @@
 import type { SanityClient } from "@sanity/client";
 
+import { env } from "../../config/env.js";
 import type { PipelineStats, VendorFeedConfig, VendorUpdateDraft } from "../../types/index.js";
 import { fetchRssFeed } from "../../integrations/rss/rssClient.js";
 // FUTURE (OpenAI): import { env } from "../../config/env.js";
@@ -22,21 +23,34 @@ import { buildVendorDraftFromRssItem } from "./rssVendorDraft.js";
 export async function ingestVendorFeed(
   client: SanityClient,
   feed: VendorFeedConfig,
-  maxItems: number,
+  maxNewPerRun: number,
 ): Promise<PipelineStats> {
   const stats: PipelineStats = {
     vendor: feed.vendor,
     fetched: 0,
+    scanned: 0,
     created: 0,
     skippedDuplicate: 0,
     skippedError: 0,
   };
 
-  const items = await fetchRssFeed(feed.feedUrl);
+  const items = await fetchRssFeed(feed.feedUrl, {
+    fallbackFeedUrl: feed.feedUrlFallback,
+  });
   stats.fetched = items.length;
-  const slice = items.slice(0, maxItems);
 
-  for (const item of slice) {
+  const scanCap = Math.min(
+    items.length,
+    env.pipeline.maxFeedScanPerVendor,
+  );
+
+  for (let i = 0; i < scanCap; i++) {
+    if (stats.created >= maxNewPerRun) {
+      break;
+    }
+
+    const item = items[i]!;
+    stats.scanned += 1;
     const sourceId = hashSourceUrl(item.link);
     try {
       if (await vendorUpdateExistsBySourceId(client, sourceId)) {
@@ -56,6 +70,16 @@ export async function ingestVendorFeed(
         error: err instanceof Error ? err.message : String(err),
       });
     }
+  }
+
+  if (stats.created < maxNewPerRun && scanCap < items.length) {
+    logger.info("ingest_vendor_scan_capped", {
+      vendor: feed.vendor,
+      created: stats.created,
+      scanned: stats.scanned,
+      fetched: stats.fetched,
+      scanCap,
+    });
   }
 
   return stats;

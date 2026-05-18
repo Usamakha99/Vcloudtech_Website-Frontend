@@ -59,7 +59,8 @@ Env files are loaded in order (later overrides earlier):
 | `SANITY_API_WRITE_TOKEN` | Required — token with **create** document permission (alias: `SANITY_API_TOKEN`) |
 | `OPENAI_API_KEY` | Optional until OpenAI path is re-enabled in source |
 | `OPENAI_MODEL` | Default `gpt-4o-mini` (used when OpenAI is re-enabled) |
-| `MAX_ITEMS_PER_VENDOR` | Cap per run (default `8`) |
+| `MAX_ITEMS_PER_VENDOR` | Max **new** documents to create per vendor per run (default `8`) |
+| `MAX_FEED_SCAN_PER_VENDOR` | How many RSS rows to walk when hunting for new items (default `60`) |
 | `CRON_EXPRESSION` | Default every 6 hours: `0 */6 * * *` |
 | `LOG_LEVEL` | `debug` \| `info` \| `warn` \| `error` |
 | `LOG_JSON` | `true` for one JSON object per line |

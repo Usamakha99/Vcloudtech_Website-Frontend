@@ -18,8 +18,11 @@ const feeds: VendorFeedConfig[] = [
   },
   {
     vendor: "dell",
-    label: "Dell Technologies (blog)",
-    feedUrl: "https://www.delltechnologies.com/blog/feed/",
+    label: "Dell (official blog)",
+    feedUrl: "https://www.dell.com/en-us/blog/feed/",
+    // Press / IR when blog is down or blocked. More feeds: investors.delltechnologies.com/rss-feeds
+    feedUrlFallback: "https://investors.delltechnologies.com/rss/news-releases.xml",
+    // Dell Tech Community (community.dell.com) has no unified RSS — not ingested.
   },
   {
     vendor: "nvidia",
