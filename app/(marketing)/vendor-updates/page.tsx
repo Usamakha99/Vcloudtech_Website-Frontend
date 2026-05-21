@@ -5,6 +5,7 @@ import { NewsPaperColumns } from "@/components/vendor-updates/news/NewsPaperColu
 import { NewsPaperMasthead } from "@/components/vendor-updates/news/NewsPaperMasthead";
 import { NewsPaperSnapshot } from "@/components/vendor-updates/news/NewsPaperSnapshot";
 import { NewsPagination } from "@/components/vendor-updates/NewsPagination";
+import { NEWS_CONTENT_TYPE_LABELS, parseTypeFilter } from "@/lib/vendor-news-content-type";
 import { NEWS_PAGE_SIZE, parseNewsPage } from "@/lib/vendor-news-pagination";
 import { formatPaperMastheadDate } from "@/lib/vendor-news-ui";
 import { parseVendorFilter, VENDOR_NEWS_TABS } from "@/lib/vendor-news-vendors";
@@ -18,13 +19,16 @@ import {
 
 export const revalidate = 60;
 
-type Search = Promise<{ vendor?: string; page?: string }>;
+type Search = Promise<{ vendor?: string; type?: string; page?: string }>;
 
 export async function generateMetadata({ searchParams }: { searchParams: Search }): Promise<Metadata> {
-  const { vendor } = await searchParams;
+  const { vendor, type } = await searchParams;
   const v = parseVendorFilter(vendor);
-  const tab = v ? VENDOR_NEWS_TABS.find((t) => t.id === v) : undefined;
-  const title = tab ? `News — ${tab.label}` : "News";
+  const t = parseTypeFilter(type);
+  const tab = v ? VENDOR_NEWS_TABS.find((tab) => tab.id === v) : undefined;
+  const typeLabel = t ? NEWS_CONTENT_TYPE_LABELS[t] : undefined;
+  const titleParts = ["News", tab?.label, typeLabel].filter(Boolean);
+  const title = titleParts.join(" — ");
   const description = tab
     ? `Latest ${tab.label} technology headlines from our vendor intelligence feed.`
     : "Curated vendor technology headlines from official RSS sources—organized for enterprise teams.";
@@ -40,16 +44,18 @@ export async function generateMetadata({ searchParams }: { searchParams: Search 
 }
 
 export default async function VendorUpdatesPage({ searchParams }: { searchParams: Search }) {
-  const { vendor: vendorRaw, page: pageRaw } = await searchParams;
+  const { vendor: vendorRaw, type: typeRaw, page: pageRaw } = await searchParams;
   const vendorFilter = parseVendorFilter(vendorRaw);
+  const typeFilter = parseTypeFilter(typeRaw);
   const filterVendor = vendorFilter ?? "all";
+  const filterType = typeFilter ?? "all";
 
   const now = new Date();
   const todayLabel = formatPaperMastheadDate(now);
   const todayIso = now.toISOString().slice(0, 10);
 
   const [total, platformCount, trendingRaw] = await Promise.all([
-    client.fetch(VENDOR_UPDATES_COUNT_QUERY, { filterVendor }),
+    client.fetch(VENDOR_UPDATES_COUNT_QUERY, { filterVendor, filterType }),
     client.fetch(VENDOR_NEWS_PLATFORM_COUNT_QUERY),
     client.fetch(VENDOR_NEWS_TRENDING_QUERY),
   ]);
@@ -63,12 +69,16 @@ export default async function VendorUpdatesPage({ searchParams }: { searchParams
 
   const items = (await client.fetch(VENDOR_UPDATES_PAGE_QUERY, {
     filterVendor,
+    filterType,
     start,
     end,
   })) as PaperItem[];
 
   const tabLabel = vendorFilter ? VENDOR_NEWS_TABS.find((t) => t.id === vendorFilter)?.label : null;
-  const filterSnapshotLabel = tabLabel ? `${tabLabel} feed` : "All vendors";
+  const typeLabel = typeFilter ? NEWS_CONTENT_TYPE_LABELS[typeFilter] : null;
+  const filterSnapshotLabel = [tabLabel ? `${tabLabel} feed` : "All vendors", typeLabel]
+    .filter(Boolean)
+    .join(" · ");
 
   const featured = items.find((row) => row.slug) ?? null;
   const withoutFeatured = featured
@@ -88,16 +98,17 @@ export default async function VendorUpdatesPage({ searchParams }: { searchParams
 
   return (
     <div className="min-h-full bg-white text-neutral-950">
-      <NewsPaperMasthead todayLabel={todayLabel} todayIso={todayIso} activeVendor={vendorFilter} />
+      <NewsPaperMasthead todayLabel={todayLabel} todayIso={todayIso} />
 
       <NewsPaperSnapshot
         filterLabel={filterSnapshotLabel}
         inViewCount={total}
         platformCount={platformCount}
         activeVendor={vendorFilter}
+        activeType={typeFilter}
       />
 
-      {total === 0 && filterVendor === "all" ? (
+      {total === 0 && filterVendor === "all" && filterType === "all" ? (
         <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">
           <p className="text-lg font-semibold text-neutral-800">No news items yet</p>
           <p className="mx-auto mt-2 max-w-md text-sm text-neutral-600">
@@ -107,7 +118,7 @@ export default async function VendorUpdatesPage({ searchParams }: { searchParams
       ) : total === 0 ? (
         <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6">
           <p className="text-lg font-semibold text-neutral-800">No items for this vendor</p>
-          <p className="mt-2 text-sm text-neutral-600">Pick another vendor from the masthead.</p>
+          <p className="mt-2 text-sm text-neutral-600">Try another vendor or content type in the snapshot filters.</p>
         </div>
       ) : featured?.slug ? (
         <>
@@ -120,7 +131,12 @@ export default async function VendorUpdatesPage({ searchParams }: { searchParams
           />
 
           <div className="mx-auto max-w-6xl px-4 pb-6 sm:px-6">
-            <NewsPagination page={page} totalPages={totalPages} vendor={vendorFilter} />
+            <NewsPagination
+              page={page}
+              totalPages={totalPages}
+              vendor={vendorFilter}
+              type={typeFilter}
+            />
           </div>
         </>
       ) : null}

@@ -54,12 +54,62 @@ const vendorNewsCardFields = `
   sourceUrl
 `;
 
+/** Combined title + summary for content-type keyword matching. */
+const vendorNewsSearchText = `lower(coalesce(title, "") + " " + coalesce(summary, ""))`;
+
+/** GROQ: content-type filter via title + summary keywords (`$filterType` = `"all"` | blog | research | announcement). */
+const vendorNewsTypeFilter = `
+  $filterType == "all" ||
+  (
+    $filterType == "research" && (
+      ${vendorNewsSearchText} match "*research*" ||
+      ${vendorNewsSearchText} match "*study*" ||
+      ${vendorNewsSearchText} match "*survey*" ||
+      ${vendorNewsSearchText} match "*report*" ||
+      ${vendorNewsSearchText} match "*analyst*" ||
+      ${vendorNewsSearchText} match "*whitepaper*" ||
+      ${vendorNewsSearchText} match "*benchmark*"
+    )
+  ) ||
+  (
+    $filterType == "announcement" && (
+      ${vendorNewsSearchText} match "*announce*" ||
+      ${vendorNewsSearchText} match "*partnership*" ||
+      ${vendorNewsSearchText} match "*launch*" ||
+      ${vendorNewsSearchText} match "*available*" ||
+      ${vendorNewsSearchText} match "*introducing*" ||
+      ${vendorNewsSearchText} match "*preview*"
+    )
+  ) ||
+  (
+    $filterType == "blog" &&
+    !(
+      ${vendorNewsSearchText} match "*research*" ||
+      ${vendorNewsSearchText} match "*study*" ||
+      ${vendorNewsSearchText} match "*survey*" ||
+      ${vendorNewsSearchText} match "*report*" ||
+      ${vendorNewsSearchText} match "*analyst*" ||
+      ${vendorNewsSearchText} match "*whitepaper*" ||
+      ${vendorNewsSearchText} match "*benchmark*"
+    ) &&
+    !(
+      ${vendorNewsSearchText} match "*announce*" ||
+      ${vendorNewsSearchText} match "*partnership*" ||
+      ${vendorNewsSearchText} match "*launch*" ||
+      ${vendorNewsSearchText} match "*available*" ||
+      ${vendorNewsSearchText} match "*introducing*" ||
+      ${vendorNewsSearchText} match "*preview*"
+    )
+  )
+`;
+
 /** Total vendor news rows (optional vendor: use `"all"` when unfiltered). */
 export const VENDOR_UPDATES_COUNT_QUERY = defineQuery(`
   count(*[
     _type == "vendorUpdate" &&
     defined(slug.current) &&
-    ($filterVendor == "all" || vendor == $filterVendor)
+    ($filterVendor == "all" || vendor == $filterVendor) &&
+    (${vendorNewsTypeFilter})
   ])
 `);
 
@@ -68,7 +118,8 @@ export const VENDOR_UPDATES_PAGE_QUERY = defineQuery(`
   *[
     _type == "vendorUpdate" &&
     defined(slug.current) &&
-    ($filterVendor == "all" || vendor == $filterVendor)
+    ($filterVendor == "all" || vendor == $filterVendor) &&
+    (${vendorNewsTypeFilter})
   ] | order(publishedAt desc) [$start...$end] {
     ${vendorNewsCardFields}
   }

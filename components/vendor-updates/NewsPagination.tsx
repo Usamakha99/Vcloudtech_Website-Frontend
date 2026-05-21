@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import type { NewsContentTypeId } from "@/lib/vendor-news-content-type";
 import { newsListHref } from "@/lib/vendor-news-pagination";
 import type { VendorNewsTabId } from "@/lib/vendor-news-vendors";
 
@@ -7,13 +8,14 @@ type Props = {
   page: number;
   totalPages: number;
   vendor?: VendorNewsTabId;
+  type?: NewsContentTypeId;
 };
 
-export function NewsPagination({ page, totalPages, vendor }: Props) {
+export function NewsPagination({ page, totalPages, vendor, type }: Props) {
   if (totalPages <= 1) return null;
 
-  const prev = page > 1 ? newsListHref(page - 1, vendor) : null;
-  const next = page < totalPages ? newsListHref(page + 1, vendor) : null;
+  const prev = page > 1 ? newsListHref(page - 1, vendor, type) : null;
+  const next = page < totalPages ? newsListHref(page + 1, vendor, type) : null;
 
   return (
     <nav

@@ -48,7 +48,6 @@ export const siteNavigation: readonly NavItem[] = [
   { type: "link", label: "About", href: "/about" },
   { type: "link", label: "Blog", href: "/posts" },
   { type: "link", label: "News", href: "/vendor-updates" },
-  { type: "link", label: "Vendor news", href: "/vendor-news" },
   { type: "link", label: "Contact", href: "/contact" },
 ] as const;
 

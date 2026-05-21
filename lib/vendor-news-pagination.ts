@@ -1,3 +1,4 @@
+import type { NewsContentTypeId } from "@/lib/vendor-news-content-type";
 import type { VendorNewsTabId } from "@/lib/vendor-news-vendors";
 
 export const NEWS_PAGE_SIZE = 10;
@@ -11,9 +12,14 @@ export function parseNewsPage(raw: string | string[] | undefined): number {
   return n;
 }
 
-export function newsListHref(page: number, vendor?: VendorNewsTabId): string {
+export function newsListHref(
+  page: number,
+  vendor?: VendorNewsTabId,
+  type?: NewsContentTypeId,
+): string {
   const p = new URLSearchParams();
   if (vendor) p.set("vendor", vendor);
+  if (type) p.set("type", type);
   if (page > 1) p.set("page", String(page));
   const q = p.toString();
   return q ? `/vendor-updates?${q}` : "/vendor-updates";
