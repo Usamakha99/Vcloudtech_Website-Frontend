@@ -1,0 +1,99 @@
+@keyframes hero-gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  33% {
+    background-position: 50% 100%;
+  }
+  66% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-orb-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(3%, -4%) scale(1.06);
+  }
+}
+
+.hero-test-gradient,
+.page-ingredient-gradient {
+  background-color: #0f0a2e;
+  background-image: linear-gradient(
+    135deg,
+    #1e0a4a 0%,
+    #1b224b 12%,
+    #312e81 24%,
+    #0369a1 40%,
+    #0891b2 52%,
+    #7c3aed 64%,
+    #db2777 76%,
+    #ea580c 88%,
+    #1b224b 100%
+  );
+  background-size: 400% 400%;
+  animation: hero-gradient-shift 18s ease-in-out infinite;
+}
+
+.hero-test-orb {
+  animation: hero-orb-drift 12s ease-in-out infinite;
+}
+
+.hero-test-orb-delay {
+  animation-delay: -4s;
+}
+
+.hero-test-fade-in {
+  opacity: 0;
+  animation: hero-fade-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-test-fade-in-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.hero-test-fade-in-delay-2 {
+  animation-delay: 0.28s;
+}
+
+.hero-test-fade-in-delay-3 {
+  animation-delay: 0.44s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-test-gradient,
+  .page-ingredient-gradient {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  .hero-test-orb,
+  .hero-test-orb-delay {
+    animation: none;
+  }
+
+  .hero-test-fade-in,
+  .hero-test-fade-in-delay-1,
+  .hero-test-fade-in-delay-2,
+  .hero-test-fade-in-delay-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
