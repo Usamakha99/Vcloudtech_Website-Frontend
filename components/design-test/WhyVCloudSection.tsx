@@ -11,28 +11,32 @@ type Strength = {
 
 const cardThemes = [
   {
-    shell:
-      "border-sky-400/35 bg-gradient-to-br from-[#1B224B]/95 via-[#1B224B]/90 to-sky-800/75",
-    bar: "bg-sky-400",
-    link: "text-sky-200 hover:text-white",
+    shell: "border-white/15 bg-[#1B224B]/72 ring-white/10",
+    glow: "bg-sky-400/20",
+    icon: "bg-sky-400/10 text-sky-300 ring-sky-400/25",
+    link: "text-sky-300 group-hover:text-sky-200",
+    dot: "bg-sky-400",
   },
   {
-    shell:
-      "border-violet-400/30 bg-gradient-to-br from-[#312e81]/90 via-[#1B224B]/88 to-cyan-700/70",
-    bar: "bg-violet-400",
-    link: "text-violet-200 hover:text-white",
+    shell: "border-white/15 bg-[#1B224B]/72 ring-violet-400/15",
+    glow: "bg-violet-400/20",
+    icon: "bg-violet-400/10 text-violet-300 ring-violet-400/25",
+    link: "text-violet-300 group-hover:text-violet-200",
+    dot: "bg-violet-400",
   },
   {
-    shell:
-      "border-cyan-400/30 bg-gradient-to-br from-[#0c4a6e]/92 via-[#1B224B]/88 to-[#7c3aed]/55",
-    bar: "bg-cyan-400",
-    link: "text-cyan-200 hover:text-white",
+    shell: "border-white/15 bg-[#1B224B]/72 ring-cyan-400/15",
+    glow: "bg-cyan-400/20",
+    icon: "bg-cyan-400/10 text-cyan-300 ring-cyan-400/25",
+    link: "text-cyan-300 group-hover:text-cyan-200",
+    dot: "bg-cyan-400",
   },
   {
-    shell:
-      "border-amber-400/25 bg-gradient-to-br from-[#141a38]/95 via-[#1B224B]/90 to-[#ea580c]/45",
-    bar: "bg-amber-400",
-    link: "text-amber-100 hover:text-white",
+    shell: "border-white/15 bg-[#1B224B]/72 ring-amber-400/15",
+    glow: "bg-amber-400/15",
+    icon: "bg-amber-400/10 text-amber-200 ring-amber-400/20",
+    link: "text-amber-200 group-hover:text-amber-100",
+    dot: "bg-amber-400",
   },
 ] as const;
 
@@ -126,71 +130,91 @@ export function WhyVCloudSection() {
 
 function StrengthCard({ item, index }: { item: Strength; index: number }) {
   const theme = cardThemes[index] ?? cardThemes[0];
+  const number = String(index + 1).padStart(2, "0");
 
   return (
     <article
-      className={`relative flex h-full min-h-[340px] w-full flex-col overflow-hidden rounded-2xl border px-6 py-7 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)] backdrop-blur-xl transition duration-200 group-hover:-translate-y-2 group-hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.55)] sm:min-h-[360px] sm:px-7 sm:py-8 lg:w-[250px] xl:w-[270px] ${theme.shell}`}
+      className={`group/card relative flex h-full min-h-[320px] w-full flex-col overflow-hidden rounded-2xl border px-5 py-6 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.5)] ring-1 backdrop-blur-xl transition duration-300 group-hover:-translate-y-2 group-hover:border-white/25 group-hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] sm:min-h-[340px] sm:px-6 sm:py-7 lg:w-[250px] xl:w-[270px] ${theme.shell}`}
     >
-      <span className={`absolute inset-x-0 top-0 h-1 ${theme.bar}`} aria-hidden />
-      <h3 className="text-base font-semibold text-white">{item.title}</h3>
-      <p className="mt-3 flex-1 text-[13px] leading-relaxed text-sky-100/80 sm:text-sm">
-        {item.description}
-      </p>
-      <div className="my-5 flex justify-center text-[#ff4d6d] [&_svg]:h-14 [&_svg]:w-14 sm:[&_svg]:h-16 sm:[&_svg]:w-16">
-        <item.icon />
+      {/* Soft accent glow */}
+      <span
+        className={`pointer-events-none absolute -right-6 -top-6 h-28 w-28 rounded-full blur-2xl transition-opacity duration-300 group-hover/card:opacity-100 ${theme.glow} opacity-60`}
+        aria-hidden
+      />
+
+      {/* Card header row */}
+      <div className="relative flex items-start justify-between gap-3">
+        <div
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ring-1 [&_svg]:h-5 [&_svg]:w-5 ${theme.icon}`}
+        >
+          <item.icon />
+        </div>
+        <span className="font-mono text-[11px] tabular-nums tracking-wider text-white/30">{number}</span>
       </div>
+
+      <div className="relative mt-5 flex flex-1 flex-col">
+        <span className={`inline-block h-px w-8 ${theme.dot} opacity-80`} aria-hidden />
+        <h3 className="mt-3 text-[15px] font-semibold leading-snug tracking-tight text-white">{item.title}</h3>
+        <p className="mt-2.5 flex-1 text-[13px] leading-relaxed text-white/60 sm:text-sm">{item.description}</p>
+      </div>
+
       <Link
         href={item.href}
-        className={`text-[13px] font-semibold underline-offset-4 transition hover:underline ${theme.link}`}
+        className={`relative mt-5 inline-flex items-center gap-1.5 text-[12px] font-medium tracking-wide transition ${theme.link}`}
       >
         {item.linkLabel}
+        <ArrowIcon />
       </Link>
     </article>
   );
 }
 
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5 transition-transform group-hover/card:translate-x-0.5" aria-hidden>
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function SolutionsIcon() {
   return (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-      <rect x="14" y="18" width="36" height="26" rx="2" />
-      <path d="M22 44h20M32 44v6" strokeLinecap="round" />
-      <path d="M24 26h16M24 32h10" strokeLinecap="round" />
-      <circle cx="48" cy="14" r="6" />
-      <path d="M46 14h4M48 12v4" strokeLinecap="round" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+      <rect x="4" y="6" width="14" height="10" rx="1.5" />
+      <path d="M8 16h6M11 16v2" strokeLinecap="round" />
+      <path d="M7 10h8M7 13h5" strokeLinecap="round" />
     </svg>
   );
 }
 
 function ContractIcon() {
   return (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-      <path d="M18 12h28l8 8v32H18V12z" strokeLinejoin="round" />
-      <path d="M46 12v8h8" strokeLinejoin="round" />
-      <circle cx="32" cy="36" r="8" />
-      <path d="M29 36l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+      <path d="M7 4h8l4 4v12H7V4z" strokeLinejoin="round" />
+      <path d="M15 4v4h4" strokeLinejoin="round" />
+      <circle cx="12" cy="14" r="3" />
+      <path d="M10.5 14l1 1 2-2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
 function ProcurementIcon() {
   return (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-      <path d="M12 42c8-4 14-4 20 0s14 4 20 0" strokeLinecap="round" />
-      <circle cx="26" cy="28" r="6" />
-      <circle cx="38" cy="28" r="6" />
-      <circle cx="32" cy="22" r="6" />
-      <path d="M29 28h6M32 25v6" strokeLinecap="round" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+      <circle cx="9" cy="10" r="2.5" />
+      <circle cx="15" cy="10" r="2.5" />
+      <circle cx="12" cy="7" r="2.5" />
+      <path d="M4 17c3-1.5 5.5-1.5 8 0s5 1.5 8 0" strokeLinecap="round" />
     </svg>
   );
 }
 
 function TeamIcon() {
   return (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-      <path d="M20 38c0-6 4-10 12-10s12 4 12 10" strokeLinecap="round" />
-      <circle cx="32" cy="22" r="6" />
-      <path d="M14 38h36" strokeLinecap="round" />
-      <path d="M32 14l2 4 4 1-3 3 1 4-4-2-4 2 1-4-3-3 1 4-2z" strokeLinejoin="round" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+      <circle cx="12" cy="8" r="3" />
+      <path d="M6 18c0-3 2.5-5 6-5s6 2 6 5" strokeLinecap="round" />
+      <path d="M12 5l1 2 2 .5-1.5 1.5.5 2L12 10l-2 1 .5-2L9 7.5 11 7z" strokeLinejoin="round" />
     </svg>
   );
 }

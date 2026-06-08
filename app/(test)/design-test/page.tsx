@@ -7,6 +7,7 @@ import { WhyVCloudSection } from "@/components/design-test/WhyVCloudSection";
 import { MinimalTestHero } from "@/components/hero-test/MinimalTestHero";
 import { PageIngredientBackground } from "@/components/hero-test/PageIngredientBackground";
 import { ServicesGrid } from "@/components/services/ServicesGrid";
+import { IntroVideoSplash } from "@/components/intro/IntroVideoSplash";
 
 import "@/components/hero-test/minimal-hero.css";
 
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 export default function DesignTestPage() {
   return (
     <div className="relative min-h-full text-white">
+      <IntroVideoSplash />
       <PageIngredientBackground />
       <DesignTestNavbar />
       <main className="relative">
