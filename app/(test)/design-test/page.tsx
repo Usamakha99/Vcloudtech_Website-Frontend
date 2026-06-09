@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { DesignTestCta } from "@/components/design-test/DesignTestCta";
 import { DesignTestNavbar } from "@/components/design-test/DesignTestNavbar";
 import { FeaturesGrid } from "@/components/design-test/FeaturesGrid";
+import { ScrollStackCardsSection } from "@/components/design-test/ScrollStackCardsSection";
 import { TechnologyPartnersSection } from "@/components/design-test/TechnologyPartnersSection";
 import { WhyVCloudSection } from "@/components/design-test/WhyVCloudSection";
 import { MinimalTestHero } from "@/components/hero-test/MinimalTestHero";
@@ -30,15 +31,18 @@ export default function DesignTestPage() {
         </div>
         <WhyVCloudSection />
         <TechnologyPartnersSection />
-        <div id="services">
-          <ServicesGrid
-            heading="Services"
-            subheading="3-column grid with hover lift and icons."
-            surface="glass"
-          />
+        <ScrollStackCardsSection />
+        <div className="relative z-20">
+          <div id="services">
+            <ServicesGrid
+              heading="Services"
+              subheading="3-column grid with hover lift and icons."
+              surface="glass"
+            />
+          </div>
+          <FeaturesGrid surface="glass" />
+          <DesignTestCta surface="glass" />
         </div>
-        <FeaturesGrid surface="glass" />
-        <DesignTestCta surface="glass" />
       </main>
     </div>
   );
