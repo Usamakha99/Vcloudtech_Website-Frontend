@@ -98,17 +98,16 @@ export function ServicesGrid({
         </div>
 
         <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
-          {items.map((item) => (
+          {items.map((item, index) => (
             <li key={item.title} className="flex min-w-0">
-              <div className="service-card-electric group/card w-full rounded-2xl">
-                <span className="service-card-electric-glow" aria-hidden />
-                <span className="service-card-electric-ring" aria-hidden />
+              <div className="service-card-edges group/card w-full rounded-2xl">
+                <ServiceCardSnakeBorder id={`svc-snake-${index}`} />
                 <Link
                   href={item.href}
-                  className={`relative z-10 m-[2px] flex w-full flex-col rounded-[calc(1rem-2px)] border p-6 transition-[transform,box-shadow,border-color,background-color] duration-200 ease-out group-hover/card:-translate-y-1.5 group-focus-within/card:-translate-y-1.5 motion-reduce:transition-none motion-reduce:group-hover/card:translate-y-0 sm:p-7 ${
+                  className={`relative flex w-full flex-col rounded-2xl border p-6 transition-[transform,box-shadow,border-color,background-color] duration-200 ease-out group-hover/card:-translate-y-1.5 group-focus-within/card:-translate-y-1.5 motion-reduce:transition-none motion-reduce:group-hover/card:translate-y-0 sm:p-7 ${
                     glass
-                      ? "border-white/15 bg-[#1B224B]/75 shadow-lg shadow-black/10 backdrop-blur-md group-hover/card:border-transparent group-hover/card:bg-[#1B224B]/85 group-hover/card:shadow-xl group-hover/card:shadow-sky-500/10"
-                      : "border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.03] group-hover/card:border-transparent group-hover/card:shadow-[0_14px_28px_-10px_rgba(56,189,248,0.18)] dark:border-slate-700 dark:bg-slate-900 dark:ring-slate-800"
+                      ? "border-white/15 bg-[#1B224B]/75 shadow-lg shadow-black/10 backdrop-blur-md group-hover/card:border-white/10 group-hover/card:bg-[#1B224B]/85 group-hover/card:shadow-xl group-hover/card:shadow-sky-500/10"
+                      : "border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.03] group-hover/card:border-slate-200/60 group-hover/card:shadow-[0_14px_28px_-10px_rgba(56,189,248,0.18)] dark:border-slate-700 dark:bg-slate-900 dark:ring-slate-800"
                   }`}
                 >
                 <div
@@ -151,6 +150,56 @@ export function ServicesGrid({
         </ul>
       </div>
     </section>
+  );
+}
+
+/** Slow glowing segment that crawls around the card border on hover. */
+function ServiceCardSnakeBorder({ id }: { id: string }) {
+  return (
+    <svg
+      className="service-snake-border pointer-events-none absolute inset-0 z-20 h-full w-full overflow-visible rounded-2xl"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      aria-hidden
+    >
+      <defs>
+        <linearGradient id={`${id}-stroke`} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.35" />
+          <stop offset="35%" stopColor="#38bdf8" />
+          <stop offset="70%" stopColor="#7dd3fc" />
+          <stop offset="100%" stopColor="#e31837" />
+        </linearGradient>
+        <filter id={`${id}-glow`} x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="1.4" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <rect
+        className="service-snake-track"
+        x="1.4"
+        y="1.4"
+        width="97.2"
+        height="97.2"
+        rx="9"
+        ry="9"
+        pathLength="100"
+      />
+      <rect
+        className="service-snake-path"
+        x="1.4"
+        y="1.4"
+        width="97.2"
+        height="97.2"
+        rx="9"
+        ry="9"
+        pathLength="100"
+        stroke={`url(#${id}-stroke)`}
+        filter={`url(#${id}-glow)`}
+      />
+    </svg>
   );
 }
 
