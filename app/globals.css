@@ -24,3 +24,103 @@
     animation: none;
   }
 }
+
+@keyframes service-border-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes service-border-flicker {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.service-card-electric {
+  position: relative;
+  isolation: isolate;
+  border-radius: 1rem;
+}
+
+.service-card-electric-ring {
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.service-card-electric-ring::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    #38bdf8 55deg,
+    #e31837 115deg,
+    #22d3ee 175deg,
+    #7dd3fc 235deg,
+    transparent 295deg
+  );
+  animation: service-border-spin 2.6s linear infinite;
+}
+
+.service-card-electric-glow {
+  position: absolute;
+  inset: -5px;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: inherit;
+  opacity: 0;
+  filter: blur(12px);
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.service-card-electric-glow::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(56, 189, 248, 0.55),
+    rgba(227, 24, 55, 0.45),
+    rgba(34, 211, 238, 0.5),
+    transparent
+  );
+  animation: service-border-spin 2.6s linear infinite;
+}
+
+.service-card-electric:hover .service-card-electric-ring,
+.service-card-electric:focus-within .service-card-electric-ring {
+  opacity: 1;
+  animation: service-border-flicker 1.2s ease-in-out infinite;
+}
+
+.service-card-electric:hover .service-card-electric-glow,
+.service-card-electric:focus-within .service-card-electric-glow {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card-electric-ring::before,
+  .service-card-electric-glow::before {
+    animation: none;
+  }
+
+  .service-card-electric:hover .service-card-electric-ring,
+  .service-card-electric:focus-within .service-card-electric-ring {
+    animation: none;
+    opacity: 1;
+  }
+}

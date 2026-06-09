@@ -100,14 +100,17 @@ export function ServicesGrid({
         <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
           {items.map((item) => (
             <li key={item.title} className="flex min-w-0">
-              <Link
-                href={item.href}
-                className={`group flex w-full flex-col rounded-2xl border p-6 transition-[transform,box-shadow,border-color,background-color] duration-200 ease-out hover:-translate-y-1.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-7 ${
-                  glass
-                    ? "border-white/20 bg-white/10 shadow-lg shadow-black/10 backdrop-blur-md hover:border-white/35 hover:bg-white/15 hover:shadow-xl hover:shadow-black/15"
-                    : "border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.03] hover:border-sky-200/80 hover:shadow-[0_14px_28px_-10px_rgba(15,23,42,0.12)] dark:border-slate-700 dark:bg-slate-900 dark:ring-slate-800 dark:hover:border-sky-800/50"
-                }`}
-              >
+              <div className="service-card-electric group/card w-full rounded-2xl">
+                <span className="service-card-electric-glow" aria-hidden />
+                <span className="service-card-electric-ring" aria-hidden />
+                <Link
+                  href={item.href}
+                  className={`relative z-10 m-[2px] flex w-full flex-col rounded-[calc(1rem-2px)] border p-6 transition-[transform,box-shadow,border-color,background-color] duration-200 ease-out group-hover/card:-translate-y-1.5 group-focus-within/card:-translate-y-1.5 motion-reduce:transition-none motion-reduce:group-hover/card:translate-y-0 sm:p-7 ${
+                    glass
+                      ? "border-white/15 bg-[#1B224B]/75 shadow-lg shadow-black/10 backdrop-blur-md group-hover/card:border-transparent group-hover/card:bg-[#1B224B]/85 group-hover/card:shadow-xl group-hover/card:shadow-sky-500/10"
+                      : "border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.03] group-hover/card:border-transparent group-hover/card:shadow-[0_14px_28px_-10px_rgba(56,189,248,0.18)] dark:border-slate-700 dark:bg-slate-900 dark:ring-slate-800"
+                  }`}
+                >
                 <div
                   className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl [&_svg]:h-6 [&_svg]:w-6 ${
                     glass
@@ -118,8 +121,8 @@ export function ServicesGrid({
                   <item.icon />
                 </div>
                 <h3
-                  className={`mt-5 text-lg font-semibold tracking-tight group-hover:text-sky-300 ${
-                    glass ? "text-white" : "text-[#1B224B] dark:text-white dark:group-hover:text-sky-300"
+                  className={`mt-5 text-lg font-semibold tracking-tight group-hover/card:text-sky-300 group-focus-within/card:text-sky-300 ${
+                    glass ? "text-white" : "text-[#1B224B] dark:text-white"
                   }`}
                 >
                   {item.title}
@@ -137,11 +140,12 @@ export function ServicesGrid({
                   }`}
                 >
                   Learn more
-                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+                  <span aria-hidden className="transition-transform group-hover/card:translate-x-0.5 group-focus-within/card:translate-x-0.5">
                     →
                   </span>
                 </span>
-              </Link>
+                </Link>
+              </div>
             </li>
           ))}
         </ul>
