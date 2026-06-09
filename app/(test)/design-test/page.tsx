@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { DesignTestCta } from "@/components/design-test/DesignTestCta";
 import { DesignTestNavbar } from "@/components/design-test/DesignTestNavbar";
 import { FeaturesGrid } from "@/components/design-test/FeaturesGrid";
+import { TechnologyPartnersSection } from "@/components/design-test/TechnologyPartnersSection";
 import { WhyVCloudSection } from "@/components/design-test/WhyVCloudSection";
 import { MinimalTestHero } from "@/components/hero-test/MinimalTestHero";
 import { PageIngredientBackground } from "@/components/hero-test/PageIngredientBackground";
@@ -28,6 +29,7 @@ export default function DesignTestPage() {
           <MinimalTestHero offsetForFixedHeader={false} fullPageGradient />
         </div>
         <WhyVCloudSection />
+        <TechnologyPartnersSection />
         <div id="services">
           <ServicesGrid
             heading="Services"

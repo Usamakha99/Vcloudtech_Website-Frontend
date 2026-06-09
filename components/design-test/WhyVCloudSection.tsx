@@ -9,37 +9,6 @@ type Strength = {
   icon: () => ReactNode;
 };
 
-const cardThemes = [
-  {
-    shell: "border-white/15 bg-[#1B224B]/72 ring-white/10",
-    glow: "bg-sky-400/20",
-    icon: "bg-sky-400/10 text-sky-300 ring-sky-400/25",
-    link: "text-sky-300 group-hover:text-sky-200",
-    dot: "bg-sky-400",
-  },
-  {
-    shell: "border-white/15 bg-[#1B224B]/72 ring-violet-400/15",
-    glow: "bg-violet-400/20",
-    icon: "bg-violet-400/10 text-violet-300 ring-violet-400/25",
-    link: "text-violet-300 group-hover:text-violet-200",
-    dot: "bg-violet-400",
-  },
-  {
-    shell: "border-white/15 bg-[#1B224B]/72 ring-cyan-400/15",
-    glow: "bg-cyan-400/20",
-    icon: "bg-cyan-400/10 text-cyan-300 ring-cyan-400/25",
-    link: "text-cyan-300 group-hover:text-cyan-200",
-    dot: "bg-cyan-400",
-  },
-  {
-    shell: "border-white/15 bg-[#1B224B]/72 ring-amber-400/15",
-    glow: "bg-amber-400/15",
-    icon: "bg-amber-400/10 text-amber-200 ring-amber-400/20",
-    link: "text-amber-200 group-hover:text-amber-100",
-    dot: "bg-amber-400",
-  },
-] as const;
-
 const stackZ = ["z-10", "z-20", "z-30", "z-40"] as const;
 
 const strengths: Strength[] = [
@@ -87,7 +56,7 @@ export function WhyVCloudSection() {
     >
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-3xl text-center">
-          <p className="inline-block bg-[#e31837] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white sm:text-[11px]">
+          <p className="inline-block rounded-full border border-[#e31837]/30 bg-[#e31837]/15 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#ff6b7f] sm:text-[11px]">
             Why vCloud Tech?
           </p>
           <h2
@@ -96,6 +65,9 @@ export function WhyVCloudSection() {
           >
             Our success starts with a combination of our strengths and culture
           </h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-sky-100/55">
+            Four pillars that define how we deliver for enterprise teams.
+          </p>
         </header>
 
         <div className="mt-10 sm:mt-12">
@@ -129,38 +101,33 @@ export function WhyVCloudSection() {
 }
 
 function StrengthCard({ item, index }: { item: Strength; index: number }) {
-  const theme = cardThemes[index] ?? cardThemes[0];
   const number = String(index + 1).padStart(2, "0");
 
   return (
     <article
-      className={`group/card relative flex h-full min-h-[320px] w-full flex-col overflow-hidden rounded-2xl border px-5 py-6 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.5)] ring-1 backdrop-blur-xl transition duration-300 group-hover:-translate-y-2 group-hover:border-white/25 group-hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] sm:min-h-[340px] sm:px-6 sm:py-7 lg:w-[250px] xl:w-[270px] ${theme.shell}`}
+      className="group/card relative flex h-full min-h-[300px] w-full flex-col overflow-hidden rounded-2xl border border-white/15 bg-[#1B224B]/55 px-5 py-6 shadow-[0_12px_32px_-12px_rgba(0,0,0,0.45)] ring-1 ring-sky-400/10 backdrop-blur-xl transition duration-300 group-hover:-translate-y-2 group-hover:border-sky-300/25 group-hover:bg-[#1B224B]/70 group-hover:ring-sky-300/20 group-hover:shadow-[0_20px_44px_-12px_rgba(15,23,42,0.55)] sm:min-h-[320px] sm:px-6 sm:py-7 lg:w-[250px] xl:w-[270px]"
     >
-      {/* Soft accent glow */}
       <span
-        className={`pointer-events-none absolute -right-6 -top-6 h-28 w-28 rounded-full blur-2xl transition-opacity duration-300 group-hover/card:opacity-100 ${theme.glow} opacity-60`}
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent opacity-70"
         aria-hidden
       />
 
-      {/* Card header row */}
       <div className="relative flex items-start justify-between gap-3">
-        <div
-          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ring-1 [&_svg]:h-5 [&_svg]:w-5 ${theme.icon}`}
-        >
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-300 ring-1 ring-sky-400/20 [&_svg]:h-5 [&_svg]:w-5">
           <item.icon />
         </div>
-        <span className="font-mono text-[11px] tabular-nums tracking-wider text-white/30">{number}</span>
+        <span className="font-mono text-[11px] tabular-nums tracking-wider text-sky-200/35">{number}</span>
       </div>
 
       <div className="relative mt-5 flex flex-1 flex-col">
-        <span className={`inline-block h-px w-8 ${theme.dot} opacity-80`} aria-hidden />
+        <span className="inline-block h-px w-6 bg-[#e31837]/70" aria-hidden />
         <h3 className="mt-3 text-[15px] font-semibold leading-snug tracking-tight text-white">{item.title}</h3>
-        <p className="mt-2.5 flex-1 text-[13px] leading-relaxed text-white/60 sm:text-sm">{item.description}</p>
+        <p className="mt-2.5 flex-1 text-[13px] leading-relaxed text-sky-100/65 sm:text-sm">{item.description}</p>
       </div>
 
       <Link
         href={item.href}
-        className={`relative mt-5 inline-flex items-center gap-1.5 text-[12px] font-medium tracking-wide transition ${theme.link}`}
+        className="relative mt-5 inline-flex items-center gap-1.5 text-[12px] font-medium text-sky-300 transition hover:text-white"
       >
         {item.linkLabel}
         <ArrowIcon />
