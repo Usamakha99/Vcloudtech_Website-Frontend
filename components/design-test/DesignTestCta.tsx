@@ -1,33 +1,31 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 
+import { dt } from "@/components/design-test/design-test-theme";
+
 type Props = {
   surface?: "gradient" | "glass";
 };
 
-/** CTA band — solid gradient or glass panel on full-page ingredient background. */
+/** CTA band — orange gradient or glass panel on design-test background. */
 export function DesignTestCta({ surface = "gradient" }: Props) {
   const glass = surface === "glass";
 
   return (
     <section
       id="cta"
-      className={`scroll-mt-24 py-14 sm:py-16 ${glass ? "bg-transparent" : "bg-gradient-to-br from-[#1B224B] via-[#0c4a6e] to-sky-600"}`}
+      className={`scroll-mt-24 py-14 sm:py-16 ${
+        glass ? "bg-transparent" : "bg-gradient-to-br from-black via-[#1a0f08] to-orange-700"
+      }`}
       aria-labelledby="design-test-cta-heading"
     >
-      <div
-        className={`mx-auto max-w-3xl px-6 text-center lg:px-8 ${
-          glass
-            ? "rounded-3xl border border-white/20 bg-white/10 px-8 py-12 shadow-xl shadow-black/15 backdrop-blur-md sm:py-14"
-            : ""
-        }`}
-      >
+      <div className={`mx-auto max-w-3xl px-6 text-center lg:px-8 ${glass ? dt.ctaPanel : ""}`}>
         <h2
           id="design-test-cta-heading"
           className="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
         >
           Ready to start your next project?
         </h2>
-        <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-white/80 sm:text-base">
+        <p className={`mx-auto mt-3 max-w-lg text-sm leading-relaxed sm:text-base ${dt.body}`}>
           Talk to our solutions team about cloud, security, and procurement for your
           organization.
         </p>

@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { dt } from "@/components/design-test/design-test-theme";
+
 type Feature = {
   title: string;
   description: string;
@@ -38,7 +40,7 @@ export function FeaturesGrid({ surface = "light" }: { surface?: "light" | "glass
       id="features"
       className={`scroll-mt-24 py-14 sm:py-16 ${
         glass
-          ? "border-t border-white/10 bg-transparent"
+          ? `border-t bg-transparent ${dt.sectionBorder}`
           : "border-t border-slate-200/80 bg-slate-50/80 dark:border-slate-800 dark:bg-slate-900/50"
       }`}
       aria-labelledby="features-grid-heading"
@@ -53,7 +55,7 @@ export function FeaturesGrid({ surface = "light" }: { surface?: "light" | "glass
           >
             Features
           </h2>
-          <p className={`mt-2 text-sm ${glass ? "text-white/70" : "text-slate-600 dark:text-slate-400"}`}>
+          <p className={`mt-2 text-sm ${glass ? dt.glassSubtext : "text-slate-600 dark:text-slate-400"}`}>
             Four highlights in a compact 2×2 grid.
           </p>
         </div>
@@ -64,16 +66,16 @@ export function FeaturesGrid({ surface = "light" }: { surface?: "light" | "glass
               key={item.title}
               className={`flex gap-4 rounded-2xl border p-5 transition sm:p-6 ${
                 glass
-                  ? "border-white/20 bg-white/10 shadow-lg shadow-black/10 backdrop-blur-md hover:border-white/35 hover:bg-white/15"
+                  ? dt.glassFeatureCard
                   : "border-slate-200/90 bg-white shadow-sm hover:border-sky-200/70 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-sky-800/50"
               }`}
             >
               <div
-                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl [&_svg]:h-5 [&_svg]:w-5 ${
+                className={
                   glass
-                    ? "bg-white/15 text-sky-200 ring-1 ring-white/20"
-                    : "bg-sky-50 text-sky-700 ring-1 ring-sky-100 dark:bg-sky-950/60 dark:text-sky-300 dark:ring-sky-900/80"
-                }`}
+                    ? `${dt.iconBoxLg} [&_svg]:h-5 [&_svg]:w-5`
+                    : "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-700 ring-1 ring-sky-100 dark:bg-sky-950/60 dark:text-sky-300 dark:ring-sky-900/80 [&_svg]:h-5 [&_svg]:w-5"
+                }
               >
                 <item.icon />
               </div>
@@ -81,7 +83,7 @@ export function FeaturesGrid({ surface = "light" }: { surface?: "light" | "glass
                 <h3 className={`text-base font-semibold ${glass ? "text-white" : "text-slate-900 dark:text-white"}`}>
                   {item.title}
                 </h3>
-                <p className={`mt-1 text-sm ${glass ? "text-white/70" : "text-slate-600 dark:text-slate-400"}`}>
+                <p className={`mt-1 text-sm ${glass ? dt.glassSubtext : "text-slate-600 dark:text-slate-400"}`}>
                   {item.description}
                 </p>
               </div>

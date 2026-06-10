@@ -1,3 +1,5 @@
+import { dt } from "@/components/design-test/design-test-theme";
+
 type StackCard = {
   title: string;
   description: string;
@@ -57,21 +59,19 @@ export function ScrollStackCardsSection() {
   return (
     <section
       id="scroll-stack"
-      className="relative z-10 scroll-mt-14 border-t border-white/10 py-12 sm:py-16"
+      className={`relative z-10 scroll-mt-14 py-12 sm:py-16 ${dt.sectionBorder}`}
       aria-labelledby="scroll-stack-heading"
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-2xl text-center">
-          <p className="inline-block rounded-full border border-[#e31837]/30 bg-[#e31837]/15 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#ff6b7f] sm:text-[11px]">
-            Scroll stack
-          </p>
+          <p className={dt.badge}>Scroll stack</p>
           <h2
             id="scroll-stack-heading"
             className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl"
           >
             Cards that stack as you scroll
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-sky-100/55">
+          <p className={`mx-auto mt-3 max-w-lg text-sm leading-relaxed ${dt.headingSub}`}>
             Scroll down — cards wrap into one pile. Scroll back up — they separate again.
           </p>
         </header>
@@ -118,28 +118,23 @@ function StackCard({
 
   return (
     <article
-      className="relative overflow-visible rounded-2xl border border-white/15 bg-[#1B224B]/85 px-6 py-6 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.5)] ring-1 ring-sky-400/10 backdrop-blur-xl transition-[transform,box-shadow,border-color] duration-300 sm:px-7 sm:py-7"
+      className={`relative overflow-visible px-6 py-6 transition-[transform,box-shadow,border-color] duration-300 sm:px-7 sm:py-7 ${dt.card}`}
       style={{
         minHeight: "11.5rem",
         transform: `translateX(${(index - (total - 1) / 2) * 4}px)`,
       }}
     >
-      <span
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent"
-        aria-hidden
-      />
+      <span className={dt.cardTopLine} aria-hidden />
 
       <div className="flex items-start justify-between gap-4">
-        <span className="rounded-full border border-sky-400/25 bg-sky-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sky-300">
-          {card.tag}
-        </span>
-        <span className="font-mono text-[11px] tabular-nums text-sky-200/35">{number}</span>
+        <span className={dt.tag}>{card.tag}</span>
+        <span className={dt.number}>{number}</span>
       </div>
 
       <h3 className="mt-4 text-lg font-semibold leading-snug tracking-tight text-white sm:text-xl">
         {card.title}
       </h3>
-      <p className="mt-2.5 max-w-prose text-sm leading-relaxed text-sky-100/65">{card.description}</p>
+      <p className={`mt-2.5 max-w-prose text-sm leading-relaxed ${dt.body}`}>{card.description}</p>
 
       {/* Stack depth cue — visible when cards overlap */}
       <span

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { dt } from "@/components/design-test/design-test-theme";
+
 type Strength = {
   title: string;
   description: string;
@@ -65,16 +67,14 @@ export function WhyVCloudSection({
     >
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-3xl text-center">
-          <p className="inline-block rounded-full border border-[#e31837]/30 bg-[#e31837]/15 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#ff6b7f] sm:text-[11px]">
-            Why vCloud Tech?
-          </p>
+          <p className={dt.badge}>Why vCloud Tech?</p>
           <h2
             id="why-vcloud-heading"
             className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl lg:text-[2rem] lg:leading-tight"
           >
             Our success starts with a combination of our strengths and culture
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-sky-100/55">
+          <p className={`mx-auto mt-3 max-w-xl text-sm leading-relaxed ${dt.headingSub}`}>
             Four pillars that define how we deliver for enterprise teams.
           </p>
         </header>
@@ -114,29 +114,26 @@ function StrengthCard({ item, index }: { item: Strength; index: number }) {
 
   return (
     <article
-      className="group/card relative flex h-full min-h-[300px] w-full flex-col overflow-hidden rounded-2xl border border-white/15 bg-[#1B224B]/55 px-5 py-6 shadow-[0_12px_32px_-12px_rgba(0,0,0,0.45)] ring-1 ring-sky-400/10 backdrop-blur-xl transition duration-300 group-hover:-translate-y-2 group-hover:border-sky-300/25 group-hover:bg-[#1B224B]/70 group-hover:ring-sky-300/20 group-hover:shadow-[0_20px_44px_-12px_rgba(15,23,42,0.55)] sm:min-h-[320px] sm:px-6 sm:py-7 lg:w-[250px] xl:w-[270px]"
+      className={`group/card relative flex h-full min-h-[300px] w-full flex-col overflow-hidden px-5 py-6 group-hover:-translate-y-2 sm:min-h-[320px] sm:px-6 sm:py-7 lg:w-[250px] xl:w-[270px] ${dt.card} ${dt.cardHover}`}
     >
-      <span
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent opacity-70"
-        aria-hidden
-      />
+      <span className={dt.cardTopLine} aria-hidden />
 
       <div className="relative flex items-start justify-between gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-300 ring-1 ring-sky-400/20 [&_svg]:h-5 [&_svg]:w-5">
+        <div className={`${dt.iconBox} [&_svg]:h-5 [&_svg]:w-5`}>
           <item.icon />
         </div>
-        <span className="font-mono text-[11px] tabular-nums tracking-wider text-sky-200/35">{number}</span>
+        <span className={dt.number}>{number}</span>
       </div>
 
       <div className="relative mt-5 flex flex-1 flex-col">
-        <span className="inline-block h-px w-6 bg-[#e31837]/70" aria-hidden />
+        <span className={dt.accentDash} aria-hidden />
         <h3 className="mt-3 text-[15px] font-semibold leading-snug tracking-tight text-white">{item.title}</h3>
-        <p className="mt-2.5 flex-1 text-[13px] leading-relaxed text-sky-100/65 sm:text-sm">{item.description}</p>
+        <p className={`mt-2.5 flex-1 text-[13px] leading-relaxed sm:text-sm ${dt.body}`}>{item.description}</p>
       </div>
 
       <Link
         href={item.href}
-        className="relative mt-5 inline-flex items-center gap-1.5 text-[12px] font-medium text-sky-300 transition hover:text-white"
+        className={`relative mt-5 inline-flex items-center gap-1.5 ${dt.linkSm}`}
       >
         {item.linkLabel}
         <ArrowIcon />

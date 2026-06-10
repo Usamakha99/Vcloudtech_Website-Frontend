@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { dt } from "@/components/design-test/design-test-theme";
+
 export type ServiceItem = {
   title: string;
   description: string;
@@ -73,7 +75,7 @@ export function ServicesGrid({
 
   return (
     <section
-      className={`scroll-mt-24 py-14 sm:py-16 lg:py-20 ${glass ? "bg-transparent" : "bg-white"} ${className}`}
+      className={`scroll-mt-24 py-14 sm:py-16 lg:py-20 ${glass ? `bg-transparent ${dt.sectionBorder}` : "bg-white"} ${className}`}
       aria-labelledby="services-grid-heading"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -89,7 +91,7 @@ export function ServicesGrid({
           {subheading ? (
             <p
               className={`mt-3 text-sm leading-relaxed sm:text-base ${
-                glass ? "text-white/75" : "text-slate-600 dark:text-slate-400"
+                glass ? dt.glassSubtext : "text-slate-600 dark:text-slate-400"
               }`}
             >
               {subheading}
@@ -106,36 +108,36 @@ export function ServicesGrid({
                   href={item.href}
                   className={`relative flex w-full flex-col rounded-2xl border p-6 transition-[transform,box-shadow,border-color,background-color] duration-200 ease-out group-hover/card:-translate-y-1.5 group-focus-within/card:-translate-y-1.5 motion-reduce:transition-none motion-reduce:group-hover/card:translate-y-0 sm:p-7 ${
                     glass
-                      ? "border-white/15 bg-[#1B224B]/75 shadow-lg shadow-black/10 backdrop-blur-md group-hover/card:border-white/10 group-hover/card:bg-[#1B224B]/85 group-hover/card:shadow-xl group-hover/card:shadow-sky-500/10"
+                      ? `border ${dt.glassCard}`
                       : "border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.03] group-hover/card:border-slate-200/60 group-hover/card:shadow-[0_14px_28px_-10px_rgba(56,189,248,0.18)] dark:border-slate-700 dark:bg-slate-900 dark:ring-slate-800"
                   }`}
                 >
                 <div
                   className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl [&_svg]:h-6 [&_svg]:w-6 ${
                     glass
-                      ? "bg-white/15 text-sky-200 ring-1 ring-white/20"
+                      ? `${dt.iconBoxSm} [&_svg]:h-6 [&_svg]:w-6`
                       : "bg-gradient-to-br from-sky-50 to-sky-100/80 text-sky-700 ring-1 ring-sky-200/60"
                   }`}
                 >
                   <item.icon />
                 </div>
                 <h3
-                  className={`mt-5 text-lg font-semibold tracking-tight group-hover/card:text-sky-300 group-focus-within/card:text-sky-300 ${
-                    glass ? "text-white" : "text-[#1B224B] dark:text-white"
+                  className={`mt-5 text-lg font-semibold tracking-tight ${
+                    glass ? `text-white ${dt.glassLink}` : "text-[#1B224B] group-hover/card:text-sky-300 group-focus-within/card:text-sky-300 dark:text-white"
                   }`}
                 >
                   {item.title}
                 </h3>
                 <p
                   className={`mt-2 flex-1 text-sm leading-relaxed ${
-                    glass ? "text-white/70" : "text-slate-600 dark:text-slate-400"
+                    glass ? dt.glassSubtext : "text-slate-600 dark:text-slate-400"
                   }`}
                 >
                   {item.description}
                 </p>
                 <span
                   className={`mt-5 inline-flex items-center gap-1 text-sm font-semibold ${
-                    glass ? "text-sky-200" : "text-sky-700"
+                    glass ? dt.glassLink : "text-sky-700"
                   }`}
                 >
                   Learn more
@@ -164,10 +166,10 @@ function ServiceCardSnakeBorder({ id }: { id: string }) {
     >
       <defs>
         <linearGradient id={`${id}-stroke`} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.35" />
-          <stop offset="35%" stopColor="#38bdf8" />
-          <stop offset="70%" stopColor="#7dd3fc" />
-          <stop offset="100%" stopColor="#e31837" />
+          <stop offset="0%" stopColor="#fb923c" stopOpacity="0.35" />
+          <stop offset="35%" stopColor="#f97316" />
+          <stop offset="70%" stopColor="#fdba74" />
+          <stop offset="100%" stopColor="#ea580c" />
         </linearGradient>
         <filter id={`${id}-glow`} x="-30%" y="-30%" width="160%" height="160%">
           <feGaussianBlur stdDeviation="1.4" result="blur" />

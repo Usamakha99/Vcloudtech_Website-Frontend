@@ -6,7 +6,7 @@ import { isNavActive } from "@/lib/navigation/active-path";
 import type { DesignTestGlobalNavLink } from "@/lib/navigation/design-test-global-nav";
 import { designTestGlobalNavCta } from "@/lib/navigation/design-test-global-nav";
 
-import { globalNavCta, globalNavLinkClasses } from "./nav-styles";
+import { globalNavCta, globalNavLinkClasses, globalNavMobilePanel } from "./nav-styles";
 
 type Props = {
   open: boolean;
@@ -22,7 +22,7 @@ export function DesignTestGlobalNavMobile({ open, links, pathname, onClose }: Pr
   return (
     <div
       id="design-test-global-nav-panel"
-      className="border-t border-white/10 bg-[#1B224B]/95 px-4 py-4 backdrop-blur-lg lg:hidden"
+      className={globalNavMobilePanel}
     >
       <nav aria-label="Global navigation">
         <ul className="flex flex-col gap-1">
