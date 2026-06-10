@@ -66,4 +66,14 @@ export const dt = {
   glassSubtext: "text-orange-100/70",
 
   glassLink: "text-orange-300 group-hover/card:text-orange-200",
+
+  /** Minimal sticky stack cards */
+  stackCard:
+    "rounded-xl border border-orange-500/15 bg-black/45 px-5 py-5 shadow-[0_8px_28px_-14px_rgba(0,0,0,0.45)] backdrop-blur-md sm:px-6 sm:py-5",
+
+  stackMeta: "text-[11px] font-medium uppercase tracking-[0.14em] text-orange-400/70",
+
+  stackTitle: "text-base font-semibold leading-snug tracking-tight text-white sm:text-[17px]",
+
+  stackBody: "mt-2 text-[13px] leading-relaxed text-orange-100/55 sm:text-sm",
 } as const;
