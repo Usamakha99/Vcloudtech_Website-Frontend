@@ -156,7 +156,7 @@ function StackCard({
         <StackCardVisual icon={card.icon} tag={card.tag} />
 
         <div className="relative flex flex-col justify-center px-4 py-5 sm:px-7 sm:py-8 lg:px-8">
-          <p className="font-mono text-[11px] font-medium tabular-nums tracking-widest text-orange-400 sm:text-xs">
+          <p className="font-mono text-[11px] font-medium tabular-nums tracking-widest text-white sm:text-xs">
             {step} / {total}
           </p>
 
@@ -167,7 +167,7 @@ function StackCard({
                 slotHeight="1.3em"
                 staggerMs={wordIndex * 28}
                 top={<span className="text-white">{word}</span>}
-                bottom={<span className="text-orange-300">{word}</span>}
+                bottom={<span className="text-white/80">{word}</span>}
               />
             ))}
           </h3>
@@ -178,7 +178,7 @@ function StackCard({
             {card.points.map((point) => (
               <li key={point} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-orange-400/90" aria-hidden />
-                <span className="font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-orange-100/45 sm:text-[11px]">
+                <span className="font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-white/45 sm:text-[11px]">
                   {point}
                 </span>
               </li>
@@ -207,7 +207,7 @@ function StackCardVisual({ icon: Icon, tag }: { icon: SectionIcon; tag: string }
       />
 
       <svg
-        className="absolute inset-0 h-full w-full text-orange-200/20"
+        className="absolute inset-0 h-full w-full text-white/20"
         viewBox="0 0 400 320"
         fill="none"
         aria-hidden
@@ -228,7 +228,7 @@ function StackCardVisual({ icon: Icon, tag }: { icon: SectionIcon; tag: string }
             aria-hidden
           />
           <div
-            className="relative flex h-full w-full items-center justify-center rounded-2xl border border-orange-400/25 bg-orange-500/10 text-orange-200 shadow-[0_0_40px_rgba(249,115,22,0.2)] ring-1 ring-orange-400/20 [&_svg]:h-9 [&_svg]:w-9 sm:[&_svg]:h-10 sm:[&_svg]:w-10"
+            className="relative flex h-full w-full items-center justify-center rounded-2xl border border-orange-400/25 bg-orange-500/10 text-white shadow-[0_0_40px_rgba(249,115,22,0.2)] ring-1 ring-orange-400/20 [&_svg]:h-9 [&_svg]:w-9 sm:[&_svg]:h-10 sm:[&_svg]:w-10"
             style={{
               clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
             }}
@@ -238,7 +238,7 @@ function StackCardVisual({ icon: Icon, tag }: { icon: SectionIcon; tag: string }
             </span>
           </div>
         </div>
-        <span className="mt-4 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-orange-300/50">
+        <span className="mt-4 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
           {tag}
         </span>
       </div>

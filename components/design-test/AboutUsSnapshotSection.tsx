@@ -79,7 +79,7 @@ export function AboutUsSnapshotSection() {
             {/* Org blueprint: identity + footprint */}
             <div className="grid gap-3 sm:gap-4 lg:grid-cols-5 lg:items-stretch">
               <article className={`lg:col-span-3 ${dt.aboutOrgCell}`}>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-400/80">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80">
                   Organizational identity
                 </p>
                 <h3 className="mt-3 text-lg font-semibold leading-snug text-white sm:text-xl">Who we are</h3>
@@ -89,10 +89,10 @@ export function AboutUsSnapshotSection() {
                 </p>
 
                 <div className="mt-6 border-t border-orange-500/10 pt-6">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-400/80">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80">
                     Mission statement
                   </p>
-                  <p className="mt-3 text-base font-medium leading-relaxed text-orange-100/85 sm:text-lg">
+                  <p className="mt-3 text-base font-medium leading-relaxed text-white/85 sm:text-lg">
                     To simplify complex IT buying and deliver trusted solutions that help teams move faster with
                     confidence.
                   </p>
@@ -117,7 +117,7 @@ export function AboutUsSnapshotSection() {
 
             {/* Organizational values */}
             <div className="mt-3 sm:mt-4">
-              <p className="mb-3 px-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-400/80 sm:mb-4">
+              <p className="mb-3 px-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:mb-4">
                 Operating principles
               </p>
               <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
@@ -132,7 +132,7 @@ export function AboutUsSnapshotSection() {
             {/* Reach + credentials — org-level strip */}
             <div className={`mt-3 grid gap-3 sm:mt-4 sm:grid-cols-2 sm:gap-4`}>
               <div className={dt.aboutOrgCell}>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-400/80">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80">
                   Sectors we serve
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-2">
@@ -145,7 +145,7 @@ export function AboutUsSnapshotSection() {
               </div>
 
               <div className={dt.aboutOrgCell}>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-400/80">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80">
                   Organizational credentials
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-2">
@@ -185,7 +185,7 @@ function OrgValueCard({
         <value.icon />
       </div>
       <h4 className="mt-4 text-sm font-semibold leading-snug text-white">{value.title}</h4>
-      <p className="mt-2 flex-1 text-[13px] leading-relaxed text-orange-100/55">{value.description}</p>
+      <p className="mt-2 flex-1 text-[13px] leading-relaxed text-white/55">{value.description}</p>
     </article>
   );
 }

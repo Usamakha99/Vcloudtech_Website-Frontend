@@ -1,177 +1,33 @@
 /**
- * Page ingredient background — black + warm orange aesthetic (vCloudTech lab).
- * Layers: base → mesh → accent orbs → grid → vignette
+ * Page background — solid black.
  */
-
-:root {
-  --ingredient-base: #030303;
-  --ingredient-black: #0a0a0a;
-  --ingredient-charcoal: #141414;
-  --ingredient-orange: rgba(249, 115, 22, 0.16);
-  --ingredient-orange-soft: rgba(251, 146, 60, 0.09);
-  --ingredient-amber: rgba(234, 88, 12, 0.12);
-  --ingredient-brand-red: rgba(227, 24, 55, 0.08);
-}
-
-@keyframes ingredient-mesh-shift {
-  0%,
-  100% {
-    background-position: 0% 40%;
-    opacity: 0.88;
-  }
-  50% {
-    background-position: 100% 60%;
-    opacity: 1;
-  }
-}
-
-@keyframes ingredient-orb-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  33% {
-    transform: translate3d(2%, -2.5%, 0) scale(1.04);
-  }
-  66% {
-    transform: translate3d(-1.5%, 1.5%, 0) scale(0.98);
-  }
-}
-
-@keyframes ingredient-orb-float-alt {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-2%, 2%, 0) scale(1.05);
-  }
-}
 
 .page-ingredient-root {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: -10;
-  overflow: hidden;
-  background-color: var(--ingredient-base);
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #000000;
 }
 
-.page-ingredient-base {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    160deg,
-    #000000 0%,
-    var(--ingredient-black) 32%,
-    #1a0f08 58%,
-    var(--ingredient-charcoal) 82%,
-    #050505 100%
-  );
-}
-
-.page-ingredient-mesh {
-  position: absolute;
-  inset: -20%;
-  background-image: linear-gradient(
-    125deg,
-    transparent 0%,
-    var(--ingredient-orange-soft) 20%,
-    transparent 40%,
-    var(--ingredient-amber) 55%,
-    transparent 68%,
-    var(--ingredient-brand-red) 78%,
-    transparent 92%
-  );
-  background-size: 220% 220%;
-  animation: ingredient-mesh-shift 30s ease-in-out infinite;
-  will-change: background-position, opacity;
-}
-
-.page-ingredient-orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(80px);
-  will-change: transform;
-  animation: ingredient-orb-float 20s ease-in-out infinite;
-}
-
-.page-ingredient-orb--sky {
-  top: 4%;
-  left: -10%;
-  width: min(70vw, 28rem);
-  height: min(70vw, 28rem);
-  background: radial-gradient(circle, var(--ingredient-orange) 0%, transparent 68%);
-  animation-duration: 24s;
-}
-
-.page-ingredient-orb--navy {
-  top: 36%;
-  right: -12%;
-  width: min(64vw, 26rem);
-  height: min(64vw, 26rem);
-  background: radial-gradient(circle, rgba(234, 88, 12, 0.14) 0%, transparent 70%);
-  animation-name: ingredient-orb-float-alt;
-  animation-duration: 28s;
-  animation-delay: -8s;
-}
-
-.page-ingredient-orb--accent {
-  bottom: 2%;
-  left: 14%;
-  width: min(58vw, 22rem);
-  height: min(58vw, 22rem);
-  background: radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, transparent 72%);
-  animation-duration: 26s;
-  animation-delay: -14s;
-}
-
-.page-ingredient-orb--depth {
-  bottom: 20%;
-  right: 10%;
-  width: 16rem;
-  height: 16rem;
-  background: radial-gradient(circle, rgba(251, 146, 60, 0.1) 0%, transparent 70%);
-  filter: blur(72px);
-  animation-duration: 20s;
-  animation-delay: -4s;
-}
-
-.page-ingredient-vignette {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 85% 50% at 50% -6%, rgba(249, 115, 22, 0.08), transparent 50%),
-    radial-gradient(ellipse 120% 80% at 50% 110%, rgba(0, 0, 0, 0.65), transparent 55%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.55) 100%);
-}
-
+.page-ingredient-base,
+.page-ingredient-mesh,
+.page-ingredient-orb,
+.page-ingredient-orb--sky,
+.page-ingredient-orb--navy,
+.page-ingredient-orb--accent,
+.page-ingredient-orb--depth,
+.page-ingredient-vignette,
 .page-ingredient-grid {
-  position: absolute;
-  inset: 0;
-  opacity: 0.028;
-  background-image:
-    linear-gradient(rgba(251, 146, 60, 0.55) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(251, 146, 60, 0.55) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+  display: none;
 }
 
-/* Standalone hero block (when not using full-page background) */
 .hero-test-gradient {
-  background-color: var(--ingredient-base);
-  background-image: linear-gradient(
-    160deg,
-    #000000 0%,
-    var(--ingredient-black) 38%,
-    #1a0f08 72%,
-    #050505 100%
-  );
+  background-color: #000000;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .page-ingredient-mesh,
-  .page-ingredient-orb {
-    animation: none;
-  }
+.hero-gradient-text {
+  color: #ffffff;
 }

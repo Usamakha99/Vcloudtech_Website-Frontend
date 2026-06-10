@@ -135,7 +135,7 @@ function StrengthCard({ item, index }: { item: Strength; index: number }) {
         <div className={dt.iconBoxCard}>
           <item.icon />
         </div>
-        <span className="font-mono text-xs tabular-nums tracking-widest text-orange-200/25">{number}</span>
+        <span className="font-mono text-xs tabular-nums tracking-widest text-white/25">{number}</span>
       </div>
 
       <div className="relative mt-8 flex flex-1 flex-col">
@@ -146,19 +146,19 @@ function StrengthCard({ item, index }: { item: Strength; index: number }) {
               slotHeight="1.35em"
               staggerMs={wordIndex * 28}
               top={<span className="text-white">{word}</span>}
-              bottom={<span className="text-orange-300">{word}</span>}
+              bottom={<span className="text-white/80">{word}</span>}
             />
           ))}
         </h3>
 
-        <p className="mt-4 flex-1 text-sm leading-[1.7] text-orange-100/55 sm:text-[15px]">
+        <p className="mt-4 flex-1 text-sm leading-[1.7] text-white/55 sm:text-[15px]">
           {item.description}
         </p>
       </div>
 
       <Link
         href={item.href}
-        className="relative mt-8 inline-flex items-center gap-2 text-[13px] font-medium text-orange-300/90 transition duration-300 hover:text-orange-100"
+        className="relative mt-8 inline-flex items-center gap-2 text-[13px] font-medium text-white/90 transition duration-300 hover:text-white"
       >
         {item.linkLabel}
         <ArrowIcon />

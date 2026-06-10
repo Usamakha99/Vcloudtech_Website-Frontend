@@ -70,7 +70,7 @@ export function DesignTestSocialProofBar() {
             </ul>
 
             <div className="mt-8 sm:mt-10">
-              <p className="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-300/75 sm:text-[11px]">
+              <p className="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75 sm:text-[11px]">
                 Trusted technology partners
               </p>
 
@@ -95,7 +95,7 @@ export function DesignTestSocialProofBar() {
             </div>
 
             <div className="mt-8 border-t border-orange-500/10 pt-6 sm:mt-10 sm:pt-8">
-              <p className="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-300/75 sm:text-[11px]">
+              <p className="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75 sm:text-[11px]">
                 Certifications & designations
               </p>
               <ul className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:mt-5 sm:gap-3">
@@ -144,8 +144,8 @@ function LogoPill({ logo }: { logo: (typeof partnerLogos)[number] }) {
 function AcronymCertCard({ acronym }: { acronym: string }) {
   return (
     <div className={dt.socialProofCert}>
-      <span className="text-xl font-bold leading-none text-orange-300 sm:text-2xl">{acronym}</span>
-      <span className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-orange-100/45 sm:text-[10px]">
+      <span className="text-xl font-bold leading-none text-white sm:text-2xl">{acronym}</span>
+      <span className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-white/45 sm:text-[10px]">
         Certified
       </span>
     </div>
@@ -155,20 +155,20 @@ function AcronymCertCard({ acronym }: { acronym: string }) {
 function IsoCertCard() {
   return (
     <div className="flex min-h-[4.5rem] items-center gap-3 rounded-xl border border-orange-500/18 bg-orange-500/6 px-3.5 py-3 ring-1 ring-orange-400/10 sm:gap-3.5 sm:px-4">
-      <div className="relative h-10 w-10 shrink-0 text-orange-300/90 sm:h-11 sm:w-11" aria-hidden>
+      <div className="relative h-10 w-10 shrink-0 text-white/90 sm:h-11 sm:w-11" aria-hidden>
         <svg className="h-full w-full" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.25">
           <circle cx="22" cy="22" r="18" strokeOpacity="0.35" />
           <circle cx="22" cy="22" r="14" />
           <path d="M22 10v6M22 28v6M10 22h6M28 22h6" strokeLinecap="round" strokeOpacity="0.4" />
         </svg>
-        <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold tracking-tight text-orange-200">
+        <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold tracking-tight text-white">
           ISO
         </span>
       </div>
-      <p className="min-w-0 text-left text-[10px] font-bold uppercase leading-snug tracking-wide text-orange-100 sm:text-[11px]">
+      <p className="min-w-0 text-left text-[10px] font-bold uppercase leading-snug tracking-wide text-white sm:text-[11px]">
         ISO 9001:2015
         <br />
-        <span className="font-semibold text-orange-100/50">Certified</span>
+        <span className="font-semibold text-white/50">Certified</span>
       </p>
     </div>
   );

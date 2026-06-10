@@ -32,7 +32,7 @@ export function MinimalTestHero({
       ) : null}
 
       <div className="relative mx-auto w-full max-w-3xl px-4 py-12 text-center sm:px-8 sm:py-20">
-        <p className="hero-test-fade-in text-[11px] font-semibold uppercase tracking-[0.22em] text-orange-300/90">
+        <p className="hero-test-fade-in text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90">
           Test preview
         </p>
 
@@ -43,7 +43,7 @@ export function MinimalTestHero({
           Minimal hero with motion
         </h1>
 
-        <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-5 max-w-lg text-base leading-relaxed text-orange-50/75 sm:text-lg">
+        <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-5 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
           Black and warm orange canvas — minimal motion across the full design-test page.
         </p>
 
@@ -58,7 +58,7 @@ export function MinimalTestHero({
 
         <p className="hero-test-fade-in hero-test-fade-in-delay-3 mt-12 text-xs text-white/50">
           Route:{" "}
-          <Link href="/design-test" className="font-mono text-orange-200/90 hover:text-white">
+          <Link href="/design-test" className="font-mono text-white/90 hover:text-white">
             /design-test
           </Link>
         </p>
