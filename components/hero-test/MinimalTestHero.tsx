@@ -17,8 +17,8 @@ export function MinimalTestHero({
 }: Props) {
   return (
     <section
-      className={`relative flex min-h-[min(100vh,720px)] items-center overflow-hidden ${
-        fullPageGradient ? "pb-20 sm:pb-28" : ""
+      className={`relative flex min-h-[min(100svh,640px)] items-center overflow-hidden sm:min-h-[min(100vh,720px)] ${
+        fullPageGradient ? "pb-16 sm:pb-28" : ""
       } ${
         fullPageGradient ? "bg-transparent" : "hero-test-gradient"
       } ${offsetForFixedHeader ? "pt-[4.25rem]" : ""}`}
@@ -31,7 +31,7 @@ export function MinimalTestHero({
         />
       ) : null}
 
-      <div className="relative mx-auto w-full max-w-3xl px-6 py-16 text-center sm:px-8 sm:py-20">
+      <div className="relative mx-auto w-full max-w-3xl px-4 py-12 text-center sm:px-8 sm:py-20">
         <p className="hero-test-fade-in text-[11px] font-semibold uppercase tracking-[0.22em] text-orange-300/90">
           Test preview
         </p>

@@ -91,7 +91,7 @@ export function ServicesGrid({
       className={`scroll-mt-24 py-14 sm:py-16 lg:py-20 ${glass ? `bg-transparent ${dt.sectionBorder}` : "bg-white"} ${className}`}
       aria-labelledby="services-grid-heading"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-2xl text-center">
           {pillLabel ? <p className={dt.badge}>{pillLabel}</p> : null}
           <h2
@@ -104,7 +104,7 @@ export function ServicesGrid({
           </h2>
           {subheading ? (
             <p
-              className={`mx-auto mt-3 max-w-lg text-sm leading-relaxed ${
+              className={`mx-auto mt-3 max-w-lg text-balance px-1 text-xs leading-relaxed sm:px-0 sm:text-sm ${
                 glass ? dt.headingSub : "text-slate-600 sm:text-base dark:text-slate-400"
               }`}
             >

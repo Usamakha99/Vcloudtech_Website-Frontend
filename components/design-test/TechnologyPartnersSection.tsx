@@ -45,7 +45,7 @@ export function TechnologyPartnersSection() {
           <p className={dt.badge}>Technology Partners</p>
           <h2
             id="tech-partners-heading"
-            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl lg:text-[2rem] lg:leading-tight"
+            className="mt-5 text-balance text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl lg:text-[2rem] lg:leading-tight"
           >
             IT Solutions from World-Class Partners from around the world
           </h2>

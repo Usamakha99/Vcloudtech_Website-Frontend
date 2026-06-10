@@ -99,7 +99,7 @@ export function AboutUsSnapshotSection() {
                 </div>
               </article>
 
-              <ul className="grid grid-cols-3 gap-3 lg:col-span-2 lg:grid-cols-1 lg:gap-4">
+              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:col-span-2 lg:grid-cols-1 lg:gap-4">
                 {orgMetrics.map((metric) => (
                   <li key={metric.label} className={dt.aboutOrgMetric}>
                     <p className={`text-xl font-bold tabular-nums tracking-tight sm:text-2xl lg:text-3xl ${dt.statValue}`}>
@@ -120,7 +120,7 @@ export function AboutUsSnapshotSection() {
               <p className="mb-3 px-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-400/80 sm:mb-4">
                 Operating principles
               </p>
-              <ul className="grid gap-3 sm:grid-cols-3 sm:gap-4">
+              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
                 {orgValues.map((value) => (
                   <li key={value.title}>
                     <OrgValueCard value={value} />

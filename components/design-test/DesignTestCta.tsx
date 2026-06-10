@@ -18,10 +18,10 @@ export function DesignTestCta({ surface = "gradient" }: Props) {
       }`}
       aria-labelledby="design-test-cta-heading"
     >
-      <div className={`mx-auto max-w-3xl px-6 text-center lg:px-8 ${glass ? dt.ctaPanel : ""}`}>
+      <div className={`mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8 ${glass ? dt.ctaPanel : ""}`}>
         <h2
           id="design-test-cta-heading"
-          className="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+          className="text-balance text-xl font-semibold tracking-tight text-white sm:text-2xl lg:text-3xl"
         >
           Ready to start your next project?
         </h2>

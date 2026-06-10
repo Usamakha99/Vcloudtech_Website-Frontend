@@ -28,8 +28,8 @@ export function ProcurementEngineSection() {
           >
             Core differentiator
           </h2>
-          <p className={`mt-3 text-sm leading-relaxed sm:text-[15px] ${dt.headingSub}`}>
-            One platform to search, compare, and quote enterprise IT — built for teams that need speed,
+          <p className={`mt-3 text-balance text-sm leading-relaxed sm:text-[15px] ${dt.headingSub}`}>
+            One platform to search, filter, and quote enterprise IT — built for teams that need speed,
             visibility, and accountable sourcing.
           </p>
         </header>
@@ -41,8 +41,8 @@ export function ProcurementEngineSection() {
           />
           <span className={dt.cardTopLine} aria-hidden />
 
-          <div className="relative grid gap-8 px-5 py-7 sm:px-8 sm:py-9 lg:grid-cols-5 lg:gap-10 lg:px-10">
-            <div className="lg:col-span-2">
+          <div className="relative grid gap-6 px-4 py-6 sm:gap-8 sm:px-8 sm:py-9 lg:grid-cols-5 lg:items-start lg:gap-10 lg:px-10">
+            <div className="min-w-0 lg:col-span-2">
               <div className={dt.iconBoxCard}>
                 <CartIcon />
               </div>
@@ -57,29 +57,32 @@ export function ProcurementEngineSection() {
               </p>
             </div>
 
-            <div className="lg:col-span-3">
+            <div className="min-w-0 lg:col-span-3">
               <ProcurementSearchMock />
 
               <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.16em] text-orange-400/75">
                 Platform capabilities
               </p>
-              <ul className="mt-3 grid gap-2.5 sm:grid-cols-2 sm:gap-3">
+              <ul className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
                 {capabilities.map((item) => (
-                  <li key={item.label}>
+                  <li
+                    key={item.label}
+                    className={item.label === "Real-time availability" ? "sm:col-span-2" : undefined}
+                  >
                     <CapabilityChip item={item} />
                   </li>
                 ))}
               </ul>
 
-              <p className="mt-7 text-center lg:text-left">
+              <div className="mt-7 flex justify-center border-t border-orange-500/10 pt-6 sm:pt-7 lg:justify-start">
                 <Link
                   href="/procurement"
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-orange-400/35 bg-orange-500/10 px-6 text-sm font-semibold text-orange-200 transition duration-300 hover:border-orange-400/50 hover:bg-orange-500/18 hover:text-orange-50"
+                  className="inline-flex h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full border border-orange-400/40 bg-orange-500/15 px-6 text-sm font-semibold text-orange-100 shadow-[0_8px_24px_-10px_rgba(249,115,22,0.35)] transition duration-300 hover:border-orange-400/55 hover:bg-orange-500/25 hover:text-white sm:w-auto sm:max-w-none sm:px-8"
                 >
                   Start procurement
                   <span aria-hidden>→</span>
                 </Link>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -96,7 +99,7 @@ function ProcurementSearchMock() {
         aria-hidden
       >
         <SearchIcon />
-        <span className="text-sm text-orange-100/40">Search products, brands, or categories…</span>
+        <span className="truncate text-sm text-orange-100/40">Search products, brands, or categories…</span>
       </div>
       <p className="mt-3 text-[11px] leading-relaxed text-orange-100/45">
         Demo preview — live search connects to your procurement catalog on the platform.

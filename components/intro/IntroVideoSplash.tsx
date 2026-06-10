@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const DEFAULT_STORAGE_KEY = "vcloudtech-intro-video-seen";
+const AUTO_SKIP_MS = 12_000;
 
 type IntroVideoSplashProps = {
   /** Path under /public, e.g. `/intro/intro.webm` */
@@ -11,22 +12,47 @@ type IntroVideoSplashProps = {
   /** When true, intro only plays once per browser tab session. */
   playOncePerSession?: boolean;
   storageKey?: string;
+  /** Skip intro on phones / coarse pointers (avoids fullscreen blocking mobile UI). */
+  skipOnMobile?: boolean;
 };
 
-type Phase = "checking" | "playing" | "exiting" | "hidden";
+type Phase = "idle" | "playing" | "exiting" | "hidden";
+
+function shouldSkipIntro(storageKey: string, playOncePerSession: boolean, skipOnMobile: boolean) {
+  if (typeof window === "undefined") return true;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
+
+  if (skipOnMobile) {
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    const narrow = window.matchMedia("(max-width: 767px)").matches;
+    if (coarse || narrow) return true;
+  }
+
+  if (playOncePerSession) {
+    try {
+      if (sessionStorage.getItem(storageKey) === "1") return true;
+    } catch {
+      /* continue */
+    }
+  }
+
+  return false;
+}
 
 /**
- * Full-screen intro video on first homepage load.
- * Drop your file at `public/intro/intro.webm` (or pass a custom `src`).
+ * Full-screen intro video on first load (desktop-friendly).
+ * Skips on mobile by default — fullscreen overlay blocks touch UI when autoplay fails.
  */
 export function IntroVideoSplash({
   src = "/intro/intro.webm",
   poster,
   playOncePerSession = true,
   storageKey = DEFAULT_STORAGE_KEY,
+  skipOnMobile = true,
 }: IntroVideoSplashProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [phase, setPhase] = useState<Phase>("checking");
+  const [phase, setPhase] = useState<Phase>("idle");
 
   const finish = useCallback(() => {
     if (playOncePerSession) {
@@ -41,37 +67,27 @@ export function IntroVideoSplash({
   }, [playOncePerSession, storageKey]);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reducedMotion) {
+    if (shouldSkipIntro(storageKey, playOncePerSession, skipOnMobile)) {
       setPhase("hidden");
       return;
     }
 
-    if (playOncePerSession) {
-      try {
-        if (sessionStorage.getItem(storageKey) === "1") {
-          setPhase("hidden");
-          return;
-        }
-      } catch {
-        /* continue */
-      }
-    }
-
     setPhase("playing");
-  }, [playOncePerSession, storageKey]);
+  }, [playOncePerSession, storageKey, skipOnMobile]);
 
   useEffect(() => {
-    if (phase !== "playing" && phase !== "exiting") return;
+    if (phase !== "playing") return;
 
     const prev = document.body.style.overflow;
-    document.body.style.overflow = phase === "playing" ? "hidden" : prev;
+    document.body.style.overflow = "hidden";
+
+    const timeoutId = window.setTimeout(finish, AUTO_SKIP_MS);
 
     return () => {
       document.body.style.overflow = prev;
+      window.clearTimeout(timeoutId);
     };
-  }, [phase]);
+  }, [phase, finish]);
 
   useEffect(() => {
     if (phase !== "playing") return;
@@ -80,20 +96,11 @@ export function IntroVideoSplash({
     if (!video) return;
 
     void video.play().catch(() => {
-      /* autoplay blocked — user can press Skip or tap play if controls shown */
+      finish();
     });
-  }, [phase]);
+  }, [phase, finish]);
 
-  if (phase === "hidden") return null;
-
-  if (phase === "checking") {
-    return (
-      <div
-        className="fixed inset-0 z-[9999] bg-[#1B224B]"
-        aria-hidden
-      />
-    );
-  }
+  if (phase === "hidden" || phase === "idle") return null;
 
   const fading = phase === "exiting";
 

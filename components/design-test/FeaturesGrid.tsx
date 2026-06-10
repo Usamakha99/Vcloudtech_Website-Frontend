@@ -50,7 +50,7 @@ export function FeaturesGrid({ surface = "light" }: { surface?: "light" | "glass
       }`}
       aria-labelledby="features-grid-heading"
     >
-      <div className="mx-auto max-w-5xl px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
           <h2
             id="features-grid-heading"

@@ -97,11 +97,11 @@ export function WhyVCloudSection({
             ))}
           </ul>
 
-          <ul className="flex gap-0 overflow-x-auto overflow-y-visible pb-6 pl-2 [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
+          <ul className="flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-visible pb-6 pl-4 pr-4 [-ms-overflow-style:none] [scrollbar-width:none] sm:pl-6 sm:pr-6 lg:hidden [&::-webkit-scrollbar]:hidden">
             {strengths.map((item, index) => (
               <li
                 key={item.title}
-                className={`group relative w-[min(88vw,340px)] shrink-0 transition-transform duration-300 hover:z-50 focus-within:z-50 sm:w-[360px] ${stackZ[index] ?? stackZ[0]} ${index === 0 ? "ml-0" : "-ml-10"}`}
+                className={`group relative w-[min(85vw,320px)] shrink-0 snap-center transition-transform duration-300 hover:z-50 focus-within:z-50 sm:w-[340px] ${stackZ[index] ?? stackZ[0]} ${index === 0 ? "ml-0" : "-ml-8 sm:-ml-10"}`}
               >
                 <StrengthCard item={item} index={index} />
               </li>

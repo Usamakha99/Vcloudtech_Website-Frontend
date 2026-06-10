@@ -12,8 +12,7 @@ import { MinimalTestHero } from "@/components/hero-test/MinimalTestHero";
 import { PageIngredientBackground } from "@/components/hero-test/PageIngredientBackground";
 import { ProcurementEngineSection } from "@/components/design-test/ProcurementEngineSection";
 import { ServicesGrid } from "@/components/services/ServicesGrid";
-import { IntroVideoSplash } from "@/components/intro/IntroVideoSplash";
-
+import "@/components/design-test/design-test-responsive.css";
 import "@/components/hero-test/minimal-hero.css";
 
 export const metadata: Metadata = {
@@ -24,13 +23,12 @@ export const metadata: Metadata = {
 
 export default function DesignTestPage() {
   return (
-    <div className="relative min-h-full text-white">
-      <IntroVideoSplash />
+    <div className="relative min-h-full overflow-x-clip text-white">
       <PageIngredientBackground />
       <DesignTestGlobalNavbar />
       <main className="relative">
         <div id="hero">
-          <MinimalTestHero offsetForFixedHeader={false} fullPageGradient />
+          <MinimalTestHero offsetForFixedHeader fullPageGradient />
         </div>
         <DesignTestSocialProofBar />
         <AboutUsSnapshotSection />

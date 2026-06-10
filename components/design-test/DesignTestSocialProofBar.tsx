@@ -61,7 +61,7 @@ export function DesignTestSocialProofBar() {
               </p>
             </header>
 
-            <ul className="mt-8 grid grid-cols-3 gap-2.5 sm:mt-10 sm:gap-3 lg:gap-4">
+            <ul className="mt-8 grid grid-cols-3 gap-2 sm:mt-10 sm:gap-3 lg:gap-4">
               {stats.map((item) => (
                 <li key={item.label}>
                   <StatBlock item={item} />
@@ -118,17 +118,17 @@ function StatBlock({ item }: { item: (typeof stats)[number] }) {
 
   return (
     <div className={dt.socialProofStat}>
-      <p className={`text-2xl font-bold tabular-nums tracking-tight sm:text-3xl lg:text-[2rem] ${valueColor}`}>
+      <p className={`text-xl font-bold tabular-nums tracking-tight sm:text-3xl lg:text-[2rem] ${valueColor}`}>
         {item.value}
       </p>
-      <p className={`mt-1.5 text-[10px] font-medium leading-snug sm:text-[11px] ${dt.statLabel}`}>{item.label}</p>
+      <p className={`mt-1 text-[9px] font-medium leading-snug sm:mt-1.5 sm:text-[11px] ${dt.statLabel}`}>{item.label}</p>
     </div>
   );
 }
 
 function LogoPill({ logo }: { logo: (typeof partnerLogos)[number] }) {
   return (
-    <div className={`flex h-14 w-[8.5rem] items-center justify-center px-4 sm:h-16 sm:w-[9.5rem] ${dt.logoCard}`}>
+    <div className={`flex h-12 w-[7.5rem] items-center justify-center px-3 sm:h-16 sm:w-[9.5rem] sm:px-4 ${dt.logoCard}`}>
       <Image
         src={logo.src}
         alt={logo.name}

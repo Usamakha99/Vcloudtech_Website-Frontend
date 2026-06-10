@@ -100,12 +100,15 @@ export function ScrollStackCardsSection() {
           </p>
         </header>
 
-        <div className="relative mt-10 sm:mt-12" style={{ minHeight: `${runwayHeight}px` }}>
-          <ul className="relative flex flex-col pb-8">
+        <div
+          className="scroll-stack-runway relative mt-8 sm:mt-10 lg:mt-12"
+          style={{ minHeight: `${runwayHeight}px` }}
+        >
+          <ul className="relative flex flex-col gap-5 pb-4 lg:gap-0 lg:pb-8">
             {cards.map((card, index) => (
               <li
                 key={card.title}
-                className="sticky motion-reduce:static"
+                className="scroll-stack-item sticky motion-reduce:static"
                 style={{
                   top: `${STICKY_TOP + index * STACK_GAP}px`,
                   zIndex: 10 + index,
@@ -152,12 +155,12 @@ function StackCard({
       <div className="grid lg:grid-cols-2">
         <StackCardVisual icon={card.icon} tag={card.tag} />
 
-        <div className="relative flex flex-col justify-center px-5 py-6 sm:px-7 sm:py-8 lg:px-8">
-          <p className="font-mono text-xs font-medium tabular-nums tracking-widest text-orange-400">
+        <div className="relative flex flex-col justify-center px-4 py-5 sm:px-7 sm:py-8 lg:px-8">
+          <p className="font-mono text-[11px] font-medium tabular-nums tracking-widest text-orange-400 sm:text-xs">
             {step} / {total}
           </p>
 
-          <h3 className="mt-4 flex flex-wrap gap-x-[0.28em] text-xl font-semibold leading-[1.3] tracking-tight sm:text-2xl">
+          <h3 className="mt-3 flex flex-wrap gap-x-[0.28em] text-lg font-semibold leading-[1.3] tracking-tight sm:mt-4 sm:text-xl lg:text-2xl">
             {titleWords.map((word, wordIndex) => (
               <RollingText
                 key={`${word}-${wordIndex}`}
@@ -171,7 +174,7 @@ function StackCard({
 
           <p className={`mt-4 max-w-md text-sm leading-[1.75] sm:text-[15px] ${dt.body}`}>{card.description}</p>
 
-          <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-orange-500/10 pt-5">
+          <ul className="mt-5 grid grid-cols-1 gap-y-2 border-t border-orange-500/10 pt-4 sm:mt-6 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-2.5 sm:pt-5">
             {card.points.map((point) => (
               <li key={point} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-orange-400/90" aria-hidden />
@@ -197,7 +200,7 @@ function StackCard({
 /** Blueprint-style visual panel — orbital rings + relevant icon. */
 function StackCardVisual({ icon: Icon, tag }: { icon: SectionIcon; tag: string }) {
   return (
-    <div className="relative flex min-h-[11rem] items-center justify-center overflow-hidden border-b border-orange-500/10 bg-gradient-to-br from-black via-black to-orange-950/40 lg:min-h-[15rem] lg:border-b-0 lg:border-r lg:border-orange-500/10">
+    <div className="relative flex min-h-[9.5rem] items-center justify-center overflow-hidden border-b border-orange-500/10 bg-gradient-to-br from-black via-black to-orange-950/40 sm:min-h-[11rem] lg:min-h-[15rem] lg:border-b-0 lg:border-r lg:border-orange-500/10">
       <span
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,115,22,0.12)_0%,transparent_65%)]"
         aria-hidden
