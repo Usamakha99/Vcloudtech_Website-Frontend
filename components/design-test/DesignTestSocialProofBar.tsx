@@ -8,78 +8,168 @@ const partnerLogos = [
   { name: "AWS", src: "/partners/aws.png" },
   { name: "Dell", src: "/partners/dell.png" },
   { name: "VMware", src: "/partners/vmware.png" },
+  { name: "Adobe", src: "/partners/adobe.png" },
+  { name: "Fortinet", src: "/partners/fortinet.png" },
+  { name: "HPE", src: "/partners/hpe.png" },
 ] as const;
 
 const stats = [
-  { value: "500+", label: "Clients served" },
-  { value: "15+", label: "Years in business" },
+  { value: "500+", label: "Clients served", accent: "orange" as const },
+  { value: "15+", label: "Years in business", accent: "amber" as const },
+  { value: "50", label: "States served", accent: "orange" as const },
 ] as const;
 
-const certifications = ["MBE", "SBE", "DBE", "ISO 9001"] as const;
+const certifications = [
+  { kind: "acronym" as const, label: "MBE" },
+  { kind: "acronym" as const, label: "SBE" },
+  { kind: "acronym" as const, label: "DBE" },
+  { kind: "iso" as const, label: "ISO 9001" },
+] as const;
 
-/** Minimal social proof strip — vendor logos, stats, certifications. */
+/** Premium social proof panel — stats, partner marquee, certifications. */
 export function DesignTestSocialProofBar() {
+  const marqueeLogos = [...partnerLogos, ...partnerLogos];
+
   return (
     <section
-      className="relative z-30 -mt-10 mb-10 pb-2 sm:-mt-14 sm:mb-12 sm:pb-4 lg:mb-14"
+      className="relative z-30 -mt-12 mb-10 sm:-mt-16 sm:mb-12 lg:mb-14"
       aria-labelledby="social-proof-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className={`${dt.card} px-4 py-4 sm:px-6 sm:py-5`}>
-          <p
-            id="social-proof-heading"
-            className="text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-orange-300/90 sm:text-[11px]"
-          >
-            Social proof — instant credibility
-          </p>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className={dt.socialProofPanel}>
+          <span
+            className="pointer-events-none absolute -left-16 -top-20 h-56 w-56 rounded-full bg-orange-500/12 blur-3xl"
+            aria-hidden
+          />
+          <span
+            className="pointer-events-none absolute -bottom-24 -right-16 h-48 w-48 rounded-full bg-orange-600/10 blur-3xl"
+            aria-hidden
+          />
+          <span className={dt.cardTopLine} aria-hidden />
 
-          <div className="mt-4 flex flex-col items-center gap-5 lg:flex-row lg:justify-between lg:gap-6">
-            <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-5 lg:justify-start">
-              {partnerLogos.map((logo) => (
-                <li key={logo.name}>
-                  <Image
-                    src={logo.src}
-                    alt={logo.name}
-                    width={120}
-                    height={40}
-                    className="h-5 w-auto max-w-[4.5rem] object-contain opacity-80 brightness-0 invert sm:h-6 sm:max-w-[5.5rem]"
-                  />
+          <div className="relative px-5 pb-6 pt-8 sm:px-8 sm:pb-8 sm:pt-10 lg:px-10">
+            <header className="mx-auto max-w-2xl text-center">
+              <p className={dt.badge}>Social proof</p>
+              <h2
+                id="social-proof-heading"
+                className="mt-5 text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl lg:text-[1.75rem]"
+              >
+                Instant credibility at a glance
+              </h2>
+              <p className={`mt-3 text-sm leading-relaxed ${dt.headingSub}`}>
+                Enterprise teams trust vCloud Tech for procurement, licensing, and IT solutions nationwide.
+              </p>
+            </header>
+
+            <ul className="mt-8 grid grid-cols-3 gap-2.5 sm:mt-10 sm:gap-3 lg:gap-4">
+              {stats.map((item) => (
+                <li key={item.label}>
+                  <StatBlock item={item} />
                 </li>
               ))}
             </ul>
 
-            <div className="hidden h-8 w-px bg-orange-500/15 lg:block" aria-hidden />
+            <div className="mt-8 sm:mt-10">
+              <p className="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-300/75 sm:text-[11px]">
+                Trusted technology partners
+              </p>
 
-            <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-6">
-              {stats.map((item, index) => (
-                <li key={item.label} className="flex items-center gap-4 sm:gap-6">
-                  {index > 0 ? (
-                    <span className="hidden text-orange-500/25 sm:inline" aria-hidden>
-                      ·
-                    </span>
-                  ) : null}
-                  <div className="text-center sm:text-left">
-                    <p className={`text-lg font-semibold tabular-nums tracking-tight text-white sm:text-xl`}>
-                      {item.value}
-                    </p>
-                    <p className={`text-[11px] font-medium ${dt.statLabel}`}>{item.label}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+              <div className="relative mt-4 overflow-hidden sm:mt-5">
+                <span
+                  className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-black/90 via-black/50 to-transparent sm:w-20"
+                  aria-hidden
+                />
+                <span
+                  className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-black/90 via-black/50 to-transparent sm:w-20"
+                  aria-hidden
+                />
 
-            <div className="hidden h-8 w-px bg-orange-500/15 lg:block" aria-hidden />
+                <ul className="animate-social-proof-marquee flex w-max items-center gap-3 py-1 sm:gap-4">
+                  {marqueeLogos.map((logo, index) => (
+                    <li key={`${logo.name}-${index}`} className="shrink-0">
+                      <LogoPill logo={logo} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-            <ul className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
-              {certifications.map((cert) => (
-                <li key={cert}>
-                  <span className={dt.certPill}>{cert}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-8 border-t border-orange-500/10 pt-6 sm:mt-10 sm:pt-8">
+              <p className="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-300/75 sm:text-[11px]">
+                Certifications & designations
+              </p>
+              <ul className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:mt-5 sm:gap-3">
+                {certifications.map((cert) => (
+                  <li key={cert.label}>
+                    {cert.kind === "iso" ? <IsoCertCard /> : <AcronymCertCard acronym={cert.label} />}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function StatBlock({ item }: { item: (typeof stats)[number] }) {
+  const valueColor = item.accent === "orange" ? dt.statValue : dt.statValueAlt;
+
+  return (
+    <div className={dt.socialProofStat}>
+      <p className={`text-2xl font-bold tabular-nums tracking-tight sm:text-3xl lg:text-[2rem] ${valueColor}`}>
+        {item.value}
+      </p>
+      <p className={`mt-1.5 text-[10px] font-medium leading-snug sm:text-[11px] ${dt.statLabel}`}>{item.label}</p>
+    </div>
+  );
+}
+
+function LogoPill({ logo }: { logo: (typeof partnerLogos)[number] }) {
+  return (
+    <div className={`flex h-14 w-[8.5rem] items-center justify-center px-4 sm:h-16 sm:w-[9.5rem] ${dt.logoCard}`}>
+      <Image
+        src={logo.src}
+        alt={logo.name}
+        width={160}
+        height={48}
+        className="h-auto max-h-7 w-auto max-w-full object-contain contrast-[1.02] sm:max-h-8"
+        sizes="120px"
+      />
+    </div>
+  );
+}
+
+function AcronymCertCard({ acronym }: { acronym: string }) {
+  return (
+    <div className={dt.socialProofCert}>
+      <span className="text-xl font-bold leading-none text-orange-300 sm:text-2xl">{acronym}</span>
+      <span className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-orange-100/45 sm:text-[10px]">
+        Certified
+      </span>
+    </div>
+  );
+}
+
+function IsoCertCard() {
+  return (
+    <div className="flex min-h-[4.5rem] items-center gap-3 rounded-xl border border-orange-500/18 bg-orange-500/6 px-3.5 py-3 ring-1 ring-orange-400/10 sm:gap-3.5 sm:px-4">
+      <div className="relative h-10 w-10 shrink-0 text-orange-300/90 sm:h-11 sm:w-11" aria-hidden>
+        <svg className="h-full w-full" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.25">
+          <circle cx="22" cy="22" r="18" strokeOpacity="0.35" />
+          <circle cx="22" cy="22" r="14" />
+          <path d="M22 10v6M22 28v6M10 22h6M28 22h6" strokeLinecap="round" strokeOpacity="0.4" />
+        </svg>
+        <span className="absolute inset-0 flex items-center justify-center text-[9px] font-bold tracking-tight text-orange-200">
+          ISO
+        </span>
+      </div>
+      <p className="min-w-0 text-left text-[10px] font-bold uppercase leading-snug tracking-wide text-orange-100 sm:text-[11px]">
+        ISO 9001:2015
+        <br />
+        <span className="font-semibold text-orange-100/50">Certified</span>
+      </p>
+    </div>
   );
 }

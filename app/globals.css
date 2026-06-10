@@ -25,6 +25,26 @@
   }
 }
 
+@keyframes social-proof-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-social-proof-marquee {
+  animation: social-proof-marquee 36s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-social-proof-marquee {
+    animation: none;
+  }
+}
+
 @keyframes service-snake-run {
   to {
     stroke-dashoffset: -100;

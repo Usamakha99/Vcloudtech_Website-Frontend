@@ -1,11 +1,16 @@
-import type { ReactNode } from "react";
-
 import { dt } from "@/components/design-test/design-test-theme";
+import {
+  HandshakeIcon,
+  HeadsetIcon,
+  RocketIcon,
+  ShieldIcon,
+  type SectionIcon,
+} from "@/components/icons/section-icons";
 
 type Feature = {
   title: string;
   description: string;
-  icon: () => ReactNode;
+  icon: SectionIcon;
 };
 
 const features: Feature[] = [
@@ -17,12 +22,12 @@ const features: Feature[] = [
   {
     title: "Enterprise security",
     description: "Controls aligned to your compliance posture.",
-    icon: LockIcon,
+    icon: ShieldIcon,
   },
   {
     title: "24/7 support",
     description: "Engineers on call when systems matter most.",
-    icon: ClockIcon,
+    icon: HeadsetIcon,
   },
   {
     title: "Partner access",
@@ -73,8 +78,8 @@ export function FeaturesGrid({ surface = "light" }: { surface?: "light" | "glass
               <div
                 className={
                   glass
-                    ? `${dt.iconBoxLg} [&_svg]:h-5 [&_svg]:w-5`
-                    : "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-700 ring-1 ring-sky-100 dark:bg-sky-950/60 dark:text-sky-300 dark:ring-sky-900/80 [&_svg]:h-5 [&_svg]:w-5"
+                    ? dt.iconBoxCard
+                    : "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-700 ring-1 ring-sky-100 dark:bg-sky-950/60 dark:text-sky-300 dark:ring-sky-900/80 [&_svg]:h-5 [&_svg]:w-5 sm:h-12 sm:w-12 sm:[&_svg]:h-[22px] sm:[&_svg]:w-[22px]"
                 }
               >
                 <item.icon />
@@ -95,38 +100,3 @@ export function FeaturesGrid({ surface = "light" }: { surface?: "light" | "glass
   );
 }
 
-function RocketIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden>
-      <path d="M12 15c-3-2.5-5-6-5-9a5 5 0 0110 0c0 3-2 6.5-5 9z" strokeLinejoin="round" />
-      <path d="M12 15v6M9 21h6" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function LockIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden>
-      <rect x="5" y="11" width="14" height="10" rx="2" />
-      <path d="M8 11V8a4 4 0 018 0v3" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function ClockIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function HandshakeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden>
-      <path d="M7 11l2-2 3 3 5-5 2 2-7 7-5-5z" strokeLinejoin="round" />
-      <path d="M4 14l3 3M17 4l3 3" strokeLinecap="round" />
-    </svg>
-  );
-}

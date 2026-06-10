@@ -2,13 +2,20 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { dt } from "@/components/design-test/design-test-theme";
+import {
+  CartIcon,
+  ContractIcon,
+  SolutionsIcon,
+  TeamIcon,
+  type SectionIcon,
+} from "@/components/icons/section-icons";
 
 type Strength = {
   title: string;
   description: string;
   href: string;
   linkLabel: string;
-  icon: () => ReactNode;
+  icon: SectionIcon;
 };
 
 const stackZ = ["z-10", "z-20", "z-30", "z-40"] as const;
@@ -17,42 +24,41 @@ const strengths: Strength[] = [
   {
     title: "Solutions & Services",
     description:
-      "A world-class portfolio of IT products, services, and cloud solutions tailored to your business challenges.",
+      "IT products, services, and cloud solutions tailored to your business challenges.",
     href: "/solutions",
-    linkLabel: "Learn More About Solutions",
+    linkLabel: "Explore solutions",
     icon: SolutionsIcon,
   },
   {
     title: "Licensing & Contract",
     description:
-      "Licensing experts available to help you avoid compliance issues, right-size software spending with the right licensing programs, and contracts.",
+      "Right-size software spending with expert licensing programs and vendor contracts.",
     href: "/procurement",
-    linkLabel: "Read Our Contracts",
+    linkLabel: "View contracts",
     icon: ContractIcon,
   },
   {
     title: "Simplify IT Buying",
     description:
-      "Our global procurement best practices help our customers simplify IT procurement, consolidate, and lower cost.",
+      "Procurement best practices that simplify buying, consolidate spend, and lower cost.",
     href: "/contact",
-    linkLabel: "Meet Customer Support",
-    icon: ProcurementIcon,
+    linkLabel: "Talk to support",
+    icon: CartIcon,
   },
   {
     title: "Winning Team",
     description:
-      "Highly motivated and empowered people are the foundation of our winning culture.",
+      "Motivated, empowered people — the foundation of our winning culture.",
     href: "/about",
-    linkLabel: "Why vCloud Tech?",
+    linkLabel: "Meet the team",
     icon: TeamIcon,
   },
 ];
 
-/** Why vCloud Tech — 4 overlapping cards on the ingredient gradient, pulled up over the hero. */
+/** Why vCloud Tech — large overlapping cards with a calm, minimal feel. */
 export function WhyVCloudSection({
   reducedHeroOverlap = false,
 }: {
-  /** Use when a strip (e.g. social proof) sits between hero and this section. */
   reducedHeroOverlap?: boolean;
 }) {
   const overlapClass = reducedHeroOverlap
@@ -62,10 +68,10 @@ export function WhyVCloudSection({
   return (
     <section
       id="why"
-      className={`relative z-20 scroll-mt-14 pb-16 pt-4 sm:pb-20 ${overlapClass}`}
+      className={`relative z-20 scroll-mt-14 pb-20 pt-4 sm:pb-24 ${overlapClass}`}
       aria-labelledby="why-vcloud-heading"
     >
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-3xl text-center">
           <p className={dt.badge}>Why vCloud Tech?</p>
           <h2
@@ -79,25 +85,23 @@ export function WhyVCloudSection({
           </p>
         </header>
 
-        <div className="mt-10 sm:mt-12">
-          {/* Desktop: overlapping card fan */}
+        <div className="mt-12 sm:mt-14">
           <ul className="hidden justify-center overflow-visible lg:flex">
             {strengths.map((item, index) => (
               <li
                 key={item.title}
-                className={`group relative shrink-0 transition-transform duration-200 hover:z-50 focus-within:z-50 ${stackZ[index] ?? stackZ[0]} ${index === 0 ? "ml-0" : "-ml-14 xl:-ml-16"}`}
+                className={`group relative shrink-0 transition-transform duration-300 hover:z-50 focus-within:z-50 ${stackZ[index] ?? stackZ[0]} ${index === 0 ? "ml-0" : "-ml-16 xl:-ml-[4.5rem]"}`}
               >
                 <StrengthCard item={item} index={index} />
               </li>
             ))}
           </ul>
 
-          {/* Mobile / tablet: horizontal scroll with overlap */}
-          <ul className="flex gap-0 overflow-x-auto overflow-y-visible pb-4 pl-2 [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
+          <ul className="flex gap-0 overflow-x-auto overflow-y-visible pb-6 pl-2 [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
             {strengths.map((item, index) => (
               <li
                 key={item.title}
-                className={`group relative w-[min(82vw,280px)] shrink-0 transition-transform duration-200 hover:z-50 focus-within:z-50 sm:w-[300px] ${stackZ[index] ?? stackZ[0]} ${index === 0 ? "ml-0" : "-ml-8"}`}
+                className={`group relative w-[min(88vw,340px)] shrink-0 transition-transform duration-300 hover:z-50 focus-within:z-50 sm:w-[360px] ${stackZ[index] ?? stackZ[0]} ${index === 0 ? "ml-0" : "-ml-10"}`}
               >
                 <StrengthCard item={item} index={index} />
               </li>
@@ -111,29 +115,50 @@ export function WhyVCloudSection({
 
 function StrengthCard({ item, index }: { item: Strength; index: number }) {
   const number = String(index + 1).padStart(2, "0");
+  const titleWords = item.title.split(" ");
 
   return (
     <article
-      className={`group/card relative flex h-full min-h-[300px] w-full flex-col overflow-hidden px-5 py-6 group-hover:-translate-y-2 sm:min-h-[320px] sm:px-6 sm:py-7 lg:w-[250px] xl:w-[270px] ${dt.card} ${dt.cardHover}`}
+      className={`group/card relative flex h-full min-h-[22rem] w-full flex-col overflow-hidden px-7 py-8 sm:min-h-[23rem] sm:px-8 sm:py-9 lg:w-[17.5rem] xl:w-[19.5rem] ${dt.whyCard} ${dt.whyCardHover}`}
     >
-      <span className={dt.cardTopLine} aria-hidden />
+      <span
+        className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-orange-500/10 blur-3xl transition-opacity duration-500 group-hover/card:bg-orange-500/15"
+        aria-hidden
+      />
 
-      <div className="relative flex items-start justify-between gap-3">
-        <div className={`${dt.iconBox} [&_svg]:h-5 [&_svg]:w-5`}>
+      <span
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-400/35 to-transparent"
+        aria-hidden
+      />
+
+      <div className="relative flex items-start justify-between gap-4">
+        <div className={dt.iconBoxCard}>
           <item.icon />
         </div>
-        <span className={dt.number}>{number}</span>
+        <span className="font-mono text-xs tabular-nums tracking-widest text-orange-200/25">{number}</span>
       </div>
 
-      <div className="relative mt-5 flex flex-1 flex-col">
-        <span className={dt.accentDash} aria-hidden />
-        <h3 className="mt-3 text-[15px] font-semibold leading-snug tracking-tight text-white">{item.title}</h3>
-        <p className={`mt-2.5 flex-1 text-[13px] leading-relaxed sm:text-sm ${dt.body}`}>{item.description}</p>
+      <div className="relative mt-8 flex flex-1 flex-col">
+        <h3 className="flex flex-wrap gap-x-[0.3em] text-lg font-semibold leading-[1.35] tracking-tight sm:text-xl">
+          {titleWords.map((word, wordIndex) => (
+            <RollingText
+              key={`${word}-${wordIndex}`}
+              slotHeight="1.35em"
+              staggerMs={wordIndex * 28}
+              top={<span className="text-white">{word}</span>}
+              bottom={<span className="text-orange-300">{word}</span>}
+            />
+          ))}
+        </h3>
+
+        <p className="mt-4 flex-1 text-sm leading-[1.7] text-orange-100/55 sm:text-[15px]">
+          {item.description}
+        </p>
       </div>
 
       <Link
         href={item.href}
-        className={`relative mt-5 inline-flex items-center gap-1.5 ${dt.linkSm}`}
+        className="relative mt-8 inline-flex items-center gap-2 text-[13px] font-medium text-orange-300/90 transition duration-300 hover:text-orange-100"
       >
         {item.linkLabel}
         <ArrowIcon />
@@ -142,52 +167,49 @@ function StrengthCard({ item, index }: { item: Strength; index: number }) {
   );
 }
 
+type RollingTextProps = {
+  top: ReactNode;
+  bottom: ReactNode;
+  slotHeight: string;
+  className?: string;
+  staggerMs?: number;
+};
+
+/** Vertical text roll — top line slides up to reveal bottom line on card hover. */
+function RollingText({ top, bottom, slotHeight, className = "", staggerMs = 0 }: RollingTextProps) {
+  return (
+    <span className={`inline-block overflow-hidden align-top ${className}`} style={{ height: slotHeight }}>
+      <span
+        className="block transition-transform duration-[0.32s] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover/card:-translate-y-1/2 group-focus-within/card:-translate-y-1/2 motion-reduce:transform-none"
+        style={{ transitionDelay: `${staggerMs}ms` }}
+      >
+        <span className="block" style={{ minHeight: slotHeight }}>
+          {top}
+        </span>
+        <span className="block" style={{ minHeight: slotHeight }}>
+          {bottom}
+        </span>
+      </span>
+    </span>
+  );
+}
+
 function ArrowIcon() {
   return (
-    <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5 transition-transform group-hover/card:translate-x-0.5" aria-hidden>
-      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      className="h-3.5 w-3.5 transition-transform duration-300 group-hover/card:translate-x-1"
+      aria-hidden
+    >
+      <path
+        d="M3 8h10M9 4l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-function SolutionsIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-      <rect x="4" y="6" width="14" height="10" rx="1.5" />
-      <path d="M8 16h6M11 16v2" strokeLinecap="round" />
-      <path d="M7 10h8M7 13h5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function ContractIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-      <path d="M7 4h8l4 4v12H7V4z" strokeLinejoin="round" />
-      <path d="M15 4v4h4" strokeLinejoin="round" />
-      <circle cx="12" cy="14" r="3" />
-      <path d="M10.5 14l1 1 2-2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ProcurementIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-      <circle cx="9" cy="10" r="2.5" />
-      <circle cx="15" cy="10" r="2.5" />
-      <circle cx="12" cy="7" r="2.5" />
-      <path d="M4 17c3-1.5 5.5-1.5 8 0s5 1.5 8 0" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function TeamIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-      <circle cx="12" cy="8" r="3" />
-      <path d="M6 18c0-3 2.5-5 6-5s6 2 6 5" strokeLinecap="round" />
-      <path d="M12 5l1 2 2 .5-1.5 1.5.5 2L12 10l-2 1 .5-2L9 7.5 11 7z" strokeLinejoin="round" />
-    </svg>
-  );
-}
