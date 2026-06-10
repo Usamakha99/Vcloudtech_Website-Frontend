@@ -102,16 +102,16 @@ export function ServicesGrid({
         <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
           {items.map((item, index) => (
             <li key={item.title} className="flex min-w-0">
-              <div className="service-card-edges group/card w-full rounded-2xl">
-                <ServiceCardSnakeBorder id={`svc-snake-${index}`} />
                 <Link
                   href={item.href}
-                  className={`relative flex w-full flex-col rounded-2xl border p-6 transition-[transform,box-shadow,border-color,background-color] duration-200 ease-out group-hover/card:-translate-y-1.5 group-focus-within/card:-translate-y-1.5 motion-reduce:transition-none motion-reduce:group-hover/card:translate-y-0 sm:p-7 ${
+                  className={`service-card-snake group/card relative isolate flex w-full flex-col overflow-hidden rounded-2xl p-6 transition-[transform,box-shadow,border-color,background-color] duration-200 ease-out hover:-translate-y-1.5 focus-visible:-translate-y-1.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-7 ${
                     glass
-                      ? `border ${dt.glassCard}`
-                      : "border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.03] group-hover/card:border-slate-200/60 group-hover/card:shadow-[0_14px_28px_-10px_rgba(56,189,248,0.18)] dark:border-slate-700 dark:bg-slate-900 dark:ring-slate-800"
+                      ? dt.glassCard
+                      : "border border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.03] hover:border-slate-200/60 hover:shadow-[0_14px_28px_-10px_rgba(56,189,248,0.18)] dark:border-slate-700 dark:bg-slate-900 dark:ring-slate-800"
                   }`}
                 >
+                {glass ? <ServiceCardSnakeBorder id={`svc-snake-${index}`} /> : null}
+                <div className="relative z-10 flex flex-col">
                 <div
                   className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl [&_svg]:h-6 [&_svg]:w-6 ${
                     glass
@@ -145,8 +145,8 @@ export function ServicesGrid({
                     →
                   </span>
                 </span>
+                </div>
                 </Link>
-              </div>
             </li>
           ))}
         </ul>
@@ -159,47 +159,28 @@ export function ServicesGrid({
 function ServiceCardSnakeBorder({ id }: { id: string }) {
   return (
     <svg
-      className="service-snake-border pointer-events-none absolute inset-0 z-20 h-full w-full overflow-visible rounded-2xl"
+      className="service-snake-border pointer-events-none absolute inset-0 z-[1] h-full w-full rounded-2xl"
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
       aria-hidden
     >
       <defs>
         <linearGradient id={`${id}-stroke`} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fb923c" stopOpacity="0.35" />
-          <stop offset="35%" stopColor="#f97316" />
-          <stop offset="70%" stopColor="#fdba74" />
-          <stop offset="100%" stopColor="#ea580c" />
+          <stop offset="0%" stopColor="#fb923c" stopOpacity="0.5" />
+          <stop offset="50%" stopColor="#f97316" />
+          <stop offset="100%" stopColor="#fdba74" />
         </linearGradient>
-        <filter id={`${id}-glow`} x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="1.4" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
       </defs>
       <rect
-        className="service-snake-track"
-        x="1.4"
-        y="1.4"
-        width="97.2"
-        height="97.2"
-        rx="9"
-        ry="9"
-        pathLength="100"
-      />
-      <rect
         className="service-snake-path"
-        x="1.4"
-        y="1.4"
-        width="97.2"
-        height="97.2"
-        rx="9"
-        ry="9"
+        x="1"
+        y="1"
+        width="98"
+        height="98"
+        rx="10"
+        ry="10"
         pathLength="100"
         stroke={`url(#${id}-stroke)`}
-        filter={`url(#${id}-glow)`}
       />
     </svg>
   );

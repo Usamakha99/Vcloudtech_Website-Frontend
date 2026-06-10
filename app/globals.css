@@ -31,39 +31,34 @@
   }
 }
 
-.service-card-edges {
+.service-card-snake {
   position: relative;
-  border-radius: 1rem;
 }
 
 .service-snake-border {
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.3s ease;
 }
 
-.service-card-edges:hover .service-snake-border,
-.service-card-edges:focus-within .service-snake-border {
+.service-card-snake:hover .service-snake-border,
+.service-card-snake:focus-within .service-snake-border,
+.service-card-snake:focus-visible .service-snake-border {
   opacity: 1;
-}
-
-.service-snake-track {
-  fill: none;
-  stroke: rgba(251, 146, 60, 0.18);
-  stroke-width: 0.35;
 }
 
 .service-snake-path {
   fill: none;
-  stroke-width: 0.65;
+  stroke-width: 0.55;
   stroke-linecap: round;
-  stroke-dasharray: 12 88;
+  stroke-dasharray: 14 86;
   stroke-dashoffset: 0;
   animation: service-snake-run 7s linear infinite;
   animation-play-state: paused;
 }
 
-.service-card-edges:hover .service-snake-path,
-.service-card-edges:focus-within .service-snake-path {
+.service-card-snake:hover .service-snake-path,
+.service-card-snake:focus-within .service-snake-path,
+.service-card-snake:focus-visible .service-snake-path {
   animation-play-state: running;
 }
 
@@ -72,6 +67,6 @@
     animation: none;
     stroke-dasharray: 100 0;
     stroke-dashoffset: 0;
-    opacity: 0.85;
+    opacity: 0.9;
   }
 }

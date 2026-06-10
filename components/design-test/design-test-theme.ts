@@ -58,7 +58,7 @@ export const dt = {
     "rounded-3xl border border-orange-500/25 bg-black/50 px-8 py-12 shadow-xl shadow-black/25 backdrop-blur-md ring-1 ring-orange-400/10 sm:py-14",
 
   glassCard:
-    "border-orange-500/20 bg-black/55 shadow-lg shadow-black/15 backdrop-blur-md group-hover/card:border-orange-400/30 group-hover/card:bg-black/65 group-hover/card:shadow-xl group-hover/card:shadow-orange-500/10",
+    "border border-orange-500/20 bg-black/55 shadow-lg shadow-black/15 backdrop-blur-md group-hover/card:border-transparent group-focus-within/card:border-transparent group-hover/card:bg-black/65 group-hover/card:shadow-xl group-hover/card:shadow-orange-500/10 group-hover/card:ring-0",
 
   glassFeatureCard:
     "border-orange-500/20 bg-black/50 shadow-lg shadow-black/15 backdrop-blur-md hover:border-orange-400/30 hover:bg-black/60",
