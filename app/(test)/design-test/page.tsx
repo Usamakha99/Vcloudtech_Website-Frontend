@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 import { DesignTestCta } from "@/components/design-test/DesignTestCta";
-import { DesignTestNavbar } from "@/components/design-test/DesignTestNavbar";
+import { DesignTestGlobalNavbar } from "@/components/design-test/global-nav";
 import { FeaturesGrid } from "@/components/design-test/FeaturesGrid";
+import { DesignTestSocialProofBar } from "@/components/design-test/DesignTestSocialProofBar";
 import { ScrollStackCardsSection } from "@/components/design-test/ScrollStackCardsSection";
 import { TechnologyPartnersSection } from "@/components/design-test/TechnologyPartnersSection";
 import { WhyVCloudSection } from "@/components/design-test/WhyVCloudSection";
@@ -24,12 +25,13 @@ export default function DesignTestPage() {
     <div className="relative min-h-full text-white">
       <IntroVideoSplash />
       <PageIngredientBackground />
-      <DesignTestNavbar />
+      <DesignTestGlobalNavbar />
       <main className="relative">
         <div id="hero">
           <MinimalTestHero offsetForFixedHeader={false} fullPageGradient />
         </div>
-        <WhyVCloudSection />
+        <DesignTestSocialProofBar />
+        <WhyVCloudSection reducedHeroOverlap />
         <TechnologyPartnersSection />
         <ScrollStackCardsSection />
         <div className="relative z-20">

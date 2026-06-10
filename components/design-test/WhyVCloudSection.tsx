@@ -47,11 +47,20 @@ const strengths: Strength[] = [
 ];
 
 /** Why vCloud Tech — 4 overlapping cards on the ingredient gradient, pulled up over the hero. */
-export function WhyVCloudSection() {
+export function WhyVCloudSection({
+  reducedHeroOverlap = false,
+}: {
+  /** Use when a strip (e.g. social proof) sits between hero and this section. */
+  reducedHeroOverlap?: boolean;
+}) {
+  const overlapClass = reducedHeroOverlap
+    ? "mt-6 sm:mt-8 lg:mt-10"
+    : "-mt-28 sm:-mt-36 lg:-mt-44";
+
   return (
     <section
       id="why"
-      className="relative z-20 scroll-mt-14 -mt-28 pb-16 pt-4 sm:-mt-36 sm:pb-20 lg:-mt-44"
+      className={`relative z-20 scroll-mt-14 pb-16 pt-4 sm:pb-20 ${overlapClass}`}
       aria-labelledby="why-vcloud-heading"
     >
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
