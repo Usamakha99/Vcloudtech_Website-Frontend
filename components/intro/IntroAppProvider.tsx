@@ -8,17 +8,18 @@ import { isMobileDevice } from "@/components/intro/intro-device";
 const INTRO_MAX_MS = 6_000;
 const EXIT_FADE_MS = 500;
 
-function releaseIntroBlock({ mobile = false } = {}) {
-  document.documentElement.classList.remove("intro-pending");
-  if (mobile) {
-    document.documentElement.classList.add("intro-skip-mobile");
-  }
+function setIntroPending(active: boolean) {
+  document.documentElement.classList.toggle("intro-pending", active);
+}
+
+function setIntroSkipMobile(active: boolean) {
+  document.documentElement.classList.toggle("intro-skip-mobile", active);
 }
 
 type Phase = "off" | "playing" | "exiting";
 
 /**
- * Mobile-first: site always visible on phones. Desktop intro is a fixed overlay only.
+ * Phones (≤767px): no intro. Desktop: 6s intro overlay before site is usable.
  */
 export function IntroAppProvider({
   children,
@@ -31,9 +32,8 @@ export function IntroAppProvider({
   const introTimeoutRef = useRef<number | null>(null);
   const exitTimeoutRef = useRef<number | null>(null);
 
-  /** Default true — never block phones while JS loads */
-  const [isMobile, setIsMobile] = useState(true);
-  const [introReady, setIntroReady] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const [introReady, setIntroReady] = useState(false);
   const [phase, setPhase] = useState<Phase>("off");
 
   const clearIntroTimeout = useCallback(() => {
@@ -52,8 +52,7 @@ export function IntroAppProvider({
     }
 
     exitTimeoutRef.current = window.setTimeout(() => {
-      releaseIntroBlock();
-      document.documentElement.classList.remove("intro-skip-mobile");
+      setIntroPending(false);
       setPhase("off");
       setIntroReady(true);
     }, EXIT_FADE_MS);
@@ -61,25 +60,27 @@ export function IntroAppProvider({
 
   useEffect(() => {
     if (isMobileDevice()) {
-      releaseIntroBlock({ mobile: true });
+      setIntroSkipMobile(true);
+      setIntroPending(false);
       setIsMobile(true);
       setIntroReady(true);
       setPhase("off");
       return;
     }
 
-    releaseIntroBlock();
+    setIntroSkipMobile(false);
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setIntroPending(false);
       setIsMobile(false);
       setIntroReady(true);
       setPhase("off");
       return;
     }
 
-    document.documentElement.classList.remove("intro-skip-mobile");
     setIsMobile(false);
     setIntroReady(false);
+    setIntroPending(true);
     setPhase("playing");
   }, []);
 
@@ -113,6 +114,7 @@ export function IntroAppProvider({
         window.clearTimeout(exitTimeoutRef.current);
       }
       document.body.style.overflow = "";
+      setIntroPending(false);
     },
     [clearIntroTimeout],
   );
@@ -140,6 +142,7 @@ export function IntroAppProvider({
             ref={videoRef}
             className="h-full w-full object-contain"
             src={src}
+            autoPlay
             muted
             playsInline
             preload="auto"

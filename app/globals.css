@@ -119,7 +119,7 @@ html.intro-skip-mobile .intro-splash-desktop {
   display: none !important;
 }
 
-@media (max-width: 767px), (pointer: coarse) {
+@media (max-width: 767px) {
   html.intro-pending #site-content {
     display: flex !important;
   }

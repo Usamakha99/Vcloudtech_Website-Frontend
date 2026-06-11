@@ -32,7 +32,7 @@ export function DesignTestSocialProofBar() {
 
   return (
     <section
-      className={`relative z-30 ${dt.sectionAfterHero}`}
+      className={`relative z-30 mt-8 sm:mt-10 lg:mt-12 ${dt.sectionAfterHero}`}
       aria-labelledby="social-proof-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
