@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { IntroGate } from "@/components/intro/IntroGate";
+import { IntroAppProvider } from "@/components/intro/IntroAppProvider";
 import { INTRO_BLOCK_SCRIPT } from "@/components/intro/intro-block-script";
 import "./globals.css";
 
@@ -39,7 +39,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: INTRO_BLOCK_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <IntroGate>{children}</IntroGate>
+        <IntroAppProvider>{children}</IntroAppProvider>
       </body>
     </html>
   );

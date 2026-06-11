@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
+import { isMobileDevice } from "@/components/intro/intro-device";
 import { IntroReadyProvider } from "@/components/intro/intro-context";
 
 export const INTRO_STORAGE_KEY = "vcloudtech-intro-video-seen";
@@ -25,11 +26,7 @@ function shouldSkipIntro(storageKey: string, playOncePerSession: boolean, skipOn
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
 
-  if (skipOnMobile) {
-    const coarse = window.matchMedia("(pointer: coarse)").matches;
-    const narrow = window.matchMedia("(max-width: 767px)").matches;
-    if (coarse || narrow) return true;
-  }
+  if (skipOnMobile && isMobileDevice()) return true;
 
   if (playOncePerSession) {
     try {
@@ -46,8 +43,23 @@ function releaseIntroBlock() {
   document.documentElement.classList.remove("intro-pending");
 }
 
+function getInitialPhase(
+  storageKey: string,
+  playOncePerSession: boolean,
+  skipOnMobile: boolean,
+): Phase {
+  if (typeof window === "undefined") return "pending";
+
+  if (shouldSkipIntro(storageKey, playOncePerSession, skipOnMobile)) {
+    releaseIntroBlock();
+    return "done";
+  }
+
+  return "pending";
+}
+
 /**
- * Blocks site content until the intro video finishes (first visit per session).
+ * Blocks site content until the intro video finishes (desktop only by default).
  * Pair with the inline script in root layout so content stays hidden before hydration.
  */
 export function IntroGate({
@@ -56,12 +68,14 @@ export function IntroGate({
   poster,
   playOncePerSession = false,
   storageKey = INTRO_STORAGE_KEY,
-  skipOnMobile = false,
+  skipOnMobile = true,
 }: IntroGateProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const introTimeoutRef = useRef<number | null>(null);
   const exitTimeoutRef = useRef<number | null>(null);
-  const [phase, setPhase] = useState<Phase>("pending");
+  const [phase, setPhase] = useState<Phase>(() =>
+    getInitialPhase(storageKey, playOncePerSession, skipOnMobile),
+  );
 
   const clearIntroTimeout = useCallback(() => {
     if (introTimeoutRef.current !== null) {
@@ -115,27 +129,26 @@ export function IntroGate({
     document.body.style.overflow = "hidden";
 
     const video = videoRef.current;
-    if (!video) return () => {
-      document.body.style.overflow = prev;
-      clearIntroTimeout();
-    };
+    if (!video) {
+      return () => {
+        document.body.style.overflow = prev;
+        clearIntroTimeout();
+      };
+    }
 
     beginIntroTimer();
 
     const tryPlay = () => {
       video.currentTime = 0;
       void video.play().catch(() => {
-        /* Keep overlay up for full 6s even if autoplay is blocked */
+        /* Keep overlay up for full duration even if autoplay is blocked */
       });
     };
 
     if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
       tryPlay();
     } else {
-      const onCanPlay = () => {
-        tryPlay();
-      };
-      video.addEventListener("canplay", onCanPlay, { once: true });
+      video.addEventListener("canplay", tryPlay, { once: true });
     }
 
     return () => {
@@ -155,9 +168,9 @@ export function IntroGate({
   );
 
   const introReady = phase === "done";
-  const showOverlay = !introReady;
+  const siteHidden = phase === "playing" || phase === "exiting";
+  const showOverlay = phase === "pending" || phase === "playing" || phase === "exiting";
   const fading = phase === "exiting";
-  const siteHidden = !introReady;
 
   return (
     <IntroReadyProvider ready={introReady}>

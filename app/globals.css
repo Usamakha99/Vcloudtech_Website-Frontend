@@ -104,3 +104,32 @@ html.intro-pending body {
 html.intro-pending #site-content {
   display: none !important;
 }
+
+/* Mobile / touch — never block site for desktop intro */
+html.intro-skip-mobile #site-content {
+  display: flex !important;
+}
+
+html.intro-skip-mobile {
+  overflow: auto !important;
+}
+
+html.intro-skip-mobile #intro-splash,
+html.intro-skip-mobile .intro-splash-desktop {
+  display: none !important;
+}
+
+@media (max-width: 767px), (pointer: coarse) {
+  html.intro-pending #site-content {
+    display: flex !important;
+  }
+
+  html.intro-pending {
+    overflow: auto;
+  }
+
+  #intro-splash,
+  .intro-splash-desktop {
+    display: none !important;
+  }
+}

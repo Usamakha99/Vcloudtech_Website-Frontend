@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
 import { useIntroReady } from "@/components/intro/intro-context";
+import { isMobileDevice } from "@/components/intro/intro-device";
 
 export const HERO_SLIDES = [
   {
@@ -65,6 +66,9 @@ function ChevronRightIcon() {
 
 export function HeroCarousel() {
   const introReady = useIntroReady();
+  const [mobile, setMobile] = useState(
+    () => typeof window !== "undefined" && isMobileDevice(),
+  );
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const slideCount = HERO_SLIDES.length;
@@ -85,14 +89,20 @@ export function HeroCarousel() {
   }, [activeIndex, goTo]);
 
   useEffect(() => {
-    if (!introReady || paused) return;
+    setMobile(isMobileDevice());
+  }, []);
+
+  const carouselActive = introReady || mobile;
+
+  useEffect(() => {
+    if (!carouselActive || paused) return;
 
     const timer = window.setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % slideCount);
     }, INTERVAL_MS);
 
     return () => window.clearInterval(timer);
-  }, [introReady, paused, slideCount]);
+  }, [carouselActive, paused, slideCount]);
 
   return (
     <div
@@ -126,7 +136,7 @@ export function HeroCarousel() {
                     alt={slide.alt}
                     fill
                     unoptimized
-                    sizes="100vw"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1280px) 100vw, 1280px"
                     className="hero-test-carousel__media"
                     priority={index === 0}
                   />
@@ -153,7 +163,7 @@ export function HeroCarousel() {
             <ChevronRightIcon />
           </button>
 
-          {introReady ? (
+          {carouselActive ? (
             <div className="hero-test-carousel__progress" aria-hidden>
               <span
                 key={`${activeIndex}-${paused}`}

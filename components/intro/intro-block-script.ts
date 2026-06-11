@@ -1,2 +1,2 @@
-/** Runs before React hydrates — hides page until intro finishes on every load. */
-export const INTRO_BLOCK_SCRIPT = `(function(){document.documentElement.classList.add("intro-pending")})();`;
+/** Mobile: skip intro immediately. Desktop: hide page until intro overlay mounts. */
+export const INTRO_BLOCK_SCRIPT = `(function(){try{var narrow=window.matchMedia("(max-width:767px)").matches;var touch=window.matchMedia("(pointer:coarse)").matches||navigator.maxTouchPoints>0;if(narrow||touch){document.documentElement.classList.add("intro-skip-mobile");document.documentElement.classList.remove("intro-pending");return}document.documentElement.classList.add("intro-pending")}catch(e){document.documentElement.classList.remove("intro-pending")}})();`;

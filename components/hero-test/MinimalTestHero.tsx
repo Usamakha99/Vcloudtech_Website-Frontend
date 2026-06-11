@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { dt } from "@/components/design-test/design-test-theme";
 import { HeroCarousel } from "@/components/hero-test/HeroCarousel";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 
@@ -29,32 +28,29 @@ export function MinimalTestHero({
 
         <div className="hero-test-hero-scrim" aria-hidden />
 
-        <div
-          className={`hero-test-hero-overlay mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ${
-            offsetForFixedHeader ? "max-sm:pt-[4.25rem]" : ""
-          }`}
-        >
-          <div className="hero-test-hero-copy max-w-xl text-start">
-            <p className={`hero-test-fade-in ${dt.badge}`}>Enterprise IT solutions</p>
+        <div className="hero-test-hero-overlay">
+          <div className="hero-test-hero-copy">
+            <p className="hero-test-fade-in text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
+              Enterprise IT solutions
+            </p>
 
             <h1
               id="hero-test-heading"
-              className="hero-test-fade-in hero-test-fade-in-delay-1 mt-4 text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-white sm:mt-5 sm:text-3xl lg:text-[2.5rem] xl:text-[2.75rem] 2xl:text-5xl text-balance"
+              className="hero-test-fade-in hero-test-fade-in-delay-1 mx-auto mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-white sm:mt-4 sm:text-4xl lg:text-5xl"
             >
-              Infrastructure you can{" "}
-              <span className="hero-gradient-text">see working</span>
+              Infrastructure you can see working
             </h1>
 
-            <p className="hero-test-fade-in hero-test-fade-in-delay-2 mt-4 max-w-lg text-pretty text-sm leading-relaxed text-[#A1A1AA] sm:text-base lg:text-lg">
+            <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/75 sm:text-base">
               Procurement, cloud, security, and hardware — delivered with real warehouse scale,
               accountable teams, and the speed enterprise IT demands.
             </p>
 
-            <div className="hero-test-fade-in hero-test-fade-in-delay-3 mt-8 flex flex-col items-start gap-3 sm:mt-10 sm:flex-row">
-              <ButtonLink href="/contact" variant="ctaWhite" className="w-full sm:w-auto">
+            <div className="hero-test-fade-in hero-test-fade-in-delay-3 mt-7 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row">
+              <ButtonLink href="/contact" variant="ctaWhite" className="min-w-[9.5rem]">
                 Get a quote
               </ButtonLink>
-              <ButtonLink href="/services" variant="outlineOnNavy" className="w-full sm:w-auto">
+              <ButtonLink href="/services" variant="outlineOnNavy" className="min-w-[9.5rem]">
                 Explore services
               </ButtonLink>
             </div>
