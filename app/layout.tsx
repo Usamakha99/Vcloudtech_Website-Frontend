@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import { IntroGate } from "@/components/intro/IntroGate";
+import { INTRO_BLOCK_SCRIPT } from "@/components/intro/intro-block-script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,8 +35,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: INTRO_BLOCK_SCRIPT }} />
+      </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        {children}
+        <IntroGate>{children}</IntroGate>
       </body>
     </html>
   );

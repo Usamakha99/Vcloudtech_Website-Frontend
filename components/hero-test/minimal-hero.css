@@ -1,4 +1,5 @@
 @import "./page-ingredient-background.css";
+@import "./hero-carousel.css";
 
 @keyframes hero-fade-in {
   from {

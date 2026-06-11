@@ -28,7 +28,7 @@ export default function DesignTestPage() {
       <DesignTestGlobalNavbar />
       <main className="relative">
         <div id="hero">
-          <MinimalTestHero offsetForFixedHeader fullPageGradient />
+          <MinimalTestHero offsetForFixedHeader fullPageGradient showCarousel />
         </div>
         <DesignTestSocialProofBar />
         <AboutUsSnapshotSection />

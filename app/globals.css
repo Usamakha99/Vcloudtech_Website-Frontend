@@ -90,3 +90,17 @@
     opacity: 0.9;
   }
 }
+
+/* Intro splash — hide site until first-visit video finishes (see intro-block-script.ts) */
+html.intro-pending {
+  overflow: hidden;
+  background-color: #0f0f0f;
+}
+
+html.intro-pending body {
+  background-color: #0f0f0f;
+}
+
+html.intro-pending #site-content {
+  display: none !important;
+}

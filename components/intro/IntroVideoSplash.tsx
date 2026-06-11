@@ -45,11 +45,11 @@ function shouldSkipIntro(storageKey: string, playOncePerSession: boolean, skipOn
  * Skips on mobile by default — fullscreen overlay blocks touch UI when autoplay fails.
  */
 export function IntroVideoSplash({
-  src = "/intro/intro.webm",
+  src = "/intro/loader-intro.mp4",
   poster,
   playOncePerSession = true,
   storageKey = DEFAULT_STORAGE_KEY,
-  skipOnMobile = true,
+  skipOnMobile = false,
 }: IntroVideoSplashProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [phase, setPhase] = useState<Phase>("idle");
@@ -106,7 +106,7 @@ export function IntroVideoSplash({
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#1B224B] transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#0F0F0F] transition-opacity duration-500 ${
         fading ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
       role="dialog"
@@ -126,7 +126,7 @@ export function IntroVideoSplash({
         onError={finish}
       />
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1B224B]/40 via-transparent to-[#1B224B]/20" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0F0F0F]/30 via-transparent to-[#0F0F0F]/15" />
 
       <button
         type="button"
