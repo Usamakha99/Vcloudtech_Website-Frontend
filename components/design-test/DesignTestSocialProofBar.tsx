@@ -32,17 +32,17 @@ export function DesignTestSocialProofBar() {
 
   return (
     <section
-      className="relative z-30 -mt-12 mb-10 sm:-mt-16 sm:mb-12 lg:mb-14"
+      className={`relative z-30 ${dt.sectionAfterHero}`}
       aria-labelledby="social-proof-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className={dt.socialProofPanel}>
           <span
-            className="pointer-events-none absolute -left-16 -top-20 h-56 w-56 rounded-full bg-orange-500/12 blur-3xl"
+            className="pointer-events-none absolute -left-16 -top-20 h-56 w-56 rounded-full bg-[#E55614]/12 blur-3xl"
             aria-hidden
           />
           <span
-            className="pointer-events-none absolute -bottom-24 -right-16 h-48 w-48 rounded-full bg-orange-600/10 blur-3xl"
+            className="pointer-events-none absolute -bottom-24 -right-16 h-48 w-48 rounded-full bg-[#E55614]/10 blur-3xl"
             aria-hidden
           />
           <span className={dt.cardTopLine} aria-hidden />
@@ -70,17 +70,17 @@ export function DesignTestSocialProofBar() {
             </ul>
 
             <div className="mt-8 sm:mt-10">
-              <p className="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75 sm:text-[11px]">
+              <p className={`text-center ${dt.metaLabel}`}>
                 Trusted technology partners
               </p>
 
               <div className="relative mt-4 overflow-hidden sm:mt-5">
                 <span
-                  className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-black/90 via-black/50 to-transparent sm:w-20"
+                  className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#1A1A1A] via-[#1A1A1A]/80 to-transparent sm:w-20"
                   aria-hidden
                 />
                 <span
-                  className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-black/90 via-black/50 to-transparent sm:w-20"
+                  className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#1A1A1A] via-[#1A1A1A]/80 to-transparent sm:w-20"
                   aria-hidden
                 />
 
@@ -94,8 +94,8 @@ export function DesignTestSocialProofBar() {
               </div>
             </div>
 
-            <div className="mt-8 border-t border-orange-500/10 pt-6 sm:mt-10 sm:pt-8">
-              <p className="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75 sm:text-[11px]">
+            <div className="mt-8 border-t border-white/10 pt-6 sm:mt-10 sm:pt-8">
+              <p className={`text-center ${dt.metaLabel}`}>
                 Certifications & designations
               </p>
               <ul className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:mt-5 sm:gap-3">
@@ -145,7 +145,7 @@ function AcronymCertCard({ acronym }: { acronym: string }) {
   return (
     <div className={dt.socialProofCert}>
       <span className="text-xl font-bold leading-none text-white sm:text-2xl">{acronym}</span>
-      <span className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-white/45 sm:text-[10px]">
+      <span className={`mt-1.5 text-[9px] font-semibold uppercase tracking-[0.14em] sm:text-[10px] ${dt.statLabel}`}>
         Certified
       </span>
     </div>
@@ -154,8 +154,8 @@ function AcronymCertCard({ acronym }: { acronym: string }) {
 
 function IsoCertCard() {
   return (
-    <div className="flex min-h-[4.5rem] items-center gap-3 rounded-xl border border-orange-500/18 bg-orange-500/6 px-3.5 py-3 ring-1 ring-orange-400/10 sm:gap-3.5 sm:px-4">
-      <div className="relative h-10 w-10 shrink-0 text-white/90 sm:h-11 sm:w-11" aria-hidden>
+    <div className={`flex min-h-[4.5rem] items-center gap-3 px-3.5 py-3 sm:gap-3.5 sm:px-4 ${dt.socialProofCert}`}>
+      <div className="relative h-10 w-10 shrink-0 text-[#A1A1AA] sm:h-11 sm:w-11" aria-hidden>
         <svg className="h-full w-full" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.25">
           <circle cx="22" cy="22" r="18" strokeOpacity="0.35" />
           <circle cx="22" cy="22" r="14" />
@@ -168,7 +168,7 @@ function IsoCertCard() {
       <p className="min-w-0 text-left text-[10px] font-bold uppercase leading-snug tracking-wide text-white sm:text-[11px]">
         ISO 9001:2015
         <br />
-        <span className="font-semibold text-white/50">Certified</span>
+        <span className={`font-semibold ${dt.statLabel}`}>Certified</span>
       </p>
     </div>
   );

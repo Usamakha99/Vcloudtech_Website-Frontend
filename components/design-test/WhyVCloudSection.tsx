@@ -10,6 +10,8 @@ import {
   type SectionIcon,
 } from "@/components/icons/section-icons";
 
+import "./why-vcloud-cards.css";
+
 type Strength = {
   title: string;
   description: string;
@@ -55,29 +57,26 @@ const strengths: Strength[] = [
   },
 ];
 
-/** Why vCloud Tech — large overlapping cards with a calm, minimal feel. */
+/** Why vCloud Tech — overlapping transparent cards with soft animated gradient. */
 export function WhyVCloudSection({
   reducedHeroOverlap = false,
 }: {
   reducedHeroOverlap?: boolean;
 }) {
   const overlapClass = reducedHeroOverlap
-    ? "mt-6 sm:mt-8 lg:mt-10"
+    ? "mt-4 sm:mt-6"
     : "-mt-28 sm:-mt-36 lg:-mt-44";
 
   return (
     <section
       id="why"
-      className={`relative z-20 scroll-mt-14 pb-20 pt-4 sm:pb-24 ${overlapClass}`}
+      className={`relative z-20 bg-transparent scroll-mt-14 pb-8 pt-4 sm:pb-10 ${overlapClass}`}
       aria-labelledby="why-vcloud-heading"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-3xl text-center">
           <p className={dt.badge}>Why vCloud Tech?</p>
-          <h2
-            id="why-vcloud-heading"
-            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl lg:text-[2rem] lg:leading-tight"
-          >
+          <h2 id="why-vcloud-heading" className={dt.headingLg}>
             Our success starts with a combination of our strengths and culture
           </h2>
           <p className={`mx-auto mt-3 max-w-xl text-sm leading-relaxed ${dt.headingSub}`}>
@@ -119,50 +118,44 @@ function StrengthCard({ item, index }: { item: Strength; index: number }) {
 
   return (
     <article
-      className={`group/card relative flex h-full min-h-[22rem] w-full flex-col overflow-hidden px-7 py-8 sm:min-h-[23rem] sm:px-8 sm:py-9 lg:w-[17.5rem] xl:w-[19.5rem] ${dt.whyCard} ${dt.whyCardHover}`}
+      className={`group/card relative flex h-full min-h-[22rem] w-full flex-col sm:min-h-[23rem] lg:w-[17.5rem] xl:w-[19.5rem] ${dt.whyCard} ${dt.whyCardHover}`}
     >
-      <span
-        className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-orange-500/10 blur-3xl transition-opacity duration-500 group-hover/card:bg-orange-500/15"
-        aria-hidden
-      />
+      <span className="why-card-gradient" aria-hidden />
 
-      <span
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-400/35 to-transparent"
-        aria-hidden
-      />
-
-      <div className="relative flex items-start justify-between gap-4">
-        <div className={dt.iconBoxCard}>
-          <item.icon />
+      <div className="why-card-inner flex flex-col px-7 py-8 sm:px-8 sm:py-9">
+        <div className="relative flex items-start justify-between gap-4">
+          <div className={dt.iconBoxCard}>
+            <item.icon />
+          </div>
+          <span className={dt.number}>{number}</span>
         </div>
-        <span className="font-mono text-xs tabular-nums tracking-widest text-white/25">{number}</span>
+
+        <div className="relative mt-8 flex flex-1 flex-col">
+          <h3 className="flex flex-wrap gap-x-[0.3em] text-lg font-semibold leading-[1.35] tracking-tight sm:text-xl">
+            {titleWords.map((word, wordIndex) => (
+              <RollingText
+                key={`${word}-${wordIndex}`}
+                slotHeight="1.35em"
+                staggerMs={wordIndex * 28}
+                top={<span className={dt.heading}>{word}</span>}
+                bottom={<span className={dt.headingSub}>{word}</span>}
+              />
+            ))}
+          </h3>
+
+          <p className={`mt-4 flex-1 text-sm leading-[1.7] sm:text-[15px] ${dt.body}`}>
+            {item.description}
+          </p>
+        </div>
+
+        <Link
+          href={item.href}
+          className={`relative mt-8 inline-flex items-center gap-2 text-[13px] font-medium ${dt.link}`}
+        >
+          {item.linkLabel}
+          <ArrowIcon />
+        </Link>
       </div>
-
-      <div className="relative mt-8 flex flex-1 flex-col">
-        <h3 className="flex flex-wrap gap-x-[0.3em] text-lg font-semibold leading-[1.35] tracking-tight sm:text-xl">
-          {titleWords.map((word, wordIndex) => (
-            <RollingText
-              key={`${word}-${wordIndex}`}
-              slotHeight="1.35em"
-              staggerMs={wordIndex * 28}
-              top={<span className="text-white">{word}</span>}
-              bottom={<span className="text-white/80">{word}</span>}
-            />
-          ))}
-        </h3>
-
-        <p className="mt-4 flex-1 text-sm leading-[1.7] text-white/55 sm:text-[15px]">
-          {item.description}
-        </p>
-      </div>
-
-      <Link
-        href={item.href}
-        className="relative mt-8 inline-flex items-center gap-2 text-[13px] font-medium text-white/90 transition duration-300 hover:text-white"
-      >
-        {item.linkLabel}
-        <ArrowIcon />
-      </Link>
     </article>
   );
 }
@@ -212,4 +205,3 @@ function ArrowIcon() {
     </svg>
   );
 }
-

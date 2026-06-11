@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { dt } from "@/components/design-test/design-test-theme";
+import "./services-grid-glass.css";
 import {
   CartIcon,
   CloudIcon,
@@ -88,7 +89,7 @@ export function ServicesGrid({
 
   return (
     <section
-      className={`scroll-mt-24 py-14 sm:py-16 lg:py-20 ${glass ? `bg-transparent ${dt.sectionBorder}` : "bg-white"} ${className}`}
+      className={`scroll-mt-24 ${glass ? dt.section : "py-14 sm:py-16 lg:py-20"} ${glass ? `bg-transparent ${dt.sectionBorder}` : "bg-white"} ${className}`}
       aria-labelledby="services-grid-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -116,55 +117,42 @@ export function ServicesGrid({
         <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
           {items.map((item, index) => (
             <li key={item.title} className="flex min-w-0">
-              <Link
-                href={item.href}
-                className="service-card-snake group/card block w-full overflow-visible rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-orange-400/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
-              >
-                <div
-                  className={`relative flex w-full flex-col rounded-2xl p-6 transition-[transform,box-shadow,border-color,background-color] duration-200 ease-out group-hover/card:-translate-y-1.5 group-focus-within/card:-translate-y-1.5 motion-reduce:transition-none motion-reduce:group-hover/card:translate-y-0 sm:p-7 ${
-                    glass
-                      ? dt.glassCard
-                      : "border border-slate-200/90 bg-white shadow-sm ring-1 ring-slate-900/[0.03] hover:border-slate-200/60 hover:shadow-[0_14px_28px_-10px_rgba(56,189,248,0.18)] dark:border-slate-700 dark:bg-slate-900 dark:ring-slate-800"
-                  }`}
+              {glass ? (
+                <Link
+                  href={item.href}
+                  className="service-flip-card group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F0F0F]"
                 >
-                {glass ? <ServiceCardSnakeBorder id={`svc-snake-${index}`} /> : null}
-                <div className="relative z-10 flex flex-col">
-                <div
-                  className={
-                    glass
-                      ? dt.iconBoxCard
-                      : "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-50 to-sky-100/80 text-sky-700 ring-1 ring-sky-200/60 [&_svg]:h-6 [&_svg]:w-6"
-                  }
+                  <div className="service-flip-inner">
+                    <div className="service-flip-face service-flip-front">
+                      <ServiceCardContent item={item} glass />
+                    </div>
+                    <div className="service-flip-face service-flip-back">
+                      <div className={dt.iconBoxCard}>
+                        <item.icon />
+                      </div>
+                      <h3 className={`mt-5 text-lg font-semibold tracking-tight ${dt.heading}`}>
+                        {item.title}
+                      </h3>
+                      <span className={`mt-6 inline-flex items-center gap-1.5 text-sm font-semibold ${dt.link}`}>
+                        Learn more
+                        <span aria-hidden>→</span>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="service-card-snake group/card block w-full overflow-visible rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
                 >
-                  <item.icon />
-                </div>
-                <h3
-                  className={`mt-5 text-lg font-semibold tracking-tight ${
-                    glass ? `text-white ${dt.glassLink}` : "text-[#1B224B] group-hover/card:text-sky-300 group-focus-within/card:text-sky-300 dark:text-white"
-                  }`}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className={`mt-2 flex-1 text-sm leading-relaxed ${
-                    glass ? dt.glassSubtext : "text-slate-600 dark:text-slate-400"
-                  }`}
-                >
-                  {item.description}
-                </p>
-                <span
-                  className={`mt-5 inline-flex items-center gap-1 text-sm font-semibold ${
-                    glass ? dt.glassLink : "text-sky-700"
-                  }`}
-                >
-                  Learn more
-                  <span aria-hidden className="transition-transform group-hover/card:translate-x-0.5 group-focus-within/card:translate-x-0.5">
-                    →
-                  </span>
-                </span>
-                </div>
-                </div>
-              </Link>
+                  <div className="relative flex w-full flex-col rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm ring-1 ring-slate-900/[0.03] transition-[transform,box-shadow,border-color] duration-200 ease-out group-hover/card:-translate-y-1.5 group-focus-within/card:-translate-y-1.5 hover:border-slate-200/60 hover:shadow-[0_14px_28px_-10px_rgba(56,189,248,0.18)] motion-reduce:transition-none motion-reduce:group-hover/card:translate-y-0 dark:border-slate-700 dark:bg-slate-900 dark:ring-slate-800 sm:p-7">
+                    <ServiceCardSnakeBorder id={`svc-snake-${index}`} />
+                    <div className="relative z-10">
+                      <ServiceCardContent item={item} glass={false} />
+                    </div>
+                  </div>
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -173,7 +161,41 @@ export function ServicesGrid({
   );
 }
 
-/** Thin snake segment tracing the outer card edge on hover. */
+function ServiceCardContent({ item, glass }: { item: ServiceItem; glass: boolean }) {
+  return (
+    <>
+      <div
+        className={
+          glass
+            ? dt.iconBoxCard
+            : "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-50 to-sky-100/80 text-sky-700 ring-1 ring-sky-200/60 [&_svg]:h-6 [&_svg]:w-6"
+        }
+      >
+        <item.icon />
+      </div>
+      <h3
+        className={`mt-5 text-lg font-semibold tracking-tight ${
+          glass ? dt.heading : "text-[#1B224B] group-hover/card:text-sky-300 group-focus-within/card:text-sky-300 dark:text-white"
+        }`}
+      >
+        {item.title}
+      </h3>
+      <p className={`mt-2 flex-1 text-sm leading-relaxed ${glass ? dt.glassSubtext : "text-slate-600 dark:text-slate-400"}`}>
+        {item.description}
+      </p>
+      {!glass ? (
+        <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-sky-700">
+          Learn more
+          <span aria-hidden className="transition-transform group-hover/card:translate-x-0.5 group-focus-within/card:translate-x-0.5">
+            →
+          </span>
+        </span>
+      ) : null}
+    </>
+  );
+}
+
+/** Thin snake segment tracing the outer card edge on hover (light surface only). */
 function ServiceCardSnakeBorder({ id }: { id: string }) {
   return (
     <svg

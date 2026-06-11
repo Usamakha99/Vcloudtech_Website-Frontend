@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt, dtCta } from "@/components/design-test/design-test-theme";
 import { CartIcon } from "@/components/icons/section-icons";
 
 const capabilities = [
@@ -16,7 +16,7 @@ export function ProcurementEngineSection() {
   return (
     <section
       id="procurement-engine"
-      className={`scroll-mt-24 py-14 sm:py-16 ${dt.sectionBorder}`}
+      className={`scroll-mt-24 ${dt.section} ${dt.sectionBorder}`}
       aria-labelledby="procurement-engine-heading"
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -36,7 +36,7 @@ export function ProcurementEngineSection() {
 
         <div className={`relative mt-8 overflow-hidden sm:mt-10 ${dt.socialProofPanel}`}>
           <span
-            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-orange-500/12 blur-3xl"
+            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#E55614]/12 blur-3xl"
             aria-hidden
           />
           <span className={dt.cardTopLine} aria-hidden />
@@ -60,7 +60,7 @@ export function ProcurementEngineSection() {
             <div className="min-w-0 lg:col-span-3">
               <ProcurementSearchMock />
 
-              <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/75">
+              <p className={`mt-5 ${dt.metaLabel}`}>
                 Platform capabilities
               </p>
               <ul className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
@@ -74,10 +74,10 @@ export function ProcurementEngineSection() {
                 ))}
               </ul>
 
-              <div className="mt-7 flex justify-center border-t border-orange-500/10 pt-6 sm:pt-7 lg:justify-start">
+              <div className="mt-7 flex justify-center border-t border-white/10 pt-6 sm:pt-7 lg:justify-start">
                 <Link
                   href="/procurement"
-                  className="inline-flex h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full border border-orange-400/40 bg-orange-500/15 px-6 text-sm font-semibold text-white shadow-[0_8px_24px_-10px_rgba(249,115,22,0.35)] transition duration-300 hover:border-orange-400/55 hover:bg-orange-500/25 sm:w-auto sm:max-w-none sm:px-8"
+                  className={`inline-flex h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold text-white shadow-sm transition duration-300 sm:w-auto sm:max-w-none sm:px-8 ${dtCta.bg} ${dtCta.bgHover}`}
                 >
                   Start procurement
                   <span aria-hidden>→</span>
@@ -93,15 +93,12 @@ export function ProcurementEngineSection() {
 
 function ProcurementSearchMock() {
   return (
-    <div className="rounded-2xl border border-orange-500/15 bg-black/45 p-4 ring-1 ring-orange-400/10 sm:p-5">
-      <div
-        className="flex items-center gap-3 rounded-xl border border-orange-500/20 bg-black/55 px-4 py-3 ring-1 ring-orange-400/8"
-        aria-hidden
-      >
+    <div className={dt.procurementMock}>
+      <div className={dt.procurementSearch} aria-hidden>
         <SearchIcon />
-        <span className="truncate text-sm text-white/40">Search products, brands, or categories…</span>
+        <span className="truncate text-sm text-[#A1A1AA]">Search products, brands, or categories…</span>
       </div>
-      <p className="mt-3 text-[11px] leading-relaxed text-white/45">
+      <p className={`mt-3 text-[11px] leading-relaxed ${dt.body}`}>
         Demo preview — live search connects to your procurement catalog on the platform.
       </p>
     </div>
@@ -110,13 +107,13 @@ function ProcurementSearchMock() {
 
 function CapabilityChip({ item }: { item: (typeof capabilities)[number] }) {
   return (
-    <div className="flex h-full items-start gap-3 rounded-xl border border-orange-500/12 bg-black/35 px-3.5 py-3 ring-1 ring-orange-400/8 sm:px-4 sm:py-3.5">
-      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-sm bg-orange-400/90" aria-hidden />
+    <div className={dt.procurementChip}>
+      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-sm bg-[#E55614]" aria-hidden />
       <div className="min-w-0">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-white/80 sm:text-xs">
+        <p className={`text-[11px] font-semibold uppercase tracking-[0.08em] sm:text-xs ${dt.heading}`}>
           {item.label}
         </p>
-        <p className="mt-1 text-[11px] leading-relaxed text-white/45">{item.detail}</p>
+        <p className={`mt-1 text-[11px] leading-relaxed ${dt.body}`}>{item.detail}</p>
       </div>
     </div>
   );
@@ -129,7 +126,7 @@ function SearchIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
-      className="h-4 w-4 shrink-0 text-white/70"
+      className="h-4 w-4 shrink-0 text-[#A1A1AA]"
       aria-hidden
     >
       <circle cx="11" cy="11" r="7" />

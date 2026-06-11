@@ -67,7 +67,7 @@ export function DesignTestGlobalNavbar({
           {showLabExit ? (
             <Link
               href={labExitHref}
-              className="hidden text-[11px] font-medium uppercase tracking-[0.12em] text-white/40 transition hover:text-white/80 md:inline"
+              className="hidden text-[11px] font-medium uppercase tracking-[0.12em] text-[#A1A1AA] transition hover:text-white md:inline"
             >
               {labExitLabel}
             </Link>

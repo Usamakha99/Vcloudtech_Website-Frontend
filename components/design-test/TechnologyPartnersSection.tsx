@@ -37,7 +37,7 @@ export function TechnologyPartnersSection() {
   return (
     <section
       id="partners"
-      className={`relative z-10 scroll-mt-14 py-16 sm:py-20 ${dt.sectionBorder}`}
+      className={`relative z-10 ${dt.section} ${dt.sectionBorder}`}
       aria-labelledby="tech-partners-heading"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

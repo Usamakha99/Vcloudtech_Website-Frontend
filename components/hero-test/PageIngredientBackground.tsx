@@ -1,6 +1,11 @@
 import "./page-ingredient-background.css";
 
-/** Solid black full-page background. */
+/** Page background #0F0F0F with primary orange glow. */
 export function PageIngredientBackground() {
-  return <div className="page-ingredient-root" aria-hidden />;
+  return (
+    <div className="page-ingredient-root" aria-hidden>
+      <div className="page-ingredient-base" />
+      <div className="page-ingredient-mesh" />
+    </div>
+  );
 }

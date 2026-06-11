@@ -17,8 +17,8 @@ export function MinimalTestHero({
 }: Props) {
   return (
     <section
-      className={`relative flex min-h-[min(100svh,640px)] items-center overflow-hidden sm:min-h-[min(100vh,720px)] ${
-        fullPageGradient ? "pb-16 sm:pb-28" : ""
+      className={`relative flex min-h-[min(100svh,640px)] items-center overflow-hidden sm:min-h-[min(100vh,720px)] lg:min-h-svh ${
+        fullPageGradient ? "pb-0" : ""
       } ${
         fullPageGradient ? "bg-transparent" : "hero-test-gradient"
       } ${offsetForFixedHeader ? "pt-[4.25rem]" : ""}`}
@@ -32,7 +32,7 @@ export function MinimalTestHero({
       ) : null}
 
       <div className="relative mx-auto w-full max-w-3xl px-4 py-12 text-center sm:px-8 sm:py-20">
-        <p className="hero-test-fade-in text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90">
+        <p className="hero-test-fade-in text-[11px] font-semibold uppercase tracking-[0.22em] text-[#A1A1AA]">
           Test preview
         </p>
 
@@ -43,8 +43,8 @@ export function MinimalTestHero({
           Minimal hero with motion
         </h1>
 
-        <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-5 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
-          Black and warm orange canvas — minimal motion across the full design-test page.
+        <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-5 max-w-lg text-base leading-relaxed text-[#A1A1AA] sm:text-lg">
+          Dark canvas with #E55614 accents — minimal motion across the design-test page.
         </p>
 
         <div className="hero-test-fade-in hero-test-fade-in-delay-3 mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -56,9 +56,9 @@ export function MinimalTestHero({
           </ButtonLink>
         </div>
 
-        <p className="hero-test-fade-in hero-test-fade-in-delay-3 mt-12 text-xs text-white/50">
+        <p className="hero-test-fade-in hero-test-fade-in-delay-3 mt-12 text-xs text-[#A1A1AA]/70">
           Route:{" "}
-          <Link href="/design-test" className="font-mono text-white/90 hover:text-white">
+          <Link href="/design-test" className="font-mono text-[#A1A1AA] hover:text-white">
             /design-test
           </Link>
         </p>

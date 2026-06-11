@@ -13,8 +13,8 @@ export function DesignTestCta({ surface = "gradient" }: Props) {
   return (
     <section
       id="cta"
-      className={`scroll-mt-24 py-14 sm:py-16 ${
-        glass ? "bg-transparent" : "bg-gradient-to-br from-black via-[#1a0f08] to-orange-700"
+      className={`scroll-mt-24 ${dt.section} ${
+        glass ? "bg-transparent" : "bg-[#0F0F0F]"
       }`}
       aria-labelledby="design-test-cta-heading"
     >

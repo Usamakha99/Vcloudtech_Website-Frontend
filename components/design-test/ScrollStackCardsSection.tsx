@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt, dtProgress } from "@/components/design-test/design-test-theme";
 import {
   CartIcon,
   CloudIcon,
@@ -83,7 +83,7 @@ export function ScrollStackCardsSection() {
   return (
     <section
       id="scroll-stack"
-      className={`relative z-10 scroll-mt-14 py-14 sm:py-16 ${dt.sectionBorder}`}
+      className={`relative z-10 ${dt.section} ${dt.sectionBorder}`}
       aria-labelledby="scroll-stack-heading"
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -144,11 +144,11 @@ function StackCard({
 
   return (
     <article
-      className="group/stack relative overflow-hidden rounded-2xl border border-orange-500/20 bg-black/80 ring-1 ring-orange-400/10 backdrop-blur-xl transition-[border-color,box-shadow] duration-300 hover:border-orange-400/30 sm:rounded-3xl"
+      className={dt.stackCardArticle}
       style={{ boxShadow: shadow, minHeight: "13.5rem" }}
     >
       <span
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-400/50 to-transparent"
+        className={dt.cardTopLine}
         aria-hidden
       />
 
@@ -167,18 +167,18 @@ function StackCard({
                 slotHeight="1.3em"
                 staggerMs={wordIndex * 28}
                 top={<span className="text-white">{word}</span>}
-                bottom={<span className="text-white/80">{word}</span>}
+                bottom={<span className="text-[#A1A1AA]">{word}</span>}
               />
             ))}
           </h3>
 
           <p className={`mt-4 max-w-md text-sm leading-[1.75] sm:text-[15px] ${dt.body}`}>{card.description}</p>
 
-          <ul className="mt-5 grid grid-cols-1 gap-y-2 border-t border-orange-500/10 pt-4 sm:mt-6 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-2.5 sm:pt-5">
+          <ul className="mt-5 grid grid-cols-1 gap-y-2 border-t border-white/10 pt-4 sm:mt-6 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-2.5 sm:pt-5">
             {card.points.map((point) => (
               <li key={point} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-orange-400/90" aria-hidden />
-                <span className="font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-white/45 sm:text-[11px]">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-[#E55614]" aria-hidden />
+                <span className={`font-mono text-[10px] font-medium uppercase tracking-[0.12em] sm:text-[11px] ${dt.stackMeta}`}>
                   {point}
                 </span>
               </li>
@@ -187,9 +187,9 @@ function StackCard({
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-orange-950/40" aria-hidden>
+      <div className={`pointer-events-none absolute inset-x-0 bottom-0 h-1 ${dtProgress.track}`} aria-hidden>
         <span
-          className="block h-full bg-gradient-to-r from-orange-600/80 to-orange-400/40"
+          className={`block h-full ${dtProgress.fill}`}
           style={{ width: `${((index + 1) / cards.length) * 100}%` }}
         />
       </div>
@@ -200,14 +200,14 @@ function StackCard({
 /** Blueprint-style visual panel — orbital rings + relevant icon. */
 function StackCardVisual({ icon: Icon, tag }: { icon: SectionIcon; tag: string }) {
   return (
-    <div className="relative flex min-h-[9.5rem] items-center justify-center overflow-hidden border-b border-orange-500/10 bg-gradient-to-br from-black via-black to-orange-950/40 sm:min-h-[11rem] lg:min-h-[15rem] lg:border-b-0 lg:border-r lg:border-orange-500/10">
+    <div className={dt.stackCardVisual}>
       <span
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,115,22,0.12)_0%,transparent_65%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(229,86,20,0.12)_0%,transparent_65%)]"
         aria-hidden
       />
 
       <svg
-        className="absolute inset-0 h-full w-full text-white/20"
+        className="absolute inset-0 h-full w-full text-[#A1A1AA]/30"
         viewBox="0 0 400 320"
         fill="none"
         aria-hidden
@@ -224,11 +224,11 @@ function StackCardVisual({ icon: Icon, tag }: { icon: SectionIcon; tag: string }
       <div className="relative flex flex-col items-center">
         <div className="relative flex h-20 w-20 items-center justify-center sm:h-24 sm:w-24">
           <span
-            className="absolute inset-0 rounded-full bg-orange-500/20 blur-xl transition-opacity duration-500 group-hover/stack:bg-orange-500/30"
+            className="absolute inset-0 rounded-full bg-[#E55614]/20 blur-xl transition-opacity duration-500 group-hover/stack:bg-[#E55614]/30"
             aria-hidden
           />
           <div
-            className="relative flex h-full w-full items-center justify-center rounded-2xl border border-orange-400/25 bg-orange-500/10 text-white shadow-[0_0_40px_rgba(249,115,22,0.2)] ring-1 ring-orange-400/20 [&_svg]:h-9 [&_svg]:w-9 sm:[&_svg]:h-10 sm:[&_svg]:w-10"
+            className="relative flex h-full w-full items-center justify-center rounded-2xl border border-[#E55614]/30 bg-[#E55614]/10 text-[#E55614] shadow-[0_0_40px_rgba(229,86,20,0.2)] ring-1 ring-[#E55614]/20 [&_svg]:h-9 [&_svg]:w-9 sm:[&_svg]:h-10 sm:[&_svg]:w-10"
             style={{
               clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
             }}
@@ -238,7 +238,7 @@ function StackCardVisual({ icon: Icon, tag }: { icon: SectionIcon; tag: string }
             </span>
           </div>
         </div>
-        <span className="mt-4 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
+        <span className={`mt-4 font-mono text-[10px] font-medium uppercase tracking-[0.2em] ${dt.stackMeta}`}>
           {tag}
         </span>
       </div>

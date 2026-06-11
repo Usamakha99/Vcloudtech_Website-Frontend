@@ -43,7 +43,7 @@ export function FeaturesGrid({ surface = "light" }: { surface?: "light" | "glass
   return (
     <section
       id="features"
-      className={`scroll-mt-24 py-14 sm:py-16 ${
+      className={`scroll-mt-24 ${dt.section} ${
         glass
           ? `border-t bg-transparent ${dt.sectionBorder}`
           : "border-t border-slate-200/80 bg-slate-50/80 dark:border-slate-800 dark:bg-slate-900/50"
