@@ -18,13 +18,14 @@ import "./platform-ecosystem.css";
 const ecosystemNodes = [
   {
     id: "hardware",
-    title: "IT Hardware Marketplace",
-    detail: "Enterprise-grade hardware, electronics, and technology products in one commerce layer.",
+    title: "IT Hardware & Procurement",
+    detail:
+      "Source laptops, servers, networking, and electronics — request quotes and buy through our enterprise marketplace.",
     href: "/procurement",
     x: 50,
     y: 11,
     icon: CartIcon,
-    tag: "Marketplace",
+    tag: "Procurement",
   },
   {
     id: "ai",
@@ -79,9 +80,9 @@ const ecosystemNodes = [
 ] as const;
 
 const activityFeed = [
+  { tag: "Procurement", event: "Enterprise quote request — 120-unit laptop rollout" },
   { tag: "AI", event: "New AI agent listed — document intelligence suite" },
   { tag: "Cloud", event: "Migration assessment scheduled for enterprise tenant" },
-  { tag: "Hardware", event: "Laptop & workstation bundle added to marketplace" },
   { tag: "Security", event: "Posture review completed — compliance report ready" },
 ] as const;
 
@@ -145,10 +146,31 @@ export function ProcurementEngineSection() {
             </span>
           </h2>
           <p className={`mt-5 max-w-2xl text-base leading-relaxed sm:text-lg ${dt.headingSub}`}>
-            V Cloud Tech unifies intelligent commerce and expert services — helping enterprises
-            acquire technology, discover AI solutions, and transform operations from a single
-            ecosystem.
+            V Cloud Tech is a unified technology platform — procurement and marketplaces to source
+            IT hardware and AI solutions, plus expert services to deploy, secure, and run your
+            stack. One partner for buying, building, and operating enterprise technology.
           </p>
+
+          <ul className={`mt-6 grid max-w-2xl gap-2.5 sm:grid-cols-3 sm:gap-3 ${dt.body}`}>
+            <li className="rounded-xl border border-white/10 bg-[#1A1A1A]/60 px-3.5 py-3 text-xs leading-relaxed sm:text-[13px]">
+              <span className="font-semibold text-white">Procure</span>
+              <span className="mt-1 block text-[#A1A1AA]">
+                Hardware marketplace, quotes, and IT sourcing
+              </span>
+            </li>
+            <li className="rounded-xl border border-white/10 bg-[#1A1A1A]/60 px-3.5 py-3 text-xs leading-relaxed sm:text-[13px]">
+              <span className="font-semibold text-white">Discover</span>
+              <span className="mt-1 block text-[#A1A1AA]">
+                AI agents and solutions marketplace
+              </span>
+            </li>
+            <li className="rounded-xl border border-white/10 bg-[#1A1A1A]/60 px-3.5 py-3 text-xs leading-relaxed sm:text-[13px]">
+              <span className="font-semibold text-white">Operate</span>
+              <span className="mt-1 block text-[#A1A1AA]">
+                Cloud, security, DevOps, and managed IT
+              </span>
+            </li>
+          </ul>
         </motion.header>
 
         <motion.div
@@ -168,7 +190,7 @@ export function ProcurementEngineSection() {
 
                 <div className="vc-ecosystem__hub">
                   <span className="vc-ecosystem__hub-brand">V Cloud Tech</span>
-                  <p className="vc-ecosystem__hub-title">Unified Technology Ecosystem</p>
+                  <p className="vc-ecosystem__hub-title">Procurement · Marketplaces · Services</p>
                 </div>
 
                 <div className="vc-ecosystem__nodes">
@@ -195,11 +217,13 @@ export function ProcurementEngineSection() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          <span className="vc-ecosystem__vision-badge">Coming soon</span>
+          <span className="vc-ecosystem__vision-badge">Roadmap</span>
           <p className={`text-sm leading-relaxed ${dt.body}`}>
-            <span className="font-medium text-white">Unified procurement orchestration</span> — an
-            integrated workflow layer connecting marketplaces, approvals, and vendor operations.
-            Currently in development as part of our platform roadmap.
+            <span className="font-medium text-white">Today:</span> procurement through our hardware
+            marketplace and sourcing team — quotes, catalog search, and enterprise IT buying.{" "}
+            <span className="font-medium text-white">Coming soon:</span> a unified procurement
+            engine with automated approvals, vendor workflows, and spend analytics across the
+            platform.
           </p>
         </motion.div>
 
@@ -210,15 +234,18 @@ export function ProcurementEngineSection() {
           transition={{ duration: 0.5, delay: 0.45 }}
         >
           <Link
-            href="/solutions"
+            href="/procurement"
             className={`inline-flex h-12 items-center justify-center gap-2 rounded-full px-8 text-sm font-semibold text-white shadow-lg shadow-[#E55614]/20 transition duration-300 ${dtCta.bg} ${dtCta.bgHover}`}
           >
-            Explore the ecosystem
+            Start procurement
             <span aria-hidden>→</span>
           </Link>
-          <p className={`text-center text-xs sm:text-left ${dt.statLabel}`}>
-            Intelligent commerce · Expert services · Enterprise scale
-          </p>
+          <Link
+            href="/solutions"
+            className={`inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white transition duration-300 hover:border-[#E55614]/40 hover:bg-[#E55614]/10`}
+          >
+            Explore services
+          </Link>
         </motion.div>
       </div>
     </section>
