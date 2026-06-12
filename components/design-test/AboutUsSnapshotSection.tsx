@@ -1,7 +1,7 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { dt } from "@/components/design-test/design-test-theme";
-import { GlassCard } from "@/components/design-test/GlassCard";
 import { OrgMetricsRail } from "@/components/design-test/OrgMetricsRail";
 import {
   EducationIcon,
@@ -13,7 +13,7 @@ import {
 } from "@/components/icons/section-icons";
 
 import "./about-us-section.css";
-
+import "./why-vcloud-cards.css";
 const sectors: {
   name: string;
   detail: string;
@@ -45,6 +45,9 @@ const sectors: {
     icon: PublicSectorIcon,
   },
 ];
+
+const industryStackZ = ["z-10", "z-20", "z-30", "z-40", "z-50"] as const;
+
 const credentials = [
   { acronym: "MBE", label: "Minority-owned business enterprise" },
   { acronym: "SBE", label: "Small business enterprise" },
@@ -155,33 +158,43 @@ export function AboutUsSnapshotSection() {
 function SectorsRowSection() {
   return (
     <div className="about-enterprise__sectors-row about-enterprise__reveal about-enterprise__reveal--5 mt-10 sm:mt-12">
-      <span className="about-enterprise__sectors-glow" aria-hidden />
-      <span className="about-enterprise__sectors-scan" aria-hidden />
-
       <header className="about-enterprise__sectors-header">
         <div>
           <p className={dt.metaLabel}>Industries we serve</p>
-         
         </div>
         <span className="about-enterprise__sectors-count" aria-hidden>
           {String(sectors.length).padStart(2, "0")}
         </span>
       </header>
 
-      <ul className="about-enterprise__sectors-tiles grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-5">
-        {sectors.map((sector, index) => (
-          <li key={sector.name} className="h-full">
-            <GlassCard delay={(index + 1) as 1 | 2 | 3 | 4 | 5} className="group h-full">
-              <IndustryGlassCard sector={sector} index={index} />
-            </GlassCard>
-          </li>
-        ))}
-      </ul>
+      <div className="mt-8 sm:mt-10">
+        <ul className="hidden justify-center overflow-visible lg:flex">
+          {sectors.map((sector, index) => (
+            <li
+              key={sector.name}
+              className={`group relative shrink-0 transition-transform duration-300 hover:z-50 focus-within:z-50 ${industryStackZ[index] ?? industryStackZ[0]} ${index === 0 ? "ml-0" : "-ml-10 xl:-ml-12"}`}
+            >
+              <IndustryStrengthCard sector={sector} index={index} />
+            </li>
+          ))}
+        </ul>
+
+        <ul className="flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-visible pb-4 pl-1 pr-4 [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
+          {sectors.map((sector, index) => (
+            <li
+              key={sector.name}
+              className={`group relative w-[min(85vw,300px)] shrink-0 snap-center transition-transform duration-300 hover:z-50 focus-within:z-50 sm:w-[320px] ${industryStackZ[index] ?? industryStackZ[0]} ${index === 0 ? "ml-0" : "-ml-7 sm:-ml-8"}`}
+            >
+              <IndustryStrengthCard sector={sector} index={index} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
 
-function IndustryGlassCard({
+function IndustryStrengthCard({
   sector,
   index,
 }: {
@@ -189,31 +202,95 @@ function IndustryGlassCard({
   index: number;
 }) {
   const Icon = sector.icon;
+  const number = String(index + 1).padStart(2, "0");
+  const titleWords = sector.name.split(" ");
 
   return (
-    <div className="about-enterprise__industry-card flex h-full min-h-[15.5rem] flex-col p-5 sm:min-h-[16.5rem] sm:p-6">
-      <div className="flex items-start justify-between gap-3">
-        <div className={dt.iconBoxCard}>
-          <Icon />
+    <article
+      className={`group/card relative flex h-full min-h-[20rem] w-full flex-col sm:min-h-[21rem] lg:w-[15.5rem] xl:w-[17rem] ${dt.whyCard} ${dt.whyCardHover}`}
+    >
+      <span className="why-card-gradient" aria-hidden />
+
+      <div className="why-card-inner about-enterprise__industry-card-inner flex flex-col px-6 py-7 sm:px-7 sm:py-8">
+        <div className="relative flex items-start justify-between gap-4">
+          <div className={dt.iconBoxCard}>
+            <Icon />
+          </div>
+          <span className={dt.number}>{number}</span>
         </div>
-        <span className={dt.number}>{String(index + 1).padStart(2, "0")}</span>
+
+        <div className="relative mt-7 flex flex-1 flex-col">
+          <h3 className="flex flex-wrap gap-x-[0.3em] text-base font-semibold leading-[1.35] tracking-tight sm:text-lg">
+            {titleWords.map((word, wordIndex) => (
+              <RollingText
+                key={`${word}-${wordIndex}`}
+                slotHeight="1.35em"
+                staggerMs={wordIndex * 28}
+                top={<span className={dt.heading}>{word}</span>}
+                bottom={<span className={dt.headingSub}>{word}</span>}
+              />
+            ))}
+          </h3>
+
+          <p className={`mt-3.5 flex-1 text-sm leading-[1.7] sm:text-[15px] ${dt.body}`}>
+            {sector.detail}
+          </p>
+        </div>
+
+        <Link
+          href="/services"
+          className={`relative mt-7 inline-flex items-center gap-2 text-[13px] font-medium ${dt.link}`}
+        >
+          Explore solutions
+          <IndustryArrowIcon />
+        </Link>
       </div>
+    </article>
+  );
+}
 
-      <h4 className="mt-5 text-base font-semibold leading-snug text-white sm:text-lg">
-        {sector.name}
-      </h4>
-      <p className={`mt-2.5 flex-1 text-sm leading-relaxed ${dt.body}`}>{sector.detail}</p>
+type RollingTextProps = {
+  top: ReactNode;
+  bottom: ReactNode;
+  slotHeight: string;
+  className?: string;
+  staggerMs?: number;
+};
 
-      <Link
-        href="/services"
-        className="about-enterprise__industry-cta mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-white transition-colors hover:text-[#E55614]"
+function RollingText({ top, bottom, slotHeight, className = "", staggerMs = 0 }: RollingTextProps) {
+  return (
+    <span className={`inline-block overflow-hidden align-top ${className}`} style={{ height: slotHeight }}>
+      <span
+        className="block transition-transform duration-[0.32s] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover/card:-translate-y-1/2 group-focus-within/card:-translate-y-1/2 motion-reduce:transform-none"
+        style={{ transitionDelay: `${staggerMs}ms` }}
       >
-        Explore solutions
-        <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-          →
+        <span className="block" style={{ minHeight: slotHeight }}>
+          {top}
         </span>
-      </Link>
-    </div>
+        <span className="block" style={{ minHeight: slotHeight }}>
+          {bottom}
+        </span>
+      </span>
+    </span>
+  );
+}
+
+function IndustryArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      className="h-3.5 w-3.5 transition-transform duration-300 group-hover/card:translate-x-1"
+      aria-hidden
+    >
+      <path
+        d="M3 8h10M9 4l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 

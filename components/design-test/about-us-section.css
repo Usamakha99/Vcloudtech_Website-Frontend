@@ -396,24 +396,20 @@
   border-color: rgba(229, 86, 20, 0.25);
 }
 
-/* Sectors row — full-width panel + 3-card glass tile grid */
+/* Sectors row — Why vCloud-style transparent overlapping cards */
 
 .about-enterprise__sectors-row {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(160deg, rgba(15, 15, 15, 0.92) 0%, rgba(26, 26, 26, 0.75) 100%);
-  padding: 1.25rem 1.25rem 1.35rem;
-  transition:
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+  overflow: visible;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-.about-enterprise__sectors-row:hover {
-  border-color: rgba(229, 86, 20, 0.28);
-  box-shadow: 0 16px 40px -24px rgba(229, 86, 20, 0.2);
+.about-enterprise__industry-card-inner {
+  background: rgba(26, 26, 26, 0.42);
 }
 
 .about-enterprise__sectors-tiles {
@@ -499,11 +495,9 @@
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Sector tile — glass card content (3-up row + centered pair) */

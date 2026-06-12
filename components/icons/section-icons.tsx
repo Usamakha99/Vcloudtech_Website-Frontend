@@ -152,8 +152,13 @@ export function EducationIcon(props: IconProps) {
 export function HealthcareIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
-      <path d="M12 5v14M5 12h14" strokeLinecap="round" />
-      <path d="M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" strokeLinejoin="round" />
+      <path d="M7.5 4h2v5.5" strokeLinecap="round" />
+      <path d="M14.5 4h2v5.5" strokeLinecap="round" />
+      <path d="M9.5 9.5h5" strokeLinecap="round" />
+      <path d="M12 9.5V13.5" strokeLinecap="round" />
+      <path d="M12 13.5v1.8a2.7 2.7 0 003.8 2.5" strokeLinecap="round" />
+      <circle cx="18.5" cy="18.5" r="2.25" />
+      <path d="M16.25 18.5H12" strokeLinecap="round" />
     </svg>
   );
 }
