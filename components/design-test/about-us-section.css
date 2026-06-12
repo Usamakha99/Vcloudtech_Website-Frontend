@@ -1,0 +1,373 @@
+/* About — enterprise editorial bento */
+
+.about-enterprise {
+  position: relative;
+  isolation: isolate;
+}
+
+.about-enterprise__grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+}
+
+.about-enterprise__glow {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+.about-enterprise__glow--primary {
+  top: -4rem;
+  left: -6rem;
+  width: 22rem;
+  height: 22rem;
+  background: rgba(229, 86, 20, 0.14);
+}
+
+.about-enterprise__glow--secondary {
+  right: -4rem;
+  bottom: 10%;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(229, 86, 20, 0.08);
+}
+
+.about-enterprise__headline {
+  margin-top: 1.25rem;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.about-enterprise__reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: about-reveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.about-enterprise__reveal--1 {
+  animation-delay: 0.05s;
+}
+.about-enterprise__reveal--2 {
+  animation-delay: 0.12s;
+}
+.about-enterprise__reveal--3 {
+  animation-delay: 0.2s;
+}
+.about-enterprise__reveal--4 {
+  animation-delay: 0.28s;
+}
+.about-enterprise__reveal--5 {
+  animation-delay: 0.36s;
+}
+
+@keyframes about-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-enterprise__stat-rail {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(26, 26, 26, 0.65);
+  backdrop-filter: blur(12px);
+}
+
+.about-enterprise__stat {
+  position: relative;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition:
+    background-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.about-enterprise__stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  bottom: 1rem;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.about-enterprise__stat:hover {
+  background: rgba(229, 86, 20, 0.08);
+}
+
+.about-enterprise__stat-value {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.about-enterprise__stat:hover .about-enterprise__stat-value {
+  color: #e55614;
+}
+
+.about-enterprise__manifesto {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.88) 100%);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.about-enterprise__manifesto:hover {
+  border-color: rgba(229, 86, 20, 0.3);
+  box-shadow: 0 24px 48px -24px rgba(229, 86, 20, 0.18);
+}
+
+.about-enterprise__manifesto-accent {
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #e55614, rgba(229, 86, 20, 0.2));
+}
+
+.about-enterprise__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 14rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: radial-gradient(ellipse at 50% 120%, rgba(229, 86, 20, 0.12), transparent 55%),
+    rgba(15, 15, 15, 0.9);
+}
+
+.about-enterprise__orbit {
+  animation: about-orbit-spin 48s linear infinite;
+  transform-origin: center;
+}
+
+.about-enterprise__orbit--reverse {
+  animation-direction: reverse;
+  animation-duration: 36s;
+}
+
+.about-enterprise__node {
+  animation: about-node-pulse 3s ease-in-out infinite;
+}
+
+.about-enterprise__node--delay-1 {
+  animation-delay: 0.6s;
+}
+.about-enterprise__node--delay-2 {
+  animation-delay: 1.2s;
+}
+.about-enterprise__node--delay-3 {
+  animation-delay: 1.8s;
+}
+
+@keyframes about-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes about-node-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.about-enterprise__reach {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(26, 26, 26, 0.55);
+  padding: 1.25rem;
+  transition: border-color 0.35s ease;
+}
+
+.about-enterprise__reach:hover {
+  border-color: rgba(229, 86, 20, 0.25);
+}
+
+.about-enterprise__sector {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 15, 15, 0.6);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-enterprise__sector:hover {
+  border-color: rgba(229, 86, 20, 0.45);
+  background: rgba(229, 86, 20, 0.1);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.about-enterprise__principle {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.about-enterprise__principle:hover {
+  transform: translateY(-6px);
+  border-color: rgba(229, 86, 20, 0.35);
+  box-shadow: 0 28px 56px -28px rgba(229, 86, 20, 0.22);
+}
+
+.about-enterprise__principle-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    130deg,
+    rgba(229, 86, 20, 0.14) 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(229, 86, 20, 0.1) 100%
+  );
+  background-size: 220% 220%;
+  animation: about-principle-shimmer 10s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.about-enterprise__principle:hover .about-enterprise__principle-gradient {
+  opacity: 1;
+}
+
+.about-enterprise__principle-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  border-radius: inherit;
+  background: rgba(26, 26, 26, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+@keyframes about-principle-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.about-enterprise__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(26, 26, 26, 0.8);
+  padding: 0.65rem 1.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  transition:
+    gap 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.about-enterprise__cta:hover {
+  gap: 0.85rem;
+  border-color: rgba(229, 86, 20, 0.45);
+  background: rgba(229, 86, 20, 0.12);
+  box-shadow: 0 12px 32px -16px rgba(229, 86, 20, 0.35);
+}
+
+@media (max-width: 639px) {
+  .about-enterprise__stat-rail {
+    margin-top: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .about-enterprise__stat:not(:last-child)::after {
+    display: none;
+  }
+
+  .about-enterprise__stat {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .about-enterprise__stat:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-enterprise__reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .about-enterprise__orbit,
+  .about-enterprise__node {
+    animation: none;
+  }
+
+  .about-enterprise__principle-gradient {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  .about-enterprise__principle:hover {
+    transform: none;
+  }
+}
