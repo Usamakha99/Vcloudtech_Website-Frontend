@@ -150,32 +150,41 @@ export function ProcurementEngineSection() {
             IT hardware and AI solutions, plus expert services to deploy, secure, and run your
             stack. One partner for buying, building, and operating enterprise technology.
           </p>
-
-          <ul className={`mt-6 grid max-w-2xl gap-2.5 sm:grid-cols-3 sm:gap-3 ${dt.body}`}>
-            <li className="rounded-xl border border-white/10 bg-[#1A1A1A]/60 px-3.5 py-3 text-xs leading-relaxed sm:text-[13px]">
-              <span className="font-semibold text-white">Procure</span>
-              <span className="mt-1 block text-[#A1A1AA]">
-                Hardware marketplace, quotes, and IT sourcing
-              </span>
-            </li>
-            <li className="rounded-xl border border-white/10 bg-[#1A1A1A]/60 px-3.5 py-3 text-xs leading-relaxed sm:text-[13px]">
-              <span className="font-semibold text-white">Discover</span>
-              <span className="mt-1 block text-[#A1A1AA]">
-                AI agents and solutions marketplace
-              </span>
-            </li>
-            <li className="rounded-xl border border-white/10 bg-[#1A1A1A]/60 px-3.5 py-3 text-xs leading-relaxed sm:text-[13px]">
-              <span className="font-semibold text-white">Operate</span>
-              <span className="mt-1 block text-[#A1A1AA]">
-                Cloud, security, DevOps, and managed IT
-              </span>
-            </li>
-          </ul>
         </motion.header>
+
+        <motion.ul
+          className="vc-ecosystem__pillars mt-8 sm:mt-10"
+          aria-label="How V Cloud Tech works"
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <li className="vc-ecosystem__pillar">
+            <span className="vc-ecosystem__pillar-index">01</span>
+            <span className="vc-ecosystem__pillar-title">Procure</span>
+            <span className="vc-ecosystem__pillar-desc">
+              Hardware marketplace, quotes, and IT sourcing
+            </span>
+          </li>
+          <li className="vc-ecosystem__pillar">
+            <span className="vc-ecosystem__pillar-index">02</span>
+            <span className="vc-ecosystem__pillar-title">Discover</span>
+            <span className="vc-ecosystem__pillar-desc">
+              AI agents and solutions marketplace
+            </span>
+          </li>
+          <li className="vc-ecosystem__pillar">
+            <span className="vc-ecosystem__pillar-index">03</span>
+            <span className="vc-ecosystem__pillar-title">Operate</span>
+            <span className="vc-ecosystem__pillar-desc">
+              Cloud, security, DevOps, and managed IT
+            </span>
+          </li>
+        </motion.ul>
 
         <motion.div
           ref={stageRef}
-          className="vc-ecosystem__stage mt-10 sm:mt-12"
+          className="vc-ecosystem__stage mt-8 sm:mt-10"
           style={{ y: parallaxY }}
           initial={{ opacity: 0, y: 32 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
