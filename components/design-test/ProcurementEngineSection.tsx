@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useCallback, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { dt, dtCta } from "@/components/design-test/design-test-theme";
 import {
@@ -91,15 +91,15 @@ const ringPath = "M 50 11 L 81 21 L 81 79 L 50 89 L 19 79 L 19 21 Z";
 /** V Cloud Tech unified platform ecosystem — marketplaces + services. */
 export function ProcurementEngineSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
   const [glow, setGlow] = useState({ x: 50, y: 40, visible: false });
+  const [mounted, setMounted] = useState(false);
 
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-  const { scrollYProgress } = useScroll({
-    target: stageRef,
-    offset: ["start end", "end start"],
-  });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [12, -12]);
+  const animateIn = mounted && isInView;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const onMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const rect = sectionRef.current?.getBoundingClientRect();
@@ -134,8 +134,8 @@ export function ProcurementEngineSection() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.header
           className="max-w-3xl"
-          initial={{ opacity: 0, y: 28 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={false}
+          animate={animateIn ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className={dt.badge}>Platform ecosystem</p>
@@ -155,8 +155,8 @@ export function ProcurementEngineSection() {
         <motion.ul
           className="vc-ecosystem__pillars mt-8 sm:mt-10"
           aria-label="How V Cloud Tech works"
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={false}
+          animate={animateIn ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
         >
           <li className="vc-ecosystem__pillar">
@@ -183,11 +183,9 @@ export function ProcurementEngineSection() {
         </motion.ul>
 
         <motion.div
-          ref={stageRef}
           className="vc-ecosystem__stage mt-8 sm:mt-10"
-          style={{ y: parallaxY }}
-          initial={{ opacity: 0, y: 32 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={false}
+          animate={animateIn ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="vc-ecosystem__stage-line" aria-hidden />
@@ -195,7 +193,7 @@ export function ProcurementEngineSection() {
           <div className="vc-ecosystem__stage-inner">
             <div className="vc-ecosystem__canvas" aria-label="V Cloud Tech service ecosystem">
               <div className="vc-ecosystem__scene">
-                <EcosystemSvg active={isInView} />
+                <EcosystemSvg active={animateIn} />
 
                 <div className="vc-ecosystem__hub">
                   <span className="vc-ecosystem__hub-brand">V Cloud Tech</span>
@@ -204,7 +202,7 @@ export function ProcurementEngineSection() {
 
                 <div className="vc-ecosystem__nodes">
                   {ecosystemNodes.map((node, i) => (
-                    <EcosystemNode key={node.id} node={node} index={i} active={isInView} />
+                    <EcosystemNode key={node.id} node={node} index={i} active={animateIn} />
                   ))}
                 </div>
               </div>
@@ -216,14 +214,14 @@ export function ProcurementEngineSection() {
               </div>
             </div>
 
-            <ActivityPanel active={isInView} />
+            <ActivityPanel active={animateIn} />
           </div>
         </motion.div>
 
         <motion.div
           className="vc-ecosystem__vision"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          initial={false}
+          animate={animateIn ? { opacity: 1 } : undefined}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           <span className="vc-ecosystem__vision-badge">Roadmap</span>
@@ -238,8 +236,8 @@ export function ProcurementEngineSection() {
 
         <motion.div
           className="mt-10 flex flex-col items-center gap-4 sm:mt-12 sm:flex-row sm:justify-center"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          initial={false}
+          animate={animateIn ? { opacity: 1 } : undefined}
           transition={{ duration: 0.5, delay: 0.45 }}
         >
           <Link
@@ -273,8 +271,8 @@ function ActivityPanel({ active }: { active: boolean }) {
           <motion.li
             key={item.event}
             className="vc-ecosystem__activity-item"
-            initial={{ opacity: 0, x: -10 }}
-            animate={active ? { opacity: 1, x: 0 } : {}}
+            initial={false}
+            animate={active ? { opacity: 1, x: 0 } : undefined}
             transition={{ delay: 0.32 + i * 0.09, duration: 0.45 }}
           >
             <span className="vc-ecosystem__activity-tag">{item.tag}</span>
@@ -338,8 +336,8 @@ function EcosystemNode({
     <motion.div
       className="vc-ecosystem__node"
       style={{ left: `${node.x}%`, top: `${node.y}%` }}
-      initial={{ opacity: 0, scale: 0.82 }}
-      animate={active ? { opacity: 1, scale: 1 } : {}}
+      initial={false}
+      animate={active ? { opacity: 1, scale: 1 } : undefined}
       transition={{ delay: 0.28 + index * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       <Link href={node.href} className="vc-ecosystem__node-card">
