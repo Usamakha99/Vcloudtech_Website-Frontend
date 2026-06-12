@@ -18,11 +18,6 @@ export const HERO_SLIDES = [
     title: "Cybersecurity & Managed Services",
   },
   {
-    src: "/images/hero-3.png",
-    alt: "vCloud Tech two-story office with mezzanine and server-ready workspaces",
-    title: "IT Procurement & Solutions",
-  },
-  {
     src: "/images/hero-4.png",
     alt: "vCloud Tech reception and operations floor with VCLOUDTECH branding",
     title: "Scalable IT Operations & Support",

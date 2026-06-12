@@ -154,9 +154,11 @@
 .hero-test-hero-section--carousel {
   position: relative;
   width: 100%;
-  height: min(56.25vw, 100svh);
-  min-height: min(56.25vw, 100svh);
+  height: calc(100svh - 3.5rem);
+  min-height: calc(100svh - 3.5rem);
+  max-height: calc(100svh - 3.5rem);
   overflow: hidden;
+  margin: 0;
 }
 
 .hero-test-hero-media {
@@ -194,9 +196,9 @@
 
 @media (max-width: 767px) {
   .hero-test-hero-section--carousel {
-    height: 70svh;
+    height: calc(100svh - 3.5rem);
     min-height: 26rem;
-    max-height: 100svh;
+    max-height: calc(100svh - 3.5rem);
   }
 
   .hero-test-carousel__arrow {

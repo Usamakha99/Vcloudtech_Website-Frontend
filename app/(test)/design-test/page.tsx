@@ -32,7 +32,7 @@ export default function DesignTestPage() {
       <PageIngredientBackground />
       <DesignTestGlobalNavbar />
       <main className="relative">
-        <div id="hero">
+        <div id="hero" className="leading-none">
           <MinimalTestHero offsetForFixedHeader fullPageGradient showCarousel />
         </div>
         <DesignTestSocialProofBar />

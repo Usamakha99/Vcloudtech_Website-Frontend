@@ -1,7 +1,4 @@
 import Image from "next/image";
-
-import { dt } from "@/components/design-test/design-test-theme";
-
 const partnerLogos = [
   { name: "Microsoft", src: "/partners/microsoft.png" },
   { name: "Cisco", src: "/partners/cisco.png" },
@@ -19,7 +16,7 @@ export function DesignTestSocialProofBar() {
 
   return (
     <section
-      className={`relative z-30 mt-8 bg-[#0F0F0F] sm:mt-10 lg:mt-12 ${dt.sectionAfterHero}`}
+      className="relative z-30 border-t border-white/5 bg-[#0F0F0F] mb-6 sm:mb-8"
       aria-label="Technology partners"
     >
       <div className="relative mx-auto max-w-7xl overflow-hidden px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
