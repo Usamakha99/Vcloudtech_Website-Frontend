@@ -26,12 +26,7 @@ export const HERO_SLIDES = [
     src: "/images/hero-4.png",
     alt: "vCloud Tech reception and operations floor with VCLOUDTECH branding",
     title: "Scalable IT Operations & Support",
-  },
-  {
-    src: "/images/hero-5.png",
-    alt: "vCloud Tech logistics and operations center with inventory and loading bays",
-    title: "Logistics & Operations",
-  },
+  }
 ] as const;
 
 const INTERVAL_MS = 3000;
@@ -162,15 +157,6 @@ export function HeroCarousel() {
           >
             <ChevronRightIcon />
           </button>
-
-          {carouselActive ? (
-            <div className="hero-test-carousel__progress" aria-hidden>
-              <span
-                key={`${activeIndex}-${paused}`}
-                className={`hero-test-carousel__progress-bar ${paused ? "hero-test-carousel__progress-bar--paused" : ""}`}
-              />
-            </div>
-          ) : null}
 
           <div className="hero-test-carousel__dots" role="tablist" aria-label="Hero slides">
             {HERO_SLIDES.map((slide, index) => (
