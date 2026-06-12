@@ -35,11 +35,11 @@ const orgValues: { title: string; description: string; icon: SectionIcon }[] = [
 ];
 
 const sectors = [
-  "Government",
-  "Education",
-  "Healthcare",
-  "Enterprise",
-  "Public sector",
+  { name: "Government", detail: "Federal, state & local agencies" },
+  { name: "Education", detail: "K-12 districts & higher education" },
+  { name: "Healthcare", detail: "Hospital systems & care networks" },
+  { name: "Enterprise", detail: "Mid-market to global organizations" },
+  { name: "Public sector", detail: "Municipal & civic institutions" },
 ] as const;
 
 const credentials = ["MBE", "SBE", "DBE", "ISO 9001"] as const;
@@ -125,16 +125,7 @@ export function AboutUsSnapshotSection() {
           </div>
 
           <aside className="about-enterprise__reach about-enterprise__reveal about-enterprise__reveal--5 lg:col-span-3">
-            <div>
-              <p className={dt.metaLabel}>Sectors we serve</p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {sectors.map((sector) => (
-                  <li key={sector}>
-                    <span className="about-enterprise__sector">{sector}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <SectorsPanel />
 
             <div className="rounded-xl border border-white/10 bg-[#0F0F0F]/80 p-4">
               <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]">
@@ -177,6 +168,40 @@ export function AboutUsSnapshotSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function SectorsPanel() {
+  return (
+    <div className="about-enterprise__sectors">
+      <span className="about-enterprise__sectors-glow" aria-hidden />
+      <span className="about-enterprise__sectors-scan" aria-hidden />
+
+      <div className="about-enterprise__sectors-header">
+        <p className={dt.metaLabel}>Sectors we serve</p>
+        <span className="about-enterprise__sectors-count" aria-hidden>
+          {String(sectors.length).padStart(2, "0")}
+        </span>
+      </div>
+
+      <ul className="about-enterprise__sectors-list">
+        {sectors.map((sector, index) => (
+          <li key={sector.name} className="about-enterprise__sector-row">
+            <span className="about-enterprise__sector-rail" aria-hidden />
+            <span className="about-enterprise__sector-index">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="about-enterprise__sector-copy">
+              <span className="about-enterprise__sector-name">{sector.name}</span>
+              <span className="about-enterprise__sector-detail">{sector.detail}</span>
+            </div>
+            <span className="about-enterprise__sector-arrow" aria-hidden>
+              →
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
