@@ -42,7 +42,12 @@ const sectors = [
   { name: "Public sector", detail: "Municipal & civic institutions" },
 ] as const;
 
-const credentials = ["MBE", "SBE", "DBE", "ISO 9001"] as const;
+const credentials = [
+  { acronym: "MBE", label: "Minority-owned business enterprise" },
+  { acronym: "SBE", label: "Small business enterprise" },
+  { acronym: "DBE", label: "Disadvantaged business enterprise" },
+  { acronym: "ISO 9001", label: "Quality management certified" },
+] as const;
 
 /** The organization — enterprise editorial bento layout. */
 export function AboutUsSnapshotSection() {
@@ -111,9 +116,19 @@ export function AboutUsSnapshotSection() {
                 </p>
               </blockquote>
 
-              <p className={`mt-6 font-mono text-[11px] tracking-wide ${dt.statLabel}`}>
-                {credentials.join("  ·  ")}
-              </p>
+              <div className="about-enterprise__credentials mt-8 border-t border-white/10 pt-6">
+                <p className={dt.metaLabel}>Certifications &amp; designations</p>
+                <ul className="about-enterprise__credentials-grid mt-4">
+                  {credentials.map((cert) => (
+                    <li key={cert.acronym}>
+                      <div className="about-enterprise__credential">
+                        <span className="about-enterprise__credential-acronym">{cert.acronym}</span>
+                        <span className="about-enterprise__credential-label">{cert.label}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </article>
 
