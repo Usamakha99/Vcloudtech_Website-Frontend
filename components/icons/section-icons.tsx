@@ -126,3 +126,46 @@ export function HandshakeIcon(props: IconProps) {
     </svg>
   );
 }
+
+/** Government & federal agencies */
+export function GovernmentIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 20h16M6 20V10l6-4 6 4v10" strokeLinejoin="round" />
+      <path d="M10 20v-5h4v5M12 10v3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** Education & academic institutions */
+export function EducationIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 8.5L12 4l8 4.5-8 4.5-8-4.5z" strokeLinejoin="round" />
+      <path d="M7 10.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-5.5" strokeLinecap="round" />
+      <path d="M20 9v7" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** Healthcare & hospital systems */
+export function HealthcareIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 5v14M5 12h14" strokeLinecap="round" />
+      <path d="M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** Municipal & civic public sector */
+export function PublicSectorIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6 20V8l6-3 6 3v12" strokeLinejoin="round" />
+      <path d="M4 20h16" strokeLinecap="round" />
+      <path d="M10 20v-4h4v4" strokeLinejoin="round" />
+      <path d="M12 8v3" strokeLinecap="round" />
+    </svg>
+  );
+}

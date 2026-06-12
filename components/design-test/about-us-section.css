@@ -71,6 +71,21 @@
 .about-enterprise__reveal--5 {
   animation-delay: 0.36s;
 }
+.about-enterprise__reveal--6 {
+  animation-delay: 0.44s;
+}
+.about-enterprise__reveal--7 {
+  animation-delay: 0.52s;
+}
+.about-enterprise__reveal--8 {
+  animation-delay: 0.6s;
+}
+.about-enterprise__reveal--9 {
+  animation-delay: 0.68s;
+}
+.about-enterprise__reveal--10 {
+  animation-delay: 0.76s;
+}
 
 @keyframes about-reveal {
   to {
@@ -120,6 +135,7 @@
   letter-spacing: -0.02em;
   color: #fff;
   transition: color 0.3s ease;
+  min-width: 2.75ch;
 }
 
 .about-enterprise__stat:hover .about-enterprise__stat-value {
@@ -129,6 +145,7 @@
 .about-enterprise__manifesto {
   position: relative;
   overflow: hidden;
+  height: 100%;
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.88) 100%);
@@ -196,17 +213,131 @@
   color: #a1a1aa;
 }
 
+.about-enterprise__footprint-stack {
+  min-width: 0;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(26, 26, 26, 0.45);
+  padding: 0.75rem;
+  transition: border-color 0.35s ease;
+}
+
+.about-enterprise__footprint-stack:hover {
+  border-color: rgba(229, 86, 20, 0.25);
+}
+
+/* Bento — 50/50 columns, matched height */
+
+.about-enterprise__bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .about-enterprise__bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+}
+
+.about-enterprise__side-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  min-height: 100%;
+  height: 100%;
+}
+
+.about-enterprise__stat-card {
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(160deg, rgba(26, 26, 26, 0.92) 0%, rgba(15, 15, 15, 0.88) 100%);
+  transition: border-color 0.35s ease;
+}
+
+.about-enterprise__stat-card:hover {
+  border-color: rgba(229, 86, 20, 0.28);
+}
+
+.about-enterprise__stat-card .about-enterprise__stat-rail {
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
+}
+
+.about-enterprise__stat-card .about-enterprise__stat {
+  padding: 1.1rem 0.75rem;
+}
+
+.about-enterprise__visual--stretch {
+  flex: 1 1 auto;
+  min-height: 14rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 2.5rem;
+}
+
+.about-enterprise__footprint-svg {
+  width: min(72%, 13rem);
+  height: auto;
+  max-height: min(52vh, 16rem);
+  flex: 1 1 auto;
+}
+
+.about-enterprise__footprint-stack .about-enterprise__stat-rail {
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.about-enterprise__footprint-stack .about-enterprise__visual {
+  border: none;
+  background: radial-gradient(ellipse at 50% 120%, rgba(229, 86, 20, 0.1), transparent 55%),
+    rgba(15, 15, 15, 0.75);
+}
+
 .about-enterprise__visual {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 14rem;
+  min-height: 9.5rem;
+  padding: 1.25rem 1rem 2.25rem;
   overflow: hidden;
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: radial-gradient(ellipse at 50% 120%, rgba(229, 86, 20, 0.12), transparent 55%),
     rgba(15, 15, 15, 0.9);
+}
+
+.about-enterprise__visual-label {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.about-enterprise__footprint-stack .about-enterprise__stat {
+  padding: 0.9rem 0.65rem;
+}
+
+.about-enterprise__footprint-stack .about-enterprise__stat-value {
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
 }
 
 .about-enterprise__orbit {
@@ -265,24 +396,42 @@
   border-color: rgba(229, 86, 20, 0.25);
 }
 
-/* Sectors panel — vertical index list with spotlight animation */
+/* Sectors row — full-width panel + 3-card glass tile grid */
 
-.about-enterprise__sectors {
+.about-enterprise__sectors-row {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: linear-gradient(160deg, rgba(15, 15, 15, 0.92) 0%, rgba(26, 26, 26, 0.75) 100%);
-  padding: 1rem 1rem 0.75rem;
+  padding: 1.25rem 1.25rem 1.35rem;
   transition:
     border-color 0.35s ease,
     box-shadow 0.35s ease;
 }
 
-.about-enterprise__sectors:hover {
+.about-enterprise__sectors-row:hover {
   border-color: rgba(229, 86, 20, 0.28);
   box-shadow: 0 16px 40px -24px rgba(229, 86, 20, 0.2);
+}
+
+.about-enterprise__sectors-tiles {
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.about-enterprise__industry-card {
+  position: relative;
+}
+
+.about-enterprise__industry-cta:focus-visible {
+  outline: 2px solid rgba(229, 86, 20, 0.55);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
 }
 
 .about-enterprise__sectors-glow {
@@ -350,11 +499,57 @@
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.85rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Sector tile — glass card content (3-up row + centered pair) */
+
+.about-enterprise__sector-tile-index {
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #e55614;
+  transition: color 0.3s ease;
+}
+
+.about-enterprise__sector-tile-arrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #71717a;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.about-enterprise__sector-tile-line {
+  display: inline-flex;
+  margin-top: 1.25rem;
+  height: 1px;
+  width: 2rem;
+  background: rgba(229, 86, 20, 0.55);
+  transition: width 0.35s ease;
+}
+
+.group:hover .about-enterprise__sector-tile-index {
+  color: #f06520;
+}
+
+.group:hover .about-enterprise__sector-tile-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: #e55614;
+}
+
+.group:hover .about-enterprise__sector-tile-line {
+  width: 3.5rem;
 }
 
 .about-enterprise__sectors-count {
@@ -658,6 +853,11 @@
   }
 
   .about-enterprise__sector-arrow {
+    opacity: 1;
+    transform: none;
+  }
+
+  .about-enterprise__sector-tile-arrow {
     opacity: 1;
     transform: none;
   }

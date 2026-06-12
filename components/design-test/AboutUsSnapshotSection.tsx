@@ -1,47 +1,50 @@
 import Link from "next/link";
 
 import { dt } from "@/components/design-test/design-test-theme";
+import { GlassCard } from "@/components/design-test/GlassCard";
+import { OrgMetricsRail } from "@/components/design-test/OrgMetricsRail";
 import {
-  HandshakeIcon,
-  ShieldIcon,
-  TeamIcon,
+  EducationIcon,
+  GovernmentIcon,
+  HealthcareIcon,
+  PublicSectorIcon,
+  ServerIcon,
   type SectionIcon,
 } from "@/components/icons/section-icons";
 
 import "./about-us-section.css";
 
-const orgMetrics = [
-  { value: "15+", label: "Years operating" },
-  { value: "500+", label: "Organizations served" },
-  { value: "50", label: "States & territories" },
-] as const;
-
-const orgValues: { title: string; description: string; icon: SectionIcon }[] = [
+const sectors: {
+  name: string;
+  detail: string;
+  icon: SectionIcon;
+}[] = [
   {
-    title: "Strategic partnership",
-    description: "Long-term relationships built on trust — not one-off transactions.",
-    icon: HandshakeIcon,
+    name: "Government",
+    detail: "Federal, state, and local agencies with compliant procurement and secure deployment.",
+    icon: GovernmentIcon,
   },
   {
-    title: "Operational discipline",
-    description: "Governance, compliance, and documented delivery at enterprise scale.",
-    icon: ShieldIcon,
+    name: "Education",
+    detail: "K-12 districts and higher education with budget-smart licensing and campus rollouts.",
+    icon: EducationIcon,
   },
   {
-    title: "Human-centered culture",
-    description: "A motivated team invested in outcomes, not just outcomes on paper.",
-    icon: TeamIcon,
+    name: "Healthcare",
+    detail: "Hospital systems and care networks with HIPAA-aware sourcing and clinical uptime.",
+    icon: HealthcareIcon,
+  },
+  {
+    name: "Enterprise",
+    detail: "Mid-market to global organizations with consolidated spend and managed operations.",
+    icon: ServerIcon,
+  },
+  {
+    name: "Public sector",
+    detail: "Municipal and civic institutions with accountable IT outcomes stakeholders can trust.",
+    icon: PublicSectorIcon,
   },
 ];
-
-const sectors = [
-  { name: "Government", detail: "Federal, state & local agencies" },
-  { name: "Education", detail: "K-12 districts & higher education" },
-  { name: "Healthcare", detail: "Hospital systems & care networks" },
-  { name: "Enterprise", detail: "Mid-market to global organizations" },
-  { name: "Public sector", detail: "Municipal & civic institutions" },
-] as const;
-
 const credentials = [
   { acronym: "MBE", label: "Minority-owned business enterprise" },
   { acronym: "SBE", label: "Small business enterprise" },
@@ -62,40 +65,23 @@ export function AboutUsSnapshotSection() {
       <div className="about-enterprise__glow about-enterprise__glow--secondary" aria-hidden />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Editorial header + stat rail */}
-        <div className="lg:grid lg:grid-cols-12 lg:items-end lg:gap-10">
-          <header className="about-enterprise__reveal about-enterprise__reveal--1 lg:col-span-7">
-            <p className={dt.badge}>The organization</p>
-            <h2 id="about-snapshot-heading" className="about-enterprise__headline">
-              Built for{" "}
-              <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-                enterprise
-              </span>{" "}
-              scale.
-            </h2>
-            <p className={`mt-4 max-w-xl text-base leading-relaxed sm:text-lg ${dt.headingSub}`}>
-              A national IT solutions organization delivering procurement, licensing, and managed
-              outcomes for teams that cannot afford guesswork.
-            </p>
-          </header>
+        <header className="about-enterprise__reveal about-enterprise__reveal--1 max-w-3xl">
+          <p className={dt.badge}>The organization</p>
+          <h2 id="about-snapshot-heading" className="about-enterprise__headline">
+            Built for{" "}
+            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
+              enterprise
+            </span>{" "}
+            scale.
+          </h2>
+          <p className={`mt-4 text-base leading-relaxed sm:text-lg ${dt.headingSub}`}>
+            A national IT solutions organization delivering procurement, licensing, and managed
+            outcomes for teams that cannot afford guesswork.
+          </p>
+        </header>
 
-          <div className="about-enterprise__reveal about-enterprise__reveal--2 lg:col-span-5">
-            <ul className="about-enterprise__stat-rail" aria-label="Organization metrics">
-              {orgMetrics.map((metric) => (
-                <li key={metric.label} className="about-enterprise__stat">
-                  <p className="about-enterprise__stat-value">{metric.value}</p>
-                  <p className={`mt-1.5 text-[10px] font-medium uppercase tracking-wider sm:text-[11px] ${dt.statLabel}`}>
-                    {metric.label}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Bento grid — manifesto · visual · reach */}
-        <div className="mt-10 grid gap-4 sm:mt-12 lg:grid-cols-12 lg:gap-5">
-          <article className="about-enterprise__manifesto about-enterprise__reveal about-enterprise__reveal--3 lg:col-span-5">
+        <div className="about-enterprise__bento mt-8 sm:mt-10">
+          <article className="about-enterprise__manifesto about-enterprise__reveal about-enterprise__reveal--3 order-2 lg:order-none">
             <span className="about-enterprise__manifesto-accent" aria-hidden />
             <div className="p-6 sm:p-7 lg:p-8">
               <p className={dt.metaLabel}>Organizational identity</p>
@@ -129,51 +115,31 @@ export function AboutUsSnapshotSection() {
                   ))}
                 </ul>
               </div>
+
+              <div className="mt-8 rounded-xl border border-white/10 bg-[#0F0F0F]/80 p-4 sm:p-5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]">
+                  Business impact
+                </p>
+                <p className={`mt-2 text-sm leading-relaxed ${dt.body}`}>
+                  Faster procurement cycles, accountable vendor management, and infrastructure your
+                  stakeholders can defend.
+                </p>
+              </div>
             </div>
           </article>
 
-          <div className="about-enterprise__visual about-enterprise__reveal about-enterprise__reveal--4 lg:col-span-4">
-            <FootprintVisual />
-            <p className="absolute bottom-4 left-0 right-0 text-center text-[10px] font-semibold uppercase tracking-[0.16em] text-[#A1A1AA]">
-              Nationwide delivery footprint
-            </p>
-          </div>
-
-          <aside className="about-enterprise__reach about-enterprise__reveal about-enterprise__reveal--5 lg:col-span-3">
-            <SectorsPanel />
-
-            <div className="rounded-xl border border-white/10 bg-[#0F0F0F]/80 p-4">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]">
-                Business impact
-              </p>
-              <p className={`mt-2 text-sm leading-relaxed ${dt.body}`}>
-                Faster procurement cycles, accountable vendor management, and infrastructure your
-                stakeholders can defend.
-              </p>
+          <div className="about-enterprise__side-stack about-enterprise__reveal about-enterprise__reveal--4 order-1 lg:order-none">
+            <div className="about-enterprise__stat-card">
+              <OrgMetricsRail />
             </div>
-          </aside>
+            <div className="about-enterprise__visual about-enterprise__visual--stretch">
+              <FootprintVisual />
+              <p className="about-enterprise__visual-label">Nationwide delivery footprint</p>
+            </div>
+          </div>
         </div>
 
-        {/* Operating principles */}
-        <div className="mt-10 sm:mt-12">
-          <div className="mb-5 flex items-end justify-between gap-4 sm:mb-6">
-            <div>
-              <p className={dt.metaLabel}>Operating principles</p>
-              <p className="mt-2 text-lg font-semibold text-white sm:text-xl">
-                How we earn enterprise trust
-              </p>
-            </div>
-            <span className={`hidden text-xs sm:inline ${dt.statLabel}`}>03 pillars</span>
-          </div>
-
-          <ul className="grid gap-4 md:grid-cols-3 md:gap-5">
-            {orgValues.map((value) => (
-              <li key={value.title}>
-                <PrincipleCard value={value} />
-              </li>
-            ))}
-          </ul>
-        </div>
+        <SectorsRowSection />
 
         <div className="about-enterprise__reveal about-enterprise__reveal--5 mt-10 flex justify-center sm:mt-12">
           <Link href="/about" className="about-enterprise__cta">
@@ -186,33 +152,28 @@ export function AboutUsSnapshotSection() {
   );
 }
 
-function SectorsPanel() {
+function SectorsRowSection() {
   return (
-    <div className="about-enterprise__sectors">
+    <div className="about-enterprise__sectors-row about-enterprise__reveal about-enterprise__reveal--5 mt-10 sm:mt-12">
       <span className="about-enterprise__sectors-glow" aria-hidden />
       <span className="about-enterprise__sectors-scan" aria-hidden />
 
-      <div className="about-enterprise__sectors-header">
-        <p className={dt.metaLabel}>Sectors we serve</p>
+      <header className="about-enterprise__sectors-header">
+        <div>
+          <p className={dt.metaLabel}>Industries we serve</p>
+         
+        </div>
         <span className="about-enterprise__sectors-count" aria-hidden>
           {String(sectors.length).padStart(2, "0")}
         </span>
-      </div>
+      </header>
 
-      <ul className="about-enterprise__sectors-list">
+      <ul className="about-enterprise__sectors-tiles grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-5">
         {sectors.map((sector, index) => (
-          <li key={sector.name} className="about-enterprise__sector-row">
-            <span className="about-enterprise__sector-rail" aria-hidden />
-            <span className="about-enterprise__sector-index">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <div className="about-enterprise__sector-copy">
-              <span className="about-enterprise__sector-name">{sector.name}</span>
-              <span className="about-enterprise__sector-detail">{sector.detail}</span>
-            </div>
-            <span className="about-enterprise__sector-arrow" aria-hidden>
-              →
-            </span>
+          <li key={sector.name} className="h-full">
+            <GlassCard delay={(index + 1) as 1 | 2 | 3 | 4 | 5} className="group h-full">
+              <IndustryGlassCard sector={sector} index={index} />
+            </GlassCard>
           </li>
         ))}
       </ul>
@@ -220,35 +181,46 @@ function SectorsPanel() {
   );
 }
 
-function PrincipleCard({
-  value,
+function IndustryGlassCard({
+  sector,
+  index,
 }: {
-  value: { title: string; description: string; icon: SectionIcon };
+  sector: (typeof sectors)[number];
+  index: number;
 }) {
-  const Icon = value.icon;
+  const Icon = sector.icon;
 
   return (
-    <article className="about-enterprise__principle group h-full">
-      <span className="about-enterprise__principle-gradient" aria-hidden />
-      <div className="about-enterprise__principle-inner flex h-full flex-col p-6 sm:p-7">
+    <div className="about-enterprise__industry-card flex h-full min-h-[15.5rem] flex-col p-5 sm:min-h-[16.5rem] sm:p-6">
+      <div className="flex items-start justify-between gap-3">
         <div className={dt.iconBoxCard}>
           <Icon />
         </div>
-        <h4 className="mt-5 text-base font-semibold text-white sm:text-lg">{value.title}</h4>
-        <p className={`mt-3 flex-1 text-sm leading-relaxed ${dt.body}`}>{value.description}</p>
-        <span
-          className="mt-5 inline-flex h-px w-8 bg-[#E55614]/60 transition-all duration-300 group-hover:w-14"
-          aria-hidden
-        />
+        <span className={dt.number}>{String(index + 1).padStart(2, "0")}</span>
       </div>
-    </article>
+
+      <h4 className="mt-5 text-base font-semibold leading-snug text-white sm:text-lg">
+        {sector.name}
+      </h4>
+      <p className={`mt-2.5 flex-1 text-sm leading-relaxed ${dt.body}`}>{sector.detail}</p>
+
+      <Link
+        href="/services"
+        className="about-enterprise__industry-cta mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-white transition-colors hover:text-[#E55614]"
+      >
+        Explore solutions
+        <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+          →
+        </span>
+      </Link>
+    </div>
   );
 }
 
 function FootprintVisual() {
   return (
     <svg
-      className="h-44 w-44 sm:h-52 sm:w-52"
+      className="about-enterprise__footprint-svg"
       viewBox="0 0 200 200"
       fill="none"
       aria-hidden

@@ -35,11 +35,11 @@ export default function DesignTestPage() {
         <div id="hero" className="leading-none">
           <MinimalTestHero offsetForFixedHeader fullPageGradient showCarousel />
         </div>
-        <DesignTestSocialProofBar />
         <AboutUsSnapshotSection />
         <WhyVCloudSection reducedHeroOverlap />
         <TechnologyPartnersSection />
         <ScrollStackCardsSection />
+        <DesignTestSocialProofBar />
         <div className="relative z-20">
           <div id="services">
             <ServicesGrid surface="glass" />
