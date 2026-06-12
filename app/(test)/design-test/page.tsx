@@ -10,8 +10,13 @@ import { TechnologyPartnersSection } from "@/components/design-test/TechnologyPa
 import { WhyVCloudSection } from "@/components/design-test/WhyVCloudSection";
 import { MinimalTestHero } from "@/components/hero-test/MinimalTestHero";
 import { PageIngredientBackground } from "@/components/hero-test/PageIngredientBackground";
+import { ClientsTestimonialsSection } from "@/components/design-test/ClientsTestimonialsSection";
 import { ProcurementEngineSection } from "@/components/design-test/ProcurementEngineSection";
+import { ResourceHubSection } from "@/components/design-test/ResourceHubSection";
+import { VendorPartnersStripSection } from "@/components/design-test/VendorPartnersStripSection";
+import { WhyChooseUsSection } from "@/components/design-test/WhyChooseUsSection";
 import { ServicesGrid } from "@/components/services/ServicesGrid";
+import "@/components/design-test/design-test-glass-cards.css";
 import "@/components/design-test/design-test-responsive.css";
 import "@/components/hero-test/minimal-hero.css";
 
@@ -40,6 +45,10 @@ export default function DesignTestPage() {
             <ServicesGrid surface="glass" />
           </div>
           <ProcurementEngineSection />
+          <WhyChooseUsSection />
+          <ResourceHubSection />
+          <ClientsTestimonialsSection />
+          <VendorPartnersStripSection />
           <FeaturesGrid surface="glass" />
           <DesignTestCta surface="glass" />
         </div>

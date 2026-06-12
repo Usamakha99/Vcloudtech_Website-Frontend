@@ -1,0 +1,105 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { dt } from "@/components/design-test/design-test-theme";
+import { GlassCard } from "@/components/design-test/GlassCard";
+
+const clientLogos = [
+  { name: "Microsoft", src: "/partners/microsoft.png" },
+  { name: "AWS", src: "/partners/aws.png" },
+  { name: "Cisco", src: "/partners/cisco.png" },
+  { name: "Dell", src: "/partners/dell.png" },
+  { name: "HPE", src: "/partners/hpe.png" },
+  { name: "VMware", src: "/partners/vmware.png" },
+  { name: "Adobe", src: "/partners/adobe.png" },
+  { name: "Fortinet", src: "/partners/fortinet.png" },
+] as const;
+
+const testimonials = [
+  {
+    quote:
+      "vCloud Tech consolidated our hardware and licensing workflows — we cut quote turnaround by more than half.",
+    name: "Director of IT Operations",
+    company: "Regional healthcare network",
+  },
+  {
+    quote:
+      "Their warehouse-backed fulfillment gave us confidence on large rollouts. Real inventory, real accountability.",
+    name: "VP, Infrastructure",
+    company: "Multi-state logistics firm",
+  },
+  {
+    quote:
+      "From procurement to deployment support, the team behaves like an extension of our internal IT org.",
+    name: "CIO",
+    company: "Public-sector agency",
+  },
+] as const;
+
+/** Clients & testimonials — logo grid + quote cards. */
+export function ClientsTestimonialsSection() {
+  return (
+    <section
+      id="clients-testimonials"
+      className={`scroll-mt-24 ${dt.section} ${dt.sectionBorder}`}
+      aria-labelledby="clients-testimonials-heading"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <header className="mx-auto max-w-2xl text-center">
+          <p className={dt.badge}>Social proof</p>
+          <h2
+            id="clients-testimonials-heading"
+            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl"
+          >
+            Clients &amp; testimonials
+          </h2>
+          <p className={`mt-3 text-sm leading-relaxed sm:text-[15px] ${dt.headingSub}`}>
+            Trusted by enterprise teams nationwide — from procurement to deployment.
+          </p>
+        </header>
+
+        <ul className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-4 lg:grid-cols-8 lg:gap-4">
+          {clientLogos.map((logo, index) => (
+            <li key={logo.name}>
+              <GlassCard delay={Math.min(index + 1, 6) as 1 | 2 | 3 | 4 | 5 | 6}>
+                <div className="flex h-16 items-center justify-center px-3 py-4 sm:h-[4.5rem]">
+                  <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    width={96}
+                    height={32}
+                    className="h-7 w-auto max-w-[5.5rem] object-contain opacity-80 brightness-0 invert"
+                  />
+                </div>
+              </GlassCard>
+            </li>
+          ))}
+        </ul>
+
+        <ul className="mt-6 grid gap-4 sm:mt-8 lg:grid-cols-3 lg:gap-5">
+          {testimonials.map((item, index) => (
+            <li key={item.company}>
+              <GlassCard delay={(index + 1) as 1 | 2 | 3} className="h-full">
+                <blockquote className="flex h-full flex-col p-5 sm:p-6">
+                  <p className={`text-sm leading-relaxed ${dt.body}`}>&ldquo;{item.quote}&rdquo;</p>
+                  <footer className="mt-5 border-t border-white/10 pt-4">
+                    <cite className="not-italic">
+                      <span className="block text-sm font-semibold text-white">{item.name}</span>
+                      <span className={`mt-0.5 block text-xs ${dt.statLabel}`}>{item.company}</span>
+                    </cite>
+                  </footer>
+                </blockquote>
+              </GlassCard>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8 flex justify-center sm:mt-10">
+          <Link href="/contact" className={`text-sm font-semibold ${dt.link}`}>
+            Case study CTA →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
