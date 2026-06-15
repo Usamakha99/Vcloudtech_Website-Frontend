@@ -26,7 +26,7 @@ export function VendorPartnersStripSection() {
           <p className={wdt.badge}>Partners</p>
           <h2
             id="vendor-partners-heading"
-            className="mt-5 text-xl font-semibold leading-snug tracking-tight text-[#0F172A] sm:text-2xl"
+            className="mt-5 text-xl font-semibold leading-snug tracking-tight text-[#111A45] sm:text-2xl"
           >
             Vendor &amp; technology partners
           </h2>

@@ -53,9 +53,9 @@
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.72) 0%,
-    rgba(255, 255, 255, 0.55) 45%,
-    rgba(248, 250, 252, 0.85) 100%
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 255, 255, 0.72) 45%,
+    rgba(255, 255, 255, 0.95) 100%
   );
 }
 
@@ -77,10 +77,10 @@
 }
 
 .white-hero-section--carousel .hero-test-carousel__arrow {
-  border-color: rgba(15, 23, 42, 0.12);
+  border-color: rgba(17, 26, 69, 0.12);
   background: rgba(255, 255, 255, 0.92);
-  color: #0f172a;
-  box-shadow: 0 4px 16px -6px rgba(15, 23, 42, 0.12);
+  color: #111A45;
+  box-shadow: 0 4px 16px -6px rgba(17, 26, 69, 0.12);
 }
 
 .white-hero-section--carousel .hero-test-carousel__arrow:hover {

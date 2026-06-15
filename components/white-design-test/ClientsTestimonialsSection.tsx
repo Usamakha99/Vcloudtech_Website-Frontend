@@ -49,7 +49,7 @@ export function ClientsTestimonialsSection() {
           <p className={wdt.badge}>Social proof</p>
           <h2
             id="clients-testimonials-heading"
-            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-[#0F172A] sm:text-3xl"
+            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-[#111A45] sm:text-3xl"
           >
             Clients &amp; testimonials
           </h2>
@@ -67,9 +67,9 @@ export function ClientsTestimonialsSection() {
                     &ldquo;
                   </span>
                   <p className={`relative text-sm leading-relaxed ${wdt.body}`}>{item.quote}</p>
-                  <footer className="mt-5 border-t border-[#E2E8F0] pt-4">
+                  <footer className="mt-5 border-t border-[#111A45/10] pt-4">
                     <cite className="not-italic">
-                      <span className="block text-sm font-semibold text-[#0F172A]">{item.name}</span>
+                      <span className="block text-sm font-semibold text-[#111A45]">{item.name}</span>
                       <span className={`mt-0.5 block text-xs ${wdt.statLabel}`}>{item.company}</span>
                     </cite>
                   </footer>

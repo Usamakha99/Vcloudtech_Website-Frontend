@@ -17,16 +17,16 @@ export function WhiteDesignTestSocialProofBar() {
 
   return (
     <section
-      className="relative z-30 mb-6 border-t border-[#E2E8F0] bg-[#F8FAFC] sm:mb-8"
+      className="relative z-30 mb-6 border-t border-[#111A45]/10 bg-white sm:mb-8"
       aria-label="Technology partners"
     >
       <div className="relative mx-auto max-w-7xl overflow-hidden px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
         <span
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent sm:w-20"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF]/80 to-transparent sm:w-20"
           aria-hidden
         />
         <span
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent sm:w-20"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#FFFFFF] via-[#FFFFFF]/80 to-transparent sm:w-20"
           aria-hidden
         />
 

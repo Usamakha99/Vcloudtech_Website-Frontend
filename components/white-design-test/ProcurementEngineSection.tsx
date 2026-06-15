@@ -227,9 +227,9 @@ export function ProcurementEngineSection() {
         >
           <span className="vc-ecosystem__vision-badge">Roadmap</span>
           <p className={`text-sm leading-relaxed ${wdt.body}`}>
-            <span className="font-medium text-[#0F172A]">Today:</span> procurement through our hardware
+            <span className="font-medium text-[#111A45]">Today:</span> procurement through our hardware
             marketplace and sourcing team — quotes, catalog search, and enterprise IT buying.{" "}
-            <span className="font-medium text-[#0F172A]">Coming soon:</span> a unified procurement
+            <span className="font-medium text-[#111A45]">Coming soon:</span> a unified procurement
             engine with automated approvals, vendor workflows, and spend analytics across the
             platform.
           </p>
@@ -250,7 +250,7 @@ export function ProcurementEngineSection() {
           </Link>
           <Link
             href="/solutions"
-            className={`inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#E2E8F0] bg-white px-8 text-sm font-semibold text-[#0F172A] transition duration-300 hover:border-[#E55614]/40 hover:bg-[#E55614]/5`}
+            className={`inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#111A45/10] bg-white px-8 text-sm font-semibold text-[#111A45] transition duration-300 hover:border-[#E55614]/40 hover:bg-[#E55614]/5`}
           >
             Explore services
           </Link>
@@ -277,7 +277,7 @@ function ActivityPanel({ active }: { active: boolean }) {
             transition={{ delay: 0.32 + i * 0.09, duration: 0.45 }}
           >
             <span className="vc-ecosystem__activity-tag">{item.tag}</span>
-            <span className="text-xs leading-snug text-[#0F172A]">{item.event}</span>
+            <span className="text-xs leading-snug text-[#111A45]">{item.event}</span>
           </motion.li>
         ))}
       </ul>
@@ -365,7 +365,7 @@ function EcosystemStackCard({ node }: { node: (typeof ecosystemNodes)[number] })
         </span>
         <div>
           <p className="text-[10px] font-bold uppercase tracking-wider text-[#E55614]">{node.tag}</p>
-          <p className="mt-1 text-sm font-semibold text-[#0F172A]">{node.title}</p>
+          <p className="mt-1 text-sm font-semibold text-[#111A45]">{node.title}</p>
           <p className={`mt-1 text-xs ${wdt.body}`}>{node.detail}</p>
         </div>
       </div>

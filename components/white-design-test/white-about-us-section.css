@@ -12,8 +12,8 @@
   pointer-events: none;
   opacity: 0.35;
   background-image:
-    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(17, 26, 69, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 26, 69, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
 }
@@ -47,7 +47,7 @@
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  color: #0F172A;
+  color: #111A45;
 }
 
 .about-enterprise__reveal {
@@ -100,7 +100,7 @@
   gap: 0;
   overflow: hidden;
   border-radius: 1rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
 }
@@ -121,7 +121,7 @@
   right: 0;
   bottom: 1rem;
   width: 1px;
-  background: #E2E8F0;
+  background: rgba(17, 26, 69, 0.1);
 }
 
 .about-enterprise__stat:hover {
@@ -133,7 +133,7 @@
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
-  color: #0F172A;
+  color: #111A45;
   transition: color 0.3s ease;
   min-width: 2.75ch;
 }
@@ -147,8 +147,8 @@
   overflow: hidden;
   height: 100%;
   border-radius: 1.25rem;
-  border: 1px solid #E2E8F0;
-  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid rgba(17, 26, 69, 0.1);
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFFFFF 100%);
   transition:
     border-color 0.35s ease,
     box-shadow 0.35s ease;
@@ -187,7 +187,7 @@
   flex-direction: column;
   gap: 0.2rem;
   border-radius: 0.85rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   background: rgba(248, 250, 252, 0.65);
   padding: 0.75rem 0.85rem;
   transition:
@@ -204,19 +204,19 @@
   font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: #0F172A;
+  color: #111A45;
 }
 
 .about-enterprise__credential-label {
   font-size: 0.6875rem;
   line-height: 1.4;
-  color: #64748B;
+  color: rgba(17, 26, 69, 0.62);
 }
 
 .about-enterprise__footprint-stack {
   min-width: 0;
   border-radius: 1.25rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   background: rgba(255, 255, 255, 0.85);
   padding: 0.75rem;
   transition: border-color 0.35s ease;
@@ -254,7 +254,7 @@
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 1.25rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
   transition: border-color 0.35s ease;
 }
@@ -314,7 +314,7 @@
   padding: 1.25rem 1rem 2.25rem;
   overflow: hidden;
   border-radius: 1.25rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   background: radial-gradient(ellipse at 50% 120%, rgba(229, 86, 20, 0.12), transparent 55%),
     rgba(248, 250, 252, 0.9);
 }
@@ -329,7 +329,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #64748B;
+  color: rgba(17, 26, 69, 0.62);
 }
 
 .about-enterprise__footprint-stack .about-enterprise__stat {
@@ -386,7 +386,7 @@
   justify-content: space-between;
   gap: 1rem;
   border-radius: 1.25rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   background: rgba(255, 255, 255, 0.92);
   padding: 1.25rem;
   transition: border-color 0.35s ease;
@@ -417,9 +417,9 @@
   flex-direction: column;
   overflow: hidden;
   border-radius: 1.25rem;
-  border: 1px solid #E2E8F0;
-  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 52%, #f8fafc 100%);
-  box-shadow: 0 4px 20px -8px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(17, 26, 69, 0.1);
+  background: linear-gradient(165deg, #ffffff 0%, #FFFFFF 52%, #FFFFFF 100%);
+  box-shadow: 0 4px 20px -8px rgba(17, 26, 69, 0.08);
   transition:
     border-color 0.4s ease,
     box-shadow 0.4s ease,
@@ -599,7 +599,7 @@
   font-weight: 600;
   line-height: 1.12;
   letter-spacing: -0.03em;
-  color: #0F172A;
+  color: #111A45;
 }
 
 @media (min-width: 640px) {
@@ -622,7 +622,7 @@
 .about-enterprise__sector-tile-arrow {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #64748B;
+  color: rgba(17, 26, 69, 0.62);
   opacity: 0;
   transform: translateX(-6px);
   transition:
@@ -683,7 +683,7 @@
   align-items: center;
   gap: 0.65rem;
   padding: 0.7rem 0.35rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid rgba(17, 26, 69, 0.1);
   opacity: 0;
   transform: translateX(-10px);
   animation:
@@ -711,11 +711,11 @@
 }
 
 .about-enterprise__sector-row:hover .about-enterprise__sector-name {
-  color: #0F172A;
+  color: #111A45;
 }
 
 .about-enterprise__sector-row:hover .about-enterprise__sector-detail {
-  color: #64748b;
+  color: rgba(17, 26, 69, 0.62);
 }
 
 .about-enterprise__sector-row:hover .about-enterprise__sector-arrow {
@@ -763,21 +763,21 @@
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: #64748b;
+  color: rgba(17, 26, 69, 0.62);
   transition: color 0.3s ease;
 }
 
 .about-enterprise__sector-detail {
   font-size: 0.6875rem;
   line-height: 1.35;
-  color: #64748B;
+  color: rgba(17, 26, 69, 0.62);
   transition: color 0.3s ease;
 }
 
 .about-enterprise__sector-arrow {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #64748B;
+  color: rgba(17, 26, 69, 0.62);
   opacity: 0;
   transform: translateX(-6px);
   transition:
@@ -826,7 +826,7 @@
   overflow: hidden;
   height: 100%;
   border-radius: 1.25rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.35s ease,
@@ -846,7 +846,7 @@
   background: linear-gradient(
     130deg,
     rgba(229, 86, 20, 0.14) 0%,
-    rgba(15, 23, 42, 0.03) 45%,
+    rgba(17, 26, 69, 0.03) 45%,
     rgba(229, 86, 20, 0.1) 100%
   );
   background-size: 220% 220%;
@@ -883,12 +883,12 @@
   align-items: center;
   gap: 0.625rem;
   border-radius: 9999px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   background: #ffffff;
   padding: 0.65rem 1.35rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #0F172A;
+  color: #111A45;
   transition:
     gap 0.3s ease,
     border-color 0.3s ease,
@@ -914,7 +914,7 @@
   }
 
   .about-enterprise__stat {
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid rgba(17, 26, 69, 0.1);
   }
 
   .about-enterprise__stat:last-child {

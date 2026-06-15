@@ -7,13 +7,13 @@ export function WhiteDesignTestCta() {
   return (
     <section
       id="cta"
-      className={`scroll-mt-24 ${wdt.section} bg-[#F8FAFC]`}
+      className={`scroll-mt-24 ${wdt.section} wdt-section--gray`}
       aria-labelledby="white-design-test-cta-heading"
     >
       <div className={`mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8 ${wdt.ctaPanel}`}>
         <h2
           id="white-design-test-cta-heading"
-          className="text-balance text-2xl font-semibold tracking-tight text-[#0F172A] sm:text-3xl lg:text-4xl"
+          className="text-balance text-2xl font-semibold tracking-tight text-[#111A45] sm:text-3xl lg:text-4xl"
         >
           Ready to start your next project?
         </h2>

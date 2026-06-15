@@ -45,7 +45,7 @@ export function WhiteDesignTestGlobalNavMobile({ open, links, pathname, onClose 
         </ul>
       </nav>
 
-      <div className="mt-4 border-t border-[#E2E8F0] pt-4">
+      <div className="mt-4 border-t border-[#111A45/10] pt-4">
         <Link href={designTestGlobalNavCta.href} onClick={onClose} className={`${whiteGlobalNavCta} w-full`}>
           {designTestGlobalNavCta.label}
         </Link>

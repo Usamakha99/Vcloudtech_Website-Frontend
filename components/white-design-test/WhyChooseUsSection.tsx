@@ -214,7 +214,7 @@ export function WhyChooseUsSection() {
                 <p className={`mt-6 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]`}>
                   {active.title}
                 </p>
-                <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#0F172A] sm:text-2xl">
+                <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#111A45] sm:text-2xl">
                   {active.headline}
                 </h3>
                 <p className={`mt-4 max-w-lg text-sm leading-relaxed sm:text-[15px] ${wdt.body}`}>

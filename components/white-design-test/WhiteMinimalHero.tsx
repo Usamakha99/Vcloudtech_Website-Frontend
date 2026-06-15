@@ -25,13 +25,13 @@ export function WhiteMinimalHero({ offsetForFixedHeader = true, showCarousel = t
 
       <div className="white-hero-overlay">
         <div className="white-hero-copy">
-          <p className="white-hero-fade-in text-[11px] font-semibold uppercase tracking-[0.2em] text-[#64748B]">
+          <p className="white-hero-fade-in text-[11px] font-semibold uppercase tracking-[0.2em] text-[#111A45/62]">
             Enterprise IT solutions
           </p>
 
           <h1
             id="white-hero-heading"
-            className="white-hero-fade-in white-hero-fade-in-delay-1 mx-auto mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-[#0F172A] sm:text-4xl lg:text-5xl lg:leading-[1.08]"
+            className="white-hero-fade-in white-hero-fade-in-delay-1 mx-auto mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-[#111A45] sm:text-4xl lg:text-5xl lg:leading-[1.08]"
           >
             Infrastructure you can{" "}
             <span className="relative inline-block">
@@ -43,7 +43,7 @@ export function WhiteMinimalHero({ offsetForFixedHeader = true, showCarousel = t
             </span>
           </h1>
 
-          <p className="white-hero-fade-in white-hero-fade-in-delay-2 mx-auto mt-5 max-w-lg text-sm leading-relaxed text-[#64748B] sm:text-base">
+          <p className="white-hero-fade-in white-hero-fade-in-delay-2 mx-auto mt-5 max-w-lg text-sm leading-relaxed text-[#111A45/62] sm:text-base">
             Procurement, cloud, security, and hardware — delivered with real warehouse scale,
             accountable teams, and the speed enterprise IT demands.
           </p>
@@ -56,7 +56,11 @@ export function WhiteMinimalHero({ offsetForFixedHeader = true, showCarousel = t
             >
               Get a quote
             </ButtonLink>
-            <ButtonLink href="/services" variant="outlineDark" className="min-w-[9.5rem]">
+            <ButtonLink
+              href="/services"
+              variant="outlineDark"
+              className="min-w-[9.5rem] !border-[#111A45]/20 !text-[#111A45] hover:!border-[#111A45]/35 hover:!bg-[#111A45]/5"
+            >
               Explore services
             </ButtonLink>
           </div>

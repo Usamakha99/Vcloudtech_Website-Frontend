@@ -12,8 +12,8 @@
   pointer-events: none;
   opacity: 0.22;
   background-image:
-    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(17, 26, 69, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 26, 69, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
 }
@@ -35,7 +35,7 @@
   font-weight: 600;
   line-height: 1.12;
   letter-spacing: -0.03em;
-  color: #0F172A;
+  color: #111A45;
 }
 
 /* Category stat cards */
@@ -63,10 +63,10 @@
   position: relative;
   overflow: hidden;
   border-radius: 1.1rem;
-  border: 1px solid #E2E8F0;
-  background: linear-gradient(165deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid rgba(17, 26, 69, 0.1);
+  background: linear-gradient(165deg, #FFFFFF 0%, #FFFFFF 100%);
   padding: 1.35rem 1.15rem 1.4rem;
-  box-shadow: 0 4px 20px -8px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 20px -8px rgba(17, 26, 69, 0.08);
   transition:
     border-color 0.35s ease,
     box-shadow 0.35s ease,
@@ -94,7 +94,7 @@
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.03em;
-  color: #0F172A;
+  color: #111A45;
   line-height: 1;
 }
 
@@ -109,7 +109,7 @@
   line-height: 1.4;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #64748B;
+  color: rgba(17, 26, 69, 0.62);
 }
 
 /* Partner logo showcase */
@@ -120,7 +120,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #64748B;
+  color: rgba(17, 26, 69, 0.62);
 }
 
 .tp__partner-grid {
@@ -147,11 +147,11 @@
   justify-content: center;
   overflow: hidden;
   border-radius: 1rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   background: #FFFFFF;
   padding: 1.5rem 1.25rem;
   box-shadow:
-    0 4px 24px -6px rgba(15, 23, 42, 0.08),
+    0 4px 24px -6px rgba(17, 26, 69, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transition:
     border-color 0.4s ease,
@@ -226,7 +226,7 @@
 
 .tp__trusted {
   margin-top: 2rem;
-  border-top: 1px solid #E2E8F0;
+  border-top: 1px solid rgba(17, 26, 69, 0.1);
   padding-top: 1.5rem;
 }
 
@@ -284,7 +284,7 @@
   background: #FFFFFF;
   padding: 0.45rem;
   box-shadow:
-    0 2px 12px -4px rgba(15, 23, 42, 0.06),
+    0 2px 12px -4px rgba(17, 26, 69, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 1);
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -330,7 +330,7 @@
   gap: 0.5rem;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: #0F172A;
+  color: #111A45;
   text-decoration: none;
   transition: color 0.3s ease;
 }

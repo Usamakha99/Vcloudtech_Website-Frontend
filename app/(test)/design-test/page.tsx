@@ -49,7 +49,7 @@ export default function DesignTestPage() {
           <ResourceHubSection />
           <ClientsTestimonialsSection />
           {/* <VendorPartnersStripSection /> */}
-          {/* <DesignTestCta surface="glass" /> */}
+          <DesignTestCta surface="glass" />
         </div>
       </main>
       <DesignTestFooter />

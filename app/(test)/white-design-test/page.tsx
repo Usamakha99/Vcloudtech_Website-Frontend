@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function WhiteDesignTestPage() {
   return (
-    <div className="white-design-test white-design-test-responsive relative flex min-h-full flex-col overflow-x-clip bg-white text-[#0F172A]">
+    <div className="white-design-test white-design-test-responsive relative flex min-h-full flex-col overflow-x-clip bg-white text-[#111A45]">
       <WhitePageBackground />
       <WhiteDesignTestGlobalNavbar />
       <main className="relative flex-1">
@@ -48,7 +48,7 @@ export default function WhiteDesignTestPage() {
           <ResourceHubSection />
           <ClientsTestimonialsSection />
           {/* <VendorPartnersStripSection /> */}
-          {/* <WhiteDesignTestCta /> */}
+          <WhiteDesignTestCta />
           <WhiteDesignTestFooter />
         </div>
       </main>

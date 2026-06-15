@@ -1,17 +1,103 @@
 /* Premium light flip cards (white-design-test) */
 .white-design-test .service-flip-face {
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(17, 26, 69, 0.1);
   background-color: #ffffff;
-  box-shadow: 0 4px 20px -8px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 20px -8px rgba(17, 26, 69, 0.08);
 }
 
 .white-design-test .service-flip-card:hover .service-flip-face,
 .white-design-test .service-flip-card:focus-within .service-flip-face,
 .white-design-test .service-flip-card:focus-visible .service-flip-face {
   border-color: #e55614;
-  box-shadow: 0 12px 32px -12px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 12px 32px -12px rgba(17, 26, 69, 0.12);
 }
 
+/* Premium flip — larger back icon, minimal opacity fade on hover */
+.white-design-test .service-flip-back-icon--premium {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+  background: rgba(229, 86, 20, 0.1);
+  color: #e55614;
+  box-shadow: inset 0 0 0 1px rgba(229, 86, 20, 0.2);
+  height: 3.75rem;
+  width: 3.75rem;
+  opacity: 0.88;
+  transition:
+    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.45s ease;
+}
+
+.white-design-test .service-flip-back-icon--premium svg {
+  height: 1.625rem;
+  width: 1.625rem;
+  transition:
+    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.45s ease;
+}
+
+@media (min-width: 640px) {
+  .white-design-test .service-flip-back-icon--premium {
+    height: 4.25rem;
+    width: 4.25rem;
+  }
+
+  .white-design-test .service-flip-back-icon--premium svg {
+    height: 1.875rem;
+    width: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .white-design-test .service-flip-back-icon--premium {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+
+  .white-design-test .service-flip-back-icon--premium svg {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+.white-design-test .service-flip-card--premium:hover .service-flip-back-icon--premium,
+.white-design-test .service-flip-card--premium:focus-within .service-flip-back-icon--premium {
+  transform: scale(1.08);
+  opacity: 0.78;
+}
+
+.white-design-test .service-flip-card--premium:hover .service-flip-back-icon--premium svg,
+.white-design-test .service-flip-card--premium:focus-within .service-flip-back-icon--premium svg {
+  transform: scale(1.06);
+}
+
+.white-design-test .service-flip-card--premium:hover .service-flip-front .service-flip-front-icon,
+.white-design-test .service-flip-card--premium:focus-within .service-flip-front .service-flip-front-icon {
+  opacity: 0.72;
+  transform: scale(0.96);
+}
+
+.white-design-test .service-flip-front-icon {
+  transition:
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .white-design-test .service-flip-back-icon--premium,
+  .white-design-test .service-flip-back-icon--premium svg,
+  .white-design-test .service-flip-front-icon {
+    transition: none;
+  }
+
+  .white-design-test .service-flip-card--premium:hover .service-flip-back-icon--premium,
+  .white-design-test .service-flip-card--premium:focus-within .service-flip-back-icon--premium {
+    transform: none;
+    opacity: 0.88;
+  }
+}
 
 .service-flip-card {
   display: block;

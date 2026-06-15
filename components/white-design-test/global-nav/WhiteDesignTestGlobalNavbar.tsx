@@ -77,7 +77,7 @@ export function WhiteDesignTestGlobalNavbar({
           {showLabExit ? (
             <Link
               href={labExitHref}
-              className="hidden text-[11px] font-medium uppercase tracking-[0.12em] text-[#64748B] transition hover:text-[#0F172A] md:inline"
+              className="hidden text-[11px] font-medium uppercase tracking-[0.12em] text-[#111A45/62] transition hover:text-[#111A45] md:inline"
             >
               {labExitLabel}
             </Link>
@@ -85,7 +85,7 @@ export function WhiteDesignTestGlobalNavbar({
 
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#E2E8F0] text-[#64748B] transition hover:border-[#CBD5E1] hover:bg-[#F8FAFC] hover:text-[#0F172A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E55614]/40 lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#111A45/10] text-[#111A45/62] transition hover:border-[#111A45/20] hover:bg-[#FFFFFF] hover:text-[#111A45] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E55614]/40 lg:hidden"
             aria-expanded={mobileOpen}
             aria-controls="white-design-test-global-nav-panel"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}

@@ -112,7 +112,7 @@ export function ServicesGrid({
               glass
                 ? "text-white"
                 : premiumLight
-                  ? "text-[#0F172A]"
+                  ? "text-[#111A45]"
                   : "text-[#1B224B] dark:text-white"
             }`}
           >
@@ -140,7 +140,9 @@ export function ServicesGrid({
                 <Link
                   href={item.href}
                   className={`service-flip-card group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 ${
-                    premiumLight ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-[#0F0F0F]"
+                    premiumLight
+                      ? "service-flip-card--premium focus-visible:ring-offset-white"
+                      : "focus-visible:ring-offset-[#0F0F0F]"
                   }`}
                 >
                   <div className="service-flip-inner">
@@ -148,7 +150,13 @@ export function ServicesGrid({
                       <ServiceCardContent item={item} surface={surface} />
                     </div>
                     <div className="service-flip-face service-flip-back">
-                      <div className={themed.iconBoxCard}>
+                      <div
+                        className={
+                          premiumLight
+                            ? "service-flip-back-icon service-flip-back-icon--premium"
+                            : `service-flip-back-icon ${themed.iconBoxCard}`
+                        }
+                      >
                         <item.icon />
                       </div>
                       <h3 className={`mt-5 text-lg font-semibold tracking-tight ${themed.heading}`}>
@@ -198,7 +206,7 @@ function ServiceCardContent({
       <div
         className={
           glass || premiumLight
-            ? themed.iconBoxCard
+            ? `${themed.iconBoxCard}${premiumLight ? " service-flip-front-icon" : ""}`
             : "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-50 to-sky-100/80 text-sky-700 ring-1 ring-sky-200/60 [&_svg]:h-6 [&_svg]:w-6"
         }
       >

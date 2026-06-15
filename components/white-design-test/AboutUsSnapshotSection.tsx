@@ -88,7 +88,7 @@ export function AboutUsSnapshotSection() {
             <span className="about-enterprise__manifesto-accent" aria-hidden />
             <div className="p-6 sm:p-7 lg:p-8">
               <p className={wdt.metaLabel}>Organizational identity</p>
-              <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#0F172A] sm:text-2xl">
+              <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#111A45] sm:text-2xl">
                 Who we are
               </h3>
               <p className={`mt-4 text-sm leading-[1.8] sm:text-[15px] ${wdt.body}`}>
@@ -97,15 +97,15 @@ export function AboutUsSnapshotSection() {
                 of a long-term partner.
               </p>
 
-              <blockquote className="mt-8 border-t border-[#E2E8F0] pt-6">
+              <blockquote className="mt-8 border-t border-[#111A45/10] pt-6">
                 <p className={wdt.metaLabel}>Mission</p>
-                <p className="mt-3 text-lg font-medium leading-relaxed text-[#0F172A] sm:text-xl">
+                <p className="mt-3 text-lg font-medium leading-relaxed text-[#111A45] sm:text-xl">
                   Simplify complex IT buying and deliver trusted solutions that help teams move
                   faster with confidence.
                 </p>
               </blockquote>
 
-              <div className="about-enterprise__credentials mt-8 border-t border-[#E2E8F0] pt-6">
+              <div className="about-enterprise__credentials mt-8 border-t border-[#111A45/10] pt-6">
                 <p className={wdt.metaLabel}>Certifications &amp; designations</p>
                 <ul className="about-enterprise__credentials-grid mt-4">
                   {credentials.map((cert) => (
@@ -119,7 +119,7 @@ export function AboutUsSnapshotSection() {
                 </ul>
               </div>
 
-              <div className="mt-8 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]/80 p-4 sm:p-5">
+              <div className="mt-8 rounded-xl border border-[#111A45/10] bg-[#FFFFFF]/80 p-4 sm:p-5">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]">
                   Business impact
                 </p>
@@ -307,7 +307,7 @@ function FootprintVisual() {
       fill="none"
       aria-hidden
     >
-      <circle cx="100" cy="100" r="78" stroke="rgba(15,23,42,0.08)" strokeWidth="1" />
+      <circle cx="100" cy="100" r="78" stroke="rgba(17,26,69,0.08)" strokeWidth="1" />
       <circle cx="100" cy="100" r="52" stroke="rgba(229,86,20,0.25)" strokeWidth="1" strokeDasharray="4 6" />
 
       <g className="about-enterprise__orbit">
@@ -318,10 +318,10 @@ function FootprintVisual() {
       </g>
 
       <g className="about-enterprise__orbit about-enterprise__orbit--reverse">
-        <circle cx="100" cy="48" r="3" fill="rgba(15,23,42,0.2)" />
-        <circle cx="152" cy="100" r="3" fill="rgba(15,23,42,0.2)" />
-        <circle cx="100" cy="152" r="3" fill="rgba(15,23,42,0.2)" />
-        <circle cx="48" cy="100" r="3" fill="rgba(15,23,42,0.2)" />
+        <circle cx="100" cy="48" r="3" fill="rgba(17,26,69,0.2)" />
+        <circle cx="152" cy="100" r="3" fill="rgba(17,26,69,0.2)" />
+        <circle cx="100" cy="152" r="3" fill="rgba(17,26,69,0.2)" />
+        <circle cx="48" cy="100" r="3" fill="rgba(17,26,69,0.2)" />
       </g>
 
       <circle cx="100" cy="100" r="10" fill="rgba(229,86,20,0.25)" />
