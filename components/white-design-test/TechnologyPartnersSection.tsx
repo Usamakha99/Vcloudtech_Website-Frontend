@@ -5,10 +5,10 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { dt } from "@/components/design-test/design-test-theme";
-import { TrustedByClientsMarquee } from "@/components/design-test/TrustedByClientsMarquee";
+import { wdt } from "@/components/white-design-test/white-design-test-theme";
+import { TrustedByClientsMarquee } from "@/components/white-design-test/TrustedByClientsMarquee";
 
-import "./technology-partners.css";
+import "./white-technology-partners.css";
 
 const categories = [
   { id: "security", label: "Cybersecurity Partners", target: 110, suffix: "+", accent: true },
@@ -158,7 +158,7 @@ export function TechnologyPartnersSection() {
     <section
       ref={sectionRef}
       id="partners"
-      className={`tp relative z-10 scroll-mt-24 py-14 sm:py-16 lg:py-20 ${dt.sectionBorder}`}
+      className={`tp relative z-10 scroll-mt-24 wdt-section--gray py-14 sm:py-16 lg:py-20 ${wdt.sectionBorder}`}
       aria-labelledby="tech-partners-heading"
       onPointerMove={onPointerMove}
       onPointerLeave={() => setGlow((g) => ({ ...g, visible: false }))}
@@ -179,14 +179,14 @@ export function TechnologyPartnersSection() {
           animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.65, ease }}
         >
-          <p className={dt.badge}>Technology Partners</p>
+          <p className={wdt.badge}>Technology Partners</p>
           <h2 id="tech-partners-heading" className="tp__headline mt-5">
             World-class partners.{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
               One trusted platform.
             </span>
           </h2>
-          <p className={`mt-3 text-sm leading-relaxed sm:text-[15px] ${dt.headingSub}`}>
+          <p className={`mt-3 text-sm leading-relaxed sm:text-[15px] ${wdt.headingSub}`}>
             400+ technology partners across cybersecurity, software, hardware, and cloud — sourced
             and supported through vCloud Tech.
           </p>

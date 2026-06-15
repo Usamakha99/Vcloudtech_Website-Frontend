@@ -1,4 +1,17 @@
-/* Design-test services — flip card + solid orange border on hover (no orange fill glow) */
+/* Premium light flip cards (white-design-test) */
+.white-design-test .service-flip-face {
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px -8px rgba(15, 23, 42, 0.08);
+}
+
+.white-design-test .service-flip-card:hover .service-flip-face,
+.white-design-test .service-flip-card:focus-within .service-flip-face,
+.white-design-test .service-flip-card:focus-visible .service-flip-face {
+  border-color: #e55614;
+  box-shadow: 0 12px 32px -12px rgba(15, 23, 42, 0.12);
+}
+
 
 .service-flip-card {
   display: block;

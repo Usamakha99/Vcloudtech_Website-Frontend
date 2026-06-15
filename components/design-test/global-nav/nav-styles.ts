@@ -22,3 +22,12 @@ export const globalNavSeparator = "hidden text-[#A1A1AA]/50 select-none sm:inlin
 
 export const globalNavMobilePanel =
   "border-t border-white/10 bg-[#1A1A1A] px-4 py-4 backdrop-blur-lg lg:hidden";
+
+export const globalLabSwitcher =
+  "hidden items-center gap-1 rounded-full border border-white/15 bg-[#1A1A1A] p-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] sm:inline-flex";
+
+export function globalLabSwitcherLink(active: boolean) {
+  return active
+    ? "rounded-full bg-[#0F0F0F] px-2.5 py-1 text-white shadow-sm"
+    : "rounded-full px-2.5 py-1 text-[#A1A1AA] transition hover:text-white";
+}

@@ -1,0 +1,228 @@
+.white-design-test {
+  color: #0f172a;
+  background-color: #ffffff;
+}
+
+/* Alternating section surfaces */
+.white-design-test .wdt-section--white {
+  background-color: #ffffff;
+}
+
+.white-design-test .wdt-section--gray {
+  background-color: #f8fafc;
+}
+
+/* Shared section header rhythm */
+.white-design-test .wdt-section-header {
+  margin-inline: auto;
+  max-width: 42rem;
+  text-align: center;
+}
+
+.white-design-test .wdt-section-header--wide {
+  max-width: 48rem;
+}
+
+.white-design-test .wdt-section-header p[class*="tracking"] {
+  color: #64748b;
+}
+
+/* About — grid + industry cards */
+.white-design-test .about-enterprise__grid-bg {
+  opacity: 0.45;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+.white-design-test .about-enterprise__industry-card {
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 4px 20px -8px rgba(15, 23, 42, 0.08);
+}
+
+.white-design-test .about-enterprise__manifesto {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border-color: #e2e8f0;
+}
+
+.white-design-test .about-enterprise__stat-rail {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #e2e8f0;
+}
+
+.white-design-test .about-enterprise__stat:not(:last-child)::after {
+  background: #e2e8f0;
+}
+
+.white-design-test .about-enterprise__stat-value {
+  color: #0f172a;
+}
+
+.white-design-test .about-enterprise__visual {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.white-design-test .about-enterprise__credential {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.white-design-test .about-enterprise__footprint-stack {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.white-design-test .about-enterprise__cta {
+  color: #0f172a;
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.white-design-test .about-enterprise__cta:hover {
+  color: #e55614;
+  border-color: rgba(229, 86, 20, 0.35);
+  background: rgba(229, 86, 20, 0.05);
+}
+
+/* Technology partners */
+.white-design-test .tp__category {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 16px -8px rgba(15, 23, 42, 0.06);
+}
+
+.white-design-test .tp__grid-bg {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+}
+
+.white-design-test .tp__cta {
+  color: #0f172a;
+}
+
+.white-design-test .tp__trusted {
+  border-top-color: #e2e8f0;
+}
+
+/* Why choose us */
+.white-design-test .why-choose__usp-tab-title {
+  color: #64748b;
+}
+
+.white-design-test .why-choose__usp-tab.is-active .why-choose__usp-tab-title {
+  color: #0f172a;
+}
+
+.white-design-test .why-choose__usp-tab-arrow {
+  color: #94a3b8;
+}
+
+.white-design-test .why-choose__usp-stage {
+  background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 8px 32px -16px rgba(15, 23, 42, 0.1);
+}
+
+.white-design-test .why-choose__path-node-num {
+  fill: #ffffff;
+}
+
+.white-design-test .why-choose__path-fallback-dot {
+  color: #ffffff;
+}
+
+/* Platform ecosystem */
+.white-design-test .vc-ecosystem__pillar {
+  background: #ffffff;
+}
+
+.white-design-test .vc-ecosystem__stage {
+  background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 8px 32px -16px rgba(15, 23, 42, 0.1);
+}
+
+.white-design-test .vc-ecosystem__activity-item {
+  border-color: #e2e8f0;
+  background: #ffffff;
+}
+
+.white-design-test .vc-ecosystem__hub {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(229, 86, 20, 0.35);
+  box-shadow:
+    0 0 0 8px rgba(229, 86, 20, 0.06),
+    0 12px 32px -16px rgba(15, 23, 42, 0.12);
+}
+
+.white-design-test .vc-ecosystem__node-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 16px -8px rgba(15, 23, 42, 0.08);
+}
+
+.white-design-test .vc-ecosystem__node-title {
+  color: #0f172a;
+}
+
+.white-design-test .vc-ecosystem__node-detail {
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.98);
+  border-color: #e2e8f0;
+}
+
+/* Resource hub */
+.white-design-test .rh__header {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.white-design-test .rh__card-link {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.white-design-test .rh__card-visual {
+  background: #f1f5f9;
+}
+
+.white-design-test .rh__card-link:hover .rh__card-title {
+  color: #e55614;
+}
+
+.white-design-test .rh__meta-sep {
+  color: #cbd5e1;
+}
+
+.white-design-test .rh__read-arrow {
+  border-color: #e2e8f0;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.white-design-test .rh__cta {
+  color: #0f172a;
+  border-color: #e2e8f0;
+  background: #ffffff;
+}
+
+.white-design-test .rh__cta:hover {
+  color: #e55614;
+  border-color: rgba(229, 86, 20, 0.35);
+  background: rgba(229, 86, 20, 0.05);
+}
+
+/* Testimonials */
+.white-design-test .wdt-testimonial-quote::before {
+  color: #e55614;
+  opacity: 0.35;
+}
+
+/* Services section inherits parent wdt-section--white */
+.white-design-test #services .service-flip-face {
+  background-color: #ffffff;
+}
+
+.white-design-test .wdt-footer {
+  position: relative;
+  z-index: 30;
+}

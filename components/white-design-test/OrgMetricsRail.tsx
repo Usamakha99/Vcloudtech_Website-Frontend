@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { dt } from "@/components/design-test/design-test-theme";
+import { wdt } from "@/components/white-design-test/white-design-test-theme";
 
 
 const orgMetrics = [
@@ -107,7 +107,7 @@ export function OrgMetricsRail({ className = "" }: { className?: string }) {
             active={isVisible}
             delayMs={index * 180}
           />
-          <p className={`mt-1 text-[10px] font-medium uppercase tracking-wider sm:text-[11px] ${dt.statLabel}`}>
+          <p className={`mt-1 text-[10px] font-medium uppercase tracking-wider sm:text-[11px] ${wdt.statLabel}`}>
             {metric.label}
           </p>
         </li>

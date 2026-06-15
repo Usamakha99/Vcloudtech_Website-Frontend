@@ -11,22 +11,23 @@ import {
   designTestGlobalNavLinks,
 } from "@/lib/navigation/design-test-global-nav";
 
-import { DesignTestGlobalNavLinks } from "./DesignTestGlobalNavLinks";
-import { DesignTestGlobalNavMobile } from "./DesignTestGlobalNavMobile";
-import { globalNavCta, globalNavHeader, globalNavInner, globalLabSwitcher, globalLabSwitcherLink } from "./nav-styles";
+import { WhiteDesignTestGlobalNavLinks } from "./WhiteDesignTestGlobalNavLinks";
+import { WhiteDesignTestGlobalNavMobile } from "./WhiteDesignTestGlobalNavMobile";
+import {
+  whiteGlobalNavCta,
+  whiteGlobalNavHeader,
+  whiteGlobalNavInner,
+  whiteLabSwitcher,
+  whiteLabSwitcherLink,
+} from "./nav-styles-light";
 
 type Props = {
-  /** Optional lab exit link (e.g. back to main site home). */
   showLabExit?: boolean;
   labExitHref?: string;
   labExitLabel?: string;
 };
 
-/**
- * Minimal sticky global navigation for design-test lab pages.
- * Config: `lib/navigation/design-test-global-nav.ts`
- */
-export function DesignTestGlobalNavbar({
+export function WhiteDesignTestGlobalNavbar({
   showLabExit = true,
   labExitHref = "/",
   labExitLabel = "Exit lab",
@@ -39,44 +40,44 @@ export function DesignTestGlobalNavbar({
   }, [pathname]);
 
   return (
-    <header className={globalNavHeader}>
-      <div className={globalNavInner}>
+    <header className={whiteGlobalNavHeader}>
+      <div className={whiteGlobalNavInner}>
         <Link
           href={designTestGlobalNavBrand.href}
-          className="flex shrink-0 items-center outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40"
+          className="flex shrink-0 items-center outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E55614]/40"
           aria-label={designTestGlobalNavBrand.ariaLabel}
         >
-          <VCloudTechLogoImage
-            priority
-            className="h-7 w-auto max-h-7 brightness-0 invert opacity-95 sm:h-8 sm:max-h-8"
-          />
+          <VCloudTechLogoImage priority className="h-7 w-auto max-h-7 sm:h-8 sm:max-h-8" />
         </Link>
 
         <nav
           aria-label="Global navigation"
           className="hidden min-w-0 flex-1 justify-center lg:flex"
         >
-          <DesignTestGlobalNavLinks links={designTestGlobalNavLinks} pathname={pathname} />
+          <WhiteDesignTestGlobalNavLinks links={designTestGlobalNavLinks} pathname={pathname} />
         </nav>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          <div className={globalLabSwitcher} aria-label="Design lab switcher">
-            <Link href="/design-test" className={globalLabSwitcherLink(true)}>
+          <div className={whiteLabSwitcher} aria-label="Design lab switcher">
+            <Link href="/design-test" className={whiteLabSwitcherLink(false)}>
               A
             </Link>
-            <Link href="/white-design-test" className={globalLabSwitcherLink(false)}>
+            <Link href="/white-design-test" className={whiteLabSwitcherLink(true)}>
               B
             </Link>
           </div>
 
-          <Link href={designTestGlobalNavCta.href} className={`${globalNavCta} hidden sm:inline-flex`}>
+          <Link
+            href={designTestGlobalNavCta.href}
+            className={`${whiteGlobalNavCta} hidden sm:inline-flex`}
+          >
             {designTestGlobalNavCta.label}
           </Link>
 
           {showLabExit ? (
             <Link
               href={labExitHref}
-              className="hidden text-[11px] font-medium uppercase tracking-[0.12em] text-[#A1A1AA] transition hover:text-white md:inline"
+              className="hidden text-[11px] font-medium uppercase tracking-[0.12em] text-[#64748B] transition hover:text-[#0F172A] md:inline"
             >
               {labExitLabel}
             </Link>
@@ -84,9 +85,9 @@ export function DesignTestGlobalNavbar({
 
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 text-white/80 transition hover:border-white/30 hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40 lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#E2E8F0] text-[#64748B] transition hover:border-[#CBD5E1] hover:bg-[#F8FAFC] hover:text-[#0F172A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E55614]/40 lg:hidden"
             aria-expanded={mobileOpen}
-            aria-controls="design-test-global-nav-panel"
+            aria-controls="white-design-test-global-nav-panel"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((open) => !open)}
           >
@@ -95,7 +96,7 @@ export function DesignTestGlobalNavbar({
         </div>
       </div>
 
-      <DesignTestGlobalNavMobile
+      <WhiteDesignTestGlobalNavMobile
         open={mobileOpen}
         links={designTestGlobalNavLinks}
         pathname={pathname}

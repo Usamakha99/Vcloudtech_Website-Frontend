@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { dt } from "@/components/design-test/design-test-theme";
 import type { ReactNode } from "react";
 
-import { dt } from "@/components/design-test/design-test-theme";
 import {
   CartIcon,
   ContractIcon,

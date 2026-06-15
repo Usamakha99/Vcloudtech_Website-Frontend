@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { dt } from "@/components/design-test/design-test-theme";
+import { wdt } from "@/components/white-design-test/white-design-test-theme";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
 
-import "./resource-hub.css";
+import "./white-resource-hub.css";
 
 type Article = {
   category: string;
@@ -139,22 +139,22 @@ export function ResourceHubSection() {
     <section
       ref={sectionRef}
       id="blog-content"
-      className={`rh relative scroll-mt-24 py-16 sm:py-20 lg:py-24 ${dt.sectionBorder}`}
+      className={`rh relative scroll-mt-24 wdt-section--white py-16 sm:py-20 lg:py-24 ${wdt.sectionBorder}`}
       aria-labelledby="blog-content-heading"
     >
       <div className="rh__glow rh__glow--tl" aria-hidden />
       <div className="rh__glow rh__glow--br" aria-hidden />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <header className={`rh__header ${headerVisible ? "is-visible" : ""}`}>
-          <p className={dt.badge}>Blog &amp; content</p>
+        <header className={`rh__header wdt-section-header wdt-section-header--wide ${headerVisible ? "is-visible" : ""}`}>
+          <p className={wdt.badge}>Blog &amp; content</p>
           <h2 id="blog-content-heading" className="rh__headline mt-5">
             Latest{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
               insights
             </span>
           </h2>
-          <p className={`mt-4 max-w-lg text-base leading-relaxed ${dt.headingSub}`}>
+          <p className={`mt-4 max-w-lg text-base leading-relaxed ${wdt.headingSub}`}>
             Practical perspectives on procurement, cloud, security, and enterprise IT operations.
           </p>
         </header>
@@ -170,7 +170,7 @@ export function ResourceHubSection() {
           ))}
         </ul>
 
-        <div className={`rh__cta-wrap ${cardsVisible ? "is-visible" : ""}`}>
+        <div className={`rh__cta-wrap mx-auto justify-center ${cardsVisible ? "is-visible" : ""}`}>
           <Link href="/posts" className="rh__cta">
             View all articles
             <span className="rh__cta-arrow" aria-hidden>

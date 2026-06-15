@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useInView } from "framer-motion";
-import { dt } from "@/components/design-test/design-test-theme";
+import { wdt } from "@/components/white-design-test/white-design-test-theme";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
@@ -14,7 +14,7 @@ import {
 
 import { TransformationPathLoop } from "@/components/design-test/TransformationPathLoop";
 
-import "./why-choose-us.css";
+import "./white-why-choose-us.css";
 
 type UspItem = {
   title: string;
@@ -109,7 +109,7 @@ export function WhyChooseUsSection() {
     <section
       ref={sectionRef}
       id="why-choose-us"
-      className={`why-choose relative scroll-mt-24 py-14 sm:py-18 lg:py-24 ${dt.sectionBorder}`}
+      className={`why-choose relative scroll-mt-24 wdt-section--gray py-14 sm:py-18 lg:py-24 ${wdt.sectionBorder}`}
       aria-labelledby="why-choose-us-heading"
       onPointerMove={onPointerMove}
       onPointerLeave={() => setGlow((g) => ({ ...g, visible: false }))}
@@ -135,14 +135,14 @@ export function WhyChooseUsSection() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             style={animateIn ? undefined : { opacity: 0, y: 20 }}
           >
-            <p className={dt.badge}>Why choose us</p>
+            <p className={wdt.badge}>Why choose us</p>
             <h2 id="why-choose-us-heading" className="why-choose__headline mt-5">
               Built for teams that{" "}
               <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
                 cannot afford guesswork
               </span>
             </h2>
-            <p className={`mt-5 max-w-md text-base leading-relaxed ${dt.headingSub}`}>
+            <p className={`mt-5 max-w-md text-base leading-relaxed ${wdt.headingSub}`}>
               vCloud Tech combines procurement discipline, security governance, and nationwide
               operations — so enterprise IT leaders get outcomes they can defend.
             </p>
@@ -150,7 +150,7 @@ export function WhyChooseUsSection() {
         </div>
 
         <div ref={journeyRef} className="why-choose__journey mt-10 sm:mt-12">
-          <p className={`mb-5 text-[10px] font-semibold uppercase tracking-[0.16em] ${dt.metaLabel}`}>
+          <p className={`mb-5 text-[10px] font-semibold uppercase tracking-[0.16em] ${wdt.metaLabel}`}>
             Your transformation path
           </p>
           <TransformationPathLoop active={journeyActive} />
@@ -158,7 +158,7 @@ export function WhyChooseUsSection() {
 
         <div className="why-choose__usp">
           <div className="why-choose__usp-rail" role="tablist" aria-label="Why vCloud Tech">
-            <p className={`mb-2 px-1 text-[10px] font-semibold uppercase tracking-[0.16em] ${dt.metaLabel}`}>
+            <p className={`mb-2 px-1 text-[10px] font-semibold uppercase tracking-[0.16em] ${wdt.metaLabel}`}>
               What sets us apart
             </p>
             {uspItems.map((item, index) => (
@@ -205,19 +205,19 @@ export function WhyChooseUsSection() {
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="flex items-start justify-between gap-4">
-                  <div className={dt.iconBoxCard}>
+                  <div className={wdt.iconBoxCard}>
                     <ActiveIcon className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
                   </div>
-                  <span className={dt.number}>{String(activeUsp + 1).padStart(2, "0")}</span>
+                  <span className={wdt.number}>{String(activeUsp + 1).padStart(2, "0")}</span>
                 </div>
 
                 <p className={`mt-6 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]`}>
                   {active.title}
                 </p>
-                <h3 className="mt-2 text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#0F172A] sm:text-2xl">
                   {active.headline}
                 </h3>
-                <p className={`mt-4 max-w-lg text-sm leading-relaxed sm:text-[15px] ${dt.body}`}>
+                <p className={`mt-4 max-w-lg text-sm leading-relaxed sm:text-[15px] ${wdt.body}`}>
                   {active.description}
                 </p>
 

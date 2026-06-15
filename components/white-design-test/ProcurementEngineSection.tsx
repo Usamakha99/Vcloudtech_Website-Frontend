@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { dt, dtCta } from "@/components/design-test/design-test-theme";
+import { wdt, wdtCta } from "@/components/white-design-test/white-design-test-theme";
 import { motion, useInView } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -14,7 +14,7 @@ import {
   ShieldIcon,
 } from "@/components/icons/section-icons";
 
-import "./platform-ecosystem.css";
+import "./white-platform-ecosystem.css";
 
 const ecosystemNodes = [
   {
@@ -116,7 +116,7 @@ export function ProcurementEngineSection() {
     <section
       ref={sectionRef}
       id="platform-ecosystem"
-      className={`vc-ecosystem scroll-mt-24 py-14 sm:py-16 lg:py-24 ${dt.sectionBorder}`}
+      className={`vc-ecosystem scroll-mt-24 wdt-section--white py-14 sm:py-16 lg:py-24 ${wdt.sectionBorder}`}
       aria-labelledby="platform-ecosystem-heading"
       onMouseMove={onMouseMove}
       onMouseLeave={() => setGlow((g) => ({ ...g, visible: false }))}
@@ -139,14 +139,14 @@ export function ProcurementEngineSection() {
           animate={animateIn ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className={dt.badge}>Platform ecosystem</p>
+          <p className={wdt.badge}>Platform ecosystem</p>
           <h2 id="platform-ecosystem-heading" className="vc-ecosystem__headline mt-5">
             One platform.{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
               Every technology layer.
             </span>
           </h2>
-          <p className={`mt-5 max-w-2xl text-base leading-relaxed sm:text-lg ${dt.headingSub}`}>
+          <p className={`mt-5 max-w-2xl text-base leading-relaxed sm:text-lg ${wdt.headingSub}`}>
             V Cloud Tech is a unified technology platform — procurement and marketplaces to source
             IT hardware and AI solutions, plus expert services to deploy, secure, and run your
             stack. One partner for buying, building, and operating enterprise technology.
@@ -226,10 +226,10 @@ export function ProcurementEngineSection() {
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           <span className="vc-ecosystem__vision-badge">Roadmap</span>
-          <p className={`text-sm leading-relaxed ${dt.body}`}>
-            <span className="font-medium text-white">Today:</span> procurement through our hardware
+          <p className={`text-sm leading-relaxed ${wdt.body}`}>
+            <span className="font-medium text-[#0F172A]">Today:</span> procurement through our hardware
             marketplace and sourcing team — quotes, catalog search, and enterprise IT buying.{" "}
-            <span className="font-medium text-white">Coming soon:</span> a unified procurement
+            <span className="font-medium text-[#0F172A]">Coming soon:</span> a unified procurement
             engine with automated approvals, vendor workflows, and spend analytics across the
             platform.
           </p>
@@ -243,14 +243,14 @@ export function ProcurementEngineSection() {
         >
           <Link
             href="/procurement"
-            className={`inline-flex h-12 items-center justify-center gap-2 rounded-full px-8 text-sm font-semibold text-white shadow-lg shadow-[#E55614]/20 transition duration-300 ${dtCta.bg} ${dtCta.bgHover}`}
+            className={`inline-flex h-12 items-center justify-center gap-2 rounded-full px-8 text-sm font-semibold text-white shadow-lg shadow-[#E55614]/20 transition duration-300 ${wdtCta.bg} ${wdtCta.bgHover}`}
           >
             Start procurement
             <span aria-hidden>→</span>
           </Link>
           <Link
             href="/solutions"
-            className={`inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white transition duration-300 hover:border-[#E55614]/40 hover:bg-[#E55614]/10`}
+            className={`inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#E2E8F0] bg-white px-8 text-sm font-semibold text-[#0F172A] transition duration-300 hover:border-[#E55614]/40 hover:bg-[#E55614]/5`}
           >
             Explore services
           </Link>
@@ -265,7 +265,7 @@ function ActivityPanel({ active }: { active: boolean }) {
     <div className="vc-ecosystem__activity">
       <div className="vc-ecosystem__activity-header">
         <span className="vc-ecosystem__activity-live">Platform activity</span>
-        <span className={`text-[10px] font-mono ${dt.statLabel}`}>ECO-LIVE</span>
+        <span className={`text-[10px] font-mono ${wdt.statLabel}`}>ECO-LIVE</span>
       </div>
       <ul className="vc-ecosystem__activity-list">
         {activityFeed.map((item, i) => (
@@ -277,7 +277,7 @@ function ActivityPanel({ active }: { active: boolean }) {
             transition={{ delay: 0.32 + i * 0.09, duration: 0.45 }}
           >
             <span className="vc-ecosystem__activity-tag">{item.tag}</span>
-            <span className="text-xs leading-snug text-white">{item.event}</span>
+            <span className="text-xs leading-snug text-[#0F172A]">{item.event}</span>
           </motion.li>
         ))}
       </ul>
@@ -365,8 +365,8 @@ function EcosystemStackCard({ node }: { node: (typeof ecosystemNodes)[number] })
         </span>
         <div>
           <p className="text-[10px] font-bold uppercase tracking-wider text-[#E55614]">{node.tag}</p>
-          <p className="mt-1 text-sm font-semibold text-white">{node.title}</p>
-          <p className={`mt-1 text-xs ${dt.body}`}>{node.detail}</p>
+          <p className="mt-1 text-sm font-semibold text-[#0F172A]">{node.title}</p>
+          <p className={`mt-1 text-xs ${wdt.body}`}>{node.detail}</p>
         </div>
       </div>
     </Link>

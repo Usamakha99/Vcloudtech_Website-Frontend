@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { dt } from "@/components/design-test/design-test-theme";
+import { wdt } from "@/components/white-design-test/white-design-test-theme";
 import type { ReactNode } from "react";
 
 
-import { OrgMetricsRail } from "@/components/design-test/OrgMetricsRail";
+import { OrgMetricsRail } from "@/components/white-design-test/OrgMetricsRail";
 import {
   EducationIcon,
   GovernmentIcon,
@@ -13,7 +13,7 @@ import {
   type SectionIcon,
 } from "@/components/icons/section-icons";
 
-import "./about-us-section.css";
+import "./white-about-us-section.css";
 const sectors: {
   name: string;
   detail: string;
@@ -60,7 +60,7 @@ export function AboutUsSnapshotSection() {
   return (
     <section
       id="about"
-      className={`about-enterprise relative z-20 scroll-mt-24 py-12 sm:py-16 lg:py-20 ${dt.sectionBorder}`}
+      className={`about-enterprise relative z-20 scroll-mt-24 wdt-section--white py-12 sm:py-16 lg:py-20 ${wdt.sectionBorder}`}
       aria-labelledby="about-snapshot-heading"
     >
       <div className="about-enterprise__grid-bg" aria-hidden />
@@ -69,7 +69,7 @@ export function AboutUsSnapshotSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="about-enterprise__reveal about-enterprise__reveal--1 max-w-3xl">
-          <p className={dt.badge}>The organization</p>
+          <p className={wdt.badge}>The organization</p>
           <h2 id="about-snapshot-heading" className="about-enterprise__headline">
             Built for{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
@@ -77,7 +77,7 @@ export function AboutUsSnapshotSection() {
             </span>{" "}
             scale.
           </h2>
-          <p className={`mt-4 text-base leading-relaxed sm:text-lg ${dt.headingSub}`}>
+          <p className={`mt-4 text-base leading-relaxed sm:text-lg ${wdt.headingSub}`}>
             A national IT solutions organization delivering procurement, licensing, and managed
             outcomes for teams that cannot afford guesswork.
           </p>
@@ -87,26 +87,26 @@ export function AboutUsSnapshotSection() {
           <article className="about-enterprise__manifesto about-enterprise__reveal about-enterprise__reveal--3 order-2 lg:order-none">
             <span className="about-enterprise__manifesto-accent" aria-hidden />
             <div className="p-6 sm:p-7 lg:p-8">
-              <p className={dt.metaLabel}>Organizational identity</p>
-              <h3 className="mt-3 text-xl font-semibold tracking-tight text-white sm:text-2xl">
+              <p className={wdt.metaLabel}>Organizational identity</p>
+              <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#0F172A] sm:text-2xl">
                 Who we are
               </h3>
-              <p className={`mt-4 text-sm leading-[1.8] sm:text-[15px] ${dt.body}`}>
+              <p className={`mt-4 text-sm leading-[1.8] sm:text-[15px] ${wdt.body}`}>
                 vCloud Tech is an enterprise IT solutions organization helping public and private
                 sector teams procure, deploy, and manage technology — with the discipline expected
                 of a long-term partner.
               </p>
 
-              <blockquote className="mt-8 border-t border-white/10 pt-6">
-                <p className={dt.metaLabel}>Mission</p>
-                <p className="mt-3 text-lg font-medium leading-relaxed text-white sm:text-xl">
+              <blockquote className="mt-8 border-t border-[#E2E8F0] pt-6">
+                <p className={wdt.metaLabel}>Mission</p>
+                <p className="mt-3 text-lg font-medium leading-relaxed text-[#0F172A] sm:text-xl">
                   Simplify complex IT buying and deliver trusted solutions that help teams move
                   faster with confidence.
                 </p>
               </blockquote>
 
-              <div className="about-enterprise__credentials mt-8 border-t border-white/10 pt-6">
-                <p className={dt.metaLabel}>Certifications &amp; designations</p>
+              <div className="about-enterprise__credentials mt-8 border-t border-[#E2E8F0] pt-6">
+                <p className={wdt.metaLabel}>Certifications &amp; designations</p>
                 <ul className="about-enterprise__credentials-grid mt-4">
                   {credentials.map((cert) => (
                     <li key={cert.acronym}>
@@ -119,11 +119,11 @@ export function AboutUsSnapshotSection() {
                 </ul>
               </div>
 
-              <div className="mt-8 rounded-xl border border-white/10 bg-[#0F0F0F]/80 p-4 sm:p-5">
+              <div className="mt-8 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]/80 p-4 sm:p-5">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]">
                   Business impact
                 </p>
-                <p className={`mt-2 text-sm leading-relaxed ${dt.body}`}>
+                <p className={`mt-2 text-sm leading-relaxed ${wdt.body}`}>
                   Faster procurement cycles, accountable vendor management, and infrastructure your
                   stakeholders can defend.
                 </p>
@@ -160,7 +160,7 @@ function SectorsRowSection() {
     <div className="about-enterprise__sectors-row about-enterprise__reveal about-enterprise__reveal--5 mt-10 sm:mt-12">
       <header className="about-enterprise__sectors-header">
         <div>
-          <p className={dt.badge}>Sectors</p>
+          <p className={wdt.badge}>Sectors</p>
           <h2 className="about-enterprise__sectors-headline">
             Industries we{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
@@ -218,10 +218,10 @@ function IndustryStrengthCard({
 
       <div className="about-enterprise__industry-card-body flex flex-col px-6 py-7 sm:px-7 sm:py-8">
         <div className="relative flex items-start justify-between gap-4">
-          <div className={dt.iconBoxCard}>
+          <div className={wdt.iconBoxCard}>
             <Icon />
           </div>
-          <span className={dt.number}>{number}</span>
+          <span className={wdt.number}>{number}</span>
         </div>
 
         <div className="relative mt-7 flex flex-1 flex-col">
@@ -231,20 +231,20 @@ function IndustryStrengthCard({
                 key={`${word}-${wordIndex}`}
                 slotHeight="1.35em"
                 staggerMs={wordIndex * 28}
-                top={<span className={dt.heading}>{word}</span>}
-                bottom={<span className={dt.headingSub}>{word}</span>}
+                top={<span className={wdt.heading}>{word}</span>}
+                bottom={<span className={wdt.headingSub}>{word}</span>}
               />
             ))}
           </h3>
 
-          <p className={`mt-3.5 flex-1 text-sm leading-[1.7] sm:text-[15px] ${dt.body}`}>
+          <p className={`mt-3.5 flex-1 text-sm leading-[1.7] sm:text-[15px] ${wdt.body}`}>
             {sector.detail}
           </p>
         </div>
 
         <Link
           href="/services"
-          className={`relative mt-7 inline-flex items-center gap-2 text-[13px] font-medium ${dt.link}`}
+          className={`relative mt-7 inline-flex items-center gap-2 text-[13px] font-medium ${wdt.link}`}
         >
           Explore solutions
           <IndustryArrowIcon />
@@ -307,8 +307,8 @@ function FootprintVisual() {
       fill="none"
       aria-hidden
     >
-      <circle cx="100" cy="100" r="78" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-      <circle cx="100" cy="100" r="52" stroke="rgba(229,86,20,0.2)" strokeWidth="1" strokeDasharray="4 6" />
+      <circle cx="100" cy="100" r="78" stroke="rgba(15,23,42,0.08)" strokeWidth="1" />
+      <circle cx="100" cy="100" r="52" stroke="rgba(229,86,20,0.25)" strokeWidth="1" strokeDasharray="4 6" />
 
       <g className="about-enterprise__orbit">
         <circle cx="100" cy="22" r="4" className="about-enterprise__node" fill="#E55614" />
@@ -318,10 +318,10 @@ function FootprintVisual() {
       </g>
 
       <g className="about-enterprise__orbit about-enterprise__orbit--reverse">
-        <circle cx="100" cy="48" r="3" fill="rgba(255,255,255,0.35)" />
-        <circle cx="152" cy="100" r="3" fill="rgba(255,255,255,0.35)" />
-        <circle cx="100" cy="152" r="3" fill="rgba(255,255,255,0.35)" />
-        <circle cx="48" cy="100" r="3" fill="rgba(255,255,255,0.35)" />
+        <circle cx="100" cy="48" r="3" fill="rgba(15,23,42,0.2)" />
+        <circle cx="152" cy="100" r="3" fill="rgba(15,23,42,0.2)" />
+        <circle cx="100" cy="152" r="3" fill="rgba(15,23,42,0.2)" />
+        <circle cx="48" cy="100" r="3" fill="rgba(15,23,42,0.2)" />
       </g>
 
       <circle cx="100" cy="100" r="10" fill="rgba(229,86,20,0.25)" />

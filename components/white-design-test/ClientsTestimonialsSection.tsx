@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { dt } from "@/components/design-test/design-test-theme";
+import { wdt } from "@/components/white-design-test/white-design-test-theme";
 import Link from "next/link";
 
-import { GlassCard } from "@/components/design-test/GlassCard";
+import { WhiteGlassCard } from "@/components/white-design-test/WhiteGlassCard";
 
 const clientLogos = [
   { name: "Microsoft", src: "/partners/microsoft.png" },
@@ -41,15 +41,15 @@ export function ClientsTestimonialsSection() {
   return (
     <section
       id="clients-testimonials"
-      className={`scroll-mt-24 ${dt.section} ${dt.sectionBorder}`}
+      className={`scroll-mt-24 wdt-section--gray ${wdt.section} ${wdt.sectionBorder}`}
       aria-labelledby="clients-testimonials-heading"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-2xl text-center">
-          <p className={dt.badge}>Social proof</p>
+          <p className={wdt.badge}>Social proof</p>
           <h2
             id="clients-testimonials-heading"
-            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl"
+            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-[#0F172A] sm:text-3xl"
           >
             Clients &amp; testimonials
           </h2>
@@ -61,23 +61,26 @@ export function ClientsTestimonialsSection() {
         <ul className="mt-6 grid gap-4 sm:mt-8 lg:grid-cols-3 lg:gap-5">
           {testimonials.map((item, index) => (
             <li key={item.company}>
-              <GlassCard delay={(index + 1) as 1 | 2 | 3} className="h-full">
-                <blockquote className="flex h-full flex-col p-5 sm:p-6">
-                  <p className={`text-sm leading-relaxed ${dt.body}`}>&ldquo;{item.quote}&rdquo;</p>
-                  <footer className="mt-5 border-t border-white/10 pt-4">
+              <WhiteGlassCard delay={(index + 1) as 1 | 2 | 3} className="h-full">
+                <blockquote className="wdt-testimonial-quote relative flex h-full flex-col p-5 sm:p-6">
+                  <span className="pointer-events-none absolute left-5 top-4 text-4xl font-serif leading-none text-[#E55614]/30 sm:left-6" aria-hidden>
+                    &ldquo;
+                  </span>
+                  <p className={`relative text-sm leading-relaxed ${wdt.body}`}>{item.quote}</p>
+                  <footer className="mt-5 border-t border-[#E2E8F0] pt-4">
                     <cite className="not-italic">
-                      <span className="block text-sm font-semibold text-white">{item.name}</span>
-                      <span className={`mt-0.5 block text-xs ${dt.statLabel}`}>{item.company}</span>
+                      <span className="block text-sm font-semibold text-[#0F172A]">{item.name}</span>
+                      <span className={`mt-0.5 block text-xs ${wdt.statLabel}`}>{item.company}</span>
                     </cite>
                   </footer>
                 </blockquote>
-              </GlassCard>
+              </WhiteGlassCard>
             </li>
           ))}
         </ul>
 
         <div className="mt-8 flex justify-center sm:mt-10">
-          <Link href="/contact" className={`text-sm font-semibold ${dt.link}`}>
+          <Link href="/contact" className={`text-sm font-semibold ${wdt.link}`}>
             Case study CTA →
           </Link>
         </div>
