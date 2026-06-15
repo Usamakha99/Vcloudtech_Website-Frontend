@@ -408,8 +408,101 @@
   box-shadow: none;
 }
 
-.about-enterprise__industry-card-inner {
-  background: rgba(26, 26, 26, 0.42);
+.about-enterprise__industry-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 20rem;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(165deg, #1a1a1a 0%, #141414 52%, #0f0f0f 100%);
+  box-shadow: 0 16px 42px -20px rgba(0, 0, 0, 0.55);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__industry-card {
+    min-height: 21rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-enterprise__industry-card {
+    width: 15.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .about-enterprise__industry-card {
+    width: 17rem;
+  }
+}
+
+.about-enterprise__industry-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(229, 86, 20, 0.5), transparent);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.about-enterprise__industry-card-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse 90% 70% at 50% -10%, rgba(229, 86, 20, 0.07), transparent 58%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.about-enterprise__industry-card-accent {
+  position: absolute;
+  left: 0;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1;
+  width: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(229, 86, 20, 0.55), rgba(229, 86, 20, 0.08));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.about-enterprise__industry-card:hover,
+.about-enterprise__industry-card:focus-within {
+  border-color: rgba(229, 86, 20, 0.3);
+  box-shadow: 0 22px 50px -18px rgba(229, 86, 20, 0.14);
+  transform: translateY(-4px);
+}
+
+.about-enterprise__industry-card:hover .about-enterprise__industry-card-glow,
+.about-enterprise__industry-card:focus-within .about-enterprise__industry-card-glow {
+  opacity: 1.35;
+  background: radial-gradient(ellipse 90% 70% at 50% -10%, rgba(229, 86, 20, 0.12), transparent 58%);
+}
+
+.about-enterprise__industry-card:hover .about-enterprise__industry-card-accent,
+.about-enterprise__industry-card:focus-within .about-enterprise__industry-card-accent {
+  opacity: 1;
+}
+
+.about-enterprise__industry-card-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
 }
 
 .about-enterprise__sectors-tiles {
@@ -495,9 +588,24 @@
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 0.75rem;
+}
+
+.about-enterprise__sectors-headline {
+  margin-top: 1rem;
+  font-size: clamp(1.625rem, 3.2vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__sectors-headline {
+    margin-top: 1.15rem;
+  }
 }
 
 /* Sector tile — glass card content (3-up row + centered pair) */
@@ -853,6 +961,11 @@
 
   .about-enterprise__sector-tile-arrow {
     opacity: 1;
+    transform: none;
+  }
+
+  .about-enterprise__industry-card:hover,
+  .about-enterprise__industry-card:focus-within {
     transform: none;
   }
 }

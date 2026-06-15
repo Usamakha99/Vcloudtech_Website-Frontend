@@ -13,7 +13,6 @@ import {
 } from "@/components/icons/section-icons";
 
 import "./about-us-section.css";
-import "./why-vcloud-cards.css";
 const sectors: {
   name: string;
   detail: string;
@@ -160,7 +159,13 @@ function SectorsRowSection() {
     <div className="about-enterprise__sectors-row about-enterprise__reveal about-enterprise__reveal--5 mt-10 sm:mt-12">
       <header className="about-enterprise__sectors-header">
         <div>
-          <p className={dt.metaLabel}>Industries we serve</p>
+          <p className={dt.badge}>Sectors</p>
+          <h2 className="about-enterprise__sectors-headline">
+            Industries we{" "}
+            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
+              serve
+            </span>
+          </h2>
         </div>
         <span className="about-enterprise__sectors-count" aria-hidden>
           {String(sectors.length).padStart(2, "0")}
@@ -206,12 +211,11 @@ function IndustryStrengthCard({
   const titleWords = sector.name.split(" ");
 
   return (
-    <article
-      className={`group/card relative flex h-full min-h-[20rem] w-full flex-col sm:min-h-[21rem] lg:w-[15.5rem] xl:w-[17rem] ${dt.whyCard} ${dt.whyCardHover}`}
-    >
-      <span className="why-card-gradient" aria-hidden />
+    <article className="about-enterprise__industry-card group/card">
+      <span className="about-enterprise__industry-card-glow" aria-hidden />
+      <span className="about-enterprise__industry-card-accent" aria-hidden />
 
-      <div className="why-card-inner about-enterprise__industry-card-inner flex flex-col px-6 py-7 sm:px-7 sm:py-8">
+      <div className="about-enterprise__industry-card-body flex flex-col px-6 py-7 sm:px-7 sm:py-8">
         <div className="relative flex items-start justify-between gap-4">
           <div className={dt.iconBoxCard}>
             <Icon />
