@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { DesignTestCta } from "@/components/design-test/DesignTestCta";
 import { DesignTestGlobalNavbar } from "@/components/design-test/global-nav";
-import { FeaturesGrid } from "@/components/design-test/FeaturesGrid";
 import { AboutUsSnapshotSection } from "@/components/design-test/AboutUsSnapshotSection";
 import { DesignTestSocialProofBar } from "@/components/design-test/DesignTestSocialProofBar";
 import { ScrollStackCardsSection } from "@/components/design-test/ScrollStackCardsSection";
@@ -49,7 +48,6 @@ export default function DesignTestPage() {
           <ResourceHubSection />
           <ClientsTestimonialsSection />
           <VendorPartnersStripSection />
-          <FeaturesGrid surface="glass" />
           <DesignTestCta surface="glass" />
         </div>
       </main>

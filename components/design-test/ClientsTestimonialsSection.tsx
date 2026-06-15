@@ -53,28 +53,10 @@ export function ClientsTestimonialsSection() {
           >
             Clients &amp; testimonials
           </h2>
-          <p className={`mt-3 text-sm leading-relaxed sm:text-[15px] ${dt.headingSub}`}>
-            Trusted by enterprise teams nationwide — from procurement to deployment.
-          </p>
+         
         </header>
 
-        <ul className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-4 lg:grid-cols-8 lg:gap-4">
-          {clientLogos.map((logo, index) => (
-            <li key={logo.name}>
-              <GlassCard delay={Math.min(index + 1, 6) as 1 | 2 | 3 | 4 | 5 | 6}>
-                <div className="flex h-16 items-center justify-center px-3 py-4 sm:h-[4.5rem]">
-                  <Image
-                    src={logo.src}
-                    alt={logo.name}
-                    width={96}
-                    height={32}
-                    className="h-7 w-auto max-w-[5.5rem] object-contain opacity-80 brightness-0 invert"
-                  />
-                </div>
-              </GlassCard>
-            </li>
-          ))}
-        </ul>
+       
 
         <ul className="mt-6 grid gap-4 sm:mt-8 lg:grid-cols-3 lg:gap-5">
           {testimonials.map((item, index) => (
