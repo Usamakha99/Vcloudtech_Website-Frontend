@@ -5,7 +5,7 @@ export default function TestLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div
-      className={`test-lab-root ${poppins.variable} ${poppins.className} min-h-full antialiased`}
+      className={`test-lab-root ${poppins.variable} font-sans min-h-full antialiased`}
     >
       {children}
     </div>
