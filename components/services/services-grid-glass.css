@@ -19,15 +19,15 @@
   justify-content: center;
   flex-shrink: 0;
   color: #e55614;
-  opacity: 0.42;
+  opacity: 0.28;
   transition:
     transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.45s ease;
 }
 
 .service-flip-back-icon--enhanced svg {
-  height: 3rem;
-  width: 3rem;
+  height: 4rem;
+  width: 4rem;
   transition:
     transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.45s ease;
@@ -35,22 +35,22 @@
 
 @media (min-width: 640px) {
   .service-flip-back-icon--enhanced svg {
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 4.75rem;
+    width: 4.75rem;
   }
 }
 
 @media (min-width: 1024px) {
   .service-flip-back-icon--enhanced svg {
-    height: 4rem;
-    width: 4rem;
+    height: 5.5rem;
+    width: 5.5rem;
   }
 }
 
 .service-flip-card--enhanced:hover .service-flip-back-icon--enhanced,
 .service-flip-card--enhanced:focus-within .service-flip-back-icon--enhanced {
   transform: scale(1.06);
-  opacity: 0.28;
+  opacity: 0.2;
 }
 
 .service-flip-card--enhanced:hover .service-flip-back-icon--enhanced svg,
@@ -67,7 +67,7 @@
   .service-flip-card--enhanced:hover .service-flip-back-icon--enhanced,
   .service-flip-card--enhanced:focus-within .service-flip-back-icon--enhanced {
     transform: none;
-    opacity: 0.42;
+    opacity: 0.28;
   }
 }
 

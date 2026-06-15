@@ -12,7 +12,7 @@ import {
   type SectionIcon,
 } from "@/components/icons/section-icons";
 
-import { TransformationPathLoop } from "@/components/design-test/TransformationPathLoop";
+// import { TransformationPathLoop } from "@/components/design-test/TransformationPathLoop";
 
 import "./white-why-choose-us.css";
 
@@ -78,17 +78,17 @@ const uspItems: UspItem[] = [
 /** Why choose us — enterprise trust showcase with journey and interactive USPs. */
 export function WhyChooseUsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const journeyRef = useRef<HTMLDivElement>(null);
+  // const journeyRef = useRef<HTMLDivElement>(null);
 
   const [activeUsp, setActiveUsp] = useState(0);
   const [glow, setGlow] = useState({ x: 50, y: 35, visible: false });
   const [mounted, setMounted] = useState(false);
 
   const sectionInView = useInView(sectionRef, { once: true, margin: "-60px" });
-  const journeyInView = useInView(journeyRef, { once: true, margin: "-60px" });
+  // const journeyInView = useInView(journeyRef, { once: true, margin: "-60px" });
 
   const animateIn = mounted && sectionInView;
-  const journeyActive = mounted && journeyInView;
+  // const journeyActive = mounted && journeyInView;
 
   useEffect(() => {
     setMounted(true);
@@ -149,14 +149,16 @@ export function WhyChooseUsSection() {
           </motion.header>
         </div>
 
+        {/* Your transformation path — cycle temporarily hidden
         <div ref={journeyRef} className="why-choose__journey mt-10 sm:mt-12">
           <p className={`mb-5 text-[10px] font-semibold uppercase tracking-[0.16em] ${wdt.metaLabel}`}>
             Your transformation path
           </p>
           <TransformationPathLoop active={journeyActive} />
         </div>
+        */}
 
-        <div className="why-choose__usp">
+        <div className="why-choose__usp mt-10 sm:mt-12">
           <div className="why-choose__usp-rail" role="tablist" aria-label="Why vCloud Tech">
             <p className={`mb-2 px-1 text-[10px] font-semibold uppercase tracking-[0.16em] ${wdt.metaLabel}`}>
               What sets us apart
