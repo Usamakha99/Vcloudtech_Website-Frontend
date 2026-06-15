@@ -1,13 +1,13 @@
-/** Shared classes for design-test global navigation (#0F0F0F + #E55614 primary). */
+/** Shared classes for design-test global navigation (#041329 + #E55614 primary). */
 
 export const globalNavHeader =
-  "sticky top-0 z-50 border-b border-white/10 bg-[#0F0F0F]/90 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.45)] backdrop-blur-md supports-[backdrop-filter]:bg-[#0F0F0F]/80";
+  "sticky top-0 z-50 border-b border-white/10 bg-[#041329]/90 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.45)] backdrop-blur-md supports-[backdrop-filter]:bg-[#041329]/80";
 
 export const globalNavInner =
   "mx-auto flex h-14 max-w-7xl items-center gap-4 px-4 sm:gap-6 sm:px-6 lg:px-8";
 
 export const globalNavLinkBase =
-  "rounded-md px-2 py-1.5 text-[13px] font-medium tracking-[-0.01em] text-white outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F0F0F]";
+  "rounded-md px-2 py-1.5 text-[13px] font-medium tracking-[-0.01em] text-white outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#041329]";
 
 export function globalNavLinkClasses(active: boolean) {
   return active
@@ -21,13 +21,13 @@ export const globalNavCta =
 export const globalNavSeparator = "hidden text-[#A1A1AA]/50 select-none sm:inline";
 
 export const globalNavMobilePanel =
-  "border-t border-white/10 bg-[#1A1A1A] px-4 py-4 backdrop-blur-lg lg:hidden";
+  "border-t border-white/10 bg-[#111F34] px-4 py-4 backdrop-blur-lg lg:hidden";
 
 export const globalLabSwitcher =
-  "hidden items-center gap-1 rounded-full border border-white/15 bg-[#1A1A1A] p-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] sm:inline-flex";
+  "hidden items-center gap-1 rounded-full border border-white/15 bg-[#111F34] p-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] sm:inline-flex";
 
 export function globalLabSwitcherLink(active: boolean) {
   return active
-    ? "rounded-full bg-[#0F0F0F] px-2.5 py-1 text-white shadow-sm"
+    ? "rounded-full bg-[#041329] px-2.5 py-1 text-white shadow-sm"
     : "rounded-full px-2.5 py-1 text-[#A1A1AA] transition hover:text-white";
 }

@@ -1,10 +1,10 @@
 /**
- * Design-test theme — #0F0F0F bg · #1A1A1A cards · #E55614 primary · #FFFFFF / #A1A1AA text.
+ * Design-test theme — #041329 bg · #111F34 cards · #E55614 primary · #FFFFFF / #A1A1AA text.
  */
 
 export const dtColors = {
-  bg: "#0F0F0F",
-  card: "#1A1A1A",
+  bg: "#041329",
+  card: "#111F34",
   primary: "#E55614",
   text: "#FFFFFF",
   muted: "#A1A1AA",
@@ -22,7 +22,7 @@ export const dtCtaOrange = dtCta;
 
 /** Scroll-stack card progress bar */
 export const dtProgress = {
-  track: "bg-[#1A1A1A]",
+  track: "bg-[#111F34]",
   fill: dtCta.fill,
 } as const;
 
@@ -47,10 +47,10 @@ export const dt = {
   headingSub: "text-[#A1A1AA]",
 
   card:
-    "rounded-2xl border border-white/10 bg-[#1A1A1A] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/5",
+    "rounded-2xl border border-white/10 bg-[#111F34] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/5",
 
   cardHover:
-    "transition duration-300 hover:border-[#E55614]/35 hover:bg-[#1A1A1A] hover:ring-[#E55614]/20 hover:shadow-[0_20px_44px_-12px_rgba(229,86,20,0.12)]",
+    "transition duration-300 hover:border-[#E55614]/35 hover:bg-[#111F34] hover:ring-[#E55614]/20 hover:shadow-[0_20px_44px_-12px_rgba(229,86,20,0.12)]",
 
   cardTopLine:
     "pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#E55614]/50 to-transparent opacity-80",
@@ -84,29 +84,29 @@ export const dt = {
   number: "font-mono text-[11px] tabular-nums tracking-wider text-[#A1A1AA]/60",
 
   tag:
-    "rounded-full border border-white/15 bg-[#1A1A1A] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#A1A1AA]",
+    "rounded-full border border-white/15 bg-[#111F34] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#A1A1AA]",
 
   logoCard:
-    "rounded-xl border border-white/15 bg-[#1A1A1A] shadow-sm ring-1 ring-white/5 transition duration-200 hover:-translate-y-0.5 hover:border-[#E55614]/30 hover:shadow-md sm:rounded-2xl",
+    "rounded-xl border border-white/15 bg-[#111F34] shadow-sm ring-1 ring-white/5 transition duration-200 hover:-translate-y-0.5 hover:border-[#E55614]/30 hover:shadow-md sm:rounded-2xl",
 
   certPill:
-    "inline-flex items-center rounded-md border border-white/15 bg-[#1A1A1A] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#A1A1AA] sm:px-3 sm:py-1.5 sm:text-[11px]",
+    "inline-flex items-center rounded-md border border-white/15 bg-[#111F34] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#A1A1AA] sm:px-3 sm:py-1.5 sm:text-[11px]",
 
   ctaPanel:
-    "rounded-3xl border border-white/10 bg-[#1A1A1A] px-8 py-12 shadow-xl shadow-black/25 ring-1 ring-white/5 sm:py-14",
+    "rounded-3xl border border-white/10 bg-[#111F34] px-8 py-12 shadow-xl shadow-black/25 ring-1 ring-white/5 sm:py-14",
 
   glassCard:
-    "border border-white/10 bg-[#1A1A1A] shadow-lg shadow-black/15",
+    "border border-white/10 bg-[#111F34] shadow-lg shadow-black/15",
 
   glassFeatureCard:
-    "border-white/10 bg-[#1A1A1A] shadow-lg shadow-black/15 hover:border-[#E55614]/30 hover:shadow-md",
+    "border-white/10 bg-[#111F34] shadow-lg shadow-black/15 hover:border-[#E55614]/30 hover:shadow-md",
 
   glassSubtext: "text-[#A1A1AA]",
 
   glassLink: "text-white group-hover/card:text-[#E55614]",
 
   stackCard:
-    "rounded-xl border border-white/10 bg-[#1A1A1A] px-5 py-5 shadow-[0_8px_28px_-14px_rgba(0,0,0,0.45)] sm:px-6 sm:py-5",
+    "rounded-xl border border-white/10 bg-[#111F34] px-5 py-5 shadow-[0_8px_28px_-14px_rgba(0,0,0,0.45)] sm:px-6 sm:py-5",
 
   stackMeta: "text-[11px] font-medium uppercase tracking-[0.14em] text-[#A1A1AA]",
 
@@ -115,10 +115,10 @@ export const dt = {
   stackBody: "mt-2 text-[13px] leading-relaxed text-[#A1A1AA] sm:text-sm",
 
   stackCardArticle:
-    "group/stack relative overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] ring-1 ring-white/5 transition-[border-color,box-shadow] duration-300 hover:border-[#E55614]/30 sm:rounded-3xl",
+    "group/stack relative overflow-hidden rounded-2xl border border-white/10 bg-[#111F34] ring-1 ring-white/5 transition-[border-color,box-shadow] duration-300 hover:border-[#E55614]/30 sm:rounded-3xl",
 
   stackCardVisual:
-    "relative flex min-h-[9.5rem] items-center justify-center overflow-hidden border-b border-white/10 bg-[#0F0F0F] sm:min-h-[11rem] lg:min-h-[15rem] lg:border-b-0 lg:border-r lg:border-white/10",
+    "relative flex min-h-[9.5rem] items-center justify-center overflow-hidden border-b border-white/10 bg-[#041329] sm:min-h-[11rem] lg:min-h-[15rem] lg:border-b-0 lg:border-r lg:border-white/10",
 
   whyCard:
     "why-card-shell overflow-hidden rounded-2xl border border-white/10 bg-transparent shadow-[0_14px_40px_-16px_rgba(0,0,0,0.35)] ring-1 ring-white/5",
@@ -127,29 +127,29 @@ export const dt = {
     "transition duration-500 ease-out group-hover/card:-translate-y-2.5 group-hover/card:border-white/20 group-hover/card:shadow-[0_22px_44px_-14px_rgba(0,0,0,0.45)]",
 
   socialProofPanel:
-    "relative overflow-hidden rounded-3xl border border-white/10 bg-[#1A1A1A] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/5",
+    "relative overflow-hidden rounded-3xl border border-white/10 bg-[#111F34] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/5",
 
   socialProofStat:
-    "flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-[#0F0F0F] px-4 py-5 text-center ring-1 ring-white/5 sm:px-5 sm:py-6",
+    "flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-[#041329] px-4 py-5 text-center ring-1 ring-white/5 sm:px-5 sm:py-6",
 
   socialProofCert:
-    "flex min-h-[4.5rem] min-w-[5.25rem] flex-col items-center justify-center rounded-xl border border-white/10 bg-[#0F0F0F] px-4 py-3 ring-1 ring-white/5 sm:min-w-[5.75rem]",
+    "flex min-h-[4.5rem] min-w-[5.25rem] flex-col items-center justify-center rounded-xl border border-white/10 bg-[#041329] px-4 py-3 ring-1 ring-white/5 sm:min-w-[5.75rem]",
 
   aboutOrgShell:
-    "relative overflow-hidden rounded-3xl border border-white/10 bg-[#1A1A1A] shadow-[0_20px_50px_-22px_rgba(0,0,0,0.55)] ring-1 ring-white/5",
+    "relative overflow-hidden rounded-3xl border border-white/10 bg-[#111F34] shadow-[0_20px_50px_-22px_rgba(0,0,0,0.55)] ring-1 ring-white/5",
 
   aboutOrgCell:
-    "rounded-2xl border border-white/10 bg-[#0F0F0F] p-5 ring-1 ring-white/5 sm:p-6",
+    "rounded-2xl border border-white/10 bg-[#041329] p-5 ring-1 ring-white/5 sm:p-6",
 
   aboutOrgMetric:
-    "flex flex-col justify-center rounded-2xl border border-white/10 bg-[#0F0F0F] px-4 py-5 text-center ring-1 ring-white/5 sm:px-5",
+    "flex flex-col justify-center rounded-2xl border border-white/10 bg-[#041329] px-4 py-5 text-center ring-1 ring-white/5 sm:px-5",
 
   procurementMock:
-    "rounded-2xl border border-white/10 bg-[#0F0F0F] p-4 ring-1 ring-white/5 sm:p-5",
+    "rounded-2xl border border-white/10 bg-[#041329] p-4 ring-1 ring-white/5 sm:p-5",
 
   procurementSearch:
-    "flex items-center gap-3 rounded-xl border border-white/10 bg-[#1A1A1A] px-4 py-3 ring-1 ring-white/5",
+    "flex items-center gap-3 rounded-xl border border-white/10 bg-[#111F34] px-4 py-3 ring-1 ring-white/5",
 
   procurementChip:
-    "flex h-full items-start gap-3 rounded-xl border border-white/10 bg-[#1A1A1A] px-3.5 py-3 ring-1 ring-white/5 sm:px-4 sm:py-3.5",
+    "flex h-full items-start gap-3 rounded-xl border border-white/10 bg-[#111F34] px-3.5 py-3 ring-1 ring-white/5 sm:px-4 sm:py-3.5",
 } as const;

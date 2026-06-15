@@ -1,5 +1,13 @@
+import { poppins } from "@/lib/fonts/poppins";
+
 export default function TestLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return children;
+  return (
+    <div
+      className={`test-lab-root ${poppins.variable} ${poppins.className} min-h-full antialiased`}
+    >
+      {children}
+    </div>
+  );
 }

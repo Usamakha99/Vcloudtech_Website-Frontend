@@ -4,6 +4,11 @@
 @source "../components";
 @source "../stores";
 
+.test-lab-root {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+}
+
 @keyframes partner-float {
   0%,
   100% {

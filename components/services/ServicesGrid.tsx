@@ -142,7 +142,7 @@ export function ServicesGrid({
                   className={`service-flip-card service-flip-card--enhanced group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 ${
                     premiumLight
                       ? "focus-visible:ring-offset-white"
-                      : "focus-visible:ring-offset-[#0F0F0F]"
+                      : "focus-visible:ring-offset-[#041329]"
                   }`}
                 >
                   <div className="service-flip-inner">

@@ -101,7 +101,7 @@
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(26, 26, 26, 0.65);
+  background: rgba(17, 31, 52, 0.65);
   backdrop-filter: blur(12px);
 }
 
@@ -148,7 +148,7 @@
   height: 100%;
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(145deg, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.88) 100%);
+  background: linear-gradient(145deg, rgba(17, 31, 52, 0.95) 0%, rgba(4, 19, 41, 0.88) 100%);
   transition:
     border-color 0.35s ease,
     box-shadow 0.35s ease;
@@ -188,7 +188,7 @@
   gap: 0.2rem;
   border-radius: 0.85rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(15, 15, 15, 0.65);
+  background: rgba(4, 19, 41, 0.65);
   padding: 0.75rem 0.85rem;
   transition:
     border-color 0.3s ease,
@@ -217,7 +217,7 @@
   min-width: 0;
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(26, 26, 26, 0.45);
+  background: rgba(17, 31, 52, 0.45);
   padding: 0.75rem;
   transition: border-color 0.35s ease;
 }
@@ -255,7 +255,7 @@
   overflow: hidden;
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(160deg, rgba(26, 26, 26, 0.92) 0%, rgba(15, 15, 15, 0.88) 100%);
+  background: linear-gradient(160deg, rgba(17, 31, 52, 0.92) 0%, rgba(4, 19, 41, 0.88) 100%);
   transition: border-color 0.35s ease;
 }
 
@@ -301,7 +301,7 @@
 .about-enterprise__footprint-stack .about-enterprise__visual {
   border: none;
   background: radial-gradient(ellipse at 50% 120%, rgba(229, 86, 20, 0.1), transparent 55%),
-    rgba(15, 15, 15, 0.75);
+    rgba(4, 19, 41, 0.75);
 }
 
 .about-enterprise__visual {
@@ -316,7 +316,7 @@
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: radial-gradient(ellipse at 50% 120%, rgba(229, 86, 20, 0.12), transparent 55%),
-    rgba(15, 15, 15, 0.9);
+    rgba(4, 19, 41, 0.9);
 }
 
 .about-enterprise__visual-label {
@@ -387,7 +387,7 @@
   gap: 1rem;
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(26, 26, 26, 0.55);
+  background: rgba(17, 31, 52, 0.55);
   padding: 1.25rem;
   transition: border-color 0.35s ease;
 }
@@ -418,7 +418,7 @@
   overflow: hidden;
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, #1a1a1a 0%, #141414 52%, #0f0f0f 100%);
+  background: linear-gradient(165deg, #111f34 0%, #0d1829 52%, #041329 100%);
   box-shadow: 0 16px 42px -20px rgba(0, 0, 0, 0.55);
   transition:
     border-color 0.4s ease,
@@ -864,7 +864,7 @@
   z-index: 1;
   height: 100%;
   border-radius: inherit;
-  background: rgba(26, 26, 26, 0.72);
+  background: rgba(17, 31, 52, 0.72);
   backdrop-filter: blur(14px);
 }
 
@@ -884,7 +884,7 @@
   gap: 0.625rem;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(26, 26, 26, 0.8);
+  background: rgba(17, 31, 52, 0.8);
   padding: 0.65rem 1.35rem;
   font-size: 0.875rem;
   font-weight: 600;

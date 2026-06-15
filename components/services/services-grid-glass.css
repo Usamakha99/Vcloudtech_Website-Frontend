@@ -19,7 +19,7 @@
   justify-content: center;
   flex-shrink: 0;
   color: #e55614;
-  opacity: 0.28;
+  opacity: 0.42;
   transition:
     transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.45s ease;
@@ -50,7 +50,7 @@
 .service-flip-card--enhanced:hover .service-flip-back-icon--enhanced,
 .service-flip-card--enhanced:focus-within .service-flip-back-icon--enhanced {
   transform: scale(1.06);
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .service-flip-card--enhanced:hover .service-flip-back-icon--enhanced svg,
@@ -67,7 +67,7 @@
   .service-flip-card--enhanced:hover .service-flip-back-icon--enhanced,
   .service-flip-card--enhanced:focus-within .service-flip-back-icon--enhanced {
     transform: none;
-    opacity: 0.28;
+    opacity: 0.16;
   }
 }
 

@@ -119,7 +119,7 @@ export function AboutUsSnapshotSection() {
                 </ul>
               </div>
 
-              <div className="mt-8 rounded-xl border border-white/10 bg-[#0F0F0F]/80 p-4 sm:p-5">
+              <div className="mt-8 rounded-xl border border-white/10 bg-[#041329]/80 p-4 sm:p-5">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]">
                   Business impact
                 </p>
