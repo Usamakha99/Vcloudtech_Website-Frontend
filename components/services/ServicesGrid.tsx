@@ -139,33 +139,29 @@ export function ServicesGrid({
               {glass || premiumLight ? (
                 <Link
                   href={item.href}
-                  className={`service-flip-card group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 ${
+                  className={`service-flip-card service-flip-card--enhanced group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 ${
                     premiumLight
-                      ? "service-flip-card--premium focus-visible:ring-offset-white"
+                      ? "focus-visible:ring-offset-white"
                       : "focus-visible:ring-offset-[#0F0F0F]"
                   }`}
                 >
                   <div className="service-flip-inner">
                     <div className="service-flip-face service-flip-front">
-                      <ServiceCardContent item={item} surface={surface} />
+                      <ServiceCardContent item={item} surface={surface} flipFront />
                     </div>
                     <div className="service-flip-face service-flip-back">
-                      <div
-                        className={
-                          premiumLight
-                            ? "service-flip-back-icon service-flip-back-icon--premium"
-                            : `service-flip-back-icon ${themed.iconBoxCard}`
-                        }
-                      >
-                        <item.icon />
+                      <div className="service-flip-back-content">
+                        <div className="service-flip-back-icon service-flip-back-icon--enhanced">
+                          <item.icon />
+                        </div>
+                        <h3 className={`text-lg font-semibold tracking-tight ${themed.heading}`}>
+                          {item.title}
+                        </h3>
+                        <span className={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold ${themed.link}`}>
+                          Learn more
+                          <span aria-hidden>→</span>
+                        </span>
                       </div>
-                      <h3 className={`mt-5 text-lg font-semibold tracking-tight ${themed.heading}`}>
-                        {item.title}
-                      </h3>
-                      <span className={`mt-6 inline-flex items-center gap-1.5 text-sm font-semibold ${themed.link}`}>
-                        Learn more
-                        <span aria-hidden>→</span>
-                      </span>
                     </div>
                   </div>
                 </Link>
@@ -193,27 +189,39 @@ export function ServicesGrid({
 function ServiceCardContent({
   item,
   surface,
+  flipFront = false,
 }: {
   item: ServiceItem;
   surface: "light" | "glass" | "premium-light";
+  flipFront?: boolean;
 }) {
   const glass = surface === "glass";
   const premiumLight = surface === "premium-light";
   const themed = premiumLight ? wdt : dt;
 
+  if (flipFront && (glass || premiumLight)) {
+    return (
+      <div className="service-flip-front-content">
+        <span className={`${themed.accentDash} service-flip-front-accent mx-auto`} aria-hidden />
+        <h3 className={`mt-4 text-xl font-semibold leading-snug tracking-tight sm:text-2xl ${themed.heading}`}>
+          {item.title}
+        </h3>
+        <p className={`service-flip-front-desc line-clamp-4 text-base leading-relaxed sm:text-[17px] ${glass ? dt.glassSubtext : wdt.glassSubtext}`}>
+          {item.description}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <>
-      <div
-        className={
-          glass || premiumLight
-            ? `${themed.iconBoxCard}${premiumLight ? " service-flip-front-icon" : ""}`
-            : "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-50 to-sky-100/80 text-sky-700 ring-1 ring-sky-200/60 [&_svg]:h-6 [&_svg]:w-6"
-        }
-      >
-        <item.icon />
-      </div>
+      {!(glass || premiumLight) ? (
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-50 to-sky-100/80 text-sky-700 ring-1 ring-sky-200/60 [&_svg]:h-6 [&_svg]:w-6">
+          <item.icon />
+        </div>
+      ) : null}
       <h3
-        className={`mt-5 text-lg font-semibold tracking-tight ${
+        className={`${glass || premiumLight ? "" : "mt-5"} text-lg font-semibold tracking-tight ${
           glass || premiumLight
             ? themed.heading
             : "text-[#1B224B] group-hover/card:text-sky-300 group-focus-within/card:text-sky-300 dark:text-white"
