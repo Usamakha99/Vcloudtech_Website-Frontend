@@ -1,98 +1,274 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useInView } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { dt } from "@/components/design-test/design-test-theme";
+import { TrustedByClientsMarquee } from "@/components/design-test/TrustedByClientsMarquee";
 
-type StatCell = {
-  kind: "stat";
-  count: string;
-  label: string;
-  accent?: "orange" | "amber";
+import "./technology-partners.css";
+
+const categories = [
+  { id: "security", label: "Cybersecurity Partners", target: 110, suffix: "+", accent: true },
+  { id: "software", label: "Software Partners", target: 200, suffix: "+" },
+  { id: "hardware", label: "Hardware Partners", target: 140, suffix: "+" },
+  { id: "cloud", label: "Cloud Partners", target: 100, suffix: "+" },
+] as const;
+
+const majorPartners = [
+  { name: "Microsoft", src: "/partners/microsoft.png" },
+  { name: "Cisco", src: "/partners/cisco.png" },
+  { name: "Adobe", src: "/partners/adobe.png" },
+  { name: "VMware", src: "/partners/vmware.png" },
+  { name: "Fortinet", src: "/partners/fortinet.png" },
+  { name: "AWS", src: "/partners/aws.png" },
+  { name: "Dell", src: "/partners/dell.png" },
+  { name: "Lenovo", src: "/partners/lenovo.png" },
+  { name: "IBM", src: "/partners/ibm.png" },
+] as const;
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
+  },
 };
 
-type LogoCell = {
-  kind: "logo";
-  name: string;
-  src: string;
+const fadeUp = {
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease },
+  },
 };
 
-type GridCell = StatCell | LogoCell;
+const fadeUpTight = {
+  hidden: { opacity: 0, y: 16 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease },
+  },
+};
 
-const grid: GridCell[] = [
-  { kind: "stat", count: "110+", label: "Cybersecurity Partners", accent: "orange" },
-  { kind: "stat", count: "200+", label: "Software Partners", accent: "amber" },
-  { kind: "logo", name: "Microsoft", src: "/partners/microsoft.png" },
-  { kind: "logo", name: "Adobe", src: "/partners/adobe.png" },
-  { kind: "logo", name: "Fortinet", src: "/partners/fortinet.png" },
-  { kind: "logo", name: "VMware", src: "/partners/vmware.png" },
-  { kind: "stat", count: "140+", label: "IT Hardware Partners", accent: "amber" },
-  { kind: "stat", count: "100+", label: "Cloud Partners", accent: "amber" },
-  { kind: "logo", name: "DataCore", src: "/partners/datacore.png" },
-  { kind: "logo", name: "Cisco", src: "/partners/cisco.png" },
-  { kind: "logo", name: "Malwarebytes", src: "/partners/malwarebytes.png" },
-  { kind: "stat", count: "400+", label: "All Partners", accent: "orange" },
-];
+function easeOutCubic(progress: number) {
+  return 1 - Math.pow(1 - progress, 3);
+}
 
+function AnimatedCount({
+  target,
+  suffix,
+  active,
+  delayMs,
+  className,
+}: {
+  target: number;
+  suffix: string;
+  active: boolean;
+  delayMs: number;
+  className: string;
+}) {
+  const [value, setValue] = useState(0);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (!active || hasAnimated.current) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      hasAnimated.current = true;
+      setValue(target);
+      return;
+    }
+
+    let raf = 0;
+    let start: number | null = null;
+    const duration = target >= 100 ? 2000 : 1400;
+
+    const timeout = window.setTimeout(() => {
+      const tick = (timestamp: number) => {
+        if (start === null) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        setValue(Math.round(easeOutCubic(progress) * target));
+        if (progress < 1) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          hasAnimated.current = true;
+        }
+      };
+
+      raf = requestAnimationFrame(tick);
+    }, delayMs);
+
+    return () => {
+      window.clearTimeout(timeout);
+      cancelAnimationFrame(raf);
+    };
+  }, [active, delayMs, target]);
+
+  return (
+    <p className={className} aria-label={`${target}${suffix}`}>
+      {value}
+      {suffix}
+    </p>
+  );
+}
+
+/** Technology partners — category stats, major logos, and trusted-by marquee. */
 export function TechnologyPartnersSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const categoriesRef = useRef<HTMLUListElement>(null);
+  const showcaseRef = useRef<HTMLDivElement>(null);
+  const trustedRef = useRef<HTMLDivElement>(null);
+
+  const [glow, setGlow] = useState({ x: 50, y: 30, visible: false });
+  const [mounted, setMounted] = useState(false);
+
+  const sectionInView = useInView(sectionRef, { once: true, margin: "-60px" });
+  const categoriesInView = useInView(categoriesRef, { once: true, margin: "-40px" });
+  const showcaseInView = useInView(showcaseRef, { once: true, margin: "-40px" });
+  const trustedInView = useInView(trustedRef, { once: true, margin: "-30px" });
+
+  const headerVisible = mounted && sectionInView;
+  const categoriesActive = mounted && categoriesInView;
+  const showcaseActive = mounted && showcaseInView;
+  const trustedActive = mounted && trustedInView;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const onPointerMove = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    const rect = sectionRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setGlow({
+      x: ((event.clientX - rect.left) / rect.width) * 100,
+      y: ((event.clientY - rect.top) / rect.height) * 100,
+      visible: true,
+    });
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="partners"
-      className={`relative z-10 ${dt.section} ${dt.sectionBorder}`}
+      className={`tp relative z-10 scroll-mt-24 py-14 sm:py-16 lg:py-20 ${dt.sectionBorder}`}
       aria-labelledby="tech-partners-heading"
+      onPointerMove={onPointerMove}
+      onPointerLeave={() => setGlow((g) => ({ ...g, visible: false }))}
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <header className="mx-auto max-w-3xl text-center">
+      <div className="tp__grid-bg" aria-hidden />
+      <motion.div
+        className="tp__glow"
+        aria-hidden
+        animate={{ opacity: glow.visible ? 0.75 : 0.25 }}
+        transition={{ duration: 0.4 }}
+        style={{ left: `${glow.x}%`, top: `${glow.y}%` }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <motion.header
+          className="mx-auto max-w-3xl text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.65, ease }}
+        >
           <p className={dt.badge}>Technology Partners</p>
-          <h2
-            id="tech-partners-heading"
-            className="mt-5 text-balance text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl lg:text-[2rem] lg:leading-tight"
-          >
-            IT Solutions from World-Class Partners from around the world
+          <h2 id="tech-partners-heading" className="tp__headline mt-5">
+            World-class partners.{" "}
+            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
+              One trusted platform.
+            </span>
           </h2>
-        </header>
+          <p className={`mt-3 text-sm leading-relaxed sm:text-[15px] ${dt.headingSub}`}>
+            400+ technology partners across cybersecurity, software, hardware, and cloud — sourced
+            and supported through vCloud Tech.
+          </p>
+        </motion.header>
 
-        <ul className="mt-10 grid grid-cols-2 gap-2 sm:mt-12 sm:grid-cols-3 sm:gap-2.5 lg:grid-cols-6 lg:gap-3">
-          {grid.map((cell, index) => (
-            <li key={`${cell.kind}-${index}`} className="min-h-[5.5rem] sm:min-h-[6.25rem] lg:min-h-[7rem]">
-              {cell.kind === "stat" ? <StatCard cell={cell} /> : <LogoCard cell={cell} />}
-            </li>
+        <motion.ul
+          ref={categoriesRef}
+          className="tp__categories"
+          aria-label="Partner categories"
+          variants={staggerContainer}
+          initial="hidden"
+          animate={categoriesActive ? "show" : "hidden"}
+        >
+          {categories.map((category, index) => (
+            <motion.li key={category.id} variants={fadeUp} className="tp__category">
+              <span className="tp__category-accent" aria-hidden />
+              <AnimatedCount
+                target={category.target}
+                suffix={category.suffix}
+                active={categoriesActive}
+                delayMs={index * 100 + 200}
+                className={`tp__category-value ${category.accent ? "tp__category-value--accent" : ""}`}
+              />
+              <p className="tp__category-label">{category.label}</p>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
 
-        <p className="mt-10 text-center sm:mt-12">
-          <Link href="/solutions" className={`text-sm font-semibold underline-offset-4 hover:underline ${dt.link}`}>
-            View all partners →
+        <motion.div
+          ref={showcaseRef}
+          className="mt-8 lg:mt-9"
+          initial={{ opacity: 0, y: 20 }}
+          animate={showcaseActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, ease, delay: 0.05 }}
+        >
+          <p className="tp__showcase-label">Major technology partners</p>
+          <motion.ul
+            className="tp__partner-grid"
+            variants={staggerContainer}
+            initial="hidden"
+            animate={showcaseActive ? "show" : "hidden"}
+          >
+            {majorPartners.map((partner) => (
+              <motion.li key={partner.name} variants={fadeUpTight}>
+                <div className="tp__partner-cell group">
+                  <Image
+                    src={partner.src}
+                    alt={partner.name}
+                    width={280}
+                    height={100}
+                    className="tp__partner-logo"
+                    sizes="(max-width: 640px) 50vw, 260px"
+                  />
+                </div>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </motion.div>
+
+        <motion.div
+          ref={trustedRef}
+          initial={{ opacity: 0, y: 18 }}
+          animate={trustedActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+          transition={{ duration: 0.6, ease, delay: 0.1 }}
+        >
+          <TrustedByClientsMarquee />
+        </motion.div>
+
+        <motion.div
+          className="mt-7"
+          initial={{ opacity: 0, y: 12 }}
+          animate={trustedActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          transition={{ duration: 0.55, ease, delay: 0.2 }}
+        >
+          <Link href="/solutions" className="tp__cta">
+            View all partners
+            <span className="tp__cta-arrow" aria-hidden>
+              →
+            </span>
           </Link>
-        </p>
+        </motion.div>
       </div>
     </section>
-  );
-}
-
-function StatCard({ cell }: { cell: StatCell }) {
-  const countColor = cell.accent === "orange" ? dt.statValue : dt.statValueAlt;
-
-  return (
-    <div
-      className={`flex h-full flex-col items-center justify-center px-3 py-4 text-center sm:rounded-2xl sm:px-4 sm:py-5 ${dt.card} ${dt.cardHover}`}
-    >
-      <p className={`text-2xl font-bold tabular-nums tracking-tight sm:text-3xl ${countColor}`}>{cell.count}</p>
-      <p className={`mt-1 text-[11px] font-medium leading-snug sm:text-xs ${dt.statLabel}`}>{cell.label}</p>
-    </div>
-  );
-}
-
-function LogoCard({ cell }: { cell: LogoCell }) {
-  return (
-    <div className={`group flex h-full items-center justify-center px-3 py-3 sm:px-4 sm:py-4 ${dt.logoCard}`}>
-      <Image
-        src={cell.src}
-        alt={cell.name}
-        width={200}
-        height={80}
-        className="h-auto max-h-8 w-auto max-w-full object-contain contrast-[1.02] transition group-hover:scale-[1.02] sm:max-h-9 lg:max-h-10"
-        sizes="(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 140px"
-      />
-    </div>
   );
 }
