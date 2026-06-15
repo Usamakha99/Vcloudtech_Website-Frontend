@@ -1,5 +1,9 @@
+"use client";
+
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
+
 import { dt } from "@/components/design-test/design-test-theme";
-import { GlassCard } from "@/components/design-test/GlassCard";
 import {
   HeadsetIcon,
   RocketIcon,
@@ -8,96 +12,269 @@ import {
   type SectionIcon,
 } from "@/components/icons/section-icons";
 
-const stats = [
-  { value: "500+", label: "Clients served" },
-  { value: "15+", label: "Years in business" },
-  { value: "50", label: "States served" },
-  { value: "99.9%", label: "Uptime SLA" },
+import "./why-choose-us.css";
+
+const journeyStages = [
+  {
+    step: "01",
+    title: "Complex operations",
+    description: "Fragmented vendors, slow quotes, and compliance overhead.",
+  },
+  {
+    step: "02",
+    title: "Simplified procurement",
+    description: "Unified sourcing, accountable partners, faster cycles.",
+  },
+  {
+    step: "03",
+    title: "Secure infrastructure",
+    description: "Governance, zero-trust alignment, and audit-ready delivery.",
+  },
+  {
+    step: "04",
+    title: "Scalable growth",
+    description: "Nationwide operations that scale with your organization.",
+  },
 ] as const;
 
-const benefits: { title: string; description: string; icon: SectionIcon }[] = [
+type UspItem = {
+  title: string;
+  headline: string;
+  description: string;
+  icon: SectionIcon;
+  proofPoints: readonly string[];
+};
+
+const uspItems: UspItem[] = [
   {
     title: "Faster procurement",
-    description: "Quote cycles measured in hours — not weeks of back-and-forth.",
+    headline: "Quote cycles in hours — not weeks",
+    description:
+      "Enterprise sourcing with documented approvals, vendor accountability, and procurement teams that move at the speed of your roadmap.",
     icon: RocketIcon,
+    proofPoints: [
+      "Consolidated vendor management",
+      "Audit-ready procurement trails",
+      "Dedicated account teams",
+    ],
   },
   {
     title: "Enterprise security",
-    description: "Governance, compliance, and vendor accountability built in.",
+    headline: "Governance built into every engagement",
+    description:
+      "Security and compliance are not add-ons — they are embedded in how we source, deploy, and support your technology stack.",
     icon: ShieldIcon,
+    proofPoints: [
+      "Zero-trust aligned delivery",
+      "Compliance reporting support",
+      "Vendor risk accountability",
+    ],
   },
   {
     title: "Nationwide scale",
-    description: "Warehouse operations and teams that deliver coast to coast.",
+    headline: "One partner from coast to coast",
+    description:
+      "Warehouse operations, field teams, and logistics that give enterprise buyers confidence their rollout will land everywhere it needs to.",
     icon: HandshakeIcon,
+    proofPoints: [
+      "50 states & territories",
+      "National warehouse network",
+      "Consistent service standards",
+    ],
   },
   {
     title: "Always-on support",
-    description: "Engineers and account teams when your systems matter most.",
+    headline: "Engineers when it matters most",
+    description:
+      "24/7 operations with escalation paths, SLA-backed response, and humans who understand your environment — not a ticket black hole.",
     icon: HeadsetIcon,
+    proofPoints: [
+      "24/7 monitoring & response",
+      "Direct engineer escalation",
+      "99.9% uptime commitment",
+    ],
   },
 ];
 
-/** Why choose us — USP stats + transparent benefit cards. */
+/** Why choose us — enterprise trust showcase with journey and interactive USPs. */
 export function WhyChooseUsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const journeyRef = useRef<HTMLDivElement>(null);
+
+  const [activeUsp, setActiveUsp] = useState(0);
+  const [glow, setGlow] = useState({ x: 50, y: 35, visible: false });
+  const [mounted, setMounted] = useState(false);
+
+  const sectionInView = useInView(sectionRef, { once: true, margin: "-60px" });
+  const journeyInView = useInView(journeyRef, { once: true, margin: "-60px" });
+
+  const animateIn = mounted && sectionInView;
+  const journeyActive = mounted && journeyInView;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const onPointerMove = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    const rect = sectionRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    setGlow({ x, y, visible: true });
+  }, []);
+
+  const active = uspItems[activeUsp];
+  const ActiveIcon = active.icon;
+
   return (
     <section
+      ref={sectionRef}
       id="why-choose-us"
-      className={`scroll-mt-24 ${dt.section} ${dt.sectionBorder}`}
+      className={`why-choose relative scroll-mt-24 py-14 sm:py-18 lg:py-24 ${dt.sectionBorder}`}
       aria-labelledby="why-choose-us-heading"
+      onPointerMove={onPointerMove}
+      onPointerLeave={() => setGlow((g) => ({ ...g, visible: false }))}
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <header className="mx-auto max-w-2xl text-center">
-          <p className={dt.badge}>Why choose us</p>
-          <h2
-            id="why-choose-us-heading"
-            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl"
+      <div className="why-choose__grid-bg" aria-hidden />
+      <div
+        className="why-choose__glow"
+        aria-hidden
+        style={{
+          left: `${glow.x}%`,
+          top: `${glow.y}%`,
+          opacity: glow.visible ? 1 : 0.35,
+        }}
+      />
+      <div className="why-choose__glow why-choose__glow--secondary" aria-hidden />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start">
+          <motion.header
+            className="lg:col-span-5"
+            initial={false}
+            animate={animateIn ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            style={animateIn ? undefined : { opacity: 0, y: 20 }}
           >
-            USP highlights
-          </h2>
-          <p className={`mt-3 text-sm leading-relaxed sm:text-[15px] ${dt.headingSub}`}>
-            Enterprise IT teams choose vCloud Tech for accountable sourcing, real operations, and
-            measurable outcomes.
-          </p>
-        </header>
+            <p className={dt.badge}>Why choose us</p>
+            <h2 id="why-choose-us-heading" className="why-choose__headline mt-5">
+              Built for teams that{" "}
+              <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
+                cannot afford guesswork
+              </span>
+            </h2>
+            <p className={`mt-5 max-w-md text-base leading-relaxed ${dt.headingSub}`}>
+              vCloud Tech combines procurement discipline, security governance, and nationwide
+              operations — so enterprise IT leaders get outcomes they can defend.
+            </p>
+          </motion.header>
 
-        <ul className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-4 sm:gap-4">
-          {stats.map((item, index) => (
-            <li key={item.label}>
-              <GlassCard delay={(index + 1) as 1 | 2 | 3 | 4}>
-                <div className="px-4 py-5 text-center sm:px-5 sm:py-6">
-                  <p className="text-2xl font-semibold tabular-nums tracking-tight text-white sm:text-3xl">
-                    {item.value}
-                  </p>
-                  <p className={`mt-1.5 text-[11px] font-medium uppercase tracking-wider sm:text-xs ${dt.statLabel}`}>
-                    {item.label}
-                  </p>
+          <div ref={journeyRef} className="why-choose__journey mt-10 lg:col-span-7 lg:mt-0">
+            <p className={`mb-4 text-[10px] font-semibold uppercase tracking-[0.16em] ${dt.metaLabel}`}>
+              Your transformation path
+            </p>
+            <div className="why-choose__journey-timeline">
+              <div className="why-choose__journey-rail" aria-hidden>
+                <div className="why-choose__journey-track">
+                  <div className={`why-choose__journey-fill ${journeyActive ? "is-visible" : ""}`} />
                 </div>
-              </GlassCard>
-            </li>
-          ))}
-        </ul>
+              </div>
+              <ol className="why-choose__journey-list">
+                {journeyStages.map((stage, index) => (
+                  <li
+                    key={stage.step}
+                    className={`why-choose__journey-node ${journeyActive ? "is-visible" : ""}`}
+                    style={{ transitionDelay: journeyActive ? `${index * 0.12}s` : undefined }}
+                  >
+                    <span className="why-choose__journey-dot">{stage.step}</span>
+                    <div className="why-choose__journey-copy">
+                      <p className="why-choose__journey-title">{stage.title}</p>
+                      <p className="why-choose__journey-desc">{stage.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
 
-        <ul className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 lg:gap-5">
-          {benefits.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <li key={item.title}>
-                <GlassCard delay={(index + 1) as 1 | 2 | 3 | 4}>
-                  <div className="flex gap-4 p-5 sm:p-6">
-                    <div className={dt.iconBoxSm}>
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="text-base font-semibold text-white">{item.title}</h3>
-                      <p className={`mt-2 text-sm leading-relaxed ${dt.body}`}>{item.description}</p>
-                    </div>
+        <div className="why-choose__usp">
+          <div className="why-choose__usp-rail" role="tablist" aria-label="Why vCloud Tech">
+            <p className={`mb-2 px-1 text-[10px] font-semibold uppercase tracking-[0.16em] ${dt.metaLabel}`}>
+              What sets us apart
+            </p>
+            {uspItems.map((item, index) => (
+              <button
+                key={item.title}
+                type="button"
+                role="tab"
+                aria-selected={activeUsp === index}
+                aria-controls="why-choose-usp-panel"
+                id={`why-choose-tab-${index}`}
+                className={`why-choose__usp-tab ${activeUsp === index ? "is-active" : ""}`}
+                onClick={() => setActiveUsp(index)}
+                onMouseEnter={() => setActiveUsp(index)}
+              >
+                <span className="why-choose__usp-tab-rail" aria-hidden />
+                <span className="why-choose__usp-tab-index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="why-choose__usp-tab-title">{item.title}</span>
+                <span className="why-choose__usp-tab-arrow" aria-hidden>
+                  →
+                </span>
+              </button>
+            ))}
+          </div>
+
+          <div
+            id="why-choose-usp-panel"
+            role="tabpanel"
+            aria-labelledby={`why-choose-tab-${activeUsp}`}
+            className="why-choose__usp-stage"
+          >
+            <span className="why-choose__usp-stage-line" aria-hidden />
+            <span className="why-choose__usp-stage-glow" aria-hidden />
+            <span className="why-choose__usp-stage-scan" aria-hidden />
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.title}
+                className="why-choose__usp-stage-inner"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className={dt.iconBoxCard}>
+                    <ActiveIcon className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
                   </div>
-                </GlassCard>
-              </li>
-            );
-          })}
-        </ul>
+                  <span className={dt.number}>{String(activeUsp + 1).padStart(2, "0")}</span>
+                </div>
+
+                <p className={`mt-6 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]`}>
+                  {active.title}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                  {active.headline}
+                </h3>
+                <p className={`mt-4 max-w-lg text-sm leading-relaxed sm:text-[15px] ${dt.body}`}>
+                  {active.description}
+                </p>
+
+                <ul className="why-choose__usp-proof-list">
+                  {active.proofPoints.map((point) => (
+                    <li key={point} className="why-choose__usp-proof-item">
+                      <span className="why-choose__usp-proof-dot" aria-hidden />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </section>
   );
