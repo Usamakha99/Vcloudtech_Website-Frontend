@@ -607,6 +607,22 @@
   isolation: isolate;
 }
 
+.about-enterprise__industry-image-grid .about-enterprise__sectors-header {
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__industry-image-grid .about-enterprise__sectors-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-enterprise__industry-image-grid .about-enterprise__sectors-header {
+    margin-bottom: 3rem;
+  }
+}
+
 .about-enterprise__sectors-header--center {
   flex-direction: column;
   align-items: center;

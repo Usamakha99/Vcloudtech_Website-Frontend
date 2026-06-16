@@ -42,3 +42,14 @@
     padding-inline: 1.5rem;
   }
 }
+
+/* Faster partner logo marquee (design-test strategic partners strip) */
+.dt-partner-marquee {
+  animation-duration: 18s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dt-partner-marquee {
+    animation: none;
+  }
+}

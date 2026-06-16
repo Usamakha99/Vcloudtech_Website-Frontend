@@ -4,6 +4,7 @@ import { dt } from "@/components/design-test/design-test-theme";
 import type { ReactNode } from "react";
 
 import { OrgMetricsRail } from "@/components/design-test/OrgMetricsRail";
+import { DesignTestCredentialsStrip } from "@/components/design-test/DesignTestCredentialsStrip";
 import {
   EducationIcon,
   GovernmentIcon,
@@ -126,17 +127,17 @@ export function AboutUsSnapshotSection() {
               </p>
             </div>
 
-            <div className="about-minimal__mission">
+            {/* <div className="about-minimal__mission">
               <p className="about-minimal__eyebrow">Mission</p>
               <p className="about-minimal__mission-text">
                 Simplify complex IT buying and deliver trusted solutions that help teams move faster
                 with confidence.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
 
-        <SectorsRowSection />
+        {/* <SectorsRowSection /> */}
 
         <IndustriesImageGridSection />
 
@@ -199,7 +200,30 @@ function SectorsRowSection() {
 function IndustriesImageGridSection() {
   return (
     <div className="about-enterprise__industry-image-grid about-enterprise__reveal about-enterprise__reveal--6 mt-14 sm:mt-16 lg:mt-20">
-      <ul className="about-enterprise__industry-image-grid-list">
+      <DesignTestCredentialsStrip embedded />
+
+      <header className="about-enterprise__sectors-header about-enterprise__sectors-header--center">
+        <div>
+          <p className={dt.badge}>Sectors</p>
+          <h2
+            id="industries-we-serve-heading"
+            className="about-enterprise__sectors-headline"
+          >
+            Industries We{" "}
+            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
+              Serve
+            </span>
+          </h2>
+        </div>
+        <span className="about-enterprise__sectors-count" aria-hidden>
+          {String(industryImageSectors.length).padStart(2, "0")}
+        </span>
+      </header>
+
+      <ul
+        className="about-enterprise__industry-image-grid-list"
+        aria-labelledby="industries-we-serve-heading"
+      >
         {industryImageSectors.map((sector) => (
           <li key={sector.name} className="about-enterprise__industry-image-grid-item">
             <IndustryImageCard sector={sector} />

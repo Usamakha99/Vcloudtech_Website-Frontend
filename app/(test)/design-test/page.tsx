@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { DesignTestCredentialsStrip } from "@/components/design-test/DesignTestCredentialsStrip";
 import { DesignTestFooter } from "@/components/design-test/DesignTestFooter";
 import { DesignTestCta } from "@/components/design-test/DesignTestCta";
 import { DesignTestGlobalNavbar } from "@/components/design-test/global-nav";
@@ -38,12 +37,11 @@ export default function DesignTestPage() {
         <div id="hero" className="leading-none">
           <MinimalTestHero offsetForFixedHeader fullPageGradient showCarousel />
         </div>
+        <DesignTestSocialProofBar belowHero />
         <AboutUsSnapshotSection />
-        <DesignTestCredentialsStrip />
         {/* <WhyVCloudSection reducedHeroOverlap /> */}
         <TechnologyPartnersSection />
         {/* <ScrollStackCardsSection /> */}
-        <DesignTestSocialProofBar />
         <div className="relative z-20">
           <div id="services">
             <ServicesGrid surface="glass" />

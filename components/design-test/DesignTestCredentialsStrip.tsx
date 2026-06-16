@@ -3,10 +3,10 @@ import { AboutTrustMark, procurementCredentialItems } from "@/components/design-
 import "./design-test-credentials-strip.css";
 
 /** Procurement credentials — prominent trust strip below About. */
-export function DesignTestCredentialsStrip() {
+export function DesignTestCredentialsStrip({ embedded = false }: { embedded?: boolean }) {
   return (
     <section
-      className="dt-cred-strip"
+      className={`dt-cred-strip${embedded ? " dt-cred-strip--embedded" : ""}`}
       aria-label="Certifications and contract vehicles"
     >
       <div className="dt-cred-strip__inner">
