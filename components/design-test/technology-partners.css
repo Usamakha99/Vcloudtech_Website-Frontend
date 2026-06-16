@@ -23,7 +23,7 @@
   width: 24rem;
   height: 24rem;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(229, 86, 20, 0.12) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(179, 179, 179, 0.12) 0%, transparent 68%);
   pointer-events: none;
   transform: translate(-50%, -50%);
   transition: opacity 0.45s ease;
@@ -74,8 +74,8 @@
 }
 
 .tp__category:hover {
-  border-color: rgba(229, 86, 20, 0.32);
-  box-shadow: 0 18px 44px -16px rgba(229, 86, 20, 0.18);
+  border-color: rgba(179, 179, 179, 0.32);
+  box-shadow: 0 18px 44px -16px rgba(179, 179, 179, 0.18);
   transform: translateY(-2px);
 }
 
@@ -86,7 +86,7 @@
   bottom: 0.85rem;
   width: 3px;
   border-radius: 9999px;
-  background: linear-gradient(180deg, #e55614, rgba(229, 86, 20, 0.2));
+  background: linear-gradient(180deg, #b3b3b3, rgba(179, 179, 179, 0.2));
 }
 
 .tp__category-value {
@@ -99,7 +99,7 @@
 }
 
 .tp__category-value--accent {
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .tp__category-label {
@@ -177,16 +177,16 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 120%, rgba(229, 86, 20, 0.12), transparent 55%);
+  background: radial-gradient(circle at 50% 120%, rgba(179, 179, 179, 0.12), transparent 55%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
 }
 
 .tp__partner-cell:hover {
-  border-color: rgba(229, 86, 20, 0.45);
+  border-color: rgba(179, 179, 179, 0.45);
   box-shadow:
-    0 12px 36px -10px rgba(229, 86, 20, 0.28),
+    0 12px 36px -10px rgba(179, 179, 179, 0.28),
     0 4px 24px -6px rgba(0, 0, 0, 0.35);
   transform: translateY(-3px) scale(1.02);
 }
@@ -246,7 +246,7 @@
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 @media (min-width: 640px) {
@@ -303,7 +303,7 @@
 .tp__trusted-card:hover {
   transform: translateY(-2px) scale(1.04);
   box-shadow:
-    0 8px 24px -6px rgba(229, 86, 20, 0.2),
+    0 8px 24px -6px rgba(179, 179, 179, 0.2),
     0 2px 12px -4px rgba(0, 0, 0, 0.28);
 }
 
@@ -336,7 +336,7 @@
 }
 
 .tp__cta:hover {
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .tp__cta-arrow {

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { dt } from "@/components/design-test/design-test-theme";
 import type { ReactNode } from "react";
@@ -45,6 +46,45 @@ const sectors: {
     icon: PublicSectorIcon,
   },
 ];
+
+const INDUSTRIES_SERVE_ICONS = "/Industries We Serve Icons";
+
+const industryImageSectors = [
+  {
+    name: "Government",
+    detail:
+      "Public sector solutions designed to improve efficiency, transparency, and service delivery.",
+    image: `${INDUSTRIES_SERVE_ICONS}/gov.png`,
+    href: "/services",
+  },
+  {
+    name: "Industries",
+    detail: "Custom IT solutions for industries to streamline operations and drive smart growth.",
+    image: `${INDUSTRIES_SERVE_ICONS}/4.png`,
+    href: "/services",
+  },
+  {
+    name: "Healthcare",
+    detail:
+      "Modern digital solutions for hospitals and clinics to enhance patient care and operational efficiency.",
+    image: `${INDUSTRIES_SERVE_ICONS}/6.png`,
+    href: "/services",
+  },
+  {
+    name: "Education",
+    detail:
+      "Empowering educational institutions with smart technology for better learning outcomes.",
+    image: `${INDUSTRIES_SERVE_ICONS}/5.png`,
+    href: "/services",
+  },
+  {
+    name: "Public sector",
+    detail:
+      "Technology solutions that strengthen communities and improve public service management.",
+    image: `${INDUSTRIES_SERVE_ICONS}/2.png`,
+    href: "/services",
+  },
+] as const;
 
 const industryStackZ = ["z-10", "z-20", "z-30", "z-40", "z-50"] as const;
 
@@ -97,6 +137,8 @@ export function AboutUsSnapshotSection() {
         </div>
 
         <SectorsRowSection />
+
+        <IndustriesImageGridSection />
 
         <div className="about-minimal__cta-wrap">
           <Link href="/about" className="about-minimal__cta">
@@ -151,6 +193,76 @@ function SectorsRowSection() {
         </ul>
       </div>
     </div>
+  );
+}
+
+function IndustriesImageGridSection() {
+  return (
+    <div className="about-enterprise__industry-image-grid about-enterprise__reveal about-enterprise__reveal--6 mt-14 sm:mt-16 lg:mt-20">
+      <ul className="about-enterprise__industry-image-grid-list">
+        {industryImageSectors.map((sector) => (
+          <li key={sector.name} className="about-enterprise__industry-image-grid-item">
+            <IndustryImageCard sector={sector} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function IndustryImageCard({
+  sector,
+}: {
+  sector: (typeof industryImageSectors)[number];
+}) {
+  return (
+    <article
+      className={`about-enterprise__industry-image-card group/image-card${
+        sector.name === "Government" ? " about-enterprise__industry-image-card--government" : ""
+      }`}
+    >
+      <div className="about-enterprise__industry-image-visual">
+        <div className="about-enterprise__industry-image-frame">
+          <Image
+            src={sector.image}
+            alt={sector.name}
+            fill
+            className="about-enterprise__industry-image-asset"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+          />
+        </div>
+      </div>
+
+      <div className="about-enterprise__industry-image-body">
+        <h3 className={`text-base font-semibold leading-snug tracking-tight ${dt.heading}`}>
+          {sector.name}
+        </h3>
+        <p className={`mt-2.5 flex-1 text-sm leading-relaxed ${dt.body}`}>{sector.detail}</p>
+        <Link href={sector.href} className="about-enterprise__industry-image-link mt-5">
+          Explore solutions
+          <IndustryImageArrowIcon />
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+function IndustryImageArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      className="h-3.5 w-3.5 text-[#E55614] transition-transform duration-300 group-hover/image-card:translate-x-1"
+      aria-hidden
+    >
+      <path
+        d="M3 8h10M9 4l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 

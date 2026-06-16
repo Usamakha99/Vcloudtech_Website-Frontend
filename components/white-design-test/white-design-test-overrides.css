@@ -45,9 +45,12 @@
   border-color: var(--wdt-navy-border);
 }
 
-.white-design-test .about-enterprise__stat-value,
 .white-design-test .about-enterprise__headline,
 .white-design-test .about-enterprise__sectors-headline {
+  color: var(--wdt-navy);
+}
+
+.white-design-test #about .about-minimal__metrics .about-enterprise__stat-value {
   color: var(--wdt-navy);
 }
 
@@ -222,4 +225,28 @@
 .white-design-test .wdt-footer {
   position: relative;
   z-index: 30;
+}
+
+/* About metrics rail — gray hover (loads last, beats generic stat rules) */
+.design-test-lab-page #about .about-minimal__metrics .about-enterprise__stat {
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.design-test-lab-page #about .about-minimal__metrics .about-enterprise__stat:hover,
+.design-test-lab-page #about .about-minimal__metrics .about-enterprise__stat:focus-within {
+  background-color: rgba(179, 179, 179, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(179, 179, 179, 0.35);
+}
+
+.design-test-lab-page #about .about-minimal__metrics .about-enterprise__stat:hover .about-enterprise__stat-value,
+.design-test-lab-page #about .about-minimal__metrics .about-enterprise__stat:focus-within .about-enterprise__stat-value {
+  color: #b3b3b3;
+}
+
+.white-design-test #about .about-minimal__metrics .about-enterprise__stat:hover,
+.white-design-test #about .about-minimal__metrics .about-enterprise__stat:focus-within {
+  background-color: rgba(179, 179, 179, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(179, 179, 179, 0.28);
 }

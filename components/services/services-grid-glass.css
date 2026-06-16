@@ -8,7 +8,7 @@
 .white-design-test .service-flip-card:hover .service-flip-face,
 .white-design-test .service-flip-card:focus-within .service-flip-face,
 .white-design-test .service-flip-card:focus-visible .service-flip-face {
-  border-color: #e55614;
+  border-color: #b3b3b3;
   box-shadow: 0 12px 32px -12px rgba(17, 26, 69, 0.12);
 }
 
@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #e55614;
+  color: #b3b3b3;
   opacity: 0.42;
   transition:
     transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
@@ -128,7 +128,7 @@
 .service-flip-card:hover .service-flip-face,
 .service-flip-card:focus-within .service-flip-face,
 .service-flip-card:focus-visible .service-flip-face {
-  border-color: #e55614;
+  border-color: #b3b3b3;
   box-shadow: 0 14px 32px -12px rgba(0, 0, 0, 0.5);
 }
 
@@ -162,7 +162,7 @@
 .service-flip-front-accent {
   width: 4rem;
   height: 2px;
-  background-color: #e55614 !important;
+  background-color: #b3b3b3 !important;
 }
 
 .service-flip-back-content {
@@ -190,6 +190,6 @@
 
   .service-flip-card:hover .service-flip-face,
   .service-flip-card:focus-within .service-flip-face {
-    border-color: #e55614;
+    border-color: #b3b3b3;
   }
 }

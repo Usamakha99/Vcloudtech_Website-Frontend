@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+
 import { dt } from "@/components/design-test/design-test-theme";
 
+import "./design-test-about-metrics.css";
 
 const orgMetrics = [
   { target: 15, suffix: "+", label: "Years in business" },
@@ -64,13 +66,14 @@ function LiveStatValue({
   }, [active, delayMs, target]);
 
   return (
-    <p className="about-enterprise__stat-value" aria-label={`${target}${suffix}`}>
+    <p className="dt-metrics__value" aria-label={`${target}${suffix}`}>
       {value}
       {suffix}
     </p>
   );
 }
 
+/** Organization metrics — design-test only (isolated from shared about-enterprise__stat styles). */
 export function OrgMetricsRail({ className = "" }: { className?: string }) {
   const railRef = useRef<HTMLUListElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -96,18 +99,18 @@ export function OrgMetricsRail({ className = "" }: { className?: string }) {
   return (
     <ul
       ref={railRef}
-      className={`about-enterprise__stat-rail ${className}`.trim()}
+      className={`dt-metrics__rail ${className}`.trim()}
       aria-label="Organization metrics"
     >
       {orgMetrics.map((metric, index) => (
-        <li key={metric.label} className="about-enterprise__stat">
+        <li key={metric.label} className="dt-metrics__cell">
           <LiveStatValue
             target={metric.target}
             suffix={metric.suffix}
             active={isVisible}
             delayMs={index * 180}
           />
-          <p className={`mt-1 text-[10px] font-medium uppercase tracking-wider sm:text-[11px] ${dt.statLabel}`}>
+          <p className={`dt-metrics__label mt-1 text-[10px] font-medium uppercase tracking-wider sm:text-[11px] ${dt.statLabel}`}>
             {metric.label}
           </p>
         </li>

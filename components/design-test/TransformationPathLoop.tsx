@@ -19,7 +19,7 @@ const NODE_FILLS = [
   "#c87941",
   "#d06828",
   "#dc5c18",
-  "#e55614",
+  "#b3b3b3",
 ] as const;
 
 function buildInfinityPath(cx: number, cy: number, a: number, flat: number, steps = 180): string {
@@ -157,7 +157,7 @@ export function TransformationPathLoop({ active }: { active: boolean }) {
             <linearGradient id="why-path-stroke" gradientUnits="userSpaceOnUse" x1="80" y1="0" x2="1200" y2="0">
               <stop offset="0%" stopColor="#8f5c32" />
               <stop offset="50%" stopColor="#C87941" />
-              <stop offset="100%" stopColor="#e55614" />
+              <stop offset="100%" stopColor="#b3b3b3" />
             </linearGradient>
             <filter id="why-path-glow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="2" result="blur" />

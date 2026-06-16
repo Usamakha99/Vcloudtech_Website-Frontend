@@ -30,7 +30,7 @@
   left: -6rem;
   width: 22rem;
   height: 22rem;
-  background: rgba(229, 86, 20, 0.14);
+  background: rgba(179, 179, 179, 0.14);
 }
 
 .about-enterprise__glow--secondary {
@@ -38,7 +38,7 @@
   bottom: 10%;
   width: 18rem;
   height: 18rem;
-  background: rgba(229, 86, 20, 0.08);
+  background: rgba(179, 179, 179, 0.08);
 }
 
 .about-enterprise__headline {
@@ -125,7 +125,7 @@
 }
 
 .about-enterprise__stat:hover {
-  background: rgba(229, 86, 20, 0.08);
+  background: rgba(179, 179, 179, 0.08);
 }
 
 .about-enterprise__stat-value {
@@ -139,7 +139,7 @@
 }
 
 .about-enterprise__stat:hover .about-enterprise__stat-value {
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .about-enterprise__manifesto {
@@ -155,8 +155,8 @@
 }
 
 .about-enterprise__manifesto:hover {
-  border-color: rgba(229, 86, 20, 0.3);
-  box-shadow: 0 24px 48px -24px rgba(229, 86, 20, 0.18);
+  border-color: rgba(179, 179, 179, 0.3);
+  box-shadow: 0 24px 48px -24px rgba(179, 179, 179, 0.18);
 }
 
 .about-enterprise__manifesto-accent {
@@ -166,7 +166,7 @@
   bottom: 1.5rem;
   width: 3px;
   border-radius: 9999px;
-  background: linear-gradient(180deg, #e55614, rgba(229, 86, 20, 0.2));
+  background: linear-gradient(180deg, #b3b3b3, rgba(179, 179, 179, 0.2));
 }
 
 .about-enterprise__credentials-grid {
@@ -196,8 +196,8 @@
 }
 
 .about-enterprise__credential:hover {
-  border-color: rgba(229, 86, 20, 0.35);
-  background: rgba(229, 86, 20, 0.06);
+  border-color: rgba(179, 179, 179, 0.35);
+  background: rgba(179, 179, 179, 0.06);
 }
 
 .about-enterprise__credential-acronym {
@@ -223,7 +223,7 @@
 }
 
 .about-enterprise__footprint-stack:hover {
-  border-color: rgba(229, 86, 20, 0.25);
+  border-color: rgba(179, 179, 179, 0.25);
 }
 
 /* Bento — 50/50 columns, matched height */
@@ -260,7 +260,7 @@
 }
 
 .about-enterprise__stat-card:hover {
-  border-color: rgba(229, 86, 20, 0.28);
+  border-color: rgba(179, 179, 179, 0.28);
 }
 
 .about-enterprise__stat-card .about-enterprise__stat-rail {
@@ -300,7 +300,7 @@
 
 .about-enterprise__footprint-stack .about-enterprise__visual {
   border: none;
-  background: radial-gradient(ellipse at 50% 120%, rgba(229, 86, 20, 0.1), transparent 55%),
+  background: radial-gradient(ellipse at 50% 120%, rgba(179, 179, 179, 0.1), transparent 55%),
     rgba(4, 19, 41, 0.75);
 }
 
@@ -315,7 +315,7 @@
   overflow: hidden;
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: radial-gradient(ellipse at 50% 120%, rgba(229, 86, 20, 0.12), transparent 55%),
+  background: radial-gradient(ellipse at 50% 120%, rgba(179, 179, 179, 0.12), transparent 55%),
     rgba(4, 19, 41, 0.9);
 }
 
@@ -393,7 +393,7 @@
 }
 
 .about-enterprise__reach:hover {
-  border-color: rgba(229, 86, 20, 0.25);
+  border-color: rgba(179, 179, 179, 0.25);
 }
 
 /* Sectors row — Why vCloud-style transparent overlapping cards */
@@ -451,7 +451,7 @@
   top: 0;
   z-index: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(229, 86, 20, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(179, 179, 179, 0.5), transparent);
   opacity: 0.75;
   pointer-events: none;
 }
@@ -460,7 +460,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse 90% 70% at 50% -10%, rgba(229, 86, 20, 0.07), transparent 58%);
+  background: radial-gradient(ellipse 90% 70% at 50% -10%, rgba(179, 179, 179, 0.07), transparent 58%);
   pointer-events: none;
   transition: opacity 0.4s ease;
 }
@@ -473,7 +473,7 @@
   z-index: 1;
   width: 2px;
   border-radius: 9999px;
-  background: linear-gradient(180deg, rgba(229, 86, 20, 0.55), rgba(229, 86, 20, 0.08));
+  background: linear-gradient(180deg, rgba(179, 179, 179, 0.55), rgba(179, 179, 179, 0.08));
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -481,15 +481,15 @@
 
 .about-enterprise__industry-card:hover,
 .about-enterprise__industry-card:focus-within {
-  border-color: rgba(229, 86, 20, 0.3);
-  box-shadow: 0 22px 50px -18px rgba(229, 86, 20, 0.14);
+  border-color: rgba(179, 179, 179, 0.3);
+  box-shadow: 0 22px 50px -18px rgba(179, 179, 179, 0.14);
   transform: translateY(-4px);
 }
 
 .about-enterprise__industry-card:hover .about-enterprise__industry-card-glow,
 .about-enterprise__industry-card:focus-within .about-enterprise__industry-card-glow {
   opacity: 1.35;
-  background: radial-gradient(ellipse 90% 70% at 50% -10%, rgba(229, 86, 20, 0.12), transparent 58%);
+  background: radial-gradient(ellipse 90% 70% at 50% -10%, rgba(179, 179, 179, 0.12), transparent 58%);
 }
 
 .about-enterprise__industry-card:hover .about-enterprise__industry-card-accent,
@@ -505,6 +505,83 @@
   flex-direction: column;
 }
 
+.about-minimal__badge {
+  display: inline-block;
+  border-radius: 9999px;
+  border: 1px solid rgba(179, 179, 179, 0.3);
+  background: rgba(179, 179, 179, 0.1);
+  padding: 0.375rem 1rem;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+@media (min-width: 640px) {
+  .about-minimal__badge {
+    font-size: 11px;
+  }
+}
+
+.about-enterprise__industry-icon {
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(179, 179, 179, 0.2);
+  background: rgba(179, 179, 179, 0.08);
+  color: #a1a1aa;
+  transition:
+    color 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.about-enterprise__industry-icon svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__industry-icon {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .about-enterprise__industry-icon svg {
+    height: 1.375rem;
+    width: 1.375rem;
+  }
+}
+
+.about-enterprise__industry-card:hover .about-enterprise__industry-icon,
+.about-enterprise__industry-card:focus-within .about-enterprise__industry-icon {
+  border-color: rgba(179, 179, 179, 0.35);
+  background: rgba(179, 179, 179, 0.14);
+  color: #b3b3b3;
+}
+
+.about-enterprise__industry-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  transition: color 0.35s ease;
+}
+
+.about-enterprise__industry-card:hover .about-enterprise__industry-link,
+.about-enterprise__industry-card:focus-within .about-enterprise__industry-link,
+.about-enterprise__industry-link:hover {
+  color: #b3b3b3;
+}
+
 .about-enterprise__sectors-tiles {
   position: relative;
   z-index: 1;
@@ -518,9 +595,194 @@
 }
 
 .about-enterprise__industry-cta:focus-visible {
+  outline: 2px solid rgba(179, 179, 179, 0.55);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+/* Industries We Serve — minimal icon grid */
+
+.about-enterprise__industry-image-grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.about-enterprise__sectors-header--center {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__sectors-header--center {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.about-enterprise__industry-image-grid-list {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .about-enterprise__industry-image-grid-list {
+    gap: 1rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.about-enterprise__industry-image-grid-item {
+  min-width: 0;
+}
+
+.about-enterprise__industry-image-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(165deg, #111f34 0%, #0d1829 52%, #041329 100%);
+  box-shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.45);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-enterprise__industry-image-card:hover,
+.about-enterprise__industry-image-card:focus-within {
+  border-color: rgba(229, 86, 20, 0.28);
+  box-shadow:
+    0 18px 40px -16px rgba(229, 86, 20, 0.16),
+    0 0 0 1px rgba(229, 86, 20, 0.06);
+  transform: translateY(-2px);
+}
+
+.about-enterprise__industry-image-visual {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, #111f34 0%, #0a1525 48%, #041329 100%);
+}
+
+.about-enterprise__industry-image-visual::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.about-enterprise__industry-image-visual::after {
+  content: "";
+  position: absolute;
+  bottom: -8%;
+  left: 50%;
+  z-index: 0;
+  width: 78%;
+  height: 52%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 100%,
+    rgba(229, 86, 20, 0.42) 0%,
+    rgba(229, 86, 20, 0.16) 38%,
+    rgba(4, 19, 41, 0) 72%
+  );
+  pointer-events: none;
+}
+
+.about-enterprise__industry-image-frame {
+  position: absolute;
+  inset: 6% 10% 2% 10%;
+  z-index: 1;
+}
+
+.about-enterprise__industry-image-asset {
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-enterprise__industry-image-card:hover .about-enterprise__industry-image-asset,
+.about-enterprise__industry-image-card:focus-within .about-enterprise__industry-image-asset {
+  transform: translateY(-2px);
+}
+
+.about-enterprise__industry-image-card--government .about-enterprise__industry-image-visual {
+  aspect-ratio: 5 / 4;
+}
+
+.about-enterprise__industry-image-card--government .about-enterprise__industry-image-frame {
+  inset: 0;
+}
+
+.about-enterprise__industry-image-card--government .about-enterprise__industry-image-asset {
+  object-position: center center;
+  transform: scale(1.26);
+  transform-origin: center center;
+}
+
+.about-enterprise__industry-image-card--government:hover .about-enterprise__industry-image-asset,
+.about-enterprise__industry-image-card--government:focus-within .about-enterprise__industry-image-asset {
+  transform: scale(1.26) translateY(-2px);
+}
+
+.about-enterprise__industry-image-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1rem 1rem 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(17, 31, 52, 0.55) 0%, rgba(4, 19, 41, 0.2) 100%);
+}
+
+.about-enterprise__industry-image-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  transition: color 0.35s ease;
+}
+
+.about-enterprise__industry-image-card:hover .about-enterprise__industry-image-link,
+.about-enterprise__industry-image-card:focus-within .about-enterprise__industry-image-link,
+.about-enterprise__industry-image-link:hover {
+  color: #f06520;
+}
+
+.about-enterprise__industry-image-link:focus-visible {
   outline: 2px solid rgba(229, 86, 20, 0.55);
   outline-offset: 3px;
   border-radius: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-enterprise__industry-image-card:hover,
+  .about-enterprise__industry-image-card:focus-within {
+    transform: none;
+  }
+
+  .about-enterprise__industry-image-card:hover .about-enterprise__industry-image-asset,
+  .about-enterprise__industry-image-card:focus-within .about-enterprise__industry-image-asset {
+    transform: none;
+  }
 }
 
 .about-enterprise__sectors-glow {
@@ -529,9 +791,9 @@
   z-index: 0;
   background: linear-gradient(
     125deg,
-    rgba(229, 86, 20, 0.1) 0%,
+    rgba(179, 179, 179, 0.1) 0%,
     transparent 42%,
-    rgba(229, 86, 20, 0.06) 100%
+    rgba(179, 179, 179, 0.06) 100%
   );
   background-size: 200% 200%;
   animation: about-sectors-shimmer 12s ease-in-out infinite;
@@ -547,9 +809,9 @@
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(229, 86, 20, 0.07) 45%,
-    rgba(229, 86, 20, 0.14) 50%,
-    rgba(229, 86, 20, 0.07) 55%,
+    rgba(179, 179, 179, 0.07) 45%,
+    rgba(179, 179, 179, 0.14) 50%,
+    rgba(179, 179, 179, 0.07) 55%,
     transparent 100%
   );
   animation: about-sectors-scan 9s ease-in-out infinite;
@@ -615,7 +877,7 @@
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: #e55614;
+  color: #b3b3b3;
   transition: color 0.3s ease;
 }
 
@@ -636,18 +898,18 @@
   margin-top: 1.25rem;
   height: 1px;
   width: 2rem;
-  background: rgba(229, 86, 20, 0.55);
+  background: rgba(179, 179, 179, 0.55);
   transition: width 0.35s ease;
 }
 
 .group:hover .about-enterprise__sector-tile-index {
-  color: #f06520;
+  color: #c9c9c9;
 }
 
 .group:hover .about-enterprise__sector-tile-arrow {
   opacity: 1;
   transform: translateX(0);
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .group:hover .about-enterprise__sector-tile-line {
@@ -660,14 +922,14 @@
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
-  border: 1px solid rgba(229, 86, 20, 0.35);
-  background: rgba(229, 86, 20, 0.12);
+  border: 1px solid rgba(179, 179, 179, 0.35);
+  background: rgba(179, 179, 179, 0.12);
   padding: 0.2rem 0.45rem;
   font-family: ui-monospace, monospace;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .about-enterprise__sectors-list {
@@ -701,8 +963,8 @@
 
 .about-enterprise__sector-row:hover {
   padding-left: 0.55rem;
-  background: rgba(229, 86, 20, 0.08);
-  border-color: rgba(229, 86, 20, 0.12);
+  background: rgba(179, 179, 179, 0.08);
+  border-color: rgba(179, 179, 179, 0.12);
 }
 
 .about-enterprise__sector-row:hover .about-enterprise__sector-rail {
@@ -721,7 +983,7 @@
 .about-enterprise__sector-row:hover .about-enterprise__sector-arrow {
   opacity: 1;
   transform: translateX(0);
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .about-enterprise__sector-rail {
@@ -731,7 +993,7 @@
   width: 2px;
   height: 0;
   border-radius: 9999px;
-  background: linear-gradient(180deg, #e55614, rgba(229, 86, 20, 0.2));
+  background: linear-gradient(180deg, #b3b3b3, rgba(179, 179, 179, 0.2));
   opacity: 0;
   transform: translateY(-50%);
   transition:
@@ -749,7 +1011,7 @@
 }
 
 .about-enterprise__sector-row:hover .about-enterprise__sector-index {
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .about-enterprise__sector-copy {
@@ -800,7 +1062,7 @@
   }
   8%,
   18% {
-    background-color: rgba(229, 86, 20, 0.06);
+    background-color: rgba(179, 179, 179, 0.06);
   }
 }
 
@@ -835,8 +1097,8 @@
 
 .about-enterprise__principle:hover {
   transform: translateY(-6px);
-  border-color: rgba(229, 86, 20, 0.35);
-  box-shadow: 0 28px 56px -28px rgba(229, 86, 20, 0.22);
+  border-color: rgba(179, 179, 179, 0.35);
+  box-shadow: 0 28px 56px -28px rgba(179, 179, 179, 0.22);
 }
 
 .about-enterprise__principle-gradient {
@@ -845,9 +1107,9 @@
   z-index: 0;
   background: linear-gradient(
     130deg,
-    rgba(229, 86, 20, 0.14) 0%,
+    rgba(179, 179, 179, 0.14) 0%,
     rgba(255, 255, 255, 0.03) 45%,
-    rgba(229, 86, 20, 0.1) 100%
+    rgba(179, 179, 179, 0.1) 100%
   );
   background-size: 220% 220%;
   animation: about-principle-shimmer 10s ease-in-out infinite;
@@ -898,9 +1160,9 @@
 
 .about-enterprise__cta:hover {
   gap: 0.85rem;
-  border-color: rgba(229, 86, 20, 0.45);
-  background: rgba(229, 86, 20, 0.12);
-  box-shadow: 0 12px 32px -16px rgba(229, 86, 20, 0.35);
+  border-color: rgba(179, 179, 179, 0.45);
+  background: rgba(179, 179, 179, 0.12);
+  box-shadow: 0 12px 32px -16px rgba(179, 179, 179, 0.35);
 }
 
 @media (max-width: 639px) {
@@ -1093,9 +1355,9 @@
 
 .about-minimal__trust-item:hover .about-trust-mark,
 .about-minimal__trust-item:focus-within .about-trust-mark {
-  color: #f06520;
-  border-color: rgba(229, 86, 20, 0.35);
-  background: rgba(229, 86, 20, 0.08);
+  color: #c9c9c9;
+  border-color: rgba(179, 179, 179, 0.35);
+  background: rgba(179, 179, 179, 0.08);
 }
 
 .about-trust-mark__svg {
@@ -1360,7 +1622,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .about-minimal__aside .about-minimal__text {
@@ -1423,7 +1685,7 @@
 }
 
 .about-minimal__sector-card:hover {
-  border-color: rgba(229, 86, 20, 0.35);
+  border-color: rgba(179, 179, 179, 0.35);
 }
 
 .about-minimal__sector-top {
@@ -1465,6 +1727,6 @@
 }
 
 .about-minimal__cta:hover {
-  color: #e55614;
+  color: #b3b3b3;
 }
 

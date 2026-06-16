@@ -177,7 +177,7 @@ function StackCard({
           <ul className="mt-5 grid grid-cols-1 gap-y-2 border-t border-white/10 pt-4 sm:mt-6 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-2.5 sm:pt-5">
             {card.points.map((point) => (
               <li key={point} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-[#E55614]" aria-hidden />
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-[#b3b3b3]" aria-hidden />
                 <span className={`font-mono text-[10px] font-medium uppercase tracking-[0.12em] sm:text-[11px] ${dt.stackMeta}`}>
                   {point}
                 </span>
@@ -202,7 +202,7 @@ function StackCardVisual({ icon: Icon, tag }: { icon: SectionIcon; tag: string }
   return (
     <div className={dt.stackCardVisual}>
       <span
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(229,86,20,0.12)_0%,transparent_65%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(179,179,179,0.12)_0%,transparent_65%)]"
         aria-hidden
       />
 
@@ -224,11 +224,11 @@ function StackCardVisual({ icon: Icon, tag }: { icon: SectionIcon; tag: string }
       <div className="relative flex flex-col items-center">
         <div className="relative flex h-20 w-20 items-center justify-center sm:h-24 sm:w-24">
           <span
-            className="absolute inset-0 rounded-full bg-[#E55614]/20 blur-xl transition-opacity duration-500 group-hover/stack:bg-[#E55614]/30"
+            className="absolute inset-0 rounded-full bg-[#b3b3b3]/20 blur-xl transition-opacity duration-500 group-hover/stack:bg-[#b3b3b3]/30"
             aria-hidden
           />
           <div
-            className="relative flex h-full w-full items-center justify-center rounded-2xl border border-[#E55614]/30 bg-[#E55614]/10 text-[#E55614] shadow-[0_0_40px_rgba(229,86,20,0.2)] ring-1 ring-[#E55614]/20 [&_svg]:h-9 [&_svg]:w-9 sm:[&_svg]:h-10 sm:[&_svg]:w-10"
+            className="relative flex h-full w-full items-center justify-center rounded-2xl border border-[#b3b3b3]/30 bg-[#b3b3b3]/10 text-[#b3b3b3] shadow-[0_0_40px_rgba(179,179,179,0.2)] ring-1 ring-[#b3b3b3]/20 [&_svg]:h-9 [&_svg]:w-9 sm:[&_svg]:h-10 sm:[&_svg]:w-10"
             style={{
               clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
             }}

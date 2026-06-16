@@ -11,7 +11,7 @@
   width: 32rem;
   height: 32rem;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(229, 86, 20, 0.09) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(179, 179, 179, 0.09) 0%, transparent 68%);
   pointer-events: none;
   z-index: 0;
 }
@@ -97,8 +97,8 @@
 }
 
 .rh__card-link:hover {
-  border-color: rgba(229, 86, 20, 0.3);
-  box-shadow: 0 20px 48px -24px rgba(229, 86, 20, 0.14);
+  border-color: rgba(179, 179, 179, 0.3);
+  box-shadow: 0 20px 48px -24px rgba(179, 179, 179, 0.14);
   transform: translateY(-3px);
 }
 
@@ -156,14 +156,14 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .rh__meta-dot {
   height: 0.25rem;
   width: 0.25rem;
   border-radius: 9999px;
-  background: #e55614;
+  background: #b3b3b3;
   opacity: 0.85;
 }
 
@@ -220,13 +220,13 @@
 }
 
 .rh__card-link:hover .rh__read {
-  color: #e55614;
+  color: #b3b3b3;
 }
 
 .rh__card-link:hover .rh__read-arrow {
   transform: translateX(3px);
-  border-color: rgba(229, 86, 20, 0.4);
-  background: rgba(229, 86, 20, 0.1);
+  border-color: rgba(179, 179, 179, 0.4);
+  background: rgba(179, 179, 179, 0.1);
 }
 
 /* CTA */
@@ -266,9 +266,9 @@
 }
 
 .rh__cta:hover {
-  border-color: rgba(229, 86, 20, 0.45);
-  background: rgba(229, 86, 20, 0.08);
-  box-shadow: 0 12px 32px -16px rgba(229, 86, 20, 0.25);
+  border-color: rgba(179, 179, 179, 0.45);
+  background: rgba(179, 179, 179, 0.08);
+  box-shadow: 0 12px 32px -16px rgba(179, 179, 179, 0.25);
 }
 
 .rh__cta-arrow {

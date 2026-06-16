@@ -1,53 +1,62 @@
+import Image from "next/image";
 import Link from "next/link";
 import { wdt } from "@/components/white-design-test/white-design-test-theme";
-import type { ReactNode } from "react";
 
 import { OrgMetricsRail } from "@/components/white-design-test/OrgMetricsRail";
-import {
-  EducationIcon,
-  GovernmentIcon,
-  HealthcareIcon,
-  PublicSectorIcon,
-  ServerIcon,
-  type SectionIcon,
-} from "@/components/icons/section-icons";
 
 import "@/components/design-test/about-us-section.css";
 import "./white-about-us-section.css";
 
-const sectors: {
-  name: string;
-  detail: string;
-  icon: SectionIcon;
-}[] = [
+const INDUSTRIES_SERVE_ICONS = "/Industries We Serve Icons";
+
+const industryServeSectors = [
   {
-    name: "Government",
-    detail: "Federal, state, and local agencies with compliant procurement and secure deployment.",
-    icon: GovernmentIcon,
+    name: "Government Agencies",
+    detail:
+      "Public sector solutions designed to improve efficiency, transparency, and service delivery.",
+    image: `${INDUSTRIES_SERVE_ICONS}/1.png`,
+    href: "/services",
   },
   {
-    name: "Education",
-    detail: "K-12 districts and higher education with budget-smart licensing and campus rollouts.",
-    icon: EducationIcon,
-  },
-  {
-    name: "Healthcare",
-    detail: "Hospital systems and care networks with HIPAA-aware sourcing and clinical uptime.",
-    icon: HealthcareIcon,
+    name: "Public sector",
+    detail:
+      "Technology solutions that strengthen communities and improve public service management.",
+    image: `${INDUSTRIES_SERVE_ICONS}/2.png`,
+    href: "/services",
   },
   {
     name: "Enterprise",
     detail: "Mid-market to global organizations with consolidated spend and managed operations.",
-    icon: ServerIcon,
+    image: `${INDUSTRIES_SERVE_ICONS}/3.png`,
+    href: "/services",
   },
   {
-    name: "Public sector",
-    detail: "Municipal and civic institutions with accountable IT outcomes stakeholders can trust.",
-    icon: PublicSectorIcon,
+    name: "Industries",
+    detail: "Custom IT solutions for industries to streamline operations and drive smart growth.",
+    image: `${INDUSTRIES_SERVE_ICONS}/4.png`,
+    href: "/services",
   },
-];
-
-const industryStackZ = ["z-10", "z-20", "z-30", "z-40", "z-50"] as const;
+  {
+    name: "Education",
+    detail:
+      "Empowering educational institutions with smart technology for better learning outcomes.",
+    image: `${INDUSTRIES_SERVE_ICONS}/5.png`,
+    href: "/services",
+  },
+  {
+    name: "Healthcare",
+    detail:
+      "Modern digital solutions for hospitals and clinics to enhance patient care and operational efficiency.",
+    image: `${INDUSTRIES_SERVE_ICONS}/6.png`,
+    href: "/services",
+  },
+  {
+    name: "Government",
+    detail: "Federal, state, and local agencies with compliant procurement and secure deployment.",
+    image: `${INDUSTRIES_SERVE_ICONS}/7.png`,
+    href: "/services",
+  },
+] as const;
 
 const credentials = [
   { acronym: "MBE", label: "Minority-owned business enterprise" },
@@ -123,7 +132,7 @@ export function AboutUsSnapshotSection() {
           </aside>
         </div>
 
-        <SectorsRowSection />
+        <IndustriesWeServeSection />
 
         <div className="about-minimal__cta-wrap">
           <Link href="/about" className="about-minimal__cta">
@@ -136,10 +145,10 @@ export function AboutUsSnapshotSection() {
   );
 }
 
-function SectorsRowSection() {
+function IndustriesWeServeSection() {
   return (
-    <div className="about-enterprise__sectors-row about-enterprise__reveal about-enterprise__reveal--5 mt-10 sm:mt-12">
-      <header className="about-enterprise__sectors-header">
+    <div className="about-enterprise__industry-image-grid about-enterprise__reveal about-enterprise__reveal--5 mt-10 sm:mt-12">
+      <header className="about-enterprise__sectors-header about-enterprise__sectors-header--center">
         <div>
           <p className={wdt.badge}>Sectors</p>
           <h2 className="about-enterprise__sectors-headline">
@@ -150,123 +159,60 @@ function SectorsRowSection() {
           </h2>
         </div>
         <span className="about-enterprise__sectors-count" aria-hidden>
-          {String(sectors.length).padStart(2, "0")}
+          {String(industryServeSectors.length).padStart(2, "0")}
         </span>
       </header>
 
-      <div className="mt-8 sm:mt-10">
-        <ul className="hidden justify-center overflow-visible lg:flex">
-          {sectors.map((sector, index) => (
-            <li
-              key={sector.name}
-              className={`group relative shrink-0 transition-transform duration-300 hover:z-50 focus-within:z-50 ${industryStackZ[index] ?? industryStackZ[0]} ${index === 0 ? "ml-0" : "-ml-10 xl:-ml-12"}`}
-            >
-              <IndustryStrengthCard sector={sector} index={index} />
-            </li>
-          ))}
-        </ul>
-
-        <ul className="flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-visible pb-4 pl-1 pr-4 [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
-          {sectors.map((sector, index) => (
-            <li
-              key={sector.name}
-              className={`group relative w-[min(85vw,300px)] shrink-0 snap-center transition-transform duration-300 hover:z-50 focus-within:z-50 sm:w-[320px] ${industryStackZ[index] ?? industryStackZ[0]} ${index === 0 ? "ml-0" : "-ml-7 sm:-ml-8"}`}
-            >
-              <IndustryStrengthCard sector={sector} index={index} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="about-enterprise__industry-image-grid-list mt-8 sm:mt-10">
+        {industryServeSectors.map((sector, index) => (
+          <li key={`${sector.name}-${index}`} className="about-enterprise__industry-image-grid-item">
+            <IndustryServeCard sector={sector} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
-function IndustryStrengthCard({
+function IndustryServeCard({
   sector,
-  index,
 }: {
-  sector: (typeof sectors)[number];
-  index: number;
+  sector: (typeof industryServeSectors)[number];
 }) {
-  const Icon = sector.icon;
-  const number = String(index + 1).padStart(2, "0");
-  const titleWords = sector.name.split(" ");
-
   return (
-    <article className="about-enterprise__industry-card group/card">
-      <span className="about-enterprise__industry-card-glow" aria-hidden />
-      <span className="about-enterprise__industry-card-accent" aria-hidden />
-
-      <div className="about-enterprise__industry-card-body flex flex-col px-6 py-7 sm:px-7 sm:py-8">
-        <div className="relative flex items-start justify-between gap-4">
-          <div className={wdt.iconBoxCard}>
-            <Icon />
-          </div>
-          <span className={wdt.number}>{number}</span>
+    <article className="about-enterprise__industry-image-card group/image-card">
+      <div className="about-enterprise__industry-image-visual">
+        <div className="about-enterprise__industry-image-frame">
+          <Image
+            src={sector.image}
+            alt={sector.name}
+            fill
+            className="about-enterprise__industry-image-asset"
+            sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 14vw"
+          />
         </div>
+      </div>
 
-        <div className="relative mt-7 flex flex-1 flex-col">
-          <h3 className="flex flex-wrap gap-x-[0.3em] text-base font-semibold leading-[1.35] tracking-tight sm:text-lg">
-            {titleWords.map((word, wordIndex) => (
-              <RollingText
-                key={`${word}-${wordIndex}`}
-                slotHeight="1.35em"
-                staggerMs={wordIndex * 28}
-                top={<span className={wdt.heading}>{word}</span>}
-                bottom={<span className={wdt.headingSub}>{word}</span>}
-              />
-            ))}
-          </h3>
-
-          <p className={`mt-3.5 flex-1 text-sm leading-[1.7] sm:text-[15px] ${wdt.body}`}>
-            {sector.detail}
-          </p>
-        </div>
-
-        <Link
-          href="/services"
-          className={`relative mt-7 inline-flex items-center gap-2 text-[13px] font-medium ${wdt.link}`}
-        >
+      <div className="about-enterprise__industry-image-body">
+        <h3 className={`text-base font-semibold leading-snug tracking-tight ${wdt.heading}`}>
+          {sector.name}
+        </h3>
+        <p className={`mt-2.5 flex-1 text-sm leading-relaxed ${wdt.body}`}>{sector.detail}</p>
+        <Link href={sector.href} className="about-enterprise__industry-image-link mt-5">
           Explore solutions
-          <IndustryArrowIcon />
+          <IndustryServeArrowIcon />
         </Link>
       </div>
     </article>
   );
 }
 
-type RollingTextProps = {
-  top: ReactNode;
-  bottom: ReactNode;
-  slotHeight: string;
-  className?: string;
-  staggerMs?: number;
-};
-
-function RollingText({ top, bottom, slotHeight, className = "", staggerMs = 0 }: RollingTextProps) {
-  return (
-    <span className={`inline-block overflow-hidden align-top ${className}`} style={{ height: slotHeight }}>
-      <span
-        className="block transition-transform duration-[0.32s] ease-[cubic-bezier(0.76,0,0.24,1)] group-hover/card:-translate-y-1/2 group-focus-within/card:-translate-y-1/2 motion-reduce:transform-none"
-        style={{ transitionDelay: `${staggerMs}ms` }}
-      >
-        <span className="block" style={{ minHeight: slotHeight }}>
-          {top}
-        </span>
-        <span className="block" style={{ minHeight: slotHeight }}>
-          {bottom}
-        </span>
-      </span>
-    </span>
-  );
-}
-
-function IndustryArrowIcon() {
+function IndustryServeArrowIcon() {
   return (
     <svg
       viewBox="0 0 16 16"
       fill="none"
-      className="h-3.5 w-3.5 transition-transform duration-300 group-hover/card:translate-x-1"
+      className="h-3.5 w-3.5 text-[#E55614] transition-transform duration-300 group-hover/image-card:translate-x-1"
       aria-hidden
     >
       <path

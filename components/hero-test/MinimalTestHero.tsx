@@ -78,7 +78,7 @@ export function MinimalTestHero({
           Minimal hero with motion
         </h1>
         <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-5 max-w-lg text-base text-[#A1A1AA] sm:text-lg">
-          Dark canvas with #E55614 accents.
+          Dark canvas with #b3b3b3 accents.
         </p>
         <div className="hero-test-fade-in hero-test-fade-in-delay-3 mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <ButtonLink href="/contact" variant="ctaWhite">
