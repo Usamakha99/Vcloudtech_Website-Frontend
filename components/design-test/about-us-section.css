@@ -1202,34 +1202,43 @@
 }
 
 .about-minimal__intro {
-  max-width: 38rem;
+  max-width: 46rem;
+}
+
+.about-minimal__eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+@media (min-width: 640px) {
+  .about-minimal__eyebrow {
+    font-size: 0.75rem;
+  }
 }
 
 .about-minimal__intro-head {
-  margin-top: 0.625rem;
-  font-size: 1.25rem;
+  margin-top: 0.75rem;
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.3;
   letter-spacing: -0.02em;
   color: #fff;
 }
 
-@media (min-width: 640px) {
-  .about-minimal__intro-head {
-    font-size: 1.375rem;
-  }
-}
-
 .about-minimal__intro-text {
-  margin-top: 0.625rem;
-  font-size: 1rem;
-  line-height: 1.65;
+  margin-top: 1rem;
+  font-size: clamp(1.0625rem, 1.2vw, 1.1875rem);
+  line-height: 1.68;
+  color: #a1a1aa;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .about-minimal__intro-text {
-    font-size: 1.0625rem;
-    line-height: 1.7;
+    font-size: 1.25rem;
+    line-height: 1.65;
   }
 }
 
@@ -1263,19 +1272,21 @@
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 46rem;
 }
 
 .about-minimal__mission-text {
   margin-top: 0.75rem;
-  font-size: 1.25rem;
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
   font-weight: 500;
   line-height: 1.55;
   color: #fff;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .about-minimal__mission-text {
-    font-size: 1.375rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
   }
 }
 

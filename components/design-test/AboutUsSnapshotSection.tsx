@@ -74,11 +74,11 @@ export function AboutUsSnapshotSection() {
         <div className="about-minimal__body">
           <div className="about-minimal__copy">
             <div className="about-minimal__intro">
-              <p className={dt.metaLabel}>Organizational identity</p>
+              <p className="about-minimal__eyebrow">Organizational identity</p>
               <h3 className="about-minimal__intro-head">
                 What Makes a Reliable IT Partner. And Why It Matters
               </h3>
-              <p className={`about-minimal__intro-text ${dt.body}`}>
+              <p className="about-minimal__intro-text">
                 Reliability in IT is not about up time percentages printed on a brochure. It is
                 about what happens when your compliance audit is in two weeks, and what happens
                 when your organization&apos;s needs change faster than your infrastructure can keep
@@ -87,7 +87,7 @@ export function AboutUsSnapshotSection() {
             </div>
 
             <div className="about-minimal__mission">
-              <p className={dt.metaLabel}>Mission</p>
+              <p className="about-minimal__eyebrow">Mission</p>
               <p className="about-minimal__mission-text">
                 Simplify complex IT buying and deliver trusted solutions that help teams move faster
                 with confidence.
@@ -116,9 +116,9 @@ function SectorsRowSection() {
         <div>
           <p className={dt.badge}>Sectors</p>
           <h2 className="about-enterprise__sectors-headline">
-            Industries we{" "}
+            Industries We{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              serve
+              Serve
             </span>
           </h2>
         </div>
