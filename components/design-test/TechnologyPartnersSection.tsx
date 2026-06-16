@@ -214,15 +214,19 @@ export function TechnologyPartnersSection() {
             </motion.li>
           ))}
         </motion.ul>
+      </div>
 
-        <motion.div
-          ref={showcaseRef}
-          className="mt-8 lg:mt-9"
-          initial={{ opacity: 0, y: 20 }}
-          animate={showcaseActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, ease, delay: 0.05 }}
-        >
-          <p className="tp__showcase-label">Major technology partners</p>
+      <motion.div
+        ref={showcaseRef}
+        className="tp__partners-showcase-wrap relative z-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={showcaseActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.6, ease, delay: 0.05 }}
+      >
+        <div className="tp__subsection-inner">
+          <h3 className="tp__trusted-heading">
+            Major <span className="tp__trusted-heading-accent">Partners</span>
+          </h3>
           <motion.ul
             className="tp__partner-grid"
             variants={staggerContainer}
@@ -244,31 +248,18 @@ export function TechnologyPartnersSection() {
               </motion.li>
             ))}
           </motion.ul>
-        </motion.div>
+        </div>
+      </motion.div>
 
-        <motion.div
-          ref={trustedRef}
-          initial={{ opacity: 0, y: 18 }}
-          animate={trustedActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-          transition={{ duration: 0.6, ease, delay: 0.1 }}
-        >
-          <TrustedByClientsMarquee />
-        </motion.div>
-
-        <motion.div
-          className="mt-7"
-          initial={{ opacity: 0, y: 12 }}
-          animate={trustedActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-          transition={{ duration: 0.55, ease, delay: 0.2 }}
-        >
-          <Link href="/solutions" className="tp__cta">
-            View all partners
-            <span className="tp__cta-arrow" aria-hidden>
-              →
-            </span>
-          </Link>
-        </motion.div>
-      </div>
+      <motion.div
+        ref={trustedRef}
+        className="tp__trusted-wrap relative z-10"
+        initial={{ opacity: 0, y: 18 }}
+        animate={trustedActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+        transition={{ duration: 0.6, ease, delay: 0.1 }}
+      >
+        <TrustedByClientsMarquee />
+      </motion.div>
     </section>
   );
 }
