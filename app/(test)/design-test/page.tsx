@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { DesignTestCredentialsStrip } from "@/components/design-test/DesignTestCredentialsStrip";
 import { DesignTestFooter } from "@/components/design-test/DesignTestFooter";
 import { DesignTestCta } from "@/components/design-test/DesignTestCta";
 import { DesignTestGlobalNavbar } from "@/components/design-test/global-nav";
@@ -16,6 +17,7 @@ import { ResourceHubSection } from "@/components/design-test/ResourceHubSection"
 import { VendorPartnersStripSection } from "@/components/design-test/VendorPartnersStripSection";
 import { WhyChooseUsSection } from "@/components/design-test/WhyChooseUsSection";
 import { ServicesGrid } from "@/components/services/ServicesGrid";
+import "@/components/design-test/design-test-lab-full-width.css";
 import "@/components/design-test/design-test-glass-cards.css";
 import "@/components/design-test/design-test-responsive.css";
 import "@/components/hero-test/minimal-hero.css";
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function DesignTestPage() {
   return (
-    <div className="relative min-h-full overflow-x-clip text-white">
+    <div className="design-test-lab-page relative min-h-full overflow-x-clip text-white">
       <PageIngredientBackground />
       <DesignTestGlobalNavbar />
       <main className="relative">
@@ -36,6 +38,7 @@ export default function DesignTestPage() {
           <MinimalTestHero offsetForFixedHeader fullPageGradient showCarousel />
         </div>
         <AboutUsSnapshotSection />
+        <DesignTestCredentialsStrip />
         {/* <WhyVCloudSection reducedHeroOverlap /> */}
         <TechnologyPartnersSection />
         {/* <ScrollStackCardsSection /> */}

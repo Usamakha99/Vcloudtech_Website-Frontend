@@ -969,3 +969,67 @@
     transform: none;
   }
 }
+
+/* About — minimal full-width layout (light) */
+
+.about-minimal__headline,
+.about-minimal__subhead,
+.about-minimal__mission-text,
+.about-minimal__sectors-title {
+  color: #111a45;
+}
+
+.about-minimal__lede {
+  color: rgba(17, 26, 69, 0.72);
+}
+
+.about-minimal__metrics .about-enterprise__stat-rail {
+  border-color: rgba(17, 26, 69, 0.1);
+  background: #ffffff;
+}
+
+.about-minimal__mission,
+.about-minimal__credentials,
+.about-minimal__sectors {
+  border-top-color: rgba(17, 26, 69, 0.1);
+}
+
+.about-minimal__credential {
+  border-color: rgba(17, 26, 69, 0.1);
+  background: #ffffff;
+}
+
+.about-minimal__credential-acronym {
+  color: #111a45;
+}
+
+.about-minimal__credential-label {
+  color: rgba(17, 26, 69, 0.62);
+}
+
+.about-minimal__aside {
+  border-color: rgba(17, 26, 69, 0.1);
+  background: #ffffff;
+}
+
+.about-minimal__aside .about-minimal__text {
+  color: rgba(17, 26, 69, 0.72);
+}
+
+.about-minimal__sector-card {
+  border-color: rgba(17, 26, 69, 0.1);
+  background: #ffffff;
+}
+
+.about-minimal__sector-detail {
+  color: rgba(17, 26, 69, 0.62);
+}
+
+.about-minimal__cta {
+  color: #111a45;
+}
+
+.about-minimal__cta:hover {
+  color: #e55614;
+}
+

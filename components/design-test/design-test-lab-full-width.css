@@ -1,0 +1,44 @@
+/* Lab pages — full-width section shells (design-test + white-design-test) */
+
+.design-test-lab-page .mx-auto.max-w-7xl,
+.design-test-lab-page .mx-auto.max-w-6xl,
+.design-test-lab-page .mx-auto.max-w-5xl,
+.design-test-lab-page .mx-auto.max-w-3xl,
+.design-test-lab-page .mx-auto.max-w-2xl {
+  max-width: none;
+  width: 100%;
+}
+
+.design-test-lab-page .mx-auto.max-w-7xl,
+.design-test-lab-page .mx-auto.max-w-6xl,
+.design-test-lab-page .mx-auto.max-w-5xl,
+.design-test-lab-page .mx-auto.max-w-3xl {
+  padding-inline: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .design-test-lab-page .mx-auto.max-w-7xl,
+  .design-test-lab-page .mx-auto.max-w-6xl,
+  .design-test-lab-page .mx-auto.max-w-5xl,
+  .design-test-lab-page .mx-auto.max-w-3xl {
+    padding-inline: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .design-test-lab-page .mx-auto.max-w-7xl,
+  .design-test-lab-page .mx-auto.max-w-6xl,
+  .design-test-lab-page .mx-auto.max-w-5xl,
+  .design-test-lab-page .mx-auto.max-w-3xl {
+    padding-inline: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .design-test-lab-page .mx-auto.max-w-7xl,
+  .design-test-lab-page .mx-auto.max-w-6xl,
+  .design-test-lab-page .mx-auto.max-w-5xl,
+  .design-test-lab-page .mx-auto.max-w-3xl {
+    padding-inline: 1.5rem;
+  }
+}

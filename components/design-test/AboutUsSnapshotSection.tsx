@@ -2,7 +2,6 @@ import Link from "next/link";
 import { dt } from "@/components/design-test/design-test-theme";
 import type { ReactNode } from "react";
 
-
 import { OrgMetricsRail } from "@/components/design-test/OrgMetricsRail";
 import {
   EducationIcon,
@@ -14,6 +13,7 @@ import {
 } from "@/components/icons/section-icons";
 
 import "./about-us-section.css";
+
 const sectors: {
   name: string;
   detail: string;
@@ -48,104 +48,58 @@ const sectors: {
 
 const industryStackZ = ["z-10", "z-20", "z-30", "z-40", "z-50"] as const;
 
-const credentials = [
-  { acronym: "MBE", label: "Minority-owned business enterprise" },
-  { acronym: "SBE", label: "Small business enterprise" },
-  { acronym: "DBE", label: "Disadvantaged business enterprise" },
-  { acronym: "ISO 9001", label: "Quality management certified" },
-] as const;
-
-/** The organization — enterprise editorial bento layout. */
+/** The organization — minimal full-width editorial layout. */
 export function AboutUsSnapshotSection() {
   return (
     <section
       id="about"
-      className={`about-enterprise relative z-20 scroll-mt-24 py-12 sm:py-16 lg:py-20 ${dt.sectionBorder}`}
+      className={`about-minimal relative z-20 scroll-mt-24 py-14 sm:py-16 lg:py-20 ${dt.sectionBorder}`}
       aria-labelledby="about-snapshot-heading"
     >
-      <div className="about-enterprise__grid-bg" aria-hidden />
-      <div className="about-enterprise__glow about-enterprise__glow--primary" aria-hidden />
-      <div className="about-enterprise__glow about-enterprise__glow--secondary" aria-hidden />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <header className="about-enterprise__reveal about-enterprise__reveal--1 max-w-3xl">
+      <div className="about-minimal__inner">
+        <header className="about-minimal__header about-minimal__header--center">
           <p className={dt.badge}>The organization</p>
-          <h2 id="about-snapshot-heading" className="about-enterprise__headline">
-            Built for{" "}
+          <h2 id="about-snapshot-heading" className="about-minimal__headline">
+            Powering the Organizations That{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              enterprise
-            </span>{" "}
-            scale.
+              Power the World
+            </span>
           </h2>
-          <p className={`mt-4 text-base leading-relaxed sm:text-lg ${dt.headingSub}`}>
-            A national IT solutions organization delivering procurement, licensing, and managed
-            outcomes for teams that cannot afford guesswork.
-          </p>
         </header>
 
-        <div className="about-enterprise__bento mt-8 sm:mt-10">
-          <article className="about-enterprise__manifesto about-enterprise__reveal about-enterprise__reveal--3 order-2 lg:order-none">
-            <span className="about-enterprise__manifesto-accent" aria-hidden />
-            <div className="p-6 sm:p-7 lg:p-8">
+        <div className="about-minimal__metrics">
+          <OrgMetricsRail />
+        </div>
+
+        <div className="about-minimal__body">
+          <div className="about-minimal__copy">
+            <div className="about-minimal__intro">
               <p className={dt.metaLabel}>Organizational identity</p>
-              <h3 className="mt-3 text-xl font-semibold tracking-tight text-white sm:text-2xl">
-                Who we are
+              <h3 className="about-minimal__intro-head">
+                What Makes a Reliable IT Partner. And Why It Matters
               </h3>
-              <p className={`mt-4 text-sm leading-[1.8] sm:text-[15px] ${dt.body}`}>
-                vCloud Tech is an enterprise IT solutions organization helping public and private
-                sector teams procure, deploy, and manage technology — with the discipline expected
-                of a long-term partner.
+              <p className={`about-minimal__intro-text ${dt.body}`}>
+                Reliability in IT is not about up time percentages printed on a brochure. It is
+                about what happens when your compliance audit is in two weeks, and what happens
+                when your organization&apos;s needs change faster than your infrastructure can keep
+                up. These are the moments that define an IT partnership.
               </p>
-
-              <blockquote className="mt-8 border-t border-white/10 pt-6">
-                <p className={dt.metaLabel}>Mission</p>
-                <p className="mt-3 text-lg font-medium leading-relaxed text-white sm:text-xl">
-                  Simplify complex IT buying and deliver trusted solutions that help teams move
-                  faster with confidence.
-                </p>
-              </blockquote>
-
-              <div className="about-enterprise__credentials mt-8 border-t border-white/10 pt-6">
-                <p className={dt.metaLabel}>Certifications &amp; designations</p>
-                <ul className="about-enterprise__credentials-grid mt-4">
-                  {credentials.map((cert) => (
-                    <li key={cert.acronym}>
-                      <div className="about-enterprise__credential">
-                        <span className="about-enterprise__credential-acronym">{cert.acronym}</span>
-                        <span className="about-enterprise__credential-label">{cert.label}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-8 rounded-xl border border-white/10 bg-[#041329]/80 p-4 sm:p-5">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#E55614]">
-                  Business impact
-                </p>
-                <p className={`mt-2 text-sm leading-relaxed ${dt.body}`}>
-                  Faster procurement cycles, accountable vendor management, and infrastructure your
-                  stakeholders can defend.
-                </p>
-              </div>
             </div>
-          </article>
 
-          <div className="about-enterprise__side-stack about-enterprise__reveal about-enterprise__reveal--4 order-1 lg:order-none">
-            <div className="about-enterprise__stat-card">
-              <OrgMetricsRail />
-            </div>
-            <div className="about-enterprise__visual about-enterprise__visual--stretch">
-              <FootprintVisual />
-              <p className="about-enterprise__visual-label">Nationwide delivery footprint</p>
+            <div className="about-minimal__mission">
+              <p className={dt.metaLabel}>Mission</p>
+              <p className="about-minimal__mission-text">
+                Simplify complex IT buying and deliver trusted solutions that help teams move faster
+                with confidence.
+              </p>
             </div>
           </div>
         </div>
 
         <SectorsRowSection />
 
-        <div className="about-enterprise__reveal about-enterprise__reveal--5 mt-10 flex justify-center sm:mt-12">
-          <Link href="/about" className="about-enterprise__cta">
+        <div className="about-minimal__cta-wrap">
+          <Link href="/about" className="about-minimal__cta">
             Learn more about our organization
             <span aria-hidden>→</span>
           </Link>
@@ -295,37 +249,6 @@ function IndustryArrowIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-    </svg>
-  );
-}
-
-function FootprintVisual() {
-  return (
-    <svg
-      className="about-enterprise__footprint-svg"
-      viewBox="0 0 200 200"
-      fill="none"
-      aria-hidden
-    >
-      <circle cx="100" cy="100" r="78" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-      <circle cx="100" cy="100" r="52" stroke="rgba(229,86,20,0.2)" strokeWidth="1" strokeDasharray="4 6" />
-
-      <g className="about-enterprise__orbit">
-        <circle cx="100" cy="22" r="4" className="about-enterprise__node" fill="#E55614" />
-        <circle cx="178" cy="100" r="4" className="about-enterprise__node about-enterprise__node--delay-1" fill="#E55614" />
-        <circle cx="100" cy="178" r="4" className="about-enterprise__node about-enterprise__node--delay-2" fill="#E55614" />
-        <circle cx="22" cy="100" r="4" className="about-enterprise__node about-enterprise__node--delay-3" fill="#E55614" />
-      </g>
-
-      <g className="about-enterprise__orbit about-enterprise__orbit--reverse">
-        <circle cx="100" cy="48" r="3" fill="rgba(255,255,255,0.35)" />
-        <circle cx="152" cy="100" r="3" fill="rgba(255,255,255,0.35)" />
-        <circle cx="100" cy="152" r="3" fill="rgba(255,255,255,0.35)" />
-        <circle cx="48" cy="100" r="3" fill="rgba(255,255,255,0.35)" />
-      </g>
-
-      <circle cx="100" cy="100" r="10" fill="rgba(229,86,20,0.25)" />
-      <circle cx="100" cy="100" r="5" fill="#E55614" />
     </svg>
   );
 }

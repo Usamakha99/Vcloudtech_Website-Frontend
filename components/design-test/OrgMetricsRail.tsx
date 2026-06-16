@@ -5,8 +5,8 @@ import { dt } from "@/components/design-test/design-test-theme";
 
 
 const orgMetrics = [
-  { target: 15, suffix: "+", label: "Years operating" },
-  { target: 500, suffix: "+", label: "Organizations served" },
+  { target: 15, suffix: "+", label: "Years in business" },
+  { target: 800, suffix: "+", label: "Clients served" },
   { target: 50, suffix: "", label: "States & territories" },
 ] as const;
 

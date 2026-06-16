@@ -15,6 +15,7 @@ import { WhiteMinimalHero } from "@/components/white-design-test/WhiteMinimalHer
 import { WhitePageBackground } from "@/components/white-design-test/WhitePageBackground";
 import { ServicesGrid } from "@/components/services/ServicesGrid";
 
+import "@/components/design-test/design-test-lab-full-width.css";
 import "@/components/services/services-grid-glass.css";
 import "@/components/white-design-test/white-design-test-footer.css";
 import "@/components/white-design-test/white-design-test-overrides.css";
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function WhiteDesignTestPage() {
   return (
-    <div className="white-design-test white-design-test-responsive relative flex min-h-full flex-col overflow-x-clip bg-white text-[#111A45]">
+    <div className="design-test-lab-page white-design-test white-design-test-responsive relative flex min-h-full flex-col overflow-x-clip bg-white text-[#111A45]">
       <WhitePageBackground />
       <WhiteDesignTestGlobalNavbar />
       <main className="relative flex-1">
