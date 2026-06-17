@@ -19,33 +19,35 @@ type Article = {
   image: string;
 };
 
+const blogImagesBase = "/Blog Images";
+
 const articles: Article[] = [
   {
     category: "Cloud",
-    title: "Modernizing hybrid infrastructure without downtime risk",
+    title: "AWS hybrid infrastructure without downtime risk",
     date: "Mar 12, 2026",
     dateTime: "2026-03-12",
     readTime: "8 min read",
     href: "/posts",
-    image: "/images/hero-1.png",
+    image: `${blogImagesBase}/Amazon web services.png`,
   },
   {
-    category: "Security",
-    title: "How procurement teams tighten vendor governance in 2026",
+    category: "AI Strategy",
+    title: "Artificial intelligence strategy for enterprise IT leaders",
     date: "Feb 28, 2026",
     dateTime: "2026-02-28",
     readTime: "6 min read",
     href: "/posts",
-    image: "/images/hero-2.png",
+    image: `${blogImagesBase}/Artificial Intelligence Strategy.png`,
   },
   {
-    category: "Operations",
-    title: "Scaling warehouse-backed IT fulfillment for enterprise buyers",
+    category: "Automation",
+    title: "AI automation tools that streamline procurement workflows",
     date: "Feb 14, 2026",
     dateTime: "2026-02-14",
     readTime: "5 min read",
     href: "/posts",
-    image: "/images/hero-3.png",
+    image: `${blogImagesBase}/AI automation tools.png`,
   },
 ];
 
@@ -92,7 +94,7 @@ function BlogCard({
           <div className="rh__card-img-wrap">
             <Image
               src={article.image}
-              alt=""
+              alt={article.title}
               fill
               className="rh__card-img"
               sizes="(max-width: 640px) 100vw, 33vw"
