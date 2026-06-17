@@ -13,31 +13,23 @@ const partnerLogos = [
   { name: "HPE", src: "/partners/hpe.png" },
 ] as const;
 
-const darkLogoClass =
-  "h-auto max-h-[4.5rem] w-auto max-w-[14rem] object-contain opacity-90 brightness-0 invert transition duration-300 hover:opacity-100 sm:max-h-24 sm:max-w-[17rem] lg:max-h-28 lg:max-w-[20rem]";
+const logoClass =
+  "h-auto max-h-[4.5rem] w-auto max-w-[14rem] object-contain transition duration-300 hover:scale-[1.03] sm:max-h-24 sm:max-w-[17rem] lg:max-h-28 lg:max-w-[20rem]";
 
-const lightLogoClass =
-  "h-auto max-h-[4.5rem] w-auto max-w-[14rem] object-contain opacity-60 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:max-h-24 sm:max-w-[17rem] lg:max-h-28 lg:max-w-[20rem]";
+const compactLogoClass =
+  "h-auto max-h-9 w-auto max-w-[10rem] object-contain transition duration-300 hover:scale-[1.03] sm:max-h-11 sm:max-w-[12rem] lg:max-h-12 lg:max-w-[14rem]";
 
-const compactLightLogoClass =
-  "h-auto max-h-9 w-auto max-w-[10rem] object-contain opacity-60 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:max-h-11 sm:max-w-[12rem] lg:max-h-12 lg:max-w-[14rem]";
+const microsoftLogoClass =
+  "h-auto max-h-24 w-auto max-w-[18rem] object-contain transition duration-300 hover:scale-[1.03] sm:max-h-28 sm:max-w-[21rem] lg:max-h-32 lg:max-w-[24rem]";
 
-const darkMicrosoftLogoClass =
-  "h-auto max-h-24 w-auto max-w-[18rem] object-contain opacity-90 brightness-0 invert transition duration-300 hover:opacity-100 sm:max-h-28 sm:max-w-[21rem] lg:max-h-32 lg:max-w-[24rem]";
+const compactMicrosoftLogoClass =
+  "h-auto max-h-10 w-auto max-w-[12rem] object-contain transition duration-300 hover:scale-[1.03] sm:max-h-11 sm:max-w-[14rem] lg:max-h-12 lg:max-w-[16rem]";
 
-const lightMicrosoftLogoClass =
-  "h-auto max-h-24 w-auto max-w-[18rem] object-contain opacity-60 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:max-h-28 sm:max-w-[21rem] lg:max-h-32 lg:max-w-[24rem]";
-
-const compactLightMicrosoftLogoClass =
-  "h-auto max-h-10 w-auto max-w-[12rem] object-contain opacity-60 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:max-h-11 sm:max-w-[14rem] lg:max-h-12 lg:max-w-[16rem]";
-
-function logoClassFor(name: string, fadeFrom: "dark" | "light", compact = false) {
+function logoClassFor(name: string, compact = false) {
   if (name === "Microsoft") {
-    if (compact && fadeFrom === "light") return compactLightMicrosoftLogoClass;
-    return fadeFrom === "light" ? lightMicrosoftLogoClass : darkMicrosoftLogoClass;
+    return compact ? compactMicrosoftLogoClass : microsoftLogoClass;
   }
-  if (compact && fadeFrom === "light") return compactLightLogoClass;
-  return fadeFrom === "light" ? lightLogoClass : darkLogoClass;
+  return compact ? compactLogoClass : logoClass;
 }
 
 function PartnerLogoMarquee({
@@ -76,7 +68,7 @@ function PartnerLogoMarquee({
               alt={logo.name}
               width={logo.name === "Microsoft" ? 360 : 300}
               height={logo.name === "Microsoft" ? 120 : 100}
-              className={logoClassFor(logo.name, fadeFrom, compact)}
+              className={logoClassFor(logo.name, compact)}
               sizes={logo.name === "Microsoft" ? "320px" : "(max-width: 640px) 220px, 300px"}
             />
           </li>
