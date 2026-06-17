@@ -644,14 +644,21 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 0.75rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__industry-image-grid-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
   .about-enterprise__industry-image-grid-list {
-    gap: 1rem;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -662,30 +669,44 @@
 .about-enterprise__industry-image-card {
   display: flex;
   height: 100%;
+  min-height: 17.5rem;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, #111f34 0%, #0d1829 52%, #041329 100%);
-  box-shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.45);
+  border-radius: 1.125rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(165deg, #121f33 0%, #0e192b 54%, #061425 100%);
+  box-shadow: 0 10px 28px -20px rgba(0, 0, 0, 0.55);
   transition:
     border-color 0.35s ease,
     box-shadow 0.35s ease,
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+@media (min-width: 640px) {
+  .about-enterprise__industry-image-card {
+    min-height: 19rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-enterprise__industry-image-card {
+    min-height: 20.5rem;
+  }
+}
+
 .about-enterprise__industry-image-card:hover,
 .about-enterprise__industry-image-card:focus-within {
-  border-color: rgba(229, 86, 20, 0.28);
+  border-color: rgba(229, 86, 20, 0.22);
   box-shadow:
-    0 18px 40px -16px rgba(229, 86, 20, 0.16),
-    0 0 0 1px rgba(229, 86, 20, 0.06);
-  transform: translateY(-2px);
+    0 16px 36px -18px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(229, 86, 20, 0.05);
+  transform: translateY(-3px);
 }
 
 .about-enterprise__industry-image-visual {
   position: relative;
-  aspect-ratio: 3 / 2;
+  flex: 1 1 0;
+  min-height: 0;
   width: 100%;
   overflow: hidden;
   background: linear-gradient(180deg, #111f34 0%, #0a1525 48%, #041329 100%);
@@ -709,13 +730,13 @@
   bottom: -8%;
   left: 50%;
   z-index: 0;
-  width: 78%;
-  height: 52%;
+  width: 72%;
+  height: 48%;
   transform: translateX(-50%);
   background: radial-gradient(
     ellipse 100% 100% at 50% 100%,
-    rgba(229, 86, 20, 0.42) 0%,
-    rgba(229, 86, 20, 0.16) 38%,
+    rgba(229, 86, 20, 0.28) 0%,
+    rgba(229, 86, 20, 0.1) 40%,
     rgba(4, 19, 41, 0) 72%
   );
   pointer-events: none;
@@ -739,18 +760,15 @@
   transform: translateY(-2px);
 }
 
-.about-enterprise__industry-image-card--government .about-enterprise__industry-image-visual,
-.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-visual {
-  aspect-ratio: 5 / 4;
-}
-
 .about-enterprise__industry-image-card--government .about-enterprise__industry-image-frame,
-.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-frame {
+.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-frame,
+.about-enterprise__industry-image-card--featured .about-enterprise__industry-image-frame {
   inset: 0;
 }
 
 .about-enterprise__industry-image-card--government .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-asset {
+.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-asset,
+.about-enterprise__industry-image-card--featured .about-enterprise__industry-image-asset {
   object-fit: cover;
   object-position: center center;
   transform: none;
@@ -759,17 +777,81 @@
 .about-enterprise__industry-image-card--government:hover .about-enterprise__industry-image-asset,
 .about-enterprise__industry-image-card--government:focus-within .about-enterprise__industry-image-asset,
 .about-enterprise__industry-image-card--industries:hover .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--industries:focus-within .about-enterprise__industry-image-asset {
+.about-enterprise__industry-image-card--industries:focus-within .about-enterprise__industry-image-asset,
+.about-enterprise__industry-image-card--featured:hover .about-enterprise__industry-image-asset,
+.about-enterprise__industry-image-card--featured:focus-within .about-enterprise__industry-image-asset {
   transform: translateY(-2px) scale(1.02);
 }
 
 .about-enterprise__industry-image-body {
   display: flex;
-  flex: 1;
+  flex: 1 1 0;
+  min-height: 0;
   flex-direction: column;
-  padding: 1rem 1rem 1.15rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: linear-gradient(180deg, rgba(17, 31, 52, 0.55) 0%, rgba(4, 19, 41, 0.2) 100%);
+  overflow: hidden;
+  padding: 0.9rem 1rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(180deg, rgba(14, 24, 40, 0.72) 0%, rgba(6, 16, 30, 0.35) 100%);
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__industry-image-body {
+    padding: 1rem 1.05rem 1.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-enterprise__industry-image-body {
+    padding: 1.05rem 1.1rem 1.15rem;
+  }
+}
+
+.about-enterprise__industry-image-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__industry-image-title {
+    font-size: 1rem;
+  }
+}
+
+.about-enterprise__industry-image-headline {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #e55614;
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__industry-image-headline {
+    font-size: 0.8125rem;
+  }
+}
+
+.about-enterprise__industry-image-detail {
+  margin-top: 0.5rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.74);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .about-enterprise__industry-image-detail {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
 }
 
 .about-enterprise__industry-image-link {

@@ -48,41 +48,55 @@ const sectors: {
   },
 ];
 
-const INDUSTRIES_SERVE_ICONS = "/Industries We Serve Icons";
-
 const industryImageSectors = [
   {
     name: "Government",
+    headline: "Mission-Critical Infrastructure for Mission-Critical Work",
     detail:
-      "Public sector solutions designed to improve efficiency, transparency, and service delivery.",
+      "Federal agencies and defense contractors operate with zero margin for error. Backed by an ISO 9001:2015–certified delivery process and active federal contract vehicles, we provide CMMC, FedRAMP, and NIST 800-53 aligned infrastructure, procurement, and modernization support — with the responsiveness of a partner who treats your agency as a priority, not an account number.",
     image: "/design-test/industries/government.png",
     href: "/services",
+    featuredImage: true,
   },
   {
-    name: "Industries",
-    detail: "Custom IT solutions for industries to streamline operations and drive smart growth.",
-    image: "/design-test/industries/industries.png",
+    name: "Education",
+    headline: "Infrastructure Built for the Pace of Modern Learning",
+    detail:
+      "Modern learning demands infrastructure that never falls behind. From the superintendent's office to the student's device, education IT is a full-spectrum challenge. We help districts and universities deploy scalable, FERPA-compliant, AI-ready environments that grow with enrollment and stretch tight budgets further than you thought possible.",
+    image: "/design-test/industries/education.png",
     href: "/services",
   },
   {
     name: "Healthcare",
+    headline: "HIPAA Is the Floor. Patient Safety Is the Ceiling.",
     detail:
-      "Modern digital solutions for hospitals and clinics to enhance patient care and operational efficiency.",
-    image: `${INDUSTRIES_SERVE_ICONS}/health.png`,
+      "In healthcare, a security incident doesn't just create cost — it delays care. We secure clinical environments with HIPAA-compliant infrastructure, AI-driven anomaly detection, and EMR systems engineered to stay available when clinicians need them most, with a dedicated team that understands clinical workflows, not just IT tickets.",
+    image: "/design-test/industries/healthcare.png",
     href: "/services",
   },
   {
-    name: "Education",
+    name: "Public Sector",
+    headline: "Infrastructure That Earns and Protects Public Trust",
     detail:
-      "Empowering educational institutions with smart technology for better learning outcomes.",
-    image: `${INDUSTRIES_SERVE_ICONS}/education.png`,
+      "From county courthouses to municipal utility departments, public sector IT operates under constrained budgets, sustained scrutiny, and no tolerance for downtime. We bring the same contract-vehicle access and compliance rigor as the major national integrators — with the direct, responsive relationship that's harder to get once an account gets large enough to be \"just a number.\"",
+    image: "/design-test/industries/public-sector.png",
     href: "/services",
   },
   {
-    name: "Public sector",
+    name: "Commercial Enterprises",
+    headline: "Enterprise-Grade Infrastructure for Enterprise-Level Ambition",
     detail:
-      "Technology solutions that strengthen communities and improve public service management.",
-    image: `${INDUSTRIES_SERVE_ICONS}/public-sector.png`,
+      "Growing organizations need IT that scales as quickly as the business does. We deliver managed cloud infrastructure, cybersecurity, and AI-driven automation backed by an extensive technology partner ecosystem, turning your tech stack into a competitive advantage without the overhead of an in-house enterprise IT function, or the impersonal scale of a billion-dollar reseller.",
+    image: "/industries/commercial.png",
+    href: "/services",
+    featuredImage: true,
+  },
+  {
+    name: "Financial Services",
+    headline: "A Four-Hour Outage Can Cost More Than an Annual IT Contract",
+    detail:
+      "In financial services, downtime isn't an inconvenience — it's a regulatory event. We build and manage high-availability infrastructure for trading platforms, banking systems, and back-office operations, with AI-assisted fraud detection and insider threat monitoring layered in from day one.",
+    image: "/industries/financial.png",
     href: "/services",
   },
 ] as const;
@@ -234,9 +248,10 @@ function IndustriesImageGridSection() {
   );
 }
 
-function industryImageCardModifier(name: (typeof industryImageSectors)[number]["name"]) {
-  if (name === "Government") return " about-enterprise__industry-image-card--government";
-  if (name === "Industries") return " about-enterprise__industry-image-card--industries";
+function industryImageCardModifier(sector: (typeof industryImageSectors)[number]) {
+  if ("featuredImage" in sector && sector.featuredImage) {
+    return " about-enterprise__industry-image-card--featured";
+  }
   return "";
 }
 
@@ -247,7 +262,7 @@ function IndustryImageCard({
 }) {
   return (
     <article
-      className={`about-enterprise__industry-image-card group/image-card${industryImageCardModifier(sector.name)}`}
+      className={`about-enterprise__industry-image-card group/image-card${industryImageCardModifier(sector)}`}
     >
       <div className="about-enterprise__industry-image-visual">
         <div className="about-enterprise__industry-image-frame">
@@ -256,18 +271,17 @@ function IndustryImageCard({
             alt={sector.name}
             fill
             className="about-enterprise__industry-image-asset"
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         </div>
       </div>
 
       <div className="about-enterprise__industry-image-body">
-        <h3 className={`text-base font-semibold leading-snug tracking-tight ${dt.heading}`}>
-          {sector.name}
-        </h3>
-        <p className={`mt-2.5 flex-1 text-sm leading-relaxed ${dt.body}`}>{sector.detail}</p>
-        <Link href={sector.href} className="about-enterprise__industry-image-link mt-5">
-          Explore solutions
+        <h3 className={`about-enterprise__industry-image-title ${dt.heading}`}>{sector.name}</h3>
+        <p className="about-enterprise__industry-image-headline">{sector.headline}</p>
+        <p className={`about-enterprise__industry-image-detail ${dt.body}`}>{sector.detail}</p>
+        <Link href={sector.href} className="about-enterprise__industry-image-link mt-auto pt-3">
+          Learn More
           <IndustryImageArrowIcon />
         </Link>
       </div>
