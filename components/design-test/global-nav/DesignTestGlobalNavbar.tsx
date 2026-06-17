@@ -48,7 +48,7 @@ export function DesignTestGlobalNavbar({
         >
           <VCloudTechLogoImage
             priority
-            className="h-7 w-auto max-h-7 brightness-0 invert opacity-95 sm:h-8 sm:max-h-8"
+            className="h-7 w-auto max-h-7 object-contain object-left sm:h-8 sm:max-h-8"
           />
         </Link>
 
