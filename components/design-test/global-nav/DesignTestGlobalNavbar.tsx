@@ -13,7 +13,7 @@ import {
 
 import { DesignTestGlobalNavLinks } from "./DesignTestGlobalNavLinks";
 import { DesignTestGlobalNavMobile } from "./DesignTestGlobalNavMobile";
-import { globalNavCta, globalNavHeader, globalNavInner, globalLabSwitcher, globalLabSwitcherLink } from "./nav-styles";
+import { globalNavCta, globalNavHeader, globalNavInner } from "./nav-styles";
 
 type Props = {
   /** Optional lab exit link (e.g. back to main site home). */
@@ -60,15 +60,6 @@ export function DesignTestGlobalNavbar({
         </nav>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          <div className={globalLabSwitcher} aria-label="Design lab switcher">
-            <Link href="/design-test" className={globalLabSwitcherLink(true)}>
-              A
-            </Link>
-            <Link href="/white-design-test" className={globalLabSwitcherLink(false)}>
-              B
-            </Link>
-          </div>
-
           <Link href={designTestGlobalNavCta.href} className={`${globalNavCta} hidden sm:inline-flex`}>
             {designTestGlobalNavCta.label}
           </Link>

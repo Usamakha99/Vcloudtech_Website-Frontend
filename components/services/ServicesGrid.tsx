@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { dt } from "@/components/design-test/design-test-theme";
-import { wdt } from "@/components/white-design-test/white-design-test-theme";
 import "./services-grid-glass.css";
 import {
   CartIcon,
@@ -73,7 +72,7 @@ type Props = {
   heading?: string;
   subheading?: string;
   className?: string;
-  surface?: "light" | "glass" | "premium-light";
+  surface?: "light" | "glass";
 };
 
 /** 3-column service cards with icon, copy, and hover lift. */
@@ -86,34 +85,24 @@ export function ServicesGrid({
   surface = "light",
 }: Props) {
   const glass = surface === "glass";
-  const premiumLight = surface === "premium-light";
-  const themed = premiumLight ? wdt : dt;
-  const pillLabel = badge ?? (glass || premiumLight ? "Services" : undefined);
+  const pillLabel = badge ?? (glass ? "Services" : undefined);
 
   return (
     <section
       className={`scroll-mt-24 ${
-        glass || premiumLight ? themed.section : "py-14 sm:py-16 lg:py-20"
+        glass ? dt.section : "py-14 sm:py-16 lg:py-20"
       } ${
-        glass
-          ? `bg-transparent ${dt.sectionBorder}`
-          : premiumLight
-            ? `bg-transparent ${wdt.sectionBorder}`
-            : "bg-white"
+        glass ? `bg-transparent ${dt.sectionBorder}` : "bg-white"
       } ${className}`}
       aria-labelledby="services-grid-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-2xl text-center">
-          {pillLabel ? <p className={themed.badge}>{pillLabel}</p> : null}
+          {pillLabel ? <p className={dt.badge}>{pillLabel}</p> : null}
           <h2
             id="services-grid-heading"
             className={`${pillLabel ? "mt-5" : ""} text-2xl font-semibold leading-snug tracking-tight sm:text-3xl lg:text-4xl ${
-              glass
-                ? "text-white"
-                : premiumLight
-                  ? "text-[#111A45]"
-                  : "text-[#1B224B] dark:text-white"
+              glass ? "text-white" : "text-[#1B224B] dark:text-white"
             }`}
           >
             {heading}
@@ -121,11 +110,7 @@ export function ServicesGrid({
           {subheading ? (
             <p
               className={`mx-auto mt-3 max-w-lg text-balance px-1 text-xs leading-relaxed sm:px-0 sm:text-sm ${
-                glass
-                  ? dt.headingSub
-                  : premiumLight
-                    ? wdt.headingSub
-                    : "text-slate-600 sm:text-base dark:text-slate-400"
+                glass ? dt.headingSub : "text-slate-600 sm:text-base dark:text-slate-400"
               }`}
             >
               {subheading}
@@ -136,14 +121,10 @@ export function ServicesGrid({
         <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
           {items.map((item, index) => (
             <li key={item.title} className="flex min-w-0">
-              {glass || premiumLight ? (
+              {glass ? (
                 <Link
                   href={item.href}
-                  className={`service-flip-card service-flip-card--enhanced group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 ${
-                    premiumLight
-                      ? "focus-visible:ring-offset-white"
-                      : "focus-visible:ring-offset-[#041329]"
-                  }`}
+                  className="service-flip-card service-flip-card--enhanced group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#041329]"
                 >
                   <div className="service-flip-inner">
                     <div className="service-flip-face service-flip-front">
@@ -154,10 +135,10 @@ export function ServicesGrid({
                         <div className="service-flip-back-icon service-flip-back-icon--enhanced">
                           <item.icon />
                         </div>
-                        <h3 className={`text-lg font-semibold tracking-tight ${themed.heading}`}>
+                        <h3 className={`text-lg font-semibold tracking-tight ${dt.heading}`}>
                           {item.title}
                         </h3>
-                        <span className={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold ${themed.link}`}>
+                        <span className={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold ${dt.link}`}>
                           Learn more
                           <span aria-hidden>→</span>
                         </span>
@@ -192,21 +173,19 @@ function ServiceCardContent({
   flipFront = false,
 }: {
   item: ServiceItem;
-  surface: "light" | "glass" | "premium-light";
+  surface: "light" | "glass";
   flipFront?: boolean;
 }) {
   const glass = surface === "glass";
-  const premiumLight = surface === "premium-light";
-  const themed = premiumLight ? wdt : dt;
 
-  if (flipFront && (glass || premiumLight)) {
+  if (flipFront && glass) {
     return (
       <div className="service-flip-front-content">
-        <span className={`${themed.accentDash} service-flip-front-accent mx-auto`} aria-hidden />
-        <h3 className={`mt-4 text-xl font-semibold leading-snug tracking-tight sm:text-2xl ${themed.heading}`}>
+        <span className={`${dt.accentDash} service-flip-front-accent mx-auto`} aria-hidden />
+        <h3 className={`mt-4 text-xl font-semibold leading-snug tracking-tight sm:text-2xl ${dt.heading}`}>
           {item.title}
         </h3>
-        <p className={`service-flip-front-desc line-clamp-4 text-base leading-relaxed sm:text-[17px] ${glass ? dt.glassSubtext : wdt.glassSubtext}`}>
+        <p className={`service-flip-front-desc line-clamp-4 text-base leading-relaxed sm:text-[17px] ${dt.glassSubtext}`}>
           {item.description}
         </p>
       </div>
@@ -215,15 +194,15 @@ function ServiceCardContent({
 
   return (
     <>
-      {!(glass || premiumLight) ? (
+      {!glass ? (
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-sky-50 to-sky-100/80 text-sky-700 ring-1 ring-sky-200/60 [&_svg]:h-6 [&_svg]:w-6">
           <item.icon />
         </div>
       ) : null}
       <h3
-        className={`${glass || premiumLight ? "" : "mt-5"} text-lg font-semibold tracking-tight ${
-          glass || premiumLight
-            ? themed.heading
+        className={`${glass ? "" : "mt-5"} text-lg font-semibold tracking-tight ${
+          glass
+            ? dt.heading
             : "text-[#1B224B] group-hover/card:text-sky-300 group-focus-within/card:text-sky-300 dark:text-white"
         }`}
       >
@@ -231,7 +210,7 @@ function ServiceCardContent({
       </h3>
       <p
         className={`mt-2 flex-1 text-sm leading-relaxed ${
-          glass ? dt.glassSubtext : premiumLight ? wdt.glassSubtext : "text-slate-600 dark:text-slate-400"
+          glass ? dt.glassSubtext : "text-slate-600 dark:text-slate-400"
         }`}
       >
         {item.description}

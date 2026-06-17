@@ -1,17 +1,3 @@
-/* Premium light flip cards (white-design-test) */
-.white-design-test .service-flip-face {
-  border: 1px solid rgba(17, 26, 69, 0.1);
-  background-color: #ffffff;
-  box-shadow: 0 4px 20px -8px rgba(17, 26, 69, 0.08);
-}
-
-.white-design-test .service-flip-card:hover .service-flip-face,
-.white-design-test .service-flip-card:focus-within .service-flip-face,
-.white-design-test .service-flip-card:focus-visible .service-flip-face {
-  border-color: #b3b3b3;
-  box-shadow: 0 12px 32px -12px rgba(17, 26, 69, 0.12);
-}
-
 /* Shared flip icon — no box, larger icon, lower opacity on back face */
 .service-flip-back-icon--enhanced {
   display: flex;
