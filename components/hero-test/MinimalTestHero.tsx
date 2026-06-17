@@ -36,12 +36,12 @@ export function MinimalTestHero({
 
             <h1
               id="hero-test-heading"
-              className="hero-test-fade-in hero-test-fade-in-delay-1 mx-auto mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-white sm:mt-4 sm:text-4xl lg:text-5xl"
+              className="hero-test-fade-in hero-test-fade-in-delay-1 mx-auto mt-3 max-w-2xl text-2xl font-bold tracking-tight text-white sm:mt-4 sm:text-4xl lg:text-5xl"
             >
               Infrastructure you can see working
             </h1>
 
-            <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/75 sm:text-base">
+            <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-4 max-w-lg text-sm font-medium leading-relaxed text-white/75 sm:text-base">
               Procurement, cloud, security, and hardware — delivered with real warehouse scale,
               accountable teams, and the speed enterprise IT demands.
             </p>
@@ -73,11 +73,11 @@ export function MinimalTestHero({
         </p>
         <h1
           id="hero-test-heading"
-          className="hero-test-fade-in hero-test-fade-in-delay-1 mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl"
+          className="hero-test-fade-in hero-test-fade-in-delay-1 mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl"
         >
           Minimal hero with motion
         </h1>
-        <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-5 max-w-lg text-base text-[#A1A1AA] sm:text-lg">
+        <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-5 max-w-lg text-base font-medium text-[#A1A1AA] sm:text-lg">
           Dark canvas with #b3b3b3 accents.
         </p>
         <div className="hero-test-fade-in hero-test-fade-in-delay-3 mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">

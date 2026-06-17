@@ -101,15 +101,15 @@ export function ServicesGrid({
           {pillLabel ? <p className={dt.badge}>{pillLabel}</p> : null}
           <h2
             id="services-grid-heading"
-            className={`${pillLabel ? "mt-5" : ""} text-2xl font-semibold leading-snug tracking-tight sm:text-3xl lg:text-4xl ${
-              glass ? "text-white" : "text-[#1B224B] dark:text-white"
+            className={`${pillLabel ? "mt-5" : ""} ${
+              glass ? `${dt.sectionHeadline} text-white` : "text-2xl font-bold leading-snug tracking-tight text-[#1B224B] sm:text-3xl lg:text-4xl dark:text-white"
             }`}
           >
             {heading}
           </h2>
           {subheading ? (
             <p
-              className={`mx-auto mt-3 max-w-lg text-balance px-1 text-xs leading-relaxed sm:px-0 sm:text-sm ${
+              className={`mx-auto mt-3 max-w-lg text-balance px-1 text-xs font-medium leading-relaxed sm:px-0 sm:text-sm ${
                 glass ? dt.headingSub : "text-slate-600 sm:text-base dark:text-slate-400"
               }`}
             >

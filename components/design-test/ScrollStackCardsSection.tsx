@@ -91,7 +91,7 @@ export function ScrollStackCardsSection() {
           <p className={dt.badge}>What we do</p>
           <h2
             id="scroll-stack-heading"
-            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl"
+            className={`${dt.sectionHeadline} mt-5 text-white`}
           >
             Enterprise capabilities across your IT lifecycle
           </h2>

@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { dt } from "@/components/design-test/design-test-theme";
+
 const partnerLogos = [
   { name: "Microsoft", src: "/partners/microsoft.png" },
   { name: "Cisco", src: "/partners/cisco.png" },
@@ -84,7 +86,7 @@ export function DesignTestSocialProofBar({ belowHero = false }: { belowHero?: bo
         <header className="border-b border-white/10 bg-[#041329] px-4 pb-5 pt-5 text-center sm:px-6 sm:pb-6 sm:pt-6 lg:px-8">
           <h2
             id="strategic-partners-heading"
-            className="text-xl font-semibold tracking-tight text-white sm:text-2xl"
+            className={`${dt.sectionHeadline} text-white`}
           >
             Strategic{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">

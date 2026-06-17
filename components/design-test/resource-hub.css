@@ -28,7 +28,6 @@
 }
 
 .rh__header {
-  max-width: 32rem;
   opacity: 0;
   transform: translateY(16px);
   transition:

@@ -28,7 +28,7 @@ export const dtProgress = {
 
 export const dt = {
   badge:
-    "inline-block rounded-full border border-[#E55614]/30 bg-[#E55614]/10 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white sm:text-[11px]",
+    "inline-block rounded-full border border-[#b3b3b3]/30 bg-[#b3b3b3]/10 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white sm:text-[11px]",
 
   sectionBorder: "border-t border-white/10",
 
@@ -38,13 +38,21 @@ export const dt = {
 
   heading: "text-white",
 
-  headingLg:
-    "mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl lg:text-[2rem] lg:leading-tight",
+  sectionHeadline: "dt-section-headline",
+
+  /** Technology Partners–style section header block */
+  sectionHeader: "mx-auto max-w-3xl text-center",
+
+  sectionHeadlineTp: "tp__headline mt-5",
+
+  sectionDesc: "mt-3 text-sm leading-relaxed sm:text-[15px]",
+
+  headingLg: "dt-section-headline mt-5 text-white",
 
   metaLabel:
     "text-[10px] font-semibold uppercase tracking-[0.18em] text-[#A1A1AA] sm:text-[11px]",
 
-  headingSub: "text-[#A1A1AA]",
+  headingSub: "font-medium text-[#A1A1AA]",
 
   card:
     "rounded-2xl border border-white/10 bg-[#111F34] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/5",
@@ -110,7 +118,7 @@ export const dt = {
 
   stackMeta: "text-[11px] font-medium uppercase tracking-[0.14em] text-[#A1A1AA]",
 
-  stackTitle: "text-base font-semibold leading-snug tracking-tight text-white sm:text-[17px]",
+  stackTitle: "text-base font-bold leading-snug tracking-tight text-white sm:text-[17px]",
 
   stackBody: "mt-2 text-[13px] leading-relaxed text-[#A1A1AA] sm:text-sm",
 

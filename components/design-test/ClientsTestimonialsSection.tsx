@@ -49,7 +49,7 @@ export function ClientsTestimonialsSection() {
           <p className={dt.badge}>Social proof</p>
           <h2
             id="clients-testimonials-heading"
-            className="mt-5 text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl"
+            className={`${dt.sectionHeadline} mt-5 text-white`}
           >
             Clients &amp; testimonials
           </h2>

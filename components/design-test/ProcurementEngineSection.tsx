@@ -134,19 +134,19 @@ export function ProcurementEngineSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.header
-          className="max-w-3xl"
+          className={dt.sectionHeader}
           initial={false}
           animate={animateIn ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className={dt.badge}>Platform ecosystem</p>
-          <h2 id="platform-ecosystem-heading" className="vc-ecosystem__headline mt-5">
+          <h2 id="platform-ecosystem-heading" className={dt.sectionHeadlineTp}>
             One platform.{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
               Every technology layer.
             </span>
           </h2>
-          <p className={`mt-5 max-w-2xl text-base leading-relaxed sm:text-lg ${dt.headingSub}`}>
+          <p className={`${dt.sectionDesc} ${dt.headingSub}`}>
             V Cloud Tech is a unified technology platform — procurement and marketplaces to source
             IT hardware and AI solutions, plus expert services to deploy, secure, and run your
             stack. One partner for buying, building, and operating enterprise technology.

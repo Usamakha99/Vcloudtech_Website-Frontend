@@ -21,6 +21,7 @@ import "@/components/design-test/design-test-glass-cards.css";
 import "@/components/design-test/design-test-responsive.css";
 import "@/components/design-test/design-test-about-metrics.css";
 import "@/components/hero-test/minimal-hero.css";
+import "@/components/design-test/design-test-typography.css";
 
 export const metadata: Metadata = {
   title: "Design Test",

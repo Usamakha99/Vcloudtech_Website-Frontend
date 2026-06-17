@@ -174,19 +174,19 @@ export function TechnologyPartnersSection() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.header
-          className="mx-auto max-w-3xl text-center"
+          className={dt.sectionHeader}
           initial={{ opacity: 0, y: 20 }}
           animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.65, ease }}
         >
           <p className={dt.badge}>Technology Partners</p>
-          <h2 id="tech-partners-heading" className="tp__headline mt-5">
+          <h2 id="tech-partners-heading" className={dt.sectionHeadlineTp}>
             World-class partners.{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
               One trusted platform.
             </span>
           </h2>
-          <p className={`mt-3 text-sm leading-relaxed sm:text-[15px] ${dt.headingSub}`}>
+          <p className={`${dt.sectionDesc} ${dt.headingSub}`}>
             400+ technology partners across cybersecurity, software, hardware, and cloud — sourced
             and supported through vCloud Tech.
           </p>

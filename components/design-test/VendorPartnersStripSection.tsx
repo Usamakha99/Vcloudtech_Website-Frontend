@@ -26,7 +26,7 @@ export function VendorPartnersStripSection() {
           <p className={dt.badge}>Partners</p>
           <h2
             id="vendor-partners-heading"
-            className="mt-5 text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl"
+            className={`${dt.sectionHeadline} mt-5 text-white`}
           >
             Vendor &amp; technology partners
           </h2>

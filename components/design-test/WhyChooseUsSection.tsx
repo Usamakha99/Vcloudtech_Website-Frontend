@@ -127,27 +127,25 @@ export function WhyChooseUsSection() {
       <div className="why-choose__glow why-choose__glow--secondary" aria-hidden />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start">
-          <motion.header
-            className="lg:col-span-5"
-            initial={false}
-            animate={animateIn ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            style={animateIn ? undefined : { opacity: 0, y: 20 }}
-          >
-            <p className={dt.badge}>Why choose us</p>
-            <h2 id="why-choose-us-heading" className="why-choose__headline mt-5">
-              Built for teams that{" "}
-              <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-                cannot afford guesswork
-              </span>
-            </h2>
-            <p className={`mt-5 max-w-md text-base leading-relaxed ${dt.headingSub}`}>
-              vCloud Tech combines procurement discipline, security governance, and nationwide
-              operations — so enterprise IT leaders get outcomes they can defend.
-            </p>
-          </motion.header>
-        </div>
+        <motion.header
+          className={dt.sectionHeader}
+          initial={false}
+          animate={animateIn ? { opacity: 1, y: 0 } : undefined}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          style={animateIn ? undefined : { opacity: 0, y: 20 }}
+        >
+          <p className={dt.badge}>Why choose us</p>
+          <h2 id="why-choose-us-heading" className={dt.sectionHeadlineTp}>
+            Built for teams that{" "}
+            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
+              cannot afford guesswork
+            </span>
+          </h2>
+          <p className={`${dt.sectionDesc} ${dt.headingSub}`}>
+            vCloud Tech combines procurement discipline, security governance, and nationwide
+            operations — so enterprise IT leaders get outcomes they can defend.
+          </p>
+        </motion.header>
 
         {/* Your transformation path — cycle temporarily hidden
         <div ref={journeyRef} className="why-choose__journey mt-10 sm:mt-12">

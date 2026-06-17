@@ -1,0 +1,39 @@
+/* Montserrat — unified section headings + medium subheadings */
+
+.design-test-lab-page {
+  --dt-headline-size: clamp(1.875rem, 3.6vw, 2.75rem);
+  --dt-headline-leading: 1.12;
+  --dt-headline-tracking: -0.03em;
+}
+
+.dt-section-headline,
+.design-test-lab-page :is(
+  .tp__headline,
+  .tp__trusted-heading,
+  .why-choose__headline,
+  .about-enterprise__headline,
+  .about-minimal__headline,
+  .about-enterprise__sectors-headline,
+  .rh__headline,
+  .vc-ecosystem__headline,
+  #services-grid-heading
+) {
+  font-size: var(--dt-headline-size);
+  line-height: var(--dt-headline-leading);
+  letter-spacing: var(--dt-headline-tracking);
+  font-weight: 700;
+  color: #fff;
+}
+
+.design-test-lab-page main > section h2,
+.design-test-lab-page main section[id] h2 {
+  font-size: var(--dt-headline-size);
+  line-height: var(--dt-headline-leading);
+  letter-spacing: var(--dt-headline-tracking);
+  font-weight: 700;
+}
+
+.design-test-lab-page .about-minimal__lede,
+.design-test-lab-page .hero-test-hero-copy > p:not(:first-child) {
+  font-weight: 500;
+}
