@@ -174,26 +174,31 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(to top, rgba(6, 6, 8, 0.38) 0%, transparent 28%);
+  background: linear-gradient(
+    to top,
+    rgba(6, 6, 8, 0.78) 0%,
+    rgba(6, 6, 8, 0.42) 32%,
+    transparent 58%
+  );
 }
 
 .hero-test-hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
   pointer-events: none;
 }
 
 .hero-test-hero-shell {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  bottom: auto;
+  position: relative;
   z-index: 1;
   width: min(42rem, calc(100% - 1.5rem));
   max-width: 42rem;
-  padding: 0 1rem 0 clamp(0.75rem, 2.5vw, 1.5rem);
-  transform: translateY(calc(-50% + 1.25rem));
+  padding: 0 1rem clamp(4.5rem, 8vh, 6rem) clamp(0.75rem, 2.5vw, 1.5rem);
+  transform: none;
   pointer-events: auto;
 }
 
@@ -310,7 +315,7 @@
   .hero-test-hero-shell {
     width: min(40rem, calc(100% - 1.25rem));
     padding-left: 1rem;
-    transform: translateY(calc(-50% + 1rem));
+    padding-bottom: clamp(5rem, 14vh, 6.5rem);
   }
 }
 
