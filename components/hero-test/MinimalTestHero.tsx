@@ -29,30 +29,29 @@ export function MinimalTestHero({
         <div className="hero-test-hero-scrim" aria-hidden />
 
         <div className="hero-test-hero-overlay">
-          <div className="hero-test-hero-copy">
-            <p className="hero-test-fade-in text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
-              Enterprise IT solutions
-            </p>
+          <div className="hero-test-hero-shell">
+            <div className="hero-test-hero-copy">
+              <p className="hero-test-fade-in hero-test-hero-eyebrow">
+                Enterprise IT solutions
+              </p>
 
-            <h1
-              id="hero-test-heading"
-              className="hero-test-fade-in hero-test-fade-in-delay-1 mx-auto mt-3 max-w-2xl text-2xl font-bold tracking-tight text-white sm:mt-4 sm:text-4xl lg:text-5xl"
-            >
-              Infrastructure you can see working
-            </h1>
+              <h1 id="hero-test-heading" className="hero-test-fade-in hero-test-fade-in-delay-1 hero-test-hero-title">
+                Infrastructure you can see working
+              </h1>
 
-            <p className="hero-test-fade-in hero-test-fade-in-delay-2 mx-auto mt-4 max-w-lg text-sm font-medium leading-relaxed text-white/75 sm:text-base">
-              Procurement, cloud, security, and hardware — delivered with real warehouse scale,
-              accountable teams, and the speed enterprise IT demands.
-            </p>
+              <p className="hero-test-fade-in hero-test-fade-in-delay-2 hero-test-hero-desc">
+                Procurement, cloud, security, and hardware — delivered with real warehouse scale,
+                accountable teams, and the speed enterprise IT demands.
+              </p>
 
-            <div className="hero-test-fade-in hero-test-fade-in-delay-3 mt-7 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row">
-              <ButtonLink href="/contact" variant="ctaWhite" className="min-w-[9.5rem]">
-                Get a quote
-              </ButtonLink>
-              <ButtonLink href="/services" variant="outlineOnNavy" className="min-w-[9.5rem]">
-                Explore services
-              </ButtonLink>
+              <div className="hero-test-fade-in hero-test-fade-in-delay-3 hero-test-hero-actions">
+                <ButtonLink href="/contact" variant="ctaWhite" className="min-w-[9.5rem]">
+                  Get a quote
+                </ButtonLink>
+                <ButtonLink href="/services" variant="outlineOnNavy" className="min-w-[9.5rem]">
+                  Explore services
+                </ButtonLink>
+              </div>
             </div>
           </div>
         </div>
