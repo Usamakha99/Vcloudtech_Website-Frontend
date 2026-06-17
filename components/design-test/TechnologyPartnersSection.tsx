@@ -17,17 +17,7 @@ const categories = [
   { id: "cloud", label: "Cloud Partners", target: 100, suffix: "+", accent: false },
 ] as const;
 
-const majorPartners = [
-  { name: "Microsoft", src: "/partners/microsoft.png" },
-  { name: "Cisco", src: "/partners/cisco.png" },
-  { name: "Adobe", src: "/partners/adobe.png" },
-  { name: "VMware", src: "/partners/vmware.png" },
-  { name: "Fortinet", src: "/partners/fortinet.png" },
-  { name: "AWS", src: "/partners/aws.png" },
-  { name: "Dell", src: "/partners/dell.png" },
-  { name: "Lenovo", src: "/partners/lenovo.png" },
-  { name: "IBM", src: "/partners/ibm.png" },
-] as const;
+import { partnerLogoDimensions, partnerLogos } from "@/lib/design-test/partner-logos";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -223,26 +213,27 @@ export function TechnologyPartnersSection() {
         animate={showcaseActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.6, ease, delay: 0.05 }}
       >
-        <div className="tp__subsection-inner">
+        <div className="tp__subsection-inner tp__subsection-inner--major">
           <h3 className="tp__trusted-heading">
             Major <span className="tp__trusted-heading-accent">Partners</span>
           </h3>
           <motion.ul
-            className="tp__partner-grid"
+            className="tp__partner-grid tp__partner-grid--all"
             variants={staggerContainer}
             initial="hidden"
             animate={showcaseActive ? "show" : "hidden"}
           >
-            {majorPartners.map((partner) => (
+            {partnerLogos.map((partner) => (
               <motion.li key={partner.name} variants={fadeUpTight}>
                 <div className="tp__partner-cell group">
                   <Image
                     src={partner.src}
                     alt={partner.name}
-                    width={280}
-                    height={100}
-                    className="tp__partner-logo"
-                    sizes="(max-width: 640px) 50vw, 260px"
+                    {...partnerLogoDimensions(partner.name)}
+                    className={`tp__partner-logo${
+                      partner.name === "Microsoft" ? " tp__partner-logo--microsoft" : ""
+                    }`}
+                    sizes="(max-width: 640px) 28vw, 12vw"
                   />
                 </div>
               </motion.li>
@@ -253,7 +244,7 @@ export function TechnologyPartnersSection() {
 
       <motion.div
         ref={trustedRef}
-        className="tp__trusted-wrap relative z-10"
+        className="tp__trusted-wrap tp__trusted-wrap--strip relative z-10"
         initial={{ opacity: 0, y: 18 }}
         animate={trustedActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
         transition={{ duration: 0.6, ease, delay: 0.1 }}
