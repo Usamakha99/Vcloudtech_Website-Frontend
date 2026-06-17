@@ -19,16 +19,24 @@ const darkLogoClass =
 const lightLogoClass =
   "h-auto max-h-[4.5rem] w-auto max-w-[14rem] object-contain opacity-60 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:max-h-24 sm:max-w-[17rem] lg:max-h-28 lg:max-w-[20rem]";
 
+const compactLightLogoClass =
+  "h-auto max-h-9 w-auto max-w-[10rem] object-contain opacity-60 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:max-h-11 sm:max-w-[12rem] lg:max-h-12 lg:max-w-[14rem]";
+
 const darkMicrosoftLogoClass =
   "h-auto max-h-24 w-auto max-w-[18rem] object-contain opacity-90 brightness-0 invert transition duration-300 hover:opacity-100 sm:max-h-28 sm:max-w-[21rem] lg:max-h-32 lg:max-w-[24rem]";
 
 const lightMicrosoftLogoClass =
   "h-auto max-h-24 w-auto max-w-[18rem] object-contain opacity-60 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:max-h-28 sm:max-w-[21rem] lg:max-h-32 lg:max-w-[24rem]";
 
-function logoClassFor(name: string, fadeFrom: "dark" | "light") {
+const compactLightMicrosoftLogoClass =
+  "h-auto max-h-10 w-auto max-w-[12rem] object-contain opacity-60 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:max-h-11 sm:max-w-[14rem] lg:max-h-12 lg:max-w-[16rem]";
+
+function logoClassFor(name: string, fadeFrom: "dark" | "light", compact = false) {
   if (name === "Microsoft") {
+    if (compact && fadeFrom === "light") return compactLightMicrosoftLogoClass;
     return fadeFrom === "light" ? lightMicrosoftLogoClass : darkMicrosoftLogoClass;
   }
+  if (compact && fadeFrom === "light") return compactLightLogoClass;
   return fadeFrom === "light" ? lightLogoClass : darkLogoClass;
 }
 
@@ -48,7 +56,7 @@ function PartnerLogoMarquee({
   return (
     <div
       className={`relative mx-auto max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8 ${
-        compact ? "py-7 sm:py-8 lg:py-10" : "py-10 sm:py-12 lg:py-16"
+        compact ? "py-4 sm:py-5 lg:py-6" : "py-10 sm:py-12 lg:py-16"
       }`}
     >
       <span
@@ -60,7 +68,7 @@ function PartnerLogoMarquee({
         aria-hidden
       />
 
-      <ul className="dt-partner-marquee animate-social-proof-marquee flex w-max items-center gap-14 py-1 sm:gap-20 lg:gap-24">
+      <ul className={`dt-partner-marquee animate-social-proof-marquee flex w-max items-center py-0.5 ${compact ? "gap-10 sm:gap-14 lg:gap-16" : "gap-14 sm:gap-20 lg:gap-24"}`}>
         {marqueeLogos.map((logo, index) => (
           <li key={`${logo.name}-${index}`} className="flex shrink-0 items-center px-1 sm:px-2">
             <Image
@@ -68,7 +76,7 @@ function PartnerLogoMarquee({
               alt={logo.name}
               width={logo.name === "Microsoft" ? 360 : 300}
               height={logo.name === "Microsoft" ? 120 : 100}
-              className={logoClassFor(logo.name, fadeFrom)}
+              className={logoClassFor(logo.name, fadeFrom, compact)}
               sizes={logo.name === "Microsoft" ? "320px" : "(max-width: 640px) 220px, 300px"}
             />
           </li>
@@ -83,7 +91,7 @@ export function DesignTestSocialProofBar({ belowHero = false }: { belowHero?: bo
   if (belowHero) {
     return (
       <section className="relative z-30" aria-labelledby="strategic-partners-heading">
-        <header className="border-b border-white/10 bg-[#041329] px-4 pb-5 pt-5 text-center sm:px-6 sm:pb-6 sm:pt-6 lg:px-8">
+        <header className="border-b border-white/10 bg-[#041329] px-4 pb-3 pt-3 text-center sm:px-6 sm:pb-3.5 sm:pt-3.5 lg:px-8">
           <h2
             id="strategic-partners-heading"
             className={`${dt.sectionHeadline} text-white`}
