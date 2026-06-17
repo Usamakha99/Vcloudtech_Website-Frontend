@@ -1524,18 +1524,53 @@
 }
 
 .about-minimal__intro-visual {
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 0.25rem;
-  background: rgba(8, 16, 30, 0.4);
+  position: relative;
+  margin: 0 0 1.5rem;
+  isolation: isolate;
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.5rem;
+  background: linear-gradient(165deg, #111f34 0%, #0a1424 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.28),
+    0 4px 8px rgba(0, 0, 0, 0.28),
+    0 14px 28px -8px rgba(0, 0, 0, 0.48),
+    0 28px 56px -16px rgba(0, 0, 0, 0.52),
+    0 44px 80px -24px rgba(0, 0, 0, 0.42);
+}
+
+.about-minimal__intro-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.about-minimal__intro-visual::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -1.35rem;
+  z-index: -1;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.62) 0%, transparent 72%);
+  filter: blur(12px);
+  pointer-events: none;
 }
 
 .about-minimal__intro-image {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: inherit;
   object-fit: cover;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
 }
 
 .about-minimal__eyebrow {
