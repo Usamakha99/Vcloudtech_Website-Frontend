@@ -152,7 +152,7 @@ export function AboutUsSnapshotSection() {
 
           <figure className="about-minimal__intro-visual">
             <Image
-              src="/images/about us 2.jpg"
+              src="/images/about us.jpg"
               alt="Hands holding a digital display that reads Reliable IT Partner with a security shield icon"
               width={960}
               height={600}

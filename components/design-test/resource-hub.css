@@ -209,13 +209,15 @@
   height: 1.65rem;
   width: 1.65rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(229, 86, 20, 0.45);
+  background: rgba(229, 86, 20, 0.1);
+  color: #e55614;
   font-size: 0.7rem;
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.35s ease,
-    background-color 0.35s ease;
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 .rh__card-link:hover .rh__read {
@@ -224,8 +226,9 @@
 
 .rh__card-link:hover .rh__read-arrow {
   transform: translateX(3px);
-  border-color: rgba(179, 179, 179, 0.4);
-  background: rgba(179, 179, 179, 0.1);
+  border-color: rgba(240, 101, 32, 0.65);
+  background: rgba(229, 86, 20, 0.18);
+  color: #f06520;
 }
 
 /* CTA */
@@ -251,7 +254,7 @@
   align-items: center;
   gap: 0.6rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(229, 86, 20, 0.55);
   background: transparent;
   padding: 0.7rem 1.35rem;
   font-size: 0.8125rem;
@@ -265,9 +268,9 @@
 }
 
 .rh__cta:hover {
-  border-color: rgba(179, 179, 179, 0.45);
-  background: rgba(179, 179, 179, 0.08);
-  box-shadow: 0 12px 32px -16px rgba(179, 179, 179, 0.25);
+  border-color: rgba(229, 86, 20, 0.75);
+  background: rgba(229, 86, 20, 0.1);
+  box-shadow: 0 12px 32px -16px rgba(229, 86, 20, 0.35);
 }
 
 .rh__cta-arrow {
