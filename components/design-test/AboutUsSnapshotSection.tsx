@@ -55,34 +55,34 @@ const industryImageSectors = [
     name: "Government",
     detail:
       "Public sector solutions designed to improve efficiency, transparency, and service delivery.",
-    image: `${INDUSTRIES_SERVE_ICONS}/gov.png`,
+    image: "/design-test/industries/government.png",
     href: "/services",
   },
   {
     name: "Industries",
     detail: "Custom IT solutions for industries to streamline operations and drive smart growth.",
-    image: `${INDUSTRIES_SERVE_ICONS}/4.png`,
+    image: "/design-test/industries/industries.png",
     href: "/services",
   },
   {
     name: "Healthcare",
     detail:
       "Modern digital solutions for hospitals and clinics to enhance patient care and operational efficiency.",
-    image: `${INDUSTRIES_SERVE_ICONS}/6.png`,
+    image: `${INDUSTRIES_SERVE_ICONS}/health.png`,
     href: "/services",
   },
   {
     name: "Education",
     detail:
       "Empowering educational institutions with smart technology for better learning outcomes.",
-    image: `${INDUSTRIES_SERVE_ICONS}/5.png`,
+    image: `${INDUSTRIES_SERVE_ICONS}/education.png`,
     href: "/services",
   },
   {
     name: "Public sector",
     detail:
       "Technology solutions that strengthen communities and improve public service management.",
-    image: `${INDUSTRIES_SERVE_ICONS}/2.png`,
+    image: `${INDUSTRIES_SERVE_ICONS}/public-sector.png`,
     href: "/services",
   },
 ] as const;
@@ -234,6 +234,12 @@ function IndustriesImageGridSection() {
   );
 }
 
+function industryImageCardModifier(name: (typeof industryImageSectors)[number]["name"]) {
+  if (name === "Government") return " about-enterprise__industry-image-card--government";
+  if (name === "Industries") return " about-enterprise__industry-image-card--industries";
+  return "";
+}
+
 function IndustryImageCard({
   sector,
 }: {
@@ -241,9 +247,7 @@ function IndustryImageCard({
 }) {
   return (
     <article
-      className={`about-enterprise__industry-image-card group/image-card${
-        sector.name === "Government" ? " about-enterprise__industry-image-card--government" : ""
-      }`}
+      className={`about-enterprise__industry-image-card group/image-card${industryImageCardModifier(sector.name)}`}
     >
       <div className="about-enterprise__industry-image-visual">
         <div className="about-enterprise__industry-image-frame">

@@ -739,23 +739,28 @@
   transform: translateY(-2px);
 }
 
-.about-enterprise__industry-image-card--government .about-enterprise__industry-image-visual {
+.about-enterprise__industry-image-card--government .about-enterprise__industry-image-visual,
+.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-visual {
   aspect-ratio: 5 / 4;
 }
 
-.about-enterprise__industry-image-card--government .about-enterprise__industry-image-frame {
+.about-enterprise__industry-image-card--government .about-enterprise__industry-image-frame,
+.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-frame {
   inset: 0;
 }
 
-.about-enterprise__industry-image-card--government .about-enterprise__industry-image-asset {
+.about-enterprise__industry-image-card--government .about-enterprise__industry-image-asset,
+.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-asset {
+  object-fit: cover;
   object-position: center center;
-  transform: scale(1.26);
-  transform-origin: center center;
+  transform: none;
 }
 
 .about-enterprise__industry-image-card--government:hover .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--government:focus-within .about-enterprise__industry-image-asset {
-  transform: scale(1.26) translateY(-2px);
+.about-enterprise__industry-image-card--government:focus-within .about-enterprise__industry-image-asset,
+.about-enterprise__industry-image-card--industries:hover .about-enterprise__industry-image-asset,
+.about-enterprise__industry-image-card--industries:focus-within .about-enterprise__industry-image-asset {
+  transform: translateY(-2px) scale(1.02);
 }
 
 .about-enterprise__industry-image-body {

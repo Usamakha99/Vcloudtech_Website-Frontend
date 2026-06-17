@@ -13,23 +13,28 @@ const partnerLogos = [
   { name: "HPE", src: "/partners/hpe.png" },
 ] as const;
 
-const logoClass =
-  "h-auto max-h-[4.5rem] w-auto max-w-[14rem] object-contain transition duration-300 hover:scale-[1.03] sm:max-h-24 sm:max-w-[17rem] lg:max-h-28 lg:max-w-[20rem]";
+/** Square artwork (e.g. Microsoft) needs a boost to match wide logo marks in the same rail. */
+const LOGO_IMAGE_SCALE: Partial<Record<(typeof partnerLogos)[number]["name"], string>> = {
+  Microsoft: "scale-[1.62] sm:scale-[1.68] lg:scale-[1.74]",
+};
 
-const compactLogoClass =
-  "h-auto max-h-9 w-auto max-w-[10rem] object-contain transition duration-300 hover:scale-[1.03] sm:max-h-11 sm:max-w-[12rem] lg:max-h-12 lg:max-w-[14rem]";
+/** Fixed logo rail — every partner occupies the same visual footprint. */
+const logoBoxClass =
+  "flex h-28 w-52 shrink-0 items-center justify-center sm:h-32 sm:w-60 lg:h-36 lg:w-[17rem]";
 
-const microsoftLogoClass =
-  "h-auto max-h-24 w-auto max-w-[18rem] object-contain transition duration-300 hover:scale-[1.03] sm:max-h-28 sm:max-w-[21rem] lg:max-h-32 lg:max-w-[24rem]";
+const logoBoxClassCompact =
+  "flex h-24 w-48 shrink-0 items-center justify-center sm:h-28 sm:w-56 lg:h-32 lg:w-64";
 
-const compactMicrosoftLogoClass =
-  "h-auto max-h-10 w-auto max-w-[12rem] object-contain transition duration-300 hover:scale-[1.03] sm:max-h-11 sm:max-w-[14rem] lg:max-h-12 lg:max-w-[16rem]";
+const logoImageClass =
+  "h-full w-full object-contain object-center transition duration-300 hover:scale-[1.04]";
 
-function logoClassFor(name: string, compact = false) {
-  if (name === "Microsoft") {
-    return compact ? compactMicrosoftLogoClass : microsoftLogoClass;
-  }
-  return compact ? compactLogoClass : logoClass;
+function logoImageClassFor(name: (typeof partnerLogos)[number]["name"]) {
+  const boost = LOGO_IMAGE_SCALE[name];
+  return boost ? `${logoImageClass} ${boost}` : logoImageClass;
+}
+
+function logoDimensions(name: (typeof partnerLogos)[number]["name"]) {
+  return name === "Microsoft" ? { width: 200, height: 200 } : { width: 253, height: 100 };
 }
 
 function PartnerLogoMarquee({
@@ -48,7 +53,7 @@ function PartnerLogoMarquee({
   return (
     <div
       className={`relative mx-auto max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8 ${
-        compact ? "py-4 sm:py-5 lg:py-6" : "py-10 sm:py-12 lg:py-16"
+        compact ? "py-6 sm:py-7 lg:py-9" : "py-10 sm:py-12 lg:py-16"
       }`}
     >
       <span
@@ -60,16 +65,18 @@ function PartnerLogoMarquee({
         aria-hidden
       />
 
-      <ul className={`dt-partner-marquee animate-social-proof-marquee flex w-max items-center py-0.5 ${compact ? "gap-10 sm:gap-14 lg:gap-16" : "gap-14 sm:gap-20 lg:gap-24"}`}>
+      <ul className={`dt-partner-marquee animate-social-proof-marquee flex w-max items-center ${compact ? "gap-10 sm:gap-14 lg:gap-16" : "gap-12 sm:gap-16 lg:gap-20"}`}>
         {marqueeLogos.map((logo, index) => (
-          <li key={`${logo.name}-${index}`} className="flex shrink-0 items-center px-1 sm:px-2">
+          <li
+            key={`${logo.name}-${index}`}
+            className={compact ? logoBoxClassCompact : logoBoxClass}
+          >
             <Image
               src={logo.src}
               alt={logo.name}
-              width={logo.name === "Microsoft" ? 360 : 300}
-              height={logo.name === "Microsoft" ? 120 : 100}
-              className={logoClassFor(logo.name, compact)}
-              sizes={logo.name === "Microsoft" ? "320px" : "(max-width: 640px) 220px, 300px"}
+              {...logoDimensions(logo.name)}
+              className={logoImageClassFor(logo.name)}
+              sizes="(max-width: 640px) 192px, 256px"
             />
           </li>
         ))}
