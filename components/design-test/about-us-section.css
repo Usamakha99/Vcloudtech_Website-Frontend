@@ -644,20 +644,20 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1.25rem;
+  gap: 1.5rem;
   grid-template-columns: minmax(0, 1fr);
 }
 
 @media (min-width: 640px) {
   .about-enterprise__industry-image-grid-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
 }
 
 @media (min-width: 1024px) {
   .about-enterprise__industry-image-grid-list {
-    gap: 2rem;
+    gap: 2.35rem;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
@@ -667,161 +667,115 @@
 }
 
 .about-enterprise__industry-image-card {
+  position: relative;
   display: flex;
   height: 100%;
-  min-height: 17.5rem;
+  min-height: 21rem;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 1.125rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(165deg, #121f33 0%, #0e192b 54%, #061425 100%);
-  box-shadow: 0 10px 28px -20px rgba(0, 0, 0, 0.55);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #041329;
   transition:
-    border-color 0.35s ease,
-    box-shadow 0.35s ease,
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    border-color 0.3s ease,
+    background-color 0.3s ease;
 }
 
 @media (min-width: 640px) {
   .about-enterprise__industry-image-card {
-    min-height: 19rem;
+    min-height: 22.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .about-enterprise__industry-image-card {
-    min-height: 20.5rem;
+    min-height: 24rem;
   }
 }
 
 .about-enterprise__industry-image-card:hover,
 .about-enterprise__industry-image-card:focus-within {
-  border-color: rgba(229, 86, 20, 0.22);
-  box-shadow:
-    0 16px 36px -18px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(229, 86, 20, 0.05);
-  transform: translateY(-3px);
+  border-color: rgba(229, 86, 20, 0.24);
+  background: rgba(12, 22, 38, 0.72);
+}
+
+.about-enterprise__industry-image-index {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.95rem;
+  z-index: 3;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .about-enterprise__industry-image-visual {
   position: relative;
-  flex: 1 1 0;
-  min-height: 0;
+  flex-shrink: 0;
   width: 100%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: linear-gradient(180deg, #111f34 0%, #0a1525 48%, #041329 100%);
+  background: #041329;
 }
 
 .about-enterprise__industry-image-visual::before {
   content: "";
   position: absolute;
   inset-inline: 0;
-  top: 0;
-  z-index: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-  opacity: 0.85;
-  pointer-events: none;
-}
-
-.about-enterprise__industry-image-visual::after {
-  content: "";
-  position: absolute;
-  bottom: -8%;
-  left: 50%;
-  z-index: 0;
-  width: 72%;
-  height: 48%;
-  transform: translateX(-50%);
-  background: radial-gradient(
-    ellipse 100% 100% at 50% 100%,
-    rgba(229, 86, 20, 0.28) 0%,
-    rgba(229, 86, 20, 0.1) 40%,
-    rgba(4, 19, 41, 0) 72%
-  );
-  pointer-events: none;
-}
-
-.about-enterprise__industry-image-frame {
-  position: absolute;
-  inset: 6% 10% 2% 10%;
+  bottom: 0;
   z-index: 1;
+  height: 28%;
+  background: linear-gradient(180deg, transparent 0%, rgba(4, 19, 41, 0.45) 100%);
+  pointer-events: none;
 }
 
 .about-enterprise__industry-image-asset {
   object-fit: contain;
-  object-position: center bottom;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  object-position: center center;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .about-enterprise__industry-image-card:hover .about-enterprise__industry-image-asset,
 .about-enterprise__industry-image-card:focus-within .about-enterprise__industry-image-asset {
-  transform: translateY(-2px);
-}
-
-.about-enterprise__industry-image-card--government .about-enterprise__industry-image-frame,
-.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-frame,
-.about-enterprise__industry-image-card--featured .about-enterprise__industry-image-frame {
-  inset: 0;
-}
-
-.about-enterprise__industry-image-card--government .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--industries .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--featured .about-enterprise__industry-image-asset {
-  object-fit: cover;
-  object-position: center center;
   transform: none;
-}
-
-.about-enterprise__industry-image-card--government:hover .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--government:focus-within .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--industries:hover .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--industries:focus-within .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--featured:hover .about-enterprise__industry-image-asset,
-.about-enterprise__industry-image-card--featured:focus-within .about-enterprise__industry-image-asset {
-  transform: translateY(-2px) scale(1.02);
 }
 
 .about-enterprise__industry-image-body {
   display: flex;
-  flex: 1 1 0;
-  min-height: 0;
+  flex: 1;
   flex-direction: column;
-  overflow: hidden;
-  padding: 0.9rem 1rem 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  background: linear-gradient(180deg, rgba(14, 24, 40, 0.72) 0%, rgba(6, 16, 30, 0.35) 100%);
+  padding: 1.1rem 1.15rem 1.2rem;
+  background: rgba(10, 18, 32, 0.72);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 @media (min-width: 640px) {
   .about-enterprise__industry-image-body {
-    padding: 1rem 1.05rem 1.1rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .about-enterprise__industry-image-body {
-    padding: 1.05rem 1.1rem 1.15rem;
+    padding: 1.2rem 1.25rem 1.3rem;
   }
 }
 
 .about-enterprise__industry-image-title {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: -0.02em;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 @media (min-width: 640px) {
   .about-enterprise__industry-image-title {
-    font-size: 1rem;
+    font-size: 1.0625rem;
   }
 }
 
 .about-enterprise__industry-image-headline {
   margin-top: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.4;
   color: #e55614;
@@ -829,28 +783,26 @@
 
 @media (min-width: 640px) {
   .about-enterprise__industry-image-headline {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
   }
 }
 
 .about-enterprise__industry-image-detail {
-  margin-top: 0.5rem;
-  flex: 1 1 auto;
-  min-height: 0;
-  font-size: 0.75rem;
+  margin-top: 0.65rem;
+  flex: 1;
+  font-size: 0.8125rem;
   font-weight: 500;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.74);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   overflow: hidden;
 }
 
 @media (min-width: 640px) {
   .about-enterprise__industry-image-detail {
-    font-size: 0.8125rem;
-    line-height: 1.6;
+    font-size: 0.875rem;
   }
 }
 
@@ -877,11 +829,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .about-enterprise__industry-image-card:hover,
-  .about-enterprise__industry-image-card:focus-within {
-    transform: none;
-  }
-
   .about-enterprise__industry-image-card:hover .about-enterprise__industry-image-asset,
   .about-enterprise__industry-image-card:focus-within .about-enterprise__industry-image-asset {
     transform: none;
@@ -1560,14 +1507,35 @@
 
 @media (min-width: 1024px) {
   .about-minimal__body {
-    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
-    gap: 2.5rem 4rem;
-    align-items: start;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 2.5rem 3rem;
+    align-items: center;
   }
 }
 
 .about-minimal__intro {
-  max-width: 46rem;
+  max-width: none;
+}
+
+@media (min-width: 1024px) {
+  .about-minimal__intro {
+    max-width: 40rem;
+  }
+}
+
+.about-minimal__intro-visual {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.25rem;
+  background: rgba(8, 16, 30, 0.4);
+}
+
+.about-minimal__intro-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .about-minimal__eyebrow {

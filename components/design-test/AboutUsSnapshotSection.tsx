@@ -48,22 +48,23 @@ const sectors: {
   },
 ];
 
+const industriesWeServeImageBase = "/Industries We Serve Final";
+
 const industryImageSectors = [
   {
     name: "Government",
     headline: "Mission-Critical Infrastructure for Mission-Critical Work",
     detail:
       "Federal agencies and defense contractors operate with zero margin for error. Backed by an ISO 9001:2015–certified delivery process and active federal contract vehicles, we provide CMMC, FedRAMP, and NIST 800-53 aligned infrastructure, procurement, and modernization support — with the responsiveness of a partner who treats your agency as a priority, not an account number.",
-    image: "/design-test/industries/government.png",
+    image: `${industriesWeServeImageBase}/Government Sector.png`,
     href: "/services",
-    featuredImage: true,
   },
   {
     name: "Education",
     headline: "Infrastructure Built for the Pace of Modern Learning",
     detail:
       "Modern learning demands infrastructure that never falls behind. From the superintendent's office to the student's device, education IT is a full-spectrum challenge. We help districts and universities deploy scalable, FERPA-compliant, AI-ready environments that grow with enrollment and stretch tight budgets further than you thought possible.",
-    image: "/design-test/industries/education.png",
+    image: `${industriesWeServeImageBase}/Education Sector.png`,
     href: "/services",
   },
   {
@@ -71,7 +72,7 @@ const industryImageSectors = [
     headline: "HIPAA Is the Floor. Patient Safety Is the Ceiling.",
     detail:
       "In healthcare, a security incident doesn't just create cost — it delays care. We secure clinical environments with HIPAA-compliant infrastructure, AI-driven anomaly detection, and EMR systems engineered to stay available when clinicians need them most, with a dedicated team that understands clinical workflows, not just IT tickets.",
-    image: "/design-test/industries/healthcare.png",
+    image: `${industriesWeServeImageBase}/Health Care.png`,
     href: "/services",
   },
   {
@@ -79,7 +80,7 @@ const industryImageSectors = [
     headline: "Infrastructure That Earns and Protects Public Trust",
     detail:
       "From county courthouses to municipal utility departments, public sector IT operates under constrained budgets, sustained scrutiny, and no tolerance for downtime. We bring the same contract-vehicle access and compliance rigor as the major national integrators — with the direct, responsive relationship that's harder to get once an account gets large enough to be \"just a number.\"",
-    image: "/design-test/industries/public-sector.png",
+    image: `${industriesWeServeImageBase}/Public Sector.png`,
     href: "/services",
   },
   {
@@ -87,16 +88,15 @@ const industryImageSectors = [
     headline: "Enterprise-Grade Infrastructure for Enterprise-Level Ambition",
     detail:
       "Growing organizations need IT that scales as quickly as the business does. We deliver managed cloud infrastructure, cybersecurity, and AI-driven automation backed by an extensive technology partner ecosystem, turning your tech stack into a competitive advantage without the overhead of an in-house enterprise IT function, or the impersonal scale of a billion-dollar reseller.",
-    image: "/industries/commercial.png",
+    image: `${industriesWeServeImageBase}/Commercial Enterprise Sector.png`,
     href: "/services",
-    featuredImage: true,
   },
   {
     name: "Financial Services",
     headline: "A Four-Hour Outage Can Cost More Than an Annual IT Contract",
     detail:
       "In financial services, downtime isn't an inconvenience — it's a regulatory event. We build and manage high-availability infrastructure for trading platforms, banking systems, and back-office operations, with AI-assisted fraud detection and insider threat monitoring layered in from day one.",
-    image: "/industries/financial.png",
+    image: `${industriesWeServeImageBase}/Financial Sector.png`,
     href: "/services",
   },
 ] as const;
@@ -149,6 +149,17 @@ export function AboutUsSnapshotSection() {
               </p>
             </div> */}
           </div>
+
+          <figure className="about-minimal__intro-visual">
+            <Image
+              src="/images/about us 2.jpg"
+              alt="Hands holding a digital display that reads Reliable IT Partner with a security shield icon"
+              width={960}
+              height={600}
+              className="about-minimal__intro-image"
+              sizes="(max-width: 1023px) 100vw, 42vw"
+            />
+          </figure>
         </div>
 
         {/* <SectorsRowSection /> */}
@@ -238,9 +249,9 @@ function IndustriesImageGridSection() {
         className="about-enterprise__industry-image-grid-list"
         aria-labelledby="industries-we-serve-heading"
       >
-        {industryImageSectors.map((sector) => (
+        {industryImageSectors.map((sector, index) => (
           <li key={sector.name} className="about-enterprise__industry-image-grid-item">
-            <IndustryImageCard sector={sector} />
+            <IndustryImageCard sector={sector} index={index} />
           </li>
         ))}
       </ul>
@@ -248,32 +259,28 @@ function IndustriesImageGridSection() {
   );
 }
 
-function industryImageCardModifier(sector: (typeof industryImageSectors)[number]) {
-  if ("featuredImage" in sector && sector.featuredImage) {
-    return " about-enterprise__industry-image-card--featured";
-  }
-  return "";
-}
-
 function IndustryImageCard({
   sector,
+  index,
 }: {
   sector: (typeof industryImageSectors)[number];
+  index: number;
 }) {
+  const number = String(index + 1).padStart(2, "0");
+
   return (
-    <article
-      className={`about-enterprise__industry-image-card group/image-card${industryImageCardModifier(sector)}`}
-    >
+    <article className="about-enterprise__industry-image-card about-enterprise__industry-image-card--cover group/image-card">
       <div className="about-enterprise__industry-image-visual">
-        <div className="about-enterprise__industry-image-frame">
-          <Image
-            src={sector.image}
-            alt={sector.name}
-            fill
-            className="about-enterprise__industry-image-asset"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        </div>
+        <span className="about-enterprise__industry-image-index" aria-hidden>
+          {number}
+        </span>
+        <Image
+          src={sector.image}
+          alt={sector.name}
+          fill
+          className="about-enterprise__industry-image-asset"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
       </div>
 
       <div className="about-enterprise__industry-image-body">
