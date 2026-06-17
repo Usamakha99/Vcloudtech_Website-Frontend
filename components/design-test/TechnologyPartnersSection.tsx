@@ -17,7 +17,7 @@ const categories = [
   { id: "cloud", label: "Cloud Partners", target: 100, suffix: "+", accent: false },
 ] as const;
 
-import { partnerLogoDimensions, partnerLogos } from "@/lib/design-test/partner-logos";
+import { partnerLogoVisualClass, partnerLogos } from "@/lib/design-test/partner-logos";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -226,15 +226,15 @@ export function TechnologyPartnersSection() {
             {partnerLogos.map((partner) => (
               <motion.li key={partner.name} variants={fadeUpTight}>
                 <div className="tp__partner-cell group">
-                  <Image
-                    src={partner.src}
-                    alt={partner.name}
-                    {...partnerLogoDimensions(partner.name)}
-                    className={`tp__partner-logo${
-                      partner.name === "Microsoft" ? " tp__partner-logo--microsoft" : ""
-                    }`}
-                    sizes="(max-width: 640px) 28vw, 12vw"
-                  />
+                  <div className="tp__partner-logo-slot">
+                    <Image
+                      src={partner.src}
+                      alt={partner.name}
+                      fill
+                      className={`tp__partner-logo ${partnerLogoVisualClass(partner.name)}`.trim()}
+                      sizes="(max-width: 640px) 124px, 152px"
+                    />
+                  </div>
                 </div>
               </motion.li>
             ))}

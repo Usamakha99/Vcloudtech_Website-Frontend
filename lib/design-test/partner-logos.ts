@@ -40,3 +40,9 @@ export const strategicPartnerLogos = [
 export function partnerLogoDimensions(name: PartnerLogo["name"]) {
   return name === "Microsoft" ? { width: 200, height: 200 } : { width: 253, height: 100 };
 }
+
+/** Square artwork needs a boost inside the shared wide logo slot. */
+export function partnerLogoVisualClass(name: PartnerLogo["name"]) {
+  const squareLogos = ["Microsoft", "VMware", "DataCore", "Malwarebytes"] as const;
+  return (squareLogos as readonly string[]).includes(name) ? "tp__partner-logo--square" : "";
+}
