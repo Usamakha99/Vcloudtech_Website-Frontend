@@ -1,37 +1,41 @@
 import Image from "next/image";
 
 import { dt } from "@/components/design-test/design-test-theme";
-import {
-  partnerLogoDimensions,
-  strategicPartnerLogos,
-} from "@/lib/design-test/partner-logos";
+import { partnerLogoStripClass, partnerLogos } from "@/lib/design-test/partner-logos";
 
 import "./technology-partners.css";
 
-function StrategicPartnerMarquee() {
-  const marqueeLogos = [...strategicPartnerLogos, ...strategicPartnerLogos];
+function StrategicPartnerLogoItems({ idPrefix }: { idPrefix: string }) {
+  return partnerLogos.map((partner) => (
+    <li key={`${idPrefix}-${partner.src}`} className="tp__trusted-strip-logo-box tp__trusted-strip-logo-box--equal">
+      <div className="tp__strategic-strip-slot">
+        <Image
+          src={partner.src}
+          alt={partner.name}
+          fill
+          className={`tp__strategic-strip-logo ${partnerLogoStripClass(partner.name)}`.trim()}
+          sizes="(max-width: 640px) 160px, 200px"
+        />
+      </div>
+    </li>
+  ));
+}
 
+function StrategicPartnerMarquee() {
   return (
     <div className="tp__trusted-strip-white">
-      <div className="tp__trusted-strip-marquee">
+      <div className="tp__trusted-strip-marquee tp__trusted-strip-marquee--strategic">
         <span className="tp__trusted-strip-fade tp__trusted-strip-fade--left" aria-hidden />
         <span className="tp__trusted-strip-fade tp__trusted-strip-fade--right" aria-hidden />
 
-        <ul className="tp__trusted-strip-track">
-          {marqueeLogos.map((partner, index) => (
-            <li key={`${partner.src}-${index}`} className="tp__trusted-strip-logo-box">
-              <Image
-                src={partner.src}
-                alt={partner.name}
-                {...partnerLogoDimensions(partner.name)}
-                className={`tp__trusted-strip-logo${
-                  partner.name === "Microsoft" ? " tp__trusted-strip-logo--microsoft" : ""
-                }`}
-                sizes="(max-width: 640px) 160px, 220px"
-              />
-            </li>
-          ))}
-        </ul>
+        <div className="tp__strategic-marquee-group">
+          <ul className="tp__trusted-strip-track tp__trusted-strip-track--static">
+            <StrategicPartnerLogoItems idPrefix="a" />
+          </ul>
+          <ul className="tp__trusted-strip-track tp__trusted-strip-track--static" aria-hidden>
+            <StrategicPartnerLogoItems idPrefix="b" />
+          </ul>
+        </div>
       </div>
     </div>
   );

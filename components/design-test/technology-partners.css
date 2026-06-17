@@ -431,6 +431,47 @@
   margin: 0;
 }
 
+.tp__trusted-strip-track--static {
+  animation: none;
+  flex-shrink: 0;
+  padding-inline: 0;
+}
+
+.tp__strategic-marquee-group {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 0.35rem;
+  animation: tp-strategic-marquee 125s linear infinite;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .tp__strategic-marquee-group {
+    gap: 0.45rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tp__strategic-marquee-group {
+    gap: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tp__strategic-marquee-group {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    gap: 1rem 1.5rem;
+  }
+
+  .tp__strategic-marquee-group .tp__trusted-strip-track--static[aria-hidden] {
+    display: none;
+  }
+}
+
 @media (min-width: 640px) {
   .tp__trusted-strip-track {
     gap: 0.45rem;
@@ -464,6 +505,75 @@
     height: 6.35rem;
     width: 12.5rem;
   }
+}
+
+.tp__trusted-strip-marquee--strategic {
+  padding-block: 1.1rem;
+}
+
+@media (min-width: 640px) {
+  .tp__trusted-strip-marquee--strategic {
+    padding-block: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tp__trusted-strip-marquee--strategic {
+    padding-block: 1.35rem;
+  }
+}
+
+.tp__trusted-strip-logo-box--equal {
+  width: 12rem;
+  height: 6.25rem;
+  padding: 0.3rem 0.35rem;
+}
+
+@media (min-width: 640px) {
+  .tp__trusted-strip-logo-box--equal {
+    width: 13.5rem;
+    height: 6.75rem;
+    padding: 0.35rem 0.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tp__trusted-strip-logo-box--equal {
+    width: 14.5rem;
+    height: 7.25rem;
+    padding: 0.4rem 0.45rem;
+  }
+}
+
+.tp__strategic-strip-slot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.tp__strategic-strip-logo {
+  object-fit: contain;
+  object-position: center center;
+  transform: scale(1.12);
+  transform-origin: center center;
+}
+
+.tp__strategic-strip-logo--apple {
+  transform: scale(0.78);
+}
+
+.tp__partner-grid--all .tp__partner-logo--apple {
+  transform: scale(0.88);
+}
+
+.tp__partner-logo--apple {
+  transform: scale(0.88);
+  transform-origin: center center;
+}
+
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--apple,
+.tp__partner-cell:hover .tp__partner-logo--apple {
+  transform: scale(0.92);
 }
 
 .tp__trusted-strip-logo {
@@ -520,10 +630,19 @@
 
 @keyframes tp-trusted-marquee {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes tp-strategic-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
