@@ -6,6 +6,7 @@ export const dtColors = {
   bg: "#041329",
   card: "#111F34",
   primary: "#E55614",
+  accent: "#b3b3b3",
   text: "#FFFFFF",
   muted: "#A1A1AA",
 } as const;
@@ -13,7 +14,7 @@ export const dtColors = {
 /** Primary CTA — Get a Quote */
 export const dtCta = {
   bg: "bg-[#E55614]",
-  bgHover: "hover:bg-[#f06520]",
+  bgHover: "hover:bg-[#b3b3b3] hover:text-[#041329]",
   fill: "bg-gradient-to-r from-[#E55614]/90 to-[#E55614]/50",
 } as const;
 
@@ -58,7 +59,7 @@ export const dt = {
     "rounded-2xl border border-white/10 bg-[#111F34] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/5",
 
   cardHover:
-    "transition duration-300 hover:border-[#E55614]/35 hover:bg-[#111F34] hover:ring-[#E55614]/20 hover:shadow-[0_20px_44px_-12px_rgba(229,86,20,0.12)]",
+    "transition duration-300 hover:border-[#b3b3b3]/35 hover:bg-[#111F34] hover:ring-[#b3b3b3]/20 hover:shadow-[0_20px_44px_-12px_rgba(179,179,179,0.12)]",
 
   cardTopLine:
     "pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#E55614]/50 to-transparent opacity-80",
@@ -77,9 +78,9 @@ export const dt = {
 
   accentDash: "inline-block h-px w-6 bg-[#E55614]",
 
-  link: "text-white transition hover:text-[#E55614]",
+  link: "text-white transition hover:text-[#b3b3b3]",
 
-  linkSm: "text-[12px] font-medium text-white transition hover:text-[#E55614]",
+  linkSm: "text-[12px] font-medium text-white transition hover:text-[#b3b3b3]",
 
   statValue: "text-white",
 
@@ -95,7 +96,7 @@ export const dt = {
     "rounded-full border border-white/15 bg-[#111F34] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#A1A1AA]",
 
   logoCard:
-    "rounded-xl border border-white/15 bg-[#111F34] shadow-sm ring-1 ring-white/5 transition duration-200 hover:-translate-y-0.5 hover:border-[#E55614]/30 hover:shadow-md sm:rounded-2xl",
+    "rounded-xl border border-white/15 bg-[#111F34] shadow-sm ring-1 ring-white/5 transition duration-200 hover:-translate-y-0.5 hover:border-[#b3b3b3]/30 hover:shadow-md sm:rounded-2xl",
 
   certPill:
     "inline-flex items-center rounded-md border border-white/15 bg-[#111F34] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#A1A1AA] sm:px-3 sm:py-1.5 sm:text-[11px]",
@@ -107,11 +108,11 @@ export const dt = {
     "border border-white/10 bg-[#111F34] shadow-lg shadow-black/15",
 
   glassFeatureCard:
-    "border-white/10 bg-[#111F34] shadow-lg shadow-black/15 hover:border-[#E55614]/30 hover:shadow-md",
+    "border-white/10 bg-[#111F34] shadow-lg shadow-black/15 hover:border-[#b3b3b3]/30 hover:shadow-md",
 
   glassSubtext: "text-[#A1A1AA]",
 
-  glassLink: "text-white group-hover/card:text-[#E55614]",
+  glassLink: "text-white group-hover/card:text-[#b3b3b3]",
 
   stackCard:
     "rounded-xl border border-white/10 bg-[#111F34] px-5 py-5 shadow-[0_8px_28px_-14px_rgba(0,0,0,0.45)] sm:px-6 sm:py-5",
@@ -123,7 +124,7 @@ export const dt = {
   stackBody: "mt-2 text-[13px] leading-relaxed text-[#A1A1AA] sm:text-sm",
 
   stackCardArticle:
-    "group/stack relative overflow-hidden rounded-2xl border border-white/10 bg-[#111F34] ring-1 ring-white/5 transition-[border-color,box-shadow] duration-300 hover:border-[#E55614]/30 sm:rounded-3xl",
+    "group/stack relative overflow-hidden rounded-2xl border border-white/10 bg-[#111F34] ring-1 ring-white/5 transition-[border-color,box-shadow] duration-300 hover:border-[#b3b3b3]/30 sm:rounded-3xl",
 
   stackCardVisual:
     "relative flex min-h-[9.5rem] items-center justify-center overflow-hidden border-b border-white/10 bg-[#041329] sm:min-h-[11rem] lg:min-h-[15rem] lg:border-b-0 lg:border-r lg:border-white/10",

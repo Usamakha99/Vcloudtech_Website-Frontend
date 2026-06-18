@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { dt, dtCta } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/design-test/design-test-theme";
 import { motion, useInView } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -235,7 +235,7 @@ export function ProcurementEngineSection() {
           </p>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           className="mt-10 flex flex-col items-center gap-4 sm:mt-12 sm:flex-row sm:justify-center"
           initial={false}
           animate={animateIn ? { opacity: 1 } : undefined}
@@ -250,11 +250,11 @@ export function ProcurementEngineSection() {
           </Link>
           <Link
             href="/solutions"
-            className={`inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white transition duration-300 hover:border-[#E55614]/40 hover:bg-[#E55614]/10`}
+            className={`inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white transition duration-300 hover:border-[#b3b3b3]/40 hover:bg-[#b3b3b3]/10`}
           >
             Explore services
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

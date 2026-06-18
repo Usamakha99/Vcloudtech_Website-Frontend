@@ -58,13 +58,13 @@ export function ClientsTestimonialsSection() {
 
        
 
-        <ul className="mt-6 grid gap-4 sm:mt-8 lg:grid-cols-3 lg:gap-5">
+        <ul className="mt-6 grid gap-4 sm:mt-8 lg:grid-cols-3 lg:items-stretch lg:gap-5">
           {testimonials.map((item, index) => (
-            <li key={item.company}>
+            <li key={item.company} className="h-full">
               <GlassCard delay={(index + 1) as 1 | 2 | 3} className="h-full">
                 <blockquote className="flex h-full flex-col p-5 sm:p-6">
                   <p className={`text-sm leading-relaxed ${dt.body}`}>&ldquo;{item.quote}&rdquo;</p>
-                  <footer className="mt-5 border-t border-white/10 pt-4">
+                  <footer className="mt-auto border-t border-white/10 pt-4">
                     <cite className="not-italic">
                       <span className="block text-sm font-semibold text-white">{item.name}</span>
                       <span className={`mt-0.5 block text-xs ${dt.statLabel}`}>{item.company}</span>

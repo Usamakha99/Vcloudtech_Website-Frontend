@@ -16,7 +16,7 @@ export function globalNavLinkClasses(active: boolean) {
 }
 
 export const globalNavCta =
-  "inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-[#E55614] px-4 text-[12px] font-semibold tracking-[-0.01em] text-white shadow-sm shadow-[#E55614]/25 transition duration-200 hover:bg-[#f06520] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E55614]/50 active:scale-[0.98] sm:px-5 sm:text-[13px]";
+  "inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-[#E55614] px-4 text-[12px] font-semibold tracking-[-0.01em] text-white shadow-sm shadow-[#E55614]/25 transition duration-200 hover:bg-[#b3b3b3] hover:text-[#041329] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b3b3b3]/50 active:scale-[0.98] sm:px-5 sm:text-[13px]";
 
 export const globalNavSeparator = "hidden text-[#A1A1AA]/50 select-none sm:inline";
 

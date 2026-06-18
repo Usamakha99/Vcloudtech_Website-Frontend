@@ -288,7 +288,7 @@ function IndustryImageArrowIcon() {
     <svg
       viewBox="0 0 16 16"
       fill="none"
-      className="h-3.5 w-3.5 text-[#b3b3b3] transition-transform duration-300 group-hover/image-card:translate-x-0.5 group-hover/image-card:text-[#E55614]"
+      className="h-3.5 w-3.5 text-[#b3b3b3] transition-transform duration-300 group-hover/image-card:translate-x-0.5 group-hover/image-card:text-white"
       aria-hidden
     >
       <path

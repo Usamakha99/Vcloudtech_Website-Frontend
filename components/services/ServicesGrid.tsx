@@ -97,7 +97,7 @@ export function ServicesGrid({
       aria-labelledby="services-grid-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <header className="mx-auto max-w-2xl text-center">
+        <header className="mx-auto max-w-3xl text-center lg:max-w-5xl">
           {pillLabel ? <p className={dt.badge}>{pillLabel}</p> : null}
           <h2
             id="services-grid-heading"
@@ -109,7 +109,7 @@ export function ServicesGrid({
           </h2>
           {subheading ? (
             <p
-              className={`mx-auto mt-3 max-w-lg text-balance px-1 text-xs font-medium leading-relaxed sm:px-0 sm:text-sm ${
+              className={`mx-auto mt-3 px-1 text-xs font-medium leading-relaxed sm:px-0 sm:text-sm sm:whitespace-nowrap ${
                 glass ? dt.headingSub : "text-slate-600 sm:text-base dark:text-slate-400"
               }`}
             >
@@ -124,7 +124,7 @@ export function ServicesGrid({
               {glass ? (
                 <Link
                   href={item.href}
-                  className="service-flip-card service-flip-card--enhanced group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#E55614]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#041329]"
+                  className="service-flip-card service-flip-card--enhanced group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#b3b3b3]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#041329]"
                 >
                   <div className="service-flip-inner">
                     <div className="service-flip-face service-flip-front">

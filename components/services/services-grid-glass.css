@@ -1,22 +1,17 @@
-/* Shared flip icon — no box, larger icon, lower opacity on back face */
+/* Shared flip icon — back face, full visibility */
 .service-flip-back-icon--enhanced {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: #b3b3b3;
-  opacity: 0.42;
-  transition:
-    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.45s ease;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-flip-back-icon--enhanced svg {
   height: 4rem;
   width: 4rem;
-  transition:
-    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.45s ease;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (min-width: 640px) {
@@ -36,7 +31,6 @@
 .service-flip-card--enhanced:hover .service-flip-back-icon--enhanced,
 .service-flip-card--enhanced:focus-within .service-flip-back-icon--enhanced {
   transform: scale(1.06);
-  opacity: 0.1;
 }
 
 .service-flip-card--enhanced:hover .service-flip-back-icon--enhanced svg,
@@ -53,7 +47,6 @@
   .service-flip-card--enhanced:hover .service-flip-back-icon--enhanced,
   .service-flip-card--enhanced:focus-within .service-flip-back-icon--enhanced {
     transform: none;
-    opacity: 0.16;
   }
 }
 
@@ -123,7 +116,7 @@
 .service-flip-card:hover .service-flip-face,
 .service-flip-card:focus-within .service-flip-face,
 .service-flip-card:focus-visible .service-flip-face {
-  border-color: rgba(229, 86, 20, 0.32);
+  border-color: rgba(179, 179, 179, 0.32);
   box-shadow: 0 14px 32px -12px rgba(0, 0, 0, 0.5);
 }
 
@@ -180,6 +173,6 @@
 
   .service-flip-card:hover .service-flip-face,
   .service-flip-card:focus-within .service-flip-face {
-    border-color: rgba(229, 86, 20, 0.32);
+    border-color: rgba(179, 179, 179, 0.32);
   }
 }
