@@ -365,7 +365,7 @@
 }
 
 .tp__trusted-strip--below-hero {
-  margin-top: clamp(2rem, 6vw, 4rem);
+  margin-top: clamp(1.5rem, 5vw, 3.25rem);
 }
 
 .tp__trusted-strip--below-hero .tp__trusted-strip-header {
@@ -377,7 +377,7 @@
 
 @media (min-width: 1024px) {
   .tp__trusted-strip--below-hero {
-    margin-top: clamp(2.5rem, 5vw, 5rem);
+    margin-top: clamp(2rem, 4.5vw, 4.25rem);
   }
 
   .tp__trusted-strip--below-hero .tp__trusted-strip-header {
