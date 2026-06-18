@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { DesignTestFooter } from "@/components/design-test/DesignTestFooter";
 import { ContactUsSection } from "@/components/design-test/ContactUsSection";
 import { FaqSection } from "@/components/design-test/FaqSection";
+import { MeetExpertsCtaSection } from "@/components/design-test/MeetExpertsCtaSection";
 import { DesignTestGlobalNavbar } from "@/components/design-test/global-nav";
 import { AboutUsSnapshotSection } from "@/components/design-test/AboutUsSnapshotSection";
 import { DesignTestSocialProofBar } from "@/components/design-test/DesignTestSocialProofBar";
@@ -57,6 +58,7 @@ export default function DesignTestPage() {
           {/* <VendorPartnersStripSection /> */}
         </div>
       </main>
+      <MeetExpertsCtaSection />
       <DesignTestFooter />
     </div>
   );

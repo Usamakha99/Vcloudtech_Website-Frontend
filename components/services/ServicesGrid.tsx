@@ -13,11 +13,21 @@ import {
   type SectionIcon,
 } from "@/components/icons/section-icons";
 
-const servicesImagesBase = "/Services%20Images";
+const servicesImagesBase = "/Services%20Images%20Resize";
 
 function serviceImagePath(filename: string) {
   return `${servicesImagesBase}/${encodeURIComponent(filename)}`;
 }
+
+/** Resized service artwork — `public/Services Images Resize/` (1–6). */
+const serviceImages = {
+  procurement: serviceImagePath("4.png"),
+  licensing: serviceImagePath("3.png"),
+  cloud: serviceImagePath("2.png"),
+  security: serviceImagePath("5.png"),
+  itSupport: serviceImagePath("6.png"),
+  hardware: serviceImagePath("1.png"),
+} as const;
 
 export type ServiceItem = {
   title: string;
@@ -30,52 +40,52 @@ export type ServiceItem = {
 /** Wireframe service grid — Procurement · Licensing · Cloud · Security · IT Support · Hardware */
 export const SERVICES_GRID_ITEMS: ServiceItem[] = [
   {
-    title: "Procurement",
+    title: "IT Hardware & Procurement",
     description:
       "Streamlined IT sourcing with approvals, audit trails, and accountable vendor management.",
     href: "/procurement",
     icon: CartIcon,
-    image: serviceImagePath("IT Hardware & Procurement.png"),
+    image: serviceImages.procurement,
   },
   {
-    title: "Licensing",
+    title: "IT Strategy & Virtual CIO",
     description:
       "Right-size software spend with expert licensing programs and contract oversight.",
     href: "/procurement",
     icon: ContractIcon,
-    image: serviceImagePath("IT Strategy & Virtual CIO.png"),
+    image: serviceImages.licensing,
   },
   {
-    title: "Cloud",
+    title: "Cloud Solution",
     description:
       "Migration, modernization, and hybrid cloud operations built for enterprise governance.",
     href: "/solutions/cloud-infrastructure",
     icon: CloudIcon,
-    image: serviceImagePath("Cloud Solution.png"),
+    image: serviceImages.cloud,
   },
   {
-    title: "Security",
+    title: "Cyber Security & SOC",
     description:
       "Zero-trust alignment, tooling integration, and continuous hardening for risk profiles.",
     href: "/solutions/cybersecurity",
     icon: ShieldIcon,
-    image: serviceImagePath("Cyber Security & SOC.png"),
+    image: serviceImages.security,
   },
   {
-    title: "IT Support",
+    title: "Managed IT Services",
     description:
       "24/7 operations, escalation paths, and direct engineer access when systems matter most.",
     href: "/contact",
     icon: HeadsetIcon,
-    image: serviceImagePath("Managed IT Services.png"),
+    image: serviceImages.itSupport,
   },
   {
-    title: "Hardware",
+    title: "Ai & Intelligent Automation",
     description:
       "Enterprise hardware sourcing, lifecycle management, and deployment coordination.",
     href: "/services",
     icon: ServerIcon,
-    image: serviceImagePath("Ai & Intelligent Automation.png"),
+    image: serviceImages.hardware,
   },
 ];
 
