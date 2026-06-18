@@ -27,7 +27,7 @@ export function ContactUsSection() {
       aria-labelledby="contact-heading"
     >
       <div className="dt-contact__inner">
-        <DtScrollReveal className="dt-contact__header">
+        <DtScrollReveal className="dt-contact__header mx-auto max-w-3xl text-center">
           <p className={dt.badge}>Contact</p>
           <h2 id="contact-heading" className={`${dt.sectionHeadline} mt-5 text-white`}>
             Contact us
@@ -62,7 +62,7 @@ export function ContactUsSection() {
                       required
                       autoComplete="name"
                       className="dt-contact__input"
-                      placeholder="Jordan Ellis"
+                      placeholder="Hassan Khan"
                     />
                   </div>
 
@@ -77,7 +77,7 @@ export function ContactUsSection() {
                       required
                       autoComplete="email"
                       className="dt-contact__input"
-                      placeholder="jordan@company.com"
+                      placeholder="khanhassan@company.com"
                     />
                   </div>
 

@@ -105,7 +105,7 @@ export function FaqSection() {
       aria-labelledby="faq-heading"
     >
       <div className="dt-faq__inner">
-        <DtScrollReveal className="dt-faq__header">
+        <DtScrollReveal className="dt-faq__header mx-auto max-w-3xl text-center">
           <p className={dt.badge}>FAQ</p>
           <h2 id="faq-heading" className={`${dt.sectionHeadline} mt-5 text-white`}>
             Frequently asked questions
