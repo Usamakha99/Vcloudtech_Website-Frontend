@@ -53,50 +53,38 @@ const industriesWeServeImageBase = "/Industries We Serve Final";
 const industryImageSectors = [
   {
     name: "Government",
-    headline: "Mission-Critical Infrastructure for Mission-Critical Work",
-    detail:
-      "Federal agencies and defense contractors operate with zero margin for error. Backed by an ISO 9001:2015–certified delivery process and active federal contract vehicles, we provide CMMC, FedRAMP, and NIST 800-53 aligned infrastructure, procurement, and modernization support — with the responsiveness of a partner who treats your agency as a priority, not an account number.",
+    tagline: "Federal-grade compliance, contract vehicles, and mission-critical delivery.",
     image: `${industriesWeServeImageBase}/Government Sector.png`,
     href: "/services",
   },
   {
     name: "Education",
-    headline: "Infrastructure Built for the Pace of Modern Learning",
-    detail:
-      "Modern learning demands infrastructure that never falls behind. From the superintendent's office to the student's device, education IT is a full-spectrum challenge. We help districts and universities deploy scalable, FERPA-compliant, AI-ready environments that grow with enrollment and stretch tight budgets further than you thought possible.",
+    tagline: "FERPA-ready campus infrastructure that scales with enrollment.",
     image: `${industriesWeServeImageBase}/Education Sector.png`,
     href: "/services",
   },
   {
     name: "Healthcare",
-    headline: "HIPAA Is the Floor. Patient Safety Is the Ceiling.",
-    detail:
-      "In healthcare, a security incident doesn't just create cost — it delays care. We secure clinical environments with HIPAA-compliant infrastructure, AI-driven anomaly detection, and EMR systems engineered to stay available when clinicians need them most, with a dedicated team that understands clinical workflows, not just IT tickets.",
+    tagline: "HIPAA-aligned systems built for clinical uptime and patient safety.",
     image: `${industriesWeServeImageBase}/Health Care.png`,
     href: "/services",
   },
   {
-    name: "Public Sector",
-    headline: "Infrastructure That Earns and Protects Public Trust",
-    detail:
-      "From county courthouses to municipal utility departments, public sector IT operates under constrained budgets, sustained scrutiny, and no tolerance for downtime. We bring the same contract-vehicle access and compliance rigor as the major national integrators — with the direct, responsive relationship that's harder to get once an account gets large enough to be \"just a number.\"",
+    name: "Finance",
+    tagline: "High-availability platforms for regulated banking and capital markets.",
+    image: `${industriesWeServeImageBase}/Financial Sector.png`,
+    href: "/services",
+  },
+  {
+    name: "Retail",
+    tagline: "Omnichannel infrastructure engineered for peak-season reliability.",
     image: `${industriesWeServeImageBase}/Public Sector.png`,
     href: "/services",
   },
   {
-    name: "Commercial Enterprises",
-    headline: "Enterprise-Grade Infrastructure for Enterprise-Level Ambition",
-    detail:
-      "Growing organizations need IT that scales as quickly as the business does. We deliver managed cloud infrastructure, cybersecurity, and AI-driven automation backed by an extensive technology partner ecosystem, turning your tech stack into a competitive advantage without the overhead of an in-house enterprise IT function, or the impersonal scale of a billion-dollar reseller.",
+    name: "Manufacturing",
+    tagline: "Secure OT/IT convergence with resilient supply-chain operations.",
     image: `${industriesWeServeImageBase}/Commercial Enterprise Sector.png`,
-    href: "/services",
-  },
-  {
-    name: "Financial Services",
-    headline: "A Four-Hour Outage Can Cost More Than an Annual IT Contract",
-    detail:
-      "In financial services, downtime isn't an inconvenience — it's a regulatory event. We build and manage high-availability infrastructure for trading platforms, banking systems, and back-office operations, with AI-assisted fraud detection and insider threat monitoring layered in from day one.",
-    image: `${industriesWeServeImageBase}/Financial Sector.png`,
     href: "/services",
   },
 ] as const;
@@ -176,7 +164,6 @@ export function AboutUsSnapshotSection() {
     </section>
   );
 }
-
 function SectorsRowSection() {
   return (
     <div className="about-enterprise__sectors-row about-enterprise__reveal about-enterprise__reveal--5 mt-10 sm:mt-12">
@@ -269,11 +256,12 @@ function IndustryImageCard({
   const number = String(index + 1).padStart(2, "0");
 
   return (
-    <article className="about-enterprise__industry-image-card about-enterprise__industry-image-card--cover group/image-card">
+    <article className="about-enterprise__industry-image-card group/image-card">
       <div className="about-enterprise__industry-image-visual">
         <span className="about-enterprise__industry-image-index" aria-hidden>
           {number}
         </span>
+        <span className="about-enterprise__industry-image-scrim" aria-hidden />
         <Image
           src={sector.image}
           alt={sector.name}
@@ -284,11 +272,10 @@ function IndustryImageCard({
       </div>
 
       <div className="about-enterprise__industry-image-body">
-        <h3 className={`about-enterprise__industry-image-title ${dt.heading}`}>{sector.name}</h3>
-        <p className="about-enterprise__industry-image-headline">{sector.headline}</p>
-        <p className={`about-enterprise__industry-image-detail ${dt.body}`}>{sector.detail}</p>
-        <Link href={sector.href} className="about-enterprise__industry-image-link mt-auto pt-3">
-          Learn More
+        <h3 className="about-enterprise__industry-image-title">{sector.name}</h3>
+        <p className="about-enterprise__industry-image-tagline">{sector.tagline}</p>
+        <Link href={sector.href} className="about-enterprise__industry-image-link">
+          Explore industry
           <IndustryImageArrowIcon />
         </Link>
       </div>
@@ -301,7 +288,7 @@ function IndustryImageArrowIcon() {
     <svg
       viewBox="0 0 16 16"
       fill="none"
-      className="h-3.5 w-3.5 text-[#E55614] transition-transform duration-300 group-hover/image-card:translate-x-1"
+      className="h-3.5 w-3.5 text-[#b3b3b3] transition-transform duration-300 group-hover/image-card:translate-x-0.5 group-hover/image-card:text-[#E55614]"
       aria-hidden
     >
       <path
@@ -413,3 +400,4 @@ function IndustryArrowIcon() {
     </svg>
   );
 }
+
