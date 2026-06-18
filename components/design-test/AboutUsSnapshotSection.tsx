@@ -198,7 +198,7 @@ function SectorsRowSection() {
           {sectors.map((sector, index) => (
             <li
               key={sector.name}
-              className={`group relative w-[min(85vw,300px)] shrink-0 snap-center transition-transform duration-300 hover:z-50 focus-within:z-50 sm:w-[320px] ${industryStackZ[index] ?? industryStackZ[0]} ${index === 0 ? "ml-0" : "-ml-7 sm:-ml-8"}`}
+              className={`group relative w-[min(85vw,300px)] shrink-0 snap-center transition-transform duration-300 hover:z-50 focus-within:z-50 sm:w-[320px] ${industryImageStackZ[index] ?? industryImageStackZ[0]} ${index === 0 ? "ml-0" : "-ml-7 sm:-ml-8"}`}
             >
               <IndustryStrengthCard sector={sector} index={index} />
             </li>
