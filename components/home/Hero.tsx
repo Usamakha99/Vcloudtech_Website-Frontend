@@ -112,10 +112,10 @@ export function Hero({ stats = defaultStats }: HeroProps) {
                 ·
               </span>
               <Link
-                href="mailto:hello@vcloudtech.com"
+                href="mailto:info@vcloudtech.com"
                 className="font-medium text-slate-600 underline-offset-4 hover:text-slate-900 hover:underline"
               >
-                hello@vcloudtech.com
+                info@vcloudtech.com
               </Link>
             </p>
           </div>

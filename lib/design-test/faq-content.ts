@@ -27,6 +27,6 @@ export const designTestFaqItems = [
   {
     question: "How can I contact your team?",
     answer:
-      "Reach us through the contact form below, email hello@vcloudtech.com, or request a consultation. Enterprise accounts receive a dedicated solutions architect for priority routing.",
+      "Reach us through the contact form below, email info@vcloudtech.com, or request a consultation. Enterprise accounts receive a dedicated solutions architect for priority routing.",
   },
 ] as const;

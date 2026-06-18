@@ -27,8 +27,17 @@
   }
 }
 
+.dt-footer__address {
+  display: block;
+  margin-top: 0.85rem;
+  max-width: 20rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: #b3b3b3;
+}
+
 .dt-footer__brand-text {
-  margin-top: 1rem;
+  margin-top: 0.85rem;
   max-width: 20rem;
   font-size: 0.875rem;
   line-height: 1.65;

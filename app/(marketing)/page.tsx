@@ -48,10 +48,10 @@ export default function Home() {
               within one business day.
             </p>
             <a
-              href="mailto:hello@vcloudtech.com?subject=vCloudTech%20inquiry"
+              href="mailto:info@vcloudtech.com?subject=vCloudTech%20inquiry"
               className="mt-8 inline-flex h-11 items-center justify-center rounded-lg border border-white/25 bg-white px-6 text-sm font-semibold text-[#1B224B] shadow-sm transition-colors hover:bg-slate-100"
             >
-              Email hello@vcloudtech.com
+              Email info@vcloudtech.com
             </a>
           </div>
         </div>

@@ -19,10 +19,10 @@ export default function ContactPage() {
         <div className="rounded-2xl border border-slate-200/80 bg-white p-8 shadow-sm">
           <p className="text-sm font-medium text-slate-900">Direct email</p>
           <Link
-            href="mailto:hello@vcloudtech.com?subject=vCloudTech%20inquiry"
+            href="mailto:info@vcloudtech.com?subject=vCloudTech%20inquiry"
             className="mt-2 inline-flex text-base font-semibold text-sky-700 underline-offset-4 hover:underline"
           >
-            hello@vcloudtech.com
+           info@vcloudtech.com
           </Link>
           <p className="mt-6 text-sm leading-relaxed text-slate-600">
             Typical response time is one business day. For urgent procurement

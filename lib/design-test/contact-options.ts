@@ -12,7 +12,7 @@ export const designTestInquiryTypes = [
 ] as const;
 
 export const designTestContactInfo = {
-  email: "hello@vcloudtech.com",
+  email: "info@vcloudtech.com",
   phone: "(833) 482-5683",
   hours: "Monday – Friday, 8:00 AM – 6:00 PM ET",
 } as const;

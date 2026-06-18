@@ -1,3 +1,9 @@
+export const designTestFooterAddress = {
+  line1: "609 Deep Valley Drive Suite 200",
+  line2: "Rolling Hills Estates, CA 90274",
+  full: "609 Deep Valley Drive Suite 200, Rolling Hills Estates, CA 90274",
+} as const;
+
 export const designTestFooterLinks = {
   services: [
     { label: "Procurement", href: "/procurement" },

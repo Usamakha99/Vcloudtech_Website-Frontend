@@ -4,6 +4,7 @@ import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import { FooterNewsletter } from "@/components/design-test/FooterNewsletter";
 import { dt } from "@/components/design-test/design-test-theme";
 import {
+  designTestFooterAddress,
   designTestFooterCerts,
   designTestFooterLinks,
 } from "@/lib/design-test/footer-content";
@@ -20,6 +21,11 @@ export function DesignTestFooter() {
         <div className="dt-footer__grid">
           <div>
             <VCloudTechLogoImage variant="light" className="h-7 w-auto sm:h-8" />
+            <address className="dt-footer__address not-italic">
+              {designTestFooterAddress.line1}
+              <br />
+              {designTestFooterAddress.line2}
+            </address>
             <p className="dt-footer__brand-text">
               Enterprise IT procurement, cloud, security, and managed services — delivered with
               nationwide scale and accountable teams.
