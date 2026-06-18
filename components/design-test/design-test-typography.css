@@ -16,7 +16,9 @@
   .about-enterprise__sectors-headline,
   .rh__headline,
   .vc-ecosystem__headline,
-  #services-grid-heading
+  #services-grid-heading,
+  #faq-heading,
+  #contact-heading
 ) {
   font-size: var(--dt-headline-size);
   line-height: var(--dt-headline-leading);

@@ -1,0 +1,617 @@
+/* FAQ, Contact Us, Footer Newsletter — design-test closing sections */
+
+/* ── Shared shells ── */
+
+.dt-faq__inner,
+.dt-contact__inner {
+  margin-inline: auto;
+  max-width: 72rem;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .dt-faq__inner,
+  .dt-contact__inner {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dt-faq__inner,
+  .dt-contact__inner {
+    padding-inline: 2rem;
+  }
+}
+
+.dt-faq__header,
+.dt-contact__header {
+  max-width: 40rem;
+}
+
+.dt-faq__lede,
+.dt-contact__lede {
+  max-width: 36rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 640px) {
+  .dt-faq__lede,
+  .dt-contact__lede {
+    font-size: 1rem;
+  }
+}
+
+/* ── FAQ ── */
+
+.dt-faq__list {
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .dt-faq__list {
+    margin-top: 3rem;
+    gap: 0.85rem;
+  }
+}
+
+.dt-faq__list-item {
+  min-width: 0;
+}
+
+.dt-faq__item-wrap {
+  display: block;
+}
+
+.dt-faq__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(165deg, rgba(17, 31, 52, 0.95) 0%, rgba(4, 19, 41, 0.9) 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 12px 32px -20px rgba(0, 0, 0, 0.5);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dt-faq__item::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(179, 179, 179, 0.35), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.dt-faq__item:hover,
+.dt-faq__item--open {
+  border-color: rgba(179, 179, 179, 0.22);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 0 0 1px rgba(179, 179, 179, 0.06),
+    0 18px 40px -22px rgba(0, 0, 0, 0.55);
+}
+
+.dt-faq__item:hover::before,
+.dt-faq__item--open::before {
+  opacity: 1;
+}
+
+.dt-faq__item--open {
+  transform: translateY(-2px);
+}
+
+.dt-faq__question {
+  margin: 0;
+}
+
+.dt-faq__trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .dt-faq__trigger {
+    padding: 1.25rem 1.5rem;
+    gap: 1.25rem;
+  }
+}
+
+.dt-faq__trigger:hover {
+  color: #fff;
+}
+
+.dt-faq__trigger:focus-visible {
+  outline: 2px solid rgba(179, 179, 179, 0.45);
+  outline-offset: -2px;
+  border-radius: 1rem;
+}
+
+.dt-faq__index {
+  flex-shrink: 0;
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(179, 179, 179, 0.55);
+  transition: color 0.3s ease;
+}
+
+.dt-faq__item--open .dt-faq__index,
+.dt-faq__item:hover .dt-faq__index {
+  color: #b3b3b3;
+}
+
+.dt-faq__question-text {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 640px) {
+  .dt-faq__question-text {
+    font-size: 1.0625rem;
+  }
+}
+
+.dt-faq__chevron {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #b3b3b3;
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dt-faq__chevron--open {
+  transform: rotate(180deg);
+}
+
+.dt-faq__panel {
+  overflow: hidden;
+}
+
+.dt-faq__answer-wrap {
+  padding: 0 1.25rem 1.25rem 3.25rem;
+}
+
+@media (min-width: 640px) {
+  .dt-faq__answer-wrap {
+    padding: 0 1.5rem 1.4rem 3.75rem;
+  }
+}
+
+.dt-faq__answer {
+  margin: 0;
+  padding-top: 0.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #a1a1aa;
+}
+
+@media (min-width: 640px) {
+  .dt-faq__answer {
+    font-size: 1rem;
+  }
+}
+
+/* ── Contact ── */
+
+.dt-contact__layout {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .dt-contact__layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+}
+
+.dt-contact__form-panel {
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(165deg, rgba(17, 31, 52, 0.96) 0%, rgba(4, 19, 41, 0.92) 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 16px 42px -24px rgba(0, 0, 0, 0.55);
+  padding: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .dt-contact__form-panel {
+    padding: 2rem;
+  }
+}
+
+.dt-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dt-contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.dt-contact__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b3b3b3;
+}
+
+.dt-contact__input,
+.dt-contact__select,
+.dt-contact__textarea {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(4, 19, 41, 0.65);
+  color: #fff;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.dt-contact__input,
+.dt-contact__select {
+  height: 3rem;
+  padding-inline: 1rem;
+}
+
+.dt-contact__textarea {
+  min-height: 8.5rem;
+  padding: 0.85rem 1rem;
+  resize: vertical;
+}
+
+.dt-contact__input::placeholder,
+.dt-contact__textarea::placeholder {
+  color: rgba(161, 161, 170, 0.65);
+}
+
+.dt-contact__input:hover,
+.dt-contact__select:hover,
+.dt-contact__textarea:hover {
+  border-color: rgba(179, 179, 179, 0.22);
+}
+
+.dt-contact__input:focus,
+.dt-contact__select:focus,
+.dt-contact__textarea:focus {
+  outline: none;
+  border-color: rgba(179, 179, 179, 0.45);
+  background: rgba(4, 19, 41, 0.85);
+  box-shadow: 0 0 0 3px rgba(179, 179, 179, 0.12);
+}
+
+.dt-contact__select-wrap {
+  position: relative;
+}
+
+.dt-contact__select-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 1.5px solid #b3b3b3;
+  border-bottom: 1.5px solid #b3b3b3;
+  transform: translateY(-65%) rotate(45deg);
+  pointer-events: none;
+}
+
+.dt-contact__select {
+  appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.dt-contact__select option {
+  background: #111f34;
+  color: #fff;
+}
+
+.dt-contact__submit {
+  margin-top: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding-inline: 2rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: #b3b3b3;
+  color: #041329;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+.dt-contact__submit:hover {
+  background: #c4c4c4;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px -14px rgba(179, 179, 179, 0.45);
+}
+
+.dt-contact__submit:focus-visible {
+  outline: 2px solid rgba(179, 179, 179, 0.55);
+  outline-offset: 3px;
+}
+
+.dt-contact__submit:active {
+  transform: translateY(0);
+}
+
+.dt-contact__success {
+  padding: 1.5rem 0;
+}
+
+.dt-contact__success-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.dt-contact__success-text {
+  margin: 0.75rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.dt-contact__aside {
+  height: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(17, 31, 52, 0.55);
+  padding: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .dt-contact__aside {
+    padding: 1.75rem;
+  }
+}
+
+.dt-contact__aside-title {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.dt-contact__info-list {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.dt-contact__info-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(179, 179, 179, 0.7);
+}
+
+.dt-contact__info-value {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+a.dt-contact__info-value:hover {
+  color: #b3b3b3;
+}
+
+.dt-contact__info-value--plain {
+  font-weight: 500;
+  line-height: 1.5;
+  color: #a1a1aa;
+}
+
+.dt-contact__aside-note {
+  margin: 1.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+}
+
+/* ── Footer newsletter ── */
+
+.dt-newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 768px) {
+  .dt-newsletter {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
+
+.dt-newsletter__copy {
+  max-width: 28rem;
+}
+
+.dt-newsletter__headline {
+  margin: 0;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.dt-newsletter__desc {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #a1a1aa;
+}
+
+.dt-newsletter__form {
+  display: flex;
+  width: 100%;
+  max-width: 28rem;
+  flex-shrink: 0;
+  gap: 0.65rem;
+}
+
+@media (min-width: 768px) {
+  .dt-newsletter__form {
+    width: auto;
+    min-width: 22rem;
+  }
+}
+
+.dt-newsletter__input {
+  flex: 1;
+  min-width: 0;
+  height: 2.75rem;
+  padding-inline: 1rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(4, 19, 41, 0.55);
+  color: #fff;
+  font-size: 0.875rem;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.dt-newsletter__input::placeholder {
+  color: rgba(161, 161, 170, 0.65);
+}
+
+.dt-newsletter__input:hover {
+  border-color: rgba(179, 179, 179, 0.22);
+}
+
+.dt-newsletter__input:focus {
+  outline: none;
+  border-color: rgba(179, 179, 179, 0.4);
+  box-shadow: 0 0 0 3px rgba(179, 179, 179, 0.1);
+}
+
+.dt-newsletter__submit {
+  flex-shrink: 0;
+  height: 2.75rem;
+  padding-inline: 1.25rem;
+  border: 0;
+  border-radius: 0.65rem;
+  background: #b3b3b3;
+  color: #041329;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.dt-newsletter__submit:hover {
+  background: #c4c4c4;
+  transform: translateY(-1px);
+}
+
+.dt-newsletter__submit:focus-visible {
+  outline: 2px solid rgba(179, 179, 179, 0.5);
+  outline-offset: 2px;
+}
+
+.dt-newsletter__success {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #b3b3b3;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dt-faq__item,
+  .dt-faq__chevron,
+  .dt-contact__submit,
+  .dt-newsletter__submit {
+    transition: none;
+  }
+
+  .dt-faq__item--open {
+    transform: none;
+  }
+
+  .dt-contact__submit:hover,
+  .dt-newsletter__submit:hover {
+    transform: none;
+  }
+}

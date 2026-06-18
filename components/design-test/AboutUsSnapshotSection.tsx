@@ -53,43 +53,43 @@ const industriesWeServeImageBase = "/Industries We Serve Final";
 const industryImageSectors = [
   {
     name: "Government",
-    tagline: "Federal-grade compliance, contract vehicles, and mission-critical delivery.",
+    tagline: "Mission-Critical Infrastructure for Mission-Critical Work",
     image: `${industriesWeServeImageBase}/Government Sector.png`,
     href: "/services",
   },
   {
     name: "Education",
-    tagline: "FERPA-ready campus infrastructure that scales with enrollment.",
+    tagline: " Infrastructure Built for the Pace of Modern Learning",
     image: `${industriesWeServeImageBase}/Education Sector.png`,
     href: "/services",
   },
   {
     name: "Healthcare",
-    tagline: "HIPAA-aligned systems built for clinical uptime and patient safety.",
+    tagline: " HIPAA Is the Floor. Patient Safety Is the Ceiling.",
     image: `${industriesWeServeImageBase}/Health Care.png`,
     href: "/services",
   },
   {
-    name: "Finance",
-    tagline: "High-availability platforms for regulated banking and capital markets.",
+    name: "Financial Services",
+    tagline: " A Four-Hour Outage Can Cost More Than an Annual IT Contract",
     image: `${industriesWeServeImageBase}/Financial Sector.png`,
     href: "/services",
   },
   {
-    name: "Retail",
-    tagline: "Omnichannel infrastructure engineered for peak-season reliability.",
+    name: "Public sector",
+    tagline: "Infrastructure That Earns and Protects Public Trust.",
     image: `${industriesWeServeImageBase}/Public Sector.png`,
     href: "/services",
   },
   {
-    name: "Manufacturing",
-    tagline: "Secure OT/IT convergence with resilient supply-chain operations.",
+    name: "Commercial / Enterprise",
+    tagline: "  Enterprise-Grade Infrastructure for Enterprise-Level Ambition.",
     image: `${industriesWeServeImageBase}/Commercial Enterprise Sector.png`,
     href: "/services",
   },
 ] as const;
 
-const industryStackZ = ["z-10", "z-20", "z-30", "z-40", "z-50"] as const;
+const industryImageStackZ = ["z-10", "z-20", "z-30", "z-40", "z-50", "z-[60]"] as const;
 
 /** The organization — minimal full-width editorial layout. */
 export function AboutUsSnapshotSection() {
@@ -187,7 +187,7 @@ function SectorsRowSection() {
           {sectors.map((sector, index) => (
             <li
               key={sector.name}
-              className={`group relative shrink-0 transition-transform duration-300 hover:z-50 focus-within:z-50 ${industryStackZ[index] ?? industryStackZ[0]} ${index === 0 ? "ml-0" : "-ml-10 xl:-ml-12"}`}
+              className={`group relative shrink-0 transition-transform duration-300 hover:z-50 focus-within:z-50 ${industryImageStackZ[index] ?? industryImageStackZ[0]} ${index === 0 ? "ml-0" : "-ml-10 xl:-ml-12"}`}
             >
               <IndustryStrengthCard sector={sector} index={index} />
             </li>
@@ -233,11 +233,11 @@ function IndustriesImageGridSection() {
       </header>
 
       <ul
-        className="about-enterprise__industry-image-grid-list"
+        className="about-enterprise__industry-image-stack"
         aria-labelledby="industries-we-serve-heading"
       >
         {industryImageSectors.map((sector, index) => (
-          <li key={sector.name} className="about-enterprise__industry-image-grid-item">
+          <li key={sector.name} className="about-enterprise__industry-image-stack-item">
             <IndustryImageCard sector={sector} index={index} />
           </li>
         ))}
@@ -267,7 +267,7 @@ function IndustryImageCard({
           alt={sector.name}
           fill
           className="about-enterprise__industry-image-asset"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 1023px) 84vw, 17vw"
         />
       </div>
 

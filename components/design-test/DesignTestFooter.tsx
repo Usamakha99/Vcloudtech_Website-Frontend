@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
+import { FooterNewsletter } from "@/components/design-test/FooterNewsletter";
 import { dt } from "@/components/design-test/design-test-theme";
 import {
   designTestFooterCerts,
@@ -14,6 +15,8 @@ export function DesignTestFooter() {
   return (
     <footer className="dt-footer" aria-label="Site footer">
       <div className="dt-footer__inner">
+        <FooterNewsletter />
+
         <div className="dt-footer__grid">
           <div>
             <VCloudTechLogoImage variant="light" className="h-7 w-auto sm:h-8" />
