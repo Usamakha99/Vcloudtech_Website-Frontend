@@ -505,19 +505,21 @@
   width: max-content;
   align-items: center;
   gap: 0.35rem;
-  animation: tp-strategic-marquee 125s linear infinite;
+  animation: tp-strategic-marquee 60s linear infinite;
   will-change: transform;
 }
 
 @media (min-width: 640px) {
   .tp__strategic-marquee-group {
     gap: 0.45rem;
+    animation-duration: 55s;
   }
 }
 
 @media (min-width: 1024px) {
   .tp__strategic-marquee-group {
     gap: 0.5rem;
+    animation-duration: 50s;
   }
 }
 
