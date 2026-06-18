@@ -16,7 +16,7 @@ export function DesignTestFooter() {
       <div className="dt-footer__inner">
         <div className="dt-footer__grid">
           <div>
-            <VCloudTechLogoImage className="h-7 w-auto brightness-0 invert opacity-95 sm:h-8" />
+            <VCloudTechLogoImage variant="light" className="h-7 w-auto sm:h-8" />
             <p className="dt-footer__brand-text">
               Enterprise IT procurement, cloud, security, and managed services — delivered with
               nationwide scale and accountable teams.

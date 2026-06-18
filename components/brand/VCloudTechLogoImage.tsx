@@ -2,11 +2,14 @@ import Image from "next/image";
 
 /** Processed asset (black → transparent). Regenerate with `npm run logo:knockout` after replacing `public/brand/vcloudtech-logo.png`. */
 const LOGO_SRC = "/brand/vcloudtech-logo-nobg.png";
+const LIGHT_LOGO_SRC = "/brand/light_logo.png";
 
 type Props = {
   className?: string;
   /** Set true in the fixed header for faster LCP. */
   priority?: boolean;
+  /** Light artwork for dark backgrounds (design-test navbar/footer). */
+  variant?: "default" | "light";
 };
 
 /**
@@ -14,10 +17,16 @@ type Props = {
  * black canvas does not show on the light header. Replace
  * `public/brand/vcloudtech-logo.png`, then run `npm run logo:knockout`.
  */
-export function VCloudTechLogoImage({ className, priority = false }: Props) {
+export function VCloudTechLogoImage({
+  className,
+  priority = false,
+  variant = "default",
+}: Props) {
+  const src = variant === "light" ? LIGHT_LOGO_SRC : LOGO_SRC;
+
   return (
     <Image
-      src={LOGO_SRC}
+      src={src}
       alt=""
       width={480}
       height={105}

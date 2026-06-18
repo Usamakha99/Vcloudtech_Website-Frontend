@@ -15,22 +15,11 @@ import { DesignTestGlobalNavLinks } from "./DesignTestGlobalNavLinks";
 import { DesignTestGlobalNavMobile } from "./DesignTestGlobalNavMobile";
 import { globalNavCta, globalNavHeader, globalNavInner } from "./nav-styles";
 
-type Props = {
-  /** Optional lab exit link (e.g. back to main site home). */
-  showLabExit?: boolean;
-  labExitHref?: string;
-  labExitLabel?: string;
-};
-
 /**
  * Minimal sticky global navigation for design-test lab pages.
  * Config: `lib/navigation/design-test-global-nav.ts`
  */
-export function DesignTestGlobalNavbar({
-  showLabExit = true,
-  labExitHref = "/",
-  labExitLabel = "Exit lab",
-}: Props) {
+export function DesignTestGlobalNavbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -48,6 +37,7 @@ export function DesignTestGlobalNavbar({
         >
           <VCloudTechLogoImage
             priority
+            variant="light"
             className="h-7 w-auto max-h-7 object-contain object-left sm:h-8 sm:max-h-8"
           />
         </Link>
@@ -63,15 +53,6 @@ export function DesignTestGlobalNavbar({
           <Link href={designTestGlobalNavCta.href} className={`${globalNavCta} hidden sm:inline-flex`}>
             {designTestGlobalNavCta.label}
           </Link>
-
-          {showLabExit ? (
-            <Link
-              href={labExitHref}
-              className="hidden text-[11px] font-medium uppercase tracking-[0.12em] text-[#A1A1AA] transition hover:text-white md:inline"
-            >
-              {labExitLabel}
-            </Link>
-          ) : null}
 
           <button
             type="button"
