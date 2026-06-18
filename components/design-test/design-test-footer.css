@@ -36,12 +36,11 @@
   color: #b3b3b3;
 }
 
-.dt-footer__brand-text {
-  margin-top: 0.85rem;
-  max-width: 20rem;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: #a1a1aa;
+.dt-footer__certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
 }
 
 .dt-footer__col-title {
@@ -70,13 +69,6 @@
 
 .dt-footer__link:hover {
   color: #b3b3b3;
-}
-
-.dt-footer__certs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
 }
 
 .dt-footer__bottom {

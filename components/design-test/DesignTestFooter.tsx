@@ -26,10 +26,6 @@ export function DesignTestFooter() {
               <br />
               {designTestFooterAddress.line2}
             </address>
-            <p className="dt-footer__brand-text">
-              Enterprise IT procurement, cloud, security, and managed services — delivered with
-              nationwide scale and accountable teams.
-            </p>
             <div className="dt-footer__certs">
               {designTestFooterCerts.map((cert) => (
                 <span key={cert.acronym} className={dt.certPill} title={cert.label}>
