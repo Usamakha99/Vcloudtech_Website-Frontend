@@ -45,13 +45,13 @@ function StrategicPartnerMarquee() {
 export function DesignTestSocialProofBar({ belowHero = false }: { belowHero?: boolean }) {
   if (belowHero) {
     return (
-      <section className="relative z-30 tp__trusted-strip" aria-labelledby="strategic-partners-heading">
-        <header className="tp__trusted-strip-header border-b border-white/10 bg-[#041329]">
+      <section
+        className="relative z-30 tp__trusted-strip tp__trusted-strip--below-hero"
+        aria-labelledby="strategic-partners-heading"
+      >
+        <header className="tp__trusted-strip-header">
           <h2 id="strategic-partners-heading" className={`${dt.sectionHeadline} text-white`}>
-            Strategic{" "}
-            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              Partners
-            </span>
+            Strategic Partners
           </h2>
         </header>
 

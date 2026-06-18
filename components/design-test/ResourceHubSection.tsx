@@ -151,10 +151,7 @@ export function ResourceHubSection() {
         <header className={`rh__header ${dt.sectionHeader} ${headerVisible ? "is-visible" : ""}`}>
           <p className={dt.badge}>Blog &amp; content</p>
           <h2 id="blog-content-heading" className={dt.sectionHeadlineTp}>
-            Latest{" "}
-            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              insights
-            </span>
+            Latest insights
           </h2>
           <p className={`${dt.sectionDesc} ${dt.headingSub}`}>
             Practical perspectives on procurement, cloud, security, and enterprise IT operations.

@@ -12,7 +12,7 @@ export function TrustedByClientsMarquee() {
     <div className="tp__trusted-strip" aria-labelledby="trusted-clients-heading">
       <header className="tp__trusted-strip-header">
         <h3 id="trusted-clients-heading" className="tp__trusted-heading">
-          Trusted <span className="tp__trusted-heading-accent">Clients</span>
+          Trusted Clients
         </h3>
       </header>
 
