@@ -250,12 +250,30 @@
   transform-origin: center center;
 }
 
+.tp__partner-grid--all .tp__partner-logo--boost {
+  transform: scale(1.62);
+  transform-origin: center center;
+}
+
+.tp__partner-grid--all .tp__partner-logo--google {
+  transform: scale(2);
+  transform-origin: center center;
+}
+
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo {
   transform: scale(1.18);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--square {
   transform: scale(2.02);
+}
+
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--boost {
+  transform: scale(1.68);
+}
+
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--google {
+  transform: scale(2.06);
 }
 
 .tp__partner-cell {
@@ -342,12 +360,30 @@
   transform-origin: center center;
 }
 
+.tp__partner-logo--boost {
+  transform: scale(1.42);
+  transform-origin: center center;
+}
+
+.tp__partner-logo--google {
+  transform: scale(1.72);
+  transform-origin: center center;
+}
+
 .tp__partner-cell:hover .tp__partner-logo {
   transform: scale(1.08);
 }
 
 .tp__partner-cell:hover .tp__partner-logo--microsoft {
   transform: scale(1.48);
+}
+
+.tp__partner-cell:hover .tp__partner-logo--boost {
+  transform: scale(1.5);
+}
+
+.tp__partner-cell:hover .tp__partner-logo--google {
+  transform: scale(1.78);
 }
 
 /* Trusted by — strategic-strip layout (dark heading + full-width white rail) */
@@ -589,6 +625,22 @@
   transform: scale(0.78);
 }
 
+.tp__strategic-strip-logo--boost {
+  transform: scale(1.5);
+}
+
+.tp__strategic-strip-logo--google {
+  transform: scale(1.85);
+}
+
+.tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--boost {
+  transform: scale(1.56);
+}
+
+.tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--google {
+  transform: scale(1.92);
+}
+
 .tp__partner-grid--all .tp__partner-logo--apple {
   transform: scale(0.88);
 }
@@ -719,6 +771,22 @@
 
   .tp__partner-grid--all .tp__partner-logo--square {
     transform: scale(1.96);
+  }
+
+  .tp__partner-grid--all .tp__partner-logo--boost {
+    transform: scale(1.62);
+  }
+
+  .tp__partner-grid--all .tp__partner-logo--google {
+    transform: scale(2);
+  }
+
+  .tp__strategic-strip-logo--boost {
+    transform: scale(1.5);
+  }
+
+  .tp__strategic-strip-logo--google {
+    transform: scale(1.85);
   }
 
   .tp__trusted-strip-logo {

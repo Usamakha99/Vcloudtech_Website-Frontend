@@ -29,15 +29,21 @@ export function partnerLogoDimensions(name: PartnerLogo["name"]) {
   return name === "Microsoft" ? { width: 200, height: 200 } : { width: 253, height: 100 };
 }
 
+const boostedPartnerLogos = new Set<PartnerLogo["name"]>(["HP", "Veeam"]);
+
 /** Per-logo scale tweaks so strip/grid slots look visually equal. */
 export function partnerLogoStripClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__strategic-strip-logo--apple";
+  if (name === "Google") return "tp__strategic-strip-logo--google";
+  if (boostedPartnerLogos.has(name)) return "tp__strategic-strip-logo--boost";
   return "";
 }
 
 /** Square artwork needs a boost inside the shared wide logo slot. */
 export function partnerLogoVisualClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__partner-logo--apple";
+  if (name === "Google") return "tp__partner-logo--google";
+  if (boostedPartnerLogos.has(name)) return "tp__partner-logo--boost";
   const squareLogos = ["Microsoft", "VMware", "Malwarebytes"] as const;
   return (squareLogos as readonly string[]).includes(name) ? "tp__partner-logo--square" : "";
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { dt } from "@/components/design-test/design-test-theme";
@@ -12,11 +13,18 @@ import {
   type SectionIcon,
 } from "@/components/icons/section-icons";
 
+const servicesImagesBase = "/Services%20Images";
+
+function serviceImagePath(filename: string) {
+  return `${servicesImagesBase}/${encodeURIComponent(filename)}`;
+}
+
 export type ServiceItem = {
   title: string;
   description: string;
   href: string;
   icon: SectionIcon;
+  image: string;
 };
 
 /** Wireframe service grid — Procurement · Licensing · Cloud · Security · IT Support · Hardware */
@@ -27,6 +35,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
       "Streamlined IT sourcing with approvals, audit trails, and accountable vendor management.",
     href: "/procurement",
     icon: CartIcon,
+    image: serviceImagePath("IT Hardware & Procurement.png"),
   },
   {
     title: "Licensing",
@@ -34,6 +43,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
       "Right-size software spend with expert licensing programs and contract oversight.",
     href: "/procurement",
     icon: ContractIcon,
+    image: serviceImagePath("IT Strategy & Virtual CIO.png"),
   },
   {
     title: "Cloud",
@@ -41,6 +51,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
       "Migration, modernization, and hybrid cloud operations built for enterprise governance.",
     href: "/solutions/cloud-infrastructure",
     icon: CloudIcon,
+    image: serviceImagePath("Cloud Solution.png"),
   },
   {
     title: "Security",
@@ -48,6 +59,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
       "Zero-trust alignment, tooling integration, and continuous hardening for risk profiles.",
     href: "/solutions/cybersecurity",
     icon: ShieldIcon,
+    image: serviceImagePath("Cyber Security & SOC.png"),
   },
   {
     title: "IT Support",
@@ -55,6 +67,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
       "24/7 operations, escalation paths, and direct engineer access when systems matter most.",
     href: "/contact",
     icon: HeadsetIcon,
+    image: serviceImagePath("Managed IT Services.png"),
   },
   {
     title: "Hardware",
@@ -62,6 +75,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
       "Enterprise hardware sourcing, lifecycle management, and deployment coordination.",
     href: "/services",
     icon: ServerIcon,
+    image: serviceImagePath("Ai & Intelligent Automation.png"),
   },
 ];
 
@@ -118,7 +132,7 @@ export function ServicesGrid({
           ) : null}
         </header>
 
-        <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
+        <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {items.map((item, index) => (
             <li key={item.title} className="flex min-w-0">
               {glass ? (
@@ -127,15 +141,18 @@ export function ServicesGrid({
                   className="service-flip-card service-flip-card--enhanced group/card w-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#b3b3b3]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#041329]"
                 >
                   <div className="service-flip-inner">
-                    <div className="service-flip-face service-flip-front">
-                      <ServiceCardContent item={item} surface={surface} flipFront />
+                    <div
+                      className="service-flip-face service-flip-front absolute inset-0 h-full w-full overflow-hidden rounded-2xl"
+                      style={{ backfaceVisibility: "hidden" }}
+                    >
+                      <ServiceCardFront item={item} />
                     </div>
                     <div className="service-flip-face service-flip-back">
                       <div className="service-flip-back-content">
                         <div className="service-flip-back-icon service-flip-back-icon--enhanced">
                           <item.icon />
                         </div>
-                        <h3 className={`text-lg font-semibold tracking-tight ${dt.heading}`}>
+                        <h3 className={`text-base font-semibold tracking-tight sm:text-lg ${dt.heading}`}>
                           {item.title}
                         </h3>
                         <span className={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold ${dt.link}`}>
@@ -167,30 +184,38 @@ export function ServicesGrid({
   );
 }
 
+function ServiceCardFront({ item }: { item: ServiceItem }) {
+  return (
+    <div className="absolute inset-0">
+      <div className="relative h-full w-full">
+        <div className="service-flip-front-image-wrap">
+          <Image
+            src={item.image}
+            alt={`${item.title} service`}
+            fill
+            className="service-flip-front-image"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        </div>
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"
+          aria-hidden
+        />
+        <h3 className="absolute bottom-3 left-3 z-10 text-base font-bold text-white sm:bottom-4 sm:left-4 sm:text-lg">{item.title}</h3>
+        <span className="absolute bottom-2 left-3 z-10 h-0.5 w-8 bg-[#C87941] sm:bottom-3 sm:left-4 sm:w-10" aria-hidden />
+      </div>
+    </div>
+  );
+}
+
 function ServiceCardContent({
   item,
   surface,
-  flipFront = false,
 }: {
   item: ServiceItem;
   surface: "light" | "glass";
-  flipFront?: boolean;
 }) {
   const glass = surface === "glass";
-
-  if (flipFront && glass) {
-    return (
-      <div className="service-flip-front-content">
-        <span className={`${dt.accentDash} service-flip-front-accent mx-auto`} aria-hidden />
-        <h3 className={`mt-4 text-xl font-semibold leading-snug tracking-tight sm:text-2xl ${dt.heading}`}>
-          {item.title}
-        </h3>
-        <p className={`service-flip-front-desc line-clamp-4 text-base leading-relaxed sm:text-[17px] ${dt.glassSubtext}`}>
-          {item.description}
-        </p>
-      </div>
-    );
-  }
 
   return (
     <>

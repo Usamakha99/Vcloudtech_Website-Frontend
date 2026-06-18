@@ -48,8 +48,8 @@ export default function DesignTestPage() {
           <div id="services">
             <ServicesGrid surface="glass" />
           </div>
-          <ProcurementEngineSection />
-          <WhyChooseUsSection />
+          {/* <ProcurementEngineSection />
+          <WhyChooseUsSection /> */}
           <ResourceHubSection />
           <ClientsTestimonialsSection />
           <FaqSection />
