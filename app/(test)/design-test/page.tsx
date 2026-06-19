@@ -37,7 +37,7 @@ export default function DesignTestPage() {
       <PageIngredientBackground />
       <DesignTestGlobalNavbar />
       <main className="relative">
-        <div id="hero" className="leading-none">
+        <div id="hero" className="leading-none" data-nav-surface="dark">
           <MinimalTestHero offsetForFixedHeader fullPageGradient showCarousel />
         </div>
         <DesignTestSocialProofBar belowHero />

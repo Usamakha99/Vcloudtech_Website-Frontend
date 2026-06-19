@@ -16,7 +16,7 @@ export function TrustedByClientsMarquee() {
         </h3>
       </header>
 
-      <div className="tp__trusted-strip-white">
+      <div className="tp__trusted-strip-white" data-nav-surface="light">
         <div className="tp__trusted-strip-marquee">
           <span className="tp__trusted-strip-fade tp__trusted-strip-fade--left" aria-hidden />
           <span className="tp__trusted-strip-fade tp__trusted-strip-fade--right" aria-hidden />

@@ -223,7 +223,7 @@ export function TechnologyPartnersSection() {
           >
             {partnerLogos.map((partner) => (
               <motion.li key={partner.name} variants={fadeUpTight}>
-                <div className="tp__partner-cell group">
+                <div className="tp__partner-cell group" data-nav-surface="light">
                   <div className="tp__partner-logo-slot">
                     <Image
                       src={partner.src}

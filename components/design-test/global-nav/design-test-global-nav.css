@@ -23,6 +23,29 @@
   --dt-nav-glass-blur: 16px;
 }
 
+/* Light sections — navbar adapts to #041329 theme on white backgrounds */
+.dt-global-nav--surface-light {
+  --dt-nav-glass-bg: rgba(255, 255, 255, 0.9);
+  --dt-nav-glass-border: rgba(4, 19, 41, 0.12);
+  --dt-nav-glass-blur: 14px;
+}
+
+.dt-global-nav--surface-light.dt-global-nav--scrolled {
+  --dt-nav-glass-bg: rgba(255, 255, 255, 0.94);
+  --dt-nav-glass-border: rgba(4, 19, 41, 0.16);
+  --dt-nav-glass-blur: 16px;
+}
+
+.dt-global-nav--surface-light .dt-global-nav__bar::before {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 10px 36px -20px rgba(4, 19, 41, 0.18);
+}
+
+.dt-global-nav--surface-light .dt-global-nav__bar::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+}
+
 /* ── Shell ── */
 .dt-global-nav {
   position: fixed;
@@ -79,10 +102,10 @@
     0 1px 0 rgba(255, 255, 255, 0.1) inset,
     0 12px 40px -24px rgba(0, 0, 0, 0.35);
   transition:
-    background 0.4s ease,
-    border-color 0.4s ease,
-    backdrop-filter 0.4s ease,
-    box-shadow 0.4s ease;
+    background 0.45s ease,
+    border-color 0.45s ease,
+    backdrop-filter 0.45s ease,
+    box-shadow 0.45s ease;
 }
 
 /* Top edge highlight — depth without blocking transparency */
@@ -191,8 +214,8 @@
   border-radius: 0.5rem;
   outline: none;
   transition:
-    color 0.28s ease,
-    background-color 0.28s ease;
+    color 0.45s ease,
+    background-color 0.45s ease;
 }
 
 .dt-global-nav:not(.dt-global-nav--scrolled) .dt-global-nav__link {
@@ -252,6 +275,54 @@
 .dt-global-nav__link--active .dt-global-nav__link-underline {
   transform: scaleX(1);
   background: linear-gradient(90deg, #b3b3b3 0%, rgba(179, 179, 179, 0.55) 100%);
+}
+
+/* Dark text on light sections */
+.dt-global-nav--surface-light .dt-global-nav__link {
+  color: rgba(4, 19, 41, 0.68);
+  text-shadow: none;
+}
+
+.dt-global-nav--surface-light .dt-global-nav__link:hover {
+  color: #041329;
+  background: rgba(4, 19, 41, 0.05);
+}
+
+.dt-global-nav--surface-light .dt-global-nav__link--active {
+  color: #041329;
+}
+
+.dt-global-nav--surface-light .dt-global-nav__link-underline,
+.dt-global-nav--surface-light .dt-global-nav__link--active .dt-global-nav__link-underline {
+  background: linear-gradient(90deg, #041329 0%, rgba(4, 19, 41, 0.35) 100%);
+}
+
+.dt-global-nav--surface-light .dt-global-nav__menu-btn {
+  color: #041329;
+  border-color: rgba(4, 19, 41, 0.14);
+  background: rgba(4, 19, 41, 0.04);
+}
+
+.dt-global-nav--surface-light .dt-global-nav__menu-btn:hover {
+  color: #041329;
+  border-color: rgba(4, 19, 41, 0.22);
+  background: rgba(4, 19, 41, 0.07);
+}
+
+.dt-global-nav--surface-light .dt-global-nav__mobile-inner {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(4, 19, 41, 0.12);
+}
+
+.dt-global-nav--surface-light .dt-global-nav__mobile-link {
+  color: rgba(4, 19, 41, 0.68);
+}
+
+.dt-global-nav--surface-light .dt-global-nav__mobile-link:hover,
+.dt-global-nav--surface-light .dt-global-nav__mobile-link--active {
+  color: #041329;
+  background: rgba(4, 19, 41, 0.05);
+  box-shadow: inset 3px 0 0 #041329;
 }
 
 .dt-global-nav__actions {

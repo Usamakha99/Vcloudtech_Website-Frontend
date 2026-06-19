@@ -23,7 +23,7 @@ function StrategicPartnerLogoItems({ idPrefix }: { idPrefix: string }) {
 
 function StrategicPartnerMarquee() {
   return (
-    <div className="tp__trusted-strip-white">
+    <div className="tp__trusted-strip-white" data-nav-surface="light">
       <div className="tp__trusted-strip-marquee tp__trusted-strip-marquee--strategic">
         <span className="tp__trusted-strip-fade tp__trusted-strip-fade--left" aria-hidden />
         <span className="tp__trusted-strip-fade tp__trusted-strip-fade--right" aria-hidden />
@@ -48,6 +48,7 @@ export function DesignTestSocialProofBar({ belowHero = false }: { belowHero?: bo
       <section
         className="relative z-30 tp__trusted-strip tp__trusted-strip--below-hero"
         aria-labelledby="strategic-partners-heading"
+        data-nav-surface="dark"
       >
         <header className="tp__trusted-strip-header">
           <h2 id="strategic-partners-heading" className={`${dt.sectionHeadline} text-white`}>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import {
@@ -15,6 +15,7 @@ import { DesignTestGlobalNavLinks } from "./DesignTestGlobalNavLinks";
 import { DesignTestGlobalNavMobile } from "./DesignTestGlobalNavMobile";
 import { NavCtaArrowIcon } from "./NavCtaArrowIcon";
 import { globalNavCtaClass } from "./nav-styles";
+import { useNavSurfaceTheme } from "./useNavSurfaceTheme";
 
 import "./design-test-global-nav.css";
 
@@ -24,9 +25,11 @@ import "./design-test-global-nav.css";
  */
 export function DesignTestGlobalNavbar() {
   const pathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const surface = useNavSurfaceTheme(headerRef);
 
   useEffect(() => {
     queueMicrotask(() => setMobileOpen(false));
@@ -48,12 +51,13 @@ export function DesignTestGlobalNavbar() {
     "dt-global-nav",
     mounted ? "dt-global-nav--mounted" : "",
     scrolled || mobileOpen ? "dt-global-nav--scrolled" : "",
+    surface === "light" ? "dt-global-nav--surface-light" : "dt-global-nav--surface-dark",
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <header className={navClass}>
+    <header ref={headerRef} className={navClass}>
       <div className="dt-global-nav__shell">
         <div className="dt-global-nav__bar">
           <Link
@@ -61,7 +65,11 @@ export function DesignTestGlobalNavbar() {
             className="dt-global-nav__brand"
             aria-label={designTestGlobalNavBrand.ariaLabel}
           >
-            <VCloudTechLogoImage priority variant="light" className="dt-global-nav__logo" />
+            <VCloudTechLogoImage
+            priority
+            variant={surface === "light" ? "default" : "light"}
+            className="dt-global-nav__logo"
+          />
           </Link>
 
           <nav aria-label="Global navigation" className="dt-global-nav__links">
