@@ -162,7 +162,7 @@
 }
 
 .hero-test-hero-section--offset-nav {
-  padding-top: 4.25rem;
+  padding-top: var(--dt-nav-occupancy, 5.5rem);
 }
 
 .hero-test-hero-media {

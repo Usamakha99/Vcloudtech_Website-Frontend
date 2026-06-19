@@ -13,50 +13,69 @@ import {
 
 import { DesignTestGlobalNavLinks } from "./DesignTestGlobalNavLinks";
 import { DesignTestGlobalNavMobile } from "./DesignTestGlobalNavMobile";
-import { globalNavCta, globalNavHeader, globalNavInner } from "./nav-styles";
+import { NavCtaArrowIcon } from "./NavCtaArrowIcon";
+import { globalNavCtaClass } from "./nav-styles";
+
+import "./design-test-global-nav.css";
 
 /**
- * Minimal sticky global navigation for design-test lab pages.
+ * Premium sticky global navigation for design-test lab pages.
  * Config: `lib/navigation/design-test-global-nav.ts`
  */
 export function DesignTestGlobalNavbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     queueMicrotask(() => setMobileOpen(false));
   }, [pathname]);
 
+  useEffect(() => {
+    queueMicrotask(() => setMounted(true));
+
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const navClass = [
+    "dt-global-nav",
+    mounted ? "dt-global-nav--mounted" : "",
+    scrolled ? "dt-global-nav--scrolled" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <header className={globalNavHeader}>
-      <div className={globalNavInner}>
+    <header className={navClass}>
+      <div className="dt-global-nav__bar">
         <Link
           href={designTestGlobalNavBrand.href}
-          className="flex shrink-0 items-center outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40"
+          className="dt-global-nav__brand"
           aria-label={designTestGlobalNavBrand.ariaLabel}
         >
-          <VCloudTechLogoImage
-            priority
-            variant="light"
-            className="h-7 w-auto max-h-7 object-contain object-left sm:h-8 sm:max-h-8"
-          />
+          <VCloudTechLogoImage priority variant="light" className="dt-global-nav__logo" />
         </Link>
 
-        <nav
-          aria-label="Global navigation"
-          className="hidden min-w-0 flex-1 justify-center lg:flex"
-        >
+        <nav aria-label="Global navigation" className="dt-global-nav__links">
           <DesignTestGlobalNavLinks links={designTestGlobalNavLinks} pathname={pathname} />
         </nav>
 
-        <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          <Link href={designTestGlobalNavCta.href} className={`${globalNavCta} hidden sm:inline-flex`}>
+        <div className="dt-global-nav__actions">
+          <Link href={designTestGlobalNavCta.href} className={globalNavCtaClass}>
             {designTestGlobalNavCta.label}
+            <NavCtaArrowIcon className="dt-global-nav__cta-icon" />
           </Link>
 
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 text-white/80 transition hover:border-white/30 hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40 lg:hidden"
+            className="dt-global-nav__menu-btn"
             aria-expanded={mobileOpen}
             aria-controls="design-test-global-nav-panel"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}

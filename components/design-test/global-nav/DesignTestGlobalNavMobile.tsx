@@ -6,7 +6,12 @@ import { isNavActive } from "@/lib/navigation/active-path";
 import type { DesignTestGlobalNavLink } from "@/lib/navigation/design-test-global-nav";
 import { designTestGlobalNavCta } from "@/lib/navigation/design-test-global-nav";
 
-import { globalNavCta, globalNavLinkClasses, globalNavMobilePanel } from "./nav-styles";
+import {
+  globalNavMobileCtaClass,
+  globalNavMobileLinkActiveClass,
+  globalNavMobileLinkClass,
+} from "./nav-styles";
+import { NavCtaArrowIcon } from "./NavCtaArrowIcon";
 
 type Props = {
   open: boolean;
@@ -17,38 +22,46 @@ type Props = {
 
 /** Mobile drawer for global navigation. */
 export function DesignTestGlobalNavMobile({ open, links, pathname, onClose }: Props) {
-  if (!open) return null;
-
   return (
     <div
       id="design-test-global-nav-panel"
-      className={globalNavMobilePanel}
+      className={`dt-global-nav__mobile${open ? " dt-global-nav__mobile--open" : ""}`}
+      aria-hidden={!open}
     >
-      <nav aria-label="Global navigation">
-        <ul className="flex flex-col gap-1">
-          {links.map((item) => {
-            const active = isNavActive(pathname, item.href);
+      <div className="dt-global-nav__mobile-inner">
+        <nav aria-label="Global navigation">
+          <ul className="dt-global-nav__mobile-list">
+            {links.map((item) => {
+              const active = isNavActive(pathname, item.href);
 
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={onClose}
-                  className={`block rounded-lg px-3 py-2.5 ${globalNavLinkClasses(active)}`}
-                  aria-current={active ? "page" : undefined}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={onClose}
+                    className={`${globalNavMobileLinkClass}${active ? ` ${globalNavMobileLinkActiveClass}` : ""}`}
+                    aria-current={active ? "page" : undefined}
+                    tabIndex={open ? undefined : -1}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
-      <div className="mt-4 border-t border-white/10 pt-4">
-        <Link href={designTestGlobalNavCta.href} onClick={onClose} className={`${globalNavCta} w-full`}>
-          {designTestGlobalNavCta.label}
-        </Link>
+        <div className="dt-global-nav__mobile-cta-wrap">
+          <Link
+            href={designTestGlobalNavCta.href}
+            onClick={onClose}
+            className={globalNavMobileCtaClass}
+            tabIndex={open ? undefined : -1}
+          >
+            {designTestGlobalNavCta.label}
+            <NavCtaArrowIcon className="dt-global-nav__cta-icon" />
+          </Link>
+        </div>
       </div>
     </div>
   );
