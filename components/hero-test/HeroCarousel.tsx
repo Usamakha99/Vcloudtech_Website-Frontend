@@ -24,7 +24,8 @@ export const HERO_SLIDES = [
   }
 ] as const;
 
-const INTERVAL_MS = 3000;
+const INTERVAL_MS = 5000;
+const SLIDE_TRANSITION_MS = 550;
 
 function ChevronLeftIcon() {
   return (
@@ -111,7 +112,10 @@ export function HeroCarousel() {
         <div className="hero-test-carousel__stage">
           <div
             className="hero-test-carousel__track"
-            style={{ transform: `translate3d(-${activeIndex * 100}%, 0, 0)` }}
+            style={{
+              transform: `translate3d(-${activeIndex * 100}%, 0, 0)`,
+              transitionDuration: `${SLIDE_TRANSITION_MS}ms`,
+            }}
             aria-live="polite"
           >
             {HERO_SLIDES.map((slide, index) => (
