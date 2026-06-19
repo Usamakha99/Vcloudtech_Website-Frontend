@@ -1,4 +1,4 @@
-/** Partner marks in `public/partners/` — keep in sync when adding files. */
+/** Partner marks in `public/partners/` — use lowercase filenames (Linux/production paths are case-sensitive). */
 export const partnerLogos = [
   { name: "Adobe", src: "/partners/adobe.png" },
   { name: "Anthropic", src: "/partners/anthropic.png" },
@@ -16,7 +16,7 @@ export const partnerLogos = [
   { name: "Microsoft", src: "/partners/microsoft.png" },
   { name: "Samsung", src: "/partners/samsung.png" },
   { name: "VMware", src: "/partners/vmware.png" },
-  { name: "Veeam", src: "/partners/veeam.png" },
+  { name: "Veeam", src: "/partners/veeam-partner.png" },
   { name: "Zoom", src: "/partners/zoom.png" },
 ] as const;
 
@@ -26,7 +26,8 @@ export type PartnerLogo = (typeof partnerLogos)[number];
 export const strategicPartnerLogos = partnerLogos;
 
 export function partnerLogoDimensions(name: PartnerLogo["name"]) {
-  return name === "Microsoft" ? { width: 200, height: 200 } : { width: 253, height: 100 };
+  if (name === "Microsoft" || name === "Veeam") return { width: 200, height: 200 };
+  return { width: 253, height: 100 };
 }
 
 const boostedPartnerLogos = new Set<PartnerLogo["name"]>(["HP", "Veeam"]);
@@ -44,6 +45,6 @@ export function partnerLogoVisualClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__partner-logo--apple";
   if (name === "Google") return "tp__partner-logo--google";
   if (boostedPartnerLogos.has(name)) return "tp__partner-logo--boost";
-  const squareLogos = ["Microsoft", "VMware", "Malwarebytes"] as const;
+  const squareLogos = ["Microsoft", "VMware", "Malwarebytes", "Veeam"] as const;
   return (squareLogos as readonly string[]).includes(name) ? "tp__partner-logo--square" : "";
 }
