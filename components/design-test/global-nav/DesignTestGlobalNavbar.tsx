@@ -36,7 +36,7 @@ export function DesignTestGlobalNavbar() {
     queueMicrotask(() => setMounted(true));
 
     const onScroll = () => {
-      setScrolled(window.scrollY > 12);
+      setScrolled(window.scrollY > 24);
     };
 
     onScroll();
@@ -47,42 +47,44 @@ export function DesignTestGlobalNavbar() {
   const navClass = [
     "dt-global-nav",
     mounted ? "dt-global-nav--mounted" : "",
-    scrolled ? "dt-global-nav--scrolled" : "",
+    scrolled || mobileOpen ? "dt-global-nav--scrolled" : "",
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
     <header className={navClass}>
-      <div className="dt-global-nav__bar">
-        <Link
-          href={designTestGlobalNavBrand.href}
-          className="dt-global-nav__brand"
-          aria-label={designTestGlobalNavBrand.ariaLabel}
-        >
-          <VCloudTechLogoImage priority variant="light" className="dt-global-nav__logo" />
-        </Link>
-
-        <nav aria-label="Global navigation" className="dt-global-nav__links">
-          <DesignTestGlobalNavLinks links={designTestGlobalNavLinks} pathname={pathname} />
-        </nav>
-
-        <div className="dt-global-nav__actions">
-          <Link href={designTestGlobalNavCta.href} className={globalNavCtaClass}>
-            {designTestGlobalNavCta.label}
-            <NavCtaArrowIcon className="dt-global-nav__cta-icon" />
+      <div className="dt-global-nav__shell">
+        <div className="dt-global-nav__bar">
+          <Link
+            href={designTestGlobalNavBrand.href}
+            className="dt-global-nav__brand"
+            aria-label={designTestGlobalNavBrand.ariaLabel}
+          >
+            <VCloudTechLogoImage priority variant="light" className="dt-global-nav__logo" />
           </Link>
 
-          <button
-            type="button"
-            className="dt-global-nav__menu-btn"
-            aria-expanded={mobileOpen}
-            aria-controls="design-test-global-nav-panel"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMobileOpen((open) => !open)}
-          >
-            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-          </button>
+          <nav aria-label="Global navigation" className="dt-global-nav__links">
+            <DesignTestGlobalNavLinks links={designTestGlobalNavLinks} pathname={pathname} />
+          </nav>
+
+          <div className="dt-global-nav__actions">
+            <Link href={designTestGlobalNavCta.href} className={globalNavCtaClass}>
+              {designTestGlobalNavCta.label}
+              <NavCtaArrowIcon className="dt-global-nav__cta-icon" />
+            </Link>
+
+            <button
+              type="button"
+              className="dt-global-nav__menu-btn"
+              aria-expanded={mobileOpen}
+              aria-controls="design-test-global-nav-panel"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              onClick={() => setMobileOpen((open) => !open)}
+            >
+              {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+            </button>
+          </div>
         </div>
       </div>
 

@@ -1,9 +1,12 @@
-/* Premium enterprise global nav — design-test lab */
+/* Premium enterprise global nav — one unified transparent glass bar */
 
 .design-test-lab-page {
   --dt-nav-shell-pad-y: 0.875rem;
   --dt-nav-bar-height: 4.25rem;
   --dt-nav-occupancy: calc(var(--dt-nav-shell-pad-y) + var(--dt-nav-bar-height) + 0.625rem);
+  --dt-nav-glass-bg: rgba(255, 255, 255, 0.05);
+  --dt-nav-glass-border: rgba(255, 255, 255, 0.14);
+  --dt-nav-glass-blur: 12px;
 }
 
 @media (min-width: 640px) {
@@ -14,6 +17,13 @@
   }
 }
 
+.design-test-lab-page .dt-global-nav--scrolled {
+  --dt-nav-glass-bg: rgba(255, 255, 255, 0.07);
+  --dt-nav-glass-border: rgba(255, 255, 255, 0.18);
+  --dt-nav-glass-blur: 16px;
+}
+
+/* ── Shell ── */
 .dt-global-nav {
   position: fixed;
   inset: 0 0 auto;
@@ -32,45 +42,73 @@
   transform: translateY(0);
 }
 
+.dt-global-nav__shell {
+  position: relative;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+/* ── One unified glass bar — always visible, always see-through ── */
 .dt-global-nav__bar {
+  position: relative;
   pointer-events: auto;
   display: flex;
   align-items: center;
   gap: clamp(0.75rem, 2vw, 1.25rem);
   height: var(--dt-nav-bar-height);
-  max-width: 80rem;
-  margin-inline: auto;
   padding-inline: clamp(1rem, 2.5vw, 1.75rem);
   border-radius: 1.125rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(
-    135deg,
-    rgba(4, 19, 41, 0.72) 0%,
-    rgba(4, 19, 41, 0.52) 100%
-  );
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 12px 40px -20px rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  transition:
-    background 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease,
-    border-radius 0.35s ease;
+  border: none;
+  background: transparent;
+  isolation: isolate;
+  transition: box-shadow 0.4s ease;
 }
 
-.dt-global-nav--scrolled .dt-global-nav__bar {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: linear-gradient(
-    135deg,
-    rgba(4, 19, 41, 0.88) 0%,
-    rgba(4, 19, 41, 0.78) 100%
-  );
+/* Glass surface — defines the single navbar shape */
+.dt-global-nav__bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  border: 1px solid var(--dt-nav-glass-border);
+  background: var(--dt-nav-glass-bg);
+  backdrop-filter: blur(var(--dt-nav-glass-blur)) saturate(130%);
+  -webkit-backdrop-filter: blur(var(--dt-nav-glass-blur)) saturate(130%);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 16px 48px -24px rgba(0, 0, 0, 0.65),
-    0 0 0 1px rgba(179, 179, 179, 0.04);
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 12px 40px -24px rgba(0, 0, 0, 0.35);
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease,
+    backdrop-filter 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* Top edge highlight — depth without blocking transparency */
+.dt-global-nav__bar::after {
+  content: "";
+  position: absolute;
+  inset: 1px 1px auto;
+  z-index: 0;
+  height: 40%;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.dt-global-nav--scrolled .dt-global-nav__bar::before {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 16px 48px -28px rgba(0, 0, 0, 0.4);
+}
+
+/* Content always sharp above glass */
+.dt-global-nav__brand,
+.dt-global-nav__links,
+.dt-global-nav__actions {
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 1024px) {
@@ -148,13 +186,21 @@
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.2;
-  color: rgba(161, 161, 170, 0.95);
+  color: rgba(255, 255, 255, 0.82);
   text-decoration: none;
   border-radius: 0.5rem;
   outline: none;
   transition:
     color 0.28s ease,
     background-color 0.28s ease;
+}
+
+.dt-global-nav:not(.dt-global-nav--scrolled) .dt-global-nav__link {
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.dt-global-nav--scrolled .dt-global-nav__link {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 @media (min-width: 1280px) {
@@ -341,15 +387,11 @@
   margin-inline: auto;
   padding: 0.75rem;
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(
-    160deg,
-    rgba(4, 19, 41, 0.92) 0%,
-    rgba(4, 19, 41, 0.82) 100%
-  );
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  box-shadow: 0 16px 48px -24px rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 12px 40px -24px rgba(0, 0, 0, 0.35);
 }
 
 @media (min-width: 1024px) {
@@ -427,6 +469,7 @@
 @media (prefers-reduced-motion: reduce) {
   .dt-global-nav,
   .dt-global-nav__bar,
+  .dt-global-nav__bar::before,
   .dt-global-nav__link,
   .dt-global-nav__link-underline,
   .dt-global-nav__cta,
