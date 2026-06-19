@@ -29,11 +29,16 @@
   animation-delay: 0.44s;
 }
 
+.hero-test-fade-in-delay-4 {
+  animation-delay: 0.58s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-test-fade-in,
   .hero-test-fade-in-delay-1,
   .hero-test-fade-in-delay-2,
-  .hero-test-fade-in-delay-3 {
+  .hero-test-fade-in-delay-3,
+  .hero-test-fade-in-delay-4 {
     animation: none;
     opacity: 1;
     transform: none;

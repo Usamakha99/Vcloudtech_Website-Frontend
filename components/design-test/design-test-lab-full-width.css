@@ -43,26 +43,26 @@
   }
 }
 
-/* Hero copy — left side, vertically centered; match lab page inset */
-.design-test-lab-page .hero-test-hero-shell {
-  padding-left: 0.75rem;
+/* Hero copy — align with lab page inset */
+.design-test-lab-page .hero-test-hero-content {
+  margin-left: clamp(0.75rem, 4vw, 1.5rem);
 }
 
 @media (min-width: 640px) {
-  .design-test-lab-page .hero-test-hero-shell {
-    padding-left: 1rem;
+  .design-test-lab-page .hero-test-hero-content {
+    margin-left: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .design-test-lab-page .hero-test-hero-shell {
-    padding-left: 1.25rem;
+  .design-test-lab-page .hero-test-hero-content {
+    margin-left: 1.25rem;
   }
 }
 
 @media (min-width: 1280px) {
-  .design-test-lab-page .hero-test-hero-shell {
-    padding-left: 1.5rem;
+  .design-test-lab-page .hero-test-hero-content {
+    margin-left: 1.5rem;
   }
 }
 

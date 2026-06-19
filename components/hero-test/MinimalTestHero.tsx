@@ -19,7 +19,7 @@ export function MinimalTestHero({
       <section
         className={`hero-test-hero-section--carousel ${
           fullPageGradient ? "bg-transparent" : "hero-test-gradient"
-        }`}
+        } ${offsetForFixedHeader ? "hero-test-hero-section--offset-nav" : ""}`}
         aria-labelledby="hero-test-heading"
       >
         <div className="hero-test-hero-media">
@@ -29,29 +29,28 @@ export function MinimalTestHero({
         <div className="hero-test-hero-scrim" aria-hidden />
 
         <div className="hero-test-hero-overlay">
-          <div className="hero-test-hero-shell">
-            <div className="hero-test-hero-copy">
-              <p className="hero-test-fade-in hero-test-hero-eyebrow">
-                Enterprise IT solutions
-              </p>
+          <div className="hero-test-hero-content">
+            <p className="hero-test-fade-in hero-test-hero-badge">
+              <span className="hero-test-hero-badge__dot" aria-hidden />
+              Trusted enterprise technology partner
+            </p>
 
-              <h1 id="hero-test-heading" className="hero-test-fade-in hero-test-fade-in-delay-1 hero-test-hero-title">
-                Infrastructure you can see working
-              </h1>
+            <h1 id="hero-test-heading" className="hero-test-fade-in hero-test-fade-in-delay-1 hero-test-hero-title">
+              The technology partner enterprises trust for procurement, cloud, and security at scale.
+            </h1>
 
-              <p className="hero-test-fade-in hero-test-fade-in-delay-2 hero-test-hero-desc">
-                Procurement, cloud, security, and hardware — delivered with real warehouse scale,
-                accountable teams, and the speed enterprise IT demands.
-              </p>
+            <p className="hero-test-fade-in hero-test-fade-in-delay-2 hero-test-hero-desc">
+              vCloudTech helps IT leaders source, deploy, and secure critical infrastructure—with
+              accountable teams and nationwide delivery.
+            </p>
 
-              <div className="hero-test-fade-in hero-test-fade-in-delay-3 hero-test-hero-actions">
-                <ButtonLink href="/contact" variant="ctaWhite" className="min-w-[9.5rem]">
-                  Get a quote
-                </ButtonLink>
-                <ButtonLink href="/services" variant="outlineOnNavy" className="min-w-[9.5rem]">
-                  Explore services
-                </ButtonLink>
-              </div>
+            <div className="hero-test-fade-in hero-test-fade-in-delay-3 hero-test-hero-actions">
+              <ButtonLink href="/contact" variant="ctaWhite" className="hero-test-hero-cta-primary">
+                Get free consultation
+              </ButtonLink>
+              <Link href="/services" className="hero-test-hero-cta-secondary">
+                Explore services
+              </Link>
             </div>
           </div>
         </div>

@@ -36,6 +36,6 @@
 }
 
 .design-test-lab-page .about-minimal__lede,
-.design-test-lab-page .hero-test-hero-copy > p:not(:first-child) {
-  font-weight: 500;
+.design-test-lab-page .hero-test-hero-desc {
+  font-weight: 400;
 }
