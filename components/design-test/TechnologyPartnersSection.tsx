@@ -217,13 +217,14 @@ export function TechnologyPartnersSection() {
           <h3 className="tp__trusted-heading">Major Partners</h3>
           <motion.ul
             className="tp__partner-grid tp__partner-grid--all"
+            data-nav-surface="light"
             variants={staggerContainer}
             initial="hidden"
             animate={showcaseActive ? "show" : "hidden"}
           >
             {partnerLogos.map((partner) => (
               <motion.li key={partner.name} variants={fadeUpTight}>
-                <div className="tp__partner-cell group" data-nav-surface="light">
+                <div className="tp__partner-cell group">
                   <div className="tp__partner-logo-slot">
                     <Image
                       src={partner.src}

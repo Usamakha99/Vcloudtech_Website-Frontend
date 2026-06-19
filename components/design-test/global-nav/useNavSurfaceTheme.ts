@@ -6,14 +6,23 @@ export type NavSurface = "light" | "dark";
 
 function readSurfaceAtNav(header: HTMLElement): NavSurface {
   const rect = header.getBoundingClientRect();
-  const x = Math.min(Math.max(rect.left + rect.width / 2, 0), window.innerWidth - 1);
   const y = Math.min(rect.bottom + 2, window.innerHeight - 1);
-  let node = document.elementFromPoint(x, y);
+  const sampleXs = [
+    rect.left + rect.width * 0.25,
+    rect.left + rect.width * 0.5,
+    rect.left + rect.width * 0.75,
+  ];
 
-  while (node) {
-    const surface = node.getAttribute("data-nav-surface");
-    if (surface === "light" || surface === "dark") return surface;
-    node = node.parentElement;
+  for (const rawX of sampleXs) {
+    const x = Math.min(Math.max(rawX, 0), window.innerWidth - 1);
+    let node = document.elementFromPoint(x, y);
+
+    while (node) {
+      const surface = node.getAttribute("data-nav-surface");
+      if (surface === "light") return "light";
+      if (surface === "dark") break;
+      node = node.parentElement;
+    }
   }
 
   return "dark";
