@@ -34,58 +34,92 @@ export type ServiceItem = {
   description: string;
   href: string;
   icon: SectionIcon;
-  image: string;
+  image?: string;
+  bullets?: readonly string[];
 };
 
-/** Wireframe service grid — Procurement · Licensing · Cloud · Security · IT Support · Hardware */
+/** Enterprise service cards — copy aligned with marketing layout. */
 export const SERVICES_GRID_ITEMS: ServiceItem[] = [
   {
     title: "IT Hardware & Procurement",
     description:
-      "Streamlined IT sourcing with approvals, audit trails, and accountable vendor management.",
+      "As an authorized reseller for 200+ leading brands, we source and deploy hardware. Public sector buyers leverage our GSA Schedule, Sourcewell, and SEWP V contracts to reduce procurement timelines.",
     href: "/procurement",
     icon: CartIcon,
     image: serviceImages.procurement,
+    bullets: [
+      "Authorized reseller for 200+ leading brands",
+      "GSA, Sourcewell, and SEWP V contracts",
+      "Hardware staging, configuration, and lifecycle management",
+    ],
   },
   {
     title: "IT Strategy & Virtual CIO",
     description:
-      "Right-size software spend with expert licensing programs and contract oversight.",
+      "Our Virtual CIO service provides senior-level IT leadership building a technology roadmap, optimizing IT spending, and aligning strategy with business goals.",
     href: "/procurement",
     icon: ContractIcon,
     image: serviceImages.licensing,
+    bullets: [
+      "Multi-year IT roadmap tied to strategic plan",
+      "Budget planning and IT spend optimization",
+      "Vendor selection and contract negotiation",
+      "Executive-level technology advisory and AI adoption strategy",
+    ],
   },
   {
-    title: "Cloud Solution",
+    title: "Cloud Solutions",
     description:
-      "Migration, modernization, and hybrid cloud operations built for enterprise governance.",
+      "We design the right cloud architecture with cost controls and compliance. From readiness assessment to migration and ongoing management, we ensure performance long after go-live.",
     href: "/solutions/cloud-infrastructure",
     icon: CloudIcon,
     image: serviceImages.cloud,
+    bullets: [
+      "Cloud readiness assessment and architecture design",
+      "Migration to AWS, Azure, Google Cloud, or hybrid",
+      "FedRAMP authorized deployments",
+      "Cloud cost optimization and ongoing management",
+    ],
   },
   {
     title: "Cyber Security & SOC",
     description:
-      "Zero-trust alignment, tooling integration, and continuous hardening for risk profiles.",
+      "Active, ongoing protection from our Security Operations Center. We combine AI-assisted threat detection with human analysts to contain threats before they cause damage.",
     href: "/solutions/cybersecurity",
     icon: ShieldIcon,
     image: serviceImages.security,
+    bullets: [
+      "AI-powered threat detection across all environments",
+      "Zero-trust architecture design",
+      "Compliance support for major frameworks",
+    ],
   },
   {
     title: "Managed IT Services",
     description:
-      "24/7 operations, escalation paths, and direct engineer access when systems matter most.",
+      "We take complete ownership of your IT environment monitoring, maintaining, patching, supporting, and optimizing every system around the clock.",
     href: "/contact",
     icon: HeadsetIcon,
     image: serviceImages.itSupport,
+    bullets: [
+      "24/7 monitoring and proactive maintenance",
+      "Help desk support with defined SLAs",
+      "Patch management and lifecycle oversight",
+      "Vendor coordination and monthly performance reporting",
+    ],
   },
   {
-    title: "Ai & Intelligent Automation",
+    title: "AI & Intelligent Automation",
     description:
-      "Enterprise hardware sourcing, lifecycle management, and deployment coordination.",
+      "We deploy AI across your IT operations to automate routine work, accelerate response times, and predict problems before they become incidents.",
     href: "/services",
     icon: ServerIcon,
     image: serviceImages.hardware,
+    bullets: [
+      "AI that makes your IT smarter and your team more productive",
+      "Intelligent threat detection and compliance automation",
+      "AI readiness assessment reveals ROI opportunities",
+    ],
   },
 ];
 
@@ -99,7 +133,7 @@ type Props = {
   surface?: "light" | "glass";
 };
 
-/** 3-column service cards with icon, copy, and hover lift. */
+/** Service cards grid — glass surface uses flip cards (image front, text back); light uses classic layout. */
 export function ServicesGrid({
   items = SERVICES_GRID_ITEMS,
   badge,
@@ -158,18 +192,7 @@ export function ServicesGrid({
                       <ServiceCardFront item={item} />
                     </div>
                     <div className="service-flip-face service-flip-back">
-                      <div className="service-flip-back-content">
-                        <div className="service-flip-back-icon service-flip-back-icon--enhanced">
-                          <item.icon />
-                        </div>
-                        <h3 className={`text-base font-semibold tracking-tight sm:text-lg ${dt.heading}`}>
-                          {item.title}
-                        </h3>
-                        <span className={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold ${dt.link}`}>
-                          Learn more
-                          <span aria-hidden>→</span>
-                        </span>
-                      </div>
+                      <ServiceGlassCardBack item={item} />
                     </div>
                   </div>
                 </Link>
@@ -195,6 +218,8 @@ export function ServicesGrid({
 }
 
 function ServiceCardFront({ item }: { item: ServiceItem }) {
+  if (!item.image) return null;
+
   return (
     <div className="absolute inset-0">
       <div className="relative h-full w-full">
@@ -211,10 +236,48 @@ function ServiceCardFront({ item }: { item: ServiceItem }) {
           className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"
           aria-hidden
         />
-        <h3 className="absolute bottom-3 left-3 z-10 text-base font-bold text-white sm:bottom-4 sm:left-4 sm:text-lg">{item.title}</h3>
-        <span className="absolute bottom-2 left-3 z-10 h-0.5 w-8 bg-[#b3b3b3] sm:bottom-3 sm:left-4 sm:w-10" aria-hidden />
+        <h3 className="absolute bottom-3 left-3 z-10 text-base font-bold text-white sm:bottom-4 sm:left-4 sm:text-lg">
+          {item.title}
+        </h3>
+        <span
+          className="absolute bottom-2 left-3 z-10 h-0.5 w-8 bg-[#b3b3b3] sm:bottom-3 sm:left-4 sm:w-10"
+          aria-hidden
+        />
       </div>
     </div>
+  );
+}
+
+function ServiceGlassCardBack({ item }: { item: ServiceItem }) {
+  return (
+    <div className="service-flip-back-content service-flip-back-content--detail">
+      <div className="service-flip-back-scroll">
+        <h3 className="service-content-card__title">{item.title}</h3>
+        <p className="service-content-card__desc">{item.description}</p>
+        {item.bullets && item.bullets.length > 0 ? (
+          <ul className="service-content-card__list">
+            {item.bullets.map((bullet) => (
+              <li key={bullet} className="service-content-card__list-item">
+                <CheckIcon />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+      <div className="service-content-card__cta-wrap">
+        <span className="service-content-card__cta">Learn More</span>
+      </div>
+    </div>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="service-content-card__check" aria-hidden>
+      <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.25" />
+      <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
@@ -292,4 +355,3 @@ function ServiceCardSnakeBorder({ id }: { id: string }) {
     </svg>
   );
 }
-
