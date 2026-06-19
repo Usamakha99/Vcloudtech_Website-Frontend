@@ -623,8 +623,25 @@
   transform-origin: center center;
 }
 
+/* Square Apple mark — narrower slot so spacing matches wide horizontal logos */
+.tp__trusted-strip-logo-box--equal:has(.tp__strategic-strip-logo--apple) {
+  width: 5.75rem;
+}
+
+@media (min-width: 640px) {
+  .tp__trusted-strip-logo-box--equal:has(.tp__strategic-strip-logo--apple) {
+    width: 7.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tp__trusted-strip-logo-box--equal:has(.tp__strategic-strip-logo--apple) {
+    width: 7.75rem;
+  }
+}
+
 .tp__strategic-strip-logo--apple {
-  transform: scale(0.78);
+  transform: scale(1.12);
 }
 
 .tp__strategic-strip-logo--boost {

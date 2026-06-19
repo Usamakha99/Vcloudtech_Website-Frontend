@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const partners = [
-  { name: "Adobe", src: "/partners/adobe.png" },
   { name: "Apple", src: "/partners/apple.png" },
+  { name: "Adobe", src: "/partners/adobe.png" },
+ 
   { name: "AWS", src: "/partners/aws.png" },
   { name: "Barracuda", src: "/partners/barracuda.png" },
   { name: "Check Point", src: "/partners/checkpoint.png" },
