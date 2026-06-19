@@ -10,18 +10,33 @@ export const HERO_SLIDES = [
   {
     src: "/images/hero-1.png",
     alt: "vCloud Tech reception area with branded feature wall and conference room",
-    title: "Enterprise Cloud Infrastructure",
+    title: "Infrastructure Built for What's Next",
+    headline: "Infrastructure Built for What's Next",
+    description:
+      "Delivering the technology foundations modern organizations need to scale confidently, perform reliably, and innovate continuously.",
+    primaryCta: { label: "Get free consultation", href: "/contact" },
+    secondaryCta: { label: "Explore services", href: "/services" },
   },
   {
     src: "/images/hero-2.png",
     alt: "vCloud Tech open workspace with testing benches and VCLOUD TECH signage",
-    title: "Cybersecurity & Managed Services",
+    title: "Confidence in Every Connection",
+    headline: "Confidence in Every Connection",
+    description:
+      "Advanced cybersecurity, compliance, and risk management solutions engineered to protect your business at every level.",
+    primaryCta: { label: "Get free consultation", href: "/contact" },
+    secondaryCta: { label: "Explore services", href: "/services" },
   },
   {
     src: "/images/hero-4.png",
     alt: "vCloud Tech reception and operations floor with VCLOUDTECH branding",
-    title: "Scalable IT Operations & Support",
-  }
+    title: "Technology That Drives Business Outcomes",
+    headline: "Technology That Drives Business Outcomes",
+    description:
+      "From strategic consulting to fully managed IT operations, we help organizations reduce complexity, increase efficiency, and accelerate innovation.",
+    primaryCta: { label: "Schedule a Consultation", href: "/contact" },
+    secondaryCta: { label: "Discover Services", href: "/services" },
+  },
 ] as const;
 
 const INTERVAL_MS = 5000;
@@ -55,7 +70,11 @@ function ChevronRightIcon() {
   );
 }
 
-export function HeroCarousel() {
+type HeroCarouselProps = {
+  onActiveIndexChange?: (index: number) => void;
+};
+
+export function HeroCarousel({ onActiveIndexChange }: HeroCarouselProps = {}) {
   const introReady = useIntroReady();
   const [mobile, setMobile] = useState(
     () => typeof window !== "undefined" && isMobileDevice(),
@@ -94,6 +113,10 @@ export function HeroCarousel() {
 
     return () => window.clearInterval(timer);
   }, [carouselActive, paused, slideCount]);
+
+  useEffect(() => {
+    onActiveIndexChange?.(activeIndex);
+  }, [activeIndex, onActiveIndexChange]);
 
   return (
     <div

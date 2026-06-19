@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { HeroCarousel } from "@/components/hero-test/HeroCarousel";
+import { CarouselHeroSection } from "@/components/hero-test/CarouselHeroSection";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 
 type Props = {
@@ -16,45 +16,7 @@ export function MinimalTestHero({
 }: Props) {
   if (showCarousel) {
     return (
-      <section
-        className={`hero-test-hero-section--carousel ${
-          fullPageGradient ? "bg-transparent" : "hero-test-gradient"
-        } ${offsetForFixedHeader ? "hero-test-hero-section--offset-nav" : ""}`}
-        aria-labelledby="hero-test-heading"
-      >
-        <div className="hero-test-hero-media">
-          <HeroCarousel />
-        </div>
-
-        <div className="hero-test-hero-scrim" aria-hidden />
-
-        <div className="hero-test-hero-overlay">
-          <div className="hero-test-hero-content">
-            <p className="hero-test-fade-in hero-test-hero-badge">
-              <span className="hero-test-hero-badge__dot" aria-hidden />
-              Trusted enterprise technology partner
-            </p>
-
-            <h1 id="hero-test-heading" className="hero-test-fade-in hero-test-fade-in-delay-1 hero-test-hero-title">
-              The technology partner enterprises trust for procurement, cloud, and security at scale.
-            </h1>
-
-            <p className="hero-test-fade-in hero-test-fade-in-delay-2 hero-test-hero-desc">
-              vCloudTech helps IT leaders source, deploy, and secure critical infrastructure—with
-              accountable teams and nationwide delivery.
-            </p>
-
-            <div className="hero-test-fade-in hero-test-fade-in-delay-3 hero-test-hero-actions">
-              <ButtonLink href="/contact" variant="ctaWhite" className="hero-test-hero-cta-primary">
-                Get free consultation
-              </ButtonLink>
-              <Link href="/services" className="hero-test-hero-cta-secondary">
-                Explore services
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CarouselHeroSection offsetForFixedHeader={offsetForFixedHeader} fullPageGradient={fullPageGradient} />
     );
   }
 
