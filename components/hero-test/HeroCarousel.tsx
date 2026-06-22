@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useIntroReady } from "@/components/intro/intro-context";
 import { isMobileDevice } from "@/components/intro/intro-device";
@@ -76,12 +76,19 @@ type HeroCarouselProps = {
 
 export function HeroCarousel({ onActiveIndexChange }: HeroCarouselProps = {}) {
   const introReady = useIntroReady();
-  const [mobile, setMobile] = useState(
-    () => typeof window !== "undefined" && isMobileDevice(),
-  );
+  const [mobile] = useState(() => typeof window !== "undefined" && isMobileDevice());
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const slideCount = HERO_SLIDES.length;
+
+  const pausedRef = useRef(false);
+  const introReadyRef = useRef(introReady);
+  const onActiveIndexChangeRef = useRef(onActiveIndexChange);
+
+  pausedRef.current = paused;
+  onActiveIndexChangeRef.current = onActiveIndexChange;
+
+  const autoplayEnabled = introReady || mobile;
 
   const goTo = useCallback(
     (index: number) => {
@@ -91,43 +98,86 @@ export function HeroCarousel({ onActiveIndexChange }: HeroCarouselProps = {}) {
   );
 
   const goNext = useCallback(() => {
-    goTo(activeIndex + 1);
-  }, [activeIndex, goTo]);
+    setActiveIndex((prev) => (prev + 1) % slideCount);
+  }, [slideCount]);
 
   const goPrev = useCallback(() => {
-    goTo(activeIndex - 1);
-  }, [activeIndex, goTo]);
+    setActiveIndex((prev) => (prev - 1 + slideCount) % slideCount);
+  }, [slideCount]);
 
   useEffect(() => {
-    setMobile(isMobileDevice());
-  }, []);
-
-  const carouselActive = introReady || mobile;
+    onActiveIndexChangeRef.current?.(activeIndex);
+  }, [activeIndex]);
 
   useEffect(() => {
-    if (!carouselActive || paused) return;
+    const wasReady = introReadyRef.current;
+    introReadyRef.current = introReady;
 
-    const timer = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % slideCount);
-    }, INTERVAL_MS);
-
-    return () => window.clearInterval(timer);
-  }, [carouselActive, paused, slideCount]);
+    if (!wasReady && introReady) {
+      setPaused(false);
+      pausedRef.current = false;
+      setActiveIndex(0);
+    }
+  }, [introReady]);
 
   useEffect(() => {
-    onActiveIndexChange?.(activeIndex);
-  }, [activeIndex, onActiveIndexChange]);
+    if (!autoplayEnabled) return;
+
+    let timeoutId: number | null = null;
+    let cancelled = false;
+
+    const scheduleNext = () => {
+      timeoutId = window.setTimeout(() => {
+        if (cancelled) return;
+
+        if (!pausedRef.current && document.visibilityState === "visible") {
+          setActiveIndex((prev) => (prev + 1) % slideCount);
+        }
+
+        scheduleNext();
+      }, INTERVAL_MS);
+    };
+
+    const startAutoplay = () => {
+      if (cancelled) return;
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+      scheduleNext();
+    };
+
+    const rafId = requestAnimationFrame(() => {
+      requestAnimationFrame(startAutoplay);
+    });
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "visible" && !cancelled) {
+        startAutoplay();
+      }
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(rafId);
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [autoplayEnabled, slideCount]);
 
   return (
     <div
       className="hero-test-carousel"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) {
-          setPaused(false);
-        }
+      onPointerEnter={() => {
+        setPaused(true);
+        pausedRef.current = true;
+      }}
+      onPointerLeave={() => {
+        setPaused(false);
+        pausedRef.current = false;
       }}
     >
       <div className="hero-test-carousel__viewport">
