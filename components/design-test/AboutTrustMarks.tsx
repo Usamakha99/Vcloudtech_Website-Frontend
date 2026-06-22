@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 export type AboutTrustMarkId = "iso" | "gsa" | "sourcewell" | "sewp";
@@ -21,7 +22,7 @@ export function AboutTrustMark({
 }) {
   return (
     <span
-      className={`about-trust-mark${variant === "inline" ? " about-trust-mark--inline" : ""}${variant === "strip" ? " about-trust-mark--strip" : ""}`}
+      className={`about-trust-mark${id === "iso" ? " about-trust-mark--iso" : ""}${variant === "inline" ? " about-trust-mark--inline" : ""}${variant === "strip" ? " about-trust-mark--strip" : ""}`}
       aria-hidden
     >
       {markById[id]}
@@ -33,19 +34,14 @@ const stroke = "currentColor";
 
 const markById: Record<AboutTrustMarkId, ReactNode> = {
   iso: (
-    <svg viewBox="0 0 40 40" fill="none" className="about-trust-mark__svg">
-      <circle cx="20" cy="20" r="16" stroke={stroke} strokeWidth="1.25" strokeOpacity="0.45" />
-      <circle cx="20" cy="20" r="12.5" stroke={stroke} strokeWidth="1.25" />
-      <text
-        x="20"
-        y="20.5"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        className="about-trust-mark__text"
-      >
-        ISO
-      </text>
-    </svg>
+    <Image
+      src="/design-test/credentials/iso-9001-2015-white.png"
+      alt=""
+      width={1024}
+      height={936}
+      className="about-trust-mark__img about-trust-mark__img--iso"
+      unoptimized
+    />
   ),
   gsa: (
     <svg viewBox="0 0 40 40" fill="none" className="about-trust-mark__svg">

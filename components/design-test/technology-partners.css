@@ -611,14 +611,16 @@
 .tp__trusted-strip-logo-box--equal {
   width: 12rem;
   height: 6.25rem;
-  padding: 0.3rem 0.35rem;
+  padding: 0.45rem 0.55rem;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 @media (min-width: 640px) {
   .tp__trusted-strip-logo-box--equal {
     width: 13.5rem;
     height: 6.75rem;
-    padding: 0.35rem 0.4rem;
+    padding: 0.5rem 0.6rem;
   }
 }
 
@@ -626,7 +628,7 @@
   .tp__trusted-strip-logo-box--equal {
     width: 14.5rem;
     height: 7.25rem;
-    padding: 0.4rem 0.45rem;
+    padding: 0.55rem 0.65rem;
   }
 }
 
@@ -634,6 +636,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .tp__strategic-strip-logo {
@@ -672,6 +675,34 @@
   transform: scale(1.85);
 }
 
+/* Palo Alto + last four — equal strip sizing, clipped to cell (no overlap) */
+.tp__strategic-strip-logo--palo-alto,
+.tp__strategic-strip-logo--lansweeper,
+.tp__strategic-strip-logo--servicenow,
+.tp__strategic-strip-logo--commvault {
+  transform: scale(1.02);
+}
+
+.tp__strategic-strip-logo--crowdstrike {
+  transform: scale(1.18);
+}
+
+.tp__trusted-strip-marquee--strategic .tp__trusted-strip-track--static {
+  gap: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  .tp__trusted-strip-marquee--strategic .tp__trusted-strip-track--static {
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tp__trusted-strip-marquee--strategic .tp__trusted-strip-track--static {
+    gap: 1.35rem;
+  }
+}
+
 .tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--boost {
   transform: scale(1.56);
 }
@@ -680,8 +711,41 @@
   transform: scale(1.92);
 }
 
-.tp__partner-grid--all .tp__partner-logo--apple {
-  transform: scale(0.88);
+.tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--palo-alto,
+.tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--lansweeper,
+.tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--servicenow,
+.tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--commvault {
+  transform: scale(1.06);
+}
+
+.tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--crowdstrike {
+  transform: scale(1.22);
+}
+
+.tp__partner-grid--all .tp__partner-logo--palo-alto,
+.tp__partner-grid--all .tp__partner-logo--lansweeper,
+.tp__partner-grid--all .tp__partner-logo--servicenow,
+.tp__partner-grid--all .tp__partner-logo--commvault {
+  transform: scale(1.08);
+}
+
+.tp__partner-grid--all .tp__partner-logo--crowdstrike {
+  transform: scale(1.22);
+}
+
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--palo-alto,
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--lansweeper,
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--servicenow,
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--commvault {
+  transform: scale(1.12);
+}
+
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--crowdstrike {
+  transform: scale(1.26);
+}
+
+.tp__partner-grid--all .tp__partner-logo--splunk {
+  transform: scale(1);
 }
 
 .tp__partner-logo--apple {
@@ -692,10 +756,6 @@
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--apple,
 .tp__partner-cell:hover .tp__partner-logo--apple {
   transform: scale(0.92);
-}
-
-.tp__partner-grid--all .tp__partner-logo--splunk {
-  transform: scale(1);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--splunk {
@@ -834,6 +894,28 @@
 
   .tp__strategic-strip-logo--google {
     transform: scale(1.85);
+  }
+
+  .tp__strategic-strip-logo--palo-alto,
+  .tp__strategic-strip-logo--lansweeper,
+  .tp__strategic-strip-logo--servicenow,
+  .tp__strategic-strip-logo--commvault {
+    transform: scale(1.02);
+  }
+
+  .tp__strategic-strip-logo--crowdstrike {
+    transform: scale(1.18);
+  }
+
+  .tp__partner-grid--all .tp__partner-logo--palo-alto,
+  .tp__partner-grid--all .tp__partner-logo--lansweeper,
+  .tp__partner-grid--all .tp__partner-logo--servicenow,
+  .tp__partner-grid--all .tp__partner-logo--commvault {
+    transform: scale(1.08);
+  }
+
+  .tp__partner-grid--all .tp__partner-logo--crowdstrike {
+    transform: scale(1.22);
   }
 
   .tp__trusted-strip-logo {

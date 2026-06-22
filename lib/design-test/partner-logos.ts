@@ -38,11 +38,24 @@ export function partnerLogoDimensions(name: PartnerLogo["name"]) {
 
 const boostedPartnerLogos = new Set<PartnerLogo["name"]>(["HP", "Veeam"]);
 
+const strategicStripTunedPartners = new Set<PartnerLogo["name"]>([
+  "Palo Alto",
+  "Lansweeper",
+  "ServiceNow",
+  "CrowdStrike",
+  "Commvault",
+]);
+
+function partnerLogoSlug(name: PartnerLogo["name"]) {
+  return name.toLowerCase().replace(/\s+/g, "-");
+}
+
 /** Per-logo scale tweaks so strip/grid slots look visually equal. */
 export function partnerLogoStripClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__strategic-strip-logo--apple";
   if (name === "Google") return "tp__strategic-strip-logo--google";
   if (boostedPartnerLogos.has(name)) return "tp__strategic-strip-logo--boost";
+  if (strategicStripTunedPartners.has(name)) return `tp__strategic-strip-logo--${partnerLogoSlug(name)}`;
   return "";
 }
 
@@ -51,6 +64,7 @@ export function partnerLogoVisualClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__partner-logo--apple";
   if (name === "Google") return "tp__partner-logo--google";
   if (boostedPartnerLogos.has(name)) return "tp__partner-logo--boost";
+  if (strategicStripTunedPartners.has(name)) return `tp__partner-logo--${partnerLogoSlug(name)}`;
   const squareLogos = ["Microsoft", "VMware", "Malwarebytes", "Veeam"] as const;
   return (squareLogos as readonly string[]).includes(name) ? "tp__partner-logo--square" : "";
 }
