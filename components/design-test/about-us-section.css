@@ -1526,14 +1526,23 @@
   background: rgba(179, 179, 179, 0.08);
 }
 
-.about-trust-mark--iso {
+.about-trust-mark--iso,
+.about-trust-mark--gsa,
+.about-trust-mark--sourcewell,
+.about-trust-mark--tips {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.18);
   overflow: hidden;
 }
 
 .about-minimal__trust-item:hover .about-trust-mark--iso,
-.about-minimal__trust-item:focus-within .about-trust-mark--iso {
+.about-minimal__trust-item:focus-within .about-trust-mark--iso,
+.about-minimal__trust-item:hover .about-trust-mark--gsa,
+.about-minimal__trust-item:focus-within .about-trust-mark--gsa,
+.about-minimal__trust-item:hover .about-trust-mark--sourcewell,
+.about-minimal__trust-item:focus-within .about-trust-mark--sourcewell,
+.about-minimal__trust-item:hover .about-trust-mark--tips,
+.about-minimal__trust-item:focus-within .about-trust-mark--tips {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.2);
 }
@@ -1543,11 +1552,23 @@
   height: 1.75rem;
 }
 
+.about-trust-mark__img {
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: contain;
+  opacity: 1;
+}
+
 .about-trust-mark__img--iso {
   width: 2.35rem;
   height: 2.35rem;
-  object-fit: contain;
-  opacity: 1;
+}
+
+.about-trust-mark__img--gsa,
+.about-trust-mark__img--sourcewell,
+.about-trust-mark__img--tips {
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 .about-trust-mark__text {

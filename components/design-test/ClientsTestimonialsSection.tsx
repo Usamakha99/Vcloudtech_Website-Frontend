@@ -9,7 +9,7 @@ const clientLogos = [
   { name: "Cisco", src: "/partners/cisco.png" },
   { name: "Dell", src: "/partners/dell.png" },
   { name: "HPE", src: "/partners/hpe.png" },
-  { name: "VMware", src: "/partners/vmware.png" },
+  { name: "Acronis", src: "/partners/acronis.png" },
   { name: "Adobe", src: "/partners/adobe.png" },
   { name: "Fortinet", src: "/partners/fortinet.png" },
 ] as const;

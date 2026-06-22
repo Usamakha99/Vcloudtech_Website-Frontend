@@ -10,7 +10,7 @@ const vendors = [
   { name: "Dell", src: "/partners/dell.png" },
   { name: "HP", src: "/partners/hp.png" },
   { name: "Lenovo", src: "/partners/lenovo.png" },
-  { name: "VMware", src: "/partners/vmware.png" },
+  { name: "Acronis", src: "/partners/acronis.png" },
 ] as const;
 
 /** Vendor & technology partners — minimal logo strip with glass tiles. */

@@ -15,7 +15,7 @@ export const partnerLogos = [
   { name: "Malwarebytes", src: "/partners/malwarebytes.png" },
   { name: "Microsoft", src: "/partners/microsoft.png" },
   { name: "Samsung", src: "/partners/samsung.png" },
-  { name: "VMware", src: "/partners/vmware-logo-black.png" },
+  { name: "Acronis", src: "/partners/acronis.png" },
   { name: "Veeam", src: "/partners/veeam-partner.png" },
   { name: "Zoom", src: "/partners/zoom.png" },
   { name: "Barracuda", src: "/partners/Barracuda-Networks-logo.png" },
@@ -65,6 +65,6 @@ export function partnerLogoVisualClass(name: PartnerLogo["name"]) {
   if (name === "Google") return "tp__partner-logo--google";
   if (boostedPartnerLogos.has(name)) return "tp__partner-logo--boost";
   if (strategicStripTunedPartners.has(name)) return `tp__partner-logo--${partnerLogoSlug(name)}`;
-  const squareLogos = ["Microsoft", "VMware", "Malwarebytes", "Veeam"] as const;
+  const squareLogos = ["Microsoft", "Malwarebytes", "Veeam"] as const;
   return (squareLogos as readonly string[]).includes(name) ? "tp__partner-logo--square" : "";
 }
