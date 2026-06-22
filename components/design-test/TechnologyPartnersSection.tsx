@@ -238,6 +238,15 @@ export function TechnologyPartnersSection() {
               </motion.li>
             ))}
           </motion.ul>
+
+          <div className="tp__major-partners-footer">
+            <Link href="/solutions" className="tp__cta">
+              View All Partners
+              <span className="tp__cta-arrow" aria-hidden>
+                →
+              </span>
+            </Link>
+          </div>
         </div>
       </motion.div>
 

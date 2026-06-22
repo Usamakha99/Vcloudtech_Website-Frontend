@@ -212,6 +212,17 @@ export function ServicesGrid({
             </li>
           ))}
         </ul>
+
+        {glass ? (
+          <div className="services-grid-footer">
+            <Link href="/services" className="services-grid-cta">
+              View More services
+              <span className="services-grid-cta__arrow" aria-hidden>
+                →
+              </span>
+            </Link>
+          </div>
+        ) : null}
       </div>
     </section>
   );

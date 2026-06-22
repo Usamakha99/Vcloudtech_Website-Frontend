@@ -158,6 +158,18 @@
   margin-inline: auto;
 }
 
+.tp__major-partners-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .tp__major-partners-footer {
+    margin-top: 1.5rem;
+  }
+}
+
 .tp__partner-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -680,6 +692,14 @@
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--apple,
 .tp__partner-cell:hover .tp__partner-logo--apple {
   transform: scale(0.92);
+}
+
+.tp__partner-grid--all .tp__partner-logo--splunk {
+  transform: scale(1);
+}
+
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--splunk {
+  transform: scale(1.04);
 }
 
 .tp__trusted-strip-logo {
