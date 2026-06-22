@@ -19,7 +19,7 @@ export const designTestGlobalNavLinks: readonly DesignTestGlobalNavLink[] = [
 ] as const;
 
 export const designTestGlobalNavCta = {
-  label: "Get a Quote",
+  label: "Get Started",
   href: "/contact",
 } as const;
 
