@@ -146,12 +146,33 @@
 .service-flip-front-image-wrap {
   position: absolute;
   inset: 0;
+  background: #041329;
+}
+
+.service-flip-front-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(4, 19, 41, 0.82) 0%,
+    rgba(4, 19, 41, 0.38) 42%,
+    rgba(4, 19, 41, 0.22) 100%
+  );
+  pointer-events: none;
 }
 
 .service-flip-front-image {
   object-fit: cover;
   object-position: center;
-  opacity: 0.78;
+  opacity: 1;
+  filter: brightness(0.9) contrast(1.06) saturate(0.94);
+}
+
+.service-flip-front-title {
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 .service-flip-back {

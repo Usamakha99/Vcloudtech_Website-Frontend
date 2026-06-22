@@ -243,11 +243,7 @@ function ServiceCardFront({ item }: { item: ServiceItem }) {
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         </div>
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"
-          aria-hidden
-        />
-        <h3 className="absolute bottom-3 left-3 z-10 text-base font-bold text-white sm:bottom-4 sm:left-4 sm:text-lg">
+        <h3 className="service-flip-front-title absolute bottom-3 left-3 z-10 text-base font-bold sm:bottom-4 sm:left-4 sm:text-lg">
           {item.title}
         </h3>
         <span
