@@ -10,7 +10,7 @@ export const procurementCredentialItems: {
   { id: "iso", label: "ISO 9001:2015 Certified" },
   { id: "gsa", label: "GSA Schedule Holder" },
   { id: "sourcewell", label: "Sourcewell Contract" },
-  { id: "sewp", label: "SEWP V" },
+  { id: "tips", label: "TIPS" },
 ];
 
 export function AboutTrustMark({
@@ -85,7 +85,7 @@ const markById: Record<AboutTrustMarkId, ReactNode> = {
         dominantBaseline="middle"
         className="about-trust-mark__text about-trust-mark__text--sewp"
       >
-        SEWP V
+        TIPS
       </text>
     </svg>
   ),

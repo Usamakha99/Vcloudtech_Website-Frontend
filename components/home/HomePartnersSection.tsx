@@ -22,7 +22,7 @@ const partners = [
   { name: "Okta", src: "/partners/okta.png" },
   { name: "Palo Alto Networks", src: "/partners/palo-alto.png" },
   { name: "Samsung", src: "/partners/samsung.png" },
-  { name: "VMware", src: "/partners/vmware.png" },
+  { name: "Acronis", src: "/partners/Acronis-logo" },
   { name: "Zoom", src: "/partners/zoom.png" },
 ] as const;
 
