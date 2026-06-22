@@ -177,7 +177,7 @@ export function TechnologyPartnersSection() {
             </span>
           </h2>
           <p className={`${dt.sectionDesc} ${dt.headingSub}`}>
-            400+ technology partners across cybersecurity, software, hardware, and cloud — sourced
+            400+ technology partners across cybersecurity, software, hardware, cloud sourced
             and supported through vCloud Tech.
           </p>
         </motion.header>

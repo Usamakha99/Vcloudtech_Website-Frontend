@@ -406,9 +406,19 @@
 
 .tp__trusted-strip--below-hero .tp__trusted-strip-header {
   padding-top: clamp(1.25rem, 3.5vw, 2.5rem);
-  padding-bottom: clamp(0.5rem, 2vw, 1rem);
-  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+  padding-bottom: 0;
+  margin-bottom: 0;
   border-bottom: none;
+}
+
+.tp__trusted-strip--below-hero .tp__trusted-strip-header h2 {
+  margin-bottom: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  .tp__trusted-strip--below-hero .tp__trusted-strip-header h2 {
+    margin-bottom: 1.35rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -418,8 +428,6 @@
 
   .tp__trusted-strip--below-hero .tp__trusted-strip-header {
     padding-top: clamp(1.5rem, 3vw, 3rem);
-    padding-bottom: clamp(0.65rem, 1.5vw, 1.25rem);
-    margin-bottom: clamp(0.65rem, 2vw, 1.25rem);
   }
 }
 
