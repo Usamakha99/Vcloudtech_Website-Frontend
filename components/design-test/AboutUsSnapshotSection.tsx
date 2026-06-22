@@ -117,7 +117,7 @@ export function AboutUsSnapshotSection() {
         <div className="about-minimal__body">
           <div className="about-minimal__copy">
             <div className="about-minimal__intro">
-              <p className="about-minimal__eyebrow">Organizational identity</p>
+              <p className={dt.badge}>Organizational identity</p>
               <h3 className="about-minimal__intro-head">
                 What Makes a Reliable IT Partner. And Why It Matters
               </h3>
