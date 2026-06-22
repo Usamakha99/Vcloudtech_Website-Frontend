@@ -175,7 +175,7 @@ export function ResourceHubSection() {
 
         <div className={`rh__cta-wrap ${cardsVisible ? "is-visible" : ""}`}>
           <Link href="/posts" className="rh__cta">
-            View all articles
+            View All Articles
             <span className="rh__cta-arrow" aria-hidden>
               →
             </span>
