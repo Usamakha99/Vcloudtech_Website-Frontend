@@ -6,6 +6,27 @@ import { dt, dtCta } from "@/components/design-test/design-test-theme";
 
 import "./design-test-closing-sections.css";
 
+const EXPERT_SPARKS = [
+  { left: "5%", top: "12%", variant: 1, delay: 0 },
+  { left: "14%", top: "68%", variant: 4, delay: 0.35 },
+  { left: "22%", top: "28%", variant: 2, delay: 1.1 },
+  { left: "31%", top: "82%", variant: 5, delay: 0.7 },
+  { left: "38%", top: "16%", variant: 3, delay: 1.8 },
+  { left: "48%", top: "74%", variant: 6, delay: 0.2 },
+  { left: "56%", top: "22%", variant: 1, delay: 2.4 },
+  { left: "63%", top: "58%", variant: 4, delay: 1.4 },
+  { left: "71%", top: "10%", variant: 2, delay: 0.9 },
+  { left: "79%", top: "44%", variant: 5, delay: 2.1 },
+  { left: "86%", top: "78%", variant: 3, delay: 0.55 },
+  { left: "92%", top: "24%", variant: 6, delay: 1.65 },
+  { left: "8%", top: "42%", variant: 3, delay: 2.8 },
+  { left: "26%", top: "52%", variant: 6, delay: 0.15 },
+  { left: "44%", top: "38%", variant: 2, delay: 3.1 },
+  { left: "68%", top: "86%", variant: 1, delay: 1.25 },
+  { left: "84%", top: "56%", variant: 4, delay: 2.55 },
+  { left: "52%", top: "8%", variant: 5, delay: 0.85 },
+] as const;
+
 /** Pre-footer CTA — meet experts / book a strategy call. */
 export function MeetExpertsCtaSection() {
   return (
@@ -15,14 +36,14 @@ export function MeetExpertsCtaSection() {
       aria-labelledby="meet-experts-heading"
     >
       <div className="dt-experts-cta__sparks" aria-hidden>
-        {Array.from({ length: 18 }, (_, index) => (
+        {EXPERT_SPARKS.map((spark, index) => (
           <span
             key={index}
-            className="dt-experts-cta__spark"
+            className={`dt-experts-cta__spark dt-experts-cta__spark--drift-${spark.variant}`}
             style={{
-              left: `${8 + ((index * 17) % 84)}%`,
-              top: `${12 + ((index * 23) % 76)}%`,
-              animationDelay: `${(index % 6) * 0.45}s`,
+              left: spark.left,
+              top: spark.top,
+              animationDelay: `${spark.delay}s`,
             }}
           />
         ))}

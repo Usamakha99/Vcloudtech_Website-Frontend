@@ -2,11 +2,11 @@ import Link from "next/link";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import { FooterNewsletter } from "@/components/design-test/FooterNewsletter";
-import { dt } from "@/components/design-test/design-test-theme";
+import { FooterSocialLinks } from "@/components/design-test/FooterSocialIcons";
 import {
   designTestFooterAddress,
-  designTestFooterCerts,
   designTestFooterLinks,
+  designTestFooterSocial,
 } from "@/lib/design-test/footer-content";
 
 import "./design-test-footer.css";
@@ -26,13 +26,7 @@ export function DesignTestFooter() {
               <br />
               {designTestFooterAddress.line2}
             </address>
-            <div className="dt-footer__certs">
-              {designTestFooterCerts.map((cert) => (
-                <span key={cert.acronym} className={dt.certPill} title={cert.label}>
-                  {cert.acronym}
-                </span>
-              ))}
-            </div>
+            <FooterSocialLinks links={designTestFooterSocial} />
           </div>
 
           <div>
@@ -76,8 +70,7 @@ export function DesignTestFooter() {
         </div>
 
         <div className="dt-footer__bottom">
-          <p>&copy; {new Date().getFullYear()} vCloud Tech. All rights reserved.</p>
-          <p>Design lab — Version A (Dark)</p>
+          <p className="dt-footer__copyright">&copy; 2026 vCloudTech</p>
         </div>
       </div>
     </footer>

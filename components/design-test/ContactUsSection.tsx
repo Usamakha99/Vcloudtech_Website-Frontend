@@ -62,7 +62,7 @@ export function ContactUsSection() {
                       required
                       autoComplete="name"
                       className="dt-contact__input"
-                      placeholder="Hassan Khan"
+                     
                     />
                   </div>
 
@@ -77,7 +77,7 @@ export function ContactUsSection() {
                       required
                       autoComplete="email"
                       className="dt-contact__input"
-                      placeholder="khanhassan@company.com"
+                      
                     />
                   </div>
 
@@ -115,7 +115,7 @@ export function ContactUsSection() {
                       required
                       rows={5}
                       className="dt-contact__textarea"
-                      placeholder="Share your requirements, compliance context, or project timeline…"
+                     
                     />
                   </div>
 
