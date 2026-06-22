@@ -42,34 +42,6 @@ export const HERO_SLIDES = [
 const INTERVAL_MS = 5000;
 const SLIDE_TRANSITION_MS = 550;
 
-function ChevronLeftIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
-      <path
-        d="M12.5 15L7.5 10L12.5 5"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function ChevronRightIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
-      <path
-        d="M7.5 5L12.5 10L7.5 15"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 type HeroCarouselProps = {
   onActiveIndexChange?: (index: number) => void;
 };
@@ -96,14 +68,6 @@ export function HeroCarousel({ onActiveIndexChange }: HeroCarouselProps = {}) {
     },
     [slideCount],
   );
-
-  const goNext = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % slideCount);
-  }, [slideCount]);
-
-  const goPrev = useCallback(() => {
-    setActiveIndex((prev) => (prev - 1 + slideCount) % slideCount);
-  }, [slideCount]);
 
   useEffect(() => {
     onActiveIndexChangeRef.current?.(activeIndex);
@@ -212,23 +176,6 @@ export function HeroCarousel({ onActiveIndexChange }: HeroCarouselProps = {}) {
               </figure>
             ))}
           </div>
-
-          <button
-            type="button"
-            className="hero-test-carousel__arrow hero-test-carousel__arrow--prev"
-            aria-label="Previous slide"
-            onClick={goPrev}
-          >
-            <ChevronLeftIcon />
-          </button>
-          <button
-            type="button"
-            className="hero-test-carousel__arrow hero-test-carousel__arrow--next"
-            aria-label="Next slide"
-            onClick={goNext}
-          >
-            <ChevronRightIcon />
-          </button>
 
           <div className="hero-test-carousel__dots" role="tablist" aria-label="Hero slides">
             {HERO_SLIDES.map((slide, index) => (

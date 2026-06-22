@@ -153,13 +153,6 @@ export function AboutUsSnapshotSection() {
         {/* <SectorsRowSection /> */}
 
         <IndustriesImageGridSection />
-
-        <div className="about-minimal__cta-wrap">
-          <Link href="/about" className="about-minimal__cta">
-            Learn more about our organization
-            <span aria-hidden>→</span>
-          </Link>
-        </div>
       </div>
     </section>
   );
@@ -172,9 +165,7 @@ function SectorsRowSection() {
           <p className={dt.badge}>Sectors</p>
           <h2 className="about-enterprise__sectors-headline">
             Industries We{" "}
-            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              Serve
-            </span>
+            <span className="text-white">Serve</span>
           </h2>
         </div>
         <span className="about-enterprise__sectors-count" aria-hidden>
@@ -222,9 +213,7 @@ function IndustriesImageGridSection() {
             className="about-enterprise__sectors-headline"
           >
             Industries We{" "}
-            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              Serve
-            </span>
+            <span className="text-white">Serve</span>
           </h2>
         </div>
         <span className="about-enterprise__sectors-count" aria-hidden>
