@@ -18,6 +18,8 @@ export const partnerLogos = [
   { name: "VMware", src: "/partners/vmware.png" },
   { name: "Veeam", src: "/partners/veeam-partner.png" },
   { name: "Zoom", src: "/partners/zoom.png" },
+  { name: "Barracuda", src: "/partners/barracuda.png" },
+  { name: "Palo Alto", src: "/partners/palo-alto.png" },
 ] as const;
 
 export type PartnerLogo = (typeof partnerLogos)[number];
