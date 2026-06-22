@@ -19,7 +19,11 @@ export const partnerLogos = [
   { name: "Veeam", src: "/partners/veeam-partner.png" },
   { name: "Zoom", src: "/partners/zoom.png" },
   { name: "Barracuda", src: "/partners/barracuda.png" },
-  { name: "Palo Alto", src: "/partners/palo-alto.png" },
+  { name: "Palo Alto", src: "/partners/PANW_Parent_Brand_Primary_Logo_RGB.png" },
+  { name: "Splunk", src: "/partners/splunk.png" },
+  { name: "ServiceNow", src: "/partners/servicenow.png" },
+  { name: "CrowdStrike", src: "/partners/crowdstrike.png" },
+  { name: "Commvault", src: "/partners/commvault.png" },
 ] as const;
 
 export type PartnerLogo = (typeof partnerLogos)[number];
