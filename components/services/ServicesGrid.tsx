@@ -243,13 +243,10 @@ function ServiceCardFront({ item }: { item: ServiceItem }) {
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         </div>
-        <h3 className="service-flip-front-title absolute bottom-3 left-3 z-10 text-base font-bold sm:bottom-4 sm:left-4 sm:text-lg">
-          {item.title}
-        </h3>
-        <span
-          className="absolute bottom-2 left-3 z-10 h-0.5 w-8 bg-[#b3b3b3] sm:bottom-3 sm:left-4 sm:w-10"
-          aria-hidden
-        />
+        <div className="service-flip-front-copy">
+          <h3 className="service-flip-front-title">{item.title}</h3>
+          <span className="service-flip-front-accent" aria-hidden />
+        </div>
       </div>
     </div>
   );
