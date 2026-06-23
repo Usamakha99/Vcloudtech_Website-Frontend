@@ -33,7 +33,7 @@ export function ContactUsSection() {
             Contact us
           </h2>
           <p className={`dt-contact__lede mt-3 ${dt.body}`}>
-            Tell us about your environment, timeline, and priorities — our solutions team will route
+            Tell us about your environment, timeline, and priorities and our solutions team will route
             your inquiry to the right specialists.
           </p>
         </DtScrollReveal>

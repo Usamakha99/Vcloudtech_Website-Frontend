@@ -2,7 +2,7 @@ export const designTestFaqItems = [
   {
     question: "What IT products do you offer?",
     answer:
-      "We source and deliver enterprise hardware, software licensing, cloud subscriptions, security appliances, and AI marketplace solutions — with contract vehicles and vendor accountability built in.",
+      "We source and deliver enterprise hardware, software licensing, cloud subscriptions, security appliances, and AI marketplace solutions with contract vehicles and vendor accountability built in.",
   },
   {
     question: "How do procurement requests work?",
@@ -12,17 +12,17 @@ export const designTestFaqItems = [
   {
     question: "Do you provide managed IT services?",
     answer:
-      "Yes. Our managed services cover monitoring, endpoint management, cloud operations, and escalation-backed support — designed to extend your internal IT organization with SLA-backed response.",
+      "Yes. Our managed services cover monitoring, endpoint management, cloud operations, and escalation-backed support designed to extend your internal IT organization with SLA-backed response.",
   },
   {
     question: "What industries do you support?",
     answer:
-      "We serve government, education, healthcare, finance, retail, and manufacturing organizations — with compliance-aware sourcing and deployment models tailored to each sector.",
+      "We serve government, education, healthcare, finance, retail, and manufacturing organizations with compliance-aware sourcing and deployment models tailored to each sector.",
   },
   {
     question: "Do you offer cloud migration services?",
     answer:
-      "We plan and execute cloud migrations across AWS, Azure, and hybrid environments — including workload assessment, landing-zone design, migration runbooks, and post-cutover optimization.",
+      "We plan and execute cloud migrations across AWS, Azure, and hybrid environments including workload assessment, landing-zone design, migration runbooks, and post-cutover optimization.",
   },
   {
     question: "How can I contact your team?",
