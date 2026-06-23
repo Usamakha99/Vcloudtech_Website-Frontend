@@ -113,9 +113,6 @@ export function FaqSection() {
               Questions
             </span>
           </h2>
-          <p className={`dt-faq__lede mt-3 ${dt.body}`}>
-            Clear answers on procurement, services, and how we support enterprise IT teams.
-          </p>
         </DtScrollReveal>
 
         <div className="dt-faq__list">
