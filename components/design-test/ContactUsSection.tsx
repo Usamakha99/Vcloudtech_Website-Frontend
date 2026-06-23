@@ -129,8 +129,6 @@ export function ContactUsSection() {
 
           <DtScrollReveal delay={0.14} className="dt-contact__aside-wrap">
             <aside className="dt-contact__aside" aria-label="Contact information">
-              <p className="dt-contact__aside-title">Direct contact</p>
-
               <ul className="dt-contact__info-list">
                 <li className="dt-contact__info-item">
                   <span className="dt-contact__info-label">Email</span>

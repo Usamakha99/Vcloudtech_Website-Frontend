@@ -110,7 +110,7 @@ export function FaqSection() {
           <h2 id="faq-heading" className={`${dt.sectionHeadline} mt-5 text-white`}>
             Frequently Asked{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              questions
+              Questions
             </span>
           </h2>
           <p className={`dt-faq__lede mt-3 ${dt.body}`}>
