@@ -155,7 +155,6 @@ export function DesignTestGlobalNavDropdown({
                                   onClick={close}
                                 >
                                   <span className="dt-global-nav__dropdown-item-label">
-                                    <span className="dt-global-nav__dropdown-item-dot" aria-hidden />
                                     {item.label}
                                   </span>
                                 </Link>

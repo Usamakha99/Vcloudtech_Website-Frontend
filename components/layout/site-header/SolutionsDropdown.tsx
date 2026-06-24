@@ -101,7 +101,7 @@ export function SolutionsDropdown({
               className="pointer-events-none absolute -top-1.5 left-6 h-3 w-3 rotate-45 border border-slate-200/90 bg-white/98 shadow-[-2px_-2px_4px_-2px_rgba(15,23,42,0.06)]"
               aria-hidden
             />
-            <div className="relative w-[min(100vw-2rem,16rem)] overflow-visible rounded-2xl border border-slate-200/90 bg-white/[0.98] p-2 shadow-[0_28px_60px_-20px_rgba(15,23,42,0.18),0_0_0_1px_rgba(15,23,42,0.03)] ring-1 ring-slate-900/[0.02] backdrop-blur-md">
+            <div className="solutions-dropdown__panel relative w-[min(100vw-2rem,16rem)] overflow-visible rounded-2xl border border-slate-200/90 bg-white/[0.98] p-2 shadow-[0_28px_60px_-20px_rgba(15,23,42,0.18),0_0_0_1px_rgba(229,86,20,0.06)] ring-1 ring-[#E55614]/[0.08] backdrop-blur-md before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90">
               <ul className="space-y-0.5" role="none">
                 {groups.map((group, groupIndex) => {
                   const groupActive = isNavGroupActive(pathname, group);
@@ -117,25 +117,33 @@ export function SolutionsDropdown({
                       onFocus={() => setActiveGroupIndex(groupIndex)}
                     >
                       <div
-                        className={`flex items-center rounded-lg transition-colors ${
+                        className={`solutions-dropdown__parent group/parent relative flex items-center overflow-hidden rounded-lg pl-1 transition-[background-color] duration-200 ${
                           flyoutOpen || groupActive
-                            ? "bg-slate-50"
-                            : "hover:bg-slate-50"
+                            ? "bg-[#E55614]/[0.07]"
+                            : "hover:bg-[#E55614]/[0.04]"
                         }`}
                       >
+                        <span
+                          className={`absolute bottom-2 left-0 top-2 w-[3px] rounded-r bg-[#E55614] transition-all duration-200 ${
+                            flyoutOpen || groupActive
+                              ? "opacity-100"
+                              : "opacity-0 group-hover/parent:opacity-70"
+                          }`}
+                          aria-hidden
+                        />
                         <Link
                           role="menuitem"
                           href={group.overviewHref ?? overviewHref}
                           aria-haspopup="true"
                           aria-expanded={flyoutOpen}
-                          className={`min-w-0 flex-1 rounded-lg px-3 py-2.5 text-sm font-semibold tracking-[-0.01em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
-                            groupActive ? "text-slate-900" : "text-slate-800"
+                          className={`min-w-0 flex-1 rounded-lg py-2.5 pl-3 pr-3 text-sm font-semibold tracking-[-0.01em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E55614]/40 ${
+                            flyoutOpen || groupActive ? "text-[#041329]" : "text-slate-800"
                           }`}
                           onClick={close}
                         >
                           {group.title}
                         </Link>
-                        <ChevronRightIcon />
+                        <ChevronRightIcon active={flyoutOpen || groupActive} />
                       </div>
 
                       <AnimatePresence>
@@ -147,7 +155,7 @@ export function SolutionsDropdown({
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -4 }}
                             transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
-                            className="absolute left-full top-0 z-[60] ml-2 w-[min(100vw-2rem,18rem)] rounded-2xl border border-slate-200/90 bg-white/[0.98] p-2 shadow-[0_28px_60px_-20px_rgba(15,23,42,0.18),0_0_0_1px_rgba(15,23,42,0.03)] ring-1 ring-slate-900/[0.02] backdrop-blur-md"
+                            className="solutions-dropdown__flyout absolute left-full top-0 z-[60] ml-2 w-[min(100vw-2rem,18rem)] overflow-hidden rounded-2xl border border-slate-200/90 bg-white/[0.98] p-2 shadow-[0_28px_60px_-20px_rgba(15,23,42,0.18),0_0_0_1px_rgba(229,86,20,0.08)] ring-1 ring-[#E55614]/10 backdrop-blur-md before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90"
                           >
                             <ul className="space-y-0.5" role="none">
                               {group.items.map((item) => (
@@ -155,22 +163,22 @@ export function SolutionsDropdown({
                                   <Link
                                     role="menuitem"
                                     href={item.href}
-                                    className={`group/item block rounded-lg border border-transparent px-3 py-2.5 transition-[background-color,border-color,box-shadow] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                                    className={`group/item relative block overflow-hidden rounded-lg border border-transparent py-2.5 pl-3 pr-3 transition-[background-color,border-color] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E55614]/40 ${
                                       isNavActive(pathname, item.href)
-                                        ? "border-slate-200/80 bg-slate-50 shadow-sm"
-                                        : "hover:border-slate-200/60 hover:bg-slate-50/80"
+                                        ? "border-[#E55614]/20 bg-[#E55614]/[0.08]"
+                                        : "hover:border-[#E55614]/15 hover:bg-[#E55614]/[0.05]"
                                     }`}
                                     onClick={close}
                                   >
-                                    <span className="flex items-center gap-2 text-sm font-medium text-slate-800">
-                                      <span
-                                        className={`h-1 w-1 shrink-0 rounded-full transition-colors ${
-                                          isNavActive(pathname, item.href)
-                                            ? "bg-[#E31E24]"
-                                            : "bg-slate-300 group-hover/item:bg-[#E31E24]/70"
-                                        }`}
-                                        aria-hidden
-                                      />
+                                    <span
+                                      className={`absolute bottom-2 left-0 top-2 w-[3px] rounded-r bg-[#E55614] transition-opacity duration-200 ${
+                                        isNavActive(pathname, item.href)
+                                          ? "opacity-100"
+                                          : "opacity-0 group-hover/item:opacity-80"
+                                      }`}
+                                      aria-hidden
+                                    />
+                                    <span className="block pl-2 text-sm font-medium text-slate-800">
                                       {item.label}
                                     </span>
                                   </Link>
@@ -195,8 +203,8 @@ export function SolutionsDropdown({
 function ChevronDownIcon({ open }: { open: boolean }) {
   return (
     <svg
-      className={`h-3.5 w-3.5 text-slate-400 transition-transform duration-200 group-hover:text-slate-600 ${
-        open ? "rotate-180" : ""
+      className={`h-3.5 w-3.5 transition-[color,transform] duration-200 ${
+        open ? "rotate-180 text-[#E55614]" : "text-slate-400 group-hover:text-[#E55614]/80"
       }`}
       viewBox="0 0 20 20"
       fill="currentColor"
@@ -211,10 +219,12 @@ function ChevronDownIcon({ open }: { open: boolean }) {
   );
 }
 
-function ChevronRightIcon() {
+function ChevronRightIcon({ active }: { active?: boolean }) {
   return (
     <svg
-      className="mr-2.5 h-3.5 w-3.5 shrink-0 text-slate-400"
+      className={`mr-2.5 h-3.5 w-3.5 shrink-0 transition-colors duration-200 ${
+        active ? "text-[#E55614]" : "text-slate-400"
+      }`}
       viewBox="0 0 20 20"
       fill="currentColor"
       aria-hidden
