@@ -4,36 +4,12 @@ import type { NavGroup } from "@/lib/navigation/types";
 export const AI_DATA_CENTER_OVERVIEW_SLUG = "ai-data-center" as const;
 
 const aiDataCenterChildPages = [
-  {
-    slug: "ai-infrastructure-procurement",
-    label: "AI Infrastructure Procurement",
-    // description: "Source, stage, and deploy AI-ready compute and storage at scale.",
-  },
-  {
-    slug: "data-center-hardware",
-    label: "Data Center Hardware",
-    // description: "Servers, racks, and facility-ready hardware for modern workloads.",
-  },
-  {
-    slug: "data-center-networking",
-    label: "Networking",
-    // description: "High-bandwidth fabrics built for AI training and inference traffic.",
-  },
-  {
-    slug: "cybersecurity",
-    label: "Cybersecurity",
-    // description: "Protect AI pipelines, workloads, and data center operations end to end.",
-  },
-  {
-    slug: "power-infrastructure",
-    label: "Power Infrastructure",
-    // description: "Power distribution, cooling alignment, and resilient energy design.",
-  },
-  {
-    slug: "lifecycle-management",
-    label: "Lifecycle Management",
-    // description: "Deployment, maintenance, refresh, and decommission programs.",
-  },
+  { slug: "ai-infrastructure-procurement", label: "AI Infrastructure Procurement" },
+  { slug: "data-center-hardware", label: "Data Center Hardware" },
+  { slug: "data-center-networking", label: "Networking" },
+  { slug: "cybersecurity", label: "Cybersecurity" },
+  { slug: "power-infrastructure", label: "Power Infrastructure" },
+  { slug: "lifecycle-management", label: "Lifecycle Management" },
 ] as const;
 
 export type AiDataCenterChildSlug = (typeof aiDataCenterChildPages)[number]["slug"];
@@ -47,6 +23,5 @@ export const aiDataCenterSolutionsGroup: NavGroup = {
   items: aiDataCenterChildPages.map((page) => ({
     label: page.label,
     href: `/solutions/${page.slug}`,
-    // description: page.description,
   })),
 };

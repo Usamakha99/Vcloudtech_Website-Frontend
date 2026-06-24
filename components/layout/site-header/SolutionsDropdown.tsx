@@ -149,11 +149,6 @@ export function SolutionsDropdown({
                             transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
                             className="absolute left-full top-0 z-[60] ml-2 w-[min(100vw-2rem,18rem)] rounded-2xl border border-slate-200/90 bg-white/[0.98] p-2 shadow-[0_28px_60px_-20px_rgba(15,23,42,0.18),0_0_0_1px_rgba(15,23,42,0.03)] ring-1 ring-slate-900/[0.02] backdrop-blur-md"
                           >
-                            {group.overviewDescription ? (
-                              <p className="px-3 pb-2 pt-1 text-xs leading-snug text-slate-500">
-                                {group.overviewDescription}
-                              </p>
-                            ) : null}
                             <ul className="space-y-0.5" role="none">
                               {group.items.map((item) => (
                                 <li key={item.href} role="none">
@@ -178,11 +173,6 @@ export function SolutionsDropdown({
                                       />
                                       {item.label}
                                     </span>
-                                    {item.description ? (
-                                      <span className="mt-1 block pl-3 text-xs leading-snug text-slate-500">
-                                        {item.description}
-                                      </span>
-                                    ) : null}
                                   </Link>
                                 </li>
                               ))}

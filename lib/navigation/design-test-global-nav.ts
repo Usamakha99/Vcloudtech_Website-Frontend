@@ -3,7 +3,7 @@
  * Update labels and hrefs here; UI components stay presentational.
  */
 
-import { aiDataCenterSolutionsGroup } from "@/lib/navigation/ai-data-center-solutions";
+import { solutionsNavGroups } from "@/lib/navigation/solution-groups";
 import type { NavGroup } from "@/lib/navigation/types";
 
 export type DesignTestGlobalNavLink = {
@@ -30,7 +30,7 @@ export const designTestGlobalNavItems: readonly DesignTestGlobalNavItem[] = [
     type: "dropdown",
     label: "Solutions",
     href: "/solutions",
-    groups: [aiDataCenterSolutionsGroup],
+    groups: solutionsNavGroups,
   },
   { type: "link", label: "Services", href: "/services" },
   { type: "link", label: "Resources", href: "/posts" },

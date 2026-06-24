@@ -66,6 +66,26 @@ const copy: Record<
     lede: "Analytics platforms, governance, and responsible AI adoption with clear business outcomes.",
     meta: "Enterprise data platforms, analytics, and AI readiness from vCloudTech.",
   },
+  "managed-services": {
+    title: "Managed Services",
+    lede: "Outcomes-based IT operations, monitoring, and service delivery for mission-critical environments.",
+    meta: "Managed IT services and 24/7 operations from vCloudTech.",
+  },
+  "network-modernization": {
+    title: "Network modernization",
+    lede: "SD-WAN, campus refresh, and performance programs that keep distributed teams connected.",
+    meta: "Enterprise network modernization and SD-WAN from vCloudTech.",
+  },
+  "compliance-advisory": {
+    title: "Compliance advisory",
+    lede: "FedRAMP, CMMC, and audit-ready control alignment for regulated organizations.",
+    meta: "Compliance and security advisory services from vCloudTech.",
+  },
+  "digital-workplace": {
+    title: "Digital workplace",
+    lede: "Collaboration, endpoint management, and identity for secure hybrid work.",
+    meta: "Digital workplace and modern collaboration solutions from vCloudTech.",
+  },
 };
 
 export function generateStaticParams() {

@@ -1,4 +1,4 @@
-import { aiDataCenterSolutionsGroup } from "@/lib/navigation/ai-data-center-solutions";
+import { solutionsNavGroups } from "@/lib/navigation/solution-groups";
 import type { NavItem } from "@/lib/navigation/types";
 
 /**
@@ -10,7 +10,7 @@ export const siteNavigation: readonly NavItem[] = [
     type: "dropdown",
     label: "Solutions",
     href: "/solutions",
-    groups: [aiDataCenterSolutionsGroup],
+    groups: solutionsNavGroups,
   },
   { type: "link", label: "Services", href: "/services" },
   { type: "link", label: "Procurement", href: "/procurement" },

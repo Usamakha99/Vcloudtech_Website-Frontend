@@ -141,11 +141,6 @@ export function DesignTestGlobalNavDropdown({
                           transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
                           className="dt-global-nav__dropdown-flyout"
                         >
-                          {group.overviewDescription ? (
-                            <p className="dt-global-nav__dropdown-flyout-lede">
-                              {group.overviewDescription}
-                            </p>
-                          ) : null}
                           <ul className="dt-global-nav__dropdown-list" role="none">
                             {group.items.map((item) => (
                               <li key={item.href} role="none">
@@ -163,11 +158,6 @@ export function DesignTestGlobalNavDropdown({
                                     <span className="dt-global-nav__dropdown-item-dot" aria-hidden />
                                     {item.label}
                                   </span>
-                                  {item.description ? (
-                                    <span className="dt-global-nav__dropdown-item-desc">
-                                      {item.description}
-                                    </span>
-                                  ) : null}
                                 </Link>
                               </li>
                             ))}
