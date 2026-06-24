@@ -59,11 +59,10 @@ function FaqItem({
             aria-controls={panelId}
             onClick={onToggle}
           >
-            <span className="dt-faq__index" aria-hidden>
-              {String(index + 1).padStart(2, "0")}
-            </span>
             <span className="dt-faq__question-text">{question}</span>
-            <FaqChevron open={isOpen} />
+            <span className={`dt-faq__icon ${isOpen ? "dt-faq__icon--open" : ""}`} aria-hidden>
+              <FaqChevron open={isOpen} />
+            </span>
           </button>
         </h3>
 
@@ -106,16 +105,21 @@ export function FaqSection() {
     >
       <div className="dt-faq__inner">
         <DtScrollReveal className="dt-faq__header mx-auto max-w-3xl text-center">
-          <p className={dt.badge}>FAQS</p>
+          <p className={dt.badge}>FAQ</p>
           <h2 id="faq-heading" className={`${dt.sectionHeadline} mt-5 text-white`}>
             Frequently Asked{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
               Questions
             </span>
           </h2>
+          <p className="dt-faq__lede mt-4 text-[#A1A1AA]">
+            Straightforward answers on procurement, managed services, and how we support
+            your team.
+          </p>
         </DtScrollReveal>
 
-        <div className="dt-faq__list">
+        <div className="dt-faq__shell">
+          <div className="dt-faq__list">
           {designTestFaqItems.map((item, index) => (
             <div key={item.question} className="dt-faq__list-item">
               <FaqItem
@@ -127,6 +131,7 @@ export function FaqSection() {
               />
             </div>
           ))}
+          </div>
         </div>
       </div>
     </section>
