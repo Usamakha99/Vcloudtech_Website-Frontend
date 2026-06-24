@@ -10,7 +10,7 @@ import type { NavGroup } from "@/lib/navigation/types";
 import { navLinkClasses } from "./nav-link-styles";
 
 const solutionsDropdownSurface =
-  "border-[#b3b3b3]/25 bg-[linear-gradient(160deg,#041329_0%,#152a42_46%,color-mix(in_srgb,#041329_68%,#b3b3b3)_100%)] shadow-[0_28px_60px_-20px_rgba(0,0,0,0.45),0_0_0_1px_rgba(179,179,179,0.12)] ring-1 ring-[#b3b3b3]/10";
+  "border-[#b3b3b3]/30 bg-[linear-gradient(160deg,rgba(4,19,41,0.9)_0%,rgba(21,42,66,0.88)_46%,rgba(38,56,76,0.86)_100%)] shadow-[0_28px_60px_-20px_rgba(0,0,0,0.45),0_0_0_1px_rgba(179,179,179,0.14)] ring-1 ring-[#b3b3b3]/12";
 
 type SolutionsDropdownProps = {
   label: string;
@@ -101,11 +101,11 @@ export function SolutionsDropdown({
             className="absolute left-0 top-full z-50 mt-2.5 overflow-visible"
           >
             <span
-              className="pointer-events-none absolute -top-1.5 left-6 h-3 w-3 rotate-45 border border-[#b3b3b3]/30 border-b-0 border-r-0 bg-[#152a42] shadow-[-2px_-2px_4px_-2px_rgba(0,0,0,0.25)]"
+              className="pointer-events-none absolute -top-1.5 left-6 h-3 w-3 rotate-45 border border-[#b3b3b3]/35 border-b-0 border-r-0 bg-[rgba(21,42,66,0.9)] shadow-[-2px_-2px_4px_-2px_rgba(0,0,0,0.25)]"
               aria-hidden
             />
             <div
-              className={`solutions-dropdown__panel relative w-[min(100vw-2rem,16rem)] overflow-visible rounded-2xl p-2 backdrop-blur-md before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90 ${solutionsDropdownSurface}`}
+              className={`solutions-dropdown__panel relative w-[min(100vw-2rem,16rem)] overflow-visible rounded-2xl p-2 backdrop-blur-lg before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90 ${solutionsDropdownSurface}`}
             >
               <ul className="space-y-0.5" role="none">
                 {groups.map((group, groupIndex) => {
@@ -160,7 +160,7 @@ export function SolutionsDropdown({
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -4 }}
                             transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
-                            className={`solutions-dropdown__flyout absolute left-full top-0 z-[60] ml-2 w-[min(100vw-2rem,18rem)] overflow-hidden rounded-2xl p-2 backdrop-blur-md before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90 ${solutionsDropdownSurface}`}
+                            className={`solutions-dropdown__flyout absolute left-full top-0 z-[60] ml-2 w-[min(100vw-2rem,18rem)] overflow-hidden rounded-2xl p-2 backdrop-blur-lg before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90 ${solutionsDropdownSurface}`}
                           >
                             <ul className="space-y-0.5" role="none">
                               {group.items.map((item) => (
