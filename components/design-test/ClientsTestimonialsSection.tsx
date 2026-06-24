@@ -16,14 +16,14 @@ const clientLogos = [
 
 const testimonials = [
   {
-    rating: 4.9,
+    rating: 4,
     quote:
       "After working with two previous IT providers who didn't understand government operations, vCloud Tech was different. They quickly aligned with our procurement and compliance processes. Within a year, we passed our CMMC audit with no findings, reduced IT costs by $140,000 annually, and experienced zero unplanned outages.",
     name: "Sarah K.",
     company: "Co-Founder of SaaSFlow",
   },
   {
-    rating: 4.9,
+    rating: 4,
     quote:
       "When we discovered security gaps in our EMR environment, vCloud Tech stepped in with both clinical and technical expertise. They closed 28 critical vulnerabilities in the first week and helped us become HIPAA audit-ready within 60 days. Their team clearly understands the importance of uptime in healthcare.",
     name: "Dr. Thomas",

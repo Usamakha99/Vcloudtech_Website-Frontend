@@ -48,43 +48,50 @@ const sectors: {
   },
 ];
 
+/** Bump to force React remount after replacing files in `public/Industries We Serve Final/`. */
+const industriesWeServeImageVersion = "4";
+
 const industriesWeServeImageBase = "/Industries We Serve Final";
+
+function industryImage(filename: string) {
+  return `${industriesWeServeImageBase}/${filename}`;
+}
 
 const industryImageSectors = [
   {
     name: "Government",
     tagline: "Mission-Critical Infrastructure for Mission-Critical Work",
-    image: `${industriesWeServeImageBase}/Government Sector.png`,
+    image: industryImage("Government Sector.png"),
     href: "/services",
   },
   {
     name: "Education",
     tagline: " Infrastructure Built for the Pace of Modern Learning",
-    image: `${industriesWeServeImageBase}/Education Sector.png`,
+    image: industryImage("Education Sector.png"),
     href: "/services",
   },
   {
     name: "Healthcare",
     tagline: " HIPAA Is the Floor. Patient Safety Is the Ceiling.",
-    image: `${industriesWeServeImageBase}/Health Care.png`,
+    image: industryImage("Health Care.png"),
     href: "/services",
   },
   {
     name: "Financial Services",
     tagline: " A Four-Hour Outage Can Cost More Than an Annual IT Contract",
-    image: `${industriesWeServeImageBase}/Financial Sector.png`,
+    image: industryImage("Financial Sector.png"),
     href: "/services",
   },
   {
     name: "Public sector",
     tagline: "Infrastructure That Earns and Protects Public Trust.",
-    image: `${industriesWeServeImageBase}/Public Sector.png`,
+    image: industryImage("Public Sector.png"),
     href: "/services",
   },
   {
     name: "Commercial / Enterprise",
     tagline: "  Enterprise-Grade Infrastructure for Enterprise-Level Ambition.",
-    image: `${industriesWeServeImageBase}/Commercial Enterprise Sector.png`,
+    image: industryImage("Commercial Enterprise Sector.png"),
     href: "/services",
   },
 ] as const;
@@ -252,11 +259,13 @@ function IndustryImageCard({
         </span>
         <span className="about-enterprise__industry-image-scrim" aria-hidden />
         <Image
+          key={`${sector.name}-${industriesWeServeImageVersion}`}
           src={sector.image}
           alt={sector.name}
           fill
           className="about-enterprise__industry-image-asset"
           sizes="(max-width: 1023px) 84vw, 17vw"
+          priority={index < 2}
         />
       </div>
 
