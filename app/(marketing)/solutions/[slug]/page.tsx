@@ -11,6 +11,26 @@ const copy: Record<
   SolutionSlug,
   { title: string; lede: string; meta: string }
 > = {
+  "ai-data-center": {
+    title: "AI Data Center Solutions",
+    lede: "Design, procure, and operate AI-ready data center environments—from compute to power and lifecycle programs.",
+    meta: "AI data center solutions for procurement, deployment, and operations from vCloudTech.",
+  },
+  "ai-infrastructure-procurement": {
+    title: "AI Infrastructure Procurement",
+    lede: "Source and stage AI-ready compute, storage, and facility components through authorized channels and compliant contracts.",
+    meta: "AI infrastructure procurement for enterprise and public sector data center programs.",
+  },
+  "data-center-hardware": {
+    title: "Data Center Hardware",
+    lede: "Servers, racks, and facility-ready hardware configured for high-density AI and enterprise workloads.",
+    meta: "Enterprise data center hardware sourcing and deployment from vCloudTech.",
+  },
+  "data-center-networking": {
+    title: "Networking",
+    lede: "High-bandwidth network fabrics designed for AI training clusters, inference pipelines, and resilient operations.",
+    meta: "Data center networking for AI and enterprise infrastructure from vCloudTech.",
+  },
   microsoft: {
     title: "Microsoft solutions",
     lede: "Azure, Microsoft 365, and hybrid patterns for regulated and distributed enterprises.",
@@ -30,6 +50,16 @@ const copy: Record<
     title: "Cybersecurity",
     lede: "Zero trust alignment, threat reduction, and security programs that match your risk profile.",
     meta: "Enterprise cybersecurity services and zero trust advisory from vCloudTech.",
+  },
+  "power-infrastructure": {
+    title: "Power Infrastructure",
+    lede: "Power distribution, cooling alignment, and resilient energy design for modern data center facilities.",
+    meta: "Data center power infrastructure planning and deployment from vCloudTech.",
+  },
+  "lifecycle-management": {
+    title: "Lifecycle Management",
+    lede: "Deployment, maintenance, refresh, and decommission programs that keep AI data centers current and compliant.",
+    meta: "Data center lifecycle management services from vCloudTech.",
   },
   "data-ai": {
     title: "Data & AI",

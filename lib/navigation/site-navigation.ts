@@ -1,35 +1,5 @@
+import { aiDataCenterSolutionsGroup } from "@/lib/navigation/ai-data-center-solutions";
 import type { NavItem } from "@/lib/navigation/types";
-
-import { SOLUTION_SLUGS, type SolutionSlug } from "@/lib/navigation/solutions";
-
-const solutionLabels: Record<SolutionSlug, { label: string; description: string }> = {
-  microsoft: {
-    label: "Microsoft Solutions",
-    description: "Azure, Microsoft 365, and hybrid enterprise platforms.",
-  },
-  aws: {
-    label: "AWS Solutions",
-    description: "Landing zones, modernization, and managed cloud on AWS.",
-  },
-  "cloud-infrastructure": {
-    label: "Cloud Infrastructure",
-    description: "Architecture, migration, and resilient multi-cloud operations.",
-  },
-  cybersecurity: {
-    label: "Cybersecurity",
-    description: "Zero trust, compliance alignment, and continuous protection.",
-  },
-  "data-ai": {
-    label: "Data & AI",
-    description: "Analytics platforms, governance, and responsible AI adoption.",
-  },
-};
-
-const solutionChildren = SOLUTION_SLUGS.map((slug) => ({
-  label: solutionLabels[slug].label,
-  href: `/solutions/${slug}`,
-  description: solutionLabels[slug].description,
-}));
 
 /**
  * Primary site navigation — single source of truth for header and mobile drawer.
@@ -41,7 +11,7 @@ export const siteNavigation: readonly NavItem[] = [
     type: "dropdown",
     label: "Solutions",
     href: "/solutions",
-    children: solutionChildren,
+    groups: [aiDataCenterSolutionsGroup],
   },
   { type: "link", label: "Services", href: "/services" },
   { type: "link", label: "Procurement", href: "/procurement" },

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
-import { isNavActive } from "@/lib/navigation/active-path";
+import { isNavActive, isNavGroupActive } from "@/lib/navigation/active-path";
 import { siteNavigation, siteNavCta, siteSearchPath } from "@/lib/navigation/site-navigation";
 import type { NavItem } from "@/lib/navigation/types";
 
@@ -87,16 +87,25 @@ export function MobileMenu({ open, onClose, pathname }: MobileMenuProps) {
               >
                 <VCloudTechLogoImage className="h-8 w-auto max-h-9 object-contain object-left sm:h-9" />
               </Link>
-              {siteNavigation.map((item) => (
-                <MobileNavRow
-                  key={item.type === "link" ? item.href : item.href}
-                  item={item}
-                  pathname={pathname}
-                  onNavigate={onClose}
-                  solutionsOpen={solutionsOpen}
-                  onToggleSolutions={() => setSolutionsOpen((v) => !v)}
-                />
-              ))}
+              {siteNavigation.map((item) =>
+                item.type === "dropdown" ? (
+                  <MobileDropdownRow
+                    key={item.href}
+                    item={item}
+                    pathname={pathname}
+                    onNavigate={onClose}
+                    solutionsOpen={solutionsOpen}
+                    onToggleSolutions={() => setSolutionsOpen((v) => !v)}
+                  />
+                ) : (
+                  <MobileLinkRow
+                    key={item.href}
+                    item={item}
+                    pathname={pathname}
+                    onNavigate={onClose}
+                  />
+                ),
+              )}
               <div className="my-4 h-px bg-slate-100" />
               <Link
                 href={siteSearchPath}
@@ -121,39 +130,49 @@ export function MobileMenu({ open, onClose, pathname }: MobileMenuProps) {
   );
 }
 
-function MobileNavRow({
+function MobileLinkRow({
+  item,
+  pathname,
+  onNavigate,
+}: {
+  item: Extract<NavItem, { type: "link" }>;
+  pathname: string;
+  onNavigate: () => void;
+}) {
+  const active = isNavActive(pathname, item.href);
+  return (
+    <Link
+      href={item.href}
+      className={`rounded-xl px-3 py-3 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1B224B]/30 ${
+        active
+          ? "bg-slate-100 text-slate-900 ring-1 ring-slate-200/80"
+          : "text-slate-600 hover:bg-slate-50"
+      }`}
+      onClick={onNavigate}
+    >
+      {item.label}
+    </Link>
+  );
+}
+
+function MobileDropdownRow({
   item,
   pathname,
   onNavigate,
   solutionsOpen,
   onToggleSolutions,
 }: {
-  item: NavItem;
+  item: Extract<NavItem, { type: "dropdown" }>;
   pathname: string;
   onNavigate: () => void;
   solutionsOpen: boolean;
   onToggleSolutions: () => void;
 }) {
-  if (item.type === "link") {
-    const active = isNavActive(pathname, item.href);
-    return (
-      <Link
-        href={item.href}
-        className={`rounded-xl px-3 py-3 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1B224B]/30 ${
-          active
-            ? "bg-slate-100 text-slate-900 ring-1 ring-slate-200/80"
-            : "text-slate-600 hover:bg-slate-50"
-        }`}
-        onClick={onNavigate}
-      >
-        {item.label}
-      </Link>
-    );
-  }
+  const [openGroupIndex, setOpenGroupIndex] = useState<number | null>(null);
 
   const branchActive =
     isNavActive(pathname, item.href) ||
-    item.children.some((c) => isNavActive(pathname, c.href));
+    item.groups.some((group) => isNavGroupActive(pathname, group));
 
   return (
     <div className="overflow-hidden rounded-xl border border-slate-200/90 bg-slate-50/60 ring-1 ring-slate-900/[0.02]">
@@ -199,23 +218,86 @@ function MobileNavRow({
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden border-t border-slate-100"
           >
-            <ul className="space-y-0.5 px-2 py-2">
-              {item.children.map((child) => (
-                <li key={child.href}>
-                  <Link
-                    href={child.href}
-                    className={`block rounded-md px-3 py-2.5 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
-                      isNavActive(pathname, child.href)
-                        ? "bg-white font-medium text-slate-900 shadow-sm"
-                        : "text-slate-600 hover:bg-white/80"
-                    }`}
-                    onClick={onNavigate}
+            <div className="space-y-1 px-2 py-2">
+              {item.groups.map((group, groupIndex) => {
+                const groupOpen = openGroupIndex === groupIndex;
+                const groupActive = isNavGroupActive(pathname, group);
+
+                return (
+                  <div
+                    key={group.title}
+                    className="overflow-hidden rounded-lg border border-slate-200/80 bg-white/70"
                   >
-                    {child.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    <div className="flex items-stretch">
+                      <Link
+                        href={group.overviewHref ?? item.href}
+                        className={`min-w-0 flex-1 px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                          groupActive ? "text-slate-900" : "text-slate-700"
+                        }`}
+                        onClick={onNavigate}
+                      >
+                        {group.title}
+                      </Link>
+                      <button
+                        type="button"
+                        className="flex w-10 shrink-0 items-center justify-center border-l border-slate-100 text-slate-500 transition-colors hover:bg-slate-50 hover:text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-sky-600"
+                        aria-expanded={groupOpen}
+                        aria-controls={`mobile-solutions-group-${groupIndex}`}
+                        onClick={() =>
+                          setOpenGroupIndex((current) =>
+                            current === groupIndex ? null : groupIndex,
+                          )
+                        }
+                      >
+                        <span className="sr-only">Toggle {group.title} pages</span>
+                        <svg
+                          className={`h-3.5 w-3.5 transition-transform ${groupOpen ? "rotate-180" : ""}`}
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    <AnimatePresence initial={false}>
+                      {groupOpen ? (
+                        <motion.div
+                          id={`mobile-solutions-group-${groupIndex}`}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                          className="overflow-hidden border-t border-slate-100"
+                        >
+                          <ul className="space-y-0.5 px-2 py-2">
+                            {group.items.map((child) => (
+                              <li key={child.href}>
+                                <Link
+                                  href={child.href}
+                                  className={`block rounded-md px-3 py-2.5 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                                    isNavActive(pathname, child.href)
+                                      ? "bg-slate-50 font-medium text-slate-900"
+                                      : "text-slate-600 hover:bg-slate-50"
+                                  }`}
+                                  onClick={onNavigate}
+                                >
+                                  {child.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      ) : null}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
           </motion.div>
         ) : null}
       </AnimatePresence>

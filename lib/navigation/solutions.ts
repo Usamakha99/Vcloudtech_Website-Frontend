@@ -1,5 +1,11 @@
 /** Slugs for `/solutions/[slug]` — shared by nav config and static generation. */
 export const SOLUTION_SLUGS = [
+  "ai-data-center",
+  "ai-infrastructure-procurement",
+  "data-center-hardware",
+  "data-center-networking",
+  "power-infrastructure",
+  "lifecycle-management",
   "microsoft",
   "aws",
   "cloud-infrastructure",

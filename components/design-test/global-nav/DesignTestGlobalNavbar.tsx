@@ -8,7 +8,7 @@ import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import {
   designTestGlobalNavBrand,
   designTestGlobalNavCta,
-  designTestGlobalNavLinks,
+  designTestGlobalNavItems,
 } from "@/lib/navigation/design-test-global-nav";
 
 import { DesignTestGlobalNavLinks } from "./DesignTestGlobalNavLinks";
@@ -73,7 +73,7 @@ export function DesignTestGlobalNavbar() {
           </Link>
 
           <nav aria-label="Global navigation" className="dt-global-nav__links">
-            <DesignTestGlobalNavLinks links={designTestGlobalNavLinks} pathname={pathname} />
+            <DesignTestGlobalNavLinks items={designTestGlobalNavItems} pathname={pathname} />
           </nav>
 
           <div className="dt-global-nav__actions">
@@ -98,7 +98,7 @@ export function DesignTestGlobalNavbar() {
 
       <DesignTestGlobalNavMobile
         open={mobileOpen}
-        links={designTestGlobalNavLinks}
+        items={designTestGlobalNavItems}
         pathname={pathname}
         onClose={() => setMobileOpen(false)}
       />

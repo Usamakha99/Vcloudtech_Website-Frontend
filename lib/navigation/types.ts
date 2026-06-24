@@ -4,6 +4,13 @@ export type NavChild = {
   description?: string;
 };
 
+export type NavGroup = {
+  title: string;
+  overviewHref?: string;
+  overviewDescription?: string;
+  items: readonly NavChild[];
+};
+
 export type NavItem =
   | {
       type: "link";
@@ -14,5 +21,5 @@ export type NavItem =
       type: "dropdown";
       label: string;
       href: string;
-      children: readonly NavChild[];
+      groups: readonly NavGroup[];
     };

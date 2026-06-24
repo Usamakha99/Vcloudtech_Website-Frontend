@@ -36,7 +36,7 @@ function NavEntry({ item, pathname }: { item: NavItem; pathname: string }) {
       <SolutionsDropdown
         label={item.label}
         overviewHref={item.href}
-        items={item.children}
+        groups={item.groups}
         pathname={pathname}
       />
     );

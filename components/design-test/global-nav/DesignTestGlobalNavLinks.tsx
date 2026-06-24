@@ -3,27 +3,41 @@
 import Link from "next/link";
 
 import { isNavActive } from "@/lib/navigation/active-path";
-import type { DesignTestGlobalNavLink } from "@/lib/navigation/design-test-global-nav";
+import type { DesignTestGlobalNavItem } from "@/lib/navigation/design-test-global-nav";
 
+import { DesignTestGlobalNavDropdown } from "./DesignTestGlobalNavDropdown";
 import { globalNavLinkActiveClass, globalNavLinkClass } from "./nav-styles";
 
 type Props = {
-  links: readonly DesignTestGlobalNavLink[];
+  items: readonly DesignTestGlobalNavItem[];
   pathname: string;
   onNavigate?: () => void;
   className?: string;
 };
 
-/** Desktop global nav links with animated underline. */
+/** Desktop global nav items — links and Solutions dropdown. */
 export function DesignTestGlobalNavLinks({
-  links,
+  items,
   pathname,
   onNavigate,
   className = "",
 }: Props) {
   return (
     <ul className={`dt-global-nav__links-list ${className}`}>
-      {links.map((item) => {
+      {items.map((item) => {
+        if (item.type === "dropdown") {
+          return (
+            <li key={item.href}>
+              <DesignTestGlobalNavDropdown
+                label={item.label}
+                overviewHref={item.href}
+                groups={item.groups}
+                pathname={pathname}
+              />
+            </li>
+          );
+        }
+
         const active = isNavActive(pathname, item.href);
 
         return (

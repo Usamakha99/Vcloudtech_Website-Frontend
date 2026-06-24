@@ -5,7 +5,7 @@ import { MarketingDocPage } from "@/components/layout/MarketingDocPage";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Microsoft, AWS, cloud infrastructure, cybersecurity, and data & AI solutions for enterprise organizations.",
+    "AI data center solutions plus cloud, security, and platform offerings for enterprise organizations.",
 };
 
 export default function SolutionsPage() {
