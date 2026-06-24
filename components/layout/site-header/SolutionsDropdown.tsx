@@ -9,6 +9,9 @@ import type { NavGroup } from "@/lib/navigation/types";
 
 import { navLinkClasses } from "./nav-link-styles";
 
+const solutionsDropdownSurface =
+  "border-[#b3b3b3]/25 bg-[linear-gradient(160deg,#041329_0%,#152a42_46%,color-mix(in_srgb,#041329_68%,#b3b3b3)_100%)] shadow-[0_28px_60px_-20px_rgba(0,0,0,0.45),0_0_0_1px_rgba(179,179,179,0.12)] ring-1 ring-[#b3b3b3]/10";
+
 type SolutionsDropdownProps = {
   label: string;
   overviewHref: string;
@@ -98,10 +101,12 @@ export function SolutionsDropdown({
             className="absolute left-0 top-full z-50 mt-2.5 overflow-visible"
           >
             <span
-              className="pointer-events-none absolute -top-1.5 left-6 h-3 w-3 rotate-45 border border-slate-200/90 bg-white/98 shadow-[-2px_-2px_4px_-2px_rgba(15,23,42,0.06)]"
+              className="pointer-events-none absolute -top-1.5 left-6 h-3 w-3 rotate-45 border border-[#b3b3b3]/30 border-b-0 border-r-0 bg-[#152a42] shadow-[-2px_-2px_4px_-2px_rgba(0,0,0,0.25)]"
               aria-hidden
             />
-            <div className="solutions-dropdown__panel relative w-[min(100vw-2rem,16rem)] overflow-visible rounded-2xl border border-slate-200/90 bg-white/[0.98] p-2 shadow-[0_28px_60px_-20px_rgba(15,23,42,0.18),0_0_0_1px_rgba(229,86,20,0.06)] ring-1 ring-[#E55614]/[0.08] backdrop-blur-md before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90">
+            <div
+              className={`solutions-dropdown__panel relative w-[min(100vw-2rem,16rem)] overflow-visible rounded-2xl p-2 backdrop-blur-md before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90 ${solutionsDropdownSurface}`}
+            >
               <ul className="space-y-0.5" role="none">
                 {groups.map((group, groupIndex) => {
                   const groupActive = isNavGroupActive(pathname, group);
@@ -137,7 +142,7 @@ export function SolutionsDropdown({
                           aria-haspopup="true"
                           aria-expanded={flyoutOpen}
                           className={`min-w-0 flex-1 rounded-lg py-2.5 pl-3 pr-3 text-sm font-semibold tracking-[-0.01em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E55614]/40 ${
-                            flyoutOpen || groupActive ? "text-[#041329]" : "text-slate-800"
+                            flyoutOpen || groupActive ? "text-white" : "text-[#b3b3b3]"
                           }`}
                           onClick={close}
                         >
@@ -155,7 +160,7 @@ export function SolutionsDropdown({
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -4 }}
                             transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
-                            className="solutions-dropdown__flyout absolute left-full top-0 z-[60] ml-2 w-[min(100vw-2rem,18rem)] overflow-hidden rounded-2xl border border-slate-200/90 bg-white/[0.98] p-2 shadow-[0_28px_60px_-20px_rgba(15,23,42,0.18),0_0_0_1px_rgba(229,86,20,0.08)] ring-1 ring-[#E55614]/10 backdrop-blur-md before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90"
+                            className={`solutions-dropdown__flyout absolute left-full top-0 z-[60] ml-2 w-[min(100vw-2rem,18rem)] overflow-hidden rounded-2xl p-2 backdrop-blur-md before:pointer-events-none before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:rounded-full before:bg-gradient-to-r before:from-transparent before:via-[#E55614] before:to-transparent before:opacity-90 ${solutionsDropdownSurface}`}
                           >
                             <ul className="space-y-0.5" role="none">
                               {group.items.map((item) => (
@@ -178,7 +183,7 @@ export function SolutionsDropdown({
                                       }`}
                                       aria-hidden
                                     />
-                                    <span className="block pl-2 text-sm font-medium text-slate-800">
+                                    <span className="block pl-2 text-sm font-medium text-white/90 group-hover/item:text-white">
                                       {item.label}
                                     </span>
                                   </Link>
@@ -223,7 +228,7 @@ function ChevronRightIcon({ active }: { active?: boolean }) {
   return (
     <svg
       className={`mr-2.5 h-3.5 w-3.5 shrink-0 transition-colors duration-200 ${
-        active ? "text-[#E55614]" : "text-slate-400"
+        active ? "text-[#E55614]" : "text-[#b3b3b3]/80"
       }`}
       viewBox="0 0 20 20"
       fill="currentColor"
