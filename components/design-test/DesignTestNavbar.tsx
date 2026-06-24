@@ -19,9 +19,9 @@ type Props = {
   links?: readonly NavLink[];
 };
 
-/** Minimal sticky header for test lab pages (glass on gradient). */
+/** Minimal sticky header for lab-style section pages (glass on gradient). */
 export function DesignTestNavbar({
-  homeHref = "/design-test",
+  homeHref = "/",
   links = defaultLinks,
 }: Props) {
   return (
@@ -30,7 +30,7 @@ export function DesignTestNavbar({
         <Link
           href={homeHref}
           className="flex shrink-0 items-center outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50"
-          aria-label="Test lab home"
+          aria-label="vCloudTech home"
         >
           <VCloudTechLogoImage priority className="h-6 w-auto max-h-6 brightness-0 invert opacity-90" />
         </Link>
@@ -56,7 +56,7 @@ export function DesignTestNavbar({
             href="/"
             className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/45 transition hover:text-white/90"
           >
-            Exit
+            Home
           </Link>
         </div>
       </div>

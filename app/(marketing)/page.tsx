@@ -1,12 +1,26 @@
 import type { Metadata } from "next";
 
-import { Hero } from "@/components/home/Hero";
-import { HomeCtaBand } from "@/components/home/HomeCtaBand";
-import { HomeHowWeWorkSection } from "@/components/home/HomeHowWeWorkSection";
-import { HomeIndustriesSection } from "@/components/home/HomeIndustriesSection";
-import { HomePartnersSection } from "@/components/home/HomePartnersSection";
-import { HomeSolutionsSection } from "@/components/home/HomeSolutionsSection";
-import { HomeTrustBar } from "@/components/home/HomeTrustBar";
+import { DesignTestFooter } from "@/components/design-test/DesignTestFooter";
+import { ContactUsSection } from "@/components/design-test/ContactUsSection";
+import { FaqSection } from "@/components/design-test/FaqSection";
+import { MeetExpertsCtaSection } from "@/components/design-test/MeetExpertsCtaSection";
+import { DesignTestGlobalNavbar } from "@/components/design-test/global-nav";
+import { AboutUsSnapshotSection } from "@/components/design-test/AboutUsSnapshotSection";
+import { DesignTestSocialProofBar } from "@/components/design-test/DesignTestSocialProofBar";
+import { TechnologyPartnersSection } from "@/components/design-test/TechnologyPartnersSection";
+import { MinimalTestHero } from "@/components/hero-test/MinimalTestHero";
+import { PageIngredientBackground } from "@/components/hero-test/PageIngredientBackground";
+import { ClientsTestimonialsSection } from "@/components/design-test/ClientsTestimonialsSection";
+import { ResourceHubSection } from "@/components/design-test/ResourceHubSection";
+import { ServicesGrid } from "@/components/services/ServicesGrid";
+import { poppins } from "@/lib/fonts/poppins";
+
+import "@/components/design-test/design-test-lab-full-width.css";
+import "@/components/design-test/design-test-glass-cards.css";
+import "@/components/design-test/design-test-responsive.css";
+import "@/components/design-test/design-test-about-metrics.css";
+import "@/components/hero-test/minimal-hero.css";
+import "@/components/design-test/design-test-typography.css";
 
 export const metadata: Metadata = {
   title: "Enterprise IT solutions",
@@ -22,40 +36,30 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex min-h-full flex-col bg-white">
-      <Hero />
-      <HomeTrustBar />
-      <HomeSolutionsSection />
-      <HomeIndustriesSection />
-      <HomePartnersSection />
-      <HomeHowWeWorkSection />
-      <HomeCtaBand />
-      <section
-        id="contact"
-        className="border-t border-slate-200/80 bg-[#1B224B] py-16"
-        aria-labelledby="contact-heading"
-      >
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2
-              id="contact-heading"
-              className="text-2xl font-semibold tracking-tight text-white"
-            >
-              Talk to solutions architecture
-            </h2>
-            <p className="mt-3 text-slate-300">
-              Share your roadmap and compliance requirements—we&apos;ll respond
-              within one business day.
-            </p>
-            <a
-              href="mailto:info@vcloudtech.com?subject=vCloudTech%20inquiry"
-              className="mt-8 inline-flex h-11 items-center justify-center rounded-lg border border-white/25 bg-white px-6 text-sm font-semibold text-[#1B224B] shadow-sm transition-colors hover:bg-slate-100"
-            >
-              Email info@vcloudtech.com
-            </a>
-          </div>
+    <div
+      className={`design-test-lab-page ${poppins.variable} relative min-h-full overflow-x-clip font-sans text-white`}
+    >
+      <PageIngredientBackground />
+      <DesignTestGlobalNavbar />
+      <main className="relative">
+        <div id="hero" className="leading-none" data-nav-surface="dark">
+          <MinimalTestHero offsetForFixedHeader fullPageGradient showCarousel />
         </div>
-      </section>
+        <DesignTestSocialProofBar belowHero />
+        <AboutUsSnapshotSection />
+        <TechnologyPartnersSection />
+        <div className="relative z-20">
+          <div id="services">
+            <ServicesGrid surface="glass" />
+          </div>
+          <ResourceHubSection />
+          <ClientsTestimonialsSection />
+          <FaqSection />
+          <ContactUsSection />
+        </div>
+      </main>
+      <MeetExpertsCtaSection />
+      <DesignTestFooter />
     </div>
   );
 }

@@ -8,8 +8,8 @@ import { ServicesGrid } from "@/components/services/ServicesGrid";
 import "@/components/hero-test/minimal-hero.css";
 
 export const metadata: Metadata = {
-  title: "Hero Test",
-  description: "Minimal hero test page with animated gradient and fade-in.",
+  title: "Hero",
+  description: "Hero section preview with animated carousel and services grid.",
   robots: { index: false, follow: false },
 };
 
@@ -22,15 +22,15 @@ export default function HeroTestPage() {
   return (
     <div className="relative min-h-full text-white">
       <PageIngredientBackground />
-      <DesignTestNavbar homeHref="/hero-test" links={navLinks} />
+      <DesignTestNavbar homeHref="/" links={navLinks} />
       <main className="relative">
         <div id="hero">
           <MinimalTestHero offsetForFixedHeader={false} fullPageGradient />
         </div>
         <div id="services">
           <ServicesGrid
-            heading="Services grid preview"
-            subheading="3-column cards with hover lift — test layout only."
+            heading="Services"
+            subheading="Explore our core capabilities and managed offerings."
             surface="glass"
           />
         </div>

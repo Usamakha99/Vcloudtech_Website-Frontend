@@ -6,7 +6,6 @@ import type { NavItem } from "@/lib/navigation/types";
  * Update labels/hrefs here only; UI components stay presentational.
  */
 export const siteNavigation: readonly NavItem[] = [
-  { type: "link", label: "Home", href: "/" },
   {
     type: "dropdown",
     label: "Solutions",

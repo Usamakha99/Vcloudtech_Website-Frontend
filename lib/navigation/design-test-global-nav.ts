@@ -26,14 +26,13 @@ export type DesignTestGlobalNavItem =
 
 /** Primary global nav items (marketing routes + Solutions dropdown). */
 export const designTestGlobalNavItems: readonly DesignTestGlobalNavItem[] = [
-  { type: "link", label: "Home", href: "/" },
-  { type: "link", label: "Services", href: "/services" },
   {
     type: "dropdown",
     label: "Solutions",
     href: "/solutions",
     groups: [aiDataCenterSolutionsGroup],
   },
+  { type: "link", label: "Services", href: "/services" },
   { type: "link", label: "Resources", href: "/posts" },
   { type: "link", label: "About", href: "/about" },
   { type: "link", label: "Contact", href: "/contact" },

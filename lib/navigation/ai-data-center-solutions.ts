@@ -7,32 +7,32 @@ const aiDataCenterChildPages = [
   {
     slug: "ai-infrastructure-procurement",
     label: "AI Infrastructure Procurement",
-    description: "Source, stage, and deploy AI-ready compute and storage at scale.",
+    // description: "Source, stage, and deploy AI-ready compute and storage at scale.",
   },
   {
     slug: "data-center-hardware",
     label: "Data Center Hardware",
-    description: "Servers, racks, and facility-ready hardware for modern workloads.",
+    // description: "Servers, racks, and facility-ready hardware for modern workloads.",
   },
   {
     slug: "data-center-networking",
     label: "Networking",
-    description: "High-bandwidth fabrics built for AI training and inference traffic.",
+    // description: "High-bandwidth fabrics built for AI training and inference traffic.",
   },
   {
     slug: "cybersecurity",
     label: "Cybersecurity",
-    description: "Protect AI pipelines, workloads, and data center operations end to end.",
+    // description: "Protect AI pipelines, workloads, and data center operations end to end.",
   },
   {
     slug: "power-infrastructure",
     label: "Power Infrastructure",
-    description: "Power distribution, cooling alignment, and resilient energy design.",
+    // description: "Power distribution, cooling alignment, and resilient energy design.",
   },
   {
     slug: "lifecycle-management",
     label: "Lifecycle Management",
-    description: "Deployment, maintenance, refresh, and decommission programs.",
+    // description: "Deployment, maintenance, refresh, and decommission programs.",
   },
 ] as const;
 
@@ -44,11 +44,9 @@ export const AI_DATA_CENTER_CHILD_SLUGS = aiDataCenterChildPages.map((page) => p
 export const aiDataCenterSolutionsGroup: NavGroup = {
   title: "AI Data Center Solutions",
   overviewHref: `/solutions/${AI_DATA_CENTER_OVERVIEW_SLUG}`,
-  overviewDescription:
-    "Design, procure, and operate AI-ready data center environments with confidence.",
   items: aiDataCenterChildPages.map((page) => ({
     label: page.label,
     href: `/solutions/${page.slug}`,
-    description: page.description,
+    // description: page.description,
   })),
 };
