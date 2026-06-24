@@ -96,6 +96,10 @@
   display: block;
   height: 100%;
   perspective: 1200px;
+  /* Front title — change only these 3 values (px) */
+  --svc-front-title-min: 16px;
+  --svc-front-title-max: 22px;
+  --svc-front-title-scale: 2.4vw;
 }
 
 .service-flip-inner {
@@ -187,20 +191,23 @@
 .service-flip-front-title {
   margin: 0;
   max-width: 88%;
-  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.25;
   color: #fff;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 
+.service-flip-card .service-flip-front-copy .service-flip-front-title {
+  font-size: clamp(
+    var(--svc-front-title-min),
+    calc(10px + var(--svc-front-title-scale)),
+    var(--svc-front-title-max)
+  );
+}
+
 @media (min-width: 640px) {
   .service-flip-front-copy {
     padding-inline: 1.75rem;
-  }
-
-  .service-flip-front-title {
-    font-size: 1.125rem;
   }
 }
 

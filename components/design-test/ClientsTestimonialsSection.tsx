@@ -86,12 +86,12 @@ export function ClientsTestimonialsSection() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-2xl text-center">
-          <p className={dt.badge}>Social proof</p>
+          <p className={dt.badge}>Testimonials</p>
           <h2
             id="clients-testimonials-heading"
             className={`${dt.sectionHeadline} mt-5 text-white`}
           >
-            Clients &amp; testimonials
+           What Our Clients Saying
           </h2>
          
         </header>
