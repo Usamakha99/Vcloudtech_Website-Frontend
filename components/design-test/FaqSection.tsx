@@ -107,10 +107,7 @@ export function FaqSection() {
         <DtScrollReveal className="dt-faq__header mx-auto max-w-3xl text-center">
           <p className={dt.badge}>FAQ</p>
           <h2 id="faq-heading" className={`${dt.sectionHeadline} mt-5 text-white`}>
-            Frequently Asked{" "}
-            <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              Questions
-            </span>
+            Frequently Asked Questions
           </h2>
           <p className="dt-faq__lede mt-4 text-[#A1A1AA]">
             Straightforward answers on procurement, managed services, and how we support
