@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 
 import { OrgMetricsRail } from "@/components/design-test/OrgMetricsRail";
 import { DesignTestCredentialsStrip } from "@/components/design-test/DesignTestCredentialsStrip";
+import { IndustryIllustrationDecor } from "@/components/design-test/IndustryIllustrationDecor";
 import {
   EducationIcon,
   GovernmentIcon,
@@ -257,16 +258,24 @@ function IndustryImageCard({
         <span className="about-enterprise__industry-image-index" aria-hidden>
           {number}
         </span>
-        <span className="about-enterprise__industry-image-scrim" aria-hidden />
-        <Image
-          key={`${sector.name}-${industriesWeServeImageVersion}`}
-          src={sector.image}
-          alt={sector.name}
-          fill
-          className="about-enterprise__industry-image-asset"
-          sizes="(max-width: 1023px) 84vw, 17vw"
-          priority={index < 2}
-        />
+
+        <div className="about-enterprise__industry-image-stage">
+          <IndustryIllustrationDecor index={index} />
+          <span className="about-enterprise__industry-image-side about-enterprise__industry-image-side--left" aria-hidden />
+          <span className="about-enterprise__industry-image-side about-enterprise__industry-image-side--right" aria-hidden />
+
+          <div className="about-enterprise__industry-image-frame">
+            <Image
+              key={`${sector.name}-${industriesWeServeImageVersion}`}
+              src={sector.image}
+              alt={sector.name}
+              fill
+              className="about-enterprise__industry-image-asset"
+              sizes="(max-width: 1023px) 84vw, 17vw"
+              priority={index < 2}
+            />
+          </div>
+        </div>
       </div>
 
       <div className="about-enterprise__industry-image-body">

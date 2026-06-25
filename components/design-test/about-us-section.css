@@ -801,13 +801,14 @@
   position: absolute;
   top: 0.5rem;
   right: 0.6rem;
-  z-index: 4;
+  z-index: 6;
   font-size: 0.5625rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   color: rgba(179, 179, 179, 0.5);
 }
 
+/* Illustration area — full image like original, decor/sides overlay on top */
 .about-enterprise__industry-image-visual {
   position: relative;
   flex-shrink: 0;
@@ -818,22 +819,97 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.about-enterprise__industry-image-scrim {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  z-index: 2;
-  height: 32%;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent 0%, rgba(17, 31, 52, 0.75) 100%);
-  transition: opacity 0.4s ease;
+.about-enterprise__industry-image-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.about-enterprise__industry-image-visual::after {
-  display: none;
+.about-enterprise__industry-image-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.about-enterprise__industry-image-side {
+  position: absolute;
+  inset-block: 0;
+  z-index: 4;
+  width: 20%;
+  pointer-events: none;
+}
+
+.about-enterprise__industry-image-side--left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(4, 19, 41, 0.94) 0%,
+    rgba(4, 19, 41, 0.45) 55%,
+    transparent 100%
+  );
+}
+
+.about-enterprise__industry-image-side--right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(4, 19, 41, 0.94) 0%,
+    rgba(4, 19, 41, 0.45) 55%,
+    transparent 100%
+  );
+}
+
+/* Decor — tight frame overlay on illustration */
+.about-enterprise__industry-image-decor {
+  position: absolute;
+  inset: clamp(-0.4rem, -1.75%, -0.2rem);
+  z-index: 4;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.about-enterprise__industry-image-decor-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+
+.about-enterprise__industry-mark {
+  stroke: rgba(179, 179, 179, 0.98);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  opacity: 0.42;
+}
+
+.about-enterprise__industry-mark--accent {
+  stroke: rgba(240, 101, 31, 0.95);
+  stroke-width: 1.85;
+  opacity: 0.38;
+}
+
+.about-enterprise__industry-mark--edge {
+  stroke-width: 2;
+  opacity: 0.36;
+}
+
+.about-enterprise__industry-image-decor--v1 .about-enterprise__industry-image-decor-svg {
+  transform: scaleX(-1);
+}
+
+.about-enterprise__industry-image-decor--v2 .about-enterprise__industry-mark {
+  opacity: 0.46;
+}
+
+.about-enterprise__industry-image-decor--v2 .about-enterprise__industry-mark--accent {
+  opacity: 0.42;
 }
 
 .about-enterprise__industry-image-asset {
+  z-index: 1;
   object-fit: contain;
   object-position: center center;
   opacity: 1;
@@ -842,14 +918,9 @@
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.about-enterprise__industry-image-card:hover .about-enterprise__industry-image-scrim,
-.about-enterprise__industry-image-card:focus-within .about-enterprise__industry-image-scrim {
-  opacity: 0.65;
-}
-
 .about-enterprise__industry-image-card:hover .about-enterprise__industry-image-asset,
 .about-enterprise__industry-image-card:focus-within .about-enterprise__industry-image-asset {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .about-enterprise__industry-image-body {
@@ -859,6 +930,7 @@
   flex: 1;
   flex-direction: column;
   gap: 0.4rem;
+  min-height: 0;
   padding: 0.9rem 1rem 0.95rem;
   background: rgba(17, 31, 52, 0.55);
   backdrop-filter: blur(10px);
