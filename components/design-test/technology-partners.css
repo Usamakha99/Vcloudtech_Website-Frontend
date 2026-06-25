@@ -272,6 +272,11 @@
   transform-origin: center center;
 }
 
+.tp__partner-grid--all .tp__partner-logo--hpe {
+  transform: scale(2.05);
+  transform-origin: center center;
+}
+
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo {
   transform: scale(1.18);
 }
@@ -286,6 +291,10 @@
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--google {
   transform: scale(2.06);
+}
+
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--hpe {
+  transform: scale(2.1);
 }
 
 .tp__partner-cell {
@@ -675,6 +684,10 @@
   transform: scale(1.85);
 }
 
+.tp__strategic-strip-logo--hpe {
+  transform: scale(1.48);
+}
+
 /* Palo Alto + last four — equal strip sizing, clipped to cell (no overlap) */
 .tp__strategic-strip-logo--palo-alto,
 .tp__strategic-strip-logo--lansweeper,
@@ -709,6 +722,10 @@
 
 .tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--google {
   transform: scale(1.92);
+}
+
+.tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--hpe {
+  transform: scale(1.54);
 }
 
 .tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--palo-alto,
@@ -888,12 +905,20 @@
     transform: scale(2);
   }
 
+  .tp__partner-grid--all .tp__partner-logo--hpe {
+    transform: scale(2.05);
+  }
+
   .tp__strategic-strip-logo--boost {
     transform: scale(1.5);
   }
 
   .tp__strategic-strip-logo--google {
     transform: scale(1.85);
+  }
+
+  .tp__strategic-strip-logo--hpe {
+    transform: scale(1.48);
   }
 
   .tp__strategic-strip-logo--palo-alto,

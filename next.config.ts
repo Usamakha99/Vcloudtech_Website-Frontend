@@ -14,7 +14,8 @@ const nextConfig: NextConfig = {
     ],
     localPatterns: [
       {
-        pathname: "/Industries We Serve Final/**",
+        // Allow all `public/` images (required in Next.js 16 when any localPatterns are set).
+        pathname: "/**",
       },
     ],
   },

@@ -12,7 +12,7 @@ export const partnerLogos = [
   { name: "HPE", src: "/partners/Hewlett_Packard_Enterprise-Logo.wine.png" },
   { name: "IBM", src: "/partners/ibm.png" },
   { name: "Intel", src: "/partners/intel.png" },
-  { name: "Malwarebytes", src: "/partners/malwarebytes.png" },
+  { name: "ThreatDown", src: "/partners/ThreatDown.png" },
   { name: "Microsoft", src: "/partners/microsoft.png" },
   { name: "Samsung", src: "/partners/samsung.png" },
   { name: "Acronis", src: "/partners/acronis.png" },
@@ -54,6 +54,7 @@ function partnerLogoSlug(name: PartnerLogo["name"]) {
 export function partnerLogoStripClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__strategic-strip-logo--apple";
   if (name === "Google") return "tp__strategic-strip-logo--google";
+  if (name === "HPE") return "tp__strategic-strip-logo--hpe";
   if (boostedPartnerLogos.has(name)) return "tp__strategic-strip-logo--boost";
   if (strategicStripTunedPartners.has(name)) return `tp__strategic-strip-logo--${partnerLogoSlug(name)}`;
   return "";
@@ -63,6 +64,7 @@ export function partnerLogoStripClass(name: PartnerLogo["name"]) {
 export function partnerLogoVisualClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__partner-logo--apple";
   if (name === "Google") return "tp__partner-logo--google";
+  if (name === "HPE") return "tp__partner-logo--hpe";
   if (boostedPartnerLogos.has(name)) return "tp__partner-logo--boost";
   if (strategicStripTunedPartners.has(name)) return `tp__partner-logo--${partnerLogoSlug(name)}`;
   const squareLogos = ["Microsoft", "Malwarebytes", "Veeam"] as const;
