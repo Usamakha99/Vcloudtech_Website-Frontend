@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
+    localPatterns: [
+      {
+        pathname: "/Industries We Serve Final/**",
+      },
+    ],
   },
 };
 

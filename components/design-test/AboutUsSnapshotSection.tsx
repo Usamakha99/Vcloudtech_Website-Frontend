@@ -48,13 +48,13 @@ const sectors: {
   },
 ];
 
-/** Bump to force React remount after replacing files in `public/Industries We Serve Final/`. */
-const industriesWeServeImageVersion = "4";
+/** Bump when replacing files in `public/Industries We Serve Final/` (same filenames). */
+const industriesWeServeImageVersion = "5";
 
 const industriesWeServeImageBase = "/Industries We Serve Final";
 
 function industryImage(filename: string) {
-  return `${industriesWeServeImageBase}/${filename}`;
+  return `${industriesWeServeImageBase}/${filename}?v=${industriesWeServeImageVersion}`;
 }
 
 const industryImageSectors = [
