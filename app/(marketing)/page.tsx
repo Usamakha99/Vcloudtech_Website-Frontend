@@ -55,10 +55,10 @@ export default function Home() {
           <ResourceHubSection />
           <ClientsTestimonialsSection />
           <FaqSection />
+          <MeetExpertsCtaSection />
           <ContactUsSection />
         </div>
       </main>
-      <MeetExpertsCtaSection />
       <DesignTestFooter />
     </div>
   );
