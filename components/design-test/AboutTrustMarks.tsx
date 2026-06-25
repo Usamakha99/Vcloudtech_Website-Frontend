@@ -24,8 +24,8 @@ function CredentialMarkImage({ id }: { id: AboutTrustMarkId }) {
     <Image
       src={credentialImageById[id]}
       alt=""
-      width={1280}
-      height={1170}
+      fill
+      sizes="68px"
       className={`about-trust-mark__img about-trust-mark__img--${id}`}
       unoptimized
     />
