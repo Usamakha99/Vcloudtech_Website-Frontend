@@ -1,7 +1,7 @@
 /** Partner marks in `public/partners/` — use lowercase filenames (Linux/production paths are case-sensitive). */
 export const partnerLogos = [
   { name: "Adobe", src: "/partners/adobe.png" },
-  { name: "Anthropic", src: "/partners/anthropic.png" },
+  
   { name: "Apple", src: "/partners/apple.png" },
   { name: "AWS", src: "/partners/aws.png" },
   { name: "Cisco", src: "/partners/cisco.png" },
@@ -24,6 +24,7 @@ export const partnerLogos = [
   { name: "ServiceNow", src: "/partners/servicenow.png" },
   { name: "CrowdStrike", src: "/partners/crowdstrike.png" },
   { name: "Commvault", src: "/partners/commvault.png" },
+  { name: "Zscaler", src: "/partners/zscaler.png" },
 ] as const;
 
 export type PartnerLogo = (typeof partnerLogos)[number];
