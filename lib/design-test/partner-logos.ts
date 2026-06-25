@@ -56,6 +56,7 @@ export function partnerLogoStripClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__strategic-strip-logo--apple";
   if (name === "Google") return "tp__strategic-strip-logo--google";
   if (name === "HPE") return "tp__strategic-strip-logo--hpe";
+  if (name === "Zscaler") return "tp__strategic-strip-logo--zscaler";
   if (boostedPartnerLogos.has(name)) return "tp__strategic-strip-logo--boost";
   if (strategicStripTunedPartners.has(name)) return `tp__strategic-strip-logo--${partnerLogoSlug(name)}`;
   return "";

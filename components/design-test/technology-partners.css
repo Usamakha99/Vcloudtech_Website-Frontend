@@ -688,6 +688,10 @@
   transform: scale(1.48);
 }
 
+.tp__strategic-strip-logo--zscaler {
+  transform: scale(0.98);
+}
+
 /* Palo Alto + last four — equal strip sizing, clipped to cell (no overlap) */
 .tp__strategic-strip-logo--palo-alto,
 .tp__strategic-strip-logo--lansweeper,
@@ -726,6 +730,10 @@
 
 .tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--hpe {
   transform: scale(1.54);
+}
+
+.tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--zscaler {
+  transform: scale(1.02);
 }
 
 .tp__trusted-strip-logo-box:hover .tp__strategic-strip-logo--palo-alto,
@@ -919,6 +927,10 @@
 
   .tp__strategic-strip-logo--hpe {
     transform: scale(1.48);
+  }
+
+  .tp__strategic-strip-logo--zscaler {
+    transform: scale(0.98);
   }
 
   .tp__strategic-strip-logo--palo-alto,
