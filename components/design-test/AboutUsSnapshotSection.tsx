@@ -260,9 +260,7 @@ function IndustryImageCard({
         </span>
 
         <div className="about-enterprise__industry-image-stage">
-          <IndustryIllustrationDecor index={index} />
-          <span className="about-enterprise__industry-image-side about-enterprise__industry-image-side--left" aria-hidden />
-          <span className="about-enterprise__industry-image-side about-enterprise__industry-image-side--right" aria-hidden />
+          <span className="about-enterprise__industry-image-curve-vignette" aria-hidden />
 
           <div className="about-enterprise__industry-image-frame">
             <Image
@@ -275,6 +273,8 @@ function IndustryImageCard({
               priority={index < 2}
             />
           </div>
+
+          <IndustryIllustrationDecor index={index} />
         </div>
       </div>
 
