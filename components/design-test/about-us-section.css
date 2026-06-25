@@ -627,17 +627,16 @@
 .about-enterprise__sectors-header--center {
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   gap: 1rem;
 }
 
-@media (min-width: 640px) {
-  .about-enterprise__sectors-header--center {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    text-align: left;
-  }
+.about-enterprise__sectors-header--center > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .about-enterprise__industry-image-stack {
@@ -1019,6 +1018,31 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 0.75rem;
+}
+
+.about-enterprise__sectors-header.about-enterprise__sectors-header--center {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.about-enterprise__sectors-header.about-enterprise__sectors-header--center > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.about-enterprise__sectors-header.about-enterprise__sectors-header--center .about-enterprise__sectors-headline {
+  text-align: center;
+  width: 100%;
+}
+
+.about-enterprise__sectors-header.about-enterprise__sectors-header--center .about-enterprise__sectors-count {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .about-enterprise__sectors-headline {
