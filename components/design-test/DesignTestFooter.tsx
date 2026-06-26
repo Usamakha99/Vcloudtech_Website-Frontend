@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import { FooterNewsletter } from "@/components/design-test/FooterNewsletter";
@@ -76,28 +76,55 @@ function FooterLocationDivider() {
   return <span className="dt-footer__location-divider" aria-hidden />;
 }
 
+function FooterContactCard({
+  label,
+  href,
+  children,
+  wide,
+}: {
+  label: string;
+  href?: string;
+  children: ReactNode;
+  wide?: boolean;
+}) {
+  const className = `dt-footer__contact-card${wide ? " dt-footer__contact-card--wide" : ""}`;
+
+  if (href) {
+    return (
+      <a href={href} className={className}>
+        <span className="dt-footer__contact-card-label">{label}</span>
+        <span className="dt-footer__contact-card-value">{children}</span>
+      </a>
+    );
+  }
+
+  return (
+    <div className={className}>
+      <span className="dt-footer__contact-card-label">{label}</span>
+      <span className="dt-footer__contact-card-value">{children}</span>
+    </div>
+  );
+}
+
 function FooterContactInfo() {
   return (
     <div className="dt-footer__contact" aria-label="Contact information">
       <p className="dt-footer__col-title">Contact</p>
-      <div className="dt-footer__contact-lines">
-        <a
-          href={`mailto:${designTestContactInfo.email}`}
-          className="dt-footer__contact-line"
-        >
+      <div className="dt-footer__contact-cards">
+        <FooterContactCard label="Email" href={`mailto:${designTestContactInfo.email}`}>
           {designTestContactInfo.email}
-        </a>
-        <a
+        </FooterContactCard>
+        <FooterContactCard
+          label="Phone"
           href={`tel:${designTestContactInfo.phone.replace(/\D/g, "")}`}
-          className="dt-footer__contact-line"
         >
           {designTestContactInfo.phone}
-        </a>
-        <p className="dt-footer__contact-line dt-footer__contact-line--muted">
+        </FooterContactCard>
+        <FooterContactCard label="Business hours" wide>
           {designTestContactInfo.hours}
-        </p>
-        <p className="dt-footer__contact-note">{designTestContactInfo.enterpriseNote}</p>
+        </FooterContactCard>
       </div>
+      <p className="dt-footer__contact-note">{designTestContactInfo.enterpriseNote}</p>
     </div>
   );
 }

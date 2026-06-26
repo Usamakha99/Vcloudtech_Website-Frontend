@@ -37,7 +37,7 @@
 
 @media (min-width: 768px) {
   .dt-footer__grid {
-    grid-template-columns: 1.5fr repeat(2, 0.9fr) 1.15fr;
+    grid-template-columns: 1.45fr repeat(2, 0.85fr) 1.35fr;
     gap: 2.5rem;
     align-items: start;
   }
@@ -204,50 +204,73 @@
 .dt-footer__contact {
   width: 100%;
   min-width: 0;
-  max-width: 16rem;
 }
 
-@media (min-width: 768px) {
-  .dt-footer__contact {
-    justify-self: end;
-    margin-left: auto;
-    text-align: right;
-  }
-
-  .dt-footer__contact-lines {
-    align-items: flex-end;
-  }
-}
-
-.dt-footer__contact-lines {
+.dt-footer__contact-cards {
   margin-top: 1rem;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .dt-footer__contact-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.dt-footer__contact-card {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-}
-
-.dt-footer__contact-line {
-  margin: 0;
-  font-size: 0.8125rem;
-  line-height: 1.55;
-  font-weight: 500;
-  color: #d4d4d8;
+  gap: 0.3rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(17, 31, 52, 0.4);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
-a.dt-footer__contact-line:hover {
+a.dt-footer__contact-card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(17, 31, 52, 0.58);
+}
+
+a.dt-footer__contact-card:focus-visible {
+  outline: 2px solid rgba(179, 179, 179, 0.45);
+  outline-offset: 2px;
+}
+
+.dt-footer__contact-card--wide {
+  grid-column: 1 / -1;
+}
+
+.dt-footer__contact-card-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(161, 161, 170, 0.85);
+}
+
+.dt-footer__contact-card-value {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  font-weight: 500;
+  color: #f4f4f5;
+  word-break: break-word;
+}
+
+a.dt-footer__contact-card:hover .dt-footer__contact-card-value {
   color: #fff;
 }
 
-.dt-footer__contact-line--muted {
-  color: #71717a;
-}
-
 .dt-footer__contact-note {
-  margin: 0.65rem 0 0;
+  margin: 0.75rem 0 0;
   font-size: 0.75rem;
   line-height: 1.55;
   font-weight: 400;
-  color: #52525b;
+  color: #71717a;
 }
