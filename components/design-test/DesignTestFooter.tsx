@@ -71,6 +71,10 @@ function FooterLocationLink({
   );
 }
 
+function FooterLocationDivider() {
+  return <span className="dt-footer__location-divider" aria-hidden />;
+}
+
 /** Enterprise footer for dark design-test lab. */
 export function DesignTestFooter() {
   return (
@@ -80,7 +84,7 @@ export function DesignTestFooter() {
 
         <div className="dt-footer__grid">
           <div>
-            <VCloudTechLogoImage variant="light" className="h-7 w-auto sm:h-8" />
+            <VCloudTechLogoImage variant="light" className="h-8 w-auto sm:h-9" />
             <div className="dt-footer__locations">
               <FooterLocationLink
                 country={designTestFooterLocations.headquarters.country}
@@ -89,6 +93,7 @@ export function DesignTestFooter() {
                 mapsUrl={designTestFooterLocations.headquarters.mapsUrl}
                 ariaLabel={designTestFooterLocations.headquarters.ariaLabel}
               />
+              <FooterLocationDivider />
               <FooterLocationLink
                 region={designTestFooterLocations.office.region}
                 lines={designTestFooterLocations.office.lines}
