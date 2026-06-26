@@ -305,7 +305,19 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 3rem 3.5rem;
-    align-items: center;
+    align-items: start;
+  }
+}
+
+.dt-contact:has(.dt-contact__split-shell) {
+  padding-top: 1.5rem;
+  padding-bottom: 2.25rem;
+}
+
+@media (min-width: 640px) {
+  .dt-contact:has(.dt-contact__split-shell) {
+    padding-top: 1.75rem;
+    padding-bottom: 2.5rem;
   }
 }
 
@@ -321,6 +333,7 @@
   font-weight: 700;
   color: #fff;
   text-wrap: balance;
+  margin-top: 0.75rem;
 }
 
 .dt-contact__lede--prominent {
@@ -329,6 +342,7 @@
   font-weight: 400;
   color: #c8c8d0;
   text-wrap: pretty;
+  margin-top: 0.875rem;
 }
 
 .dt-contact__intro {
@@ -337,7 +351,8 @@
   align-items: flex-start;
   text-align: left;
   max-width: 30rem;
-  padding-top: 0.25rem;
+  padding-top: 0;
+  align-self: start;
 }
 
 .dt-contact__intro .dt-contact__lede {

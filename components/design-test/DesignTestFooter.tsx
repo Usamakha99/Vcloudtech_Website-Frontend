@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Fragment, type ReactNode } from "react";
+import { Fragment } from "react";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import { FooterNewsletter } from "@/components/design-test/FooterNewsletter";
@@ -76,55 +76,39 @@ function FooterLocationDivider() {
   return <span className="dt-footer__location-divider" aria-hidden />;
 }
 
-function FooterContactCard({
-  label,
-  href,
-  children,
-  wide,
-}: {
-  label: string;
-  href?: string;
-  children: ReactNode;
-  wide?: boolean;
-}) {
-  const className = `dt-footer__contact-card${wide ? " dt-footer__contact-card--wide" : ""}`;
-
-  if (href) {
-    return (
-      <a href={href} className={className}>
-        <span className="dt-footer__contact-card-label">{label}</span>
-        <span className="dt-footer__contact-card-value">{children}</span>
-      </a>
-    );
-  }
-
-  return (
-    <div className={className}>
-      <span className="dt-footer__contact-card-label">{label}</span>
-      <span className="dt-footer__contact-card-value">{children}</span>
-    </div>
-  );
-}
-
 function FooterContactInfo() {
   return (
     <div className="dt-footer__contact" aria-label="Contact information">
-      <p className="dt-footer__col-title">Contact</p>
-      <div className="dt-footer__contact-cards">
-        <FooterContactCard label="Email" href={`mailto:${designTestContactInfo.email}`}>
-          {designTestContactInfo.email}
-        </FooterContactCard>
-        <FooterContactCard
-          label="Phone"
-          href={`tel:${designTestContactInfo.phone.replace(/\D/g, "")}`}
-        >
-          {designTestContactInfo.phone}
-        </FooterContactCard>
-        <FooterContactCard label="Business hours" wide>
-          {designTestContactInfo.hours}
-        </FooterContactCard>
+      <div className="dt-footer__contact-card">
+        <p className="dt-footer__contact-card-title">Contact</p>
+        <div className="dt-footer__contact-rows">
+          <div className="dt-footer__contact-row">
+            <span className="dt-footer__contact-row-label">Email</span>
+            <a
+              href={`mailto:${designTestContactInfo.email}`}
+              className="dt-footer__contact-row-value"
+            >
+              {designTestContactInfo.email}
+            </a>
+          </div>
+          <div className="dt-footer__contact-row">
+            <span className="dt-footer__contact-row-label">Phone</span>
+            <a
+              href={`tel:${designTestContactInfo.phone.replace(/\D/g, "")}`}
+              className="dt-footer__contact-row-value"
+            >
+              {designTestContactInfo.phone}
+            </a>
+          </div>
+          <div className="dt-footer__contact-row">
+            <span className="dt-footer__contact-row-label">Business hours</span>
+            <span className="dt-footer__contact-row-value dt-footer__contact-row-value--plain">
+              {designTestContactInfo.hours}
+            </span>
+          </div>
+        </div>
+        <p className="dt-footer__contact-note">{designTestContactInfo.enterpriseNote}</p>
       </div>
-      <p className="dt-footer__contact-note">{designTestContactInfo.enterpriseNote}</p>
     </div>
   );
 }

@@ -27,10 +27,10 @@ export function ContactUsSection() {
         <div className="dt-contact__layout dt-contact__layout--split dt-contact__split-shell">
           <DtScrollReveal className="dt-contact__intro">
             <p className={`${dt.badge} dt-contact__badge`}>Contact</p>
-            <h2 id="contact-heading" className="dt-contact__headline mt-5">
+            <h2 id="contact-heading" className="dt-contact__headline">
               Contact us
             </h2>
-            <p className="dt-contact__lede dt-contact__lede--prominent mt-4">
+            <p className="dt-contact__lede dt-contact__lede--prominent">
               Tell us about your environment, timeline, and priorities and our solutions team will
               route your inquiry to the right specialists.
             </p>
