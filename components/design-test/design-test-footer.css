@@ -204,6 +204,15 @@
 .dt-footer__contact {
   width: 100%;
   min-width: 0;
+  margin-top: 5.5rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .dt-footer__contact {
+    margin-top: 12.5rem;
+    margin-bottom: 1.25rem;
+  }
 }
 
 .dt-footer__contact-cards {
