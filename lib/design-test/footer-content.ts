@@ -1,7 +1,22 @@
-export const designTestFooterAddress = {
-  line1: "609 Deep Valley Drive Suite 200",
-  line2: "Rolling Hills Estates, CA 90274",
-  full: "609 Deep Valley Drive Suite 200, Rolling Hills Estates, CA 90274",
+export const designTestFooterLocations = {
+  headquarters: {
+    heading: "Headquarter",
+    lines: [
+      "vCloud Tech Inc.",
+      "2601 E State Highway 121 Business, Suite 509M, Lewisville, TX 75067",
+    ],
+    mapsUrl: "https://maps.app.goo.gl/kqTMFYHWSD9PbBRz8",
+    ariaLabel: "Open VCloud Tech Headquarters in Google Maps",
+  },
+  office: {
+    heading: "VCloud Tech (Address)",
+    lines: [
+      "609 Deep Valley Drive Suite 200",
+      "Rolling Hills Estates, CA 90274",
+    ],
+    mapsUrl: "https://maps.app.goo.gl/vGG2BifQVrR58kYN6",
+    ariaLabel: "Open VCloud Tech Office Location in Google Maps",
+  },
 } as const;
 
 export const designTestFooterLinks = {

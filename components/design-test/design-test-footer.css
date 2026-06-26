@@ -51,6 +51,64 @@
   color: #b3b3b3;
 }
 
+.dt-footer__locations {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.85rem;
+  max-width: 20rem;
+}
+
+.dt-footer__location-link {
+  display: block;
+  text-decoration: none;
+  color: #b3b3b3;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.dt-footer__location-link:hover,
+.dt-footer__location-link:focus-visible {
+  color: #e55614;
+}
+
+.dt-footer__location-link:hover .dt-footer__location-heading,
+.dt-footer__location-link:focus-visible .dt-footer__location-heading {
+  color: #e55614;
+}
+
+.dt-footer__location-heading {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: color 0.25s ease;
+}
+
+.dt-footer__location-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.dt-footer__location-pin {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.15rem;
+  color: currentColor;
+  transition: color 0.25s ease;
+}
+
+.dt-footer__location-address {
+  display: block;
+}
+
 .dt-footer__social {
   display: flex;
   flex-wrap: wrap;
