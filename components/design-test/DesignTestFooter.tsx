@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import { FooterNewsletter } from "@/components/design-test/FooterNewsletter";
 import { FooterSocialLinks } from "@/components/design-test/FooterSocialIcons";
+import { designTestContactInfo } from "@/lib/design-test/contact-options";
 import {
   designTestFooterLinks,
   designTestFooterLocations,
@@ -75,6 +76,32 @@ function FooterLocationDivider() {
   return <span className="dt-footer__location-divider" aria-hidden />;
 }
 
+function FooterContactInfo() {
+  return (
+    <div className="dt-footer__contact" aria-label="Contact information">
+      <p className="dt-footer__col-title">Contact</p>
+      <div className="dt-footer__contact-lines">
+        <a
+          href={`mailto:${designTestContactInfo.email}`}
+          className="dt-footer__contact-line"
+        >
+          {designTestContactInfo.email}
+        </a>
+        <a
+          href={`tel:${designTestContactInfo.phone.replace(/\D/g, "")}`}
+          className="dt-footer__contact-line"
+        >
+          {designTestContactInfo.phone}
+        </a>
+        <p className="dt-footer__contact-line dt-footer__contact-line--muted">
+          {designTestContactInfo.hours}
+        </p>
+        <p className="dt-footer__contact-note">{designTestContactInfo.enterpriseNote}</p>
+      </div>
+    </div>
+  );
+}
+
 /** Enterprise footer for dark design-test lab. */
 export function DesignTestFooter() {
   return (
@@ -83,7 +110,7 @@ export function DesignTestFooter() {
         <FooterNewsletter />
 
         <div className="dt-footer__grid">
-          <div>
+          <div className="dt-footer__brand">
             <VCloudTechLogoImage variant="light" className="h-8 w-auto sm:h-9" />
             <div className="dt-footer__locations">
               <FooterLocationLink
@@ -130,18 +157,7 @@ export function DesignTestFooter() {
             </ul>
           </div>
 
-          <div>
-            <p className="dt-footer__col-title">Contact</p>
-            <ul className="dt-footer__links">
-              {designTestFooterLinks.contact.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="dt-footer__link">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterContactInfo />
         </div>
 
         <div className="dt-footer__bottom">

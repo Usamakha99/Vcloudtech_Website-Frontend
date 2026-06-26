@@ -4,14 +4,11 @@ import { type FormEvent, useState } from "react";
 
 import { DtScrollReveal } from "@/components/design-test/DtScrollReveal";
 import { dt } from "@/components/design-test/design-test-theme";
-import {
-  designTestContactInfo,
-  designTestInquiryTypes,
-} from "@/lib/design-test/contact-options";
+import { designTestInquiryTypes } from "@/lib/design-test/contact-options";
 
 import "./design-test-closing-sections.css";
 
-/** Contact Us — enterprise form with optional info panel. */
+/** Contact Us — intro left, form right. */
 export function ContactUsSection() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -27,20 +24,20 @@ export function ContactUsSection() {
       aria-labelledby="contact-heading"
     >
       <div className="dt-contact__inner">
-        <DtScrollReveal className="dt-contact__header mx-auto max-w-3xl text-center">
-          <p className={dt.badge}>Contact</p>
-          <h2 id="contact-heading" className={`${dt.sectionHeadline} mt-5 text-white`}>
-            Contact us
-          </h2>
-          <p className={`dt-contact__lede mt-3 ${dt.body}`}>
-            Tell us about your environment, timeline, and priorities and our solutions team will route
-            your inquiry to the right specialists.
-          </p>
-        </DtScrollReveal>
+        <div className="dt-contact__layout dt-contact__layout--split dt-contact__split-shell">
+          <DtScrollReveal className="dt-contact__intro">
+            <p className={`${dt.badge} dt-contact__badge`}>Contact</p>
+            <h2 id="contact-heading" className="dt-contact__headline mt-5">
+              Contact us
+            </h2>
+            <p className="dt-contact__lede dt-contact__lede--prominent mt-4">
+              Tell us about your environment, timeline, and priorities and our solutions team will
+              route your inquiry to the right specialists.
+            </p>
+          </DtScrollReveal>
 
-        <div className="dt-contact__layout">
           <DtScrollReveal delay={0.08} className="dt-contact__form-wrap">
-            <div className="dt-contact__form-panel">
+            <div className="dt-contact__form-panel dt-contact__form-panel--minimal">
               {submitted ? (
                 <div className="dt-contact__success" role="status">
                   <p className="dt-contact__success-title">Message received</p>
@@ -62,7 +59,6 @@ export function ContactUsSection() {
                       required
                       autoComplete="name"
                       className="dt-contact__input"
-                     
                     />
                   </div>
 
@@ -77,7 +73,6 @@ export function ContactUsSection() {
                       required
                       autoComplete="email"
                       className="dt-contact__input"
-                      
                     />
                   </div>
 
@@ -113,9 +108,8 @@ export function ContactUsSection() {
                       id="contact-message"
                       name="message"
                       required
-                      rows={5}
+                      rows={4}
                       className="dt-contact__textarea"
-                     
                     />
                   </div>
 
@@ -125,41 +119,6 @@ export function ContactUsSection() {
                 </form>
               )}
             </div>
-          </DtScrollReveal>
-
-          <DtScrollReveal delay={0.14} className="dt-contact__aside-wrap">
-            <aside className="dt-contact__aside" aria-label="Contact information">
-              <ul className="dt-contact__info-list">
-                <li className="dt-contact__info-item">
-                  <span className="dt-contact__info-label">Email</span>
-                  <a
-                    href={`mailto:${designTestContactInfo.email}`}
-                    className="dt-contact__info-value"
-                  >
-                    {designTestContactInfo.email}
-                  </a>
-                </li>
-                <li className="dt-contact__info-item">
-                  <span className="dt-contact__info-label">Phone</span>
-                  <a
-                    href={`tel:${designTestContactInfo.phone.replace(/\D/g, "")}`}
-                    className="dt-contact__info-value"
-                  >
-                    {designTestContactInfo.phone}
-                  </a>
-                </li>
-                <li className="dt-contact__info-item">
-                  <span className="dt-contact__info-label">Business Hours</span>
-                  <span className="dt-contact__info-value dt-contact__info-value--plain">
-                    {designTestContactInfo.hours}
-                  </span>
-                </li>
-              </ul>
-
-              <p className={`dt-contact__aside-note ${dt.body}`}>
-                Enterprise accounts receive priority routing and a dedicated solutions architect.
-              </p>
-            </aside>
           </DtScrollReveal>
         </div>
       </div>

@@ -1,11 +1,11 @@
 .contact-landing {
   width: 100%;
-  padding: 2rem 0.75rem 3.5rem;
+  padding: 2rem 0.75rem 3rem;
 }
 
 @media (min-width: 640px) {
   .contact-landing {
-    padding: 2.5rem 1rem 4rem;
+    padding: 2.5rem 1rem 3.5rem;
   }
 }
 
@@ -21,156 +21,29 @@
   }
 }
 
-.contact-landing__hero {
+.contact-landing__split {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+.contact-landing__intro {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 42rem;
-  margin-inline: auto;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 30rem;
 }
 
 .contact-landing__title {
   margin-top: 1.25rem;
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: #fff;
 }
 
 .contact-landing__lede {
-  margin-top: 1rem;
-  max-width: 36rem;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #b3b3b3;
+  margin-top: 1.25rem;
 }
 
-@media (min-width: 640px) {
-  .contact-landing__lede {
-    font-size: 1.0625rem;
-  }
-}
-
-.contact-landing__layout {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2.75rem;
-  width: 100%;
-}
-
-@media (min-width: 1024px) {
-  .contact-landing__layout {
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
-    gap: 2rem;
-    margin-top: 3.25rem;
-    align-items: start;
-  }
-}
-
-.contact-landing__form-wrap,
-.contact-landing__aside {
+.contact-landing__form-wrap {
   width: 100%;
   min-width: 0;
-}
-
-.contact-landing__aside {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.contact-landing__info-card {
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(165deg, rgba(17, 31, 52, 0.92) 0%, rgba(4, 19, 41, 0.88) 100%);
-  padding: 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .contact-landing__info-card {
-    padding: 1.75rem;
-  }
-}
-
-.contact-landing__note {
-  margin-top: 1.25rem;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: #b3b3b3;
-}
-
-.contact-landing__offices {
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(165deg, rgba(17, 31, 52, 0.88) 0%, rgba(4, 19, 41, 0.84) 100%);
-  padding: 1.5rem;
-}
-
-.contact-landing__offices-title {
-  margin: 0 0 1rem;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-.contact-landing__office-link {
-  display: block;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.contact-landing__office-country {
-  display: block;
-  margin-bottom: 0.35rem;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-.contact-landing__office-region {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.contact-landing__office-body {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  font-size: 0.875rem;
-  line-height: 1.65;
-}
-
-.contact-landing__pin {
-  flex-shrink: 0;
-  width: 1.0625rem;
-  height: 1.0625rem;
-  margin-top: 0.2rem;
-  color: #71717a;
-}
-
-.contact-landing__office-address {
-  color: #fff;
-  transition: color 0.25s ease;
-}
-
-.contact-landing__office-link:hover .contact-landing__office-address,
-.contact-landing__office-link:focus-visible .contact-landing__office-address {
-  color: #b3b3b3;
-}
-
-.contact-landing__office-divider {
-  display: block;
-  width: calc(100% - 1.6125rem);
-  height: 0;
-  margin: 1rem 0 1rem calc(1.0625rem + 0.55rem);
-  border-top: 1px solid rgba(179, 179, 179, 0.35);
 }
