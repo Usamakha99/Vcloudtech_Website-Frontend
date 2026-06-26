@@ -74,18 +74,30 @@
   color: #e55614;
 }
 
-.dt-footer__location-link:hover .dt-footer__location-heading,
-.dt-footer__location-link:focus-visible .dt-footer__location-heading {
+.dt-footer__location-link:hover .dt-footer__location-country,
+.dt-footer__location-link:focus-visible .dt-footer__location-country,
+.dt-footer__location-link:hover .dt-footer__location-region,
+.dt-footer__location-link:focus-visible .dt-footer__location-region {
   color: #e55614;
 }
 
-.dt-footer__location-heading {
+.dt-footer__location-country {
   display: block;
   margin-bottom: 0.35rem;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: #fff;
+  transition: color 0.25s ease;
+}
+
+.dt-footer__location-region {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   color: #fff;
   transition: color 0.25s ease;
 }

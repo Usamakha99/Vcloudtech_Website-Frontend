@@ -1,6 +1,7 @@
 export const designTestFooterLocations = {
   headquarters: {
-    heading: "Headquarter",
+    country: "United States",
+    region: "Texas - Headquarter",
     lines: [
       "vCloud Tech Inc.",
       "2601 E State Highway 121 Business, Suite 509M, Lewisville, TX 75067",
@@ -9,7 +10,7 @@ export const designTestFooterLocations = {
     ariaLabel: "Open VCloud Tech Headquarters in Google Maps",
   },
   office: {
-    heading: "VCloud Tech (Address)",
+    region: "California",
     lines: [
       "609 Deep Valley Drive Suite 200",
       "Rolling Hills Estates, CA 90274",

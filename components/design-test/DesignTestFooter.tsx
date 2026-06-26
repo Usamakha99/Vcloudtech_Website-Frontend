@@ -32,13 +32,20 @@ function FooterLocationPinIcon() {
 }
 
 type FooterLocationLinkProps = {
-  heading: string;
+  country?: string;
+  region: string;
   lines: readonly string[];
   mapsUrl: string;
   ariaLabel: string;
 };
 
-function FooterLocationLink({ heading, lines, mapsUrl, ariaLabel }: FooterLocationLinkProps) {
+function FooterLocationLink({
+  country,
+  region,
+  lines,
+  mapsUrl,
+  ariaLabel,
+}: FooterLocationLinkProps) {
   return (
     <a
       href={mapsUrl}
@@ -47,7 +54,8 @@ function FooterLocationLink({ heading, lines, mapsUrl, ariaLabel }: FooterLocati
       rel="noopener noreferrer"
       aria-label={ariaLabel}
     >
-      <span className="dt-footer__location-heading">{heading}</span>
+      {country ? <span className="dt-footer__location-country">{country}</span> : null}
+      <span className="dt-footer__location-region">{region}</span>
       <span className="dt-footer__location-body">
         <FooterLocationPinIcon />
         <span className="dt-footer__location-address">
@@ -75,13 +83,14 @@ export function DesignTestFooter() {
             <VCloudTechLogoImage variant="light" className="h-7 w-auto sm:h-8" />
             <div className="dt-footer__locations">
               <FooterLocationLink
-                heading={designTestFooterLocations.headquarters.heading}
+                country={designTestFooterLocations.headquarters.country}
+                region={designTestFooterLocations.headquarters.region}
                 lines={designTestFooterLocations.headquarters.lines}
                 mapsUrl={designTestFooterLocations.headquarters.mapsUrl}
                 ariaLabel={designTestFooterLocations.headquarters.ariaLabel}
               />
               <FooterLocationLink
-                heading={designTestFooterLocations.office.heading}
+                region={designTestFooterLocations.office.region}
                 lines={designTestFooterLocations.office.lines}
                 mapsUrl={designTestFooterLocations.office.mapsUrl}
                 ariaLabel={designTestFooterLocations.office.ariaLabel}
