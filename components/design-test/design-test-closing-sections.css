@@ -902,12 +902,12 @@ a.dt-contact__info-value:hover {
 
 .dt-experts-cta__button {
   color: #041329;
-  background: #b3b3b3;
-  box-shadow: 0 10px 28px -12px rgba(179, 179, 179, 0.35);
+  background: #ffffff;
+  box-shadow: 0 10px 28px -12px rgba(255, 255, 255, 0.2);
 }
 
 .dt-experts-cta__button:hover {
-  background: #c4c4c4;
+  background: #b3b3b3;
 }
 
 .dt-experts-cta__button:focus-visible {
