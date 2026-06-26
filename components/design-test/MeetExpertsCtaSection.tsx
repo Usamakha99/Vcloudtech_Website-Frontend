@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import { DtScrollReveal } from "@/components/design-test/DtScrollReveal";
-import { dt, dtCta } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/design-test/design-test-theme";
 
 import "./design-test-closing-sections.css";
 
@@ -62,7 +62,7 @@ export function MeetExpertsCtaSection() {
 
           <Link
             href="/contact"
-            className={`dt-experts-cta__button mt-8 inline-flex h-12 items-center justify-center rounded-full px-8 text-sm font-semibold text-[#041329] shadow-lg shadow-[#E55614]/25 transition duration-300 ${dtCta.bg} hover:bg-[#f06520] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E55614]/60`}
+            className="dt-experts-cta__button mt-8 inline-flex h-12 items-center justify-center rounded-full px-8 text-sm font-semibold transition duration-300"
           >
             Book a Free Call
           </Link>
