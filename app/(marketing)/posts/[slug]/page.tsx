@@ -39,7 +39,7 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-16">
+    <article className="mx-auto min-h-full max-w-3xl bg-white px-6 py-16 text-slate-900">
       <Link
         href="/posts"
         className="text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"

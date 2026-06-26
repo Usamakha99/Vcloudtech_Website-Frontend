@@ -20,7 +20,7 @@ export default async function PostsPage() {
   const posts = await client.fetch(POSTS_QUERY);
 
   return (
-    <div className="mx-auto flex min-h-full max-w-3xl flex-col px-6 py-16">
+    <div className="mx-auto flex min-h-full max-w-3xl flex-col bg-white px-6 py-16 text-slate-900">
       <header className="mb-12">
         <Link
           href="/"

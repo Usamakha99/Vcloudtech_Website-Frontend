@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-full bg-white pt-[4.25rem]">
+    <div className="min-h-full bg-white">
       <div className="border-b border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-white">
         <div className="mx-auto max-w-3xl px-6 py-14 sm:py-16 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">
