@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-/** Shared enterprise shell: global nav, dark page background, and footer on all marketing routes. */
+/** Shared enterprise shell: global nav, dark page background, and footer on all site routes. */
 export function MarketingLayoutShell({ children }: Props) {
   return (
     <div
