@@ -14,6 +14,7 @@
   max-width: 80rem;
   margin-inline: auto;
   padding: 3rem 1rem 4rem;
+  background: var(--dt-bg, #041329);
 }
 
 @media (min-width: 640px) {
@@ -35,14 +36,14 @@
 .contact-page__hero {
   position: relative;
   display: flex;
-  align-items: flex-end;
-  min-height: 78vh;
-  min-height: 78dvh;
+  align-items: center;
+  justify-content: center;
+  min-height: min(72vh, 52rem);
+  min-height: min(72dvh, 52rem);
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-page__hero-media {
@@ -52,7 +53,8 @@
 
 .contact-page__hero-image {
   object-fit: cover;
-  object-position: center 35%;
+  object-position: center center;
+  transform: scale(1.02);
 }
 
 .contact-page__hero-overlay {
@@ -60,71 +62,45 @@
   inset: 0;
   background:
     linear-gradient(
-      105deg,
-      color-mix(in srgb, var(--dt-bg, #041329) 92%, transparent) 0%,
-      color-mix(in srgb, var(--dt-bg, #041329) 72%, transparent) 48%,
+      180deg,
+      color-mix(in srgb, var(--dt-bg, #041329) 35%, transparent) 0%,
+      color-mix(in srgb, var(--dt-bg, #041329) 18%, transparent) 42%,
       color-mix(in srgb, var(--dt-bg, #041329) 55%, transparent) 100%
     ),
-    linear-gradient(to top, var(--dt-bg, #041329) 0%, transparent 42%);
+    color-mix(in srgb, var(--dt-bg, #041329) 25%, transparent);
 }
 
 .contact-page__hero-content {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 80rem;
+  max-width: 54rem;
   margin-inline: auto;
-  padding: 6.5rem 1.25rem 3.5rem;
-  text-align: left;
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
 }
 
 @media (min-width: 640px) {
   .contact-page__hero-content {
-    padding: 7rem 1.5rem 4rem;
+    padding: 7rem 2rem 4.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .contact-page__hero-content {
-    padding: 7.5rem 2rem 4.5rem;
-    max-width: 42rem;
-    margin-inline: 0 auto 0;
-    margin-left: max(2rem, calc((100vw - 80rem) / 2 + 2rem));
+    padding: 8rem 2.5rem 5rem;
+    max-width: 62rem;
   }
-}
-
-.contact-page__hero-badge {
-  margin-bottom: 0.25rem;
 }
 
 .contact-page__hero-title {
-  margin-top: 1rem;
-  font-size: clamp(2rem, 4.5vw, 3.25rem);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  margin: 0;
+  font-size: clamp(2.25rem, 5.8vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
   color: var(--dt-text, #ffffff);
-}
-
-.contact-page__hero-lede {
-  margin-top: 1.25rem;
-  max-width: 36rem;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--dt-muted, #a1a1aa);
-}
-
-@media (min-width: 640px) {
-  .contact-page__hero-lede {
-    font-size: 1.0625rem;
-  }
-}
-
-.contact-page__hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 2rem;
+  text-wrap: balance;
 }
 
 .contact-page__btn-primary {

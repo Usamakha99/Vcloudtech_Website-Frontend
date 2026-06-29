@@ -54,7 +54,7 @@ export function ContactLandingPage() {
 
   return (
     <div className="contact-page" data-nav-surface="dark">
-      {/* 1. Hero */}
+      {/* 1. Hero — full-width image, centered headline (reference layout) */}
       <section className="contact-page__hero" aria-labelledby="contact-page-heading">
         <div className="contact-page__hero-media" aria-hidden>
           <Image
@@ -69,23 +69,9 @@ export function ContactLandingPage() {
         </div>
 
         <div className="contact-page__hero-content">
-          <p className={`${dt.badge} contact-page__hero-badge`}>{contactPageHero.badge}</p>
           <h1 id="contact-page-heading" className="contact-page__hero-title">
             {contactPageHero.title}
           </h1>
-          <p className="contact-page__hero-lede">{contactPageHero.lede}</p>
-          <div className="contact-page__hero-actions">
-            <ButtonLink href="#contact-form" variant="ctaWhite" className="contact-page__btn-primary">
-              Schedule a Consultation
-            </ButtonLink>
-            <ButtonLink
-              href={`mailto:${designTestContactInfo.email}?subject=Sales%20Inquiry`}
-              variant="outlineOnNavy"
-              className="contact-page__btn-secondary"
-            >
-              Contact Sales
-            </ButtonLink>
-          </div>
         </div>
       </section>
 

@@ -2,12 +2,9 @@ import { designTestContactInfo, designTestInquiryTypes } from "@/lib/design-test
 import { designTestFooterLocations } from "@/lib/design-test/footer-content";
 
 export const contactPageHero = {
-  badge: "Contact VCloud Tech",
-  title: "Let's Build Your AI Infrastructure Together",
-  lede:
-    "Partner with vCloud Tech for enterprise-grade AI infrastructure, data center solutions, and technology procurement. Our specialists deliver strategic consultation, compliant sourcing, and end-to-end deployment for organizations that demand performance and reliability.",
-  image: "/design-test/hero/vcloud-facility.png",
-  imageAlt: "vCloud Tech enterprise data center and AI infrastructure facility",
+  title: "Hello. Let's build your AI infrastructure together.",
+  image: "/images/hero-1.png",
+  imageAlt: "vCloud Tech enterprise data center and AI infrastructure",
 } as const;
 
 export const contactInfoCards = [
