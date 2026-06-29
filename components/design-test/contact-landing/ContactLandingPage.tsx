@@ -43,7 +43,7 @@ const infoIcons = {
   hours: ShieldIcon,
 } as const;
 
-/** Premium enterprise contact page — hero, info, form, locations, map, and CTAs. */
+/** Premium enterprise contact page — hero, form, info, locations, map, and CTAs. */
 export function ContactLandingPage() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -54,8 +54,8 @@ export function ContactLandingPage() {
 
   return (
     <div className="contact-page" data-nav-surface="dark">
-      {/* 1. Hero — full-width image, centered headline (reference layout) */}
-      <section className="contact-page__hero" aria-labelledby="contact-page-heading">
+      {/* 1. Hero — full-width banner, left copy (reference layout) */}
+      <section id="hero" className="contact-page__hero" aria-labelledby="contact-page-heading">
         <div className="contact-page__hero-media" aria-hidden>
           <Image
             src={contactPageHero.image}
@@ -68,52 +68,25 @@ export function ContactLandingPage() {
           <div className="contact-page__hero-overlay" />
         </div>
 
-        <div className="contact-page__hero-content">
-          <h1 id="contact-page-heading" className="contact-page__hero-title">
-            {contactPageHero.title}
-          </h1>
+        <div className="contact-page__hero-inner">
+          <div className="contact-page__hero-content">
+            <h1 id="contact-page-heading" className="contact-page__hero-title">
+              {contactPageHero.title}
+            </h1>
+            <p className="contact-page__hero-lede">{contactPageHero.lede}</p>
+            <ButtonLink
+              href={contactPageHero.ctaHref}
+              variant="ctaWhite"
+              className="contact-page__hero-cta"
+            >
+              {contactPageHero.ctaLabel}
+            </ButtonLink>
+          </div>
         </div>
       </section>
 
       <div className="contact-page__body">
-        {/* 2. Contact information */}
-        <section className="contact-page__section" aria-labelledby="contact-info-heading">
-          <header className="contact-page__section-header">
-            <p className={dt.metaLabel}>Reach us directly</p>
-            <h2 id="contact-info-heading" className="contact-page__section-title">
-              Contact information
-            </h2>
-          </header>
-
-          <ul className="contact-page__info-grid">
-            {contactInfoCards.map((card) => {
-              const Icon = infoIcons[card.id as keyof typeof infoIcons];
-              return (
-                <li key={card.id} className="contact-page__info-card">
-                  <div className="contact-page__info-icon" aria-hidden>
-                    <Icon />
-                  </div>
-                  <h3 className="contact-page__info-title">{card.title}</h3>
-                  {card.lines.map((line) => (
-                    <p key={line} className="contact-page__info-line">
-                      {line}
-                    </p>
-                  ))}
-                  {"subline" in card && card.subline ? (
-                    <p className="contact-page__info-subline">{card.subline}</p>
-                  ) : null}
-                  {"href" in card && card.href ? (
-                    <Link href={card.href} className="contact-page__info-link">
-                      {card.linkLabel}
-                    </Link>
-                  ) : null}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-
-        {/* 3. Contact form */}
+        {/* 2. Contact form */}
         <section
           id="contact-form"
           className="contact-page__section contact-page__form-section scroll-mt-28"
@@ -263,6 +236,43 @@ export function ContactLandingPage() {
               )}
             </div>
           </div>
+        </section>
+
+        {/* 3. Contact information */}
+        <section className="contact-page__section" aria-labelledby="contact-info-heading">
+          <header className="contact-page__section-header">
+            <p className={dt.metaLabel}>Reach us directly</p>
+            <h2 id="contact-info-heading" className="contact-page__section-title">
+              Contact information
+            </h2>
+          </header>
+
+          <ul className="contact-page__info-grid">
+            {contactInfoCards.map((card) => {
+              const Icon = infoIcons[card.id as keyof typeof infoIcons];
+              return (
+                <li key={card.id} className="contact-page__info-card">
+                  <div className="contact-page__info-icon" aria-hidden>
+                    <Icon />
+                  </div>
+                  <h3 className="contact-page__info-title">{card.title}</h3>
+                  {card.lines.map((line) => (
+                    <p key={line} className="contact-page__info-line">
+                      {line}
+                    </p>
+                  ))}
+                  {"subline" in card && card.subline ? (
+                    <p className="contact-page__info-subline">{card.subline}</p>
+                  ) : null}
+                  {"href" in card && card.href ? (
+                    <Link href={card.href} className="contact-page__info-link">
+                      {card.linkLabel}
+                    </Link>
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
         </section>
 
         {/* 4. Office locations */}

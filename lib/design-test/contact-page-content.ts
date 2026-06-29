@@ -3,8 +3,12 @@ import { designTestFooterLocations } from "@/lib/design-test/footer-content";
 
 export const contactPageHero = {
   title: "Contact us",
-  image: "/images/contact-hero-handshake.png",
-  imageAlt: "vCloud Tech enterprise data center and AI infrastructure",
+  lede:
+    "Speak with our solutions architects about AI infrastructure, data center buildouts, and enterprise IT. We help you plan, deploy, and scale with confidence.",
+  image: "/images/contact-hero-banner.png",
+  imageAlt: "Enterprise technology and data analytics",
+  ctaLabel: "Send a message",
+  ctaHref: "#contact-form",
 } as const;
 
 export const contactInfoCards = [

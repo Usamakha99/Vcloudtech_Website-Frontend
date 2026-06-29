@@ -31,16 +31,14 @@
   }
 }
 
-/* ── Hero ── */
+/* ── Hero (reference: full-width image, left copy, gradient overlay) ── */
 
 .contact-page__hero {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: min(72vh, 52rem);
-  min-height: min(72dvh, 52rem);
   width: 100vw;
+  min-height: clamp(18rem, 42vh, 26rem);
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   overflow: hidden;
@@ -53,54 +51,79 @@
 
 .contact-page__hero-image {
   object-fit: cover;
-  object-position: center center;
-  transform: scale(1.02);
+  object-position: center right;
 }
 
 .contact-page__hero-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--dt-bg, #041329) 35%, transparent) 0%,
-      color-mix(in srgb, var(--dt-bg, #041329) 18%, transparent) 42%,
-      color-mix(in srgb, var(--dt-bg, #041329) 55%, transparent) 100%
-    ),
-    color-mix(in srgb, var(--dt-bg, #041329) 25%, transparent);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--dt-bg, #041329) 94%, transparent) 0%,
+    color-mix(in srgb, var(--dt-bg, #041329) 82%, transparent) 32%,
+    color-mix(in srgb, var(--dt-bg, #041329) 48%, transparent) 52%,
+    color-mix(in srgb, var(--dt-bg, #041329) 18%, transparent) 72%,
+    transparent 100%
+  );
 }
 
-.contact-page__hero-content {
+.contact-page__hero-inner {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 54rem;
+  max-width: 80rem;
   margin-inline: auto;
-  padding: 6rem 1.5rem 4rem;
-  text-align: center;
+  padding: calc(var(--dt-nav-occupancy, 5.75rem) + 2rem) 1.5rem 3rem;
 }
 
 @media (min-width: 640px) {
-  .contact-page__hero-content {
-    padding: 7rem 2rem 4.5rem;
+  .contact-page__hero-inner {
+    padding-inline: 2rem;
+    padding-bottom: 3.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .contact-page__hero-content {
-    padding: 8rem 2.5rem 5rem;
-    max-width: 62rem;
+  .contact-page__hero-inner {
+    padding-inline: 2.5rem;
+    padding-bottom: 4rem;
   }
+}
+
+.contact-page__hero-content {
+  max-width: 36rem;
 }
 
 .contact-page__hero-title {
   margin: 0;
-  font-size: clamp(2.25rem, 5.8vw, 4.25rem);
+  font-size: clamp(2rem, 4.8vw, 3.25rem);
   font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.035em;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   color: var(--dt-text, #ffffff);
   text-wrap: balance;
+}
+
+.contact-page__hero-lede {
+  margin: 1rem 0 0;
+  max-width: 32rem;
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--dt-text, #ffffff) 88%, transparent);
+}
+
+.contact-page__hero-cta {
+  margin-top: 1.5rem;
+  border-radius: 9999px !important;
+  min-width: 11rem;
+  background: var(--contact-accent, #e55614) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--contact-accent, #e55614) 35%, transparent);
+}
+
+.contact-page__hero-cta:hover {
+  background: color-mix(in srgb, var(--contact-accent, #e55614) 88%, #ffffff) !important;
+  color: #ffffff !important;
 }
 
 .contact-page__btn-primary {
