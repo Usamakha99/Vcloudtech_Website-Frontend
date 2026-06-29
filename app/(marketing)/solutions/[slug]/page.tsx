@@ -13,7 +13,7 @@ const copy: Record<
 > = {
   "ai-data-center": {
     title: "AI Data Center Solutions",
-    lede: "Design, procure, and operate AI-ready data center environments—from compute to power and lifecycle programs.",
+    lede: "Empowering enterprises with AI Data Center Solutions designed to deliver performance, reliability, and scalability across every stage of the infrastructure lifecycle.",
     meta: "AI data center solutions for procurement, deployment, and operations from vCloudTech.",
   },
   "ai-infrastructure-procurement": {
