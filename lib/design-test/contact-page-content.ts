@@ -2,8 +2,8 @@ import { designTestContactInfo, designTestInquiryTypes } from "@/lib/design-test
 import { designTestFooterLocations } from "@/lib/design-test/footer-content";
 
 export const contactPageHero = {
-  title: "Hello. Let's build your AI infrastructure together.",
-  image: "/images/hero-1.png",
+  title: "Contact us",
+  image: "/images/contact-hero-handshake.png",
   imageAlt: "vCloud Tech enterprise data center and AI infrastructure",
 } as const;
 
