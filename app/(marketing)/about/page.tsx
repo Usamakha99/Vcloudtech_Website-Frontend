@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <MarketingDocPage
+      theme="dark"
       title="About vCloudTech"
       lede="We help enterprises adopt, secure, and run modern IT—with the discipline expected of a long-term technology partner."
     />

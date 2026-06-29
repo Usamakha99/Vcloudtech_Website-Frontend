@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function SolutionsPage() {
   return (
     <MarketingDocPage
+      theme="dark"
       title="Enterprise solutions"
       lede="Purpose-built offerings across cloud, security, and platforms—designed for procurement, compliance, and scale."
     />

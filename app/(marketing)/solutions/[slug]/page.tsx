@@ -110,5 +110,5 @@ export default async function SolutionDetailPage({ params }: Props) {
   if (!isSolutionSlug(slug)) notFound();
   const { title, lede } = copy[slug];
 
-  return <MarketingDocPage title={title} lede={lede} />;
+  return <MarketingDocPage theme="dark" title={title} lede={lede} />;
 }

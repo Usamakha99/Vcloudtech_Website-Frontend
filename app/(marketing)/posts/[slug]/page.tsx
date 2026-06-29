@@ -39,33 +39,31 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <article className="mx-auto min-h-full max-w-3xl bg-white px-6 py-16 text-slate-900">
+    <article
+      className="mx-auto min-h-full max-w-3xl px-6 py-16 text-white lg:px-8"
+      data-nav-surface="dark"
+    >
       <Link
         href="/posts"
-        className="text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+        className="text-sm font-medium text-[#A1A1AA] transition hover:text-[#b3b3b3]"
       >
-        ← All posts
+        ← All resources
       </Link>
 
-      <header className="mt-8">
-        <time
-          dateTime={post.publishedAt ?? undefined}
-          className="text-sm text-zinc-500 dark:text-zinc-400"
-        >
+      <header className="mt-8 border-b border-white/10 pb-8">
+        <time dateTime={post.publishedAt ?? undefined} className="text-sm text-[#A1A1AA]">
           {formatDate(post.publishedAt)}
         </time>
-        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
+        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-white">
           {post.title ?? "Untitled"}
         </h1>
         {post.author?.name ? (
-          <p className="mt-3 text-zinc-600 dark:text-zinc-400">
-            By {post.author.name}
-          </p>
+          <p className="mt-3 text-[#A1A1AA]">By {post.author.name}</p>
         ) : null}
       </header>
 
       {post.mainImage ? (
-        <div className="relative mt-10 aspect-video w-full overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
+        <div className="relative mt-10 aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-[#111F34]">
           <Image
             src={urlFor(post.mainImage).width(1200).height(675).url()}
             alt={(post.mainImage as { alt?: string }).alt ?? ""}
