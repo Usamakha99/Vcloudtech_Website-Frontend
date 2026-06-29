@@ -2,9 +2,9 @@
 
 import { type FormEvent, useState } from "react";
 
-import { DtScrollReveal } from "@/components/design-test/DtScrollReveal";
+import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
 
-import "./design-test-closing-sections.css";
+import "@/components/home/shared/styles/closing-sections.css";
 
 /** Newsletter strip above footer links. */
 export function FooterNewsletter() {

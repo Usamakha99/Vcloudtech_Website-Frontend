@@ -1,0 +1,65 @@
+/**
+ * Page background — #041329 with subtle brand orange glow.
+ */
+
+.page-ingredient-root {
+  --dt-bg: #041329;
+  --dt-card: #111F34;
+  --dt-primary: #b3b3b3;
+  --dt-text: #ffffff;
+  --dt-muted: #a1a1aa;
+
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--dt-bg);
+}
+
+.page-ingredient-base {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--dt-bg) 0%,
+    var(--dt-bg) 55%,
+    color-mix(in srgb, var(--dt-primary) 8%, var(--dt-bg)) 90%,
+    color-mix(in srgb, var(--dt-primary) 14%, var(--dt-bg)) 100%
+  );
+}
+
+.page-ingredient-mesh {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 95% 42% at 50% 100%,
+    color-mix(in srgb, var(--dt-primary) 18%, transparent) 0%,
+    transparent 68%
+  );
+}
+
+.page-ingredient-orb,
+.page-ingredient-orb--sky,
+.page-ingredient-orb--navy,
+.page-ingredient-orb--accent,
+.page-ingredient-orb--depth,
+.page-ingredient-vignette,
+.page-ingredient-grid {
+  display: none;
+}
+
+.hero-test-gradient {
+  background: linear-gradient(
+    to bottom,
+    var(--dt-bg) 0%,
+    var(--dt-bg) 55%,
+    color-mix(in srgb, var(--dt-primary) 8%, var(--dt-bg)) 90%,
+    color-mix(in srgb, var(--dt-primary) 14%, var(--dt-bg)) 100%
+  );
+}
+
+.hero-gradient-text {
+  color: var(--dt-primary);
+}

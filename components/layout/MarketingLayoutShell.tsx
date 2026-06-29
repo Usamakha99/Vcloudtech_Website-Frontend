@@ -1,6 +1,6 @@
 import { DesignTestFooter } from "@/components/design-test/DesignTestFooter";
 import { DesignTestGlobalNavbar } from "@/components/design-test/global-nav";
-import { PageIngredientBackground } from "@/components/hero-test/PageIngredientBackground";
+import { PageIngredientBackground } from "@/components/layout/PageIngredientBackground";
 import { poppins } from "@/lib/fonts/poppins";
 
 type Props = {

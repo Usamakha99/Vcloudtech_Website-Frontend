@@ -5,7 +5,7 @@ import { type FormEvent, useState } from "react";
 import { dt } from "@/components/design-test/design-test-theme";
 import { designTestInquiryTypes } from "@/lib/design-test/contact-options";
 
-import "../design-test-closing-sections.css";
+import "@/components/home/shared/styles/closing-sections.css";
 import "./contact-landing.css";
 
 /** Dedicated contact landing page — intro left, form right. */
