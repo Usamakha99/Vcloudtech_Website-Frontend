@@ -5,7 +5,7 @@ import Image from "next/image";
 import { dt } from "@/components/design-test/design-test-theme";
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
 
-/** Two-column story section with enterprise illustration. */
+/** Story section — centered header, text alongside illustration. */
 export function AboutStorySection({
   badge,
   title,
