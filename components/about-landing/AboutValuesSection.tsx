@@ -24,10 +24,15 @@ type Props = {
   items: typeof aboutValues.items;
 };
 
-/** Core values — premium feature cards with icons. */
+/** Core values — premium enterprise feature cards. */
 export function AboutValuesSection({ badge, title, items }: Props) {
   return (
-    <section className="about-page__section" aria-labelledby="about-values-heading">
+    <section
+      className="about-page__section about-page__values"
+      aria-labelledby="about-values-heading"
+    >
+      <div className="about-page__values-backdrop" aria-hidden />
+
       <header className="about-page__section-header">
         <DtScrollReveal>
           <p className={`${dt.badge} about-page__badge about-page__badge--accent`}>{badge}</p>
@@ -43,7 +48,9 @@ export function AboutValuesSection({ badge, title, items }: Props) {
           return (
             <li key={value.id}>
               <DtScrollReveal delay={index * 0.07}>
-                <article className="about-page__value-card">
+                <article className="about-page__value-card" tabIndex={0}>
+                  <div className="about-page__value-card-surface" aria-hidden />
+                  <div className="about-page__value-card-highlight" aria-hidden />
                   <div className="about-page__value-icon" aria-hidden>
                     <Icon />
                   </div>
