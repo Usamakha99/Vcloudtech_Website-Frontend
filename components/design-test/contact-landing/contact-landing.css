@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
   width: 100vw;
-  min-height: clamp(18rem, 42vh, 26rem);
+  min-height: clamp(14rem, 34vw, 22rem);
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   overflow: hidden;
@@ -47,11 +47,12 @@
 .contact-page__hero-media {
   position: absolute;
   inset: 0;
+  background: var(--dt-bg, #041329);
 }
 
 .contact-page__hero-image {
-  object-fit: cover;
-  object-position: center right;
+  object-fit: contain;
+  object-position: right center;
 }
 
 .contact-page__hero-overlay {
