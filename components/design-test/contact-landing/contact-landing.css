@@ -4,7 +4,6 @@
  */
 
 .contact-page {
-  --contact-accent: #e55614;
   width: 100%;
   color: var(--dt-text, #ffffff);
 }
@@ -117,14 +116,14 @@
   margin-top: 1.5rem;
   border-radius: 9999px !important;
   min-width: 11rem;
-  background: var(--contact-accent, #e55614) !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 20px color-mix(in srgb, var(--contact-accent, #e55614) 35%, transparent);
+  background: #ffffff !important;
+  color: var(--dt-bg, #041329) !important;
+  box-shadow: 0 10px 28px -12px rgba(255, 255, 255, 0.2);
 }
 
 .contact-page__hero-cta:hover {
-  background: color-mix(in srgb, var(--contact-accent, #e55614) 88%, #ffffff) !important;
-  color: #ffffff !important;
+  background: var(--dt-primary, #b3b3b3) !important;
+  color: var(--dt-bg, #041329) !important;
 }
 
 .contact-page__btn-primary {
@@ -143,8 +142,8 @@
 }
 
 .contact-page__btn-secondary:hover {
-  border-color: var(--contact-accent) !important;
-  color: var(--contact-accent) !important;
+  border-color: var(--dt-primary, #b3b3b3) !important;
+  color: var(--dt-primary, #b3b3b3) !important;
 }
 
 /* ── Sections ── */
@@ -226,17 +225,20 @@
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--contact-accent) 12%, transparent);
-  color: var(--contact-accent);
-  border: 1px solid color-mix(in srgb, var(--contact-accent) 28%, transparent);
+  background: rgba(179, 179, 179, 0.1);
+  color: var(--dt-primary, #b3b3b3);
+  border: 1px solid rgba(179, 179, 179, 0.22);
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
+    border-color 0.3s ease,
     transform 0.3s ease;
 }
 
 .contact-page__info-card:hover .contact-page__info-icon {
-  background: color-mix(in srgb, var(--contact-accent) 20%, transparent);
+  background: rgba(179, 179, 179, 0.28);
+  border-color: rgba(179, 179, 179, 0.55);
+  color: #ffffff;
   transform: scale(1.05);
 }
 
@@ -270,12 +272,12 @@
   padding-top: 0.65rem;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--contact-accent);
+  color: var(--dt-primary, #b3b3b3);
   transition: color 0.25s ease;
 }
 
 .contact-page__info-link:hover {
-  color: var(--dt-primary, #b3b3b3);
+  color: #ffffff;
 }
 
 /* ── Form ── */
@@ -337,7 +339,7 @@
 }
 
 .contact-page__submit:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--contact-accent) 55%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--dt-primary, #b3b3b3) 55%, transparent);
   outline-offset: 3px;
 }
 
@@ -397,7 +399,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--contact-accent);
+  color: var(--dt-primary, #b3b3b3);
 }
 
 .contact-page__location-region {
@@ -433,9 +435,9 @@
 }
 
 .contact-page__maps-btn:hover {
-  border-color: var(--contact-accent);
-  background: color-mix(in srgb, var(--contact-accent) 12%, transparent);
-  color: var(--contact-accent);
+  border-color: var(--dt-primary, #b3b3b3);
+  background: rgba(179, 179, 179, 0.12);
+  color: var(--dt-primary, #b3b3b3);
 }
 
 /* ── Map ── */
@@ -498,8 +500,9 @@
 }
 
 .contact-page__why-card:hover {
-  border-color: color-mix(in srgb, var(--contact-accent) 35%, transparent);
+  border-color: color-mix(in srgb, var(--dt-primary, #b3b3b3) 35%, transparent);
   transform: translateY(-3px);
+  box-shadow: inset 0 0 0 1px rgba(179, 179, 179, 0.35);
 }
 
 .contact-page__why-icon {
@@ -509,13 +512,20 @@
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--contact-accent) 12%, transparent);
-  color: var(--contact-accent);
-  border: 1px solid color-mix(in srgb, var(--contact-accent) 25%, transparent);
-  transition: transform 0.3s ease;
+  background: rgba(179, 179, 179, 0.1);
+  color: var(--dt-primary, #b3b3b3);
+  border: 1px solid rgba(179, 179, 179, 0.22);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .contact-page__why-card:hover .contact-page__why-icon {
+  background: rgba(179, 179, 179, 0.28);
+  border-color: rgba(179, 179, 179, 0.55);
+  color: #ffffff;
   transform: scale(1.06);
 }
 

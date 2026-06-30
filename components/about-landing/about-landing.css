@@ -4,7 +4,6 @@
  */
 
 .about-page {
-  --about-accent: #e55614;
   width: 100%;
   color: var(--dt-text, #ffffff);
 }
@@ -12,8 +11,8 @@
 /* ── Shared ── */
 
 .about-page__badge--accent {
-  border-color: color-mix(in srgb, var(--about-accent, #e55614) 45%, rgba(179, 179, 179, 0.3));
-  background: color-mix(in srgb, var(--about-accent, #e55614) 12%, rgba(179, 179, 179, 0.1));
+  border-color: rgba(179, 179, 179, 0.3);
+  background: rgba(179, 179, 179, 0.1);
 }
 
 .about-page__section + .about-page__section {
@@ -47,14 +46,14 @@
 }
 
 .about-page__btn--primary {
-  background: var(--about-accent, #e55614) !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 22px color-mix(in srgb, var(--about-accent, #e55614) 32%, transparent);
+  background: #ffffff !important;
+  color: var(--dt-bg, #041329) !important;
+  box-shadow: 0 10px 28px -12px rgba(255, 255, 255, 0.2);
 }
 
 .about-page__btn--primary:hover {
-  background: color-mix(in srgb, var(--about-accent, #e55614) 88%, #ffffff) !important;
-  color: #ffffff !important;
+  background: var(--dt-primary, #b3b3b3) !important;
+  color: var(--dt-bg, #041329) !important;
 }
 
 .about-page__btn--secondary:hover {
@@ -136,7 +135,7 @@
 }
 
 .about-page__hero-accent {
-  color: var(--about-accent, #e55614);
+  color: var(--dt-primary, #b3b3b3);
 }
 
 .about-page__hero-lede {
@@ -258,17 +257,16 @@
     0 1px 0 rgba(255, 255, 255, 0.04) inset,
     0 16px 42px -24px rgba(0, 0, 0, 0.55);
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.about-page__stat-card:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--about-accent, #e55614) 40%, rgba(255, 255, 255, 0.12));
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 20px 48px -22px color-mix(in srgb, var(--about-accent, #e55614) 18%, transparent);
+.about-page__stat-card:hover,
+.about-page__stat-card:focus-within {
+  background-color: rgba(179, 179, 179, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(179, 179, 179, 0.55);
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .about-page__stat-value {
@@ -281,8 +279,9 @@
   transition: color 0.3s ease;
 }
 
-.about-page__stat-card:hover .about-page__stat-value {
-  color: var(--about-accent, #e55614);
+.about-page__stat-card:hover .about-page__stat-value,
+.about-page__stat-card:focus-within .about-page__stat-value {
+  color: var(--dt-primary, #b3b3b3) !important;
 }
 
 .about-page__stat-label {
@@ -388,10 +387,10 @@
 
 .about-page__timeline-card:hover {
   transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--about-accent, #e55614) 40%, rgba(255, 255, 255, 0.12));
+  border-color: color-mix(in srgb, var(--dt-primary, #b3b3b3) 35%, rgba(255, 255, 255, 0.12));
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 22px 52px -24px color-mix(in srgb, var(--about-accent, #e55614) 24%, transparent);
+    inset 0 0 0 1px rgba(179, 179, 179, 0.35);
 }
 
 @keyframes about-timeline-marquee {
@@ -431,7 +430,7 @@
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: var(--about-accent, #e55614);
+  color: var(--dt-primary, #b3b3b3);
 }
 
 .about-page__timeline-year {
@@ -481,9 +480,9 @@
 
 .about-page__value-card:hover {
   transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--about-accent, #e55614) 35%, rgba(255, 255, 255, 0.12));
+  border-color: color-mix(in srgb, var(--dt-primary, #b3b3b3) 35%, rgba(255, 255, 255, 0.12));
   background: rgba(17, 31, 52, 0.82);
-  box-shadow: 0 18px 44px -26px color-mix(in srgb, var(--about-accent, #e55614) 16%, transparent);
+  box-shadow: inset 0 0 0 1px rgba(179, 179, 179, 0.35);
 }
 
 .about-page__value-icon {
@@ -494,12 +493,13 @@
   height: 2.75rem;
   margin-bottom: 1rem;
   border-radius: 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--about-accent, #e55614) 35%, rgba(255, 255, 255, 0.1));
-  background: color-mix(in srgb, var(--about-accent, #e55614) 14%, rgba(17, 31, 52, 0.8));
-  color: var(--about-accent, #e55614);
+  border: 1px solid rgba(179, 179, 179, 0.22);
+  background: rgba(179, 179, 179, 0.1);
+  color: var(--dt-primary, #b3b3b3);
   transition:
     background-color 0.35s ease,
-    color 0.35s ease;
+    color 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .about-page__value-icon svg {
@@ -508,7 +508,8 @@
 }
 
 .about-page__value-card:hover .about-page__value-icon {
-  background: var(--about-accent, #e55614);
+  background: rgba(179, 179, 179, 0.28);
+  border-color: rgba(179, 179, 179, 0.55);
   color: #ffffff;
 }
 
@@ -537,7 +538,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--dt-card, #111f34) 88%, var(--about-accent, #e55614) 12%) 0%,
+    color-mix(in srgb, var(--dt-card, #111f34) 96%, var(--dt-primary, #b3b3b3) 4%) 0%,
     var(--dt-bg, #041329) 100%
   );
   text-align: center;

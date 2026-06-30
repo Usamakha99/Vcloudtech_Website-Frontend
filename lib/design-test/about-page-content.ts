@@ -4,7 +4,7 @@ export const aboutPageHero = {
   titleAccent: "Built on Trust",
   lede:
     "vCloudTech is an AI-driven enterprise IT partner delivering cybersecurity, cloud infrastructure, and managed IT services to government, healthcare, and commercial clients nationwide. We combine intelligent automation with two decades of hands-on engineering to keep your business connected, protected, and always one step ahead.",
-  image: "/images/contact-hero-banner.png",
+  image: "/images/about Us landing3.png",
   learnMoreLabel: "Learn More",
   learnMoreHref: "#about-story",
   contactLabel: "Contact Us",
