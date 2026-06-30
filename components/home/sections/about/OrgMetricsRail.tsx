@@ -6,11 +6,17 @@ import { dt } from "@/components/design-test/design-test-theme";
 
 import "@/components/home/shared/styles/about-metrics.css";
 
-const orgMetrics = [
+const defaultOrgMetrics = [
   { target: 15, suffix: "+", label: "Years in business" },
   { target: 800, suffix: "+", label: "Clients served" },
   { target: 50, suffix: "", label: "States & territories" },
 ] as const;
+
+export type OrgMetric = {
+  target: number;
+  suffix: string;
+  label: string;
+};
 
 function easeOutCubic(progress: number) {
   return 1 - Math.pow(1 - progress, 3);
@@ -74,7 +80,13 @@ function LiveStatValue({
 }
 
 /** Organization metrics — design-test only (isolated from shared about-enterprise__stat styles). */
-export function OrgMetricsRail({ className = "" }: { className?: string }) {
+export function OrgMetricsRail({
+  className = "",
+  metrics = defaultOrgMetrics,
+}: {
+  className?: string;
+  metrics?: readonly OrgMetric[];
+}) {
   const railRef = useRef<HTMLUListElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -102,7 +114,7 @@ export function OrgMetricsRail({ className = "" }: { className?: string }) {
       className={`dt-metrics__rail ${className}`.trim()}
       aria-label="Organization metrics"
     >
-      {orgMetrics.map((metric, index) => (
+      {metrics.map((metric, index) => (
         <li key={metric.label} className="dt-metrics__cell">
           <LiveStatValue
             target={metric.target}

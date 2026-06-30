@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
 
-import { MarketingDocPage } from "@/components/layout/MarketingDocPage";
+import { AboutLandingPage } from "@/components/about-landing/AboutLandingPage";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about vCloudTech—enterprise IT solutions, procurement, and cloud services.",
+    "Learn about vCloudTech—enterprise IT solutions, AI infrastructure, procurement, and cloud services.",
 };
 
 export default function AboutPage() {
-  return (
-    <MarketingDocPage
-      theme="dark"
-      title="About vCloudTech"
-      lede="We help enterprises adopt, secure, and run modern IT—with the discipline expected of a long-term technology partner."
-    />
-  );
+  return <AboutLandingPage />;
 }
