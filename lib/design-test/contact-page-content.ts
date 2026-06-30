@@ -5,7 +5,7 @@ export const contactPageHero = {
   title: "Contact us",
   lede:
     "Speak with our solutions architects about AI infrastructure, data center buildouts, and enterprise IT. We help you plan, deploy, and scale with confidence.",
-  image: "/images/contact-hero-banner.png",
+  image: "/images/Contact-us.png",
   imageAlt: "Enterprise technology and data analytics",
   ctaLabel: "Send a message",
   ctaHref: "#contact-form",
