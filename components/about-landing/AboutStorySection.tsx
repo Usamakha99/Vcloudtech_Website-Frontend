@@ -25,17 +25,17 @@ export function AboutStorySection({
       className="about-page__section about-page__story scroll-mt-28"
       aria-labelledby="about-story-heading"
     >
+      <DtScrollReveal>
+        <div className="about-page__story-header">
+          <p className={`${dt.badge} about-page__badge about-page__badge--accent`}>{badge}</p>
+          <h2 id="about-story-heading" className="about-page__section-title about-page__story-title">
+            {title}
+          </h2>
+        </div>
+      </DtScrollReveal>
+
       <div className="about-page__story-grid">
         <div className="about-page__story-copy">
-          <DtScrollReveal>
-            <p className={`${dt.badge} about-page__badge about-page__badge--accent`}>{badge}</p>
-            <h2
-              id="about-story-heading"
-              className="about-page__section-title about-page__section-title--left"
-            >
-              {title}
-            </h2>
-          </DtScrollReveal>
           <DtScrollReveal delay={0.08}>
             <div className="about-page__story-body">
               {paragraphs.map((paragraph) => (
