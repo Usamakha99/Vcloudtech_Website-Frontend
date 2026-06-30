@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { dt } from "@/components/design-test/design-test-theme";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { aboutPageHero } from "@/lib/design-test/about-page-content";
 
@@ -22,9 +21,6 @@ export function AboutHero() {
 
       <div className="about-page__hero-inner">
         <div className="about-page__hero-content">
-          <p className={`${dt.badge} about-page__badge about-page__badge--accent`}>
-            {aboutPageHero.badge}
-          </p>
           <h1 id="about-page-heading" className="about-page__hero-title">
             {aboutPageHero.titleLead}{" "}
             <span className="about-page__hero-accent">{aboutPageHero.titleAccent}</span>

@@ -148,7 +148,7 @@ export function HomeAboutSection() {
 
           <figure className="about-minimal__intro-visual">
             <Image
-              src="/images/about us2.png"
+              src="/images/about us3.png"
               alt="Hands holding a digital display that reads Reliable IT Partner with a security shield icon"
               width={960}
               height={600}
