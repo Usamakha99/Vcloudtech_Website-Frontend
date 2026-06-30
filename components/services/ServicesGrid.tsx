@@ -139,7 +139,7 @@ type Props = {
 export function ServicesGrid({
   items = SERVICES_GRID_ITEMS,
   badge,
-  heading = "Professional services",
+  heading = "Professional Services",
   subheading = "Advisory, implementation, and managed operations for enterprise IT teams.",
   className = "",
   surface = "light",

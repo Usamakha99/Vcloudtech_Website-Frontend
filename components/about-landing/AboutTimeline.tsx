@@ -1,81 +1,45 @@
-"use client";
+import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
 
-import { useEffect, useRef } from "react";
-
-import type { aboutJourney } from "@/lib/design-test/about-page-content";
-
-type Milestone = (typeof aboutJourney.milestones)[number];
+type Milestone = {
+  id: string;
+  year: string;
+  description: string;
+};
 
 type Props = {
   milestones: readonly Milestone[];
 };
 
-/** Horizontal journey timeline with scroll-snap. */
+/** Continuous marquee timeline — same motion pattern as trusted client logos. */
 export function AboutTimeline({ milestones }: Props) {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion || milestones.length < 2) return;
-
-    let frame = 0;
-    let direction = 1;
-    let paused = false;
-
-    const pause = () => {
-      paused = true;
-    };
-    const resume = () => {
-      paused = false;
-    };
-
-    track.addEventListener("pointerenter", pause);
-    track.addEventListener("pointerleave", resume);
-    track.addEventListener("focusin", pause);
-    track.addEventListener("focusout", resume);
-
-    const tick = () => {
-      if (!paused && track.scrollWidth > track.clientWidth) {
-        track.scrollLeft += direction * 0.35;
-        const maxScroll = track.scrollWidth - track.clientWidth;
-        if (track.scrollLeft >= maxScroll - 1) direction = -1;
-        if (track.scrollLeft <= 1) direction = 1;
-      }
-      frame = requestAnimationFrame(tick);
-    };
-
-    frame = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      track.removeEventListener("pointerenter", pause);
-      track.removeEventListener("pointerleave", resume);
-      track.removeEventListener("focusin", pause);
-      track.removeEventListener("focusout", resume);
-    };
-  }, [milestones.length]);
+  const marqueeItems = [...milestones, ...milestones];
 
   return (
-    <div className="about-page__timeline-wrap">
-      <div ref={trackRef} className="about-page__timeline-track" tabIndex={0} role="list">
-        {milestones.map((milestone, index) => (
-          <article
-            key={milestone.id}
-            className="about-page__timeline-card"
-            role="listitem"
-            aria-label={`${milestone.year}: ${milestone.description}`}
-          >
-            <span className="about-page__timeline-index" aria-hidden>
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <h3 className="about-page__timeline-year">{milestone.year}</h3>
-            <p className="about-page__timeline-desc">{milestone.description}</p>
-          </article>
-        ))}
+    <DtScrollReveal delay={0.06}>
+      <div className="about-page__timeline-marquee" aria-label="Company journey timeline">
+        <span className="about-page__timeline-fade about-page__timeline-fade--left" aria-hidden />
+        <span className="about-page__timeline-fade about-page__timeline-fade--right" aria-hidden />
+
+        <div className="about-page__timeline-marquee-group">
+          <ul className="about-page__timeline-marquee-track">
+            {marqueeItems.map((milestone, index) => (
+              <li key={`${milestone.id}-${index}`} className="about-page__timeline-marquee-item">
+                <article
+                  className="about-page__timeline-card"
+                  aria-label={`${milestone.year}: ${milestone.description}`}
+                  aria-hidden={index >= milestones.length ? true : undefined}
+                >
+                  <span className="about-page__timeline-index" aria-hidden>
+                    {String((index % milestones.length) + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="about-page__timeline-year">{milestone.year}</h3>
+                  <p className="about-page__timeline-desc">{milestone.description}</p>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </DtScrollReveal>
   );
 }

@@ -1,14 +1,22 @@
 export const aboutPageHero = {
-  badge: "Who we are",
+  badge: "WHO WE ARE",
   titleLead: "Confidence in Every Connection -",
   titleAccent: "Built on Trust",
   lede:
     "vCloudTech is an AI-driven enterprise IT partner delivering cybersecurity, cloud infrastructure, and managed IT services to government, healthcare, and commercial clients nationwide. We combine intelligent automation with two decades of hands-on engineering to keep your business connected, protected, and always one step ahead.",
+  image: "/images/contact-hero-banner.png",
+  learnMoreLabel: "Learn More",
+  learnMoreHref: "#about-story",
+  contactLabel: "Contact Us",
+  contactHref: "/contact",
 } as const;
 
 export const aboutStory = {
-  badge: "Our story",
+  badge: "OUR STORY",
   title: "From IT Reseller to AI-Powered Enterprise Technology Partner",
+  image: "/images/reliable-it-partner.png",
+  imageAlt:
+    "Reliable IT partner — enterprise infrastructure, security, and AI-ready technology delivery",
   paragraphs: [
     "vCloudTech started with a simple goal: make enterprise technology actually work for the people who depend on it. What began as hands-on IT support has grown into a full-spectrum technology partner — one that now uses AI-powered monitoring, automation, and threat detection to solve problems before they become outages.",
     "Today, government agencies, hospitals, schools, and enterprises across 50 states trust vCloudTech to manage their cybersecurity, cloud, and IT infrastructure. We haven't lost what got us here: every client gets a dedicated team, transparent communication, and infrastructure that's engineered to perform — not just promised to.",
@@ -23,7 +31,7 @@ export const aboutStats = [
 ] as const;
 
 export const aboutJourney = {
-  badge: "Our journey",
+  badge: "OUR JOURNEY",
   title: "Two Decades of Building Reliable, AI-Ready Infrastructure",
   milestones: [
     {
@@ -60,28 +68,32 @@ export const aboutJourney = {
 } as const;
 
 export const aboutValues = {
-  badge: "What drives us",
+  badge: "WHAT DRIVES US",
   title: "The Values Behind Every Connection",
   items: [
     {
       id: "reliability",
+      icon: "server" as const,
       title: "Reliability First",
       description:
         "Infrastructure and IT support you can depend on, every single day — no exceptions.",
     },
     {
       id: "integrity",
+      icon: "handshake" as const,
       title: "Integrity",
       description: "Honest guidance and transparent pricing. No upsells, no surprises.",
     },
     {
       id: "innovation",
+      icon: "rocket" as const,
       title: "Customer-Centric Innovation",
       description:
         "We use AI and automation to solve your problems faster, not to sell you technology you don't need.",
     },
     {
       id: "security",
+      icon: "shield" as const,
       title: "Security by Design",
       description:
         "Every solution we build is engineered with cybersecurity at its core, not bolted on as an afterthought.",
