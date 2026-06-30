@@ -20,12 +20,12 @@ function serviceImagePath(filename: string) {
 
 /** Resized service artwork — `public/Services Images Resize/` (1–6). */
 const serviceImages = {
-  aiProcurement: serviceImagePath("1.png"),
-  dataCenterHardware: serviceImagePath("2.png"),
-  networking: serviceImagePath("3.png"),
-  cybersecurity: serviceImagePath("4.png"),
-  powerInfrastructure: serviceImagePath("5.png"),
-  lifecycleManagement: serviceImagePath("6.png"),
+  aiProcurement: serviceImagePath("AI infrasturture.png"),
+  dataCenterHardware: serviceImagePath("data center hardware.png"),
+  networking: serviceImagePath("networking.png"),
+  cybersecurity: serviceImagePath("cyber security.png"),
+  powerInfrastructure: serviceImagePath("power infrasturture.png"),
+  lifecycleManagement: serviceImagePath("life cycle management.png"),
 } as const;
 
 export type ServiceItem = {
