@@ -608,10 +608,36 @@
   display: block;
   width: 100%;
   height: auto;
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1.98;
+  filter: saturate(0.78) brightness(1.18);
+  transition:
+    opacity 0.55s ease,
+    filter 0.55s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-page__story-visual-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--dt-bg, #041329) 52%, transparent),
+    color-mix(in srgb, var(--dt-card, #111f34) 36%, transparent)
+  );
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.55s ease;
+}
+
+.about-page__story-visual:hover .about-page__story-visual-tint {
+  opacity: 0;
 }
 
 .about-page__story-visual:hover .about-page__story-image {
+  opacity: 1;
+  filter: saturate(1) brightness(1);
   transform: scale(1.02);
 }
 
@@ -677,6 +703,15 @@
 
   .about-page__story-milestone.is-active .about-page__story-milestone-pulse {
     animation: none;
+  }
+
+  .about-page__story-visual-tint {
+    opacity: 0;
+  }
+
+  .about-page__story-image {
+    opacity: 1;
+    filter: none;
   }
 
   .about-page__story-visual:hover,

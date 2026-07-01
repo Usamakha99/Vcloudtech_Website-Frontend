@@ -88,6 +88,7 @@ function StoryVisualStage({ image, imageAlt }: VisualProps) {
               className="about-page__story-image"
               sizes="(max-width: 1023px) 100vw, 46vw"
             />
+            <div className="about-page__story-visual-tint" aria-hidden />
           </figure>
         </motion.div>
       </motion.div>
