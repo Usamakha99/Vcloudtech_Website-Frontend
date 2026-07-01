@@ -271,8 +271,8 @@
 
 @media (min-width: 1024px) {
   .about-page__story-experience {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: clamp(2.5rem, 4vw, 4.5rem);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 2.5rem 3rem;
     align-items: center;
     padding-inline: clamp(2rem, 5vw, 4rem);
   }
@@ -466,7 +466,7 @@
 .about-page__story-stage {
   position: relative;
   min-height: clamp(16rem, 38vw, 24rem);
-  padding: clamp(1.25rem, 3vw, 2rem);
+  padding: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
 .about-page__story-stage-backdrop {
