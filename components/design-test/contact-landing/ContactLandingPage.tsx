@@ -171,13 +171,13 @@ export function ContactLandingPage() {
                     {location.mapsLabel}
                   </Link>
                 </div>
-                <div className="contact-page__location-media">
+                <div className="contact-page__location-monument-wrap">
                   <Image
                     src={location.image}
                     alt={location.imageAlt}
                     fill
-                    className="contact-page__location-image"
-                    sizes="(max-width: 767px) 40vw, 180px"
+                    className="contact-page__location-monument-img"
+                    sizes="(max-width: 767px) 40vw, 200px"
                   />
                 </div>
               </li>

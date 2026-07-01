@@ -52,8 +52,8 @@ export const contactOfficeLocations = [
     lines: [...designTestFooterLocations.headquarters.lines],
     mapsUrl: designTestFooterLocations.headquarters.mapsUrl,
     mapsLabel: "Open in Google Maps",
-    image: "/images/locations/texas-capitol.jpg",
-    imageAlt: "Texas State Capitol — Austin, Texas",
+    image: "/images/locations/texas-capitol-lineart.png",
+    imageAlt: "Texas State Capitol line art illustration",
   },
   {
     id: "office",
@@ -62,8 +62,8 @@ export const contactOfficeLocations = [
     lines: [...designTestFooterLocations.office.lines],
     mapsUrl: designTestFooterLocations.office.mapsUrl,
     mapsLabel: "Open in Google Maps",
-    image: "/images/locations/california-golden-gate.jpg",
-    imageAlt: "Golden Gate Bridge — San Francisco, California",
+    image: "/images/locations/california-golden-gate-lineart.png",
+    imageAlt: "Golden Gate Bridge line art illustration",
   },
 ] as const;
 
