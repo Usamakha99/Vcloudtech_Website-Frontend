@@ -1131,6 +1131,7 @@
 .about-page__values {
   position: relative;
   isolation: isolate;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .about-page__values-backdrop {
