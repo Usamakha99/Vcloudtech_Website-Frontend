@@ -151,24 +151,35 @@ export function ContactLandingPage() {
           <ul className="contact-page__locations-grid">
             {contactOfficeLocations.map((location) => (
               <li key={location.id} className="contact-page__location-card">
-                <div className="contact-page__location-icon" aria-hidden>
-                  <GovernmentIcon />
+                <div className="contact-page__location-copy">
+                  <div className="contact-page__location-icon" aria-hidden>
+                    <GovernmentIcon />
+                  </div>
+                  <p className="contact-page__location-label">{location.label}</p>
+                  <h3 className="contact-page__location-region">{location.region}</h3>
+                  {location.lines.map((line) => (
+                    <p key={line} className="contact-page__location-line">
+                      {line}
+                    </p>
+                  ))}
+                  <Link
+                    href={location.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-page__maps-btn"
+                  >
+                    {location.mapsLabel}
+                  </Link>
                 </div>
-                <p className="contact-page__location-label">{location.label}</p>
-                <h3 className="contact-page__location-region">{location.region}</h3>
-                {location.lines.map((line) => (
-                  <p key={line} className="contact-page__location-line">
-                    {line}
-                  </p>
-                ))}
-                <Link
-                  href={location.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact-page__maps-btn"
-                >
-                  {location.mapsLabel}
-                </Link>
+                <div className="contact-page__location-media">
+                  <Image
+                    src={location.image}
+                    alt={location.imageAlt}
+                    fill
+                    className="contact-page__location-image"
+                    sizes="(max-width: 767px) 40vw, 180px"
+                  />
+                </div>
               </li>
             ))}
           </ul>
