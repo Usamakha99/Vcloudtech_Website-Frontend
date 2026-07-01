@@ -180,7 +180,6 @@
 .about-page__story {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
 }
 
 .about-page__story-backdrop {
@@ -262,18 +261,27 @@
   z-index: 1;
   display: grid;
   gap: clamp(2.5rem, 5vw, 3.5rem);
-  width: min(100vw, 80rem);
-  max-width: 80rem;
-  margin-inline: auto;
-  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
   box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
   .about-page__story-experience {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: clamp(2.5rem, 4vw, 4rem);
+    gap: clamp(2.5rem, 4vw, 4.5rem);
     align-items: center;
+    padding-inline: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+@media (min-width: 1440px) {
+  .about-page__story-experience {
+    gap: clamp(3rem, 4.5vw, 5rem);
+    padding-inline: clamp(2.5rem, 6vw, 5rem);
   }
 }
 
