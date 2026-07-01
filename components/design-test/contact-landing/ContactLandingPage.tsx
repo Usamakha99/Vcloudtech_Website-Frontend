@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { type FormEvent, useState } from "react";
 
 import {
   CompassIcon,
@@ -15,9 +14,9 @@ import {
   SolutionsIcon,
 } from "@/components/icons/section-icons";
 import { dt } from "@/components/design-test/design-test-theme";
+import { HomeContactForm } from "@/components/home/sections/contact/HomeContactForm";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import {
-  contactFormServices,
   contactInfoCards,
   contactMapEmbed,
   contactOfficeLocations,
@@ -45,13 +44,6 @@ const infoIcons = {
 
 /** Premium enterprise contact page — hero, form, info, locations, map, and CTAs. */
 export function ContactLandingPage() {
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitted(true);
-  }
-
   return (
     <div className="contact-page" data-nav-surface="dark">
       {/* 1. Hero — full-width banner, left copy (reference layout) */}
@@ -104,136 +96,8 @@ export function ContactLandingPage() {
               </p>
             </header>
 
-            <div className="dt-contact__form-panel contact-page__form-panel">
-              {submitted ? (
-                <div className="dt-contact__success" role="status">
-                  <p className="dt-contact__success-title">Message received</p>
-                  <p className={`dt-contact__success-text ${dt.body}`}>
-                    Thank you for reaching out. A member of our team will respond within one
-                    business day.
-                  </p>
-                </div>
-              ) : (
-                <form className="dt-contact__form contact-page__form" onSubmit={handleSubmit} noValidate>
-                  <div className="contact-page__form-row">
-                    <div className="dt-contact__field">
-                      <label htmlFor="contact-full-name" className="dt-contact__label">
-                        Full Name
-                      </label>
-                      <input
-                        id="contact-full-name"
-                        name="name"
-                        type="text"
-                        required
-                        autoComplete="name"
-                        className="dt-contact__input"
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    <div className="dt-contact__field">
-                      <label htmlFor="contact-company" className="dt-contact__label">
-                        Company Name
-                      </label>
-                      <input
-                        id="contact-company"
-                        name="company"
-                        type="text"
-                        required
-                        autoComplete="organization"
-                        className="dt-contact__input"
-                        placeholder="Your organization"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="contact-page__form-row">
-                    <div className="dt-contact__field">
-                      <label htmlFor="contact-email" className="dt-contact__label">
-                        Business Email
-                      </label>
-                      <input
-                        id="contact-email"
-                        name="email"
-                        type="email"
-                        required
-                        autoComplete="email"
-                        className="dt-contact__input"
-                        placeholder="you@company.com"
-                      />
-                    </div>
-                    <div className="dt-contact__field">
-                      <label htmlFor="contact-phone" className="dt-contact__label">
-                        Phone Number
-                      </label>
-                      <input
-                        id="contact-phone"
-                        name="phone"
-                        type="tel"
-                        autoComplete="tel"
-                        className="dt-contact__input"
-                        placeholder="(000) 000-0000"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="contact-page__form-row">
-                    <div className="dt-contact__field">
-                      <label htmlFor="contact-subject" className="dt-contact__label">
-                        Subject
-                      </label>
-                      <input
-                        id="contact-subject"
-                        name="subject"
-                        type="text"
-                        required
-                        className="dt-contact__input"
-                        placeholder="How can we help?"
-                      />
-                    </div>
-                    <div className="dt-contact__field">
-                      <label htmlFor="contact-service" className="dt-contact__label">
-                        Service Interested In
-                      </label>
-                      <div className="dt-contact__select-wrap">
-                        <select
-                          id="contact-service"
-                          name="service"
-                          required
-                          className="dt-contact__select"
-                          defaultValue=""
-                        >
-                          <option value="" disabled>
-                            Select a service
-                          </option>
-                          {contactFormServices.map((service) => (
-                            <option key={service} value={service}>
-                              {service}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="dt-contact__field">
-                    <label htmlFor="contact-message" className="dt-contact__label">
-                      Message
-                    </label>
-                    <textarea
-                      id="contact-message"
-                      name="message"
-                      required
-                      rows={5}
-                      className="dt-contact__textarea"
-                      placeholder="Tell us about your project, timeline, and requirements..."
-                    />
-                  </div>
-
-                  <button type="submit" className="dt-contact__submit contact-page__submit">
-                    Submit inquiry
-                  </button>
-                </form>
-              )}
+            <div className="dt-contact__form-panel contact-page__form-panel dt-contact__form-panel--minimal">
+              <HomeContactForm submitClassName="contact-page__submit" />
             </div>
           </div>
         </section>
