@@ -24,6 +24,7 @@ export function AboutLandingPage() {
         <AboutStorySection
           badge={aboutStory.badge}
           title={aboutStory.title}
+          titleLines={aboutStory.titleLines}
           paragraphs={aboutStory.paragraphs}
           image={aboutStory.image}
           imageAlt={aboutStory.imageAlt}

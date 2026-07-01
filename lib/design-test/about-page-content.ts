@@ -14,9 +14,12 @@ export const aboutPageHero = {
 export const aboutStory = {
   badge: "OUR STORY",
   title: "From IT Reseller to AI-Powered Enterprise Technology Partner",
-  image: "/images/reliable-it-partner.png",
-  imageAlt:
-    "Reliable IT partner — enterprise infrastructure, security, and AI-ready technology delivery",
+  titleLines: [
+    "From IT Reseller to AI-Powered",
+    "Enterprise Technology Partner",
+  ] as const,
+  image: "/images/about-story-office.png",
+  imageAlt: "vCloud Tech modern enterprise office and technology workspace",
   paragraphs: [
     "vCloudTech started with a simple goal: make enterprise technology actually work for the people who depend on it. What began as hands-on IT support has grown into a full-spectrum technology partner — one that now uses AI-powered monitoring, automation, and threat detection to solve problems before they become outages.",
     "Today, government agencies, hospitals, schools, and enterprises across 50 states trust vCloudTech to manage their cybersecurity, cloud, and IT infrastructure. We haven't lost what got us here: every client gets a dedicated team, transparent communication, and infrastructure that's engineered to perform — not just promised to.",
