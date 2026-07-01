@@ -103,7 +103,7 @@ export function ContactLandingPage() {
         </section>
 
         {/* 3. Contact information */}
-        <section className="contact-page__section" aria-labelledby="contact-info-heading">
+        {/* <section className="contact-page__section" aria-labelledby="contact-info-heading">
           <header className="contact-page__section-header">
             <p className={dt.metaLabel}>Reach us directly</p>
             <h2 id="contact-info-heading" className="contact-page__section-title">
@@ -137,7 +137,7 @@ export function ContactLandingPage() {
               );
             })}
           </ul>
-        </section>
+        </section> */}
 
         {/* 4. Office locations */}
         <section className="contact-page__section" aria-labelledby="contact-locations-heading">
