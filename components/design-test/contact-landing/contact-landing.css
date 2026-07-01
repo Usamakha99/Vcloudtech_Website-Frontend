@@ -347,7 +347,7 @@
 
 .contact-page__locations-grid {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.5rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -361,10 +361,11 @@
 
 .contact-page__location-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(8rem, 11.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(8.5rem, 12rem);
   gap: 1.25rem;
   align-items: stretch;
-  padding: 1.5rem 0 1.5rem 1.75rem;
+  min-height: 14.5rem;
+  padding: 2rem 0 2rem 2rem;
   border-radius: 1.125rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: var(--dt-card, #111f34);
@@ -392,39 +393,64 @@
   position: relative;
   align-self: stretch;
   width: 100%;
-  margin-block: -1.5rem;
-  min-height: calc(100% + 3rem);
+  margin-block: -2rem;
+  min-height: calc(100% + 4rem);
   overflow: hidden;
-  background: transparent;
+  background: #000000;
 }
 
 .contact-page__location-monument-img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  transform: scale(0.88);
+}
+
+.contact-page__location-monument-wrap--hq .contact-page__location-monument-img {
+  object-position: center 76%;
+  transform: scale(0.92);
+}
+
+.contact-page__location-monument-wrap--office .contact-page__location-monument-img {
+  object-position: center 60%;
+  transform: scale(0.9);
 }
 
 @media (min-width: 768px) {
   .contact-page__location-card {
-    grid-template-columns: minmax(0, 1fr) minmax(9rem, 12.5rem);
-    padding: 1.75rem 0 1.75rem 2rem;
+    grid-template-columns: minmax(0, 1fr) minmax(10.5rem, 15rem);
+    min-height: 17.5rem;
+    padding: 2.35rem 0 2.35rem 2.5rem;
   }
 
   .contact-page__location-monument-wrap {
-    margin-block: -1.75rem;
-    min-height: calc(100% + 3.5rem);
+    margin-block: -2.35rem;
+    min-height: calc(100% + 4.7rem);
   }
 }
 
 @media (max-width: 479px) {
   .contact-page__location-card {
-    grid-template-columns: minmax(0, 1fr) minmax(6.5rem, 8.5rem);
+    grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 10rem);
+    min-height: 13rem;
     gap: 1rem;
-    padding: 1.25rem 0 1.25rem 1.25rem;
+    padding: 1.65rem 0 1.65rem 1.65rem;
   }
 
   .contact-page__location-monument-wrap {
-    margin-block: -1.25rem;
-    min-height: calc(100% + 2.5rem);
+    margin-block: -1.65rem;
+    min-height: calc(100% + 3.3rem);
+  }
+
+  .contact-page__location-monument-img {
+    transform: scale(0.84);
+  }
+
+  .contact-page__location-monument-wrap--hq .contact-page__location-monument-img {
+    transform: scale(0.88);
+  }
+
+  .contact-page__location-monument-wrap--office .contact-page__location-monument-img {
+    transform: scale(0.86);
   }
 }
 

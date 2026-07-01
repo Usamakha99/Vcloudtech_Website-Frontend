@@ -171,7 +171,9 @@ export function ContactLandingPage() {
                     {location.mapsLabel}
                   </Link>
                 </div>
-                <div className="contact-page__location-monument-wrap">
+                <div
+                  className={`contact-page__location-monument-wrap contact-page__location-monument-wrap--${location.id}`}
+                >
                   <Image
                     src={location.image}
                     alt={location.imageAlt}
