@@ -150,6 +150,7 @@
 .service-flip-front-image-wrap {
   position: absolute;
   inset: 0;
+  overflow: hidden;
   background: #041329;
 }
 
@@ -167,9 +168,12 @@
   pointer-events: none;
 }
 
-.service-flip-front-image {
+.service-flip-front-image,
+.service-flip-front-image-wrap img {
   object-fit: cover;
-  object-position: center;
+  object-position: 6% 18%;
+  transform: scale(1.08);
+  transform-origin: left 32%;
   opacity: 1;
   filter: brightness(0.9) contrast(1.06) saturate(0.94);
 }

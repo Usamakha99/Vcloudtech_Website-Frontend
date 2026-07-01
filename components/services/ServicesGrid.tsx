@@ -28,12 +28,15 @@ const serviceImages = {
   lifecycleManagement: serviceImagePath("life cycle management.png"),
 } as const;
 
+const DEFAULT_SERVICE_IMAGE_POSITION = "6% 18%";
+
 export type ServiceItem = {
   title: string;
   description: string;
   href: string;
   icon: SectionIcon;
   image?: string;
+  imagePosition?: string;
   bullets?: readonly string[];
 };
 
@@ -46,6 +49,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
     href: "/solutions/ai-infrastructure-procurement",
     icon: ServerIcon,
     image: serviceImages.aiProcurement,
+    imagePosition: "6% 16%",
     bullets: [
       "AI servers, GPUs and accelerator procurement",
       "Global sourcing from leading technology partners",
@@ -60,6 +64,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
     href: "/solutions/data-center-hardware",
     icon: ServerIcon,
     image: serviceImages.dataCenterHardware,
+    imagePosition: "5% 18%",
     bullets: [
       "Enterprise servers and storage solutions",
       "High-performance computing infrastructure",
@@ -74,6 +79,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
     href: "/solutions/data-center-networking",
     icon: CloudIcon,
     image: serviceImages.networking,
+    imagePosition: "4% 12%",
     bullets: [
       "Enterprise switching, routing and wireless",
       "SD-WAN and next-generation architecture",
@@ -88,6 +94,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
     href: "/solutions/cybersecurity",
     icon: ShieldIcon,
     image: serviceImages.cybersecurity,
+    imagePosition: "8% 14%",
     bullets: [
       "Advanced threat detection and response",
       "Endpoint, network and cloud security",
@@ -102,6 +109,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
     href: "/solutions/power-infrastructure",
     icon: CartIcon,
     image: serviceImages.powerInfrastructure,
+    imagePosition: "5% 14%",
     bullets: [
       "UPS, backup power and distribution systems",
       "Intelligent rack power management",
@@ -116,6 +124,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
     href: "/solutions/lifecycle-management",
     icon: ContractIcon,
     image: serviceImages.lifecycleManagement,
+    imagePosition: "8% 18%",
     bullets: [
       "Asset procurement, deployment and tracking",
       "Proactive maintenance and technical support",
@@ -242,6 +251,9 @@ function ServiceCardFront({ item }: { item: ServiceItem }) {
             alt={`${item.title} service`}
             fill
             className="service-flip-front-image"
+            style={{
+              objectPosition: item.imagePosition ?? DEFAULT_SERVICE_IMAGE_POSITION,
+            }}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         </div>
