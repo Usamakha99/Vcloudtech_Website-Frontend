@@ -104,7 +104,9 @@ export function AboutStatsGrid({ stats }: Props) {
     >
       <DtScrollReveal>
         <header className="about-page__stats-header">
-          <p className={`${dt.metaLabel} about-page__stats-badge`}>{aboutStatsSection.badge}</p>
+          <p className={`${dt.badge} about-page__badge about-page__badge--accent`}>
+            {aboutStatsSection.badge}
+          </p>
         </header>
 
         <div className="about-page__stats-panel">

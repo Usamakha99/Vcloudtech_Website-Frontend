@@ -764,11 +764,6 @@
   text-align: center;
 }
 
-.about-page__stats-badge {
-  margin: 0;
-  letter-spacing: 0.14em;
-}
-
 .about-page__stats-panel {
   border: 1px solid color-mix(in srgb, var(--dt-primary, #b3b3b3) 38%, rgba(255, 255, 255, 0.12));
   border-radius: 1.25rem;
