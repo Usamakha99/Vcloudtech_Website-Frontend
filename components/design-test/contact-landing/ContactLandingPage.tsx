@@ -15,7 +15,6 @@ import {
 } from "@/components/icons/section-icons";
 import { dt } from "@/components/design-test/design-test-theme";
 import { HomeContactForm } from "@/components/home/sections/contact/HomeContactForm";
-import { ButtonLink } from "@/components/ui/ButtonLink";
 import {
   contactInfoCards,
   contactMapEmbed,
@@ -64,13 +63,6 @@ export function ContactLandingPage() {
               {contactPageHero.title}
             </h1>
             <p className="contact-page__hero-lede">{contactPageHero.lede}</p>
-            <ButtonLink
-              href={contactPageHero.ctaHref}
-              variant="ctaWhite"
-              className="contact-page__hero-cta"
-            >
-              {contactPageHero.ctaLabel}
-            </ButtonLink>
           </div>
         </div>
       </section>
