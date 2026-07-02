@@ -21,8 +21,8 @@ export const aboutStory = {
   image: "/images/about-story-office.png",
   imageAlt: "vCloud Tech modern enterprise office and technology workspace",
   paragraphs: [
-    "vCloudTech started with a simple goal: make enterprise technology actually work for the people who depend on it. What began as hands-on IT support has grown into a full-spectrum technology partner — one that now uses AI-powered monitoring, automation, and threat detection to solve problems before they become outages.",
-    "Today, government agencies, hospitals, schools, and enterprises across 50 states trust vCloudTech to manage their cybersecurity, cloud, and IT infrastructure. We haven't lost what got us here: every client gets a dedicated team, transparent communication, and infrastructure that's engineered to perform — not just promised to.",
+    "vCloudTech started with a simple goal make enterprise technology actually work for the people who depend on it. What began as hands on IT support has grown into a full-spectrum technology partner one that now uses AI powered monitoring, automation, and threat detection to solve problems before they become outages.",
+    "Today, government agencies, hospitals, schools, and enterprises across 50 states trust vCloudTech to manage their cybersecurity, cloud, and IT infrastructure. We haven't lost what got us here every client gets a dedicated team, transparent communication, and infrastructure that's engineered to perform not just promised to.",
     "As technology evolves, so do we. Our growing investment in AI and intelligent automation means faster response times, smarter risk detection, and IT environments that adapt before problems start.",
   ],
 } as const;
