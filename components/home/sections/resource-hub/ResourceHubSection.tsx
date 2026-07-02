@@ -19,10 +19,10 @@ type Article = {
   image: string;
 };
 
-const blogImagesBase = "/Blog%20Images";
+const blogBannerBase = "Blog Banner for Website Content";
 
-function blogImagePath(filename: string) {
-  return `${blogImagesBase}/${encodeURIComponent(filename)}`;
+function blogBannerPath(filename: string) {
+  return `/${encodeURIComponent(blogBannerBase)}/${encodeURIComponent(filename)}`;
 }
 
 const articles: Article[] = [
@@ -33,7 +33,7 @@ const articles: Article[] = [
     dateTime: "2026-03-12",
     readTime: "8 min read",
     href: "/posts",
-    image: blogImagePath("11.png"),
+    image: blogBannerPath("1.jpg"),
   },
   {
     category: "AI Strategy",
@@ -42,7 +42,7 @@ const articles: Article[] = [
     dateTime: "2026-02-28",
     readTime: "6 min read",
     href: "/posts",
-    image: blogImagePath("10.png"),
+    image: blogBannerPath("2.jpg"),
   },
   {
     category: "Automation",
@@ -51,7 +51,7 @@ const articles: Article[] = [
     dateTime: "2026-02-14",
     readTime: "5 min read",
     href: "/posts",
-    image: blogImagePath("9.png"),
+    image: blogBannerPath("3.jpg"),
   },
 ];
 

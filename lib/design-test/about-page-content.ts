@@ -78,7 +78,7 @@ export const aboutValues = {
       icon: "server" as const,
       title: "Reliability First",
       description:
-        "Infrastructure and IT support you can depend on, every single day — no exceptions.",
+        "Infrastructure and IT support you can depend on, every single day no exceptions.",
     },
     {
       id: "integrity",

@@ -83,7 +83,7 @@ export const contactWhyCards = [
     id: "partners",
     title: "Certified Technology Partners",
     description:
-      "Authorized relationships with leading hardware, cloud, and security vendors—plus GSA, Sourcewell, and TIPS contract vehicles.",
+      "Authorized relationships with leading hardware, cloud, and security vendors plus GSA, Sourcewell, and TIPS contract vehicles.",
   },
   {
     id: "response",
@@ -95,7 +95,7 @@ export const contactWhyCards = [
     id: "solutions",
     title: "End-to-End IT Solutions",
     description:
-      "From strategy and sourcing to deployment, lifecycle management, and ongoing support—one partner across your stack.",
+      "From strategy and sourcing to deployment, lifecycle management, and ongoing support one partner across your stack.",
   },
 ] as const;
 
