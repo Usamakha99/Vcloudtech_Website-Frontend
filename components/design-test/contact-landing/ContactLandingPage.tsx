@@ -62,7 +62,6 @@ export function ContactLandingPage() {
             <h1 id="contact-page-heading" className="contact-page__hero-title">
               {contactPageHero.title}
             </h1>
-            <p className="contact-page__hero-lede">{contactPageHero.lede}</p>
           </div>
         </div>
       </section>
