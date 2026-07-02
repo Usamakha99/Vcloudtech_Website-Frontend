@@ -102,11 +102,3 @@ export const aboutValues = {
     },
   ],
 } as const;
-
-export const aboutCta = {
-  title: "Let's Build Something Reliable — Together",
-  lede:
-    "Talk to our team about how AI-powered IT solutions can simplify your infrastructure, strengthen your security, and scale with your business.",
-  buttonLabel: "Book a Free Call",
-  buttonHref: "/contact",
-} as const;

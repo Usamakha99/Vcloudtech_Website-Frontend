@@ -22,7 +22,6 @@ import {
   contactPageHero,
   contactWhyCards,
 } from "@/lib/design-test/contact-page-content";
-import { ContactFinalCta } from "@/components/design-test/contact-landing/ContactFinalCta";
 import "./contact-landing.css";
 
 const whyIcons = {
@@ -215,8 +214,6 @@ export function ContactLandingPage() {
           </ul>
         </section>
       </div>
-
-      <ContactFinalCta />
     </div>
   );
 }

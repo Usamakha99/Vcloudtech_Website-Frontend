@@ -4,7 +4,6 @@ import { HomeAboutSection } from "@/components/home/sections/about/AboutSection"
 import { HomeContactSection } from "@/components/home/sections/contact/ContactSection";
 import { HomeFaqSection } from "@/components/home/sections/faq/FaqSection";
 import { HomeHeroSection } from "@/components/home/sections/hero/HeroSection";
-import { HomeMeetExpertsSection } from "@/components/home/sections/meet-experts/MeetExpertsCtaSection";
 import { HomeTechnologyPartnersSection } from "@/components/home/sections/partners/PartnersSection";
 import { HomeResourceHubSection } from "@/components/home/sections/resource-hub/ResourceHubSection";
 import { HomeServicesSection } from "@/components/home/sections/services/ServicesSection";
@@ -68,11 +67,6 @@ export const HOME_SECTIONS: HomeSectionEntry[] = [
     id: "faq",
     label: "FAQ",
     component: HomeFaqSection,
-  },
-  {
-    id: "meet-experts",
-    label: "Meet Experts CTA",
-    component: HomeMeetExpertsSection,
   },
   {
     id: "contact",

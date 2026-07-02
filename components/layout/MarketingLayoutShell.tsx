@@ -1,5 +1,6 @@
 import { DesignTestFooter } from "@/components/design-test/DesignTestFooter";
 import { DesignTestGlobalNavbar } from "@/components/design-test/global-nav";
+import { HomeMeetExpertsSection } from "@/components/home/sections/meet-experts/MeetExpertsCtaSection";
 import { PageIngredientBackground } from "@/components/layout/PageIngredientBackground";
 import { poppins } from "@/lib/fonts/poppins";
 
@@ -28,6 +29,7 @@ export function MarketingLayoutShell({ children }: Props) {
         tabIndex={-1}
       >
         {children}
+        <HomeMeetExpertsSection />
       </main>
       <DesignTestFooter />
     </div>

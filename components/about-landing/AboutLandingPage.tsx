@@ -5,7 +5,6 @@ import {
   aboutValues,
 } from "@/lib/design-test/about-page-content";
 
-import { AboutFinalCta } from "./AboutFinalCta";
 import { AboutHero } from "./AboutHero";
 import { AboutJourneySection } from "./AboutJourneySection";
 import { AboutStatsGrid } from "./AboutStatsGrid";
@@ -44,8 +43,6 @@ export function AboutLandingPage() {
           items={aboutValues.items}
         />
       </div>
-
-      <AboutFinalCta />
     </main>
   );
 }
