@@ -1,6 +1,5 @@
 export const aboutPageHero = {
-  titlePrefix: "Confidence in Every Connection",
-  titleAccent: "Built on Trust",
+  titleLines: ["Confidence in Every Connection", "Built on Trust"] as const,
   lede:
     "Enterprise IT partner delivering cybersecurity, cloud infrastructure, and managed services to government, healthcare, and commercial clients nationwide.",
   image: "/images/about Us landing3.png",

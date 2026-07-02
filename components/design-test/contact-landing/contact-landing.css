@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   width: 100vw;
-  min-height: clamp(14rem, 34vw, 22rem);
+  min-height: clamp(16rem, 34vw, 26rem);
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   overflow: hidden;
@@ -46,12 +46,15 @@
 .contact-page__hero-media {
   position: absolute;
   inset: 0;
+  width: 100%;
   background: var(--dt-bg, #041329);
 }
 
 .contact-page__hero-image {
-  object-fit: contain;
-  object-position: right center;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .contact-page__hero-overlay {
@@ -59,11 +62,11 @@
   inset: 0;
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--dt-bg, #041329) 94%, transparent) 0%,
-    color-mix(in srgb, var(--dt-bg, #041329) 82%, transparent) 32%,
-    color-mix(in srgb, var(--dt-bg, #041329) 48%, transparent) 52%,
-    color-mix(in srgb, var(--dt-bg, #041329) 18%, transparent) 72%,
-    transparent 100%
+    color-mix(in srgb, var(--dt-bg, #041329) 92%, transparent) 0%,
+    color-mix(in srgb, var(--dt-bg, #041329) 78%, transparent) 28%,
+    color-mix(in srgb, var(--dt-bg, #041329) 52%, transparent) 48%,
+    color-mix(in srgb, var(--dt-bg, #041329) 22%, transparent) 62%,
+    transparent 78%
   );
 }
 

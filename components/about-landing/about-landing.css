@@ -61,7 +61,7 @@
   background: color-mix(in srgb, var(--dt-primary, #b3b3b3) 12%, transparent) !important;
 }
 
-/* ── Hero (centered copy + background image) ── */
+/* ── Hero (left copy + full-width background image) ── */
 
 .about-page__hero {
   position: relative;
@@ -73,7 +73,7 @@
   margin-right: calc(50% - 50vw);
   padding: calc(var(--dt-nav-occupancy, 5.75rem) + clamp(1.5rem, 3vw, 2.5rem)) clamp(1rem, 3vw, 2.5rem)
     clamp(1.25rem, 2.5vw, 2rem);
-  text-align: center;
+  text-align: left;
   overflow: hidden;
 }
 
@@ -111,6 +111,8 @@
 .about-page__hero-inner {
   position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: flex-start;
   width: 100%;
   max-width: 80rem;
   margin-inline: auto;
@@ -119,31 +121,36 @@
 .about-page__hero-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
+  max-width: min(36rem, 92vw);
+  margin-right: auto;
+  margin-left: 0;
+  text-align: left;
 }
 
 .about-page__hero-title {
   margin: 0;
   width: 100%;
-  max-width: 100%;
-  font-size: clamp(1.5rem, 1rem + 1.65vw, 2.25rem);
+  font-size: clamp(1.75rem, 3.8vw, 3rem);
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
   color: var(--dt-text, #ffffff);
 }
 
-@media (min-width: 640px) {
-  .about-page__hero-title {
-    white-space: nowrap;
-    font-size: clamp(1.625rem, 0.85rem + 1.55vw, 2.375rem);
-  }
+.about-page__hero-title-line {
+  display: block;
 }
 
-@media (min-width: 1280px) {
-  .about-page__hero-title {
-    font-size: 2.375rem;
+.about-page__hero-title-line:first-child {
+  white-space: nowrap;
+}
+
+@media (max-width: 479px) {
+  .about-page__hero-title-line:first-child {
+    white-space: normal;
+    font-size: clamp(1.5rem, 7vw, 1.75rem);
   }
 }
 
@@ -153,11 +160,11 @@
 
 .about-page__hero-lede {
   display: block;
-  max-width: 42rem;
-  margin: clamp(1.25rem, 2.5vw, 1.75rem) auto 0;
+  max-width: 32rem;
+  margin: 1rem 0 0;
   font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
-  line-height: 1.7;
-  color: color-mix(in srgb, var(--dt-text, #ffffff) 82%, transparent);
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--dt-text, #ffffff) 88%, transparent);
   text-wrap: pretty;
 }
 
