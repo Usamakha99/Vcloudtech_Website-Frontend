@@ -396,13 +396,14 @@
   margin-block: -2rem;
   min-height: calc(100% + 4rem);
   overflow: hidden;
-  background: #000000;
+  background: transparent;
 }
 
 .contact-page__location-monument-img {
   object-fit: contain;
   object-position: center;
   transform: scale(0.88);
+  mix-blend-mode: screen;
 }
 
 .contact-page__location-monument-wrap--hq .contact-page__location-monument-img {
