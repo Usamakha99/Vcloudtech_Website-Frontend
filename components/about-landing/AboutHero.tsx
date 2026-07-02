@@ -1,9 +1,8 @@
 import Image from "next/image";
 
-import { ButtonLink } from "@/components/ui/ButtonLink";
 import { aboutPageHero } from "@/lib/design-test/about-page-content";
 
-/** Full-width hero — matches contact page banner layout. */
+/** Centered text hero with full-width background image. */
 export function AboutHero() {
   return (
     <header id="hero" className="about-page__hero" aria-labelledby="about-page-heading">
@@ -22,26 +21,10 @@ export function AboutHero() {
       <div className="about-page__hero-inner">
         <div className="about-page__hero-content">
           <h1 id="about-page-heading" className="about-page__hero-title">
-            {aboutPageHero.titleLead}{" "}
+            {aboutPageHero.titlePrefix}{" "}
             <span className="about-page__hero-accent">{aboutPageHero.titleAccent}</span>
           </h1>
           <p className="about-page__hero-lede">{aboutPageHero.lede}</p>
-          <div className="about-page__hero-actions">
-            <ButtonLink
-              href={aboutPageHero.learnMoreHref}
-              variant="ctaWhite"
-              className="about-page__btn about-page__btn--primary"
-            >
-              {aboutPageHero.learnMoreLabel}
-            </ButtonLink>
-            <ButtonLink
-              href={aboutPageHero.contactHref}
-              variant="outlineOnNavy"
-              className="about-page__btn about-page__btn--secondary"
-            >
-              {aboutPageHero.contactLabel}
-            </ButtonLink>
-          </div>
         </div>
       </div>
     </header>

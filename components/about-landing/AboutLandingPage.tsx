@@ -20,6 +20,8 @@ export function AboutLandingPage() {
     <main className="about-page" data-nav-surface="dark">
       <AboutHero />
 
+      <AboutStatsGrid stats={aboutStats} />
+
       <div className="about-page__body">
         <AboutStorySection
           badge={aboutStory.badge}
@@ -29,8 +31,6 @@ export function AboutLandingPage() {
           image={aboutStory.image}
           imageAlt={aboutStory.imageAlt}
         />
-
-        <AboutStatsGrid stats={aboutStats} />
 
         <AboutJourneySection
           badge={aboutJourney.badge}

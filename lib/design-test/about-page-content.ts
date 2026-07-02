@@ -1,14 +1,14 @@
 export const aboutPageHero = {
-  badge: "WHO WE ARE",
-  titleLead: "Confidence in Every Connection -",
+  titlePrefix: "Confidence in Every Connection",
   titleAccent: "Built on Trust",
   lede:
     "Enterprise IT partner delivering cybersecurity, cloud infrastructure, and managed services to government, healthcare, and commercial clients nationwide.",
   image: "/images/about Us landing3.png",
-  learnMoreLabel: "Learn More",
-  learnMoreHref: "#about-story",
-  contactLabel: "Contact Us",
-  contactHref: "/contact",
+  imageAlt: "vCloud Tech enterprise technology team and workspace",
+} as const;
+
+export const aboutStatsSection = {
+  badge: "OUR MILESTONES",
 } as const;
 
 export const aboutStory = {

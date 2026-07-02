@@ -61,28 +61,34 @@
   background: color-mix(in srgb, var(--dt-primary, #b3b3b3) 12%, transparent) !important;
 }
 
-/* ── Hero (identical banner sizing to contact page) ── */
+/* ── Hero (centered copy + background image) ── */
 
 .about-page__hero {
   position: relative;
   display: flex;
   align-items: center;
   width: 100vw;
-  min-height: clamp(14rem, 34vw, 22rem);
+  min-height: clamp(16rem, 34vw, 26rem);
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  padding: calc(var(--dt-nav-occupancy, 5.75rem) + clamp(1.5rem, 3vw, 2.5rem)) clamp(1rem, 3vw, 2.5rem)
+    clamp(1.25rem, 2.5vw, 2rem);
+  text-align: center;
   overflow: hidden;
 }
 
 .about-page__hero-media {
   position: absolute;
   inset: 0;
+  width: 100%;
   background: var(--dt-bg, #041329);
 }
 
 .about-page__hero-image {
-  object-fit: contain;
-  object-position: right center;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .about-page__hero-overlay {
@@ -90,12 +96,16 @@
   inset: 0;
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--dt-bg, #041329) 94%, transparent) 0%,
-    color-mix(in srgb, var(--dt-bg, #041329) 82%, transparent) 32%,
-    color-mix(in srgb, var(--dt-bg, #041329) 48%, transparent) 52%,
-    color-mix(in srgb, var(--dt-bg, #041329) 18%, transparent) 72%,
-    transparent 100%
+    color-mix(in srgb, var(--dt-bg, #041329) 92%, transparent) 0%,
+    color-mix(in srgb, var(--dt-bg, #041329) 78%, transparent) 28%,
+    color-mix(in srgb, var(--dt-bg, #041329) 52%, transparent) 48%,
+    color-mix(in srgb, var(--dt-bg, #041329) 22%, transparent) 62%,
+    transparent 78%
   );
+}
+
+.about-page__hero-glow {
+  display: none;
 }
 
 .about-page__hero-inner {
@@ -104,35 +114,37 @@
   width: 100%;
   max-width: 80rem;
   margin-inline: auto;
-  padding: calc(var(--dt-nav-occupancy, 5.75rem) + 2rem) 1.5rem 2rem;
-}
-
-@media (min-width: 640px) {
-  .about-page__hero-inner {
-    padding-inline: 2rem;
-    padding-bottom: 2.25rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .about-page__hero-inner {
-    padding-inline: 2.5rem;
-    padding-bottom: 2.5rem;
-  }
 }
 
 .about-page__hero-content {
-  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .about-page__hero-title {
   margin: 0;
-  font-size: clamp(2rem, 4.8vw, 3.25rem);
+  width: 100%;
+  max-width: 100%;
+  font-size: clamp(1.5rem, 1rem + 1.65vw, 2.25rem);
   font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--dt-text, #ffffff);
-  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .about-page__hero-title {
+    white-space: nowrap;
+    font-size: clamp(1.625rem, 0.85rem + 1.55vw, 2.375rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .about-page__hero-title {
+    font-size: 2.375rem;
+  }
 }
 
 .about-page__hero-accent {
@@ -140,18 +152,13 @@
 }
 
 .about-page__hero-lede {
-  margin: 1rem 0 0;
-  max-width: 32rem;
+  display: block;
+  max-width: 42rem;
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) auto 0;
   font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
-  line-height: 1.65;
-  color: color-mix(in srgb, var(--dt-text, #ffffff) 88%, transparent);
-}
-
-.about-page__hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 1.125rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--dt-text, #ffffff) 82%, transparent);
+  text-wrap: pretty;
 }
 
 /* ── Body ── */
@@ -722,25 +729,51 @@
   }
 }
 
-/* ── Stats (enterprise glass cards) ── */
+/* ── Stats (reference milestones panel) ── */
 
 .about-page__stats {
   position: relative;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 2.5vw, 2rem) 1.5rem clamp(1.75rem, 3.5vw, 2.5rem);
   isolation: isolate;
-  padding-block: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+@media (min-width: 640px) {
+  .about-page__stats {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-page__stats {
+    padding-inline: 2.5rem;
+  }
+}
+
+.about-page__stats-header {
+  margin: clamp(0.75rem, 1.5vw, 1.25rem) 0 0.875rem;
+  text-align: center;
+}
+
+.about-page__stats-badge {
+  margin: 0;
+  letter-spacing: 0.14em;
+}
+
+.about-page__stats-panel {
+  border: 1px solid color-mix(in srgb, var(--dt-primary, #b3b3b3) 38%, rgba(255, 255, 255, 0.12));
+  border-radius: 1.25rem;
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2.5vw, 1.5rem);
+  background: color-mix(in srgb, var(--dt-card, #111f34) 42%, transparent);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 16px 36px -28px rgba(0, 0, 0, 0.5);
 }
 
 .about-page__stats-texture {
-  position: absolute;
-  inset: -1rem 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.35;
-  background-image:
-    linear-gradient(rgba(179, 179, 179, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(179, 179, 179, 0.04) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: radial-gradient(ellipse 85% 70% at 50% 50%, #000 20%, transparent 100%);
+  display: none;
 }
 
 .about-page__stats-reveal {
@@ -750,14 +783,14 @@
 
 .about-page__stats-grid {
   display: grid;
-  gap: 1.25rem;
-  align-items: stretch;
+  gap: 0.75rem;
+  align-items: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .about-page__stats-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: 0.5rem;
   }
 }
 
@@ -766,66 +799,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100%;
-  padding: clamp(2rem, 4vw, 2.75rem) clamp(1.5rem, 3vw, 2rem) clamp(1.75rem, 3vw, 2.25rem);
-  border-radius: 1.375rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: color-mix(in srgb, var(--dt-card, #111f34) 72%, transparent);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.05) inset,
-    0 20px 48px -28px rgba(0, 0, 0, 0.55);
-  overflow: hidden;
+  justify-content: center;
+  min-height: 0;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
   text-align: center;
   outline: none;
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.about-page__stat-card-surface {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      165deg,
-      color-mix(in srgb, var(--dt-card, #111f34) 94%, #ffffff 6%) 0%,
-      color-mix(in srgb, var(--dt-bg, #041329) 92%, transparent) 55%,
-      color-mix(in srgb, var(--dt-bg, #041329) 98%, transparent) 100%
-    );
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  pointer-events: none;
-}
-
-.about-page__stat-card-accent {
-  position: absolute;
-  top: 0;
-  left: 1.5rem;
-  right: 1.5rem;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--dt-primary, #b3b3b3) 35%,
-    color-mix(in srgb, var(--dt-primary, #b3b3b3) 65%, #ffffff) 50%,
-    var(--dt-primary, #b3b3b3) 65%,
-    transparent 100%
-  );
-  opacity: 0.85;
-  pointer-events: none;
+  transition: none;
 }
 
 .about-page__stat-card:hover,
 .about-page__stat-card:focus-visible {
-  transform: translateY(-5px);
-  border-color: color-mix(in srgb, var(--dt-primary, #b3b3b3) 32%, rgba(255, 255, 255, 0.12));
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.07) inset,
-    0 28px 56px -24px rgba(0, 0, 0, 0.62),
-    0 0 0 1px color-mix(in srgb, var(--dt-primary, #b3b3b3) 22%, transparent),
-    0 12px 40px -16px color-mix(in srgb, #e55614 18%, transparent);
+  transform: none;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .about-page__stat-icon-wrap {
@@ -900,29 +891,23 @@
   position: relative;
   z-index: 1;
   margin: 0;
-  font-size: clamp(2.5rem, 5.2vw, 3.5rem);
+  font-size: clamp(2rem, 4.2vw, 2.75rem);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   color: var(--dt-text, #ffffff);
-  transition: color 0.3s ease;
-}
-
-.about-page__stat-card:hover .about-page__stat-value,
-.about-page__stat-card:focus-visible .about-page__stat-value {
-  color: var(--dt-primary, #b3b3b3);
 }
 
 .about-page__stat-label {
   position: relative;
   z-index: 1;
-  margin: 0.85rem 0 0;
-  max-width: 14rem;
+  margin: 0.4rem 0 0;
+  max-width: 12rem;
   font-size: 0.6875rem;
-  font-weight: 600;
-  line-height: 1.45;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--dt-muted, #a1a1aa);
 }

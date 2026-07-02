@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
-import type { aboutStats } from "@/lib/design-test/about-page-content";
+import { aboutStatsSection, type aboutStats } from "@/lib/design-test/about-page-content";
+import { dt } from "@/components/design-test/design-test-theme";
 
 type Stat = (typeof aboutStats)[number];
 
@@ -102,15 +103,21 @@ export function AboutStatsGrid({ stats }: Props) {
       aria-label="Company statistics"
     >
       <DtScrollReveal>
-        <div className="about-page__stats-grid">
-          {stats.map((stat, index) => (
-            <AboutStatCard
-              key={stat.label}
-              stat={stat}
-              active={isVisible}
-              delayMs={index * 160}
-            />
-          ))}
+        <header className="about-page__stats-header">
+          <p className={`${dt.metaLabel} about-page__stats-badge`}>{aboutStatsSection.badge}</p>
+        </header>
+
+        <div className="about-page__stats-panel">
+          <div className="about-page__stats-grid">
+            {stats.map((stat, index) => (
+              <AboutStatCard
+                key={stat.label}
+                stat={stat}
+                active={isVisible}
+                delayMs={index * 160}
+              />
+            ))}
+          </div>
         </div>
       </DtScrollReveal>
     </section>
