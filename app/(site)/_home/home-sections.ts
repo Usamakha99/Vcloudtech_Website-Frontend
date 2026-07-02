@@ -50,8 +50,8 @@ export const HOME_SECTIONS: HomeSectionEntry[] = [
     component: HomeTechnologyPartnersSection,
   },
   {
-    id: "services",
-    label: "Services",
+    id: "solutions",
+    label: "Solutions",
     component: HomeServicesSection,
   },
   {

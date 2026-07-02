@@ -140,6 +140,8 @@ type Props = {
   badge?: string;
   heading?: string;
   subheading?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
   className?: string;
   surface?: "light" | "glass";
 };
@@ -150,6 +152,8 @@ export function ServicesGrid({
   badge,
   heading = "Professional Services",
   subheading = "Advisory, implementation, and managed operations for enterprise IT teams.",
+  ctaHref = "/services",
+  ctaLabel = "View More services",
   className = "",
   surface = "light",
 }: Props) {
@@ -178,7 +182,7 @@ export function ServicesGrid({
           </h2>
           {subheading ? (
             <p
-              className={`mx-auto mt-3 px-1 text-xs font-medium leading-relaxed sm:px-0 sm:text-sm sm:whitespace-nowrap ${
+              className={`mx-auto mt-3 max-w-3xl px-1 text-xs font-medium leading-relaxed sm:px-0 sm:text-sm ${
                 glass ? dt.headingSub : "text-slate-600 sm:text-base dark:text-slate-400"
               }`}
             >
@@ -226,8 +230,8 @@ export function ServicesGrid({
 
         {glass ? (
           <div className="services-grid-footer">
-            <Link href="/services" className="services-grid-cta">
-              View More services
+            <Link href={ctaHref} className="services-grid-cta">
+              {ctaLabel}
               <span className="services-grid-cta__arrow" aria-hidden>
                 →
               </span>
