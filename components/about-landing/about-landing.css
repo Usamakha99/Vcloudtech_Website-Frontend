@@ -963,159 +963,225 @@
   }
 }
 
-/* ── Timeline (continuous marquee — like trusted client logos) ── */
+/* ── Journey timeline (isometric 3D stairs) ── */
 
-.about-page__journey .about-page__timeline-marquee {
-  width: 100vw;
-  margin-top: 0.5rem;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+.about-page__journey .about-page__iso-stairs {
+  width: 100%;
+  max-width: 88rem;
+  margin: 0.5rem auto 0;
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
 }
 
-.about-page__timeline-marquee {
+.about-page__iso-stairs {
   position: relative;
-  overflow: hidden;
-  padding-block: 0.75rem 1.25rem;
+  padding-block: 0.25rem 2.5rem;
 }
 
-.about-page__timeline-fade {
-  position: absolute;
-  inset-block: 0;
-  z-index: 2;
-  width: clamp(2rem, 6vw, 5rem);
-  pointer-events: none;
-}
-
-.about-page__timeline-fade--left {
-  left: 0;
-  background: linear-gradient(
-    90deg,
-    var(--dt-bg, #041329) 0%,
-    color-mix(in srgb, var(--dt-bg, #041329) 82%, transparent) 45%,
-    transparent 100%
-  );
-}
-
-.about-page__timeline-fade--right {
-  right: 0;
-  background: linear-gradient(
-    270deg,
-    var(--dt-bg, #041329) 0%,
-    color-mix(in srgb, var(--dt-bg, #041329) 82%, transparent) 45%,
-    transparent 100%
-  );
-}
-
-.about-page__timeline-marquee-group {
+.about-page__iso-stairs-track {
   display: flex;
-  width: max-content;
-  animation: about-timeline-marquee 50s linear infinite;
-  will-change: transform;
-}
-
-@media (min-width: 1024px) {
-  .about-page__timeline-marquee-group {
-    animation-duration: 45s;
-  }
-}
-
-.about-page__timeline-marquee:hover .about-page__timeline-marquee-group {
-  animation-play-state: paused;
-}
-
-.about-page__timeline-marquee-track {
-  display: flex;
-  align-items: stretch;
-  gap: 1.25rem;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(0.65rem, 1.8vw, 1.35rem);
+  width: 100%;
+  min-height: clamp(22rem, 40vw, 32rem);
   margin: 0;
-  padding: 0.5rem 1.25rem;
+  padding: clamp(1rem, 2vw, 1.5rem) 0 clamp(1.5rem, 3vw, 2.5rem);
   list-style: none;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
 }
 
-.about-page__timeline-marquee-item {
-  flex-shrink: 0;
-}
-
-.about-page__timeline-card {
+.about-page__iso-step {
+  --lift: clamp(3rem, 7vw, 5.25rem);
+  --step-depth: clamp(0.9rem, 1.8vw, 1.2rem);
+  --step-face: #111f34;
+  --step-top: #1c3150;
+  --step-side: #0a1628;
   display: flex;
   flex-direction: column;
-  width: min(20rem, calc(100vw - 4rem));
-  height: 100%;
-  min-height: 11.5rem;
-  padding: 1.5rem 1.4rem 1.6rem;
-  border-radius: 1.125rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(17, 31, 52, 0.96) 0%, rgba(4, 19, 41, 0.92) 100%);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.04) inset,
-    0 16px 40px -24px rgba(0, 0, 0, 0.55);
-  transition:
-    border-color 0.35s ease,
-    box-shadow 0.35s ease,
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  justify-content: flex-end;
+  flex: 0 0 clamp(8.5rem, 15vw, 11.5rem);
+  margin-bottom: calc(var(--step, 0) * var(--lift));
+  scroll-snap-align: center;
 }
 
-.about-page__timeline-card:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--dt-primary, #b3b3b3) 35%, rgba(255, 255, 255, 0.12));
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    inset 0 0 0 1px rgba(179, 179, 179, 0.35);
+.about-page__iso-step:nth-child(1) {
+  --step-face: #111f34;
+  --step-top: #1a2d4a;
 }
 
-@keyframes about-timeline-marquee {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
+.about-page__iso-step:nth-child(2) {
+  --step-face: #121f38;
+  --step-top: #1b304c;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .about-page__timeline-marquee-group {
-    animation: none;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    padding-inline: 1.25rem;
-  }
-
-  .about-page__timeline-marquee-track {
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    padding-inline: 0;
-  }
-
-  .about-page__timeline-marquee-item:nth-child(n + 6) {
-    display: none;
-  }
+.about-page__iso-step:nth-child(3) {
+  --step-face: #13223c;
+  --step-top: #1d334f;
 }
 
-.about-page__timeline-index {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  font-size: 0.6875rem;
+.about-page__iso-step:nth-child(4) {
+  --step-face: #142440;
+  --step-top: #1f3652;
+}
+
+.about-page__iso-step:nth-child(5) {
+  --step-face: #152642;
+  --step-top: #213955;
+}
+
+.about-page__iso-step-copy {
+  width: 100%;
+  min-height: clamp(6.5rem, 13vw, 8.25rem);
+  margin: 0 0 0.75rem;
+  padding: 0 0.15rem;
+  text-align: left;
+}
+
+.about-page__iso-step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.65rem;
+  margin-bottom: 0.4rem;
+  padding: 0.18rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--dt-primary, #b3b3b3) 35%, transparent);
+  font-size: 0.625rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   color: var(--dt-primary, #b3b3b3);
+  background: color-mix(in srgb, var(--dt-card, #111f34) 75%, transparent);
 }
 
-.about-page__timeline-year {
+.about-page__iso-step-title {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: clamp(0.875rem, 1.35vw, 1rem);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--dt-text, #ffffff);
 }
 
-.about-page__timeline-desc {
-  margin: 0.65rem 0 0;
-  font-size: 0.9375rem;
-  line-height: 1.65;
+.about-page__iso-step-desc {
+  margin: 0.35rem 0 0;
+  font-size: clamp(0.6875rem, 1vw, 0.78rem);
+  line-height: 1.45;
   color: var(--dt-muted, #a1a1aa);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.about-page__iso-step-block {
+  position: relative;
+  width: 100%;
+  height: clamp(4rem, 7.5vw, 5rem);
+  flex-shrink: 0;
+}
+
+.about-page__iso-step-top {
+  position: absolute;
+  top: 0;
+  left: var(--step-depth);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - var(--step-depth));
+  height: clamp(1.4rem, 2.5vw, 1.85rem);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: none;
+  background: var(--step-top);
+  transform: skewX(-40deg);
+  transform-origin: bottom left;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.about-page__iso-step-top span {
+  transform: skewX(40deg);
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  font-weight: 700;
+  color: var(--dt-text, #ffffff);
+}
+
+.about-page__iso-step-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: calc(100% - var(--step-depth));
+  height: clamp(2.35rem, 4.5vw, 3.1rem);
+  padding: 0 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--step-face) 90%, #ffffff 10%) 0%,
+    var(--step-face) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 24px -16px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.3s ease;
+}
+
+.about-page__iso-step-label {
+  font-size: clamp(0.6rem, 0.95vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dt-text, #ffffff);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.about-page__iso-step-side {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: var(--step-depth);
+  height: clamp(2.35rem, 4.5vw, 3.1rem);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: none;
+  background: var(--step-side);
+  transform: skewY(-36deg);
+  transform-origin: bottom left;
+}
+
+.about-page__iso-step:hover .about-page__iso-step-front {
+  border-color: color-mix(in srgb, var(--dt-primary, #b3b3b3) 45%, rgba(255, 255, 255, 0.16));
+}
+
+@media (max-width: 900px) {
+  .about-page__iso-stairs-track {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    gap: 2rem;
+    padding-top: 0.5rem;
+    overflow-x: visible;
+  }
+
+  .about-page__iso-step {
+    flex: none;
+    width: 100%;
+    max-width: 22rem;
+    margin: 0 auto !important;
+  }
+
+  .about-page__iso-step-copy {
+    min-height: auto;
+  }
+
+  .about-page__iso-step-desc {
+    -webkit-line-clamp: unset;
+  }
 }
 
 /* ── Values (enterprise feature cards) ── */
