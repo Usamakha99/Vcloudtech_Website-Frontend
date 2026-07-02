@@ -624,62 +624,6 @@
   color: var(--dt-muted, #a1a1aa);
 }
 
-/* ── Final CTA ── */
-
-.contact-page__cta {
-  margin-top: 4rem;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--dt-card, #111f34) 40%, transparent) 0%,
-      color-mix(in srgb, var(--dt-bg, #041329) 95%, transparent) 100%
-    ),
-    radial-gradient(
-      ellipse 80% 60% at 50% 100%,
-      color-mix(in srgb, var(--dt-primary, #b3b3b3) 14%, transparent) 0%,
-      transparent 70%
-    );
-}
-
-.contact-page__cta-inner {
-  max-width: 48rem;
-  margin-inline: auto;
-  padding: 4rem 1.25rem;
-  text-align: center;
-}
-
-@media (min-width: 640px) {
-  .contact-page__cta-inner {
-    padding: 5rem 1.5rem;
-  }
-}
-
-.contact-page__cta-title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--dt-text, #ffffff);
-}
-
-.contact-page__cta-lede {
-  margin-top: 1rem;
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--dt-muted, #a1a1aa);
-}
-
-.contact-page__cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 2rem;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .contact-page__info-card,
   .contact-page__info-icon,

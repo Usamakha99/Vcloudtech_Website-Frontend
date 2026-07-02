@@ -23,9 +23,7 @@ import {
   contactPageHero,
   contactWhyCards,
 } from "@/lib/design-test/contact-page-content";
-import { designTestContactInfo } from "@/lib/design-test/contact-options";
-
-import "@/components/home/shared/styles/closing-sections.css";
+import { ContactFinalCta } from "@/components/design-test/contact-landing/ContactFinalCta";
 import "./contact-landing.css";
 
 const whyIcons = {
@@ -225,32 +223,9 @@ export function ContactLandingPage() {
             })}
           </ul>
         </section>
-
-        {/* 7. Final CTA */}
-        <section className="contact-page__cta" aria-labelledby="contact-final-cta-heading">
-          <div className="contact-page__cta-inner">
-            <h2 id="contact-final-cta-heading" className="contact-page__cta-title">
-              Ready to Transform Your IT Infrastructure?
-            </h2>
-            <p className="contact-page__cta-lede">
-              Speak with our enterprise team about AI infrastructure, procurement, and managed
-              technology programs tailored to your organization.
-            </p>
-            <div className="contact-page__cta-actions">
-              <ButtonLink href="#contact-form" variant="ctaWhite" className="contact-page__btn-primary">
-                Schedule Consultation
-              </ButtonLink>
-              <ButtonLink
-                href={`mailto:${designTestContactInfo.email}`}
-                variant="outlineOnNavy"
-                className="contact-page__btn-secondary"
-              >
-                Contact Our Team
-              </ButtonLink>
-            </div>
-          </div>
-        </section>
       </div>
+
+      <ContactFinalCta />
     </div>
   );
 }
