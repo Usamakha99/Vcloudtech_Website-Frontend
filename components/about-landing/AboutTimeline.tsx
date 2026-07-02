@@ -17,7 +17,11 @@ export function AboutTimeline({ milestones }: Props) {
   return (
     <DtScrollReveal delay={0.06}>
       <div className="about-page__iso-stairs" aria-label="Company journey timeline">
-        <ol className="about-page__iso-stairs-track">
+        <span className="about-page__iso-stairs-fade about-page__iso-stairs-fade--left" aria-hidden />
+        <span className="about-page__iso-stairs-fade about-page__iso-stairs-fade--right" aria-hidden />
+
+        <div className="about-page__iso-stairs-scroll">
+          <ol className="about-page__iso-stairs-track">
           {milestones.map((milestone, index) => (
             <li
               key={milestone.id}
@@ -46,7 +50,8 @@ export function AboutTimeline({ milestones }: Props) {
               </div>
             </li>
           ))}
-        </ol>
+          </ol>
+        </div>
       </div>
     </DtScrollReveal>
   );
