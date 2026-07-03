@@ -1,6 +1,6 @@
 "use client";
 
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
 import {
   HandshakeIcon,
@@ -9,7 +9,7 @@ import {
   ShieldIcon,
   type SectionIcon,
 } from "@/components/icons/section-icons";
-import type { aboutValues } from "@/lib/design-test/about-page-content";
+import type { aboutValues } from "@/lib/marketing/about-page-content";
 
 const valueIcons: Record<(typeof aboutValues.items)[number]["icon"], SectionIcon> = {
   server: ServerIcon,

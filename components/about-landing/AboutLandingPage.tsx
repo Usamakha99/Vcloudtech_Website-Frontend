@@ -3,7 +3,7 @@ import {
   aboutStats,
   aboutStory,
   aboutValues,
-} from "@/lib/design-test/about-page-content";
+} from "@/lib/marketing/about-page-content";
 
 import { AboutHero } from "./AboutHero";
 import { AboutJourneySection } from "./AboutJourneySection";

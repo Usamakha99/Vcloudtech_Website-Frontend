@@ -13,7 +13,7 @@ import {
   ShieldIcon,
   SolutionsIcon,
 } from "@/components/icons/section-icons";
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 import { HomeContactForm } from "@/components/home/sections/contact/HomeContactForm";
 import {
   contactInfoCards,
@@ -21,7 +21,7 @@ import {
   contactOfficeLocations,
   contactPageHero,
   contactWhyCards,
-} from "@/lib/design-test/contact-page-content";
+} from "@/lib/marketing/contact-page-content";
 import "./contact-landing.css";
 
 const whyIcons = {

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 import { publicAssets } from "@/lib/public-assets";
 import "./services-grid-glass.css";
 import {

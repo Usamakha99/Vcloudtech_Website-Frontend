@@ -1,5 +1,5 @@
-import { designTestContactInfo, designTestInquiryTypes } from "@/lib/design-test/contact-options";
-import { designTestFooterLocations } from "@/lib/design-test/footer-content";
+import { designTestContactInfo, designTestInquiryTypes } from "@/lib/marketing/contact-options";
+import { designTestFooterLocations } from "@/lib/marketing/footer-content";
 import { publicAssets } from "@/lib/public-assets";
 
 export const contactPageHero = {

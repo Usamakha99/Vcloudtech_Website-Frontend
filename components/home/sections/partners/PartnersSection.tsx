@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 import { TrustedByClientsMarquee } from "@/components/home/sections/partners/TrustedByClientsMarquee";
 
 import "./technology-partners.css";
@@ -17,7 +17,7 @@ const categories = [
   { id: "cloud", label: "Cloud Partners", target: 100, suffix: "+", accent: false },
 ] as const;
 
-import { partnerLogoVisualClass, partnerLogos } from "@/lib/design-test/partner-logos";
+import { partnerLogoVisualClass, partnerLogos } from "@/lib/marketing/partner-logos";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 

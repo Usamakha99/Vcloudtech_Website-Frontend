@@ -6,10 +6,10 @@ import { useEffect, useRef, useState } from "react";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import {
-  designTestGlobalNavBrand,
-  designTestGlobalNavCta,
-  designTestGlobalNavItems,
-} from "@/lib/navigation/design-test-global-nav";
+  globalNavBrand,
+  globalNavCta,
+  globalNavItems,
+} from "@/lib/navigation/global-nav";
 
 import { DesignTestGlobalNavLinks } from "./DesignTestGlobalNavLinks";
 import { DesignTestGlobalNavMobile } from "./DesignTestGlobalNavMobile";
@@ -20,8 +20,8 @@ import { useNavSurfaceTheme } from "./useNavSurfaceTheme";
 import "./design-test-global-nav.css";
 
 /**
- * Premium sticky global navigation for design-test lab pages.
- * Config: `lib/navigation/design-test-global-nav.ts`
+ * Sticky global navigation for marketing pages.
+ * Config: `lib/navigation/global-nav.ts`
  */
 export function DesignTestGlobalNavbar() {
   const pathname = usePathname();
@@ -61,9 +61,9 @@ export function DesignTestGlobalNavbar() {
       <div className="dt-global-nav__shell">
         <div className="dt-global-nav__bar">
           <Link
-            href={designTestGlobalNavBrand.href}
+            href={globalNavBrand.href}
             className="dt-global-nav__brand"
-            aria-label={designTestGlobalNavBrand.ariaLabel}
+            aria-label={globalNavBrand.ariaLabel}
           >
             <VCloudTechLogoImage
             priority
@@ -73,12 +73,12 @@ export function DesignTestGlobalNavbar() {
           </Link>
 
           <nav aria-label="Global navigation" className="dt-global-nav__links">
-            <DesignTestGlobalNavLinks items={designTestGlobalNavItems} pathname={pathname} />
+            <DesignTestGlobalNavLinks items={globalNavItems} pathname={pathname} />
           </nav>
 
           <div className="dt-global-nav__actions">
-            <Link href={designTestGlobalNavCta.href} className={globalNavCtaClass}>
-              {designTestGlobalNavCta.label}
+            <Link href={globalNavCta.href} className={globalNavCtaClass}>
+              {globalNavCta.label}
               <NavCtaArrowIcon className="dt-global-nav__cta-icon" />
             </Link>
 
@@ -98,7 +98,7 @@ export function DesignTestGlobalNavbar() {
 
       <DesignTestGlobalNavMobile
         open={mobileOpen}
-        items={designTestGlobalNavItems}
+        items={globalNavItems}
         pathname={pathname}
         onClose={() => setMobileOpen(false)}
       />

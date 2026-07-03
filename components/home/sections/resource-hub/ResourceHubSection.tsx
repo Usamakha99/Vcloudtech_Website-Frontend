@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 import { publicAssets } from "@/lib/public-assets";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";

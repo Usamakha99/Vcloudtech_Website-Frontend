@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useState } from "react";
 
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
-import { dt } from "@/components/design-test/design-test-theme";
-import { designTestFaqItems } from "@/lib/design-test/faq-content";
+import { dt } from "@/components/marketing/design-test-theme";
+import { designTestFaqItems } from "@/lib/marketing/faq-content";
 
 import "@/components/home/shared/styles/closing-sections.css";
 

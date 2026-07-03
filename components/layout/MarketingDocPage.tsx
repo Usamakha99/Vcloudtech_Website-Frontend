@@ -1,4 +1,4 @@
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 
 /**
  * Lightweight hero shell for marketing subpages (solutions, services, etc.).

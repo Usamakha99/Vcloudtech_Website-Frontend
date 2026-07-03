@@ -3,13 +3,13 @@
 import Link from "next/link";
 
 import { isNavActive } from "@/lib/navigation/active-path";
-import type { DesignTestGlobalNavItem } from "@/lib/navigation/design-test-global-nav";
+import type { GlobalNavItem } from "@/lib/navigation/global-nav";
 
 import { DesignTestGlobalNavDropdown } from "./DesignTestGlobalNavDropdown";
 import { globalNavLinkActiveClass, globalNavLinkClass } from "./nav-styles";
 
 type Props = {
-  items: readonly DesignTestGlobalNavItem[];
+  items: readonly GlobalNavItem[];
   pathname: string;
   onNavigate?: () => void;
   className?: string;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { AboutLandingPage } from "@/components/about-landing/AboutLandingPage";
-import { aboutPageHero } from "@/lib/design-test/about-page-content";
+import { aboutPageHero } from "@/lib/marketing/about-page-content";
 
 export const metadata: Metadata = {
   title: "About vCloudTech | AI-Driven Enterprise IT Partner",

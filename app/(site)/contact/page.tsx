@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { ContactLandingPage } from "@/components/design-test/contact-landing/ContactLandingPage";
+import { ContactLandingPage } from "@/components/contact-landing/ContactLandingPage";
 
 export const metadata: Metadata = {
   title: "Contact",

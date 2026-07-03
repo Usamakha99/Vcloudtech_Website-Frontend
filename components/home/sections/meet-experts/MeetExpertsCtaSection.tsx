@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 
 import "@/components/home/shared/styles/closing-sections.css";
 

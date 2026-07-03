@@ -1,17 +1,12 @@
 /**
- * Design-test global navigation — single source of truth.
+ * Global navigation — single source of truth.
  * Update labels and hrefs here; UI components stay presentational.
  */
 
 import { solutionsNavGroups } from "@/lib/navigation/solution-groups";
 import type { NavGroup } from "@/lib/navigation/types";
 
-export type DesignTestGlobalNavLink = {
-  label: string;
-  href: string;
-};
-
-export type DesignTestGlobalNavItem =
+export type GlobalNavItem =
   | {
       type: "link";
       label: string;
@@ -25,7 +20,7 @@ export type DesignTestGlobalNavItem =
     };
 
 /** Primary global nav items (marketing routes + Solutions dropdown). */
-export const designTestGlobalNavItems: readonly DesignTestGlobalNavItem[] = [
+export const globalNavItems: readonly GlobalNavItem[] = [
   {
     type: "dropdown",
     label: "Solutions",
@@ -38,18 +33,12 @@ export const designTestGlobalNavItems: readonly DesignTestGlobalNavItem[] = [
   { type: "link", label: "Contact", href: "/contact" },
 ] as const;
 
-/** @deprecated Use `designTestGlobalNavItems` — flat links only. */
-export const designTestGlobalNavLinks: readonly DesignTestGlobalNavLink[] =
-  designTestGlobalNavItems.flatMap((item) =>
-    item.type === "link" ? [{ label: item.label, href: item.href }] : [],
-  );
-
-export const designTestGlobalNavCta = {
+export const globalNavCta = {
   label: "Get Started",
   href: "/contact",
 } as const;
 
-export const designTestGlobalNavBrand = {
+export const globalNavBrand = {
   href: "/",
   ariaLabel: "vCloudTech home",
 } as const;

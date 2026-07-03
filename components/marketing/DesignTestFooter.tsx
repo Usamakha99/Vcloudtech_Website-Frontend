@@ -2,14 +2,14 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
-import { FooterNewsletter } from "@/components/design-test/FooterNewsletter";
-import { FooterSocialLinks } from "@/components/design-test/FooterSocialIcons";
-import { designTestContactInfo } from "@/lib/design-test/contact-options";
+import { FooterNewsletter } from "@/components/marketing/FooterNewsletter";
+import { FooterSocialLinks } from "@/components/marketing/FooterSocialIcons";
+import { designTestContactInfo } from "@/lib/marketing/contact-options";
 import {
   designTestFooterLinks,
   designTestFooterLocations,
   designTestFooterSocial,
-} from "@/lib/design-test/footer-content";
+} from "@/lib/marketing/footer-content";
 
 import "./design-test-footer.css";
 

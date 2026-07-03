@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { aboutPageHero } from "@/lib/design-test/about-page-content";
+import { aboutPageHero } from "@/lib/marketing/about-page-content";
 
 /** Full-width hero — left copy, background image, two-line title. */
 export function AboutHero() {

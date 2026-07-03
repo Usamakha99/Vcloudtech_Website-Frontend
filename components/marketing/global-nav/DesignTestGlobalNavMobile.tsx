@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { isNavActive, isNavGroupActive } from "@/lib/navigation/active-path";
-import type { DesignTestGlobalNavItem } from "@/lib/navigation/design-test-global-nav";
-import { designTestGlobalNavCta } from "@/lib/navigation/design-test-global-nav";
+import type { GlobalNavItem } from "@/lib/navigation/global-nav";
+import { globalNavCta } from "@/lib/navigation/global-nav";
 import type { NavGroup } from "@/lib/navigation/types";
 
 import {
@@ -17,7 +17,7 @@ import { NavCtaArrowIcon } from "./NavCtaArrowIcon";
 
 type Props = {
   open: boolean;
-  items: readonly DesignTestGlobalNavItem[];
+  items: readonly GlobalNavItem[];
   pathname: string;
   onClose: () => void;
 };
@@ -123,12 +123,12 @@ export function DesignTestGlobalNavMobile({ open, items, pathname, onClose }: Pr
 
         <div className="dt-global-nav__mobile-cta-wrap">
           <Link
-            href={designTestGlobalNavCta.href}
+            href={globalNavCta.href}
             onClick={onClose}
             className={globalNavMobileCtaClass}
             tabIndex={open ? undefined : -1}
           >
-            {designTestGlobalNavCta.label}
+            {globalNavCta.label}
             <NavCtaArrowIcon className="dt-global-nav__cta-icon" />
           </Link>
         </div>

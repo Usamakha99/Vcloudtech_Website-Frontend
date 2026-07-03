@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 
 import "@/components/home/shared/styles/about-metrics.css";
 

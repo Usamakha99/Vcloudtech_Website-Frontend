@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { dt } from "@/components/design-test/design-test-theme";
-import { partnerLogoStripClass, partnerLogos } from "@/lib/design-test/partner-logos";
+import { dt } from "@/components/marketing/design-test-theme";
+import { partnerLogoStripClass, partnerLogos } from "@/lib/marketing/partner-logos";
 
 import "../partners/technology-partners.css";
 

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { clientLogos } from "@/lib/design-test/client-logos";
+import { clientLogos } from "@/lib/marketing/client-logos";
 
 /** Trusted-by clients — strategic-strip layout: dark heading + full-width white marquee. */
 export function TrustedByClientsMarquee() {

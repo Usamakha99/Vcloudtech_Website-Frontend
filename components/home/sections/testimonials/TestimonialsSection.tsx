@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 
 import { GlassCard } from "@/components/home/shared/GlassCard";
 

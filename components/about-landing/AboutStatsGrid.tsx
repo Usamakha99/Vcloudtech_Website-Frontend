@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
-import { aboutStatsSection, type aboutStats } from "@/lib/design-test/about-page-content";
-import { dt } from "@/components/design-test/design-test-theme";
+import { aboutStatsSection, type aboutStats } from "@/lib/marketing/about-page-content";
+import { dt } from "@/components/marketing/design-test-theme";
 
 type Stat = (typeof aboutStats)[number];
 

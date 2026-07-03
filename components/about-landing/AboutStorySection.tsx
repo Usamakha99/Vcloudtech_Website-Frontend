@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-import { dt } from "@/components/design-test/design-test-theme";
+import { dt } from "@/components/marketing/design-test-theme";
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
 
 type MilestoneProps = {

@@ -2,8 +2,8 @@
 
 import { type FormEvent, useState } from "react";
 
-import { dt } from "@/components/design-test/design-test-theme";
-import { designTestInquiryTypes } from "@/lib/design-test/contact-options";
+import { dt } from "@/components/marketing/design-test-theme";
+import { designTestInquiryTypes } from "@/lib/marketing/contact-options";
 
 type Props = {
   submitClassName?: string;
