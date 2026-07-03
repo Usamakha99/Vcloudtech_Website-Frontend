@@ -1,8 +1,10 @@
+import { publicAssets } from "@/lib/public-assets";
+
 export const aboutPageHero = {
   titleLines: ["Confidence in Every Connection", "Built on Trust"] as const,
   lede:
     "Enterprise IT partner delivering cybersecurity, cloud infrastructure, and managed services to government, healthcare, and commercial clients nationwide.",
-  image: "/images/about Us landing3.png",
+  image: publicAssets.about.landing,
   imageAlt: "vCloud Tech enterprise technology team and workspace",
 } as const;
 
@@ -17,7 +19,7 @@ export const aboutStory = {
     "From IT Reseller to AI-Powered",
     "Enterprise Technology Partner",
   ] as const,
-  image: "/images/about-story-office.png",
+  image: publicAssets.about.storyOffice,
   imageAlt: "vCloud Tech modern enterprise office and technology workspace",
   paragraphs: [
     "vCloudTech started with a simple goal make enterprise technology actually work for the people who depend on it. What began as hands on IT support has grown into a full-spectrum technology partner one that now uses AI powered monitoring, automation, and threat detection to solve problems before they become outages.",

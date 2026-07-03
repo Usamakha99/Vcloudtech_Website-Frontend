@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { dt } from "@/components/design-test/design-test-theme";
+import { publicAssets } from "@/lib/public-assets";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
@@ -19,12 +20,6 @@ type Article = {
   image: string;
 };
 
-const blogBannerBase = "Blog Banner for Website Content";
-
-function blogBannerPath(filename: string) {
-  return `/${encodeURIComponent(blogBannerBase)}/${encodeURIComponent(filename)}`;
-}
-
 const articles: Article[] = [
   {
     category: "Cloud",
@@ -33,7 +28,7 @@ const articles: Article[] = [
     dateTime: "2026-03-12",
     readTime: "8 min read",
     href: "/posts",
-    image: blogBannerPath("1.jpg"),
+    image: publicAssets.blog.banner(1),
   },
   {
     category: "AI Strategy",
@@ -42,7 +37,7 @@ const articles: Article[] = [
     dateTime: "2026-02-28",
     readTime: "6 min read",
     href: "/posts",
-    image: blogBannerPath("2.jpg"),
+    image: publicAssets.blog.banner(2),
   },
   {
     category: "Automation",
@@ -51,7 +46,7 @@ const articles: Article[] = [
     dateTime: "2026-02-14",
     readTime: "5 min read",
     href: "/posts",
-    image: blogBannerPath("3.jpg"),
+    image: publicAssets.blog.banner(3),
   },
 ];
 

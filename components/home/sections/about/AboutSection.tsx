@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { dt } from "@/components/design-test/design-test-theme";
+import { publicAssets } from "@/lib/public-assets";
 import type { ReactNode } from "react";
 
 import { OrgMetricsRail } from "@/components/home/sections/about/OrgMetricsRail";
@@ -49,50 +50,44 @@ const sectors: {
   },
 ];
 
-/** Bump when replacing files in `public/Industries We Serve Final/` (same filenames). */
-const industriesWeServeImageVersion = "5";
-
-const industriesWeServeImageBase = "/Industries We Serve Final";
-
-function industryImage(filename: string) {
-  return `${industriesWeServeImageBase}/${filename}?v=${industriesWeServeImageVersion}`;
-}
+/** Bump when replacing files in `public/assets/industries/` (same filenames). */
+const industriesWeServeImageVersion = "6";
 
 const industryImageSectors = [
   {
     name: "Government",
     tagline: "Mission-Critical Infrastructure for Mission-Critical Work",
-    image: industryImage("Government Sector.png"),
+    image: `${publicAssets.industries.government}?v=${industriesWeServeImageVersion}`,
     href: "/services",
   },
   {
     name: "Education",
     tagline: " Infrastructure Built for the Pace of Modern Learning",
-    image: industryImage("Education Sector.png"),
+    image: `${publicAssets.industries.education}?v=${industriesWeServeImageVersion}`,
     href: "/services",
   },
   {
     name: "Healthcare",
     tagline: " HIPAA Is the Floor. Patient Safety Is the Ceiling.",
-    image: industryImage("Health Care.png"),
+    image: `${publicAssets.industries.healthcare}?v=${industriesWeServeImageVersion}`,
     href: "/services",
   },
   {
     name: "Financial Services",
     tagline: " A Four-Hour Outage Can Cost More Than an Annual IT Contract",
-    image: industryImage("Financial Sector.png"),
+    image: `${publicAssets.industries.financial}?v=${industriesWeServeImageVersion}`,
     href: "/services",
   },
   {
     name: "Public sector",
     tagline: "Infrastructure That Earns and Protects Public Trust.",
-    image: industryImage("Public Sector.png"),
+    image: `${publicAssets.industries.publicSector}?v=${industriesWeServeImageVersion}`,
     href: "/services",
   },
   {
     name: "Commercial / Enterprise",
     tagline: "  Enterprise-Grade Infrastructure for Enterprise-Level Ambition.",
-    image: industryImage("Commercial Enterprise Sector.png"),
+    image: `${publicAssets.industries.commercial}?v=${industriesWeServeImageVersion}`,
     href: "/services",
   },
 ] as const;
@@ -148,7 +143,7 @@ export function HomeAboutSection() {
 
           <figure className="about-minimal__intro-visual">
             <Image
-              src="/images/about us3.png"
+              src={publicAssets.about.reliablePartner}
               alt="Hands holding a digital display that reads Reliable IT Partner with a security shield icon"
               width={960}
               height={600}

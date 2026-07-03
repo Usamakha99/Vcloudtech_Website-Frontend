@@ -1,11 +1,12 @@
 import { designTestContactInfo, designTestInquiryTypes } from "@/lib/design-test/contact-options";
 import { designTestFooterLocations } from "@/lib/design-test/footer-content";
+import { publicAssets } from "@/lib/public-assets";
 
 export const contactPageHero = {
   title: "Contact us",
   lede:
     "Speak with our solutions architects about AI infrastructure, data center buildouts, and enterprise IT. We help you plan, deploy, and scale with confidence.",
-  image: "/images/contact-us 2.png",
+  image: publicAssets.contact.hero,
   imageAlt: "Enterprise technology and data analytics",
   ctaLabel: "Send a message",
   ctaHref: "#contact-form",
@@ -52,7 +53,7 @@ export const contactOfficeLocations = [
     lines: [...designTestFooterLocations.headquarters.lines],
     mapsUrl: designTestFooterLocations.headquarters.mapsUrl,
     mapsLabel: "Open in Google Maps",
-    image: "/images/locations/texas-dallas-skyline-v2.png",
+    image: publicAssets.locations.texas,
     imageAlt: "Dallas skyline line art illustration",
   },
   {
@@ -62,7 +63,7 @@ export const contactOfficeLocations = [
     lines: [...designTestFooterLocations.office.lines],
     mapsUrl: designTestFooterLocations.office.mapsUrl,
     mapsLabel: "Open in Google Maps",
-    image: "/images/locations/california-bridge-lineart-v2.png",
+    image: publicAssets.locations.california,
     imageAlt: "Golden Gate Bridge isometric illustration",
   },
 ] as const;

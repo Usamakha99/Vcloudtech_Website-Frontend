@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 
 import { IntroReadyProvider } from "@/components/intro/intro-context";
 import { isMobileDevice } from "@/components/intro/intro-device";
+import { publicAssets } from "@/lib/public-assets";
 
 const INTRO_MAX_MS = 6_000;
 const EXIT_FADE_MS = 500;
@@ -23,7 +24,7 @@ type Phase = "off" | "playing" | "exiting";
  */
 export function IntroAppProvider({
   children,
-  src = "/intro/loader-intro.mp4",
+  src = publicAssets.intro.loaderVideo,
 }: {
   children: ReactNode;
   src?: string;

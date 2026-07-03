@@ -1,8 +1,10 @@
 import Image from "next/image";
 
-/** Processed asset (black → transparent). Regenerate with `npm run logo:knockout` after replacing `public/brand/vcloudtech-logo.png`. */
-const LOGO_SRC = "/brand/vcloudtech-logo-nobg.png";
-const LIGHT_LOGO_SRC = "/brand/light_logo.png";
+import { publicAssets } from "@/lib/public-assets";
+
+/** Processed asset (black → transparent). Regenerate with `npm run logo:knockout` after replacing source logo. */
+const LOGO_SRC = publicAssets.brand.logo;
+const LIGHT_LOGO_SRC = publicAssets.brand.logoLight;
 
 type Props = {
   className?: string;

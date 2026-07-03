@@ -5,10 +5,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useIntroReady } from "@/components/intro/intro-context";
 import { isMobileDevice } from "@/components/intro/intro-device";
+import { publicAssets } from "@/lib/public-assets";
 
 export const HERO_SLIDES = [
   {
-    src: "/images/hero-1.png",
+    src: publicAssets.hero.slide1,
     alt: "vCloud Tech reception area with branded feature wall and conference room",
     title: "Infrastructure Built for What's Next",
     headline: "Infrastructure Built for What's Next",
@@ -18,7 +19,7 @@ export const HERO_SLIDES = [
     secondaryCta: { label: "Explore services", href: "/services" },
   },
   {
-    src: "/images/hero-2.png",
+    src: publicAssets.hero.slide2,
     alt: "vCloud Tech open workspace with testing benches and VCLOUD TECH signage",
     title: "Confidence in Every Connection",
     headline: "Confidence in Every Connection",
@@ -28,7 +29,7 @@ export const HERO_SLIDES = [
     secondaryCta: { label: "Explore services", href: "/services" },
   },
   {
-    src: "/images/hero-4.png",
+    src: publicAssets.hero.slide4,
     alt: "vCloud Tech reception and operations floor with VCLOUDTECH branding",
     title: "Technology That Drives Business Outcomes",
     headline: "Technology That Drives Business Outcomes",

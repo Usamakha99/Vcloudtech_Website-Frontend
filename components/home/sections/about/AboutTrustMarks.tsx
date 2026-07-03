@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { publicAssets } from "@/lib/public-assets";
+
 export type AboutTrustMarkId = "iso" | "gsa" | "sourcewell" | "tips";
 
 export const procurementCredentialItems: {
@@ -13,10 +15,10 @@ export const procurementCredentialItems: {
 ];
 
 const credentialImageById: Record<AboutTrustMarkId, string> = {
-  iso: "/design-test/credentials/iso-9001-2015-white.png",
-  gsa: "/design-test/credentials/gsa-white.png",
-  sourcewell: "/design-test/credentials/sourcewell-white.png",
-  tips: "/design-test/credentials/tips-white.png",
+  iso: publicAssets.credentials.iso,
+  gsa: publicAssets.credentials.gsa,
+  sourcewell: publicAssets.credentials.sourcewell,
+  tips: publicAssets.credentials.tips,
 };
 
 function CredentialMarkImage({ id }: { id: AboutTrustMarkId }) {

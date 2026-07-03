@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { dt } from "@/components/design-test/design-test-theme";
+import { publicAssets } from "@/lib/public-assets";
 import "./services-grid-glass.css";
 import {
   CartIcon,
@@ -12,20 +13,13 @@ import {
   type SectionIcon,
 } from "@/components/icons/section-icons";
 
-const servicesImagesBase = "/Services%20Images%20Resize";
-
-function serviceImagePath(filename: string) {
-  return `${servicesImagesBase}/${encodeURIComponent(filename)}`;
-}
-
-/** Resized service artwork — `public/Services Images Resize/` (1–6). */
 const serviceImages = {
-  aiProcurement: serviceImagePath("AI infrasturture.png"),
-  dataCenterHardware: serviceImagePath("data center hardware.png"),
-  networking: serviceImagePath("networking.png"),
-  cybersecurity: serviceImagePath("cyber security.png"),
-  powerInfrastructure: serviceImagePath("power infrasturture.png"),
-  lifecycleManagement: serviceImagePath("life cycle management.png"),
+  aiProcurement: publicAssets.services.aiProcurement,
+  dataCenterHardware: publicAssets.services.dataCenterHardware,
+  networking: publicAssets.services.networking,
+  cybersecurity: publicAssets.services.cybersecurity,
+  powerInfrastructure: publicAssets.services.powerInfrastructure,
+  lifecycleManagement: publicAssets.services.lifecycleManagement,
 } as const;
 
 const DEFAULT_SERVICE_IMAGE_POSITION = "6% 18%";
