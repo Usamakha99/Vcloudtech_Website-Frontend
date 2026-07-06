@@ -257,6 +257,11 @@
   transform-origin: center center;
 }
 
+.tp__partner-grid--all .tp__partner-logo--hp {
+  transform: scale(1.5);
+  transform-origin: center center;
+}
+
 .tp__partner-grid--all .tp__partner-logo--square {
   transform: scale(1.96);
   transform-origin: center center;
@@ -275,6 +280,10 @@
 .tp__partner-grid--all .tp__partner-logo--hpe {
   transform: scale(2.05);
   transform-origin: center center;
+}
+
+.tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--hp {
+  transform: scale(1.55);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo {
@@ -674,6 +683,10 @@
 
 .tp__strategic-strip-logo--apple {
   transform: scale(1.12);
+}
+
+.tp__strategic-strip-logo--hp {
+  transform: scale(1.35);
 }
 
 .tp__strategic-strip-logo--boost {

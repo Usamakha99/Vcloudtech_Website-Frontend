@@ -8,7 +8,7 @@ export const partnerLogos = [
   { name: "Dell", src: "/partners/dell.png" },
   { name: "Fortinet", src: "/partners/fortinet.png" },
   { name: "Google", src: "/partners/google.png" },
-  { name: "HP", src: "/partners/hp.png" },
+  { name: "HP", src: "/partners/hp.png?v=2" },
   { name: "HPE", src: "/partners/Hewlett_Packard_Enterprise-Logo.wine.png" },
   { name: "IBM", src: "/partners/ibm.png" },
   { name: "Intel", src: "/partners/intel.png" },
@@ -37,7 +37,7 @@ export function partnerLogoDimensions(name: PartnerLogo["name"]) {
   return { width: 253, height: 100 };
 }
 
-const boostedPartnerLogos = new Set<PartnerLogo["name"]>(["HP", "Veeam"]);
+const boostedPartnerLogos = new Set<PartnerLogo["name"]>(["Veeam"]);
 
 const strategicStripTunedPartners = new Set<PartnerLogo["name"]>([
   "Palo Alto",
@@ -56,6 +56,7 @@ export function partnerLogoStripClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__strategic-strip-logo--apple";
   if (name === "Google") return "tp__strategic-strip-logo--google";
   if (name === "HPE") return "tp__strategic-strip-logo--hpe";
+  if (name === "HP") return "tp__strategic-strip-logo--hp";
   if (name === "Zscaler") return "tp__strategic-strip-logo--zscaler";
   if (boostedPartnerLogos.has(name)) return "tp__strategic-strip-logo--boost";
   if (strategicStripTunedPartners.has(name)) return `tp__strategic-strip-logo--${partnerLogoSlug(name)}`;
@@ -67,6 +68,7 @@ export function partnerLogoVisualClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__partner-logo--apple";
   if (name === "Google") return "tp__partner-logo--google";
   if (name === "HPE") return "tp__partner-logo--hpe";
+  if (name === "HP") return "tp__partner-logo--hp";
   if (boostedPartnerLogos.has(name)) return "tp__partner-logo--boost";
   if (strategicStripTunedPartners.has(name)) return `tp__partner-logo--${partnerLogoSlug(name)}`;
   const squareLogos = ["Microsoft", "Malwarebytes", "Veeam"] as const;

@@ -230,6 +230,7 @@ export function HomeTechnologyPartnersSection() {
                       src={partner.src}
                       alt={partner.name}
                       fill
+                      unoptimized={partner.name === "HP"}
                       className={`tp__partner-logo ${partnerLogoVisualClass(partner.name)}`.trim()}
                       sizes="(max-width: 640px) 124px, 152px"
                     />
