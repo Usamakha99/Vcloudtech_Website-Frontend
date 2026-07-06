@@ -7,9 +7,10 @@
 
 export const assetVersions = {
   industries: "7",
+  blog: "2",
 } as const;
 
-export function withAssetVersion(path: string, version: string = assetVersions.industries): string {
+export function withAssetVersion(path: string, version: string): string {
   return `${path}?v=${version}`;
 }
 
@@ -41,15 +42,19 @@ export const publicAssets = {
     california: "/assets/locations/california-bridge-lineart-v2.png",
   },
   blog: {
-    banner: (index: 1 | 2 | 3) => `/assets/blog/${index}.jpg`,
+    banner: (index: 1 | 2 | 3) =>
+      withAssetVersion(`/assets/blog/${index}.png`, assetVersions.blog),
   },
   industries: {
-    government: withAssetVersion("/assets/industries/government-sector.png"),
-    education: withAssetVersion("/assets/industries/education-sector.png"),
-    healthcare: withAssetVersion("/assets/industries/health-care.png"),
-    financial: withAssetVersion("/assets/industries/financial-sector.png"),
-    publicSector: withAssetVersion("/assets/industries/public-sector.png"),
-    commercial: withAssetVersion("/assets/industries/commercial-enterprise-sector.png"),
+    government: withAssetVersion("/assets/industries/government-sector.png", assetVersions.industries),
+    education: withAssetVersion("/assets/industries/education-sector.png", assetVersions.industries),
+    healthcare: withAssetVersion("/assets/industries/health-care.png", assetVersions.industries),
+    financial: withAssetVersion("/assets/industries/financial-sector.png", assetVersions.industries),
+    publicSector: withAssetVersion("/assets/industries/public-sector.png", assetVersions.industries),
+    commercial: withAssetVersion(
+      "/assets/industries/commercial-enterprise-sector.png",
+      assetVersions.industries,
+    ),
   },
   services: {
     aiProcurement: "/assets/services/ai-infrastructure.png",

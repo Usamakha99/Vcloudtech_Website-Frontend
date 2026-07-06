@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { dt } from "@/components/marketing/design-test-theme";
-import { publicAssets } from "@/lib/public-assets";
+import { publicAssets, assetVersions } from "@/lib/public-assets";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
@@ -92,9 +92,11 @@ function BlogCard({
         <div className="rh__card-visual">
           <div className="rh__card-img-wrap">
             <Image
+              key={`${article.title}-${assetVersions.blog}`}
               src={article.image}
               alt={article.title}
               fill
+              unoptimized
               className="rh__card-img"
               sizes="(max-width: 640px) 100vw, 33vw"
             />
