@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { dt } from "@/components/marketing/design-test-theme";
-import { publicAssets } from "@/lib/public-assets";
+import { publicAssets, assetVersions } from "@/lib/public-assets";
 import type { ReactNode } from "react";
 
 import { OrgMetricsRail } from "@/components/home/sections/about/OrgMetricsRail";
@@ -50,44 +50,41 @@ const sectors: {
   },
 ];
 
-/** Bump when replacing files in `public/assets/industries/` (same filenames). */
-const industriesWeServeImageVersion = "6";
-
 const industryImageSectors = [
   {
     name: "Government",
     tagline: "Mission-Critical Infrastructure for Mission-Critical Work",
-    image: `${publicAssets.industries.government}?v=${industriesWeServeImageVersion}`,
+    image: publicAssets.industries.government,
     href: "/services",
   },
   {
     name: "Education",
     tagline: " Infrastructure Built for the Pace of Modern Learning",
-    image: `${publicAssets.industries.education}?v=${industriesWeServeImageVersion}`,
+    image: publicAssets.industries.education,
     href: "/services",
   },
   {
     name: "Healthcare",
     tagline: " HIPAA Is the Floor. Patient Safety Is the Ceiling.",
-    image: `${publicAssets.industries.healthcare}?v=${industriesWeServeImageVersion}`,
+    image: publicAssets.industries.healthcare,
     href: "/services",
   },
   {
     name: "Financial Services",
     tagline: " A Four-Hour Outage Can Cost More Than an Annual IT Contract",
-    image: `${publicAssets.industries.financial}?v=${industriesWeServeImageVersion}`,
+    image: publicAssets.industries.financial,
     href: "/services",
   },
   {
     name: "Public sector",
     tagline: "Infrastructure That Earns and Protects Public Trust.",
-    image: `${publicAssets.industries.publicSector}?v=${industriesWeServeImageVersion}`,
+    image: publicAssets.industries.publicSector,
     href: "/services",
   },
   {
     name: "Commercial / Enterprise",
     tagline: "  Enterprise-Grade Infrastructure for Enterprise-Level Ambition.",
-    image: `${publicAssets.industries.commercial}?v=${industriesWeServeImageVersion}`,
+    image: publicAssets.industries.commercial,
     href: "/services",
   },
 ] as const;
@@ -259,7 +256,7 @@ function IndustryImageCard({
 
           <div className="about-enterprise__industry-image-frame">
             <Image
-              key={`${sector.name}-${industriesWeServeImageVersion}`}
+              key={`${sector.name}-${assetVersions.industries}`}
               src={sector.image}
               alt={sector.name}
               fill

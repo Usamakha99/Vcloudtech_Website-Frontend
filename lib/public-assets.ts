@@ -1,7 +1,17 @@
 /**
  * Static asset paths under /public — single source of truth.
  * See public/README.md for folder layout.
+ *
+ * Bump `assetVersions` when replacing files at the same path (cache bust).
  */
+
+export const assetVersions = {
+  industries: "7",
+} as const;
+
+export function withAssetVersion(path: string, version: string = assetVersions.industries): string {
+  return `${path}?v=${version}`;
+}
 
 export const publicAssets = {
   brand: {
@@ -33,12 +43,12 @@ export const publicAssets = {
     banner: (index: 1 | 2 | 3) => `/assets/blog/${index}.jpg`,
   },
   industries: {
-    government: "/assets/industries/government-sector.png",
-    education: "/assets/industries/education-sector.png",
-    healthcare: "/assets/industries/health-care.png",
-    financial: "/assets/industries/financial-sector.png",
-    publicSector: "/assets/industries/public-sector.png",
-    commercial: "/assets/industries/commercial-enterprise-sector.png",
+    government: withAssetVersion("/assets/industries/government-sector.png"),
+    education: withAssetVersion("/assets/industries/education-sector.png"),
+    healthcare: withAssetVersion("/assets/industries/health-care.png"),
+    financial: withAssetVersion("/assets/industries/financial-sector.png"),
+    publicSector: withAssetVersion("/assets/industries/public-sector.png"),
+    commercial: withAssetVersion("/assets/industries/commercial-enterprise-sector.png"),
   },
   services: {
     aiProcurement: "/assets/services/ai-infrastructure.png",
