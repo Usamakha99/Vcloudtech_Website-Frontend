@@ -258,7 +258,7 @@
 }
 
 .tp__partner-grid--all .tp__partner-logo--hp {
-  transform: scale(1.5);
+  transform: scale(1.55);
   transform-origin: center center;
 }
 
@@ -283,7 +283,7 @@
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--hp {
-  transform: scale(1.55);
+  transform: scale(1.5);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo {
