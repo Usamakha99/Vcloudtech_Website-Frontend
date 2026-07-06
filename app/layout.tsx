@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   },
   description:
     "Enterprise IT solutions: cloud migration, managed infrastructure, and 24/7 operations for organizations that require security, scale, and governance.",
+  icons: {
+    icon: [{ url: "/brand/favicon.png", type: "image/png" }],
+    apple: [{ url: "/brand/favicon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({

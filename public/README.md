@@ -14,7 +14,7 @@ Static files served from the site root. Prefer paths from `lib/public-assets.ts`
 | `assets/industries/` | Industries we serve sector artwork |
 | `assets/locations/` | Office / location illustrations (contact page) |
 | `assets/services/` | Solutions & services card artwork |
-| `brand/` | vCloudTech logos |
+| `brand/` | vCloudTech logos + `favicon.png` |
 | `clients/` | Trusted client seals (numbered PNGs) |
 | `intro/` | Splash loader video |
 | `partners/` | Technology partner logos |
