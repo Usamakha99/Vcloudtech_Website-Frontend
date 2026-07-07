@@ -7,7 +7,7 @@ Static files served from the site root. Prefer paths from `lib/public-assets.ts`
 | Folder | Contents |
 |--------|----------|
 | `assets/about/` | About page and homepage about section imagery |
-| `assets/blog/` | Resource hub blog banner images (`1.jpg`–`3.jpg`) |
+| `assets/blog/` | Resource hub blog banner images (`1.png`–`3.png`) |
 | `assets/contact/` | Contact page hero |
 | `assets/credentials/` | ISO, GSA, Sourcewell, TIPS badge marks |
 | `assets/hero/` | Homepage carousel slides |
