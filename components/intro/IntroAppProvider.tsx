@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 
 import { IntroReadyProvider } from "@/components/intro/intro-context";
 import { isMobileDevice } from "@/components/intro/intro-device";
@@ -8,6 +9,10 @@ import { publicAssets } from "@/lib/public-assets";
 
 const INTRO_MAX_MS = 6_000;
 const EXIT_FADE_MS = 500;
+
+function isHomePath(pathname: string) {
+  return pathname === "/";
+}
 
 function setIntroPending(active: boolean) {
   document.documentElement.classList.toggle("intro-pending", active);
@@ -20,7 +25,7 @@ function setIntroSkipMobile(active: boolean) {
 type Phase = "off" | "playing" | "exiting";
 
 /**
- * Phones (≤767px): no intro. Desktop: 6s intro overlay before site is usable.
+ * Phones (≤767px): no intro. Desktop home (/): 6s intro overlay before site is usable.
  */
 export function IntroAppProvider({
   children,
@@ -29,6 +34,8 @@ export function IntroAppProvider({
   children: ReactNode;
   src?: string;
 }) {
+  const pathname = usePathname();
+  const isHome = isHomePath(pathname);
   const videoRef = useRef<HTMLVideoElement>(null);
   const introTimeoutRef = useRef<number | null>(null);
   const exitTimeoutRef = useRef<number | null>(null);
@@ -59,7 +66,24 @@ export function IntroAppProvider({
     }, EXIT_FADE_MS);
   }, [clearIntroTimeout]);
 
+  const dismissIntro = useCallback(() => {
+    clearIntroTimeout();
+    if (exitTimeoutRef.current !== null) {
+      window.clearTimeout(exitTimeoutRef.current);
+      exitTimeoutRef.current = null;
+    }
+    document.body.style.overflow = "";
+    setIntroPending(false);
+    setIntroReady(true);
+    setPhase("off");
+  }, [clearIntroTimeout]);
+
   useEffect(() => {
+    if (!isHome) {
+      dismissIntro();
+      return;
+    }
+
     if (isMobileDevice()) {
       setIntroSkipMobile(true);
       setIntroPending(false);
@@ -83,10 +107,10 @@ export function IntroAppProvider({
     setIntroReady(false);
     setIntroPending(true);
     setPhase("playing");
-  }, []);
+  }, [isHome, dismissIntro]);
 
   useEffect(() => {
-    if (isMobile || phase !== "playing") return;
+    if (!isHome || isMobile || phase !== "playing") return;
 
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -106,7 +130,7 @@ export function IntroAppProvider({
       document.body.style.overflow = prevOverflow;
       clearIntroTimeout();
     };
-  }, [isMobile, phase, clearIntroTimeout, finish]);
+  }, [isHome, isMobile, phase, clearIntroTimeout, finish]);
 
   useEffect(
     () => () => {
@@ -120,7 +144,7 @@ export function IntroAppProvider({
     [clearIntroTimeout],
   );
 
-  const showSplash = !isMobile && phase !== "off";
+  const showSplash = isHome && !isMobile && phase !== "off";
   const fading = phase === "exiting";
 
   return (
