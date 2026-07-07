@@ -11,8 +11,6 @@ import { CategoryFilters } from "./components/CategoryFilters";
 import { EmptyState } from "./components/EmptyState";
 import { Hero } from "./components/Hero";
 
-import "./blog.css";
-
 type Props = {
   articles: BlogArticle[];
   categories: BlogCategory[];

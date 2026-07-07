@@ -161,8 +161,8 @@ export function mapSanityCategory(category: SanityCategory): BlogCategory | null
 
   return {
     slug: category.slug,
-    name: category.title,
-    description: category.description ?? "",
+    name: category.title.trim(),
+    description: category.description?.trim() ?? "",
     icon,
   };
 }

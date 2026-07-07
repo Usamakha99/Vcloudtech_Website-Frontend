@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+import { sanityServerClient } from "@/sanity/lib/serverClient";
 import {
   BLOG_CATEGORIES_QUERY,
   BLOG_POST_QUERY,
@@ -15,15 +15,25 @@ import {
 } from "./map-sanity-blog";
 import type { BlogArticle, BlogCategory } from "./types";
 
+const blogFetchOptions = { next: { revalidate: 60, tags: ["blog"] } } as const;
+
 export async function fetchBlogPosts(): Promise<BlogArticle[]> {
-  const posts = await client.fetch<SanityBlogPost[]>(BLOG_POSTS_QUERY);
+  const posts = await sanityServerClient.fetch<SanityBlogPost[]>(
+    BLOG_POSTS_QUERY,
+    {},
+    blogFetchOptions,
+  );
   return posts
     .map((post) => mapSanityBlogPost(post))
     .filter((article): article is BlogArticle => Boolean(article));
 }
 
 export async function fetchBlogPostBySlug(slug: string) {
-  const post = await client.fetch<SanityBlogPost | null>(BLOG_POST_QUERY, {slug});
+  const post = await sanityServerClient.fetch<SanityBlogPost | null>(
+    BLOG_POST_QUERY,
+    { slug },
+    blogFetchOptions,
+  );
   if (!post) return null;
 
   const article = mapSanityBlogPost(post, true);
@@ -31,22 +41,34 @@ export async function fetchBlogPostBySlug(slug: string) {
 
   const related = mapRelatedPosts(post.relatedPosts).slice(0, 3);
 
-  return {article, related};
+  return { article, related };
 }
 
 export async function fetchBlogSlugs() {
-  const rows = await client.fetch<{slug: string}[]>(BLOG_POST_SLUGS_QUERY);
+  const rows = await sanityServerClient.fetch<{ slug: string }[]>(
+    BLOG_POST_SLUGS_QUERY,
+    {},
+    blogFetchOptions,
+  );
   return rows.map((row) => row.slug).filter(Boolean);
 }
 
 export async function fetchBlogCategories(): Promise<BlogCategory[]> {
-  const categories = await client.fetch(BLOG_CATEGORIES_QUERY);
+  const categories = await sanityServerClient.fetch(
+    BLOG_CATEGORIES_QUERY,
+    {},
+    blogFetchOptions,
+  );
   return categories
     .map((category: Parameters<typeof mapSanityCategory>[0]) => mapSanityCategory(category))
     .filter((category: BlogCategory | null): category is BlogCategory => Boolean(category));
 }
 
 export async function fetchBlogTrendingTags(): Promise<string[]> {
-  const tags = await client.fetch<string[]>(BLOG_TRENDING_TAGS_QUERY);
+  const tags = await sanityServerClient.fetch<string[]>(
+    BLOG_TRENDING_TAGS_QUERY,
+    {},
+    blogFetchOptions,
+  );
   return tags.filter(Boolean);
 }

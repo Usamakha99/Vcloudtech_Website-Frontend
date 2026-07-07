@@ -1,6 +1,6 @@
 /* Enterprise Blog — editorial surface (scoped to /blog routes) */
 
-.blog-page {
+.blog-route {
   --blog-bg-deep: #020810;
   --blog-bg: #061422;
   --blog-bg-soft: #0a1a2c;
@@ -16,36 +16,32 @@
   --blog-container-max: 90rem;
 
   position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  color: var(--blog-text);
-  background-color: var(--blog-bg-deep);
 }
 
-/* Editorial backdrop — replaces default site glow for blog only */
-.blog-page::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
+/*
+ * Full-page blog theme on the site shell (header + main + footer area).
+ * Avoids fixed negative z-index backdrops that can paint over the footer.
+ */
+.design-test-lab-page:has(.blog-route) {
+  background-color: var(--blog-bg-deep);
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.009) 1px, transparent 1px),
     radial-gradient(ellipse 90% 50% at 50% -5%, rgb(179 179 179 / 0.09), transparent 62%),
     radial-gradient(ellipse 45% 35% at 100% 8%, rgb(120 155 195 / 0.06), transparent 55%),
     radial-gradient(ellipse 40% 32% at 0% 92%, rgb(179 179 179 / 0.05), transparent 58%),
     linear-gradient(180deg, #081828 0%, #051220 38%, #030a14 72%, #020810 100%);
+  background-size: 100% 3.5rem, auto, auto, auto, auto;
 }
 
-.blog-page::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.35;
-  background-image: linear-gradient(rgb(255 255 255 / 0.025) 1px, transparent 1px);
-  background-size: 100% 3.5rem;
-  mask-image: linear-gradient(180deg, black 0%, transparent 88%);
+.design-test-lab-page:has(.blog-route) .page-ingredient-root {
+  visibility: hidden;
+}
+
+.blog-page {
+  position: relative;
+  overflow: hidden;
+  color: var(--blog-text);
+  background-color: transparent;
 }
 
 .blog-page > * {

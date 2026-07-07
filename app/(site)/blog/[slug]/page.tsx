@@ -11,8 +11,6 @@ import { CTASection } from "../components/CTASection";
 import { Pagination } from "../components/Pagination";
 import { RelatedArticles } from "../components/RelatedArticles";
 
-import "../blog.css";
-
 type Props = {
   params: Promise<{ slug: string }>;
 };
