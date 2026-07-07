@@ -166,3 +166,86 @@ export const VENDOR_UPDATE_SEO_QUERY = defineQuery(`
     summary
   }
 `);
+
+const blogPostCardFields = `
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  metaDescription,
+  publishedAt,
+  readingTimeMinutes,
+  featured,
+  tags,
+  mainImage,
+  body,
+  "category": categories[0]->{
+    title,
+    "slug": slug.current
+  },
+  "author": author->{
+    name,
+    "slug": slug.current,
+    role,
+    linkedIn,
+    image,
+    bio
+  }
+`;
+
+/** Blog module — listing cards */
+export const BLOG_POSTS_QUERY = defineQuery(`
+  *[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc) {
+    ${blogPostCardFields}
+  }
+`);
+
+/** Blog module — single article */
+export const BLOG_POST_QUERY = defineQuery(`
+  *[_type == "blogPost" && slug.current == $slug][0]{
+    ${blogPostCardFields},
+    faq,
+    "relatedPosts": relatedPosts[]->{
+      _id,
+      title,
+      "slug": slug.current,
+      excerpt,
+      metaDescription,
+      publishedAt,
+      readingTimeMinutes,
+      featured,
+      tags,
+      mainImage,
+      body,
+      "category": categories[0]->{
+        title,
+        "slug": slug.current
+      },
+      "author": author->{
+        name,
+        "slug": slug.current,
+        role,
+        linkedIn,
+        image,
+        bio
+      }
+    }
+  }
+`);
+
+export const BLOG_POST_SLUGS_QUERY = defineQuery(`
+  *[_type == "blogPost" && defined(slug.current)]{ "slug": slug.current }
+`);
+
+export const BLOG_CATEGORIES_QUERY = defineQuery(`
+  *[_type == "category" && defined(slug.current)] | order(title asc) {
+    title,
+    "slug": slug.current,
+    description,
+    icon
+  }
+`);
+
+export const BLOG_TRENDING_TAGS_QUERY = defineQuery(`
+  array::unique(*[_type == "blogPost" && defined(tags)].tags[]) | order(@ asc) [0...12]
+`);
