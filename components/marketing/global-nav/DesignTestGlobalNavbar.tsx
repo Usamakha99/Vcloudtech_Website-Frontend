@@ -39,7 +39,7 @@ export function DesignTestGlobalNavbar() {
     queueMicrotask(() => setMounted(true));
 
     const onScroll = () => {
-      setScrolled(window.scrollY > 24);
+      setScrolled(window.scrollY > 8);
     };
 
     onScroll();

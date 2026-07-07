@@ -3,37 +3,52 @@
 .design-test-lab-page {
   --dt-nav-shell-pad-y: 0.875rem;
   --dt-nav-bar-height: 4.25rem;
-  --dt-nav-occupancy: calc(var(--dt-nav-shell-pad-y) + var(--dt-nav-bar-height) + 0.625rem);
-  --dt-nav-glass-bg: rgba(255, 255, 255, 0.05);
+  --dt-nav-occupancy: calc(var(--dt-nav-shell-pad-y) + var(--dt-nav-bar-height) + 1.25rem);
+  --dt-nav-glass-bg: rgba(255, 255, 255, 0.06);
   --dt-nav-glass-border: rgba(255, 255, 255, 0.14);
-  --dt-nav-glass-blur: 12px;
+  --dt-nav-glass-blur: 14px;
+  scroll-padding-top: var(--dt-nav-occupancy);
 }
 
 @media (min-width: 640px) {
   .design-test-lab-page {
     --dt-nav-shell-pad-y: 1rem;
     --dt-nav-bar-height: 4.5rem;
-    --dt-nav-occupancy: calc(var(--dt-nav-shell-pad-y) + var(--dt-nav-bar-height) + 0.75rem);
+    --dt-nav-occupancy: calc(var(--dt-nav-shell-pad-y) + var(--dt-nav-bar-height) + 1.5rem);
   }
 }
 
-.design-test-lab-page .dt-global-nav--scrolled {
-  --dt-nav-glass-bg: rgba(255, 255, 255, 0.07);
-  --dt-nav-glass-border: rgba(255, 255, 255, 0.18);
-  --dt-nav-glass-blur: 16px;
+/* Dark pages — stronger frosted bar once user scrolls (keeps text from bleeding through) */
+.design-test-lab-page .dt-global-nav--scrolled.dt-global-nav--surface-dark {
+  --dt-nav-glass-bg: rgba(4, 19, 41, 0.92);
+  --dt-nav-glass-border: rgba(255, 255, 255, 0.24);
+  --dt-nav-glass-blur: 32px;
+}
+
+.design-test-lab-page .dt-global-nav--scrolled.dt-global-nav--surface-dark .dt-global-nav__bar::before {
+  backdrop-filter: blur(var(--dt-nav-glass-blur)) saturate(165%);
+  -webkit-backdrop-filter: blur(var(--dt-nav-glass-blur)) saturate(165%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14) inset,
+    0 18px 56px -24px rgba(0, 0, 0, 0.55);
 }
 
 /* Light sections — navbar adapts to #041329 theme on white backgrounds */
 .dt-global-nav--surface-light {
   --dt-nav-glass-bg: rgba(255, 255, 255, 0.9);
   --dt-nav-glass-border: rgba(4, 19, 41, 0.12);
-  --dt-nav-glass-blur: 14px;
+  --dt-nav-glass-blur: 16px;
 }
 
 .dt-global-nav--surface-light.dt-global-nav--scrolled {
-  --dt-nav-glass-bg: rgba(255, 255, 255, 0.94);
-  --dt-nav-glass-border: rgba(4, 19, 41, 0.16);
-  --dt-nav-glass-blur: 16px;
+  --dt-nav-glass-bg: rgba(255, 255, 255, 0.96);
+  --dt-nav-glass-border: rgba(4, 19, 41, 0.18);
+  --dt-nav-glass-blur: 24px;
+}
+
+.dt-global-nav--surface-light.dt-global-nav--scrolled .dt-global-nav__bar::before {
+  backdrop-filter: blur(var(--dt-nav-glass-blur)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--dt-nav-glass-blur)) saturate(150%);
 }
 
 .dt-global-nav--surface-light .dt-global-nav__bar::before {
@@ -124,6 +139,26 @@
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.12) inset,
     0 16px 48px -28px rgba(0, 0, 0, 0.4);
+}
+
+/* Soft scrim above content when scrolled — covers shell padding zone */
+.dt-global-nav--scrolled.dt-global-nav--surface-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 19, 41, 0.88) 0%,
+    rgba(4, 19, 41, 0.55) 72%,
+    transparent 100%
+  );
+}
+
+.dt-global-nav--scrolled.dt-global-nav--surface-dark .dt-global-nav__shell {
+  position: relative;
+  z-index: 1;
 }
 
 /* Content always sharp above glass */

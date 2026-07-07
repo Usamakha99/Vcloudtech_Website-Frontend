@@ -24,7 +24,7 @@ export function MarketingLayoutShell({ children }: Props) {
       <DesignTestGlobalNavbar />
       <main
         id="main-content"
-        className="relative flex-1 outline-none [&:not(:has(#hero))]:pt-[var(--dt-nav-occupancy)]"
+        className="relative flex-1 scroll-pt-[var(--dt-nav-occupancy)] outline-none [&:not(:has(#hero))]:pt-[var(--dt-nav-occupancy)]"
         data-nav-surface="dark"
         tabIndex={-1}
       >

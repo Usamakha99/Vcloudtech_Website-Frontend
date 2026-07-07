@@ -1302,7 +1302,7 @@
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--blog-text);
-  scroll-margin-top: 6rem;
+  scroll-margin-top: calc(var(--dt-nav-occupancy, 6rem) + 1rem);
 }
 
 .blog-article-content h2.blog-article-content__heading {
