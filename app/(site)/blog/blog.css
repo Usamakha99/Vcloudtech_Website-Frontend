@@ -8,11 +8,12 @@
   --blog-muted: #a1a1aa;
   --blog-radius: 1rem;
   --blog-radius-lg: 1.5rem;
+  --blog-container-max: 90rem;
   color: var(--blog-text);
 }
 
 .blog-container {
-  width: min(100% - 2rem, 72rem);
+  width: min(100% - 2.5rem, var(--blog-container-max));
   margin-inline: auto;
 }
 
@@ -353,7 +354,13 @@
 }
 
 .blog-latest__grid--landing {
-  gap: 2.25rem 1.75rem;
+  gap: 2rem 2rem;
+}
+
+@media (min-width: 1280px) {
+  .blog-latest__grid--landing {
+    gap: 2.25rem 2.25rem;
+  }
 }
 
 /* Landing card — image + tag/date + title */
@@ -731,6 +738,12 @@
 @media (min-width: 768px) {
   .blog-latest__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .blog-latest__grid--landing {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
