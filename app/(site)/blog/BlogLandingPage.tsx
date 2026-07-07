@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
 import type { BlogArticle, BlogCategory } from "@/lib/blog/types";
@@ -17,12 +17,26 @@ type Props = {
 };
 
 export function BlogLandingPage({ articles, categories }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const [categorySlug, setCategorySlug] = useState("");
 
   useEffect(() => {
     setCategorySlug(searchParams.get("category") ?? "");
   }, [searchParams]);
+
+  const handleCategoryChange = useCallback(
+    (slug: string) => {
+      setCategorySlug(slug);
+      const params = new URLSearchParams(searchParams.toString());
+      if (slug) params.set("category", slug);
+      else params.delete("category");
+      const query = params.toString();
+      router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+    },
+    [pathname, router, searchParams],
+  );
 
   const filtered = useMemo(
     () => filterArticles(articles, { categorySlug, sort: "newest" }),
@@ -36,7 +50,7 @@ export function BlogLandingPage({ articles, categories }: Props) {
       <CategoryFilters
         categories={categories}
         activeSlug={categorySlug}
-        onChange={setCategorySlug}
+        onChange={handleCategoryChange}
       />
 
       <section id="latest-articles" className="blog-latest blog-latest--landing" aria-label="All blog articles">

@@ -15,7 +15,10 @@ import {
 } from "./map-sanity-blog";
 import type { BlogArticle, BlogCategory } from "./types";
 
-const blogFetchOptions = { next: { revalidate: 60, tags: ["blog"] } } as const;
+const blogFetchOptions =
+  process.env.NODE_ENV === "development"
+    ? ({ cache: "no-store" } as const)
+    : ({ next: { revalidate: 60, tags: ["blog"] } } as const);
 
 export async function fetchBlogPosts(): Promise<BlogArticle[]> {
   const posts = await sanityServerClient.fetch<SanityBlogPost[]>(

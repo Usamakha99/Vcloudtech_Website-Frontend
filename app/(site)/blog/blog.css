@@ -39,9 +39,17 @@
 
 .blog-page {
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   color: var(--blog-text);
   background-color: transparent;
+}
+
+.blog-filters {
+  position: relative;
+  z-index: 5;
+  overflow: visible;
+  padding-bottom: 0.5rem;
 }
 
 .blog-page > * {
@@ -213,9 +221,6 @@
 }
 
 /* Filters — pills + dropdown */
-.blog-filters {
-  padding-bottom: 0.5rem;
-}
 
 .blog-filters__dropdown-row {
   display: flex;
@@ -290,7 +295,7 @@
 
 .blog-dropdown__menu {
   position: absolute;
-  z-index: 20;
+  z-index: 40;
   top: calc(100% + 0.5rem);
   left: 0;
   right: 0;
