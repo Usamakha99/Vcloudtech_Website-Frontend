@@ -63,7 +63,6 @@ export default async function BlogArticlePage({ params }: Props) {
   const { article, related } = result;
   const allPosts = await fetchBlogPosts();
   const { previous, next } = getAdjacentArticles(allPosts, slug);
-  const shareUrl = `${SITE_URL}/blog/${slug}`;
   const jsonLd = buildArticleJsonLd(article);
 
   return (
@@ -73,7 +72,7 @@ export default async function BlogArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <BlogDetailShell article={article} shareUrl={shareUrl}>
+      <BlogDetailShell article={article}>
         <BlogPostBody value={article.body!} />
 
         {article.faq?.length ? (
