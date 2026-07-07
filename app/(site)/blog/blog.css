@@ -45,16 +45,16 @@
   background-color: transparent;
 }
 
-.blog-filters {
-  position: relative;
-  z-index: 5;
-  overflow: visible;
-  padding-bottom: 0.5rem;
-}
-
-.blog-page > * {
+.blog-page > *:not(.blog-filters) {
   position: relative;
   z-index: 1;
+}
+
+.blog-page .blog-filters {
+  position: relative;
+  z-index: 50;
+  overflow: visible;
+  padding-bottom: 0.5rem;
 }
 
 .blog-container {
@@ -226,6 +226,8 @@
   display: flex;
   justify-content: center;
   padding-bottom: 2rem;
+  position: relative;
+  z-index: 51;
 }
 
 .blog-filter__dropdown-wrap {
@@ -246,6 +248,8 @@
 
 .blog-dropdown {
   position: relative;
+  z-index: 51;
+  isolation: isolate;
   width: 100%;
 }
 
@@ -295,7 +299,7 @@
 
 .blog-dropdown__menu {
   position: absolute;
-  z-index: 40;
+  z-index: 52;
   top: calc(100% + 0.5rem);
   left: 0;
   right: 0;

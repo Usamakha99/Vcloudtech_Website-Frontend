@@ -45,7 +45,7 @@ export function CategoryDropdown({ categories, activeSlug, onChange }: Props) {
   return (
     <div className="blog-filter__dropdown-wrap" ref={rootRef}>
       <label className="blog-filter__label" id={`${listboxId}-label`}>
-        Browse by category
+        More categories
       </label>
 
       <div className="blog-dropdown">
