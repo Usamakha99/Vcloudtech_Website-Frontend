@@ -2,21 +2,9 @@
 
 import { dt } from "@/components/marketing/design-test-theme";
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
-import {
-  HandshakeIcon,
-  RocketIcon,
-  ServerIcon,
-  ShieldIcon,
-  type SectionIcon,
-} from "@/components/icons/section-icons";
 import type { aboutValues } from "@/lib/marketing/about-page-content";
 
-const valueIcons: Record<(typeof aboutValues.items)[number]["icon"], SectionIcon> = {
-  server: ServerIcon,
-  handshake: HandshakeIcon,
-  rocket: RocketIcon,
-  shield: ShieldIcon,
-};
+import { VALUE_ICONS } from "./ValueIcons";
 
 type Props = {
   badge: string;
@@ -24,15 +12,20 @@ type Props = {
   items: typeof aboutValues.items;
 };
 
-/** Core values — premium enterprise feature cards. */
+const iconById: Record<(typeof aboutValues.items)[number]["id"], keyof typeof VALUE_ICONS> = {
+  reliability: "reliability",
+  integrity: "integrity",
+  innovation: "innovation",
+  security: "security",
+};
+
+/** Core values — minimal premium panels. */
 export function AboutValuesSection({ badge, title, items }: Props) {
   return (
     <section
       className="about-page__section about-page__values"
       aria-labelledby="about-values-heading"
     >
-      <div className="about-page__values-backdrop" aria-hidden />
-
       <header className="about-page__section-header">
         <DtScrollReveal>
           <p className={`${dt.badge} about-page__badge about-page__badge--accent`}>{badge}</p>
@@ -44,14 +37,16 @@ export function AboutValuesSection({ badge, title, items }: Props) {
 
       <ul className="about-page__values-grid">
         {items.map((value, index) => {
-          const Icon = valueIcons[value.icon];
+          const Icon = VALUE_ICONS[iconById[value.id]];
           return (
             <li key={value.id}>
               <DtScrollReveal delay={index * 0.07}>
                 <article className="about-page__value-card" tabIndex={0}>
-                  <div className="about-page__value-card-surface" aria-hidden />
-                  <div className="about-page__value-card-highlight" aria-hidden />
-                  <div className="about-page__value-icon" aria-hidden>
+                  <div className="about-page__value-card-shine" aria-hidden />
+                  <span className="about-page__value-index" aria-hidden>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div className="about-page__value-mark" aria-hidden>
                     <Icon />
                   </div>
                   <h3 className="about-page__value-title">{value.title}</h3>
