@@ -7,13 +7,13 @@ export function AboutHero() {
       <div className="about-page__hero-media" aria-hidden>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          className="about-page__hero-image is-active"
+          className="about-page__hero-image about-page__hero-image--gif is-active"
           src={aboutPageHero.heroGif}
           alt=""
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          className="about-page__hero-image"
+          className="about-page__hero-image about-page__hero-image--gif"
           src={aboutPageHero.heroGif}
           alt=""
         />
