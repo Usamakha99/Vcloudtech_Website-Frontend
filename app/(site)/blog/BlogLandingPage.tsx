@@ -21,6 +21,7 @@ export function BlogLandingPage({ articles, categories }: Props) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [categorySlug, setCategorySlug] = useState("");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     setCategorySlug(searchParams.get("category") ?? "");
@@ -39,8 +40,8 @@ export function BlogLandingPage({ articles, categories }: Props) {
   );
 
   const filtered = useMemo(
-    () => filterArticles(articles, { categorySlug, sort: "newest" }),
-    [articles, categorySlug],
+    () => filterArticles(articles, { categorySlug, query, sort: "newest" }),
+    [articles, categorySlug, query],
   );
 
   return (
@@ -50,7 +51,9 @@ export function BlogLandingPage({ articles, categories }: Props) {
       <CategoryFilters
         categories={categories}
         activeSlug={categorySlug}
+        query={query}
         onChange={handleCategoryChange}
+        onQueryChange={setQuery}
       />
 
       <section id="latest-articles" className="blog-latest blog-latest--landing" aria-label="All blog articles">
@@ -65,10 +68,10 @@ export function BlogLandingPage({ articles, categories }: Props) {
             </div>
           ) : (
             <EmptyState
-              title={articles.length ? "No articles in this category" : "No blog articles yet"}
+              title={articles.length ? "No articles match your filters" : "No blog articles yet"}
               description={
                 articles.length
-                  ? "Try another category or view all articles."
+                  ? "Try another category, adjust your search, or view all articles."
                   : "Create your first article in Sanity Studio under Blog → Articles."
               }
             />

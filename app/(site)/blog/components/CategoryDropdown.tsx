@@ -8,9 +8,11 @@ type Props = {
   categories: BlogCategory[];
   activeSlug: string;
   onChange: (slug: string) => void;
+  /** Toolbar row — no label, fixed width beside search */
+  inline?: boolean;
 };
 
-export function CategoryDropdown({ categories, activeSlug, onChange }: Props) {
+export function CategoryDropdown({ categories, activeSlug, onChange, inline = false }: Props) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const listboxId = useId();
@@ -43,10 +45,15 @@ export function CategoryDropdown({ categories, activeSlug, onChange }: Props) {
   }
 
   return (
-    <div className="blog-filter__dropdown-wrap" ref={rootRef}>
-      <label className="blog-filter__label" id={`${listboxId}-label`}>
-        More categories
-      </label>
+    <div
+      className={`blog-filter__dropdown-wrap${inline ? " blog-filter__dropdown-wrap--inline" : ""}`}
+      ref={rootRef}
+    >
+      {!inline ? (
+        <label className="blog-filter__label" id={`${listboxId}-label`}>
+          More categories
+        </label>
+      ) : null}
 
       <div className="blog-dropdown">
         <button
@@ -54,7 +61,8 @@ export function CategoryDropdown({ categories, activeSlug, onChange }: Props) {
           className={`blog-dropdown__trigger${open ? " is-open" : ""}`}
           aria-haspopup="listbox"
           aria-expanded={open}
-          aria-labelledby={`${listboxId}-label`}
+          aria-label={inline ? "Filter by category" : undefined}
+          aria-labelledby={inline ? undefined : `${listboxId}-label`}
           onClick={() => setOpen((value) => !value)}
         >
           <span className="blog-dropdown__value">{activeLabel}</span>
@@ -71,7 +79,12 @@ export function CategoryDropdown({ categories, activeSlug, onChange }: Props) {
         </button>
 
         {open ? (
-          <ul className="blog-dropdown__menu" role="listbox" aria-labelledby={`${listboxId}-label`}>
+          <ul
+            className="blog-dropdown__menu"
+            role="listbox"
+            aria-label={inline ? "Category filter" : undefined}
+            aria-labelledby={inline ? undefined : `${listboxId}-label`}
+          >
             <li role="option" aria-selected={activeSlug === ""}>
               <button
                 type="button"
