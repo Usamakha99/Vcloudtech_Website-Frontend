@@ -41,6 +41,10 @@ export function ArticleCard({ article, variant = "default" }: Props) {
           <h3 className="blog-article-card__title blog-article-card__title--landing">
             <Link href={`/blog/${article.slug}`}>{article.title}</Link>
           </h3>
+
+          <p className="blog-article-card__excerpt blog-article-card__excerpt--landing">
+            {article.excerpt}
+          </p>
         </div>
       </article>
     );

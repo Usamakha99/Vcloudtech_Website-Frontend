@@ -497,7 +497,7 @@
 
 .blog-article-card__visual--landing {
   aspect-ratio: 16 / 10;
-  border-radius: 1.75rem;
+  border-radius: 0;
   overflow: hidden;
   border: 1px solid var(--blog-border);
   background: var(--blog-card);
@@ -558,6 +558,17 @@
 
 .blog-article-card__title--landing a:hover {
   color: var(--blog-primary);
+}
+
+.blog-article-card__excerpt--landing {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--blog-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .blog-hero__glow {
