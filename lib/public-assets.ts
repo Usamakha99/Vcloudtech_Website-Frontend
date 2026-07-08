@@ -8,7 +8,7 @@
 export const assetVersions = {
   industries: "7",
   blog: "6",
-  about: "7",
+  about: "8",
 } as const;
 
 export function withAssetVersion(path: string, version: string): string {

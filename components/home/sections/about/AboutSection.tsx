@@ -141,9 +141,9 @@ export function HomeAboutSection() {
           <figure className="about-minimal__intro-visual">
             <Image
               src={publicAssets.about.reliablePartner}
-              alt="Business professionals collaborating around a laptop with a connected global network overlay"
+              alt="Two business partners shaking hands with a connected digital globe representing global IT partnership"
               width={1024}
-              height={819}
+              height={682}
               className="about-minimal__intro-image"
               sizes="(max-width: 1023px) 100vw, 42vw"
             />
