@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { BlogImage } from "./BlogImage";
 
 import type { BlogAuthor } from "@/lib/blog/types";
 
@@ -11,7 +11,7 @@ export function AuthorCard({ author }: Props) {
     <aside className="blog-author-card" aria-label="About the author">
       {author.image ? (
         <div className="blog-author-card__avatar">
-          <Image src={author.image} alt="" fill className="blog-author-card__image" sizes="80px" />
+          <BlogImage src={author.image} alt="" fill className="blog-author-card__image" sizes="80px" />
         </div>
       ) : null}
       <div className="blog-author-card__body">

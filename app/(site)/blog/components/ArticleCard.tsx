@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { BlogImage } from "./BlogImage";
 import Link from "next/link";
 
 import type { BlogArticle } from "@/lib/blog/types";
@@ -21,7 +21,7 @@ export function ArticleCard({ article, variant = "default" }: Props) {
     return (
       <article className="blog-article-card blog-article-card--landing">
         <Link href={`/blog/${article.slug}`} className="blog-article-card__visual blog-article-card__visual--landing">
-          <Image
+          <BlogImage
             src={article.image}
             alt={article.imageAlt}
             fill
@@ -55,7 +55,7 @@ export function ArticleCard({ article, variant = "default" }: Props) {
   return (
     <article className="blog-article-card">
       <Link href={`/blog/${article.slug}`} className="blog-article-card__visual">
-        <Image
+        <BlogImage
           src={article.image}
           alt={article.imageAlt}
           fill

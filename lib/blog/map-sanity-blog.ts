@@ -101,9 +101,9 @@ export function estimateReadingTime(body?: PortableTextBlock[], explicitMinutes?
   return Math.max(1, Math.ceil(words / 200));
 }
 
-function imageUrl(image?: SanityImage, width = 1400, height = 788) {
+function imageUrl(image?: SanityImage, width = 800, height = 450) {
   if (!image?.asset?._ref) return "";
-  return urlFor(image).width(width).height(height).url();
+  return urlFor(image).width(width).height(height).fit("crop").auto("format").url();
 }
 
 function mapAuthor(author?: SanityAuthor | null): BlogAuthor | null {

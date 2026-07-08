@@ -5,7 +5,7 @@ export const aboutPageHero = {
   lede:
     "Enterprise IT partner delivering cybersecurity, cloud infrastructure, and managed services to government, healthcare, and commercial clients nationwide.",
   image: publicAssets.about.landing,
-  video: publicAssets.about.heroVideo,
+  heroGif: publicAssets.about.heroGif,
   imageAlt: "vCloud Tech enterprise technology team and workspace",
 } as const;
 

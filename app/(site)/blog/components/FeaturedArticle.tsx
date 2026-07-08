@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { BlogImage } from "./BlogImage";
 import Link from "next/link";
 
 import type { BlogArticle } from "@/lib/blog/types";
@@ -23,7 +23,7 @@ export function FeaturedArticle({ article }: Props) {
 
         <article className="blog-featured__card">
           <Link href={`/blog/${article.slug}`} className="blog-featured__visual">
-            <Image
+            <BlogImage
               src={article.image}
               alt={article.imageAlt}
               fill

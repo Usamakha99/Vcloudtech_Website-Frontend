@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import Image from "next/image";
+import { BlogImage } from "./BlogImage";
 import Link from "next/link";
 
 import type { BlogArticle } from "@/lib/blog/types";
@@ -51,7 +51,7 @@ export function BlogDetailHero({ article }: { article: BlogArticle }) {
       <h1 className="blog-detail__title">{article.title}</h1>
 
       <div className="blog-detail__hero-image">
-        <Image
+        <BlogImage
           src={article.image}
           alt={article.imageAlt}
           fill
