@@ -1,21 +1,18 @@
 import { aboutPageHero } from "@/lib/marketing/about-page-content";
 
-/** Full-width hero — left copy, looping background gif (same layout as video hero). */
+/** Full-width hero — left copy, optimized looping background video. */
 export function AboutHero() {
   return (
     <header id="hero" className="about-page__hero" aria-labelledby="about-page-heading">
       <div className="about-page__hero-media" aria-hidden>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <video
           className="about-page__hero-image about-page__hero-image--gif is-active"
-          src={aboutPageHero.heroGif}
-          alt=""
-        />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className="about-page__hero-image about-page__hero-image--gif"
-          src={aboutPageHero.heroGif}
-          alt=""
+          src={aboutPageHero.video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
         />
         <div className="about-page__hero-overlay" />
       </div>

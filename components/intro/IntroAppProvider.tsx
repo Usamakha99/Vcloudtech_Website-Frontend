@@ -170,7 +170,7 @@ export function IntroAppProvider({
             autoPlay
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
           />
 
           {phase === "playing" ? (

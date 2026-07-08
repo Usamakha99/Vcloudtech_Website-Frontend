@@ -6,9 +6,9 @@
  */
 
 export const assetVersions = {
-  industries: "7",
-  blog: "6",
-  about: "8",
+  industries: "8",
+  blog: "7",
+  about: "9",
 } as const;
 
 export function withAssetVersion(path: string, version: string): string {
@@ -31,9 +31,7 @@ export const publicAssets = {
     slide4: "/assets/hero/hero-4.png",
   },
   about: {
-    landing: "/assets/about/about-us-landing3.png",
-    heroVideo: "/assets/about/download.mp4",
-    heroGif: withAssetVersion("/assets/about/gif.gif", assetVersions.about),
+    heroVideo: withAssetVersion("/assets/about/about-hero.mp4", assetVersions.about),
     storyOffice: "/assets/about/about-story-office.png",
     reliablePartner: withAssetVersion(
       "/assets/about/about-us3.png",

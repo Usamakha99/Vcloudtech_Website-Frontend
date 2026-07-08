@@ -10,6 +10,7 @@
     "logo:knockout": "node scripts/knockout-logo-background.mjs",
     "blog:seed": "node scripts/seed-sanity-blog.mjs",
     "blog:seed-extra": "node scripts/seed-sanity-blog-extra.mjs",
+    "media:optimize": "node scripts/optimize-public-media.mjs",
     "automation:install": "npm install --prefix services/content-automation",
     "automation:build": "npm run build --prefix services/content-automation",
     "automation:once": "npm run once --prefix services/content-automation",
@@ -29,6 +30,7 @@
     "styled-components": "^6.4.1"
   },
   "devDependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
