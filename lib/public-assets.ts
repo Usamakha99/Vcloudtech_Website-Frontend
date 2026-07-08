@@ -31,6 +31,7 @@ export const publicAssets = {
   },
   about: {
     landing: "/assets/about/about-us-landing3.png",
+    heroVideo: "/assets/about/download.mp4",
     storyOffice: "/assets/about/about-story-office.png",
     reliablePartner: "/assets/about/about-us3.png",
   },

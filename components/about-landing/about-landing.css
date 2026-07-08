@@ -85,10 +85,30 @@
 }
 
 .about-page__hero-image {
+  position: absolute;
+  inset: 0;
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
   object-position: center center;
+  opacity: 0;
+  transition: opacity 700ms ease;
+  pointer-events: none;
+}
+
+.about-page__hero-image.is-active {
+  opacity: 1;
+  z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__hero-image {
+    transition: none;
+  }
+
+  .about-page__hero-image.is-active {
+    opacity: 1;
+  }
 }
 
 .about-page__hero-overlay {
