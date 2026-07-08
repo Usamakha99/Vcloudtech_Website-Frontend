@@ -43,9 +43,6 @@ export function AboutValuesSection({ badge, title, items }: Props) {
               <DtScrollReveal delay={index * 0.07}>
                 <article className="about-page__value-card" tabIndex={0}>
                   <div className="about-page__value-card-shine" aria-hidden />
-                  <span className="about-page__value-index" aria-hidden>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
                   <div className="about-page__value-mark" aria-hidden>
                     <Icon />
                   </div>

@@ -1103,16 +1103,6 @@
   transform: translateY(-3px);
 }
 
-.about-page__value-index {
-  position: relative;
-  z-index: 1;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: rgb(179 179 179 / 0.65);
-  font-variant-numeric: tabular-nums;
-}
-
 .about-page__value-mark {
   position: relative;
   z-index: 1;
@@ -1121,7 +1111,7 @@
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  margin-top: 1.25rem;
+  margin-top: 0;
   border-radius: 0.75rem;
   border: 1px solid rgb(179 179 179 / 0.18);
   background: rgb(4 19 41 / 0.45);
