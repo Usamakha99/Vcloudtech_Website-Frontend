@@ -195,3 +195,36 @@ export function GlobeIcon(props: IconProps) {
     </svg>
   );
 }
+
+/** Founding — ideas, origin, startup */
+export function LightbulbIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path
+        d="M9 18h6M10 21h4M12 3a6 6 0 00-3 11.2V16h6v-1.8A6 6 0 0012 3z"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+/** Compliance — certification & quality standards */
+export function CertificateIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M7 4h8l4 4v12H7V4z" strokeLinejoin="round" />
+      <path d="M15 4v4h4" strokeLinejoin="round" />
+      <path d="M10.5 14l1.5 1.5 3-3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** AI & intelligent infrastructure */
+export function ChipIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="7" y="7" width="10" height="10" rx="1.5" />
+      <path d="M9 7V4M12 7V4M15 7V4M9 17v3M12 17v3M15 17v3M7 9H4M7 12H4M7 15H4M17 9h3M17 12h3M17 15h3" strokeLinecap="round" />
+    </svg>
+  );
+}

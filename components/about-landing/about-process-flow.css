@@ -1,0 +1,554 @@
+/**
+ * Our Journey — Horizontal Enterprise Process Flow
+ * Smooth wave spine + circular nodes + cards.
+ */
+
+.about-process-flow {
+  --apf-bg: #041329;
+  --apf-card: #111f34;
+  --apf-primary: #b3b3b3;
+  --apf-text: #ffffff;
+  --apf-muted: #a1a1aa;
+  --flow-progress: 1;
+  --wave-amp: 0.85rem;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2vw, 1.25rem)
+    clamp(1.5rem, 3vw, 2.25rem);
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background: linear-gradient(165deg, rgb(17 31 52 / 0.45) 0%, rgb(4 19 41 / 0.72) 100%);
+}
+
+/* ── Ambient ── */
+
+.about-process-flow__ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.about-process-flow__blueprint {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image:
+    linear-gradient(rgb(179 179 179 / 0.9) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(179 179 179 / 0.9) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, black 10%, transparent 80%);
+}
+
+.about-process-flow__radial {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.05;
+  background:
+    radial-gradient(ellipse 42% 38% at 18% 28%, rgb(179 179 179 / 0.9), transparent 72%),
+    radial-gradient(ellipse 38% 34% at 82% 24%, rgb(255 255 255 / 0.6), transparent 70%);
+}
+
+/* ── Path lane (desktop/tablet only) ── */
+
+.about-process-flow__path-lane {
+  display: none;
+  position: absolute;
+  top: clamp(4.5rem, 8vw, 6rem);
+  left: 0.75rem;
+  right: 0.75rem;
+  z-index: 1;
+  height: 7.5rem;
+  pointer-events: none;
+}
+
+.about-process-flow__path {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.about-process-flow__mobile-spine {
+  display: block;
+  position: absolute;
+  top: 1.75rem;
+  bottom: 1.75rem;
+  left: 1rem;
+  z-index: 1;
+  width: 1.5rem;
+  pointer-events: none;
+}
+
+.about-process-flow__spine-glow {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.22);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: url(#apf-spine-glow);
+  opacity: 0.55;
+}
+
+.about-process-flow__spine-base {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.18);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about-process-flow__spine-lit {
+  fill: none;
+  stroke: url(#apf-spine-grad);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--flow-progress));
+  transition: stroke-dashoffset 0.55s ease;
+  filter: drop-shadow(0 0 8px rgb(255 255 255 / 0.15));
+}
+
+.about-process-flow__mobile-spine .about-process-flow__spine-lit {
+  stroke: rgb(179 179 179 / 0.75);
+}
+
+.about-process-flow__spine-pulse {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.7);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 0.04 0.96;
+  animation: apf-pulse-travel 4.5s linear infinite;
+  opacity: 0.35;
+}
+
+@keyframes apf-pulse-travel {
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+
+/* ── Stages ── */
+
+.about-process-flow__stages {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0.5rem 0.25rem 3rem;
+}
+
+.about-process-flow__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.about-process-flow__stage.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Circular node ── */
+
+.about-process-flow__node {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 6.5rem;
+  height: 6.5rem;
+  padding: 0.65rem;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 35% 28%, rgb(255 255 255 / 0.1), transparent 55%),
+    linear-gradient(160deg, rgb(17 31 52 / 0.98) 0%, rgb(8 20 36 / 0.95) 100%);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.1) inset,
+    0 14px 32px -16px rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--apf-text);
+  cursor: default;
+  outline: none;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.about-process-flow__stage.is-featured .about-process-flow__node {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-color: rgb(255 255 255 / 0.35);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.14) inset,
+    0 0 0 1px rgb(255 255 255 / 0.08),
+    0 0 28px -4px rgb(255 255 255 / 0.2),
+    0 18px 40px -16px rgb(0 0 0 / 0.65);
+}
+
+.about-process-flow__node-glow {
+  position: absolute;
+  inset: -22%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(255 255 255 / 0.14), transparent 68%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.about-process-flow__stage.is-featured .about-process-flow__node-glow {
+  opacity: 0.55;
+}
+
+.about-process-flow__node-ring {
+  position: absolute;
+  inset: 5px;
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 0.07);
+  pointer-events: none;
+}
+
+.about-process-flow__num {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--apf-primary);
+  line-height: 1;
+}
+
+.about-process-flow__icon-wrap {
+  display: inline-flex;
+  color: var(--apf-primary);
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-process-flow__icon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.about-process-flow__node-title {
+  max-width: 5.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--apf-text);
+}
+
+.about-process-flow__stage.is-hot .about-process-flow__node,
+.about-process-flow__node:hover,
+.about-process-flow__node:focus-visible {
+  transform: scale(1.05);
+  border-color: rgb(255 255 255 / 0.42);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.14) inset,
+    0 0 0 1px rgb(255 255 255 / 0.06),
+    0 18px 38px -14px rgb(0 0 0 / 0.68);
+}
+
+.about-process-flow__stage.is-hot .about-process-flow__node-glow,
+.about-process-flow__node:hover .about-process-flow__node-glow,
+.about-process-flow__node:focus-visible .about-process-flow__node-glow {
+  opacity: 1;
+}
+
+.about-process-flow__stage.is-hot .about-process-flow__icon-wrap,
+.about-process-flow__node:hover .about-process-flow__icon-wrap,
+.about-process-flow__node:focus-visible .about-process-flow__icon-wrap {
+  color: var(--apf-text);
+  transform: scale(1.06);
+}
+
+.about-process-flow__stage.is-linked .about-process-flow__num {
+  color: var(--apf-text);
+}
+
+/* Stem node → card */
+.about-process-flow__stem {
+  display: block;
+  width: 1px;
+  height: 0.9rem;
+  margin-left: 3.25rem;
+  background: linear-gradient(180deg, rgb(179 179 179 / 0.5), rgb(255 255 255 / 0.1));
+}
+
+.about-process-flow__stage.is-featured .about-process-flow__stem {
+  margin-left: 3.75rem;
+}
+
+/* Card */
+.about-process-flow__card {
+  position: relative;
+  width: 100%;
+  max-width: 20rem;
+  padding: 1rem 1.05rem 1.1rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: linear-gradient(155deg, rgb(17 31 52 / 0.96) 0%, rgb(10 22 38 / 0.92) 100%);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.06) inset,
+    0 14px 32px -18px rgb(0 0 0 / 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.about-process-flow__card-shine {
+  position: absolute;
+  inset: 1px 1px auto;
+  height: 40%;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.06), transparent);
+  pointer-events: none;
+}
+
+.about-process-flow__card-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.about-process-flow__card-icon-wrap {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.45rem;
+  border: 1px solid rgb(179 179 179 / 0.24);
+  background: rgb(4 19 41 / 0.55);
+  color: var(--apf-primary);
+}
+
+.about-process-flow__card-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.about-process-flow__card-title {
+  position: relative;
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--apf-text);
+}
+
+.about-process-flow__card-desc {
+  position: relative;
+  margin: 0.4rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--apf-muted);
+}
+
+.about-process-flow__stage.is-hot .about-process-flow__card,
+.about-process-flow__stage:hover .about-process-flow__card {
+  transform: translateY(-0.2rem);
+  border-color: rgb(179 179 179 / 0.3);
+}
+
+.about-process-flow__stage.is-hot .about-process-flow__card-icon-wrap,
+.about-process-flow__stage:hover .about-process-flow__card-icon-wrap {
+  color: var(--apf-text);
+  border-color: rgb(179 179 179 / 0.38);
+}
+
+.about-process-flow__stage.is-current .about-process-flow__card {
+  border-color: rgb(179 179 179 / 0.22);
+}
+
+/* ── Tablet horizontal + wave ── */
+
+@media (min-width: 768px) {
+  .about-process-flow__mobile-spine {
+    display: none;
+  }
+
+  .about-process-flow__path-lane {
+    display: block;
+  }
+
+  .about-process-flow__stages {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: clamp(5.25rem, 9vw, 6.5rem) 0.5rem 0;
+  }
+
+  .about-process-flow__stage {
+    flex: 1 1 0;
+    align-items: center;
+    min-width: 0;
+    /* Sit nodes on the wave — center node stays on spine */
+    margin-top: calc(var(--wave-lift, 0) * var(--wave-amp));
+  }
+
+  .about-process-flow__stem {
+    margin-left: 0;
+    height: 1rem;
+  }
+
+  .about-process-flow__card {
+    max-width: none;
+    width: 100%;
+    padding: 0.85rem 0.7rem 0.95rem;
+    min-height: 7.5rem;
+  }
+
+  .about-process-flow__card-title {
+    font-size: 0.875rem;
+  }
+
+  .about-process-flow__card-desc {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .about-process-flow__node {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .about-process-flow__stage.is-featured .about-process-flow__node {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .about-process-flow__node-title {
+    font-size: 0.625rem;
+    max-width: 4.5rem;
+  }
+}
+
+/* ── Desktop ── */
+
+@media (min-width: 1100px) {
+  .about-process-flow {
+    padding: 1.75rem 1.5rem 2.5rem;
+    --wave-amp: 1rem;
+  }
+
+  .about-process-flow__path-lane {
+    top: 6.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    height: 8.5rem;
+  }
+
+  .about-process-flow__stages {
+    gap: 0.75rem;
+    padding-top: 7rem;
+  }
+
+  .about-process-flow__node {
+    width: 7rem;
+    height: 7rem;
+    gap: 0.35rem;
+  }
+
+  .about-process-flow__stage.is-featured .about-process-flow__node {
+    width: 8.25rem;
+    height: 8.25rem;
+  }
+
+  .about-process-flow__icon {
+    width: 1.45rem;
+    height: 1.45rem;
+  }
+
+  .about-process-flow__node-title {
+    font-size: 0.75rem;
+    max-width: 5.75rem;
+  }
+
+  .about-process-flow__stem {
+    height: 1.1rem;
+  }
+
+  .about-process-flow__card {
+    padding: 1rem 0.9rem 1.1rem;
+    min-height: 8rem;
+  }
+
+  .about-process-flow__card-title {
+    font-size: 1rem;
+  }
+
+  .about-process-flow__card-desc {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-process-flow__stage {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .about-process-flow__spine-pulse {
+    animation: none;
+    display: none;
+  }
+
+  .about-process-flow__spine-lit {
+    transition: none;
+    stroke-dashoffset: 0;
+  }
+
+  .about-process-flow__stage.is-hot .about-process-flow__node,
+  .about-process-flow__node:hover,
+  .about-process-flow__node:focus-visible {
+    transform: none;
+  }
+
+  .about-process-flow__stage.is-hot .about-process-flow__card,
+  .about-process-flow__stage:hover .about-process-flow__card {
+    transform: none;
+  }
+}
+
+.about-process-flow[data-reduced-motion="true"] .about-process-flow__spine-pulse {
+  display: none;
+}
+
+.about-process-flow[data-reduced-motion="true"] .about-process-flow__spine-lit {
+  stroke-dashoffset: 0;
+}
