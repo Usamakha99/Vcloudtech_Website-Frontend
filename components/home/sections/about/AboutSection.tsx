@@ -141,9 +141,9 @@ export function HomeAboutSection() {
           <figure className="about-minimal__intro-visual">
             <Image
               src={publicAssets.about.reliablePartner}
-              alt="Hands holding a digital display that reads Reliable IT Partner with a security shield icon"
-              width={960}
-              height={600}
+              alt="Business professionals collaborating around a laptop with a connected global network overlay"
+              width={1024}
+              height={819}
               className="about-minimal__intro-image"
               sizes="(max-width: 1023px) 100vw, 42vw"
             />
