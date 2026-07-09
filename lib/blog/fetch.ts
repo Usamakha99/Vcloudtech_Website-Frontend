@@ -30,11 +30,8 @@ const blogFetchOptions: BlogFetchOptions = {
   next: { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
 };
 
-async function withPersistentCache<T>(
-  key: string,
-  fetcher: () => Promise<T>,
-  fallback: T,
-): Promise<T> {
+/** On network failure, serve disk cache. Never return a fallback that poisons Next cache. */
+async function withPersistentCache<T>(key: string, fetcher: () => Promise<T>): Promise<T> {
   try {
     const data = await fetcher();
     await writeSanityDiskCache(key, data);
@@ -46,8 +43,33 @@ async function withPersistentCache<T>(
       return cached;
     }
 
-    console.error(`[blog] "${key}" fetch failed with no disk cache`, error);
-    return fallback;
+    throw error;
+  }
+}
+
+async function fetchBlogPostDocument(slug: string): Promise<SanityBlogPost | null> {
+  try {
+    const post = await sanityServerClient.fetch<SanityBlogPost | null>(
+      BLOG_POST_QUERY,
+      { slug },
+      blogFetchOptions,
+    );
+
+    if (post) {
+      await writeSanityDiskCache(`blog-post:${slug}`, post);
+      return post;
+    }
+
+    const cached = await readSanityDiskCache<SanityBlogPost>(`blog-post:${slug}`);
+    return cached ?? null;
+  } catch (error) {
+    const cached = await readSanityDiskCache<SanityBlogPost>(`blog-post:${slug}`);
+    if (cached) {
+      console.warn(`[blog] serving disk cache for blog-post:${slug}`);
+      return cached;
+    }
+
+    throw error;
   }
 }
 
@@ -55,7 +77,7 @@ const getBlogPostsCached = unstable_cache(
   async () =>
     withPersistentCache<SanityBlogPost[]>("blog-posts", () =>
       sanityServerClient.fetch<SanityBlogPost[]>(BLOG_POSTS_QUERY, {}, blogFetchOptions),
-    [],),
+    ),
   ["blog-posts"],
   { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
 );
@@ -64,7 +86,7 @@ const getBlogCategoriesCached = unstable_cache(
   async () =>
     withPersistentCache<Parameters<typeof mapSanityCategory>[0][]>("blog-categories", () =>
       sanityServerClient.fetch(BLOG_CATEGORIES_QUERY, {}, blogFetchOptions),
-    [],),
+    ),
   ["blog-categories"],
   { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
 );
@@ -73,7 +95,7 @@ const getBlogSlugsCached = unstable_cache(
   async () =>
     withPersistentCache<{ slug: string }[]>("blog-slugs", () =>
       sanityServerClient.fetch<{ slug: string }[]>(BLOG_POST_SLUGS_QUERY, {}, blogFetchOptions),
-    [],),
+    ),
   ["blog-slugs"],
   { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
 );
@@ -82,24 +104,23 @@ const getBlogTrendingTagsCached = unstable_cache(
   async () =>
     withPersistentCache<string[]>("blog-tags", () =>
       sanityServerClient.fetch<string[]>(BLOG_TRENDING_TAGS_QUERY, {}, blogFetchOptions),
-    [],),
+    ),
   ["blog-tags"],
   { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
 );
 
 export async function fetchBlogPostBySlug(slug: string) {
-  const post = await unstable_cache(
-    async () =>
-      withPersistentCache<SanityBlogPost | null>(`blog-post:${slug}`, () =>
-        sanityServerClient.fetch<SanityBlogPost | null>(
-          BLOG_POST_QUERY,
-          { slug },
-          blogFetchOptions,
-        ),
-      null),
-    ["blog-post", slug],
-    { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog", `blog-post:${slug}`] },
-  )();
+  let post: SanityBlogPost | null;
+
+  try {
+    post = await unstable_cache(
+      () => fetchBlogPostDocument(slug),
+      ["blog-post", slug],
+      { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog", `blog-post:${slug}`] },
+    )();
+  } catch {
+    post = await readSanityDiskCache<SanityBlogPost>(`blog-post:${slug}`);
+  }
 
   if (!post) return null;
 
@@ -111,25 +132,51 @@ export async function fetchBlogPostBySlug(slug: string) {
 }
 
 export async function fetchBlogPosts(): Promise<BlogArticle[]> {
-  const posts = await getBlogPostsCached();
-  return posts
-    .map((post) => mapSanityBlogPost(post))
-    .filter((article): article is BlogArticle => Boolean(article));
+  try {
+    const posts = await getBlogPostsCached();
+    return posts
+      .map((post) => mapSanityBlogPost(post))
+      .filter((article): article is BlogArticle => Boolean(article));
+  } catch {
+    const posts = await readSanityDiskCache<SanityBlogPost[]>("blog-posts");
+    return (posts ?? [])
+      .map((post) => mapSanityBlogPost(post))
+      .filter((article): article is BlogArticle => Boolean(article));
+  }
 }
 
 export async function fetchBlogSlugs() {
-  const rows = await getBlogSlugsCached();
-  return rows.map((row) => row.slug).filter(Boolean);
+  try {
+    const rows = await getBlogSlugsCached();
+    return rows.map((row) => row.slug).filter(Boolean);
+  } catch {
+    const rows = await readSanityDiskCache<{ slug: string }[]>("blog-slugs");
+    return (rows ?? []).map((row) => row.slug).filter(Boolean);
+  }
 }
 
 export async function fetchBlogCategories(): Promise<BlogCategory[]> {
-  const categories = await getBlogCategoriesCached();
-  return categories
-    .map((category) => mapSanityCategory(category))
-    .filter((category): category is BlogCategory => Boolean(category));
+  try {
+    const categories = await getBlogCategoriesCached();
+    return categories
+      .map((category) => mapSanityCategory(category))
+      .filter((category): category is BlogCategory => Boolean(category));
+  } catch {
+    const categories = await readSanityDiskCache<Parameters<typeof mapSanityCategory>[0][]>(
+      "blog-categories",
+    );
+    return (categories ?? [])
+      .map((category) => mapSanityCategory(category))
+      .filter((category): category is BlogCategory => Boolean(category));
+  }
 }
 
 export async function fetchBlogTrendingTags(): Promise<string[]> {
-  const tags = await getBlogTrendingTagsCached();
-  return tags.filter(Boolean);
+  try {
+    const tags = await getBlogTrendingTagsCached();
+    return tags.filter(Boolean);
+  } catch {
+    const tags = await readSanityDiskCache<string[]>("blog-tags");
+    return (tags ?? []).filter(Boolean);
+  }
 }

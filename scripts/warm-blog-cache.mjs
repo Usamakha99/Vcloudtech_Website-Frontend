@@ -57,6 +57,40 @@ const BLOG_POST_SLUGS_QUERY = `
   *[_type == "blogPost" && defined(slug.current)]{ "slug": slug.current }
 `;
 
+const BLOG_POST_QUERY = `
+  *[_type == "blogPost" && slug.current == $slug][0]{
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    metaDescription,
+    publishedAt,
+    readingTimeMinutes,
+    featured,
+    tags,
+    mainImage,
+    body,
+    "category": categories[0]->{ title, "slug": slug.current },
+    "author": author->{ name, "slug": slug.current, role, linkedIn, image, bio },
+    faq,
+    "relatedPosts": relatedPosts[]->{
+      _id,
+      title,
+      "slug": slug.current,
+      excerpt,
+      metaDescription,
+      publishedAt,
+      readingTimeMinutes,
+      featured,
+      tags,
+      mainImage,
+      body,
+      "category": categories[0]->{ title, "slug": slug.current },
+      "author": author->{ name, "slug": slug.current, role, linkedIn, image, bio }
+    }
+  }
+`;
+
 async function writeCache(key, data) {
   await fs.promises.mkdir(cacheDir, { recursive: true });
   await fs.promises.writeFile(
@@ -78,4 +112,16 @@ await Promise.all([
   writeCache("blog-slugs", slugs),
 ]);
 
-console.log(`Cached ${posts.length} posts, ${categories.length} categories, ${slugs.length} slugs.`);
+let detailCount = 0;
+for (const row of slugs) {
+  if (!row.slug) continue;
+  const post = await client.fetch(BLOG_POST_QUERY, { slug: row.slug });
+  if (post) {
+    await writeCache(`blog-post:${row.slug}`, post);
+    detailCount += 1;
+  }
+}
+
+console.log(
+  `Cached ${posts.length} posts, ${categories.length} categories, ${slugs.length} slugs, ${detailCount} full articles.`,
+);
