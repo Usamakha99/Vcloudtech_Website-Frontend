@@ -6,6 +6,20 @@
 .contact-page {
   width: 100%;
   color: var(--dt-text, #ffffff);
+  --contact-page-shell-pad: clamp(0.75rem, 3vw, 1.5rem);
+  --contact-page-content-pad: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+@media (min-width: 1024px) {
+  .contact-page {
+    --contact-page-content-pad: clamp(1.25rem, 2vw, 2rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .contact-page {
+    --contact-page-content-pad: clamp(1.5rem, 1.75vw, 2.25rem);
+  }
 }
 
 .contact-page__body {
@@ -36,10 +50,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: 100vw;
-  min-height: clamp(16rem, 34vw, 26rem);
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  min-height: clamp(18rem, 32vw, 28rem);
+  padding-inline: var(--contact-page-shell-pad);
   overflow: hidden;
 }
 
@@ -51,10 +64,25 @@
 }
 
 .contact-page__hero-image {
+  position: absolute;
+  inset: 0;
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
-  object-position: center center;
+  object-position: 72% 50%;
+}
+
+@media (min-width: 1024px) {
+  .contact-page__hero-image {
+    object-position: 66% 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-page__hero-image {
+    object-position: 78% 50%;
+    opacity: 0.92;
+  }
 }
 
 .contact-page__hero-overlay {
@@ -78,20 +106,22 @@
   width: 100%;
   max-width: 80rem;
   margin-inline: auto;
-  padding: calc(var(--dt-nav-occupancy, 5.75rem) + 2rem) 1.5rem 3rem;
+  padding:
+    calc(var(--dt-nav-occupancy, 5.75rem) + 2rem)
+    max(var(--contact-page-content-pad), env(safe-area-inset-right, 0px))
+    3rem
+    max(var(--contact-page-content-pad), env(safe-area-inset-left, 0px));
   text-align: center;
 }
 
 @media (min-width: 640px) {
   .contact-page__hero-inner {
-    padding-inline: 2rem;
     padding-bottom: 3.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .contact-page__hero-inner {
-    padding-inline: 2.5rem;
     padding-bottom: 4rem;
   }
 }

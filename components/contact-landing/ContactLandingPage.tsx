@@ -48,7 +48,8 @@ export function ContactLandingPage() {
           <Image
             src={contactPageHero.image}
             alt=""
-            fill
+            width={1920}
+            height={800}
             priority
             className="contact-page__hero-image"
             sizes="100vw"
