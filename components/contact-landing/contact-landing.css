@@ -51,8 +51,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  /* Match 1920×800 image ratio so globe is not cropped */
-  min-height: clamp(16rem, 42vw, 50rem);
+  min-height: clamp(16rem, 36vw, 42rem);
   padding-inline: var(--contact-page-shell-pad);
   overflow: hidden;
 }
@@ -70,20 +69,18 @@
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
-  object-position: 62% 38%;
+  object-position: 62% top;
 }
 
 @media (min-width: 1024px) {
   .contact-page__hero-image {
-    object-fit: contain;
-    object-position: right center;
+    object-position: 58% top;
   }
 }
 
 @media (max-width: 767px) {
   .contact-page__hero-image {
-    object-fit: cover;
-    object-position: 70% 36%;
+    object-position: 70% top;
     opacity: 0.95;
   }
 }
