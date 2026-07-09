@@ -1,0 +1,7 @@
+.contracts-page__credentials {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.contracts-page__credentials .dt-cred-strip {
+  border-radius: 1rem;
+}

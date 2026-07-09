@@ -10,6 +10,8 @@ export const assetVersions = {
   blog: "7",
   about: "11",
   contact: "1",
+  partnerPage: "1",
+  contractsPage: "1",
 } as const;
 
 export function withAssetVersion(path: string, version: string): string {
@@ -45,6 +47,12 @@ export const publicAssets = {
   },
   contact: {
     hero: withAssetVersion("/assets/contact/contact-us.png", assetVersions.contact),
+  },
+  partnerPage: {
+    hero: withAssetVersion("/assets/partners/partner.png", assetVersions.partnerPage),
+  },
+  contractsPage: {
+    hero: withAssetVersion("/assets/contracts/contracts.png", assetVersions.contractsPage),
   },
   locations: {
     texas: "/assets/locations/texas-dallas-skyline-v2.png",

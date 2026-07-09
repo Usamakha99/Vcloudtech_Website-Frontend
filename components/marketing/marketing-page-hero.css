@@ -1,0 +1,203 @@
+/**
+ * Shared marketing landing hero — contact / partners / contracts pages.
+ */
+
+.marketing-page {
+  width: 100%;
+  color: var(--dt-text, #ffffff);
+  --marketing-page-shell-pad: clamp(0.75rem, 3vw, 1.5rem);
+  --marketing-page-content-pad: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+@media (min-width: 1024px) {
+  .marketing-page {
+    --marketing-page-content-pad: clamp(1.25rem, 2vw, 2rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .marketing-page {
+    --marketing-page-content-pad: clamp(1.5rem, 1.75vw, 2.25rem);
+  }
+}
+
+.marketing-page__hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: clamp(16rem, 36vw, 42rem);
+  padding-inline: var(--marketing-page-shell-pad);
+  overflow: hidden;
+}
+
+.marketing-page__hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: var(--dt-bg, #041329);
+}
+
+.marketing-page__hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: 62% top;
+}
+
+@media (min-width: 1024px) {
+  .marketing-page__hero-image {
+    object-position: 58% top;
+  }
+}
+
+@media (max-width: 767px) {
+  .marketing-page__hero-image {
+    object-position: 70% top;
+    opacity: 0.95;
+  }
+}
+
+.marketing-page__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--dt-bg, #041329) 92%, transparent) 0%,
+    color-mix(in srgb, var(--dt-bg, #041329) 78%, transparent) 28%,
+    color-mix(in srgb, var(--dt-bg, #041329) 52%, transparent) 48%,
+    color-mix(in srgb, var(--dt-bg, #041329) 22%, transparent) 62%,
+    transparent 78%
+  );
+}
+
+.marketing-page__hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding:
+    calc(var(--dt-nav-occupancy, 5.75rem) + 2rem)
+    max(var(--marketing-page-content-pad), env(safe-area-inset-right, 0px))
+    3rem
+    max(var(--marketing-page-content-pad), env(safe-area-inset-left, 0px));
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .marketing-page__hero-inner {
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .marketing-page__hero-inner {
+    padding-bottom: 4rem;
+  }
+}
+
+.marketing-page__hero-content {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.marketing-page__hero-title {
+  margin: 0;
+  font-size: clamp(2rem, 4.8vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--dt-text, #ffffff);
+  text-wrap: balance;
+  text-align: center;
+}
+
+.marketing-page__hero-lede {
+  margin: 1rem auto 0;
+  max-width: 32rem;
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--dt-text, #ffffff) 88%, transparent);
+  text-align: center;
+}
+
+.marketing-page__body {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 3rem 1rem 4rem;
+  background: var(--dt-bg, #041329);
+}
+
+@media (min-width: 640px) {
+  .marketing-page__body {
+    padding-inline: 1.5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .marketing-page__body {
+    padding-top: 4rem;
+    padding-inline: 2rem;
+  }
+}
+
+.marketing-page__section {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.marketing-page__section:first-child {
+  margin-top: 0;
+}
+
+.marketing-page__section-header {
+  max-width: 44rem;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.marketing-page__section-title {
+  margin: 0.75rem 0 0;
+  font-size: clamp(1.75rem, 3.8vw, 2.625rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--dt-text, #ffffff);
+  text-wrap: balance;
+}
+
+.marketing-page__section-lede {
+  margin: 1rem auto 0;
+  max-width: 42rem;
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--dt-text, #ffffff) 82%, transparent);
+}
+
+.marketing-page__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.75rem;
+  min-width: 11rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: var(--dt-bg, #041329);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 28px -12px rgba(255, 255, 255, 0.2);
+  transition: background 0.2s ease;
+}
+
+.marketing-page__cta:hover {
+  background: var(--dt-primary, #b3b3b3);
+}
