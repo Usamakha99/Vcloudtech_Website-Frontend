@@ -167,7 +167,7 @@ export const VENDOR_UPDATE_SEO_QUERY = defineQuery(`
   }
 `);
 
-const blogPostCardFields = `
+const blogPostListingFields = `
   _id,
   title,
   "slug": slug.current,
@@ -178,11 +178,22 @@ const blogPostCardFields = `
   featured,
   tags,
   mainImage,
-  body,
   "category": categories[0]->{
     title,
     "slug": slug.current
   },
+  "author": author->{
+    name,
+    "slug": slug.current,
+    role,
+    linkedIn,
+    image
+  }
+`;
+
+const blogPostCardFields = `
+  ${blogPostListingFields},
+  body,
   "author": author->{
     name,
     "slug": slug.current,
@@ -193,10 +204,10 @@ const blogPostCardFields = `
   }
 `;
 
-/** Blog module — listing cards */
+/** Blog module — listing cards (no full article body) */
 export const BLOG_POSTS_QUERY = defineQuery(`
   *[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc) {
-    ${blogPostCardFields}
+    ${blogPostListingFields}
   }
 `);
 
