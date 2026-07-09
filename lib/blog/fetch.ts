@@ -12,6 +12,7 @@ import {
 } from "@/sanity/lib/queries";
 
 import { readSanityDiskCache, writeSanityDiskCache } from "./sanity-disk-cache";
+import { withSanityRetries } from "./sanity-resilient-fetch";
 import {
   mapRelatedPosts,
   mapSanityBlogPost,
@@ -29,6 +30,10 @@ type BlogFetchOptions = {
 const blogFetchOptions: BlogFetchOptions = {
   next: { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
 };
+
+function fetchSanity<T>(query: string, params: Record<string, unknown> = {}): Promise<T> {
+  return withSanityRetries(() => sanityServerClient.fetch<T>(query, params, blogFetchOptions));
+}
 
 /** On network failure, serve disk cache. Never return a fallback that poisons Next cache. */
 async function withPersistentCache<T>(key: string, fetcher: () => Promise<T>): Promise<T> {
@@ -49,11 +54,7 @@ async function withPersistentCache<T>(key: string, fetcher: () => Promise<T>): P
 
 async function fetchBlogPostDocument(slug: string): Promise<SanityBlogPost | null> {
   try {
-    const post = await sanityServerClient.fetch<SanityBlogPost | null>(
-      BLOG_POST_QUERY,
-      { slug },
-      blogFetchOptions,
-    );
+    const post = await fetchSanity<SanityBlogPost | null>(BLOG_POST_QUERY, { slug });
 
     if (post) {
       await writeSanityDiskCache(`blog-post:${slug}`, post);
@@ -76,7 +77,7 @@ async function fetchBlogPostDocument(slug: string): Promise<SanityBlogPost | nul
 const getBlogPostsCached = unstable_cache(
   async () =>
     withPersistentCache<SanityBlogPost[]>("blog-posts", () =>
-      sanityServerClient.fetch<SanityBlogPost[]>(BLOG_POSTS_QUERY, {}, blogFetchOptions),
+      fetchSanity<SanityBlogPost[]>(BLOG_POSTS_QUERY),
     ),
   ["blog-posts"],
   { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
@@ -85,7 +86,7 @@ const getBlogPostsCached = unstable_cache(
 const getBlogCategoriesCached = unstable_cache(
   async () =>
     withPersistentCache<Parameters<typeof mapSanityCategory>[0][]>("blog-categories", () =>
-      sanityServerClient.fetch(BLOG_CATEGORIES_QUERY, {}, blogFetchOptions),
+      fetchSanity(BLOG_CATEGORIES_QUERY),
     ),
   ["blog-categories"],
   { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
@@ -94,7 +95,7 @@ const getBlogCategoriesCached = unstable_cache(
 const getBlogSlugsCached = unstable_cache(
   async () =>
     withPersistentCache<{ slug: string }[]>("blog-slugs", () =>
-      sanityServerClient.fetch<{ slug: string }[]>(BLOG_POST_SLUGS_QUERY, {}, blogFetchOptions),
+      fetchSanity<{ slug: string }[]>(BLOG_POST_SLUGS_QUERY),
     ),
   ["blog-slugs"],
   { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
@@ -102,9 +103,7 @@ const getBlogSlugsCached = unstable_cache(
 
 const getBlogTrendingTagsCached = unstable_cache(
   async () =>
-    withPersistentCache<string[]>("blog-tags", () =>
-      sanityServerClient.fetch<string[]>(BLOG_TRENDING_TAGS_QUERY, {}, blogFetchOptions),
-    ),
+    withPersistentCache<string[]>("blog-tags", () => fetchSanity<string[]>(BLOG_TRENDING_TAGS_QUERY)),
   ["blog-tags"],
   { revalidate: BLOG_REVALIDATE_SECONDS, tags: ["blog"] },
 );

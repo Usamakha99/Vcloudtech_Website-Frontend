@@ -7,26 +7,18 @@ function delay(attempt: number) {
   });
 }
 
-/** Retry Sanity HTTP calls with a longer connect timeout than the default 10s. */
-export async function resilientSanityFetch(
-  input: RequestInfo | URL,
-  init?: RequestInit,
-): Promise<Response> {
+/** Retry Sanity client.fetch calls with backoff. */
+export async function withSanityRetries<T>(fetcher: () => Promise<T>): Promise<T> {
   let lastError: unknown;
 
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
-      const response = await fetch(input, {
-        ...init,
-        signal: init?.signal ?? AbortSignal.timeout(CONNECT_TIMEOUT_MS),
-      });
-
-      if (response.status >= 500 && attempt < MAX_ATTEMPTS) {
-        await delay(attempt);
-        continue;
-      }
-
-      return response;
+      return await Promise.race([
+        fetcher(),
+        new Promise<never>((_, reject) => {
+          setTimeout(() => reject(new Error("Sanity fetch timed out")), CONNECT_TIMEOUT_MS);
+        }),
+      ]);
     } catch (error) {
       lastError = error;
       if (attempt < MAX_ATTEMPTS) {

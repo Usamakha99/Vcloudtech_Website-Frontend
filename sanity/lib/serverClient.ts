@@ -1,14 +1,11 @@
 import { createClient } from "next-sanity";
 
-import { resilientSanityFetch } from "@/lib/blog/sanity-resilient-fetch";
-
 import { apiVersion, dataset, projectId } from "../env";
 
-/** Public blog reads — CDN + resilient fetch retries/timeouts. */
+/** Public blog reads — CDN is faster and more reliable than the live API. */
 export const sanityServerClient = createClient({
   projectId,
   dataset,
   apiVersion,
   useCdn: true,
-  fetch: resilientSanityFetch,
 });
