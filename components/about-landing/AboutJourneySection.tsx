@@ -37,10 +37,10 @@ export function AboutJourneySection({ badge, title, milestones: _milestones }: P
         <Image
           src={publicAssets.about.journeyInfographic}
           alt="VCloud Tech journey — founding through today"
-          width={1024}
-          height={543}
+          width={4344}
+          height={2153}
           className="about-page__journey-image"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1100px"
+          sizes="(max-width: 768px) 94vw, (max-width: 1200px) 90vw, 1152px"
           priority={false}
         />
       </div>
