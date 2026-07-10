@@ -8,7 +8,7 @@
 export const assetVersions = {
   industries: "8",
   blog: "10",
-  about: "11",
+  about: "14",
   contact: "1",
   partnerPage: "1",
   contractsPage: "1",
@@ -43,7 +43,7 @@ export const publicAssets = {
       assetVersions.about,
     ),
     journeyInfographic: withAssetVersion(
-      "/assets/about/our-journey-infographic.png",
+      "/assets/about/our-journey-infographic.gif",
       assetVersions.about,
     ),
   },

@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import { dt } from "@/components/marketing/design-test-theme";
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
 import { publicAssets } from "@/lib/public-assets";
@@ -20,7 +18,7 @@ type Props = {
   milestones: readonly Milestone[];
 };
 
-/** Company journey — header + infographic image (timeline visuals paused). */
+/** Company journey — header + transparent animated infographic (layout unchanged). */
 export function AboutJourneySection({ badge, title, milestones: _milestones }: Props) {
   return (
     <section className="about-page__section about-page__journey" aria-labelledby="about-journey-heading">
@@ -34,14 +32,16 @@ export function AboutJourneySection({ badge, title, milestones: _milestones }: P
       </header>
 
       <div className="about-page__journey-image-wrap">
-        <Image
-          src={publicAssets.about.journeyInfographic}
-          alt="VCloud Tech journey — founding through today"
-          width={4344}
-          height={2153}
+        {/* Native img keeps GIF animation + alpha; Next/Image strips animated GIF transparency */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           className="about-page__journey-image"
-          sizes="(max-width: 768px) 94vw, (max-width: 1200px) 90vw, 1152px"
-          priority={false}
+          src={publicAssets.about.journeyInfographic}
+          width={1694}
+          height={928}
+          alt="VCloud Tech journey — founding through today"
+          decoding="async"
+          loading="lazy"
         />
       </div>
 
