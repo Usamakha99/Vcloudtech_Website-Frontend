@@ -29,7 +29,7 @@ export const HERO_SLIDES = [
     secondaryCta: { label: "Explore services", href: "/services" },
   },
   {
-    src: publicAssets.hero.slide4,
+    src: publicAssets.hero.slide3,
     alt: "vCloud Tech reception and operations floor with VCLOUDTECH branding",
     title: "Technology That Drives Business Outcomes",
     headline: "Technology That Drives Business Outcomes",

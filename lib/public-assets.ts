@@ -12,6 +12,7 @@ export const assetVersions = {
   contact: "1",
   partnerPage: "1",
   contractsPage: "1",
+  hero: "1",
 } as const;
 
 export function withAssetVersion(path: string, version: string): string {
@@ -29,9 +30,9 @@ export const publicAssets = {
     loaderVideo: "/intro/loader-intro.mp4",
   },
   hero: {
-    slide1: "/assets/hero/hero-1.png",
-    slide2: "/assets/hero/hero-2.png",
-    slide4: "/assets/hero/hero-4.png",
+    slide1: withAssetVersion("/assets/hero/hero-1.png", assetVersions.hero),
+    slide2: withAssetVersion("/assets/hero/hero-2.png", assetVersions.hero),
+    slide3: withAssetVersion("/assets/hero/hero-3.png", assetVersions.hero),
   },
   about: {
     heroVideo: withAssetVersion("/assets/about/about-hero.mp4", assetVersions.about),
