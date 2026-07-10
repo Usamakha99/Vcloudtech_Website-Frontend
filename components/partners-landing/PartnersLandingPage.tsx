@@ -30,15 +30,12 @@ export function PartnersLandingPage() {
           className="marketing-page__section partners-page__intro"
           aria-labelledby="partners-intro-heading"
         >
-          <header className="marketing-page__section-header">
+          <header className="partners-page__intro-header">
             <p className={dt.metaLabel}>{partnersPageIntro.badge}</p>
-            <h2
-              id="partners-intro-heading"
-              className="marketing-page__section-title partners-page__intro-title"
-            >
-              {partnersPageIntro.title}
+            <h2 id="partners-intro-heading" className="partners-page__intro-title">
+              {partnersPageIntro.titleLead} {partnersPageIntro.titleAccent}
             </h2>
-            <p className="marketing-page__section-lede">{partnersPageIntro.lede}</p>
+            <p className="partners-page__intro-lede">{partnersPageIntro.lede}</p>
             <Link href={partnersPageIntro.ctaHref} className="marketing-page__cta">
               {partnersPageIntro.ctaLabel}
             </Link>

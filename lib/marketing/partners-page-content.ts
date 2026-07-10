@@ -9,9 +9,9 @@ export const partnersPageHero = {
 
 export const partnersPageIntro = {
   badge: "Technology partners",
-  title: "World-class partners. One trusted integrator",
-  lede:
-    "vCloudTech maintains authorized relationships with leading vendors so your teams can source, deploy, and support solutions through a single accountable partner.",
+  titleLead: "World-class partners.",
+  titleAccent: "One trusted integrator.",
+  lede: "400+ technology partners across cybersecurity, software, hardware, and cloud.",
   ctaLabel: "Become a partner",
   ctaHref: "/contact",
 } as const;
