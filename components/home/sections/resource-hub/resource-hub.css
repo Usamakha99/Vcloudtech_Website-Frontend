@@ -224,14 +224,14 @@
 }
 
 .rh__card-link:hover .rh__read {
-  color: #b3b3b3;
+  color: #E55614;
 }
 
 .rh__card-link:hover .rh__read-arrow {
   transform: translateX(3px);
-  border-color: rgba(179, 179, 179, 0.65);
-  background: rgba(179, 179, 179, 0.18);
-  color: #fff;
+  border-color: rgba(229, 86, 20, 0.65);
+  background: rgba(229, 86, 20, 0.18);
+  color: #E55614;
 }
 
 /* CTA */
