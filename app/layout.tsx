@@ -4,6 +4,7 @@ import { Geist_Mono } from "next/font/google";
 import { montserrat } from "@/app/fonts/montserrat";
 import { IntroAppProvider } from "@/components/intro/IntroAppProvider";
 import { INTRO_BLOCK_SCRIPT } from "@/components/intro/intro-block-script";
+import { publicAssets } from "@/lib/public-assets";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -39,7 +40,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: INTRO_BLOCK_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
-        <IntroAppProvider>{children}</IntroAppProvider>
+        <IntroAppProvider src={publicAssets.intro.loaderVideo}>{children}</IntroAppProvider>
       </body>
     </html>
   );

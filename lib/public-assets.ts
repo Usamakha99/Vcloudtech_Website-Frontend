@@ -13,6 +13,7 @@ export const assetVersions = {
   partnerPage: "1",
   contractsPage: "1",
   hero: "8",
+  intro: "2",
 } as const;
 
 export function withAssetVersion(path: string, version: string): string {
@@ -27,7 +28,7 @@ export const publicAssets = {
     favicon: "/brand/favicon.png",
   },
   intro: {
-    loaderVideo: "/intro/loader-intro.mp4",
+    loaderVideo: withAssetVersion("/intro/loader-intro-v2.mp4", assetVersions.intro),
   },
   hero: {
     slide1: withAssetVersion("/assets/hero/hero-1.png", assetVersions.hero),

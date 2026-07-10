@@ -7,7 +7,7 @@ import { IntroReadyProvider } from "@/components/intro/intro-context";
 import { isMobileDevice } from "@/components/intro/intro-device";
 import { publicAssets } from "@/lib/public-assets";
 
-const INTRO_MAX_MS = 6_000;
+const INTRO_MAX_MS = 15_000;
 const EXIT_FADE_MS = 500;
 
 function isHomePath(pathname: string) {
@@ -164,13 +164,15 @@ export function IntroAppProvider({
           aria-label="Welcome video"
         >
           <video
+            key={src}
             ref={videoRef}
             className="h-full w-full object-contain"
             src={src}
             autoPlay
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
+            onEnded={finish}
           />
 
           {phase === "playing" ? (
