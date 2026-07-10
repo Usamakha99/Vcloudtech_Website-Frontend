@@ -72,10 +72,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
-  padding: 0.65rem 0.85rem;
+  min-height: 3.75rem;
+  padding: 0.9rem 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 9999px;
+  border-radius: 0.625rem;
   background: linear-gradient(
     165deg,
     rgba(255, 255, 255, 0.05) 0%,
