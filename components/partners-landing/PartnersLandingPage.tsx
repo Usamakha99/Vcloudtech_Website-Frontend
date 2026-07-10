@@ -26,10 +26,16 @@ export function PartnersLandingPage() {
       />
 
       <div className="marketing-page__body">
-        <section className="marketing-page__section" aria-labelledby="partners-intro-heading">
+        <section
+          className="marketing-page__section partners-page__intro"
+          aria-labelledby="partners-intro-heading"
+        >
           <header className="marketing-page__section-header">
             <p className={dt.metaLabel}>{partnersPageIntro.badge}</p>
-            <h2 id="partners-intro-heading" className="marketing-page__section-title">
+            <h2
+              id="partners-intro-heading"
+              className="marketing-page__section-title partners-page__intro-title"
+            >
               {partnersPageIntro.title}
             </h2>
             <p className="marketing-page__section-lede">{partnersPageIntro.lede}</p>

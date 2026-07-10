@@ -1,3 +1,34 @@
+.partners-page .marketing-page__body {
+  max-width: none;
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: 0;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .partners-page .marketing-page__body {
+    padding-top: 4rem;
+  }
+}
+
+.partners-page__intro {
+  width: 100%;
+  max-width: 88rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 3rem);
+}
+
 .partners-page__major {
   margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.partners-page__intro-title {
+  max-width: none;
+  margin-inline: auto;
+  text-align: center;
+  white-space: nowrap;
+  text-wrap: nowrap;
+  font-size: clamp(1.25rem, 3.2vw, 2.625rem);
 }
