@@ -6,7 +6,6 @@ import type { ReactNode } from "react";
 
 import { OrgMetricsRail } from "@/components/home/sections/about/OrgMetricsRail";
 import { DesignTestCredentialsStrip } from "@/components/home/sections/about/CredentialsStrip";
-import { IndustryIllustrationDecor } from "@/components/home/sections/about/IndustryIllustrationDecor";
 import {
   EducationIcon,
   GovernmentIcon,
@@ -252,8 +251,6 @@ function IndustryImageCard({
         </span>
 
         <div className="about-enterprise__industry-image-stage">
-          <span className="about-enterprise__industry-image-curve-vignette" aria-hidden />
-
           <div className="about-enterprise__industry-image-frame">
             <Image
               key={`${sector.name}-${assetVersions.industries}`}
@@ -265,8 +262,6 @@ function IndustryImageCard({
               priority={index < 2}
             />
           </div>
-
-          <IndustryIllustrationDecor index={index} />
         </div>
       </div>
 
