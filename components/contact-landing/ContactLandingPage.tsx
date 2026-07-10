@@ -91,7 +91,32 @@ export function ContactLandingPage() {
           </div>
         </section>
 
-        {/* 3. Contact information */}
+        {/* 3. Why contact us */}
+        <section className="contact-page__section" aria-labelledby="contact-why-heading">
+          <header className="contact-page__section-header contact-page__section-header--center">
+            <p className={dt.metaLabel}>Why vCloud Tech</p>
+            <h2 id="contact-why-heading" className="contact-page__section-title">
+              Why contact us
+            </h2>
+          </header>
+
+          <ul className="contact-page__why-grid">
+            {contactWhyCards.map((card) => {
+              const Icon = whyIcons[card.id as keyof typeof whyIcons];
+              return (
+                <li key={card.id} className="contact-page__why-card">
+                  <div className="contact-page__why-icon" aria-hidden>
+                    <Icon />
+                  </div>
+                  <h3 className="contact-page__why-title">{card.title}</h3>
+                  <p className="contact-page__why-desc">{card.description}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        {/* 4. Contact information */}
         {/* <section className="contact-page__section" aria-labelledby="contact-info-heading">
           <header className="contact-page__section-header">
             <p className={dt.metaLabel}>Reach us directly</p>
@@ -128,7 +153,7 @@ export function ContactLandingPage() {
           </ul>
         </section> */}
 
-        {/* 4. Office locations */}
+        {/* 5. Office locations */}
         <section className="contact-page__section" aria-labelledby="contact-locations-heading">
           <header className="contact-page__section-header">
             <p className={dt.metaLabel}>Our locations</p>
@@ -176,7 +201,7 @@ export function ContactLandingPage() {
           </ul>
         </section>
 
-        {/* 5. Embedded map */}
+        {/* 6. Embedded map */}
         <section className="contact-page__section" aria-label="Map">
           <div className="contact-page__map-wrap">
             <iframe
@@ -188,31 +213,6 @@ export function ContactLandingPage() {
               allowFullScreen
             />
           </div>
-        </section>
-
-        {/* 6. Why contact us */}
-        <section className="contact-page__section" aria-labelledby="contact-why-heading">
-          <header className="contact-page__section-header contact-page__section-header--center">
-            <p className={dt.metaLabel}>Why vCloud Tech</p>
-            <h2 id="contact-why-heading" className="contact-page__section-title">
-              Why contact us
-            </h2>
-          </header>
-
-          <ul className="contact-page__why-grid">
-            {contactWhyCards.map((card) => {
-              const Icon = whyIcons[card.id as keyof typeof whyIcons];
-              return (
-                <li key={card.id} className="contact-page__why-card">
-                  <div className="contact-page__why-icon" aria-hidden>
-                    <Icon />
-                  </div>
-                  <h3 className="contact-page__why-title">{card.title}</h3>
-                  <p className="contact-page__why-desc">{card.description}</p>
-                </li>
-              );
-            })}
-          </ul>
         </section>
       </div>
     </div>

@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 
 import { HomeAboutSection } from "@/components/home/sections/about/AboutSection";
 import { HomeContactSection } from "@/components/home/sections/contact/ContactSection";
+import { HomeTopContractsSection } from "@/components/home/sections/contracts/TopContractsSection";
 import { HomeFaqSection } from "@/components/home/sections/faq/FaqSection";
 import { HomeHeroSection } from "@/components/home/sections/hero/HeroSection";
 import { HomeTechnologyPartnersSection } from "@/components/home/sections/partners/PartnersSection";
@@ -52,6 +53,11 @@ export const HOME_SECTIONS: HomeSectionEntry[] = [
     id: "solutions",
     label: "Solutions",
     component: HomeServicesSection,
+  },
+  {
+    id: "contracts",
+    label: "Top Performing Contracts",
+    component: HomeTopContractsSection,
   },
   {
     id: "resource-hub",
