@@ -12,7 +12,7 @@ export const assetVersions = {
   contact: "1",
   partnerPage: "1",
   contractsPage: "1",
-  hero: "1",
+  hero: "8",
 } as const;
 
 export function withAssetVersion(path: string, version: string): string {

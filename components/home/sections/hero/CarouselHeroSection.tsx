@@ -11,6 +11,7 @@ type Props = {
   fullPageGradient?: boolean;
 };
 
+/** Homepage hero — full-bleed carousel media with left-aligned enterprise copy. */
 export function CarouselHeroSection({
   offsetForFixedHeader = true,
   fullPageGradient = false,
@@ -25,27 +26,36 @@ export function CarouselHeroSection({
       } ${offsetForFixedHeader ? "hero-test-hero-section--offset-nav" : ""}`}
       aria-labelledby="hero-test-heading"
     >
-      <div className="hero-test-hero-media">
+      <div className="hero-test-hero-media" aria-hidden={false}>
         <HeroCarousel onActiveIndexChange={setActiveIndex} />
       </div>
 
       <div className="hero-test-hero-scrim" aria-hidden />
 
       <div className="hero-test-hero-overlay">
-        <div className="hero-test-hero-content">
+        <div key={activeIndex} className="hero-test-hero-content">
           <p className="hero-test-fade-in hero-test-hero-badge">
             <span className="hero-test-hero-badge__dot" aria-hidden />
             Trusted enterprise technology partner
           </p>
 
-          <h1 id="hero-test-heading" className="hero-test-fade-in hero-test-fade-in-delay-1 hero-test-hero-title">
+          <h1
+            id="hero-test-heading"
+            className="hero-test-fade-in hero-test-fade-in-delay-1 hero-test-hero-title"
+          >
             {slide.headline}
           </h1>
 
-          <p className="hero-test-fade-in hero-test-fade-in-delay-2 hero-test-hero-desc">{slide.description}</p>
+          <p className="hero-test-fade-in hero-test-fade-in-delay-2 hero-test-hero-desc">
+            {slide.description}
+          </p>
 
           <div className="hero-test-fade-in hero-test-fade-in-delay-3 hero-test-hero-actions">
-            <ButtonLink href={slide.primaryCta.href} variant="ctaWhite" className="hero-test-hero-cta-primary">
+            <ButtonLink
+              href={slide.primaryCta.href}
+              variant="ctaWhite"
+              className="hero-test-hero-cta-primary"
+            >
               {slide.primaryCta.label}
             </ButtonLink>
             <Link href={slide.secondaryCta.href} className="hero-test-hero-cta-secondary">

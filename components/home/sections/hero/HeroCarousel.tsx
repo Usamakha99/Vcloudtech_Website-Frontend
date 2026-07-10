@@ -41,12 +41,13 @@ export const HERO_SLIDES = [
 ] as const;
 
 const INTERVAL_MS = 5000;
-const SLIDE_TRANSITION_MS = 550;
+const SLIDE_TRANSITION_MS = 600;
 
 type HeroCarouselProps = {
   onActiveIndexChange?: (index: number) => void;
 };
 
+/** Full-bleed hero media carousel — aspect preserved via object-fit: cover. */
 export function HeroCarousel({ onActiveIndexChange }: HeroCarouselProps = {}) {
   const introReady = useIntroReady();
   const [mobile] = useState(() => typeof window !== "undefined" && isMobileDevice());
@@ -146,7 +147,6 @@ export function HeroCarousel({ onActiveIndexChange }: HeroCarouselProps = {}) {
       }}
     >
       <div className="hero-test-carousel__viewport">
-        <div className="hero-test-carousel__aspect" aria-hidden />
         <div className="hero-test-carousel__stage">
           <div
             className="hero-test-carousel__track"
@@ -156,26 +156,32 @@ export function HeroCarousel({ onActiveIndexChange }: HeroCarouselProps = {}) {
             }}
             aria-live="polite"
           >
-            {HERO_SLIDES.map((slide, index) => (
-              <figure
-                key={slide.src}
-                className="hero-test-carousel__slide"
-                aria-hidden={index !== activeIndex}
-              >
-                <div className="hero-test-carousel__media-wrap absolute inset-0">
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    fill
-                    unoptimized
-                    sizes="(max-width: 767px) 100vw, (max-width: 1280px) 100vw, 1280px"
-                    className="hero-test-carousel__media"
-                    priority={index === 0}
-                  />
-                </div>
-                <div className="hero-test-carousel__scrim" aria-hidden />
-              </figure>
-            ))}
+            {HERO_SLIDES.map((slide, index) => {
+              const isActive = index === activeIndex;
+              const isLcp = index === 0;
+
+              return (
+                <figure
+                  key={slide.src}
+                  className="hero-test-carousel__slide"
+                  aria-hidden={!isActive}
+                >
+                  <div className="hero-test-carousel__media-wrap">
+                    <Image
+                      src={slide.src}
+                      alt={isActive ? slide.alt : ""}
+                      fill
+                      sizes="100vw"
+                      unoptimized
+                      priority={isLcp}
+                      fetchPriority={isLcp ? "high" : "auto"}
+                      loading={isLcp ? "eager" : "lazy"}
+                      className="hero-test-carousel__media"
+                    />
+                  </div>
+                </figure>
+              );
+            })}
           </div>
 
           <div className="hero-test-carousel__dots" role="tablist" aria-label="Hero slides">
@@ -186,7 +192,7 @@ export function HeroCarousel({ onActiveIndexChange }: HeroCarouselProps = {}) {
                 role="tab"
                 aria-selected={index === activeIndex}
                 aria-label={`Go to slide ${index + 1}: ${slide.title}`}
-                className={`hero-test-carousel__dot ${index === activeIndex ? "hero-test-carousel__dot--active" : ""}`}
+                className={`hero-test-carousel__dot${index === activeIndex ? " hero-test-carousel__dot--active" : ""}`}
                 onClick={() => goTo(index)}
               />
             ))}
