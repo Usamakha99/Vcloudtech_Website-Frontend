@@ -9,10 +9,11 @@ import {
   partnersPageIntro,
 } from "@/lib/marketing/partners-page-content";
 
+import "@/components/home/sections/partners/technology-partners.css";
 import "@/components/marketing/marketing-page-hero.css";
 import "./partners-landing.css";
 
-/** Partners landing page — hero, intro, and major technology partner logos. */
+/** Partners landing page — hero, intro, and major partners grid (same as homepage). */
 export function PartnersLandingPage() {
   return (
     <div className="marketing-page partners-page" data-nav-surface="dark">
@@ -38,20 +39,42 @@ export function PartnersLandingPage() {
           </header>
         </section>
 
-        <section className="partners-page__logos" aria-label="Major technology partners">
-          <ul className="partners-page__logos-grid">
-            {partnerLogos.map((partner) => (
-              <li key={partner.name} className="partners-page__logo-cell">
-                <Image
-                  src={partner.src}
-                  alt={partner.name}
-                  width={160}
-                  height={64}
-                  className={`partners-page__logo ${partnerLogoVisualClass(partner.name)}`}
-                />
-              </li>
-            ))}
-          </ul>
+        <section
+          className="tp__partners-showcase-wrap partners-page__major relative z-10"
+          aria-labelledby="partners-major-heading"
+        >
+          <div className="tp__subsection-inner tp__subsection-inner--major">
+            <h3 id="partners-major-heading" className="tp__trusted-heading">
+              Major Partners
+            </h3>
+            <ul className="tp__partner-grid tp__partner-grid--all" data-nav-surface="light">
+              {partnerLogos.map((partner) => (
+                <li key={partner.name}>
+                  <div className="tp__partner-cell group">
+                    <div className="tp__partner-logo-slot">
+                      <Image
+                        src={partner.src}
+                        alt={partner.name}
+                        fill
+                        unoptimized={partner.name === "HP"}
+                        className={`tp__partner-logo ${partnerLogoVisualClass(partner.name)}`.trim()}
+                        sizes="(max-width: 640px) 124px, 152px"
+                      />
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="tp__major-partners-footer">
+              <Link href="/contact" className="tp__cta">
+                Become a Partner
+                <span className="tp__cta-arrow" aria-hidden>
+                  →
+                </span>
+              </Link>
+            </div>
+          </div>
         </section>
       </div>
     </div>
