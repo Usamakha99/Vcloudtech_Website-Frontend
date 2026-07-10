@@ -18,12 +18,14 @@ export function HomeTopContractsSection() {
   return (
     <section
       id="contracts"
-      className={`tc relative z-10 scroll-mt-24 py-14 sm:py-16 lg:py-20 ${dt.sectionBorder}`}
+      className={`tc relative z-10 scroll-mt-24 py-16 sm:py-20 lg:py-24 ${dt.sectionBorder}`}
       aria-labelledby="top-contracts-heading"
     >
+      <div className="tc__glow" aria-hidden />
+
       <div className="tc__inner">
-        <header className={dt.sectionHeader}>
-          <h2 id="top-contracts-heading" className={dt.sectionHeadlineTp}>
+        <header className="tc__header">
+          <h2 id="top-contracts-heading" className="tc__heading">
             Top Performing Contracts Holder
           </h2>
         </header>
