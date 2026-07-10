@@ -1,7 +1,120 @@
-.contracts-page__credentials {
-  margin-top: clamp(2.5rem, 5vw, 4rem);
+.contracts-page__body {
+  max-width: none;
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: 0;
 }
 
-.contracts-page__credentials .dt-cred-strip {
-  border-radius: 1rem;
+.contracts-page__corporate {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 3rem clamp(1.25rem, 4vw, 2.5rem) 4.5rem;
+}
+
+@media (min-width: 1024px) {
+  .contracts-page__corporate {
+    padding-top: 4rem;
+    padding-bottom: 5.5rem;
+  }
+}
+
+.contracts-page__corporate-header {
+  max-width: 44rem;
+  margin-inline: auto;
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  text-align: center;
+}
+
+.contracts-page__corporate-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 3.6vw, 2.625rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-wrap: balance;
+}
+
+.contracts-page__corporate-desc {
+  margin: 1rem auto 0;
+  max-width: 40rem;
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  font-weight: 500;
+  line-height: 1.65;
+  color: #a1a1aa;
+}
+
+.contracts-page__vehicles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .contracts-page__vehicles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contracts-page__vehicles {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.contracts-page__vehicle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(17, 31, 52, 0.45) 100%
+  );
+  backdrop-filter: blur(10px);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  text-wrap: balance;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.contracts-page__vehicle:hover {
+  transform: translateY(-2px);
+  border-color: rgba(179, 179, 179, 0.4);
+  background: rgba(179, 179, 179, 0.12);
+  box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.45);
+}
+
+.contracts-page__vehicle:focus-visible {
+  outline: 2px solid rgba(179, 179, 179, 0.65);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contracts-page__vehicle {
+    transition: none;
+  }
+
+  .contracts-page__vehicle:hover {
+    transform: none;
+  }
 }

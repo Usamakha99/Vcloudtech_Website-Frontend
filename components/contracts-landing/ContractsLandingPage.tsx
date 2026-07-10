@@ -1,17 +1,16 @@
 import Link from "next/link";
 
-import { DesignTestCredentialsStrip } from "@/components/home/sections/about/CredentialsStrip";
-import { dt } from "@/components/marketing/design-test-theme";
 import { MarketingPageHero } from "@/components/marketing/MarketingPageHero";
 import {
+  contractsPageCorporate,
   contractsPageHero,
-  contractsPageIntro,
+  contractsPageVehicles,
 } from "@/lib/marketing/contracts-page-content";
 
 import "@/components/marketing/marketing-page-hero.css";
 import "./contracts-landing.css";
 
-/** Contracts landing page — hero, procurement intro, and credential vehicles. */
+/** Contracts landing page — hero + corporate contracts vehicle grid. */
 export function ContractsLandingPage() {
   return (
     <div className="marketing-page contracts-page" data-nav-surface="dark">
@@ -23,22 +22,27 @@ export function ContractsLandingPage() {
         headingId="contracts-page-heading"
       />
 
-      <div className="marketing-page__body">
-        <section className="marketing-page__section" aria-labelledby="contracts-intro-heading">
-          <header className="marketing-page__section-header">
-            <p className={dt.metaLabel}>{contractsPageIntro.badge}</p>
-            <h2 id="contracts-intro-heading" className="marketing-page__section-title">
-              {contractsPageIntro.title}
+      <div className="marketing-page__body contracts-page__body">
+        <section
+          className="contracts-page__corporate"
+          aria-labelledby="contracts-corporate-heading"
+        >
+          <header className="contracts-page__corporate-header">
+            <h2 id="contracts-corporate-heading" className="contracts-page__corporate-title">
+              {contractsPageCorporate.title}
             </h2>
-            <p className="marketing-page__section-lede">{contractsPageIntro.lede}</p>
-            <Link href={contractsPageIntro.ctaHref} className="marketing-page__cta">
-              {contractsPageIntro.ctaLabel}
-            </Link>
+            <p className="contracts-page__corporate-desc">{contractsPageCorporate.description}</p>
           </header>
-        </section>
 
-        <section className="contracts-page__credentials" aria-label="Certifications and contract vehicles">
-          <DesignTestCredentialsStrip embedded />
+          <ul className="contracts-page__vehicles" aria-label="Contract vehicles">
+            {contractsPageVehicles.map((vehicle) => (
+              <li key={vehicle.id}>
+                <Link href={vehicle.href} className="contracts-page__vehicle">
+                  {vehicle.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       </div>
     </div>

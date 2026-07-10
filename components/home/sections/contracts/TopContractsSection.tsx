@@ -25,6 +25,7 @@ export function HomeTopContractsSection() {
 
       <div className="tc__inner">
         <header className="tc__header">
+          <p className={dt.badge}>Contracts</p>
           <h2 id="top-contracts-heading" className="tc__heading">
             Top Performing Contracts Holder
           </h2>
