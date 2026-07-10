@@ -1,7 +1,7 @@
 import { publicAssets } from "@/lib/public-assets";
 
 export const contractsPageHero = {
-  title: "Contracts",
+  title: "Government Contracts",
   lede:
     "Streamlined procurement through GSA Schedule, Sourcewell, TIPS, and other contract vehicles — built for public sector and enterprise buyers.",
   image: publicAssets.contractsPage.hero,

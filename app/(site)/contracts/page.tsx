@@ -4,10 +4,10 @@ import { ContractsLandingPage } from "@/components/contracts-landing/ContractsLa
 import { contractsPageHero } from "@/lib/marketing/contracts-page-content";
 
 export const metadata: Metadata = {
-  title: "Contracts | vCloudTech",
+  title: "Government Contracts | vCloudTech",
   description: contractsPageHero.lede,
   openGraph: {
-    title: "Contracts | vCloudTech",
+    title: "Government Contracts | vCloudTech",
     description: contractsPageHero.lede,
     type: "website",
   },
