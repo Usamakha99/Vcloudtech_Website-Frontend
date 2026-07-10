@@ -28,7 +28,7 @@ const articles: Article[] = [
     dateTime: "2026-03-12",
     readTime: "8 min read",
     href: "/posts",
-    image: publicAssets.blog.banner(2),
+    image: publicAssets.blog.banner(1),
   },
   {
     category: "AI Strategy",
@@ -37,7 +37,7 @@ const articles: Article[] = [
     dateTime: "2026-02-28",
     readTime: "6 min read",
     href: "/posts",
-    image: publicAssets.blog.banner(3),
+    image: publicAssets.blog.banner(2),
   },
   {
     category: "Automation",
@@ -46,7 +46,7 @@ const articles: Article[] = [
     dateTime: "2026-02-14",
     readTime: "5 min read",
     href: "/posts",
-    image: publicAssets.blog.banner(1),
+    image: publicAssets.blog.banner(3),
   },
 ];
 

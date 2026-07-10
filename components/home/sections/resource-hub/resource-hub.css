@@ -106,7 +106,7 @@
 
 .rh__card-visual {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #0a0a0a;
 }
@@ -114,15 +114,18 @@
 .rh__card-img-wrap {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .rh__card-link:hover .rh__card-img-wrap {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
 .rh__card-img {
   object-fit: cover;
+  object-position: center center;
 }
 
 .rh__card-body {
