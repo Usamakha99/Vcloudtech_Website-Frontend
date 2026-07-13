@@ -7,7 +7,7 @@ export const contractVehicles = [
   { id: "allied", label: "Allied States Cooperative" },
   { id: "sourcewell", label: "Sourcewell" },
   { id: "buyboard", label: "BuyBoard" },
-  { id: "cmas", label: "CMAS" },
+  { id: "cmas", label: "CMAS Under The Synnex GSA Base Schedule" },
   { id: "pca", label: "PCA" },
   { id: "region7", label: "Region 7 Purchasing & Vendor Services" },
   { id: "equalis", label: "Equalis Group" },
@@ -19,6 +19,14 @@ export const contractVehicles = [
   { id: "frisco-isd", label: "Frisco ISD" },
   { id: "fort-worth-isd", label: "Fort Worth ISD" },
   { id: "edge-public", label: "Edge Public / AFI Alliance for Innovation" },
+  { id: "ohio-sts", label: "Ohio STS" },
+  { id: "tx-dir-idiq", label: "State of Texas DIR Software, COTS, and Services IDIQ" },
+  { id: "tx-dir-tso-4288", label: "TX DIR-TSO-4288" },
+  { id: "tx-dir-cpo-5683", label: "TX DIR-CPO-5683" },
+  { id: "tx-dir-cpo-5687", label: "TX DIR-CPO-5687" },
+  { id: "naspo", label: "NASPO" },
+  { id: "ncpa-promark", label: "NCPA under Promark" },
+  { id: "td-snx-omnia", label: "TD SNX-OMNIA R250307" },
 ] as const;
 
 export type ContractVehicle = (typeof contractVehicles)[number];
