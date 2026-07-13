@@ -153,4 +153,156 @@ export const contractVehicleDetails: Partial<
       term: "September 11, 2024 – March 2, 2026 (2-year term)",
     },
   ],
+  pca: [
+    {
+      contractNumber: "PCA OD-372-22 – Computer Equipment, Supplies, and Services",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Nationwide",
+      manufacturers:
+        "Asus, Acer, HP, Dell, Logitech, APC, Canon, Lenovo, LG, Eaton, Tripplite, Jabra, MSI, Getac, Toshiba, Intel, Sonicwall, ViewSonic, Philips",
+      description:
+        "vCloud Tech offers a wide range of Technology, Hardware under the contract.",
+      term: "9/14/2022 – 9/13/2027",
+    },
+  ],
+  region7: [
+    {
+      contractNumber: "CMPH2527",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Region 7",
+      manufacturers: "Computer hardware and supplies per contract scope",
+      description: "vCloud Tech is offering Computer Hardware & Supplies under this contract.",
+      term: "August 21, 2025 – August 21, 2027",
+    },
+  ],
+  equalis: [
+    {
+      contractNumber: "R10-1173G",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Region 10",
+      manufacturers: "Technology software, equipment, and services per contract scope",
+      description:
+        "Technology Software, Equipment, Services and Related Solutions. See Equalis Group for further contract details.",
+      term: "3/1/2025 – 3/1/2028",
+    },
+  ],
+  goodbuy: [
+    {
+      contractNumber: "25-26 4D000",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Region 2",
+      manufacturers: "Hardware, peripherals, and networking vendors per contract scope",
+      description: "Hardware/Peripherals/Networking Equipment/Repair/Service",
+      term: "3/1/2025 – 2/28/2026",
+    },
+    {
+      contractNumber: "25-26 4O000",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Region 2",
+      manufacturers: "Audio visual equipment vendors per contract scope",
+      description: "Audio Visual Equipments",
+      term: "3/1/2025 – 2/28/2026",
+    },
+    {
+      contractNumber: "25-26 6U000",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Region 2",
+      manufacturers: "Computer software vendors per contract scope",
+      description: "Computer Software",
+      term: "9/1/2025 – 8/31/2026",
+    },
+  ],
+  region18: [
+    {
+      contractNumber: "R18-2025-02-000049",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Region 18",
+      manufacturers:
+        "Acer, Acronis, APC, Apple, Cisco, Dell, EATON, Google, HP, LG, McAfee, Qualys, Quest, RedHat, Samsung, Trend Micro, Vmware, Veeam",
+      description:
+        "vCloud Tech is offering a wide range of IT Hardwares and Softwares to Region 18",
+      term: "July 1, 2025 – June 30, 2030",
+    },
+  ],
+  texbuy: [
+    {
+      contractNumber: "025-066",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Region 16",
+      manufacturers:
+        "Acer, Acronis, APC, Apple, Cisco, Dell, EATON, Google, HP, LG, McAfee, Qualys, Quest, RedHat, Samsung, Trend Micro, Vmware, Veeam",
+      description:
+        "vCloud Tech is offering a wide range of Technology Products and Solutions to TEX BUY under this contract. See TEX BUY for further contract details.",
+      term: "1 July 2025 – 30 June 2026",
+    },
+  ],
+  setx: [
+    {
+      contractNumber: "20250703",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Region 5",
+      manufacturers: "Computers, peripherals, supplies, and operating systems per contract scope",
+      description:
+        "vCloud Tech is offering a range of Computers, Peripherals, Supplies & Operating Systems, Tech Assistance",
+      term: "9/1/2025 – 8/31/2026",
+    },
+  ],
+  "northwest-isd": [
+    {
+      contractNumber: "025-027-02-009",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Texas",
+      manufacturers:
+        "Acer, Acronis, APC, Apple, Cisco, Dell, EATON, Google, HP, LG, McAfee, Qualys, Quest, RedHat, Samsung, Trend Micro, Veeam and many more",
+      description:
+        "vCloud Tech is offering a range of Technology Related Equipment, Services, Software & Supplies in this contract.",
+      term: "7/1/2025 – 6/30/2026",
+    },
+  ],
+  "frisco-isd": [
+    {
+      contractNumber: "875-2025-05-31",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Texas",
+      manufacturers:
+        "Acer, Acronis, APC, Apple, Cisco, Dell, EATON, Google, HP, LG, McAfee, Qualys, Quest, RedHat, Samsung, Trend Micro, Veeam and many more",
+      description:
+        "vCloud Tech is offering a range of comprehensive technology category covering hardware, software, cloud solutions, and IT services that support the full lifecycle of tech infrastructure",
+      term: "09/16/2025 – 05/11/2027",
+    },
+  ],
+  "fort-worth-isd": [
+    {
+      contractNumber: "25-002-A",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Texas",
+      manufacturers:
+        "Adobe, Acer, Acronis, Arista, Asus, APC Schneider, Axiom, Barracuda Networks, Checkpoint, Citrix, Eaton, Exagrid, Extreme Networks, McAfee, Solarwinds, Sophos, Symantec, Tintri, Trend Micro, Veeam, Veritas, Viewsonic, Zyxel and many more",
+      description:
+        "vCloud Tech offers a complete portfolio of Commercial Off-the-Shelf (COTS) software, licenses, subscriptions, and technology products, materials, services, and equipment, delivering end-to-end solutions that support every stage of the IT lifecycle — from procurement and deployment to management and ongoing support.",
+      term: "04/10/2025 – 9/30/2028",
+    },
+    {
+      contractNumber: "21-091-I",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Texas",
+      manufacturers:
+        "Adobe, Acer, Acronis, Arista, Asus, APC Schneider, Axiom, Barracuda Networks, Checkpoint, Citrix, Eaton, Exagrid, Extreme Networks, McAfee, Solarwinds, Sophos, Symantec, Tintri, Trend Micro, Veeam, Veritas, Viewsonic, Zyxel and many more",
+      description:
+        "vCloud Tech offers a complete portfolio of Commercial Off-the-Shelf (COTS) software, licenses, subscriptions, and technology products, materials, services, and equipment, delivering end-to-end solutions that support every stage of the IT lifecycle — from procurement and deployment to management and ongoing support.",
+      term: "03/14/2025 – 6/30/2026",
+    },
+  ],
+  "edge-public": [
+    {
+      contractNumber: "2025-107",
+      contractHolder: "vCloud Tech Inc.",
+      region: "Nationwide",
+      manufacturers:
+        "Adobe, Acer, Acronis, Arista, Asus, APC Schneider, Axiom, Barracuda Networks, Checkpoint, Citrix, Eaton, Exagrid, Extreme Networks, McAfee, Solarwinds, Sophos, Symantec, Tintri, Trend Micro, Veeam, Veritas, Viewsonic, Zyxel and many more",
+      description:
+        "The Alliance for Innovation (AFI) serves as the lead contracting agency for this cooperative agreement, supporting local governments and nonprofits nationwide with cost-effective technology procurement. Through this contract, AFI enables access to high-quality computing equipment, peripherals, and related services at competitive prices. vCloud Tech provides computers and workstations, peripherals and accessories, networking and infrastructure hardware, software and licensing, public safety and field technology, and cloud and virtualization services.",
+      term: "09/15/2025 – 09/10/2030",
+    },
+  ],
 };
