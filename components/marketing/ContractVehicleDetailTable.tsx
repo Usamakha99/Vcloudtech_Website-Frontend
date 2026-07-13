@@ -7,7 +7,6 @@ type ContractVehicleDetailTableProps = {
 };
 
 const detailRows: { key: keyof ContractVehicleDetail; label: string }[] = [
-  { key: "contractNumber", label: "Contract number" },
   { key: "contractHolder", label: "Contract holder" },
   { key: "region", label: "Region" },
   { key: "manufacturers", label: "Manufacturers / publishers" },
@@ -17,16 +16,14 @@ const detailRows: { key: keyof ContractVehicleDetail; label: string }[] = [
 
 function ContractDetailRows({ detail }: { detail: ContractVehicleDetail }) {
   return (
-    <table className="cv-detail__table">
-      <tbody>
-        {detailRows.map((row) => (
-          <tr key={row.key}>
-            <th scope="row">{row.label}</th>
-            <td>{detail[row.key]}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <dl className="cv-detail__list">
+      {detailRows.map((row) => (
+        <div key={row.key} className="cv-detail__row">
+          <dt>{row.label}</dt>
+          <dd>{detail[row.key]}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 
@@ -40,20 +37,18 @@ export function ContractVehicleDetailTable({
     <div className="cv-detail" role="region" aria-label={`${title} contract details`}>
       <div className="cv-detail__header">
         <h3 className="cv-detail__title">{title}</h3>
-        <button type="button" className="cv-detail__close" onClick={onClose}>
-          Close
+        <button type="button" className="cv-detail__close" onClick={onClose} aria-label="Close">
+          <span aria-hidden>×</span>
         </button>
       </div>
 
       <div className="cv-detail__body">
         {details.map((detail, index) => (
-          <div key={detail.contractNumber} className="cv-detail__block">
-            {details.length > 1 ? (
-              <p className="cv-detail__contract-label">{detail.contractNumber}</p>
-            ) : null}
+          <article key={detail.contractNumber} className="cv-detail__block">
+            <h4 className="cv-detail__block-title">{detail.contractNumber}</h4>
             <ContractDetailRows detail={detail} />
             {index < details.length - 1 ? <hr className="cv-detail__divider" /> : null}
-          </div>
+          </article>
         ))}
       </div>
     </div>
