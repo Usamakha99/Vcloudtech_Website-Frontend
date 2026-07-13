@@ -1,0 +1,660 @@
+/* Industries We Serve — floating cards around global network (homepage test) */
+
+.ind-net {
+  --ind-bg: #041329;
+  --ind-card: #111f34;
+  --ind-text: #ffffff;
+  --ind-muted: #a1a1aa;
+  --ind-line: rgba(147, 178, 214, 0.22);
+  --ind-glow: rgba(96, 140, 196, 0.28);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0 clamp(4rem, 8vw, 6rem);
+  background: var(--ind-bg);
+  color: var(--ind-text);
+}
+
+.ind-net__inner {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 1.75rem);
+}
+
+.ind-net__header {
+  max-width: 40rem;
+  margin-inline: auto;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.ind-net__headline {
+  margin: 0.85rem 0 0;
+  font-size: clamp(1.75rem, 3.6vw, 2.625rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--ind-text);
+  text-wrap: balance;
+}
+
+.ind-net__headline-accent {
+  color: var(--ind-text);
+}
+
+.ind-net__lede {
+  margin: 0.9rem auto 0;
+  max-width: 34rem;
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  line-height: 1.65;
+  color: var(--ind-muted);
+}
+
+.ind-net__stage {
+  position: relative;
+  min-height: 44rem;
+  isolation: isolate;
+}
+
+/* ── Globe (background only) ── */
+
+.ind-net__globe {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  z-index: 0;
+  width: min(34rem, 72vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+  pointer-events: none;
+  animation: ind-net-globe-in 1.1s ease forwards;
+}
+
+.ind-net__globe-glow {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 35%, rgba(150, 185, 225, 0.22), transparent 55%),
+    radial-gradient(circle at 60% 65%, rgba(70, 110, 170, 0.18), transparent 60%);
+  filter: blur(6px);
+  animation: ind-net-glow-pulse 8s ease-in-out infinite;
+}
+
+.ind-net__globe-sphere {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(170, 200, 235, 0.14), transparent 42%),
+    radial-gradient(circle at 70% 70%, rgba(40, 70, 120, 0.2), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(17, 31, 52, 0.35), rgba(4, 19, 41, 0.55));
+  border: 1px solid rgba(170, 200, 235, 0.16);
+  box-shadow:
+    inset 0 0 40px rgba(120, 160, 210, 0.08),
+    0 0 60px rgba(80, 120, 180, 0.12);
+  overflow: hidden;
+}
+
+.ind-net__globe-sphere::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(180, 205, 235, 0.35) 0.8px, transparent 0.8px);
+  background-size: 18px 18px;
+  opacity: 0.18;
+  animation: ind-net-particles 22s linear infinite;
+}
+
+.ind-net__globe-pulse {
+  position: absolute;
+  inset: -4%;
+  border-radius: 50%;
+  border: 1px solid rgba(150, 185, 225, 0.18);
+  animation: ind-net-ring-pulse 7s ease-out infinite;
+}
+
+.ind-net__globe-svg {
+  position: absolute;
+  inset: 6%;
+  width: 88%;
+  height: 88%;
+}
+
+.ind-net__globe-ring,
+.ind-net__globe-lat,
+.ind-net__globe-lon,
+.ind-net__globe-arc {
+  stroke: rgba(160, 190, 225, 0.42);
+  stroke-width: 1;
+}
+
+.ind-net__globe-node {
+  fill: rgba(185, 210, 240, 0.72);
+}
+
+@keyframes ind-net-globe-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -46%) scale(0.94);
+  }
+  to {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ind-net-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes ind-net-ring-pulse {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes ind-net-particles {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Soft connection lines ── */
+
+.ind-net__links {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  animation: ind-net-links-in 1s ease 0.35s forwards;
+}
+
+.ind-net__link {
+  fill: none;
+  stroke: rgba(150, 185, 225, 0.12);
+  stroke-width: 1.1;
+  stroke-dasharray: 6 10;
+  animation: ind-net-link-flow 10s linear infinite;
+}
+
+.ind-net__link:nth-child(2) {
+  animation-duration: 11s;
+  animation-delay: -2s;
+}
+.ind-net__link:nth-child(3) {
+  animation-duration: 9s;
+  animation-delay: -4s;
+}
+.ind-net__link:nth-child(4) {
+  animation-duration: 12s;
+  animation-delay: -1s;
+}
+.ind-net__link:nth-child(5) {
+  animation-duration: 8.5s;
+  animation-delay: -3s;
+}
+.ind-net__link:nth-child(6) {
+  animation-duration: 10.5s;
+  animation-delay: -5s;
+}
+
+@keyframes ind-net-links-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ind-net-link-flow {
+  to {
+    stroke-dashoffset: -80;
+  }
+}
+
+/* ── Cards layer ── */
+
+.ind-net__cards {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-height: inherit;
+}
+
+.ind-net__card-slot {
+  opacity: 0;
+  animation: ind-net-card-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes ind-net-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ind-net__card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.125rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    165deg,
+    rgba(17, 31, 52, 0.72) 0%,
+    rgba(8, 20, 36, 0.58) 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 18px 40px -24px rgba(0, 0, 0, 0.55);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.ind-net__card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(179, 179, 179, 0.35);
+  background: linear-gradient(
+    165deg,
+    rgba(24, 40, 64, 0.82) 0%,
+    rgba(12, 26, 44, 0.7) 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.07) inset,
+    0 28px 50px -22px rgba(0, 0, 0, 0.65);
+}
+
+.ind-net__card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0a1424;
+}
+
+.ind-net__card-image {
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.ind-net__card:hover .ind-net__card-image {
+  transform: scale(1.05);
+}
+
+.ind-net__card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.ind-net__card-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ind-text);
+}
+
+.ind-net__card-desc {
+  margin: 0;
+  flex: 1;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ind-muted);
+}
+
+.ind-net__card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.ind-net__card-cta:hover {
+  color: #fff;
+}
+
+.ind-net__card-cta-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.ind-net__card:hover .ind-net__card-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Mobile: vertical stack + globe watermark ── */
+
+@media (max-width: 767px) {
+  .ind-net__stage {
+    min-height: 0;
+  }
+
+  .ind-net__globe {
+    width: min(22rem, 88vw);
+    top: 42%;
+    opacity: 0.22;
+  }
+
+  .ind-net__links {
+    display: none;
+  }
+
+  .ind-net__cards {
+    display: grid;
+    gap: 1rem;
+    min-height: 0;
+  }
+
+  .ind-net__card-slot {
+    position: relative;
+    width: 100%;
+  }
+}
+
+/* ── Tablet: compact orb + 2-col cards ── */
+
+@media (min-width: 768px) and (max-width: 1099px) {
+  .ind-net__stage {
+    min-height: 0;
+    padding-top: 1rem;
+  }
+
+  .ind-net__globe {
+    width: min(26rem, 55vw);
+    top: 38%;
+    opacity: 0.3;
+  }
+
+  .ind-net__links {
+    display: none;
+  }
+
+  .ind-net__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+    min-height: 0;
+  }
+
+  .ind-net__card-slot {
+    position: relative;
+  }
+}
+
+/* ── Desktop: organic floating composition ── */
+
+@media (min-width: 1100px) {
+  .ind-net__stage {
+    min-height: 46rem;
+  }
+
+  .ind-net__globe {
+    width: min(36rem, 46vw);
+    opacity: 0.4;
+  }
+
+  .ind-net__cards {
+    display: block;
+  }
+
+  .ind-net__card-slot {
+    position: absolute;
+    width: min(17.5rem, 22vw);
+  }
+
+  .ind-net__card-slot--gov {
+    top: 2%;
+    left: calc(50% - 8.75rem);
+    z-index: 5;
+  }
+
+  .ind-net__card-slot--edu {
+    top: 14%;
+    left: 2%;
+    z-index: 4;
+  }
+
+  .ind-net__card-slot--health {
+    top: 14%;
+    right: 2%;
+    z-index: 4;
+  }
+
+  .ind-net__card-slot--finance {
+    bottom: 10%;
+    left: 4%;
+    z-index: 3;
+  }
+
+  .ind-net__card-slot--public {
+    bottom: 1%;
+    left: calc(50% - 8.75rem);
+    z-index: 5;
+  }
+
+  .ind-net__card-slot--enterprise {
+    bottom: 10%;
+    right: 4%;
+    z-index: 3;
+  }
+
+  /* Unique float on each slot; hover lift stays on the card */
+  .ind-net__card-slot--gov {
+    animation:
+      ind-net-card-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+      ind-net-float-gov 8s ease-in-out 0.8s infinite;
+  }
+
+  .ind-net__card-slot--edu {
+    animation:
+      ind-net-card-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+      ind-net-float-edu 7s ease-in-out 0.9s infinite;
+  }
+
+  .ind-net__card-slot--health {
+    animation:
+      ind-net-card-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+      ind-net-float-health 9s ease-in-out 1s infinite;
+  }
+
+  .ind-net__card-slot--finance {
+    animation:
+      ind-net-card-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+      ind-net-float-finance 6.5s ease-in-out 1.1s infinite;
+  }
+
+  .ind-net__card-slot--public {
+    animation:
+      ind-net-card-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+      ind-net-float-public 8.5s ease-in-out 1.05s infinite;
+  }
+
+  .ind-net__card-slot--enterprise {
+    animation:
+      ind-net-card-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+      ind-net-float-enterprise 10s ease-in-out 1.15s infinite;
+  }
+
+  /* Depth via scale/shadow (not competing with float) */
+  .ind-net__card--gov {
+    transform: scale(1);
+  }
+
+  .ind-net__card--edu {
+    transform: scale(0.96);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 14px 32px -26px rgba(0, 0, 0, 0.5);
+  }
+
+  .ind-net__card--health {
+    transform: scale(0.97);
+  }
+
+  .ind-net__card--finance {
+    transform: scale(0.94);
+  }
+
+  .ind-net__card--public {
+    transform: scale(1.02);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 24px 48px -22px rgba(0, 0, 0, 0.62);
+  }
+
+  .ind-net__card--enterprise {
+    transform: scale(0.95);
+  }
+
+  .ind-net__card--gov:hover {
+    transform: translateY(-10px) scale(1);
+  }
+
+  .ind-net__card--edu:hover {
+    transform: translateY(-10px) scale(0.96);
+  }
+
+  .ind-net__card--health:hover {
+    transform: translateY(-10px) scale(0.97);
+  }
+
+  .ind-net__card--finance:hover {
+    transform: translateY(-10px) scale(0.94);
+  }
+
+  .ind-net__card--public:hover {
+    transform: translateY(-10px) scale(1.02);
+  }
+
+  .ind-net__card--enterprise:hover {
+    transform: translateY(-10px) scale(0.95);
+  }
+}
+
+@keyframes ind-net-float-gov {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes ind-net-float-edu {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ind-net-float-health {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes ind-net-float-finance {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes ind-net-float-public {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(11px);
+  }
+}
+
+@keyframes ind-net-float-enterprise {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ind-net__globe,
+  .ind-net__globe-glow,
+  .ind-net__globe-pulse,
+  .ind-net__globe-sphere::before,
+  .ind-net__links,
+  .ind-net__link,
+  .ind-net__card-slot,
+  .ind-net__card-slot--gov,
+  .ind-net__card-slot--edu,
+  .ind-net__card-slot--health,
+  .ind-net__card-slot--finance,
+  .ind-net__card-slot--public,
+  .ind-net__card-slot--enterprise {
+    animation: none !important;
+  }
+
+  .ind-net__globe,
+  .ind-net__links,
+  .ind-net__card-slot {
+    opacity: 1;
+  }
+
+  .ind-net__card:hover {
+    transform: none;
+  }
+}
