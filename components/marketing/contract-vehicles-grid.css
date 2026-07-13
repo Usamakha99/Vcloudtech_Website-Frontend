@@ -222,7 +222,7 @@ button.cv-grid__chip {
   display: grid;
   gap: 0.5rem;
   padding: clamp(1.25rem, 2.5vw, 1.75rem) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(229, 86, 20, 0.22);
   transition: border-color 250ms ease;
 }
 
@@ -232,12 +232,26 @@ button.cv-grid__chip {
 }
 
 .cv-detail__row dt {
-  font-size: 0.6875rem;
+  position: relative;
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #8a93a7;
+  color: rgba(255, 255, 255, 0.52);
   line-height: 1.4;
+  padding-bottom: 0.5rem;
+}
+
+.cv-detail__row dt::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 999px;
+  background: #e55614;
+  opacity: 0.85;
 }
 
 .cv-detail__row dd {
