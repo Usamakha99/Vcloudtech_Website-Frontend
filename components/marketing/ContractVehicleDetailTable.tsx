@@ -45,7 +45,7 @@ export function ContractVehicleDetailTable({
       <div className="cv-detail__body">
         {details.map((detail, index) => (
           <article key={detail.contractNumber} className="cv-detail__block">
-            <h4 className="cv-detail__block-title">{detail.contractNumber}</h4>
+            <h4 className="cv-detail__contract-id">{detail.contractNumber}</h4>
             <ContractDetailRows detail={detail} />
             {index < details.length - 1 ? <hr className="cv-detail__divider" /> : null}
           </article>
