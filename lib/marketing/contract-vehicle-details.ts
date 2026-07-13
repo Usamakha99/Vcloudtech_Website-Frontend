@@ -152,6 +152,16 @@ export const contractVehicleDetails: Partial<
         "vCloud Tech offers products from manufacturers/publishers under GSA Base Schedule via its California Multiple Award Schedule (CMAS) contract.",
       term: "September 11, 2024 – March 2, 2026 (2-year term)",
     },
+    {
+      contractNumber: "3-20-70-3866A",
+      contractHolder: "TD Synnex",
+      region: "California",
+      manufacturers:
+        "APC, Axiom, Barracuda Networks, C2G, Cradlepoint, Datacore Software Corporation, Docker, Eaton Corporation, Ergotron, Fujitsu, GFI Software, LG Electronics USA, Lifesize Inc., Netgear, Overland Storage Inc., Printerlogic, Quantum, Seagate, Tripp Lite, Visioneer, Zyxel",
+      description:
+        "vCloud Tech offers products from manufacturers/publishers under the Synnex GSA Base Schedule via its California Multiple Award Schedule (CMAS) contract.",
+      term: "October 14, 2020 – September 26, 2025 (5-year term)",
+    },
   ],
   pca: [
     {
@@ -344,6 +354,48 @@ export const contractVehicleDetails: Partial<
       manufacturers: "Broadcom, Proofpoint, UiPath, Rapid7, OpenText, SolarWinds",
       description: "vCloud Tech is offering Software COTS and Related Services",
       term: "05/19/2031",
+    },
+  ],
+  "tx-dir-idiq": [
+    {
+      contractNumber: "DIR-TSO-5677",
+      contractHolder: "DLT",
+      region: "Statewide",
+      manufacturers: "BMC",
+      description: "vCloud Tech is offering Software COTS and Related Services",
+      term: "01/28/2025 – 01/28/2027",
+    },
+  ],
+  naspo: [
+    {
+      contractNumber: "7-17-70-40-05 (NASPO Master Contract Number: AR2472)",
+      contractHolder: "Carahsoft",
+      region: "National",
+      manufacturers: "Vmware, Adobe, Proofpoint, Google",
+      description:
+        "Software Licenses, Support (SnS), Managed Services, End User Computing, Airwatch, Cloud Subscription Services, Training, Professional Services",
+      term: "Through 09/15/2026",
+    },
+  ],
+  "ncpa-promark": [
+    {
+      contractNumber: "01-169",
+      contractHolder: "Promark",
+      region: "National",
+      manufacturers: "Per NCPA contract scope",
+      description: "NCPA contract via Promark",
+      term: "Term end: December 14, 2023 · Expiration: December 31, 2028",
+    },
+  ],
+  "td-snx-omnia": [
+    {
+      contractNumber: "R250307",
+      contractHolder: "TD Synnex",
+      region: "Statewide",
+      manufacturers:
+        "PaloAlto, HP SmartBuys, Lenovo, Cisco, Crucial, F5, Global Knowledge Training, Microsoft Software, NEC, Seagate, and many more",
+      description: "TD Synnex OMNIA contract — technology products and services statewide",
+      term: "October 1, 2025 – September 30, 2030",
     },
   ],
 };
