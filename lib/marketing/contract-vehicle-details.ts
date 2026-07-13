@@ -305,4 +305,45 @@ export const contractVehicleDetails: Partial<
       term: "09/15/2025 – 09/10/2030",
     },
   ],
+  "ohio-sts": [
+    {
+      contractNumber: "534354",
+      contractHolder: "Carahsoft",
+      region: "Statewide",
+      manufacturers: "McAfee",
+      description: "vCloud Tech offers McAfee via Carahsoft's Ohio STS Contract",
+      term: "2026",
+    },
+  ],
+  "tx-dir-tso-4288": [
+    {
+      contractNumber: "DIR-TSO-4288",
+      contractHolder: "Carahsoft",
+      region: "Statewide",
+      manufacturers: "Docusign, Micro Focus, Ui Path, Veritas, Tableau, Trend Micro",
+      description:
+        "vCloud Tech offers Docusign, Micro Focus, Ui Path, Veritas, Tableau, Trend Micro Products via Carahsoft's TX DIR Contract",
+      term: "February 22, 2019 – February 21, 2026",
+    },
+  ],
+  "tx-dir-cpo-5683": [
+    {
+      contractNumber: "CPO-5683",
+      contractHolder: "Carahsoft",
+      region: "Statewide",
+      manufacturers: "Gigamon",
+      description: "vCloud Tech is offering Education IT Products and Services under this contract",
+      term: "01/22/2030",
+    },
+  ],
+  "tx-dir-cpo-5687": [
+    {
+      contractNumber: "CPO-5687",
+      contractHolder: "Carahsoft",
+      region: "Statewide",
+      manufacturers: "Broadcom, Proofpoint, UiPath, Rapid7, OpenText, SolarWinds",
+      description: "vCloud Tech is offering Software COTS and Related Services",
+      term: "05/19/2031",
+    },
+  ],
 };
