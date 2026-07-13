@@ -1,11 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import { ContractVehiclesGrid } from "@/components/marketing/ContractVehiclesGrid";
 import { dt } from "@/components/marketing/design-test-theme";
+import {
+  contractHolderVisualClass,
+  topContractHolderItems,
+} from "@/lib/marketing/top-contract-holders";
 
+import "../partners/technology-partners.css";
 import "./top-contracts.css";
 
-/** Top performing contracts holder — vehicle chips after Solutions. */
+/** Top performing contracts holder — five logo cards after Solutions. */
 export function HomeTopContractsSection() {
   return (
     <section
@@ -23,7 +28,26 @@ export function HomeTopContractsSection() {
           </h2>
         </header>
 
-        <ContractVehiclesGrid href="/contact" />
+        <ul className="tc__logos tp__partner-grid tp__partner-grid--all">
+          {topContractHolderItems.map((item) => (
+            <li key={item.id}>
+              <Link href="/contracts" className="tc__logo-link">
+                <div className="tp__partner-cell">
+                  <div className="tp__partner-logo-slot">
+                    <Image
+                      src={item.src}
+                      alt={item.label}
+                      fill
+                      sizes="(max-width: 640px) 42vw, 20vw"
+                      className={`tp__partner-logo ${contractHolderVisualClass(item.id)}`}
+                      unoptimized
+                    />
+                  </div>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         <div className="tc__footer">
           <Link href="/contracts" className="tc__cta">

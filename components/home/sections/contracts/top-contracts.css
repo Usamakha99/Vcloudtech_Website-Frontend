@@ -11,7 +11,7 @@
   left: 50%;
   top: 58%;
   z-index: 0;
-  width: min(52rem, 90vw);
+  width: min(96rem, 100vw);
   height: min(22rem, 50vw);
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -27,9 +27,9 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 72rem;
+  max-width: none;
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  padding-inline: clamp(1.5rem, 4vw, 3rem);
 }
 
 .tc__header {
@@ -48,20 +48,70 @@
   text-wrap: balance;
 }
 
-.tc__inner .cv-grid {
-  margin-top: 2.75rem;
+.tc__logos {
+  margin: 2.75rem 0 0;
 }
 
 @media (min-width: 640px) {
-  .tc__inner .cv-grid {
+  .tc__logos {
     margin-top: 3.25rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .tc__inner .cv-grid {
+  .tc__logos,
+  .tc__logos.tp__partner-grid,
+  .tc__logos.tp__partner-grid--all {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(0.65rem, 1.2vw, 1.1rem);
     margin-top: 3.5rem;
   }
+}
+
+@media (min-width: 1280px) {
+  .tc__logos,
+  .tc__logos.tp__partner-grid,
+  .tc__logos.tp__partner-grid--all {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(0.75rem, 1.4vw, 1.25rem);
+  }
+
+  .tc__logos .tp__partner-logo-slot {
+    width: min(100%, 11rem);
+    height: 4rem;
+  }
+}
+
+.tc__logo-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.tc__logo-link:focus-visible {
+  outline: none;
+}
+
+.tc__logo-link:focus-visible .tp__partner-cell {
+  outline: 2px solid rgba(179, 179, 179, 0.65);
+  outline-offset: 3px;
+}
+
+/* All contract holder logos — equal zoom */
+.tc__logos .tp__partner-logo--contract-sourcewell,
+.tc__logos .tp__partner-logo--contract-costars,
+.tc__logos .tp__partner-logo--contract-buyboard,
+.tc__logos .tp__partner-logo--contract-cmas,
+.tc__logos .tp__partner-logo--contract-tips {
+  transform: scale(2.35);
+}
+
+.tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-sourcewell,
+.tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-costars,
+.tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-buyboard,
+.tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-cmas,
+.tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-tips {
+  transform: scale(2.42);
 }
 
 .tc__footer {
@@ -127,5 +177,13 @@
 
   .tc__cta:hover .tc__cta-arrow {
     transform: none;
+  }
+
+  .tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-sourcewell,
+  .tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-costars,
+  .tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-buyboard,
+  .tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-cmas,
+  .tc__logos .tp__partner-cell:hover .tp__partner-logo--contract-tips {
+    transform: scale(2.35);
   }
 }

@@ -12,6 +12,7 @@ export const assetVersions = {
   contact: "1",
   partnerPage: "1",
   contractsPage: "1",
+  topContractHolders: "1",
   hero: "8",
   intro: "2",
 } as const;
@@ -55,6 +56,28 @@ export const publicAssets = {
   },
   contractsPage: {
     hero: withAssetVersion("/assets/contracts/contracts.png", assetVersions.contractsPage),
+  },
+  topContractHolders: {
+    sourcewell: withAssetVersion(
+      "/assets/Top Contracts holders/5.png",
+      assetVersions.topContractHolders,
+    ),
+    costars: withAssetVersion(
+      "/assets/Top Contracts holders/6.png",
+      assetVersions.topContractHolders,
+    ),
+    buyboard: withAssetVersion(
+      "/assets/Top Contracts holders/7.png",
+      assetVersions.topContractHolders,
+    ),
+    cmas: withAssetVersion(
+      "/assets/Top Contracts holders/8.png",
+      assetVersions.topContractHolders,
+    ),
+    tips: withAssetVersion(
+      "/assets/Top Contracts holders/9.png",
+      assetVersions.topContractHolders,
+    ),
   },
   locations: {
     texas: "/assets/locations/texas-dallas-skyline-v2.png",
