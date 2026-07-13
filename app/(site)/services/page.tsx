@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
 
-import { MarketingDocPage } from "@/components/layout/MarketingDocPage";
-import { ServicesGrid } from "@/components/services/ServicesGrid";
+import { ServicesLandingPage } from "@/components/services-landing/ServicesLandingPage";
+import { servicesPageHero } from "@/lib/marketing/services-page-content";
 
 export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Professional and managed services for cloud, security, and enterprise IT from vCloudTech.",
+  title: "Services | vCloudTech",
+  description: servicesPageHero.lede,
+  openGraph: {
+    title: "Services | vCloudTech",
+    description: servicesPageHero.lede,
+    type: "website",
+  },
 };
 
 export default function ServicesPage() {
-  return (
-    <>
-      <MarketingDocPage
-        theme="dark"
-        title="Services"
-        lede="Advisory, implementation, and managed operations tailored to enterprise governance and uptime requirements."
-      />
-      <ServicesGrid heading="What we deliver" subheading="" surface="glass" className="pt-0" />
-    </>
-  );
+  return <ServicesLandingPage />;
 }

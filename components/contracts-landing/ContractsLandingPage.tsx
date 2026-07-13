@@ -29,7 +29,6 @@ export function ContractsLandingPage() {
             <h2 id="contracts-corporate-heading" className="contracts-page__corporate-title">
               {contractsPageCorporate.title}
             </h2>
-            <p className="contracts-page__corporate-desc">{contractsPageCorporate.description}</p>
           </header>
 
           <ContractVehiclesGrid href="/contact" />

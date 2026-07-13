@@ -1,0 +1,14 @@
+.services-page__body {
+  max-width: none;
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+.services-page__grid {
+  padding-top: 0 !important;
+}
+
+.services-page__grid > .mx-auto {
+  max-width: 80rem;
+}

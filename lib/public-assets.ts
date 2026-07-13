@@ -12,6 +12,7 @@ export const assetVersions = {
   contact: "1",
   partnerPage: "1",
   contractsPage: "1",
+  servicesPage: "2",
   topContractHolders: "1",
   hero: "8",
   intro: "2",
@@ -56,6 +57,9 @@ export const publicAssets = {
   },
   contractsPage: {
     hero: withAssetVersion("/assets/contracts/contracts.png", assetVersions.contractsPage),
+  },
+  servicesPage: {
+    hero: withAssetVersion("/assets/website hero sections/2.png", assetVersions.servicesPage),
   },
   topContractHolders: {
     sourcewell: withAssetVersion(
