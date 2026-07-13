@@ -7,7 +7,7 @@ export const contractVehicles = [
   { id: "allied", label: "Allied States Cooperative" },
   { id: "sourcewell", label: "Sourcewell" },
   { id: "buyboard", label: "BuyBoard" },
-  { id: "cmas", label: "CMAS Under The Synnex GSA Base Schedule" },
+  { id: "cmas", label: "CMAS GSA" },
   { id: "pca", label: "PCA" },
   { id: "region7", label: "Region 7 Purchasing & Vendor Services" },
   { id: "equalis", label: "Equalis Group" },

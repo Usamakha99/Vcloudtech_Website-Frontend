@@ -5,7 +5,7 @@ import { publicAssets, assetVersions } from "@/lib/public-assets";
 import type { ReactNode } from "react";
 
 import { OrgMetricsRail } from "@/components/home/sections/about/OrgMetricsRail";
-import { DesignTestCredentialsStrip } from "@/components/home/sections/about/CredentialsStrip";
+// import { DesignTestCredentialsStrip } from "@/components/home/sections/about/CredentialsStrip";
 import {
   EducationIcon,
   GovernmentIcon,
@@ -202,7 +202,7 @@ function SectorsRowSection() {
 function IndustriesImageGridSection() {
   return (
     <div className="about-enterprise__industry-image-grid about-enterprise__reveal about-enterprise__reveal--6 mt-14 sm:mt-16 lg:mt-20">
-      <DesignTestCredentialsStrip embedded />
+      {/* <DesignTestCredentialsStrip embedded /> */}
 
       <header className="about-enterprise__sectors-header about-enterprise__sectors-header--center">
         <div>

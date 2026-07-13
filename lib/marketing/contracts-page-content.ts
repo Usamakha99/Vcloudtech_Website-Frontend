@@ -10,7 +10,7 @@ export const contractsPageHero = {
 } as const;
 
 export const contractsPageCorporate = {
-  title: "VCloudTech Corporate Contracts",
+  title: "vCloud Tech Corporate Contracts",
 } as const;
 
 /** @deprecated Use contractVehicles from lib/marketing/contract-vehicles.ts */

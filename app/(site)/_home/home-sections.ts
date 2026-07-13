@@ -9,7 +9,7 @@ import { HomeTechnologyPartnersSection } from "@/components/home/sections/partne
 import { HomeResourceHubSection } from "@/components/home/sections/resource-hub/ResourceHubSection";
 import { HomeServicesSection } from "@/components/home/sections/services/ServicesSection";
 import { HomeSocialProofSection } from "@/components/home/sections/social-proof/SocialProofSection";
-import { HomeTestimonialsSection } from "@/components/home/sections/testimonials/TestimonialsSection";
+// import { HomeTestimonialsSection } from "@/components/home/sections/testimonials/TestimonialsSection";
 
 export type HomeSectionEntry = {
   id: string;
@@ -64,11 +64,11 @@ export const HOME_SECTIONS: HomeSectionEntry[] = [
     label: "Resource Hub",
     component: HomeResourceHubSection,
   },
-  {
-    id: "testimonials",
-    label: "Testimonials",
-    component: HomeTestimonialsSection,
-  },
+  // {
+  //   id: "testimonials",
+  //   label: "Testimonials",
+  //   component: HomeTestimonialsSection,
+  // },
   {
     id: "faq",
     label: "FAQ",
