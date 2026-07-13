@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { contractVehicleDetails } from "@/lib/marketing/contract-vehicle-details";
 import { contractVehicles } from "@/lib/marketing/contract-vehicles";
@@ -17,12 +17,26 @@ type ContractVehiclesGridProps = {
 /** Contract vehicle chips — opens detail table when data exists, otherwise links out. */
 export function ContractVehiclesGrid({ href = "/contact" }: ContractVehiclesGridProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
 
   const selectedVehicle = contractVehicles.find((vehicle) => vehicle.id === selectedId);
   const selectedDetails =
     selectedId && selectedId in contractVehicleDetails
       ? contractVehicleDetails[selectedId as keyof typeof contractVehicleDetails]
       : undefined;
+
+  useEffect(() => {
+    if (!selectedId || !detailRef.current) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      detailRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [selectedId]);
 
   return (
     <div className="cv-grid-wrap">
@@ -59,7 +73,11 @@ export function ContractVehiclesGrid({ href = "/contact" }: ContractVehiclesGrid
       </ul>
 
       {selectedVehicle && selectedDetails?.length ? (
-        <div id={`cv-detail-${selectedVehicle.id}`}>
+        <div
+          id={`cv-detail-${selectedVehicle.id}`}
+          ref={detailRef}
+          className="cv-detail-anchor"
+        >
           <ContractVehicleDetailTable
             title={selectedVehicle.label}
             details={selectedDetails}

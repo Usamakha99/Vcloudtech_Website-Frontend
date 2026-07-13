@@ -24,7 +24,7 @@ export function HomeTopContractsSection() {
         <header className="tc__header">
           <p className={dt.badge}>Contracts</p>
           <h2 id="top-contracts-heading" className="tc__heading">
-            Top Performing Contracts Holder
+            Top Performing Contracts
           </h2>
         </header>
 

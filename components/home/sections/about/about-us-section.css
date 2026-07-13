@@ -1690,6 +1690,16 @@
   }
 }
 
+.about-minimal__section-close {
+  width: 100vw;
+  max-width: 100vw;
+  height: 0;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .about-minimal__intro {
   max-width: none;
 }

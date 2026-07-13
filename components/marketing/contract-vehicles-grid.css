@@ -26,6 +26,10 @@
   gap: 1.25rem;
 }
 
+.cv-detail-anchor {
+  scroll-margin-top: calc(var(--dt-nav-occupancy, 5.75rem) + 1rem);
+}
+
 .cv-grid__chip {
   display: flex;
   align-items: center;

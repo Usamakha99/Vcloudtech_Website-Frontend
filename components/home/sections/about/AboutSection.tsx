@@ -149,6 +149,8 @@ export function HomeAboutSection() {
           </figure>
         </div>
 
+        <div className="about-minimal__section-close" aria-hidden />
+
         {/* <SectorsRowSection /> */}
 
         <IndustriesImageGridSection />
@@ -215,9 +217,6 @@ function IndustriesImageGridSection() {
             <span className="text-white">Serve</span>
           </h2>
         </div>
-        <span className="about-enterprise__sectors-count" aria-hidden>
-          {String(industryImageSectors.length).padStart(2, "0")}
-        </span>
       </header>
 
       <ul
