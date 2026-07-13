@@ -1,10 +1,8 @@
-import Link from "next/link";
-
+import { ContractVehiclesGrid } from "@/components/marketing/ContractVehiclesGrid";
 import { MarketingPageHero } from "@/components/marketing/MarketingPageHero";
 import {
   contractsPageCorporate,
   contractsPageHero,
-  contractsPageVehicles,
 } from "@/lib/marketing/contracts-page-content";
 
 import "@/components/marketing/marketing-page-hero.css";
@@ -34,15 +32,7 @@ export function ContractsLandingPage() {
             <p className="contracts-page__corporate-desc">{contractsPageCorporate.description}</p>
           </header>
 
-          <ul className="contracts-page__vehicles" aria-label="Contract vehicles">
-            {contractsPageVehicles.map((vehicle) => (
-              <li key={vehicle.id}>
-                <Link href={vehicle.href} className="contracts-page__vehicle">
-                  {vehicle.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <ContractVehiclesGrid href="/contact" />
         </section>
       </div>
     </div>
