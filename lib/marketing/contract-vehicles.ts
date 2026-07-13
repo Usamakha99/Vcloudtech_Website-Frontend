@@ -20,7 +20,7 @@ export const contractVehicles = [
   { id: "fort-worth-isd", label: "Fort Worth ISD" },
   { id: "edge-public", label: "Edge Public / AFI Alliance for Innovation" },
   { id: "ohio-sts", label: "Ohio STS" },
-  { id: "tx-dir-idiq", label: "State of Texas DIR Software, COTS, and Services IDIQ" },
+  { id: "tx-dir-idiq", label: "State of Texas DIR" },
   { id: "tx-dir", label: "TX DIR" },
   { id: "naspo", label: "NASPO" },
   { id: "ncpa-promark", label: "NCPA under Promark" },
