@@ -5,7 +5,6 @@ import { HomeContactSection } from "@/components/home/sections/contact/ContactSe
 import { HomeTopContractsSection } from "@/components/home/sections/contracts/TopContractsSection";
 import { HomeFaqSection } from "@/components/home/sections/faq/FaqSection";
 import { HomeHeroSection } from "@/components/home/sections/hero/HeroSection";
-import { HomeIndustriesNetworkSection } from "@/components/home/sections/industries/IndustriesNetworkSection";
 import { HomeTechnologyPartnersSection } from "@/components/home/sections/partners/PartnersSection";
 import { HomeResourceHubSection } from "@/components/home/sections/resource-hub/ResourceHubSection";
 import { HomeServicesSection } from "@/components/home/sections/services/ServicesSection";
@@ -44,11 +43,6 @@ export const HOME_SECTIONS: HomeSectionEntry[] = [
     id: "about",
     label: "About Us & Industries",
     component: HomeAboutSection,
-  },
-  {
-    id: "industries-network",
-    label: "Industries Network (Test)",
-    component: HomeIndustriesNetworkSection,
   },
   {
     id: "partners",

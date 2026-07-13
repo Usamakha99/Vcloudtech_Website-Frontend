@@ -28,6 +28,7 @@ export const publicAssets = {
     logoLight: "/brand/light_logo.png",
     source: "/brand/vcloudtech-logo.png",
     favicon: "/brand/favicon.png",
+    markOutline: "/assets/vcloudtech02.png",
   },
   intro: {
     loaderVideo: withAssetVersion("/intro/loader-intro-v2.mp4", assetVersions.intro),

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 
@@ -10,6 +11,7 @@ import {
   designTestFooterLocations,
   designTestFooterSocial,
 } from "@/lib/marketing/footer-content";
+import { publicAssets } from "@/lib/public-assets";
 
 import "./design-test-footer.css";
 
@@ -142,30 +144,45 @@ export function DesignTestFooter() {
             <FooterSocialLinks links={designTestFooterSocial} />
           </div>
 
-          <div>
-            <p className="dt-footer__col-title">Services</p>
-            <ul className="dt-footer__links">
-              {designTestFooterLinks.services.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="dt-footer__link">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="dt-footer__mid">
+            <div className="dt-footer__mid-links">
+              <div>
+                <p className="dt-footer__col-title">Services</p>
+                <ul className="dt-footer__links">
+                  {designTestFooterLinks.services.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="dt-footer__link">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <div>
-            <p className="dt-footer__col-title">Company</p>
-            <ul className="dt-footer__links">
-              {designTestFooterLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="dt-footer__link">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+              <div>
+                <p className="dt-footer__col-title">Company</p>
+                <ul className="dt-footer__links">
+                  {designTestFooterLinks.company.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="dt-footer__link">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="dt-footer__mark" aria-hidden>
+              <Image
+                src={publicAssets.brand.markOutline}
+                alt=""
+                width={720}
+                height={160}
+                className="dt-footer__mark-img"
+                sizes="(max-width: 767px) 70vw, 26vw"
+              />
+            </div>
           </div>
 
           <FooterContactInfo />

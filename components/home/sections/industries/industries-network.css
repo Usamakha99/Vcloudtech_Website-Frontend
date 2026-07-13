@@ -9,7 +9,10 @@
   --ind-glow: rgba(96, 140, 196, 0.28);
   position: relative;
   overflow: hidden;
-  padding: clamp(3.5rem, 7vw, 5.5rem) 0 clamp(4rem, 8vw, 6rem);
+  padding:
+    calc(var(--dt-nav-occupancy, 5.75rem) + clamp(2rem, 4vw, 3rem))
+    0
+    clamp(4rem, 8vw, 6rem);
   background: var(--ind-bg);
   color: var(--ind-text);
 }
