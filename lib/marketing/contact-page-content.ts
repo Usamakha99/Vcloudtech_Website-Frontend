@@ -16,10 +16,7 @@ export const contactInfoCards = [
   {
     id: "headquarters",
     title: "Headquarters",
-    lines: [
-      designTestFooterLocations.headquarters.lines[0],
-      designTestFooterLocations.headquarters.lines[1],
-    ],
+    lines: [...designTestFooterLocations.headquarters.lines],
     href: designTestFooterLocations.headquarters.mapsUrl,
     linkLabel: "View on Google Maps",
   },
