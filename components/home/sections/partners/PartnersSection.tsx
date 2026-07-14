@@ -223,7 +223,7 @@ export function HomeTechnologyPartnersSection() {
             animate={showcaseActive ? "show" : "hidden"}
           >
             {partnerLogos.map((partner) => (
-              <motion.li key={partner.name} variants={fadeUpTight}>
+              <motion.li key={partner.name} variants={fadeUpTight} className="tp__partner-item">
                 <div className="tp__partner-cell group">
                   <div className="tp__partner-logo-slot">
                     <Image
@@ -236,6 +236,9 @@ export function HomeTechnologyPartnersSection() {
                     />
                   </div>
                 </div>
+                <span className="tp__partner-popup" role="tooltip">
+                  {partner.name}
+                </span>
               </motion.li>
             ))}
           </motion.ul>
