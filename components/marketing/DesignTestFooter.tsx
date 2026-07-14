@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 
@@ -11,7 +10,6 @@ import {
   designTestFooterLocations,
   designTestFooterSocial,
 } from "@/lib/marketing/footer-content";
-import { publicAssets } from "@/lib/public-assets";
 
 import "./design-test-footer.css";
 
@@ -171,17 +169,6 @@ export function DesignTestFooter() {
                   ))}
                 </ul>
               </div>
-            </div>
-
-            <div className="dt-footer__mark" aria-hidden>
-              <Image
-                src={publicAssets.brand.markOutline}
-                alt=""
-                width={720}
-                height={160}
-                className="dt-footer__mark-img"
-                sizes="(max-width: 767px) 70vw, 26vw"
-              />
             </div>
           </div>
 

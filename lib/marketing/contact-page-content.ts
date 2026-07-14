@@ -51,7 +51,7 @@ export const contactOfficeLocations = [
     mapsUrl: designTestFooterLocations.headquarters.mapsUrl,
     mapsLabel: "Open in Google Maps",
     image: publicAssets.locations.texas,
-    imageAlt: "Dallas skyline line art illustration",
+    imageAlt: "Dallas skyline at dusk",
   },
   {
     id: "office",
@@ -61,7 +61,7 @@ export const contactOfficeLocations = [
     mapsUrl: designTestFooterLocations.office.mapsUrl,
     mapsLabel: "Open in Google Maps",
     image: publicAssets.locations.california,
-    imageAlt: "Golden Gate Bridge isometric illustration",
+    imageAlt: "Golden Gate Bridge and San Francisco skyline at night",
   },
 ] as const;
 

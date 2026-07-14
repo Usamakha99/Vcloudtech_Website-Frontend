@@ -165,10 +165,22 @@ export function ContactLandingPage() {
           <ul className="contact-page__locations-grid">
             {contactOfficeLocations.map((location) => (
               <li key={location.id} className="contact-page__location-card">
+                <div
+                  className={`contact-page__location-media contact-page__location-media--${location.id}`}
+                  aria-hidden
+                >
+                  <Image
+                    src={location.image}
+                    alt=""
+                    fill
+                    priority={false}
+                    className="contact-page__location-media-img"
+                    sizes="(max-width: 767px) 100vw, 50vw"
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                  />
+                </div>
+                <div className="contact-page__location-scrim" aria-hidden />
                 <div className="contact-page__location-copy">
-                  <div className="contact-page__location-icon" aria-hidden>
-                    <GovernmentIcon />
-                  </div>
                   <p className="contact-page__location-label">{location.label}</p>
                   <h3 className="contact-page__location-region">{location.region}</h3>
                   {location.lines.map((line) => (
@@ -184,17 +196,6 @@ export function ContactLandingPage() {
                   >
                     {location.mapsLabel}
                   </Link>
-                </div>
-                <div
-                  className={`contact-page__location-monument-wrap contact-page__location-monument-wrap--${location.id}`}
-                >
-                  <Image
-                    src={location.image}
-                    alt={location.imageAlt}
-                    fill
-                    className="contact-page__location-monument-img"
-                    sizes="(max-width: 767px) 40vw, 200px"
-                  />
                 </div>
               </li>
             ))}
