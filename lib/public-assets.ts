@@ -19,6 +19,7 @@ export const assetVersions = {
   hero: "9",
   intro: "3",
   locations: "2",
+  values: "1",
 } as const;
 
 export function withAssetVersion(path: string, version: string): string {
@@ -51,6 +52,24 @@ export const publicAssets = {
     journeyInfographic: withAssetVersion(
       "/assets/about/our-journey-infographic.gif",
       assetVersions.about,
+    ),
+  },
+  values: {
+    reliability: withAssetVersion(
+      "/assets/The Values Behind Every Connection Section/11.png",
+      assetVersions.values,
+    ),
+    integrity: withAssetVersion(
+      "/assets/The Values Behind Every Connection Section/12.png",
+      assetVersions.values,
+    ),
+    innovation: withAssetVersion(
+      "/assets/The Values Behind Every Connection Section/13.png",
+      assetVersions.values,
+    ),
+    security: withAssetVersion(
+      "/assets/The Values Behind Every Connection Section/14.png",
+      assetVersions.values,
     ),
   },
   contact: {
