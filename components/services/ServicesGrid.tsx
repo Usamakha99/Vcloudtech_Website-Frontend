@@ -73,7 +73,7 @@ export const SERVICES_GRID_ITEMS: ServiceItem[] = [
     href: "/solutions/data-center-networking",
     icon: CloudIcon,
     image: serviceImages.networking,
-    imagePosition: "4% 12%",
+    imagePosition: "6% 5%",
     bullets: [
       "Enterprise switching, routing and wireless",
       "SD-WAN and next-generation architecture",

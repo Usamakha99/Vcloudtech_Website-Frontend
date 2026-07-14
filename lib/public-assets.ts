@@ -14,6 +14,7 @@ export const assetVersions = {
   contractsPage: "1",
   servicesPage: "2",
   topContractHolders: "1",
+  services: "9",
   hero: "8",
   intro: "2",
 } as const;
@@ -104,12 +105,24 @@ export const publicAssets = {
     ),
   },
   services: {
-    aiProcurement: "/assets/services/ai-infrastructure.png",
-    dataCenterHardware: "/assets/services/data-center-hardware.png",
-    networking: "/assets/services/networking.png",
-    cybersecurity: "/assets/services/cyber-security.png",
-    powerInfrastructure: "/assets/services/power-infrastructure.png",
-    lifecycleManagement: "/assets/services/lifecycle-management.png",
+    aiProcurement: withAssetVersion(
+      "/assets/services/ai-infrastructure.png",
+      assetVersions.services,
+    ),
+    dataCenterHardware: withAssetVersion(
+      "/assets/services/data-center-hardware.png",
+      assetVersions.services,
+    ),
+    networking: withAssetVersion("/assets/services/networking.png", assetVersions.services),
+    cybersecurity: withAssetVersion("/assets/services/cyber-security.png", assetVersions.services),
+    powerInfrastructure: withAssetVersion(
+      "/assets/services/power-infrastructure.png",
+      assetVersions.services,
+    ),
+    lifecycleManagement: withAssetVersion(
+      "/assets/services/lifecycle-management.png",
+      assetVersions.services,
+    ),
   },
   credentials: {
     iso: "/assets/credentials/iso-9001-2015-white.png",
