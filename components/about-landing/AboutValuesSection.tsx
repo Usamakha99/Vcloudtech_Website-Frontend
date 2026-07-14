@@ -19,7 +19,7 @@ const iconById: Record<(typeof aboutValues.items)[number]["id"], keyof typeof VA
   security: "security",
 };
 
-/** Core values — minimal premium panels. */
+/** Core values — premium enterprise split cards. */
 export function AboutValuesSection({ badge, title, items }: Props) {
   return (
     <section
@@ -42,12 +42,18 @@ export function AboutValuesSection({ badge, title, items }: Props) {
             <li key={value.id}>
               <DtScrollReveal delay={index * 0.07}>
                 <article className="about-page__value-card" tabIndex={0}>
-                  <div className="about-page__value-card-shine" aria-hidden />
-                  <div className="about-page__value-mark" aria-hidden>
-                    <Icon />
+                  <div className="about-page__value-card-media" aria-hidden>
+                    <span className="about-page__value-card-rings" />
+                    <span className="about-page__value-card-glow" />
+                    <span className="about-page__value-card-icon">
+                      <Icon />
+                    </span>
                   </div>
-                  <h3 className="about-page__value-title">{value.title}</h3>
-                  <p className="about-page__value-desc">{value.description}</p>
+                  <div className="about-page__value-card-divider" aria-hidden />
+                  <div className="about-page__value-card-body">
+                    <h3 className="about-page__value-title">{value.title}</h3>
+                    <p className="about-page__value-desc">{value.description}</p>
+                  </div>
                 </article>
               </DtScrollReveal>
             </li>

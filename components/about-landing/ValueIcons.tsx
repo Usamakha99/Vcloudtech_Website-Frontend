@@ -6,49 +6,56 @@ const base = {
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 1.35,
+  strokeWidth: 1.25,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
   "aria-hidden": true,
 };
 
-/** Always-on infrastructure & uptime */
+/** Reliability First — server rack / infrastructure */
 export function ReliabilityValueIcon(props: Props) {
   return (
     <svg {...base} {...props}>
-      <path d="M4 17V7M8 17V11M12 17V5M16 17V9M20 17V13" />
+      <rect x="4" y="3" width="16" height="6" rx="1.25" />
+      <rect x="4" y="11" width="16" height="6" rx="1.25" />
+      <path d="M8 6h.01M8 14h.01M12 6h6M12 14h6" />
+      <path d="M7 21h10" />
+      <path d="M9 17v4M15 17v4" />
     </svg>
   );
 }
 
-/** Transparent partnerships & honest guidance */
+/** Integrity — shield with check */
 export function IntegrityValueIcon(props: Props) {
   return (
     <svg {...base} {...props}>
-      <circle cx="8.25" cy="12" r="2.75" />
-      <circle cx="15.75" cy="12" r="2.75" />
-      <path d="M11 12h2" />
+      <path d="M12 3.25 19.25 6.5v5.1c0 4.35-3.05 7.7-7.25 8.65-4.2-.95-7.25-4.3-7.25-8.65V6.5L12 3.25z" />
+      <path d="m9.1 12.05 2 2 3.9-4.05" />
     </svg>
   );
 }
 
-/** Customer-led innovation & intelligent automation */
+/** Customer-Centric Innovation — connected nodes / AI spark */
 export function InnovationValueIcon(props: Props) {
   return (
     <svg {...base} {...props}>
-      <circle cx="12" cy="12" r="2.25" />
-      <path d="M12 4.5v3M12 16.5v3M4.5 12h3M16.5 12h3" />
-      <path d="M7.05 7.05l2.12 2.12M14.83 14.83l2.12 2.12M16.95 7.05l-2.12 2.12M9.17 14.83l-2.12 2.12" />
+      <circle cx="12" cy="5.5" r="1.85" />
+      <circle cx="5.5" cy="16.5" r="1.85" />
+      <circle cx="18.5" cy="16.5" r="1.85" />
+      <circle cx="12" cy="12" r="1.6" />
+      <path d="M12 7.35v2.9M10.85 13.1l-3.55 2.35M13.15 13.1l3.55 2.35" />
+      <path d="M12 3.2v-.7M4.2 15.2l-.55-.55M19.8 15.2l.55-.55" />
     </svg>
   );
 }
 
-/** Security engineered into every layer */
+/** Security by Design — shield lock */
 export function SecurityValueIcon(props: Props) {
   return (
     <svg {...base} {...props}>
-      <path d="M12 3.5l7 3.5v5.25c0 4.15-2.9 7.35-7 8.25-4.1-.9-7-4.1-7-8.25V7l7-3.5z" />
-      <path d="M9.25 12.25l1.75 1.75 3.75-3.75" />
+      <path d="M12 3.25 19.25 6.5v5.1c0 4.35-3.05 7.7-7.25 8.65-4.2-.95-7.25-4.3-7.25-8.65V6.5L12 3.25z" />
+      <rect x="9.25" y="11.1" width="5.5" height="4.4" rx="1" />
+      <path d="M10.75 11.1v-1.35a1.25 1.25 0 0 1 2.5 0V11.1" />
     </svg>
   );
 }
