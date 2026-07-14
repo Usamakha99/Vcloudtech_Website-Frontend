@@ -111,12 +111,15 @@ html.intro-pending body {
 }
 
 html.intro-pending #site-content {
-  display: none !important;
+  /* Keep in layout so hero images can decode while the intro plays */
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Mobile / touch — never block site for desktop intro */
 html.intro-skip-mobile #site-content {
-  display: flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 html.intro-skip-mobile {
@@ -130,7 +133,8 @@ html.intro-skip-mobile .intro-splash-desktop {
 
 @media (max-width: 767px) {
   html.intro-pending #site-content {
-    display: flex !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
 
   html.intro-pending {

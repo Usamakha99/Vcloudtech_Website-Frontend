@@ -16,7 +16,7 @@ export const assetVersions = {
   topContractHolders: "1",
   services: "9",
   hero: "8",
-  intro: "2",
+  intro: "3",
 } as const;
 
 export function withAssetVersion(path: string, version: string): string {

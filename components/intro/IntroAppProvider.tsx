@@ -8,7 +8,7 @@ import { isMobileDevice } from "@/components/intro/intro-device";
 import { publicAssets } from "@/lib/public-assets";
 
 const INTRO_MAX_MS = 15_000;
-const EXIT_FADE_MS = 500;
+const EXIT_FADE_MS = 280;
 
 function isHomePath(pathname: string) {
   return pathname === "/";
@@ -53,6 +53,11 @@ export function IntroAppProvider({
 
   const finish = useCallback(() => {
     clearIntroTimeout();
+    // Reveal the home carousel under the overlay immediately so the exit
+    // fade doesn't flash the page theme color (`#041329`).
+    setIntroPending(false);
+    setIntroReady(true);
+    document.body.style.overflow = "";
     setPhase("exiting");
 
     if (exitTimeoutRef.current !== null) {
@@ -60,9 +65,7 @@ export function IntroAppProvider({
     }
 
     exitTimeoutRef.current = window.setTimeout(() => {
-      setIntroPending(false);
       setPhase("off");
-      setIntroReady(true);
     }, EXIT_FADE_MS);
   }, [clearIntroTimeout]);
 
@@ -156,7 +159,7 @@ export function IntroAppProvider({
       {showSplash ? (
         <div
           id="intro-splash"
-          className={`intro-splash-desktop fixed inset-0 z-[9999] flex items-center justify-center bg-[#0F0F0F] transition-opacity duration-500 ${
+          className={`intro-splash-desktop fixed inset-0 z-[9999] flex items-center justify-center bg-[#0F0F0F] transition-opacity duration-300 ${
             fading ? "pointer-events-none opacity-0" : "opacity-100"
           }`}
           role="dialog"
