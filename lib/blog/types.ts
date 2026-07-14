@@ -1,5 +1,7 @@
 import type { PortableTextBlock } from "@portabletext/types";
 
+import { publicAssets } from "@/lib/public-assets";
+
 export type BlogCategoryIcon =
   | "server"
   | "shield"
@@ -60,11 +62,11 @@ export type BlogCategory = {
 export const blogLanding = {
   hero: {
     badge: "Blogs",
-    title: "All Blogs",
+    title: "Blogs",
     description:
       "Explore vCloudTech insights across AI infrastructure, cloud engineering, cybersecurity, networking, data centers, procurement, and enterprise digital transformation.",
-    image: "/assets/services/ai-infrastructure.png",
-    imageAlt: "Enterprise AI infrastructure editorial illustration",
+    image: publicAssets.blogPage.hero,
+    imageAlt: "vCloudTech blogs — enterprise technology insights and industry perspectives",
   },
   newsletter: {
     title: "Stay Ahead of Enterprise Technology",

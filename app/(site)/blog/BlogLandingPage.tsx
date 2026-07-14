@@ -45,9 +45,10 @@ export function BlogLandingPage({ articles, categories }: Props) {
   );
 
   return (
-    <main className="blog-page blog-page--landing" data-nav-surface="dark">
+    <main className="blog-page blog-page--landing marketing-page" data-nav-surface="dark">
       <Hero />
 
+      <div className="marketing-page__body">
       <CategoryFilters
         categories={categories}
         activeSlug={categorySlug}
@@ -78,6 +79,7 @@ export function BlogLandingPage({ articles, categories }: Props) {
           )}
         </div>
       </section>
+      </div>
     </main>
   );
 }

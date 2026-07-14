@@ -7,12 +7,13 @@
 
 export const assetVersions = {
   industries: "8",
-  blog: "10",
+  blog: "11",
   about: "17",
   contact: "1",
   partnerPage: "1",
   contractsPage: "1",
   servicesPage: "2",
+  blogPage: "1",
   topContractHolders: "1",
   services: "9",
   hero: "9",
@@ -63,6 +64,9 @@ export const publicAssets = {
   servicesPage: {
     hero: withAssetVersion("/assets/website hero sections/2.png", assetVersions.servicesPage),
   },
+  blogPage: {
+    hero: withAssetVersion("/assets/blog hero/blog-hero.png", assetVersions.blogPage),
+  },
   topContractHolders: {
     sourcewell: withAssetVersion(
       "/assets/Top Contracts holders/5.png",
@@ -90,8 +94,10 @@ export const publicAssets = {
     california: "/assets/locations/california-bridge-lineart-v2.png",
   },
   blog: {
-    banner: (index: 1 | 2 | 3) =>
-      withAssetVersion(`/assets/blog/${index}.png`, assetVersions.blog),
+    banner: (index: 1 | 2 | 3) => {
+      const ext = index === 3 ? "jpg" : "png";
+      return withAssetVersion(`/assets/blog/${index}.${ext}`, assetVersions.blog);
+    },
   },
   industries: {
     government: withAssetVersion("/assets/industries/government-sector.png", assetVersions.industries),

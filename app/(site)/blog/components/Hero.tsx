@@ -1,17 +1,19 @@
+import { MarketingPageHero } from "@/components/marketing/MarketingPageHero";
 import { blogLanding } from "@/lib/blog/types";
 
+import "@/components/marketing/marketing-page-hero.css";
+
+/** Blog landing hero — same MarketingPageHero pattern as Services / Contracts. */
 export function Hero() {
   const { hero } = blogLanding;
 
   return (
-    <section className="blog-hero blog-hero--centered" aria-labelledby="blog-hero-heading">
-      <div className="blog-container blog-hero__inner--centered">
-        <p className="blog-hero__eyebrow">{hero.badge}</p>
-        <h1 id="blog-hero-heading" className="blog-hero__title blog-hero__title--centered">
-          {hero.title}
-        </h1>
-        <p className="blog-hero__lede blog-hero__lede--centered">{hero.description}</p>
-      </div>
-    </section>
+    <MarketingPageHero
+      title={hero.title}
+      lede={hero.description}
+      image={hero.image}
+      imageAlt={hero.imageAlt}
+      headingId="blog-hero-heading"
+    />
   );
 }
