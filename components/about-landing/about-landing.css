@@ -1144,11 +1144,11 @@
 .about-page__value-card {
   position: relative;
   display: grid;
-  grid-template-columns: 0.32fr auto 0.68fr;
+  grid-template-columns: minmax(10.5rem, 38%) 1px minmax(0, 1fr);
   align-items: stretch;
   flex: 1;
   width: 100%;
-  min-height: clamp(15rem, 28vw, 16.25rem);
+  min-height: clamp(16.5rem, 30vw, 18.5rem);
   padding: 0;
   border-radius: 20px;
   border: 1px solid rgba(179, 179, 179, 0.12);
@@ -1181,22 +1181,32 @@
 
 .about-page__value-card-media {
   position: relative;
-  display: block;
+  z-index: 1;
+  align-self: stretch;
+  width: 100%;
   min-width: 0;
   min-height: 100%;
   overflow: hidden;
-  background: #050b14;
+  background: transparent;
 }
 
 .about-page__value-card-media-img {
-  object-fit: cover;
+  position: absolute;
+  inset: 0.35rem;
+  display: block;
+  width: calc(100% - 0.7rem);
+  height: calc(100% - 0.7rem);
+  object-fit: contain;
   object-position: center;
+  background: transparent;
+  transform: scale(1.18);
+  transform-origin: center center;
   transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .about-page__value-card:hover .about-page__value-card-media-img,
 .about-page__value-card:focus-visible .about-page__value-card-media-img {
-  transform: scale(1.06);
+  transform: scale(1.26);
 }
 
 .about-page__value-card-divider {
@@ -1254,12 +1264,21 @@
 @media (max-width: 639px) {
   .about-page__value-card {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(9.5rem, 38vw) auto auto;
+    grid-template-rows: minmax(11rem, 42vw) auto auto;
     min-height: 0;
   }
 
   .about-page__value-card-media {
-    min-height: 9.5rem;
+    min-height: 11rem;
+  }
+
+  .about-page__value-card-media-img {
+    transform: scale(1.12);
+  }
+
+  .about-page__value-card:hover .about-page__value-card-media-img,
+  .about-page__value-card:focus-visible .about-page__value-card-media-img {
+    transform: scale(1.18);
   }
 
   .about-page__value-card-divider {

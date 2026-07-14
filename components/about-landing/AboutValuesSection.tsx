@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import { dt } from "@/components/marketing/design-test-theme";
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
 import type { aboutValues } from "@/lib/marketing/about-page-content";
@@ -45,12 +43,16 @@ export function AboutValuesSection({ badge, title, items }: Props) {
             <DtScrollReveal delay={index * 0.07}>
               <article className="about-page__value-card" tabIndex={0}>
                 <div className="about-page__value-card-media" aria-hidden>
-                  <Image
+                  {/* Native img keeps PNG alpha; next/image can flatten transparent PNGs */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className="about-page__value-card-media-img"
                     src={publicAssets.values[iconById[value.id]]}
                     alt=""
-                    fill
-                    className="about-page__value-card-media-img"
-                    sizes="(max-width: 767px) 100vw, 30vw"
+                    width={320}
+                    height={292}
+                    decoding="async"
+                    loading="lazy"
                   />
                 </div>
                 <div className="about-page__value-card-divider" aria-hidden />

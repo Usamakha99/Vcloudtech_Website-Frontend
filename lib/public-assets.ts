@@ -19,7 +19,7 @@ export const assetVersions = {
   hero: "9",
   intro: "3",
   locations: "2",
-  values: "1",
+  values: "5",
 } as const;
 
 export function withAssetVersion(path: string, version: string): string {
