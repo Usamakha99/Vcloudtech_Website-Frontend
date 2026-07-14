@@ -213,46 +213,52 @@
   width: 100%;
   max-width: none;
   height: auto;
-  opacity: 0.78;
+  opacity: 0.82;
   object-fit: contain;
   object-position: center;
   mix-blend-mode: screen;
+  filter: drop-shadow(0 0 10px rgba(179, 179, 179, 0.22))
+    drop-shadow(0 0 28px rgba(255, 255, 255, 0.08));
 }
 
 .dt-footer__mark-shine {
   position: absolute;
-  inset: -8% -20%;
+  inset: -12% -35%;
   z-index: 1;
   pointer-events: none;
   background: linear-gradient(
-    105deg,
-    transparent 36%,
-    rgba(255, 255, 255, 0.08) 46%,
-    rgba(255, 255, 255, 0.22) 50%,
-    rgba(255, 255, 255, 0.08) 54%,
-    transparent 64%
+    100deg,
+    transparent 28%,
+    rgba(255, 255, 255, 0.06) 40%,
+    rgba(255, 255, 255, 0.28) 47%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.28) 53%,
+    rgba(255, 255, 255, 0.06) 60%,
+    transparent 72%
   );
   mix-blend-mode: soft-light;
-  transform: translateX(-75%) skewX(-12deg);
+  filter: blur(6px);
+  transform: translateX(-120%) skewX(-10deg);
   opacity: 0;
-  animation: dt-footer-mark-shine 7s linear infinite both;
+  /* Slow pass from V through the last H of VCLOUDTECH */
+  animation: dt-footer-mark-shine 8s linear infinite both;
 }
 
 @keyframes dt-footer-mark-shine {
   0% {
-    transform: translateX(-80%) skewX(-12deg);
+    transform: translateX(-120%) skewX(-10deg);
     opacity: 0;
   }
-  6% {
+  4% {
     opacity: 1;
   }
-  72% {
-    transform: translateX(80%) skewX(-12deg);
+  88% {
+    transform: translateX(120%) skewX(-10deg);
     opacity: 1;
   }
-  80%,
+  94%,
   100% {
-    transform: translateX(90%) skewX(-12deg);
+    transform: translateX(130%) skewX(-10deg);
     opacity: 0;
   }
 }
@@ -265,7 +271,9 @@
 
   .dt-footer__mark-img {
     width: 100%;
-    opacity: 0.82;
+    opacity: 0.88;
+    filter: drop-shadow(0 0 14px rgba(179, 179, 179, 0.28))
+      drop-shadow(0 0 36px rgba(255, 255, 255, 0.12));
   }
 }
 
@@ -279,6 +287,10 @@
   .dt-footer__mark-shine {
     animation: none;
     display: none;
+  }
+
+  .dt-footer__mark-img {
+    filter: drop-shadow(0 0 10px rgba(179, 179, 179, 0.2));
   }
 }
 
