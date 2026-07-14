@@ -52,7 +52,7 @@ export function PartnersLandingPage() {
             </h3>
             <ul className="tp__partner-grid tp__partner-grid--all" data-nav-surface="light">
               {partnerLogos.map((partner) => (
-                <li key={partner.name} className="tp__partner-item">
+                <li key={partner.name}>
                   <div className="tp__partner-cell group">
                     <div className="tp__partner-logo-slot">
                       <Image
@@ -65,9 +65,6 @@ export function PartnersLandingPage() {
                       />
                     </div>
                   </div>
-                  <span className="tp__partner-popup" role="tooltip">
-                    {partner.name}
-                  </span>
                 </li>
               ))}
             </ul>
