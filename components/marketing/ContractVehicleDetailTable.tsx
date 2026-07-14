@@ -6,7 +6,8 @@ type ContractVehicleDetailTableProps = {
   onClose: () => void;
 };
 
-const detailRows: { key: keyof ContractVehicleDetail; label: string }[] = [
+const detailRows: { key: keyof ContractVehicleDetail; label: string; prominent?: boolean }[] = [
+  { key: "contractNumber", label: "Contract No", prominent: true },
   { key: "contractHolder", label: "Contract holder" },
   { key: "region", label: "Region" },
   { key: "manufacturers", label: "Manufacturers / publishers" },
@@ -18,7 +19,10 @@ function ContractDetailRows({ detail }: { detail: ContractVehicleDetail }) {
   return (
     <dl className="cv-detail__list">
       {detailRows.map((row) => (
-        <div key={row.key} className="cv-detail__row">
+        <div
+          key={row.key}
+          className={`cv-detail__row${row.prominent ? " cv-detail__row--prominent" : ""}`}
+        >
           <dt>{row.label}</dt>
           <dd>{detail[row.key]}</dd>
         </div>
@@ -45,7 +49,6 @@ export function ContractVehicleDetailTable({
       <div className="cv-detail__body">
         {details.map((detail, index) => (
           <article key={detail.contractNumber} className="cv-detail__block">
-            <h4 className="cv-detail__contract-id">{detail.contractNumber}</h4>
             <ContractDetailRows detail={detail} />
             {index < details.length - 1 ? <hr className="cv-detail__divider" /> : null}
           </article>

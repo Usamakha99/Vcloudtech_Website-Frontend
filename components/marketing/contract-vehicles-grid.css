@@ -124,10 +124,10 @@ button.cv-grid__chip {
 
 .cv-detail__title {
   margin: 0;
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  font-size: clamp(1.375rem, 2.8vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
   color: #ffffff;
   text-align: center;
   text-wrap: balance;
@@ -185,28 +185,6 @@ button.cv-grid__chip {
 
 .cv-detail__block {
   display: grid;
-}
-
-.cv-detail__contract-id {
-  margin: 0;
-  padding: 1.75rem clamp(2.5rem, 5vw, 3rem) 0.5rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
-  text-align: center;
-}
-
-.cv-detail__contract-id::after {
-  content: "";
-  display: block;
-  width: 2rem;
-  height: 2px;
-  margin: 0.625rem auto 0;
-  border-radius: 999px;
-  background: #e55614;
-  opacity: 0.9;
 }
 
 .cv-detail__divider {
@@ -267,6 +245,17 @@ button.cv-grid__chip {
   text-wrap: pretty;
 }
 
+.cv-detail__row--prominent dd {
+  font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.cv-detail__row--prominent dt {
+  color: rgba(255, 255, 255, 0.62);
+}
+
 @media (min-width: 640px) {
   .cv-detail__row {
     grid-template-columns: minmax(9.5rem, 12rem) 1fr;
@@ -286,10 +275,6 @@ button.cv-grid__chip {
 
 @media (min-width: 1024px) {
   .cv-detail__list {
-    padding-inline: 3rem;
-  }
-
-  .cv-detail__contract-id {
     padding-inline: 3rem;
   }
 
