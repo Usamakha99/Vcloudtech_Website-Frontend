@@ -1,7 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 
-import { VCloudTechLogoImage } from "@/components/brand/VCloudTechLogoImage";
 import { FooterNewsletter } from "@/components/marketing/FooterNewsletter";
 import { FooterSocialLinks } from "@/components/marketing/FooterSocialIcons";
 import { designTestContactInfo } from "@/lib/marketing/contact-options";
@@ -10,6 +10,7 @@ import {
   designTestFooterLocations,
   designTestFooterSocial,
 } from "@/lib/marketing/footer-content";
+import { publicAssets } from "@/lib/public-assets";
 
 import "./design-test-footer.css";
 
@@ -122,7 +123,6 @@ export function DesignTestFooter() {
 
         <div className="dt-footer__grid">
           <div className="dt-footer__brand">
-            <VCloudTechLogoImage variant="light" className="h-8 w-auto sm:h-9" />
             <div className="dt-footer__locations">
               <FooterLocationLink
                 country={designTestFooterLocations.headquarters.country}
@@ -169,6 +169,17 @@ export function DesignTestFooter() {
                   ))}
                 </ul>
               </div>
+            </div>
+
+            <div className="dt-footer__mark" aria-hidden>
+              <Image
+                src={publicAssets.brand.markOutline}
+                alt=""
+                width={720}
+                height={160}
+                className="dt-footer__mark-img"
+                sizes="(max-width: 767px) 70vw, 26vw"
+              />
             </div>
           </div>
 
