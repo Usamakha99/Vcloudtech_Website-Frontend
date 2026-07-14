@@ -75,8 +75,8 @@ button.cv-grid__chip {
 }
 
 .cv-grid__chip--active {
-  border-color: rgba(229, 86, 20, 0.55);
-  background: rgba(229, 86, 20, 0.1);
+  border-color: rgba(179, 179, 179, 0.7);
+  background: rgba(179, 179, 179, 0.14);
 }
 
 .cv-grid__chip:focus-visible {
