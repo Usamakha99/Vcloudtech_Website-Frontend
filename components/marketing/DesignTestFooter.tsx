@@ -170,20 +170,21 @@ export function DesignTestFooter() {
                 </ul>
               </div>
             </div>
-
-            <div className="dt-footer__mark" aria-hidden>
-              <Image
-                src={publicAssets.brand.markOutline}
-                alt=""
-                width={720}
-                height={160}
-                className="dt-footer__mark-img"
-                sizes="(max-width: 767px) 70vw, 26vw"
-              />
-            </div>
           </div>
 
           <FooterContactInfo />
+        </div>
+
+        <div className="dt-footer__mark" aria-hidden>
+          <Image
+            src={publicAssets.brand.markOutline}
+            alt=""
+            width={1600}
+            height={360}
+            className="dt-footer__mark-img"
+            sizes="100vw"
+            priority={false}
+          />
         </div>
 
         <div className="dt-footer__bottom">
