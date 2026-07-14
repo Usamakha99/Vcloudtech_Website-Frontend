@@ -31,7 +31,7 @@ function ContractDetailRows({ detail }: { detail: ContractVehicleDetail }) {
   );
 }
 
-/** Contract details — each contract in its own section (no nested card containers). */
+/** Contract details — multiple contracts render as separate cards. */
 export function ContractVehicleDetailTable({
   title,
   details,
@@ -48,32 +48,28 @@ export function ContractVehicleDetailTable({
         </button>
       </div>
 
-      <div className="cv-detail__body">
+      <div className={`cv-detail__body${multiple ? " cv-detail__body--cards" : ""}`}>
         {details.map((detail, index) => (
-          <div
+          <article
             key={detail.contractNumber}
-            className="cv-detail__contract"
+            className={`cv-detail__card${multiple ? " cv-detail__card--split" : ""}`}
             aria-label={`Contract ${detail.contractNumber}`}
           >
             {multiple ? (
-              <div className="cv-detail__contract-head">
-                <p className="cv-detail__contract-label">
+              <header className="cv-detail__card-head">
+                <p className="cv-detail__card-label">
                   <strong>
                     Contract {index + 1} of {details.length}
                   </strong>
                 </p>
-                <h4 className="cv-detail__contract-number">
+                <h4 className="cv-detail__card-number">
                   <strong>{detail.contractNumber}</strong>
                 </h4>
-              </div>
+              </header>
             ) : null}
 
             <ContractDetailRows detail={detail} />
-
-            {multiple && index < details.length - 1 ? (
-              <div className="cv-detail__contract-divider" role="separator" />
-            ) : null}
-          </div>
+          </article>
         ))}
       </div>
     </div>
