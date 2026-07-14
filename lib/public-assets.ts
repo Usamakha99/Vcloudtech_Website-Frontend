@@ -8,7 +8,7 @@
 export const assetVersions = {
   industries: "8",
   blog: "10",
-  about: "16",
+  about: "17",
   contact: "1",
   partnerPage: "1",
   contractsPage: "1",
@@ -40,7 +40,7 @@ export const publicAssets = {
     slide3: withAssetVersion("/assets/hero/hero-3.png", assetVersions.hero),
   },
   about: {
-    heroVideo: withAssetVersion("/assets/about/about-hero.mp4", assetVersions.about),
+    heroImage: withAssetVersion("/assets/about/about-us.png", assetVersions.about),
     storyOffice: "/assets/about/about-story-office.png",
     reliablePartner: withAssetVersion(
       "/assets/about/about-us3.png",

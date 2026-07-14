@@ -4,7 +4,7 @@ export const aboutPageHero = {
   titleLines: ["Confidence in Every Connection", "Built on Trust"] as const,
   lede:
     "Enterprise IT partner delivering cybersecurity, cloud infrastructure, and managed services to government, healthcare, and commercial clients nationwide.",
-  video: publicAssets.about.heroVideo,
+  image: publicAssets.about.heroImage,
 } as const;
 
 export const aboutStatsSection = {

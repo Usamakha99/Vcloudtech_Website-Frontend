@@ -28,7 +28,6 @@ export const globalNavItems: readonly GlobalNavItem[] = [
     groups: solutionsNavGroups,
   },
   { type: "link", label: "Services", href: "/services" },
-  { type: "link", label: "Industry", href: "/industry" },
   { type: "link", label: "Government Contracts", href: "/contracts" },
   { type: "link", label: "Blogs", href: "/blog" },
   { type: "link", label: "About", href: "/about" },
