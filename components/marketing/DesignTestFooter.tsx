@@ -185,6 +185,7 @@ export function DesignTestFooter() {
             sizes="100vw"
             priority={false}
           />
+          <span className="dt-footer__mark-shine" />
         </div>
 
         <div className="dt-footer__bottom">

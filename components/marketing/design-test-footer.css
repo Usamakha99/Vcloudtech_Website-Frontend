@@ -195,11 +195,13 @@
 }
 
 .dt-footer__mark {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   margin-top: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: 0.75rem;
   margin-inline: 0;
   padding-inline: 0;
   overflow: hidden;
@@ -217,9 +219,48 @@
   mix-blend-mode: screen;
 }
 
+.dt-footer__mark-shine {
+  position: absolute;
+  inset: -8% -20%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 36%,
+    rgba(255, 255, 255, 0.08) 46%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.08) 54%,
+    transparent 64%
+  );
+  mix-blend-mode: soft-light;
+  transform: translateX(-75%) skewX(-12deg);
+  opacity: 0;
+  animation: dt-footer-mark-shine 4s ease-in-out infinite both;
+}
+
+@keyframes dt-footer-mark-shine {
+  0% {
+    transform: translateX(-75%) skewX(-12deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(75%) skewX(-12deg);
+    opacity: 1;
+  }
+  55%,
+  100% {
+    transform: translateX(85%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
 @media (min-width: 768px) {
   .dt-footer__mark {
     margin-top: clamp(1.15rem, 2.2vw, 1.75rem);
+    margin-bottom: 1rem;
   }
 
   .dt-footer__mark-img {
@@ -231,6 +272,13 @@
 @media (min-width: 1280px) {
   .dt-footer__mark-img {
     width: min(100%, 92rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dt-footer__mark-shine {
+    animation: none;
+    display: none;
   }
 }
 
