@@ -31,12 +31,14 @@ function ContractDetailRows({ detail }: { detail: ContractVehicleDetail }) {
   );
 }
 
-/** Minimal contract detail tables shown when a vehicle chip is selected. */
+/** Contract details — each contract in its own section (no nested card containers). */
 export function ContractVehicleDetailTable({
   title,
   details,
   onClose,
 }: ContractVehicleDetailTableProps) {
+  const multiple = details.length > 1;
+
   return (
     <div className="cv-detail" role="region" aria-label={`${title} contract details`}>
       <div className="cv-detail__header">
@@ -48,10 +50,30 @@ export function ContractVehicleDetailTable({
 
       <div className="cv-detail__body">
         {details.map((detail, index) => (
-          <article key={detail.contractNumber} className="cv-detail__block">
+          <div
+            key={detail.contractNumber}
+            className="cv-detail__contract"
+            aria-label={`Contract ${detail.contractNumber}`}
+          >
+            {multiple ? (
+              <div className="cv-detail__contract-head">
+                <p className="cv-detail__contract-label">
+                  <strong>
+                    Contract {index + 1} of {details.length}
+                  </strong>
+                </p>
+                <h4 className="cv-detail__contract-number">
+                  <strong>{detail.contractNumber}</strong>
+                </h4>
+              </div>
+            ) : null}
+
             <ContractDetailRows detail={detail} />
-            {index < details.length - 1 ? <hr className="cv-detail__divider" /> : null}
-          </article>
+
+            {multiple && index < details.length - 1 ? (
+              <div className="cv-detail__contract-divider" role="separator" />
+            ) : null}
+          </div>
         ))}
       </div>
     </div>
