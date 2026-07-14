@@ -325,7 +325,15 @@ export const contractVehicleDetails: Partial<
       term: "2026",
     },
   ],
-  "tx-dir": [
+  "tx-dir-idiq": [
+    {
+      contractNumber: "DIR-TSO-5677",
+      contractHolder: "DLT",
+      region: "Statewide",
+      manufacturers: "BMC",
+      description: "vCloud Tech is offering Software COTS and Related Services",
+      term: "01/28/2025 – 01/28/2027",
+    },
     {
       contractNumber: "DIR-TSO-4288",
       contractHolder: "Carahsoft",
@@ -350,16 +358,6 @@ export const contractVehicleDetails: Partial<
       manufacturers: "Broadcom, Proofpoint, UiPath, Rapid7, OpenText, SolarWinds",
       description: "vCloud Tech is offering Software COTS and Related Services",
       term: "05/19/2031",
-    },
-  ],
-  "tx-dir-idiq": [
-    {
-      contractNumber: "DIR-TSO-5677",
-      contractHolder: "DLT",
-      region: "Statewide",
-      manufacturers: "BMC",
-      description: "vCloud Tech is offering Software COTS and Related Services",
-      term: "01/28/2025 – 01/28/2027",
     },
   ],
   naspo: [
