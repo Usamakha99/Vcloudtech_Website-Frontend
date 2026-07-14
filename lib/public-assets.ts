@@ -15,7 +15,7 @@ export const assetVersions = {
   servicesPage: "2",
   blogPage: "1",
   topContractHolders: "1",
-  services: "9",
+  services: "10",
   hero: "9",
   intro: "3",
 } as const;
