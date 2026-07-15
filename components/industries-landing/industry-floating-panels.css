@@ -210,17 +210,19 @@
 }
 
 .ind-panels__panel:hover {
-  transform: translateY(-14px) scale(1.03);
+  /* Soft lift only — no scale / height grow (avoids section “popup”) */
+  transform: translateY(-6px);
   border-color: rgba(179, 179, 179, 0.36);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.09) inset,
-    0 28px 56px -24px rgba(0, 0, 0, 0.78),
-    0 14px 32px -18px rgba(0, 0, 0, 0.55);
+    0 22px 48px -24px rgba(0, 0, 0, 0.72),
+    0 10px 28px -18px rgba(0, 0, 0, 0.5);
+  z-index: 8;
 }
 
-/* Resting image height; panel can grow taller on hover */
+/* Fixed card height — hover never expands layout */
 .ind-panels__panel::before {
   content: "";
   display: block;
@@ -229,7 +231,6 @@
   pointer-events: none;
 }
 
-/* Full-bleed image stretches as card height increases */
 .ind-panels__media {
   position: absolute;
   inset: 0;
@@ -275,16 +276,19 @@
   );
 }
 
-/* Title at bottom; hover text opens under it and raises card height */
+/* Pinned to card bottom — description fades in over image, height stays fixed */
 .ind-panels__content {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
-  margin-top: -4.25rem;
-  padding: 0 1.25rem 1.2rem;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  padding: 0 1.25rem 1.15rem;
   pointer-events: none;
 }
 
@@ -302,20 +306,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.45rem;
+  gap: 0.4rem;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transform: translateY(6px);
+  transform: translateY(8px);
   pointer-events: none;
   transition:
-    max-height 350ms var(--panel-ease),
-    opacity 350ms var(--panel-ease),
-    transform 350ms var(--panel-ease);
+    max-height 320ms var(--panel-ease),
+    opacity 280ms var(--panel-ease),
+    transform 320ms var(--panel-ease);
 }
 
 .ind-panels__panel:hover .ind-panels__hover {
-  max-height: 7rem;
+  max-height: 6.5rem;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -641,10 +645,10 @@
   }
 
   .ind-panels__hover {
-    max-height: none;
+    max-height: 6.5rem;
     opacity: 1;
     transform: none;
-    overflow: visible;
+    overflow: hidden;
     pointer-events: auto;
   }
 }
