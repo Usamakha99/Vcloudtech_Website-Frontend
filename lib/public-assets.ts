@@ -6,7 +6,7 @@
  */
 
 export const assetVersions = {
-  industries: "8",
+  industries: "9",
   blog: "11",
   about: "17",
   contact: "1",
@@ -123,6 +123,7 @@ export const publicAssets = {
     },
   },
   industries: {
+    networkBg: withAssetVersion("/assets/Industries Page/bg.png", assetVersions.industries),
     government: withAssetVersion("/assets/industries/government-sector.png", assetVersions.industries),
     education: withAssetVersion("/assets/industries/education-sector.png", assetVersions.industries),
     healthcare: withAssetVersion("/assets/industries/health-care.png", assetVersions.industries),

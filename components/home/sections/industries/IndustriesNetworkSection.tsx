@@ -64,7 +64,7 @@ const industries = [
   },
 ] as const;
 
-/** Premium floating industry cards around a global network globe — homepage test. */
+/** Premium floating industry cards around the global network globe. */
 export function HomeIndustriesNetworkSection() {
   return (
     <section
@@ -90,11 +90,16 @@ export function HomeIndustriesNetworkSection() {
 
         <div className="ind-net__stage">
           <div className="ind-net__globe" aria-hidden>
-            <div className="ind-net__globe-glow" />
             <div className="ind-net__globe-sphere">
-              <GlobeSvg />
+              <Image
+                src={publicAssets.industries.networkBg}
+                alt=""
+                fill
+                className="ind-net__globe-image"
+                sizes="(max-width: 767px) 90vw, (max-width: 1099px) 70vw, 52rem"
+                priority={false}
+              />
             </div>
-            <div className="ind-net__globe-pulse" />
           </div>
 
           <svg className="ind-net__links" viewBox="0 0 1000 720" aria-hidden>
@@ -142,38 +147,5 @@ export function HomeIndustriesNetworkSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-function GlobeSvg() {
-  return (
-    <svg className="ind-net__globe-svg" viewBox="0 0 400 400" fill="none" aria-hidden>
-      <circle cx="200" cy="200" r="148" className="ind-net__globe-ring" />
-      <ellipse cx="200" cy="200" rx="148" ry="54" className="ind-net__globe-lat" />
-      <ellipse cx="200" cy="200" rx="148" ry="98" className="ind-net__globe-lat" />
-      <ellipse cx="200" cy="200" rx="55" ry="148" className="ind-net__globe-lon" />
-      <ellipse cx="200" cy="200" rx="105" ry="148" className="ind-net__globe-lon" />
-      <path
-        className="ind-net__globe-arc"
-        d="M70 160 C120 120, 170 110, 220 130 C270 150, 310 170, 340 210"
-      />
-      <path
-        className="ind-net__globe-arc"
-        d="M80 250 C130 280, 190 300, 250 285 C300 275, 330 250, 345 220"
-      />
-      {[
-        [118, 140],
-        [200, 98],
-        [286, 138],
-        [94, 210],
-        [200, 200],
-        [310, 208],
-        [130, 270],
-        [220, 288],
-        [290, 258],
-      ].map(([cx, cy], i) => (
-        <circle key={i} cx={cx} cy={cy} r="3.2" className="ind-net__globe-node" />
-      ))}
-    </svg>
   );
 }
