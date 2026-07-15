@@ -6,7 +6,7 @@
  */
 
 export const assetVersions = {
-  industries: "9",
+  industries: "11",
   blog: "11",
   about: "17",
   contact: "1",
