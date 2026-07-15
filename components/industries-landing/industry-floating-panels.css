@@ -1,0 +1,590 @@
+/* Industry landing only — floating enterprise glass panels (homepage untouched) */
+
+.ind-panels {
+  --dt-bg: #041329;
+  --dt-card: #111f34;
+  --dt-primary: #b3b3b3;
+  --dt-text: #ffffff;
+  --dt-muted: #a1a1aa;
+  --panel-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+  padding:
+    calc(var(--dt-nav-occupancy, 5.75rem) + clamp(2rem, 4vw, 3rem))
+    0
+    clamp(4rem, 8vw, 6rem);
+  background: var(--dt-bg);
+  color: var(--dt-text);
+}
+
+.ind-panels__inner {
+  width: 100%;
+  max-width: 88rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 1.75rem);
+}
+
+.ind-panels__header {
+  max-width: 40rem;
+  margin-inline: auto;
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+  text-align: center;
+}
+
+.ind-panels__headline {
+  margin: 0.85rem 0 0;
+  font-size: clamp(1.75rem, 3.6vw, 2.625rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--dt-text);
+  text-wrap: balance;
+}
+
+.ind-panels__lede {
+  margin: 0.95rem auto 0;
+  max-width: 34rem;
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  line-height: 1.65;
+  color: var(--dt-muted);
+}
+
+.ind-panels__stage {
+  position: relative;
+  min-height: 46rem;
+  isolation: isolate;
+}
+
+/* ── Globe background ── */
+
+.ind-panels__globe-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: min(52rem, 78%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(96, 140, 196, 0.25) 0%,
+    rgba(96, 140, 196, 0.08) 42%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.ind-panels__globe {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: min(54rem, 82%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  animation: ind-panels-globe-in 1.1s ease forwards;
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    #000 0%,
+    #000 50%,
+    rgba(0, 0, 0, 0.75) 62%,
+    transparent 74%
+  );
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    #000 0%,
+    #000 50%,
+    rgba(0, 0, 0, 0.75) 62%,
+    transparent 74%
+  );
+}
+
+.ind-panels__globe-image {
+  object-fit: contain;
+  object-position: center;
+  transform: scale(1.22);
+  transform-origin: center center;
+  opacity: 0.9;
+  filter: brightness(0.95);
+}
+
+@keyframes ind-panels-globe-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -46%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ── Floating glass panels ── */
+
+.ind-panels__list {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-height: inherit;
+}
+
+.ind-panels__slot {
+  opacity: 0;
+  animation: ind-panels-enter 0.75s var(--panel-ease) forwards;
+}
+
+@keyframes ind-panels-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ind-panels__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(179, 179, 179, 0.18);
+  background: rgba(17, 31, 52, 0.35);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 18px 44px -28px rgba(0, 0, 0, 0.7),
+    0 8px 24px -16px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 350ms var(--panel-ease),
+    border-color 350ms var(--panel-ease),
+    box-shadow 350ms var(--panel-ease),
+    backdrop-filter 350ms var(--panel-ease),
+    -webkit-backdrop-filter 350ms var(--panel-ease);
+}
+
+.ind-panels__panel:hover {
+  transform: translateY(-14px) scale(1.03);
+  border-color: rgba(179, 179, 179, 0.36);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.09) inset,
+    0 28px 56px -24px rgba(0, 0, 0, 0.78),
+    0 14px 32px -18px rgba(0, 0, 0, 0.55);
+}
+
+/* Resting image height; panel can grow taller on hover */
+.ind-panels__panel::before {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  pointer-events: none;
+}
+
+/* Full-bleed image stretches as card height increases */
+.ind-panels__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.ind-panels__image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.ind-panels__media-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 19, 41, 0.05) 0%,
+    rgba(4, 19, 41, 0.08) 40%,
+    rgba(4, 19, 41, 0.62) 72%,
+    rgba(4, 19, 41, 0.88) 100%
+  );
+}
+
+/* Title at bottom; hover text opens under it and raises card height */
+.ind-panels__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: -4.25rem;
+  padding: 0 1.25rem 1.2rem;
+  pointer-events: none;
+}
+
+.ind-panels__title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  color: var(--dt-text);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+}
+
+.ind-panels__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.ind-panels__hover {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition:
+    max-height 350ms var(--panel-ease),
+    opacity 350ms var(--panel-ease),
+    transform 350ms var(--panel-ease);
+}
+
+.ind-panels__panel:hover .ind-panels__hover {
+  max-height: 7rem;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.ind-panels__desc {
+  margin: 0;
+  max-width: 34ch;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+.ind-panels__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  width: fit-content;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  pointer-events: auto;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+  transition: color 350ms var(--panel-ease);
+}
+
+.ind-panels__cta:hover {
+  color: #fff;
+}
+
+.ind-panels__cta-arrow {
+  display: inline-block;
+  transition: transform 350ms var(--panel-ease);
+}
+
+.ind-panels__panel:hover .ind-panels__cta-arrow {
+  transform: translateX(5px);
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 767px) {
+  .ind-panels__stage {
+    min-height: 0;
+  }
+
+  .ind-panels__globe,
+  .ind-panels__globe-glow {
+    width: min(28rem, 95vw);
+  }
+
+  .ind-panels__globe {
+    animation: none;
+    opacity: 1;
+  }
+
+  .ind-panels__globe-image {
+    transform: scale(1.15);
+    opacity: 0.55;
+  }
+
+  .ind-panels__list {
+    display: grid;
+    gap: 1.1rem;
+    min-height: 0;
+  }
+
+  .ind-panels__slot {
+    position: relative;
+    width: 100%;
+  }
+}
+
+/* ── Tablet ── */
+
+@media (min-width: 768px) and (max-width: 1099px) {
+  .ind-panels__stage {
+    min-height: 0;
+    padding-top: 0.5rem;
+  }
+
+  .ind-panels__globe,
+  .ind-panels__globe-glow {
+    width: min(40rem, 78%);
+  }
+
+  .ind-panels__globe {
+    animation: none;
+    opacity: 1;
+  }
+
+  .ind-panels__globe-image {
+    transform: scale(1.18);
+    opacity: 0.7;
+  }
+
+  .ind-panels__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    min-height: 0;
+  }
+
+  .ind-panels__slot {
+    position: relative;
+  }
+}
+
+/* ── Desktop: organic floating positions ── */
+
+@media (min-width: 1100px) {
+  .ind-panels__stage {
+    min-height: 50rem;
+  }
+
+  .ind-panels__globe,
+  .ind-panels__globe-glow {
+    width: min(56rem, 72%);
+  }
+
+  .ind-panels__globe-image {
+    transform: scale(1.28);
+  }
+
+  .ind-panels__list {
+    display: block;
+  }
+
+  .ind-panels__slot {
+    position: absolute;
+    width: min(21rem, 24vw);
+  }
+
+  /* Government — highest */
+  .ind-panels__slot--gov {
+    top: 0;
+    left: calc(50% - 10.5rem);
+    z-index: 6;
+  }
+
+  /* Education — upper left */
+  .ind-panels__slot--edu {
+    top: 12%;
+    left: 2%;
+    z-index: 5;
+  }
+
+  /* Healthcare — upper right */
+  .ind-panels__slot--health {
+    top: 12%;
+    right: 2%;
+    z-index: 5;
+  }
+
+  /* Financial — lower left */
+  .ind-panels__slot--finance {
+    bottom: 10%;
+    left: 3%;
+    top: auto;
+    z-index: 4;
+  }
+
+  /* Public Sector — bottom center */
+  .ind-panels__slot--public {
+    bottom: 1%;
+    left: calc(50% - 10.5rem);
+    top: auto;
+    z-index: 6;
+  }
+
+  /* Enterprise — lower right */
+  .ind-panels__slot--enterprise {
+    bottom: 10%;
+    right: 3%;
+    top: auto;
+    z-index: 4;
+  }
+
+  .ind-panels__slot--gov {
+    animation:
+      ind-panels-enter 0.75s var(--panel-ease) forwards,
+      ind-panels-float-a 7s ease-in-out 0.75s infinite;
+  }
+
+  .ind-panels__slot--edu {
+    animation:
+      ind-panels-enter 0.75s var(--panel-ease) forwards,
+      ind-panels-float-b 8.2s ease-in-out 0.85s infinite;
+  }
+
+  .ind-panels__slot--health {
+    animation:
+      ind-panels-enter 0.75s var(--panel-ease) forwards,
+      ind-panels-float-c 6.8s ease-in-out 0.9s infinite;
+  }
+
+  .ind-panels__slot--finance {
+    animation:
+      ind-panels-enter 0.75s var(--panel-ease) forwards,
+      ind-panels-float-b 7.6s ease-in-out 1s infinite;
+  }
+
+  .ind-panels__slot--public {
+    animation:
+      ind-panels-enter 0.75s var(--panel-ease) forwards,
+      ind-panels-float-a 8.8s ease-in-out 0.8s infinite;
+  }
+
+  .ind-panels__slot--enterprise {
+    animation:
+      ind-panels-enter 0.75s var(--panel-ease) forwards,
+      ind-panels-float-c 7.4s ease-in-out 1.05s infinite;
+  }
+}
+
+@media (min-width: 1400px) {
+  .ind-panels__stage {
+    min-height: 54rem;
+  }
+
+  .ind-panels__slot {
+    width: min(22.5rem, 21vw);
+  }
+
+  .ind-panels__slot--edu {
+    left: 4%;
+  }
+
+  .ind-panels__slot--health {
+    right: 4%;
+  }
+
+  .ind-panels__slot--finance {
+    left: 6%;
+  }
+
+  .ind-panels__slot--enterprise {
+    right: 6%;
+  }
+
+  .ind-panels__slot--gov,
+  .ind-panels__slot--public {
+    left: calc(50% - 11.25rem);
+  }
+}
+
+@keyframes ind-panels-float-a {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes ind-panels-float-b {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes ind-panels-float-c {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ind-panels__globe,
+  .ind-panels__slot,
+  .ind-panels__slot--gov,
+  .ind-panels__slot--edu,
+  .ind-panels__slot--health,
+  .ind-panels__slot--finance,
+  .ind-panels__slot--public,
+  .ind-panels__slot--enterprise {
+    animation: none !important;
+  }
+
+  .ind-panels__globe,
+  .ind-panels__slot {
+    opacity: 1;
+  }
+
+  .ind-panels__panel:hover {
+    transform: none;
+  }
+
+  .ind-panels__hover {
+    max-height: none;
+    opacity: 1;
+    transform: none;
+    overflow: visible;
+    pointer-events: auto;
+  }
+}

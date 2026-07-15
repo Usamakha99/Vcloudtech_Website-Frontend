@@ -7,6 +7,7 @@
 
 export const assetVersions = {
   industries: "11",
+  industriesPage: "1",
   blog: "11",
   about: "17",
   contact: "1",
@@ -132,6 +133,37 @@ export const publicAssets = {
     commercial: withAssetVersion(
       "/assets/industries/commercial-enterprise-sector.png",
       assetVersions.industries,
+    ),
+  },
+  /** Industry landing page only — does not affect homepage Industries We Serve. */
+  industriesPage: {
+    networkBg: withAssetVersion(
+      "/assets/Industries Page/bg.png",
+      assetVersions.industriesPage,
+    ),
+    government: withAssetVersion(
+      "/assets/Industries Page/Gov.png",
+      assetVersions.industriesPage,
+    ),
+    education: withAssetVersion(
+      "/assets/Industries Page/Education.png",
+      assetVersions.industriesPage,
+    ),
+    healthcare: withAssetVersion(
+      "/assets/Industries Page/Healthcare.png",
+      assetVersions.industriesPage,
+    ),
+    financial: withAssetVersion(
+      "/assets/Industries Page/Financial Services.png",
+      assetVersions.industriesPage,
+    ),
+    publicSector: withAssetVersion(
+      "/assets/Industries Page/Public sector.png",
+      assetVersions.industriesPage,
+    ),
+    commercial: withAssetVersion(
+      "/assets/Industries Page/Commercial Enterprise.png",
+      assetVersions.industriesPage,
     ),
   },
   services: {
