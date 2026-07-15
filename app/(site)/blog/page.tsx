@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 
 import { fetchBlogCategories, fetchBlogPosts } from "@/lib/blog/fetch";
-import { blogLanding } from "@/lib/blog/types";
+import { blogLanding } from "@/lib/blog/blog-landing";
 import { BlogLandingPage } from "./BlogLandingPage";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
 

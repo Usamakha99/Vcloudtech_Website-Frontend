@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { BlogPostBody } from "@/components/posts/BlogPostBody";
 import { fetchBlogPostBySlug, fetchBlogPosts, fetchBlogSlugs } from "@/lib/blog/fetch";
 import { buildArticleJsonLd } from "@/lib/blog/seo";
-import { blogLanding } from "@/lib/blog/types";
+import { blogDetailCta } from "@/lib/blog/blog-detail-cta";
 import { getAdjacentArticles, SITE_URL } from "@/lib/blog/utils";
 import { BlogDetailShell } from "../components/BlogDetailShell";
 import { CTASection } from "../components/CTASection";
@@ -99,12 +99,12 @@ export default async function BlogArticlePage({ params }: Props) {
       <RelatedArticles articles={related} />
 
       <CTASection
-        title={blogLanding.detailCta.title}
-        description={blogLanding.detailCta.description}
-        primaryLabel={blogLanding.detailCta.primaryLabel}
-        primaryHref={blogLanding.detailCta.primaryHref}
-        secondaryLabel={blogLanding.detailCta.secondaryLabel}
-        secondaryHref={blogLanding.detailCta.secondaryHref}
+        title={blogDetailCta.title}
+        description={blogDetailCta.description}
+        primaryLabel={blogDetailCta.primaryLabel}
+        primaryHref={blogDetailCta.primaryHref}
+        secondaryLabel={blogDetailCta.secondaryLabel}
+        secondaryHref={blogDetailCta.secondaryHref}
       />
     </main>
   );

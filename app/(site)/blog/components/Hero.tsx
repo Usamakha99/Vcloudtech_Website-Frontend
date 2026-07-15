@@ -1,5 +1,5 @@
 import { MarketingPageHero } from "@/components/marketing/MarketingPageHero";
-import { blogLanding } from "@/lib/blog/types";
+import { blogLanding } from "@/lib/blog/blog-landing";
 
 import "@/components/marketing/marketing-page-hero.css";
 

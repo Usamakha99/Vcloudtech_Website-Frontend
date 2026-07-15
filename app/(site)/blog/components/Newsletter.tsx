@@ -2,7 +2,7 @@
 
 import { type FormEvent, useState } from "react";
 
-import { blogLanding } from "@/lib/blog/types";
+import { blogLanding } from "@/lib/blog/blog-landing";
 
 export function Newsletter() {
   const [submitted, setSubmitted] = useState(false);
