@@ -51,7 +51,7 @@
 
 .ind-panels__stage {
   position: relative;
-  min-height: 46rem;
+  min-height: 0;
   isolation: isolate;
 }
 
@@ -387,7 +387,7 @@
 
   .ind-panels__list {
     display: grid;
-    gap: 1.5rem;
+    gap: clamp(1.15rem, 3.5vw, 1.5rem);
     min-height: 0;
   }
 
@@ -423,7 +423,7 @@
   .ind-panels__list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.75rem;
+    gap: clamp(1.25rem, 2.2vw, 1.75rem);
     min-height: 0;
   }
 
@@ -432,81 +432,99 @@
   }
 }
 
-/* ── Desktop: floating positions — balanced gaps over the globe ── */
+/*
+ * Desktop: CSS Grid (not absolute %).
+ * Gap stays equal on every width — same diamond layout on laptop + wide monitor.
+ *
+ *      [Government]
+ * [Education]  [Healthcare]
+ *    [Public Sector]
+ * [Financial]  [Enterprise]
+ */
 
 @media (min-width: 1100px) {
   .ind-panels__stage {
-    min-height: 52rem;
+    --ind-gap: clamp(1.1rem, 1.6vw, 1.5rem);
+    --ind-card-max: 22.5rem;
+    min-height: 0;
+    padding-block: clamp(0.5rem, 1.5vw, 1.25rem);
   }
 
   .ind-panels__globe,
   .ind-panels__globe-glow {
-    width: min(58rem, 78%);
+    width: min(52rem, 72%);
+    top: 50%;
   }
 
   .ind-panels__globe-image {
-    --globe-scale: 1.28;
+    --globe-scale: 1.26;
   }
 
   .ind-panels__list {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      ".       gov        ."
+      "edu     .          health"
+      ".       public     ."
+      "finance .          enterprise";
+    column-gap: var(--ind-gap);
+    row-gap: var(--ind-gap);
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    min-height: 0;
+    align-items: stretch;
   }
 
   .ind-panels__slot {
-    --ind-card-w: min(22.5rem, 24vw);
-    position: absolute;
-    width: var(--ind-card-w);
+    position: relative;
+    width: 100%;
+    max-width: var(--ind-card-max);
+    justify-self: center;
+    z-index: 2;
   }
 
-  /* Center column */
-  .ind-panels__slot--gov,
-  .ind-panels__slot--public {
-    left: calc(50% - (var(--ind-card-w) / 2));
-  }
-
-  /* Government — top */
   .ind-panels__slot--gov {
-    top: 0;
+    grid-area: gov;
     z-index: 6;
   }
 
-  /* Education — upper left */
   .ind-panels__slot--edu {
-    top: 15%;
-    left: 7%;
+    grid-area: edu;
     z-index: 5;
+    justify-self: end;
+    width: min(100%, var(--ind-card-max));
+    margin-inline-end: clamp(0rem, 1.5vw, 0.75rem);
   }
 
-  /* Healthcare — upper right */
   .ind-panels__slot--health {
-    top: 15%;
-    right: 7%;
-    left: auto;
+    grid-area: health;
     z-index: 5;
+    justify-self: start;
+    width: min(100%, var(--ind-card-max));
+    margin-inline-start: clamp(0rem, 1.5vw, 0.75rem);
   }
 
-  /* Public Sector — mid center */
   .ind-panels__slot--public {
-    top: 36%;
-    bottom: auto;
+    grid-area: public;
     z-index: 6;
   }
 
-  /* Financial — lower left */
   .ind-panels__slot--finance {
-    top: 57%;
-    bottom: auto;
-    left: 7%;
+    grid-area: finance;
     z-index: 4;
+    justify-self: end;
+    width: min(100%, var(--ind-card-max));
+    margin-inline-end: clamp(0rem, 1.5vw, 0.75rem);
   }
 
-  /* Enterprise — lower right */
   .ind-panels__slot--enterprise {
-    top: 57%;
-    bottom: auto;
-    right: 7%;
-    left: auto;
+    grid-area: enterprise;
     z-index: 4;
+    justify-self: start;
+    width: min(100%, var(--ind-card-max));
+    margin-inline-start: clamp(0rem, 1.5vw, 0.75rem);
   }
 
   .ind-panels__slot--gov {
@@ -548,36 +566,21 @@
 
 @media (min-width: 1400px) {
   .ind-panels__stage {
-    min-height: 56rem;
+    --ind-gap: clamp(1.25rem, 1.4vw, 1.65rem);
+    --ind-card-max: 24rem;
   }
 
-  .ind-panels__slot {
-    --ind-card-w: min(23.5rem, 22vw);
+  .ind-panels__list {
+    max-width: 78rem;
   }
 
-  .ind-panels__slot--edu,
-  .ind-panels__slot--finance {
-    left: 9%;
+  .ind-panels__globe,
+  .ind-panels__globe-glow {
+    width: min(58rem, 68%);
   }
 
-  .ind-panels__slot--health,
-  .ind-panels__slot--enterprise {
-    right: 9%;
-    left: auto;
-  }
-
-  .ind-panels__slot--edu,
-  .ind-panels__slot--health {
-    top: 14%;
-  }
-
-  .ind-panels__slot--public {
-    top: 34%;
-  }
-
-  .ind-panels__slot--finance,
-  .ind-panels__slot--enterprise {
-    top: 55%;
+  .ind-panels__globe-image {
+    --globe-scale: 1.3;
   }
 }
 
