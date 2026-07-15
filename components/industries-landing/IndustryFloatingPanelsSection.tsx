@@ -117,7 +117,7 @@ export function IndustryFloatingPanelsSection() {
                       fill
                       quality={90}
                       className="ind-panels__image"
-                      sizes="(max-width: 767px) 92vw, (max-width: 1099px) 44vw, 380px"
+                      sizes="(max-width: 767px) 92vw, (max-width: 1099px) 44vw, 420px"
                     />
                     <span className="ind-panels__media-fade" aria-hidden />
                   </div>

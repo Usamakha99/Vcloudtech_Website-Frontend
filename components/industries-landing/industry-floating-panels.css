@@ -399,35 +399,42 @@
   }
 
   .ind-panels__slot {
+    --ind-card-w: min(23.5rem, 26vw);
     position: absolute;
-    width: min(21rem, 24vw);
+    width: var(--ind-card-w);
+  }
+
+  /* Center cards — true middle so left/right spacing matches */
+  .ind-panels__slot--gov,
+  .ind-panels__slot--public {
+    left: calc(50% - (var(--ind-card-w) / 2));
   }
 
   /* Government — highest */
   .ind-panels__slot--gov {
     top: 0;
-    left: calc(50% - 10.5rem);
     z-index: 6;
   }
 
-  /* Education — upper left */
+  /* Education — upper left (unchanged side placement) */
   .ind-panels__slot--edu {
     top: 12%;
     left: 2%;
     z-index: 5;
   }
 
-  /* Healthcare — upper right */
+  /* Healthcare — upper right (mirrored) */
   .ind-panels__slot--health {
     top: 12%;
     right: 2%;
+    left: auto;
     z-index: 5;
   }
 
   /* Financial — lower left */
   .ind-panels__slot--finance {
     bottom: 10%;
-    left: 3%;
+    left: 2%;
     top: auto;
     z-index: 4;
   }
@@ -435,15 +442,15 @@
   /* Public Sector — bottom center */
   .ind-panels__slot--public {
     bottom: 24%;
-    left: calc(50% - 10.5rem);
     top: auto;
     z-index: 6;
   }
 
-  /* Enterprise — lower right */
+  /* Enterprise — lower right (mirrored) */
   .ind-panels__slot--enterprise {
     bottom: 10%;
-    right: 3%;
+    right: 2%;
+    left: auto;
     top: auto;
     z-index: 4;
   }
@@ -491,28 +498,18 @@
   }
 
   .ind-panels__slot {
-    width: min(22.5rem, 21vw);
+    --ind-card-w: min(25rem, 23vw);
   }
 
-  .ind-panels__slot--edu {
+  .ind-panels__slot--edu,
+  .ind-panels__slot--finance {
     left: 4%;
   }
 
-  .ind-panels__slot--health {
-    right: 4%;
-  }
-
-  .ind-panels__slot--finance {
-    left: 6%;
-  }
-
+  .ind-panels__slot--health,
   .ind-panels__slot--enterprise {
-    right: 6%;
-  }
-
-  .ind-panels__slot--gov,
-  .ind-panels__slot--public {
-    left: calc(50% - 11.25rem);
+    right: 4%;
+    left: auto;
   }
 }
 
