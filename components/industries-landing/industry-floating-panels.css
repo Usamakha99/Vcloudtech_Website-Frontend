@@ -432,11 +432,11 @@
   }
 }
 
-/* ── Desktop: floating positions with clear gaps over the globe ── */
+/* ── Desktop: floating positions — balanced gaps over the globe ── */
 
 @media (min-width: 1100px) {
   .ind-panels__stage {
-    min-height: 56rem;
+    min-height: 52rem;
   }
 
   .ind-panels__globe,
@@ -453,7 +453,7 @@
   }
 
   .ind-panels__slot {
-    --ind-card-w: min(21.5rem, 23vw);
+    --ind-card-w: min(22.5rem, 24vw);
     position: absolute;
     width: var(--ind-card-w);
   }
@@ -470,41 +470,41 @@
     z-index: 6;
   }
 
-  /* Education — upper left, clear side gap */
+  /* Education — upper left */
   .ind-panels__slot--edu {
-    top: 18%;
-    left: 4%;
+    top: 15%;
+    left: 7%;
     z-index: 5;
   }
 
   /* Healthcare — upper right */
   .ind-panels__slot--health {
-    top: 18%;
-    right: 4%;
+    top: 15%;
+    right: 7%;
     left: auto;
     z-index: 5;
   }
 
-  /* Public Sector — mid center, spaced below gov */
+  /* Public Sector — mid center */
   .ind-panels__slot--public {
-    top: 40%;
+    top: 36%;
     bottom: auto;
     z-index: 6;
   }
 
   /* Financial — lower left */
   .ind-panels__slot--finance {
-    top: 62%;
+    top: 57%;
     bottom: auto;
-    left: 4%;
+    left: 7%;
     z-index: 4;
   }
 
   /* Enterprise — lower right */
   .ind-panels__slot--enterprise {
-    top: 62%;
+    top: 57%;
     bottom: auto;
-    right: 4%;
+    right: 7%;
     left: auto;
     z-index: 4;
   }
@@ -548,36 +548,36 @@
 
 @media (min-width: 1400px) {
   .ind-panels__stage {
-    min-height: 60rem;
+    min-height: 56rem;
   }
 
   .ind-panels__slot {
-    --ind-card-w: min(22.5rem, 21vw);
+    --ind-card-w: min(23.5rem, 22vw);
   }
 
   .ind-panels__slot--edu,
   .ind-panels__slot--finance {
-    left: 6%;
+    left: 9%;
   }
 
   .ind-panels__slot--health,
   .ind-panels__slot--enterprise {
-    right: 6%;
+    right: 9%;
     left: auto;
   }
 
   .ind-panels__slot--edu,
   .ind-panels__slot--health {
-    top: 17%;
+    top: 14%;
   }
 
   .ind-panels__slot--public {
-    top: 38%;
+    top: 34%;
   }
 
   .ind-panels__slot--finance,
   .ind-panels__slot--enterprise {
-    top: 60%;
+    top: 55%;
   }
 }
 
