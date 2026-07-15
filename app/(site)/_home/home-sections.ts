@@ -9,7 +9,7 @@ import { HomeTechnologyPartnersSection } from "@/components/home/sections/partne
 import { HomeResourceHubSection } from "@/components/home/sections/resource-hub/ResourceHubSection";
 import { HomeServicesSection } from "@/components/home/sections/services/ServicesSection";
 import { HomeSocialProofSection } from "@/components/home/sections/social-proof/SocialProofSection";
-import { IndustryFloatingPanelsSection } from "@/components/industries-landing/IndustryFloatingPanelsSection";
+import { IndustryFloatingPanelsDaylightSection, IndustryFloatingPanelsSection } from "@/components/industries-landing/IndustryFloatingPanelsSection";
 // import { HomeTestimonialsSection } from "@/components/home/sections/testimonials/TestimonialsSection";
 
 export type HomeSectionEntry = {
@@ -49,6 +49,11 @@ export const HOME_SECTIONS: HomeSectionEntry[] = [
     id: "industries-panels",
     label: "Industries Floating Panels (temp)",
     component: IndustryFloatingPanelsSection,
+  },
+  {
+    id: "industries-panels-daylight",
+    label: "Industries Floating Panels Daylight (temp)",
+    component: IndustryFloatingPanelsDaylightSection,
   },
   {
     id: "partners",

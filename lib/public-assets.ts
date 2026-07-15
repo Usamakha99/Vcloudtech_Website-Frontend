@@ -8,6 +8,7 @@
 export const assetVersions = {
   industries: "11",
   industriesPage: "1",
+  industriesDaylight: "1",
   blog: "11",
   about: "17",
   contact: "1",
@@ -164,6 +165,37 @@ export const publicAssets = {
     commercial: withAssetVersion(
       "/assets/Industries Page/Commercial Enterprise.png",
       assetVersions.industriesPage,
+    ),
+  },
+  /** Daylight variant of industry floating panels. */
+  industriesDaylight: {
+    networkBg: withAssetVersion(
+      "/assets/Industries Page/bg.png",
+      assetVersions.industriesDaylight,
+    ),
+    government: withAssetVersion(
+      "/assets/Industries We Serve Daylight/Government.png",
+      assetVersions.industriesDaylight,
+    ),
+    education: withAssetVersion(
+      "/assets/Industries We Serve Daylight/Education.png",
+      assetVersions.industriesDaylight,
+    ),
+    healthcare: withAssetVersion(
+      "/assets/Industries We Serve Daylight/Healthcare.png",
+      assetVersions.industriesDaylight,
+    ),
+    financial: withAssetVersion(
+      "/assets/Industries We Serve Daylight/Financial Services.png",
+      assetVersions.industriesDaylight,
+    ),
+    publicSector: withAssetVersion(
+      "/assets/Industries We Serve Daylight/Public sector.png",
+      assetVersions.industriesDaylight,
+    ),
+    commercial: withAssetVersion(
+      "/assets/Industries We Serve Daylight/Commercial  Enterprise.png",
+      assetVersions.industriesDaylight,
     ),
   },
   services: {

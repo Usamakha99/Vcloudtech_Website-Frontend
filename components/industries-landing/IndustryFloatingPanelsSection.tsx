@@ -7,78 +7,103 @@ import { publicAssets } from "@/lib/public-assets";
 
 import "./industry-floating-panels.css";
 
-const industries = [
-  {
-    id: "government",
-    name: "Government",
-    description:
-      "Mission-critical infrastructure for federal, state, and local agencies with compliant procurement.",
-    image: publicAssets.industriesPage.government,
-    href: "/services",
-    placement: "gov",
-  },
-  {
-    id: "education",
-    name: "Education",
-    description:
-      "Campus and district infrastructure built for the pace of modern learning environments.",
-    image: publicAssets.industriesPage.education,
-    href: "/services",
-    placement: "edu",
-  },
-  {
-    id: "healthcare",
-    name: "Healthcare",
-    description:
-      "HIPAA-aware sourcing and clinical uptime for hospital systems and care networks.",
-    image: publicAssets.industriesPage.healthcare,
-    href: "/services",
-    placement: "health",
-  },
-  {
-    id: "financial",
-    name: "Financial Services",
-    description:
-      "Resilient infrastructure for institutions where downtime is measured in real financial cost.",
-    image: publicAssets.industriesPage.financial,
-    href: "/services",
-    placement: "finance",
-  },
-  {
-    id: "public",
-    name: "Public Sector",
-    description:
-      "Accountable IT outcomes for municipal and civic institutions that earn public trust.",
-    image: publicAssets.industriesPage.publicSector,
-    href: "/services",
-    placement: "public",
-  },
-  {
-    id: "commercial",
-    name: "Commercial / Enterprise",
-    description:
-      "Enterprise-grade infrastructure for mid-market and global organizations scaling with confidence.",
-    image: publicAssets.industriesPage.commercial,
-    href: "/services",
-    placement: "enterprise",
-  },
-] as const;
+type IndustryAssets = {
+  networkBg: string;
+  government: string;
+  education: string;
+  healthcare: string;
+  financial: string;
+  publicSector: string;
+  commercial: string;
+};
 
-/** Industry landing — premium floating glass panels over the network globe. */
-export function IndustryFloatingPanelsSection() {
+type IndustryFloatingPanelsProps = {
+  id?: string;
+  headingId?: string;
+  assets: IndustryAssets;
+  title?: string;
+};
+
+function buildIndustries(assets: IndustryAssets) {
+  return [
+    {
+      id: "government",
+      name: "Government",
+      description:
+        "Mission-critical infrastructure for federal, state, and local agencies with compliant procurement.",
+      image: assets.government,
+      href: "/services",
+      placement: "gov",
+    },
+    {
+      id: "education",
+      name: "Education",
+      description:
+        "Campus and district infrastructure built for the pace of modern learning environments.",
+      image: assets.education,
+      href: "/services",
+      placement: "edu",
+    },
+    {
+      id: "healthcare",
+      name: "Healthcare",
+      description:
+        "HIPAA-aware sourcing and clinical uptime for hospital systems and care networks.",
+      image: assets.healthcare,
+      href: "/services",
+      placement: "health",
+    },
+    {
+      id: "financial",
+      name: "Financial Services",
+      description:
+        "Resilient infrastructure for institutions where downtime is measured in real financial cost.",
+      image: assets.financial,
+      href: "/services",
+      placement: "finance",
+    },
+    {
+      id: "public",
+      name: "Public Sector",
+      description:
+        "Accountable IT outcomes for municipal and civic institutions that earn public trust.",
+      image: assets.publicSector,
+      href: "/services",
+      placement: "public",
+    },
+    {
+      id: "commercial",
+      name: "Commercial / Enterprise",
+      description:
+        "Enterprise-grade infrastructure for mid-market and global organizations scaling with confidence.",
+      image: assets.commercial,
+      href: "/services",
+      placement: "enterprise",
+    },
+  ] as const;
+}
+
+function IndustryFloatingPanels({
+  id = "industries-network",
+  headingId = "industries-network-heading",
+  assets,
+  title = "Industries We Serve",
+}: IndustryFloatingPanelsProps) {
+  const industries = buildIndustries(assets);
+
   return (
     <section
-      id="industries-network"
+      id={id}
       className={`ind-panels relative z-10 scroll-mt-24 ${dt.sectionBorder}`}
-      aria-labelledby="industries-network-heading"
+      aria-labelledby={headingId}
       data-nav-surface="dark"
     >
       <div className="ind-panels__inner">
         <header className="ind-panels__header">
           <DtScrollReveal>
             <p className={dt.badge}>Sectors</p>
-            <h2 id="industries-network-heading" className="ind-panels__headline">
-              Industries We Serve
+            <h2 id={headingId} className="ind-panels__headline">
+              {title}
             </h2>
             <p className="ind-panels__lede">
               Secure, connected infrastructure for the organizations that keep critical systems
@@ -91,7 +116,7 @@ export function IndustryFloatingPanelsSection() {
           <div className="ind-panels__globe-glow" aria-hidden />
           <div className="ind-panels__globe" aria-hidden>
             <Image
-              src={publicAssets.industriesPage.networkBg}
+              src={assets.networkBg}
               alt=""
               fill
               className="ind-panels__globe-image"
@@ -103,7 +128,7 @@ export function IndustryFloatingPanelsSection() {
           <ul className="ind-panels__list">
             {industries.map((industry, index) => (
               <li
-                key={industry.id}
+                key={`${id}-${industry.id}`}
                 className={`ind-panels__slot ind-panels__slot--${industry.placement}`}
                 style={{ animationDelay: `${0.1 + index * 0.08}s` }}
               >
@@ -142,5 +167,29 @@ export function IndustryFloatingPanelsSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+/** Night / original Industries Page artwork. */
+export function IndustryFloatingPanelsSection() {
+  return (
+    <IndustryFloatingPanels
+      id="industries-network"
+      headingId="industries-network-heading"
+      assets={publicAssets.industriesPage}
+      title="Industries We Serve"
+    />
+  );
+}
+
+/** Daylight artwork from Industries We Serve Daylight folder. */
+export function IndustryFloatingPanelsDaylightSection() {
+  return (
+    <IndustryFloatingPanels
+      id="industries-network-daylight"
+      headingId="industries-network-daylight-heading"
+      assets={publicAssets.industriesDaylight}
+      title="Industries We Serve"
+    />
   );
 }

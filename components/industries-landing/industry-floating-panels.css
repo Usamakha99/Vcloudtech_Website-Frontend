@@ -103,12 +103,15 @@
 }
 
 .ind-panels__globe-image {
+  --globe-scale: 1.22;
   object-fit: contain;
   object-position: center;
-  transform: scale(1.22);
+  transform: scale(var(--globe-scale));
   transform-origin: center center;
   opacity: 0.9;
   filter: brightness(0.95);
+  animation: ind-panels-globe-drift 24s ease-in-out 1.1s infinite;
+  will-change: transform;
 }
 
 @keyframes ind-panels-globe-in {
@@ -119,6 +122,19 @@
   to {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ind-panels-globe-drift {
+  0%,
+  100% {
+    transform: scale(var(--globe-scale)) translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: scale(var(--globe-scale)) translateY(-10px) rotate(6deg);
+  }
+  66% {
+    transform: scale(var(--globe-scale)) translateY(8px) rotate(-5deg);
   }
 }
 
@@ -345,7 +361,7 @@
   }
 
   .ind-panels__globe-image {
-    transform: scale(1.15);
+    --globe-scale: 1.15;
     opacity: 0.55;
   }
 
@@ -380,7 +396,7 @@
   }
 
   .ind-panels__globe-image {
-    transform: scale(1.18);
+    --globe-scale: 1.18;
     opacity: 0.7;
   }
 
@@ -409,7 +425,7 @@
   }
 
   .ind-panels__globe-image {
-    transform: scale(1.28);
+    --globe-scale: 1.28;
   }
 
   .ind-panels__list {
@@ -563,6 +579,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .ind-panels__globe,
+  .ind-panels__globe-image,
   .ind-panels__slot,
   .ind-panels__slot--gov,
   .ind-panels__slot--edu,
@@ -576,6 +593,10 @@
   .ind-panels__globe,
   .ind-panels__slot {
     opacity: 1;
+  }
+
+  .ind-panels__globe-image {
+    transform: scale(var(--globe-scale));
   }
 
   .ind-panels__panel:hover {
