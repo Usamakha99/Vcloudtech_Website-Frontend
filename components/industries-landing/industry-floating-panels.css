@@ -437,48 +437,47 @@
 }
 
 /*
- * Desktop: CSS Grid (not absolute %).
- * Gap stays equal on every width — same diamond layout on laptop + wide monitor.
- *
- *      [Government]
- * [Education]  [Healthcare]
- *    [Public Sector]
- * [Financial]  [Enterprise]
+ * Desktop diamond — tighter vertical rhythm:
+ * Gov sits between Edu / Health (still slightly higher).
+ * Public sits between Finance / Enterprise (still slightly lower).
  */
 
 @media (min-width: 1100px) {
   .ind-panels__stage {
-    --ind-gap: clamp(1.1rem, 1.6vw, 1.5rem);
-    --ind-card-max: 22.5rem;
+    --ind-gap-x: clamp(1rem, 1.8vw, 1.5rem);
+    --ind-gap-y: clamp(0.85rem, 1.4vw, 1.25rem);
+    --ind-card-max: 21rem;
+    /* Exact mirror: gov sits this far ABOVE side cards; public sits this far BELOW */
+    --ind-pole-nudge: clamp(2.5rem, 5vh, 3.5rem);
+    --ind-stagger-sm: clamp(0.4rem, 0.9vh, 0.7rem);
+    --ind-stagger-md: clamp(0.85rem, 1.6vh, 1.25rem);
     min-height: 0;
-    padding-block: clamp(0.5rem, 1.5vw, 1.25rem);
+    padding-block: clamp(0.75rem, 2vw, 1.5rem);
   }
 
   .ind-panels__globe,
   .ind-panels__globe-glow {
-    width: min(52rem, 72%);
-    top: 50%;
+    width: min(54rem, 76%);
+    top: 52%;
   }
 
   .ind-panels__globe-image {
-    --globe-scale: 1.26;
+    --globe-scale: 1.24;
   }
 
   .ind-panels__list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-areas:
-      ".       gov        ."
-      "edu     .          health"
-      ".       public     ."
-      "finance .          enterprise";
-    column-gap: var(--ind-gap);
-    row-gap: var(--ind-gap);
+      "edu     gov      health"
+      "finance public   enterprise";
+    column-gap: var(--ind-gap-x);
+    row-gap: var(--ind-gap-y);
     width: 100%;
-    max-width: 72rem;
+    max-width: 70rem;
     margin-inline: auto;
     min-height: 0;
-    align-items: stretch;
+    align-items: start;
   }
 
   .ind-panels__slot {
@@ -489,46 +488,64 @@
     z-index: 2;
   }
 
+  /*
+   * All slots use align-self:start + margin-top so distances stay true.
+   * Gov at 0 · Edu/Health at pole±stagger → Gov is ~pole above them.
+   * Finance/Enterprise at small stagger · Public at pole+mid → Public is ~pole below them.
+   */
   .ind-panels__slot--gov {
     grid-area: gov;
     z-index: 6;
+    align-self: start;
+    margin-top: 0;
   }
 
   .ind-panels__slot--edu {
     grid-area: edu;
     z-index: 5;
     justify-self: end;
+    align-self: start;
     width: min(100%, var(--ind-card-max));
-    margin-inline-end: clamp(0rem, 1.5vw, 0.75rem);
+    margin-inline-end: clamp(0rem, 1vw, 0.5rem);
+    margin-top: calc(var(--ind-pole-nudge) - var(--ind-stagger-sm));
   }
 
   .ind-panels__slot--health {
     grid-area: health;
     z-index: 5;
     justify-self: start;
+    align-self: start;
     width: min(100%, var(--ind-card-max));
-    margin-inline-start: clamp(0rem, 1.5vw, 0.75rem);
+    margin-inline-start: clamp(0rem, 1vw, 0.5rem);
+    margin-top: calc(var(--ind-pole-nudge) + var(--ind-stagger-sm));
   }
 
   .ind-panels__slot--public {
     grid-area: public;
     z-index: 6;
+    align-self: start;
+    /* Same pole distance below side cards as gov is above edu/health */
+    margin-top: calc(var(--ind-pole-nudge) + var(--ind-stagger-sm));
   }
 
   .ind-panels__slot--finance {
     grid-area: finance;
     z-index: 4;
     justify-self: end;
+    align-self: start;
     width: min(100%, var(--ind-card-max));
-    margin-inline-end: clamp(0rem, 1.5vw, 0.75rem);
+    margin-inline-end: clamp(0rem, 1vw, 0.5rem);
+    margin-top: var(--ind-stagger-sm);
   }
 
   .ind-panels__slot--enterprise {
     grid-area: enterprise;
     z-index: 4;
     justify-self: start;
+    align-self: start;
     width: min(100%, var(--ind-card-max));
-    margin-inline-start: clamp(0rem, 1.5vw, 0.75rem);
+    margin-inline-start: clamp(0rem, 1vw, 0.5rem);
+    margin-top: var(--ind-stagger-md);
   }
 
   .ind-panels__slot--gov {
@@ -570,21 +587,25 @@
 
 @media (min-width: 1400px) {
   .ind-panels__stage {
-    --ind-gap: clamp(1.25rem, 1.4vw, 1.65rem);
-    --ind-card-max: 24rem;
+    --ind-gap-x: clamp(1.15rem, 1.5vw, 1.65rem);
+    --ind-gap-y: clamp(1rem, 1.3vw, 1.4rem);
+    --ind-card-max: 22.5rem;
+    --ind-pole-nudge: clamp(2.75rem, 4.8vh, 3.75rem);
+    --ind-stagger-sm: clamp(0.45rem, 0.9vh, 0.75rem);
+    --ind-stagger-md: clamp(0.95rem, 1.5vh, 1.35rem);
   }
 
   .ind-panels__list {
-    max-width: 78rem;
+    max-width: 76rem;
   }
 
   .ind-panels__globe,
   .ind-panels__globe-glow {
-    width: min(58rem, 68%);
+    width: min(58rem, 70%);
   }
 
   .ind-panels__globe-image {
-    --globe-scale: 1.3;
+    --globe-scale: 1.28;
   }
 }
 
