@@ -551,37 +551,37 @@
   .ind-panels__slot--gov {
     animation:
       ind-panels-enter 0.75s var(--panel-ease) forwards,
-      ind-panels-float-a 7s ease-in-out 0.75s infinite;
+      ind-panels-float-a 4s ease-in-out 0.75s infinite;
   }
 
   .ind-panels__slot--edu {
     animation:
       ind-panels-enter 0.75s var(--panel-ease) forwards,
-      ind-panels-float-b 8.2s ease-in-out 0.85s infinite;
+      ind-panels-float-b 4.6s ease-in-out 0.85s infinite;
   }
 
   .ind-panels__slot--health {
     animation:
       ind-panels-enter 0.75s var(--panel-ease) forwards,
-      ind-panels-float-c 6.8s ease-in-out 0.9s infinite;
+      ind-panels-float-c 3.8s ease-in-out 0.9s infinite;
   }
 
   .ind-panels__slot--finance {
     animation:
       ind-panels-enter 0.75s var(--panel-ease) forwards,
-      ind-panels-float-b 7.6s ease-in-out 1s infinite;
+      ind-panels-float-b 4.3s ease-in-out 1s infinite;
   }
 
   .ind-panels__slot--public {
     animation:
       ind-panels-enter 0.75s var(--panel-ease) forwards,
-      ind-panels-float-a 8.8s ease-in-out 0.8s infinite;
+      ind-panels-float-a 5s ease-in-out 0.8s infinite;
   }
 
   .ind-panels__slot--enterprise {
     animation:
       ind-panels-enter 0.75s var(--panel-ease) forwards,
-      ind-panels-float-c 7.4s ease-in-out 1.05s infinite;
+      ind-panels-float-c 4.2s ease-in-out 1.05s infinite;
   }
 }
 
