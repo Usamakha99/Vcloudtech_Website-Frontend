@@ -434,40 +434,40 @@
     z-index: 6;
   }
 
-  /* Education — upper left (unchanged side placement) */
+  /* Education — upper left */
   .ind-panels__slot--edu {
-    top: 12%;
-    left: 2%;
+    top: 14%;
+    left: 10%;
     z-index: 5;
   }
 
-  /* Healthcare — upper right (mirrored) */
+  /* Healthcare — upper right */
   .ind-panels__slot--health {
-    top: 12%;
-    right: 2%;
+    top: 14%;
+    right: 10%;
     left: auto;
     z-index: 5;
   }
 
   /* Financial — lower left */
   .ind-panels__slot--finance {
-    bottom: 10%;
-    left: 2%;
+    bottom: 14%;
+    left: 10%;
     top: auto;
     z-index: 4;
   }
 
   /* Public Sector — bottom center */
   .ind-panels__slot--public {
-    bottom: 24%;
+    bottom: 28%;
     top: auto;
     z-index: 6;
   }
 
-  /* Enterprise — lower right (mirrored) */
+  /* Enterprise — lower right */
   .ind-panels__slot--enterprise {
-    bottom: 10%;
-    right: 2%;
+    bottom: 14%;
+    right: 10%;
     left: auto;
     top: auto;
     z-index: 4;
@@ -521,12 +521,12 @@
 
   .ind-panels__slot--edu,
   .ind-panels__slot--finance {
-    left: 4%;
+    left: 12%;
   }
 
   .ind-panels__slot--health,
   .ind-panels__slot--enterprise {
-    right: 4%;
+    right: 12%;
     left: auto;
   }
 }
