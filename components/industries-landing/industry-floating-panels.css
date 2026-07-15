@@ -445,12 +445,14 @@
 @media (min-width: 1100px) {
   .ind-panels__stage {
     --ind-gap-x: clamp(1rem, 1.8vw, 1.5rem);
-    --ind-gap-y: clamp(0.85rem, 1.4vw, 1.25rem);
+    --ind-gap-y: clamp(2.25rem, 4.5vh, 3.5rem);
     --ind-card-max: 21rem;
     /* Exact mirror: gov sits this far ABOVE side cards; public sits this far BELOW */
     --ind-pole-nudge: clamp(2.5rem, 5vh, 3.5rem);
     --ind-stagger-sm: clamp(0.4rem, 0.9vh, 0.7rem);
     --ind-stagger-md: clamp(0.85rem, 1.6vh, 1.25rem);
+    /* Extra drop for the whole bottom row vs top row */
+    --ind-bottom-drop: clamp(1.25rem, 2.8vh, 2.25rem);
     min-height: 0;
     padding-block: clamp(0.75rem, 2vw, 1.5rem);
   }
@@ -525,7 +527,9 @@
     z-index: 6;
     align-self: start;
     /* Same pole distance below side cards as gov is above edu/health */
-    margin-top: calc(var(--ind-pole-nudge) + var(--ind-stagger-sm));
+    margin-top: calc(
+      var(--ind-pole-nudge) + var(--ind-stagger-sm) + var(--ind-bottom-drop)
+    );
   }
 
   .ind-panels__slot--finance {
@@ -535,7 +539,7 @@
     align-self: start;
     width: min(100%, var(--ind-card-max));
     margin-inline-end: clamp(0rem, 1vw, 0.5rem);
-    margin-top: var(--ind-stagger-sm);
+    margin-top: calc(var(--ind-stagger-sm) + var(--ind-bottom-drop));
   }
 
   .ind-panels__slot--enterprise {
@@ -545,7 +549,7 @@
     align-self: start;
     width: min(100%, var(--ind-card-max));
     margin-inline-start: clamp(0rem, 1vw, 0.5rem);
-    margin-top: var(--ind-stagger-md);
+    margin-top: calc(var(--ind-stagger-md) + var(--ind-bottom-drop));
   }
 
   .ind-panels__slot--gov {
@@ -588,11 +592,12 @@
 @media (min-width: 1400px) {
   .ind-panels__stage {
     --ind-gap-x: clamp(1.15rem, 1.5vw, 1.65rem);
-    --ind-gap-y: clamp(1rem, 1.3vw, 1.4rem);
+    --ind-gap-y: clamp(2.5rem, 4.2vh, 3.75rem);
     --ind-card-max: 22.5rem;
     --ind-pole-nudge: clamp(2.75rem, 4.8vh, 3.75rem);
     --ind-stagger-sm: clamp(0.45rem, 0.9vh, 0.75rem);
     --ind-stagger-md: clamp(0.95rem, 1.5vh, 1.35rem);
+    --ind-bottom-drop: clamp(1.5rem, 2.6vh, 2.5rem);
   }
 
   .ind-panels__list {
