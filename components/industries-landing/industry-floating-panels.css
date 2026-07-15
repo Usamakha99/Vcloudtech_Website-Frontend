@@ -221,6 +221,24 @@
   );
 }
 
+.ind-panels__media-fade-left {
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: min(68%, 16.5rem);
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 19, 41, 0.82) 0%,
+    rgba(4, 19, 41, 0.48) 48%,
+    rgba(4, 19, 41, 0.12) 78%,
+    transparent 100%
+  );
+}
+
 /* Title at bottom; hover text opens under it and raises card height */
 .ind-panels__content {
   position: relative;

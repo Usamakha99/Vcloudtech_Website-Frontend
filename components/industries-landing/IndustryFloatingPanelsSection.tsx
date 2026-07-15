@@ -120,6 +120,7 @@ export function IndustryFloatingPanelsSection() {
                       sizes="(max-width: 767px) 92vw, (max-width: 1099px) 44vw, 420px"
                     />
                     <span className="ind-panels__media-fade" aria-hidden />
+                    <span className="ind-panels__media-fade-left" aria-hidden />
                   </div>
 
                   <div className="ind-panels__content">
