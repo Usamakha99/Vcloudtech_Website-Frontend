@@ -16,7 +16,6 @@ const industries = [
     image: publicAssets.industriesPage.government,
     href: "/services",
     placement: "gov",
-    icon: "gov",
   },
   {
     id: "education",
@@ -26,7 +25,6 @@ const industries = [
     image: publicAssets.industriesPage.education,
     href: "/services",
     placement: "edu",
-    icon: "edu",
   },
   {
     id: "healthcare",
@@ -36,7 +34,6 @@ const industries = [
     image: publicAssets.industriesPage.healthcare,
     href: "/services",
     placement: "health",
-    icon: "health",
   },
   {
     id: "financial",
@@ -46,7 +43,6 @@ const industries = [
     image: publicAssets.industriesPage.financial,
     href: "/services",
     placement: "finance",
-    icon: "finance",
   },
   {
     id: "public",
@@ -56,7 +52,6 @@ const industries = [
     image: publicAssets.industriesPage.publicSector,
     href: "/services",
     placement: "public",
-    icon: "public",
   },
   {
     id: "commercial",
@@ -66,80 +61,8 @@ const industries = [
     image: publicAssets.industriesPage.commercial,
     href: "/services",
     placement: "enterprise",
-    icon: "enterprise",
   },
 ] as const;
-
-function IndustryIcon({ type }: { type: (typeof industries)[number]["icon"] }) {
-  const props = {
-    width: 19,
-    height: 19,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.5,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-    "aria-hidden": true,
-  };
-
-  switch (type) {
-    case "gov":
-      return (
-        <svg {...props}>
-          <path d="M3 21h18" />
-          <path d="M5 21V10l7-5 7 5v11" />
-          <path d="M9 21v-5h6v5" />
-          <path d="M9 10h.01M15 10h.01" />
-        </svg>
-      );
-    case "edu":
-      return (
-        <svg {...props}>
-          <path d="M22 10 12 5 2 10l10 5 10-5Z" />
-          <path d="M6 12v5c0 1.4 2.7 3 6 3s6-1.6 6-3v-5" />
-          <path d="M22 10v6" />
-        </svg>
-      );
-    case "health":
-      return (
-        <svg {...props}>
-          <path d="M12 6v12" />
-          <path d="M6 12h12" />
-          <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
-        </svg>
-      );
-    case "finance":
-      return (
-        <svg {...props}>
-          <path d="M3 21h18" />
-          <path d="M4 10h16v11H4z" />
-          <path d="M8 10V7l4-3 4 3v3" />
-          <path d="M8 14h.01M12 14h.01M16 14h.01" />
-        </svg>
-      );
-    case "public":
-      return (
-        <svg {...props}>
-          <path d="M3 21h18" />
-          <path d="M5 21V9l7-4 7 4v12" />
-          <path d="M9 21v-6h6v6" />
-          <path d="M5 13h14" />
-        </svg>
-      );
-    case "enterprise":
-      return (
-        <svg {...props}>
-          <path d="M3 21h18" />
-          <path d="M5 21V8h6v13" />
-          <path d="M11 21V4h8v17" />
-          <path d="M8 11h1M8 14h1M15 8h1M15 11h1M15 14h1" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
 
 /** Industry landing — premium floating glass panels over the network globe. */
 export function IndustryFloatingPanelsSection() {
@@ -200,12 +123,7 @@ export function IndustryFloatingPanelsSection() {
                   </div>
 
                   <div className="ind-panels__content">
-                    <h3 className="ind-panels__title">
-                      <span className="ind-panels__icon">
-                        <IndustryIcon type={industry.icon} />
-                      </span>
-                      {industry.name}
-                    </h3>
+                    <h3 className="ind-panels__title">{industry.name}</h3>
                     <div className="ind-panels__hover">
                       <p className="ind-panels__desc">{industry.description}</p>
                       <Link href={industry.href} className="ind-panels__cta">
