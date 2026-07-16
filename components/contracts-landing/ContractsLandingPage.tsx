@@ -42,10 +42,10 @@ export function ContractsLandingPage() {
         >
           <header className="contracts-page__corporate-header">
             <h2 id="contracts-stack-heading" className="contracts-page__corporate-title">
-              Contract vehicles — stack view
+              Browse by stack
             </h2>
             <p className="contracts-page__corporate-desc">
-              Open a vehicle with more than one contract to browse cards in a stack scroller.
+              Select a vehicle — multiple contracts open in a calm stacked scroll.
             </p>
           </header>
 

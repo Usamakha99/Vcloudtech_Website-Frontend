@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties } from "react";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
 
 import type { ContractVehicleDetail } from "@/lib/marketing/contract-vehicle-details";
 
@@ -38,67 +38,116 @@ function StackDetailRows({ detail }: { detail: ContractVehicleDetail }) {
 }
 
 /**
- * Multi-contract detail view — sticky stack scroller when more than one card.
+ * Multi-contract detail view — internal sticky stack scroller when more than one card.
  * Separate from ContractVehicleDetailTable (grid cards stay unchanged).
  */
 export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
   const multiple = details.length > 1;
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (!multiple) return;
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    const onScroll = () => {
+      const items = scroller.querySelectorAll<HTMLElement>(".cv-stack__item");
+      if (!items.length) return;
+
+      const top = scroller.scrollTop + 24;
+      let next = 0;
+      items.forEach((item, index) => {
+        if (item.offsetTop <= top) next = index;
+      });
+      setActiveIndex(next);
+    };
+
+    scroller.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => scroller.removeEventListener("scroll", onScroll);
+  }, [multiple, details.length]);
 
   return (
-    <div className="cv-stack" role="region" aria-label={`${title} contract details`}>
+    <div
+      className={`cv-stack${multiple ? " cv-stack--multi" : ""}`}
+      role="region"
+      aria-label={`${title} contract details`}
+    >
       <div className="cv-stack__header">
-        <h3 className="cv-stack__title">{title}</h3>
+        <div className="cv-stack__header-copy">
+          <p className="cv-stack__eyebrow">Contract vehicle</p>
+          <h3 className="cv-stack__title">{title}</h3>
+          {multiple ? (
+            <p className="cv-stack__meta">{details.length} contracts in this vehicle</p>
+          ) : null}
+        </div>
         <button type="button" className="cv-stack__close" onClick={onClose} aria-label="Close">
           <span aria-hidden>×</span>
         </button>
       </div>
 
       {multiple ? (
-        <p className="cv-stack__hint">
-          Scroll through {details.length} contracts — cards stack as you go
-        </p>
+        <div className="cv-stack__rail" aria-hidden>
+          {details.map((_, index) => (
+            <span
+              key={`dot-${index}`}
+              className={`cv-stack__dot${index === activeIndex ? " cv-stack__dot--active" : ""}`}
+            />
+          ))}
+        </div>
       ) : null}
 
-      <div
-        className={multiple ? "cv-stack__runway scroll-stack-runway" : "cv-stack__single"}
-        style={
-          multiple
-            ? ({ ["--cv-stack-count"]: details.length } as CSSProperties)
-            : undefined
-        }
-      >
-        {details.map((detail, index) => (
-          <article
-            key={detail.contractNumber}
-            className={multiple ? "cv-stack__item scroll-stack-item" : "cv-stack__card"}
-            style={
-              multiple
-                ? ({
+      {multiple ? (
+        <div
+          ref={scrollerRef}
+          className="cv-stack__scroller"
+          style={{ ["--cv-stack-count"]: details.length } as CSSProperties}
+        >
+          <div className="cv-stack__runway">
+            {details.map((detail, index) => (
+              <article
+                key={detail.contractNumber}
+                className="cv-stack__item"
+                style={
+                  {
                     ["--cv-stack-index"]: index,
                     zIndex: index + 1,
-                  } as CSSProperties)
-                : undefined
-            }
-            aria-label={`Contract ${detail.contractNumber}`}
-          >
+                  } as CSSProperties
+                }
+                aria-label={`Contract ${detail.contractNumber}`}
+              >
+                <div className="cv-stack__card-inner">
+                  <header className="cv-stack__card-head">
+                    <p className="cv-stack__card-label">
+                      <strong>
+                        Contract {index + 1} of {details.length}
+                      </strong>
+                    </p>
+                    <h4 className="cv-stack__card-number">
+                      <strong>{detail.contractNumber}</strong>
+                    </h4>
+                  </header>
+                  <StackDetailRows detail={detail} />
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="cv-stack__single">
+          <article className="cv-stack__card" aria-label={`Contract ${details[0]?.contractNumber}`}>
             <div className="cv-stack__card-inner">
               <header className="cv-stack__card-head">
-                {multiple ? (
-                  <p className="cv-stack__card-label">
-                    <strong>
-                      Contract {index + 1} of {details.length}
-                    </strong>
-                  </p>
-                ) : null}
                 <h4 className="cv-stack__card-number">
-                  <strong>{detail.contractNumber}</strong>
+                  <strong>{details[0]?.contractNumber}</strong>
                 </h4>
               </header>
-              <StackDetailRows detail={detail} />
+              {details[0] ? <StackDetailRows detail={details[0]} /> : null}
             </div>
           </article>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
