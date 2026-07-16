@@ -52,14 +52,16 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
     if (!scroller) return;
 
     const onScroll = () => {
-      const items = scroller.querySelectorAll<HTMLElement>(".cv-stack__item");
-      if (!items.length) return;
-
-      const top = scroller.scrollTop + 24;
-      let next = 0;
-      items.forEach((item, index) => {
-        if (item.offsetTop <= top) next = index;
-      });
+      const max = scroller.scrollHeight - scroller.clientHeight;
+      if (max <= 0) {
+        setActiveIndex(0);
+        return;
+      }
+      const progress = scroller.scrollTop / max;
+      const next = Math.min(
+        details.length - 1,
+        Math.max(0, Math.round(progress * (details.length - 1))),
+      );
       setActiveIndex(next);
     };
 
@@ -105,33 +107,39 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
           style={{ ["--cv-stack-count"]: details.length } as CSSProperties}
         >
           <div className="cv-stack__runway">
-            {details.map((detail, index) => (
-              <article
-                key={detail.contractNumber}
-                className="cv-stack__item"
-                style={
-                  {
-                    ["--cv-stack-index"]: index,
-                    zIndex: index + 1,
-                  } as CSSProperties
-                }
-                aria-label={`Contract ${detail.contractNumber}`}
-              >
-                <div className="cv-stack__card-inner">
-                  <header className="cv-stack__card-head">
-                    <p className="cv-stack__card-label">
-                      <strong>
-                        Contract {index + 1} of {details.length}
-                      </strong>
-                    </p>
-                    <h4 className="cv-stack__card-number">
-                      <strong>{detail.contractNumber}</strong>
-                    </h4>
-                  </header>
-                  <StackDetailRows detail={detail} />
-                </div>
-              </article>
-            ))}
+            {details.map((detail, index) => {
+              const state =
+                index < activeIndex ? "passed" : index === activeIndex ? "active" : "next";
+
+              return (
+                <article
+                  key={detail.contractNumber}
+                  className={`cv-stack__item cv-stack__item--${state}`}
+                  style={
+                    {
+                      ["--cv-stack-index"]: index,
+                      zIndex: index + 1,
+                    } as CSSProperties
+                  }
+                  aria-label={`Contract ${detail.contractNumber}`}
+                  aria-hidden={index < activeIndex ? true : undefined}
+                >
+                  <div className="cv-stack__card-inner">
+                    <header className="cv-stack__card-head">
+                      <p className="cv-stack__card-label">
+                        <strong>
+                          Contract {index + 1} of {details.length}
+                        </strong>
+                      </p>
+                      <h4 className="cv-stack__card-number">
+                        <strong>{detail.contractNumber}</strong>
+                      </h4>
+                    </header>
+                    <StackDetailRows detail={detail} />
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       ) : (

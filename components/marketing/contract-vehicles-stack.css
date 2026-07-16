@@ -146,42 +146,87 @@
   background: var(--cv-stack-bg);
 }
 
-/* Internal scroll viewport — sticky cards stack inside here */
+/* Internal scroll viewport — cards stack here; native bar hidden (dots show progress) */
 .cv-stack__scroller {
-  --cv-stack-sticky-top: 0.75rem;
+  --cv-stack-sticky-top: 0.85rem;
   position: relative;
   flex: 1 1 auto;
-  height: min(68vh, 36rem);
-  min-height: 22rem;
+  height: min(64vh, 34rem);
+  min-height: 20rem;
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
   scroll-behavior: smooth;
   background: var(--cv-stack-bg);
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cv-stack__scroller::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .cv-stack__runway {
-  --cv-stack-card-gap: 1.15rem;
+  --cv-stack-card-gap: 1.25rem;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: 0.75rem clamp(1rem, 2.5vw, 1.25rem) 2rem;
-  /* Enough scroll distance for each card to stick and stack */
-  min-height: calc(var(--cv-stack-count, 2) * 58vh);
+  padding: 0.85rem clamp(1rem, 2.5vw, 1.35rem) 1.5rem;
+  min-height: calc(var(--cv-stack-count, 2) * 92%);
 }
 
 .cv-stack__item {
   position: sticky;
-  top: calc(var(--cv-stack-sticky-top) + (var(--cv-stack-index, 0) * 0.65rem));
+  top: calc(var(--cv-stack-sticky-top) + (var(--cv-stack-index, 0) * 0.55rem));
   margin-bottom: var(--cv-stack-card-gap);
 }
 
 .cv-stack__item:last-child {
   margin-bottom: 0;
-  /* Keep last card in view while stacking */
-  padding-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Passed cards collapse to a thin solid peek — no empty frame outlines */
+.cv-stack__item--passed {
+  pointer-events: none;
+}
+
+.cv-stack__item--passed .cv-stack__card-inner {
+  max-height: 2.65rem;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.cv-stack__item--passed .cv-stack__card-head {
+  border-bottom: 0;
+  padding: 0.7rem 1.15rem;
+  background: #0f1c30;
+}
+
+.cv-stack__item--passed .cv-stack__card-label {
+  display: none;
+}
+
+.cv-stack__item--passed .cv-stack__card-number {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cv-stack__item--passed .cv-stack__list {
+  display: none;
+}
+
+.cv-stack__item--active .cv-stack__card-inner {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 36px -16px rgba(0, 0, 0, 0.75);
 }
 
 .cv-stack__card,
@@ -315,12 +360,16 @@
 
 @media (max-width: 639px) {
   .cv-stack__scroller {
-    height: min(72vh, 32rem);
-    min-height: 18rem;
+    height: min(70vh, 30rem);
+    min-height: 17rem;
   }
 
   .cv-stack__runway {
-    min-height: calc(var(--cv-stack-count, 2) * 52vh);
+    min-height: calc(var(--cv-stack-count, 2) * 90%);
+  }
+
+  .cv-stack__item--passed .cv-stack__card-inner {
+    max-height: 2.4rem;
   }
 }
 
