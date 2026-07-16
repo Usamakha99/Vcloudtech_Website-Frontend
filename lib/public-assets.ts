@@ -7,8 +7,8 @@
 
 export const assetVersions = {
   industries: "11",
-  industriesPage: "1",
-  industriesDaylight: "1",
+  industriesPage: "2",
+  industriesDaylight: "2",
   blog: "11",
   about: "19",
   contact: "1",
@@ -136,65 +136,65 @@ export const publicAssets = {
       assetVersions.industries,
     ),
   },
-  /** Industry landing page only — does not affect homepage Industries We Serve. */
+  /** Industry landing / floating panels — night (default). */
   industriesPage: {
     networkBg: withAssetVersion(
       "/assets/Industries Page/bg.png",
       assetVersions.industriesPage,
     ),
     government: withAssetVersion(
-      "/assets/Industries Page/Gov.png",
+      "/assets/Updated Industries We Serve Night/Government Sector Night.png",
       assetVersions.industriesPage,
     ),
     education: withAssetVersion(
-      "/assets/Industries Page/Education.png",
+      "/assets/Updated Industries We Serve Night/Education Sector Night.png",
       assetVersions.industriesPage,
     ),
     healthcare: withAssetVersion(
-      "/assets/Industries Page/Healthcare.png",
+      "/assets/Updated Industries We Serve Night/Healthcare Sector Night.png",
       assetVersions.industriesPage,
     ),
     financial: withAssetVersion(
-      "/assets/Industries Page/Financial Services.png",
+      "/assets/Updated Industries We Serve Night/Financial Sector Night.png",
       assetVersions.industriesPage,
     ),
     publicSector: withAssetVersion(
-      "/assets/Industries Page/Public sector.png",
+      "/assets/Updated Industries We Serve Night/Public Sector Night.png",
       assetVersions.industriesPage,
     ),
     commercial: withAssetVersion(
-      "/assets/Industries Page/Commercial Enterprise.png",
+      "/assets/Updated Industries We Serve Night/Commercial  Enterprise Night.png",
       assetVersions.industriesPage,
     ),
   },
-  /** Daylight variant of industry floating panels. */
+  /** Daylight artwork — used on card hover. */
   industriesDaylight: {
     networkBg: withAssetVersion(
       "/assets/Industries Page/bg.png",
       assetVersions.industriesDaylight,
     ),
     government: withAssetVersion(
-      "/assets/Industries We Serve Daylight/Government.png",
+      "/assets/Updated Industries We Serve Day/Government Sector.png",
       assetVersions.industriesDaylight,
     ),
     education: withAssetVersion(
-      "/assets/Industries We Serve Daylight/Education.png",
+      "/assets/Updated Industries We Serve Day/Education Sector.png",
       assetVersions.industriesDaylight,
     ),
     healthcare: withAssetVersion(
-      "/assets/Industries We Serve Daylight/Healthcare.png",
+      "/assets/Updated Industries We Serve Day/Healthcare Sector.png",
       assetVersions.industriesDaylight,
     ),
     financial: withAssetVersion(
-      "/assets/Industries We Serve Daylight/Financial Services.png",
+      "/assets/Updated Industries We Serve Day/Financial Sector.png",
       assetVersions.industriesDaylight,
     ),
     publicSector: withAssetVersion(
-      "/assets/Industries We Serve Daylight/Public sector.png",
+      "/assets/Updated Industries We Serve Day/Public Sector.png",
       assetVersions.industriesDaylight,
     ),
     commercial: withAssetVersion(
-      "/assets/Industries We Serve Daylight/Commercial  Enterprise.png",
+      "/assets/Updated Industries We Serve Day/Commercial, Enterprise.png",
       assetVersions.industriesDaylight,
     ),
   },
