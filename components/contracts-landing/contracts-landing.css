@@ -22,7 +22,7 @@
 .contracts-page__corporate-header {
   max-width: 44rem;
   margin-inline: auto;
-  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
   text-align: center;
 }
 
@@ -46,5 +46,9 @@
 }
 
 .contracts-page__corporate .cv-grid {
-  margin-top: clamp(2rem, 4vw, 2.75rem);
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.contracts-page__corporate .cv-grid-wrap {
+  gap: 1rem;
 }
