@@ -241,7 +241,7 @@ export function HomeTechnologyPartnersSection() {
           </motion.ul>
 
           <div className="tp__major-partners-footer">
-            <Link href="/solutions" className="tp__cta">
+            <Link href="/partners" className="tp__cta">
               View All Partners
               <span className="tp__cta-arrow" aria-hidden>
                 →
