@@ -38,7 +38,6 @@ function StoryMilestone({ index, paragraph, isLast }: MilestoneProps) {
       <div className="about-page__story-milestone-panel">
         <p className="about-page__story-paragraph">{paragraph}</p>
       </div>
-      {!isLast ? <span className="about-page__story-milestone-connector" aria-hidden /> : null}
     </motion.li>
   );
 }
@@ -164,6 +163,24 @@ export function AboutStorySection({
                 isLast={index === paragraphs.length - 1}
               />
             ))}
+            <li className="about-page__story-milestone-end" aria-hidden>
+              <span className="about-page__story-milestone-end-node">
+                <svg
+                  className="about-page__story-milestone-end-check"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M3.5 8.2 6.4 11.1 12.5 4.8"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </li>
           </ol>
         </div>
 
