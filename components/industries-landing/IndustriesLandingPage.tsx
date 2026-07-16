@@ -1,14 +1,10 @@
-import {
-  IndustryFloatingPanelsDaylightSection,
-  IndustryFloatingPanelsSection,
-} from "@/components/industries-landing/IndustryFloatingPanelsSection";
+import { IndustryFloatingPanelsSection } from "@/components/industries-landing/IndustryFloatingPanelsSection";
 
-/** Industry landing page — night + daylight floating panel variants. */
+/** Industry landing page — dark cards; daylight art on hover. */
 export function IndustriesLandingPage() {
   return (
     <div className="marketing-page industry-page" data-nav-surface="dark">
       <IndustryFloatingPanelsSection />
-      <IndustryFloatingPanelsDaylightSection />
     </div>
   );
 }

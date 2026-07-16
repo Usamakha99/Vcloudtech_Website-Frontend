@@ -21,10 +21,12 @@ type IndustryFloatingPanelsProps = {
   id?: string;
   headingId?: string;
   assets: IndustryAssets;
+  /** Bright / daylight artwork shown on card hover. */
+  hoverAssets?: IndustryAssets;
   title?: string;
 };
 
-function buildIndustries(assets: IndustryAssets) {
+function buildIndustries(assets: IndustryAssets, hoverAssets?: IndustryAssets) {
   return [
     {
       id: "government",
@@ -32,6 +34,7 @@ function buildIndustries(assets: IndustryAssets) {
       description:
         "Mission-critical infrastructure for federal, state, and local agencies with compliant procurement.",
       image: assets.government,
+      hoverImage: hoverAssets?.government,
       href: "/services",
       placement: "gov",
     },
@@ -41,6 +44,7 @@ function buildIndustries(assets: IndustryAssets) {
       description:
         "Campus and district infrastructure built for the pace of modern learning environments.",
       image: assets.education,
+      hoverImage: hoverAssets?.education,
       href: "/services",
       placement: "edu",
     },
@@ -50,6 +54,7 @@ function buildIndustries(assets: IndustryAssets) {
       description:
         "HIPAA-aware sourcing and clinical uptime for hospital systems and care networks.",
       image: assets.healthcare,
+      hoverImage: hoverAssets?.healthcare,
       href: "/services",
       placement: "health",
     },
@@ -59,6 +64,7 @@ function buildIndustries(assets: IndustryAssets) {
       description:
         "Resilient infrastructure for institutions where downtime is measured in real financial cost.",
       image: assets.financial,
+      hoverImage: hoverAssets?.financial,
       href: "/services",
       placement: "finance",
     },
@@ -68,6 +74,7 @@ function buildIndustries(assets: IndustryAssets) {
       description:
         "Accountable IT outcomes for municipal and civic institutions that earn public trust.",
       image: assets.publicSector,
+      hoverImage: hoverAssets?.publicSector,
       href: "/services",
       placement: "public",
     },
@@ -77,6 +84,7 @@ function buildIndustries(assets: IndustryAssets) {
       description:
         "Enterprise-grade infrastructure for mid-market and global organizations scaling with confidence.",
       image: assets.commercial,
+      hoverImage: hoverAssets?.commercial,
       href: "/services",
       placement: "enterprise",
     },
@@ -87,9 +95,10 @@ function IndustryFloatingPanels({
   id = "industries-network",
   headingId = "industries-network-heading",
   assets,
+  hoverAssets,
   title = "Industries We Serve",
 }: IndustryFloatingPanelsProps) {
-  const industries = buildIndustries(assets);
+  const industries = buildIndustries(assets, hoverAssets);
 
   return (
     <section
@@ -141,9 +150,19 @@ function IndustryFloatingPanels({
                       alt=""
                       fill
                       quality={90}
-                      className="ind-panels__image"
+                      className="ind-panels__image ind-panels__image--base"
                       sizes="(max-width: 767px) 92vw, (max-width: 1099px) 44vw, 420px"
                     />
+                    {industry.hoverImage ? (
+                      <Image
+                        src={industry.hoverImage}
+                        alt=""
+                        fill
+                        quality={90}
+                        className="ind-panels__image ind-panels__image--hover"
+                        sizes="(max-width: 767px) 92vw, (max-width: 1099px) 44vw, 420px"
+                      />
+                    ) : null}
                     <span className="ind-panels__media-fade" aria-hidden />
                     <span className="ind-panels__media-fade-left" aria-hidden />
                   </div>
@@ -170,19 +189,20 @@ function IndustryFloatingPanels({
   );
 }
 
-/** Night / original Industries Page artwork. */
+/** Night cards by default; daylight artwork on hover. */
 export function IndustryFloatingPanelsSection() {
   return (
     <IndustryFloatingPanels
       id="industries-network"
       headingId="industries-network-heading"
       assets={publicAssets.industriesPage}
+      hoverAssets={publicAssets.industriesDaylight}
       title="Industries We Serve"
     />
   );
 }
 
-/** Daylight artwork from Industries We Serve Daylight folder. */
+/** @deprecated Daylight-only variant — prefer hover swap on the main section. */
 export function IndustryFloatingPanelsDaylightSection() {
   return (
     <IndustryFloatingPanels
