@@ -1,7 +1,6 @@
 /** Partner marks in `public/partners/` — use lowercase filenames (Linux/production paths are case-sensitive). */
 export const partnerLogos = [
   { name: "Adobe", src: "/partners/adobe.png" },
-  
   { name: "Apple", src: "/partners/apple.png" },
   { name: "AWS", src: "/partners/aws.png" },
   { name: "Cisco", src: "/partners/cisco.png" },
@@ -25,6 +24,18 @@ export const partnerLogos = [
   { name: "CrowdStrike", src: "/partners/crowdstrike.png" },
   { name: "Commvault", src: "/partners/commvault.png" },
   { name: "Zscaler", src: "/partners/zscaler.png" },
+  { name: "Red Hat", src: "/partners/redhat.png?v=3" },
+  { name: "Lenovo", src: "/partners/lenovo.png?v=3" },
+  { name: "Eaton", src: "/partners/eaton.png?v=3" },
+  { name: "SolarWinds", src: "/partners/solarwinds.png?v=3" },
+  { name: "SentinelOne", src: "/partners/sentinelone.png?v=3" },
+  { name: "Quest", src: "/partners/quest.png?v=3" },
+  { name: "Rapid7", src: "/partners/rapid7.png?v=3" },
+  { name: "Omnissa", src: "/partners/omnissa.png?v=3" },
+  { name: "Tenable", src: "/partners/tenable.png?v=3" },
+  { name: "Rubrik", src: "/partners/rubrik.png?v=3" },
+  { name: "Supermicro", src: "/partners/supermicro.png?v=3" },
+  { name: "Splunk", src: "/partners/splunk.png?v=3" },
 ] as const;
 
 export type PartnerLogo = (typeof partnerLogos)[number];
