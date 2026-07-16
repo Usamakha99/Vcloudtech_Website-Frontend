@@ -14,7 +14,7 @@ export const assetVersions = {
   contact: "1",
   partnerPage: "2",
   contractsPage: "2",
-  servicesPage: "2",
+  servicesPage: "3",
   blogPage: "1",
   topContractHolders: "1",
   services: "10",
@@ -84,7 +84,7 @@ export const publicAssets = {
     hero: withAssetVersion("/assets/contracts/contracts.png", assetVersions.contractsPage),
   },
   servicesPage: {
-    hero: withAssetVersion("/assets/website hero sections/2.png", assetVersions.servicesPage),
+    hero: withAssetVersion("/assets/services/service-hero.png", assetVersions.servicesPage),
   },
   blogPage: {
     hero: withAssetVersion("/assets/blog hero/blog-hero.png", assetVersions.blogPage),
