@@ -7,7 +7,7 @@
 
 export const assetVersions = {
   industries: "11",
-  industriesPage: "2",
+  industriesPage: "3",
   industriesDaylight: "2",
   blog: "11",
   about: "19",
@@ -20,7 +20,7 @@ export const assetVersions = {
   services: "10",
   hero: "9",
   intro: "3",
-  locations: "2",
+  locations: "3",
   values: "5",
 } as const;
 
@@ -159,7 +159,7 @@ export const publicAssets = {
       assetVersions.industriesPage,
     ),
     publicSector: withAssetVersion(
-      "/assets/Updated Industries We Serve Night/Public Sector Night.png",
+      "/assets/Updated Industries We Serve Night/Public Sector Night22 Edit.png",
       assetVersions.industriesPage,
     ),
     commercial: withAssetVersion(

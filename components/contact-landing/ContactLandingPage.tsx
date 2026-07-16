@@ -4,20 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
-  CompassIcon,
-  GovernmentIcon,
   HandshakeIcon,
-  HeadsetIcon,
   RocketIcon,
   ServerIcon,
-  ShieldIcon,
   SolutionsIcon,
 } from "@/components/icons/section-icons";
 import { dt } from "@/components/marketing/design-test-theme";
 import { HomeContactForm } from "@/components/home/sections/contact/HomeContactForm";
 import {
-  contactInfoCards,
-  contactMapEmbed,
   contactOfficeLocations,
   contactPageHero,
   contactWhyCards,
@@ -31,14 +25,7 @@ const whyIcons = {
   solutions: SolutionsIcon,
 } as const;
 
-const infoIcons = {
-  headquarters: GovernmentIcon,
-  email: CompassIcon,
-  phone: HeadsetIcon,
-  hours: ShieldIcon,
-} as const;
-
-/** Premium enterprise contact page — hero, form, info, locations, map, and CTAs. */
+/** Premium enterprise contact page — hero, form, locations, and why cards. */
 export function ContactLandingPage() {
   return (
     <div className="contact-page" data-nav-surface="dark">
@@ -116,44 +103,7 @@ export function ContactLandingPage() {
           </ul>
         </section>
 
-        {/* 4. Contact information */}
-        {/* <section className="contact-page__section" aria-labelledby="contact-info-heading">
-          <header className="contact-page__section-header">
-            <p className={dt.metaLabel}>Reach us directly</p>
-            <h2 id="contact-info-heading" className="contact-page__section-title">
-              Contact information
-            </h2>
-          </header>
-
-          <ul className="contact-page__info-grid">
-            {contactInfoCards.map((card) => {
-              const Icon = infoIcons[card.id as keyof typeof infoIcons];
-              return (
-                <li key={card.id} className="contact-page__info-card">
-                  <div className="contact-page__info-icon" aria-hidden>
-                    <Icon />
-                  </div>
-                  <h3 className="contact-page__info-title">{card.title}</h3>
-                  {card.lines.map((line) => (
-                    <p key={line} className="contact-page__info-line">
-                      {line}
-                    </p>
-                  ))}
-                  {"subline" in card && card.subline ? (
-                    <p className="contact-page__info-subline">{card.subline}</p>
-                  ) : null}
-                  {"href" in card && card.href ? (
-                    <Link href={card.href} className="contact-page__info-link">
-                      {card.linkLabel}
-                    </Link>
-                  ) : null}
-                </li>
-              );
-            })}
-          </ul>
-        </section> */}
-
-        {/* 5. Office locations */}
+        {/* 4. Office locations */}
         <section className="contact-page__section" aria-labelledby="contact-locations-heading">
           <header className="contact-page__section-header">
             <p className={dt.metaLabel}>Our locations</p>
@@ -200,20 +150,6 @@ export function ContactLandingPage() {
               </li>
             ))}
           </ul>
-        </section>
-
-        {/* 6. Embedded map */}
-        <section className="contact-page__section" aria-label="Map">
-          <div className="contact-page__map-wrap">
-            <iframe
-              title={contactMapEmbed.title}
-              src={contactMapEmbed.src}
-              className="contact-page__map"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          </div>
         </section>
       </div>
     </div>

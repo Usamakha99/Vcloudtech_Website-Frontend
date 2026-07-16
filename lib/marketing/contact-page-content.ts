@@ -51,7 +51,7 @@ export const contactOfficeLocations = [
     mapsUrl: designTestFooterLocations.headquarters.mapsUrl,
     mapsLabel: "Open in Google Maps",
     image: publicAssets.locations.texas,
-    imageAlt: "Dallas skyline at dusk",
+    imageAlt: "Texas State Capitol illuminated at night",
   },
   {
     id: "office",
@@ -64,11 +64,6 @@ export const contactOfficeLocations = [
     imageAlt: "Golden Gate Bridge and San Francisco skyline at night",
   },
 ] as const;
-
-export const contactMapEmbed = {
-  title: "VCloud Tech Headquarters",
-  src: "https://maps.google.com/maps?q=2601+E+State+Highway+121+Business,+Suite+509M,+Lewisville,+TX+75067&hl=en&z=14&output=embed",
-} as const;
 
 export const contactWhyCards = [
   {

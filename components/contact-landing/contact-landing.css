@@ -406,7 +406,7 @@
   flex-direction: column;
   justify-content: flex-end;
   isolation: isolate;
-  min-height: clamp(15rem, 28vw, 19rem);
+  min-height: clamp(16rem, 32vw, 22rem);
   padding: 1.75rem 1.75rem 1.65rem;
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -443,10 +443,12 @@
   transform-origin: center center;
 }
 
-/* Match perceived brightness between Texas / California photos */
+/* Texas HQ — zoom out vs default crop so more of the Capitol shows */
 .contact-page__location-media--hq .contact-page__location-media-img {
-  object-position: center 48% !important;
-  filter: brightness(1.08) contrast(1.04) saturate(1.05);
+  object-fit: cover !important;
+  object-position: center 32% !important;
+  transform: scale(1);
+  filter: brightness(1.04) contrast(1.03) saturate(1.04);
 }
 
 .contact-page__location-media--office .contact-page__location-media-img {
@@ -538,7 +540,7 @@
 
 @media (min-width: 768px) {
   .contact-page__location-card {
-    min-height: 18.5rem;
+    min-height: 22rem;
     padding: 2rem 2rem 1.85rem;
   }
 }
@@ -554,30 +556,6 @@
   .contact-page__location-card,
   .contact-page__location-card:hover {
     transform: none;
-  }
-}
-
-/* ── Map ── */
-
-.contact-page__map-wrap {
-  overflow: hidden;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: var(--dt-card, #111f34);
-  box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.5);
-}
-
-.contact-page__map {
-  display: block;
-  width: 100%;
-  min-height: 22rem;
-  border: 0;
-  filter: grayscale(0.15) contrast(1.05);
-}
-
-@media (min-width: 768px) {
-  .contact-page__map {
-    min-height: 26rem;
   }
 }
 
