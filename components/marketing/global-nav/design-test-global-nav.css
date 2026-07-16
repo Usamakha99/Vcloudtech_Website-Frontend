@@ -285,7 +285,7 @@
   bottom: 0.35rem;
   height: 1.5px;
   border-radius: 9999px;
-  background: #e55614;
+  background: #f07a3d;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
@@ -309,7 +309,7 @@
 
 .dt-global-nav__link--active .dt-global-nav__link-underline {
   transform: scaleX(1);
-  background: #e55614;
+  background: #f07a3d;
 }
 
 /* Dark text on light sections */
@@ -329,7 +329,7 @@
 
 .dt-global-nav--surface-light .dt-global-nav__link-underline,
 .dt-global-nav--surface-light .dt-global-nav__link--active .dt-global-nav__link-underline {
-  background: #e55614;
+  background: #ca774d;
 }
 
 .dt-global-nav--surface-light .dt-global-nav__menu-btn {
