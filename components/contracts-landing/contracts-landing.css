@@ -52,3 +52,8 @@
 .contracts-page__corporate .cv-grid-wrap {
   gap: 1rem;
 }
+
+.contracts-page__corporate--stack {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}

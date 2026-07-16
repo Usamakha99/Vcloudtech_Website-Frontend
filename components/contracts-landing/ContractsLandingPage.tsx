@@ -1,4 +1,5 @@
 import { ContractVehiclesGrid } from "@/components/marketing/ContractVehiclesGrid";
+import { ContractVehiclesStackGrid } from "@/components/marketing/ContractVehiclesStackGrid";
 import { MarketingPageHero } from "@/components/marketing/MarketingPageHero";
 import {
   contractsPageCorporate,
@@ -32,6 +33,23 @@ export function ContractsLandingPage() {
           </header>
 
           <ContractVehiclesGrid href="/contact" />
+        </section>
+
+        {/* Alternate multi-card UX — stack scroller (existing grid above stays unchanged) */}
+        <section
+          className="contracts-page__corporate contracts-page__corporate--stack"
+          aria-labelledby="contracts-stack-heading"
+        >
+          <header className="contracts-page__corporate-header">
+            <h2 id="contracts-stack-heading" className="contracts-page__corporate-title">
+              Contract vehicles — stack view
+            </h2>
+            <p className="contracts-page__corporate-desc">
+              Open a vehicle with more than one contract to browse cards in a stack scroller.
+            </p>
+          </header>
+
+          <ContractVehiclesStackGrid href="/contact" />
         </section>
       </div>
     </div>
