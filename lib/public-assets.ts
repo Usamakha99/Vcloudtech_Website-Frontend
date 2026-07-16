@@ -15,7 +15,7 @@ export const assetVersions = {
   partnerPage: "3",
   contractsPage: "2",
   servicesPage: "3",
-  blogPage: "1",
+  blogPage: "2",
   topContractHolders: "1",
   services: "10",
   hero: "9",
