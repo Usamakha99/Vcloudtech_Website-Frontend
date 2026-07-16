@@ -11,7 +11,7 @@ export const assetVersions = {
   industriesDaylight: "2",
   blog: "11",
   about: "19",
-  contact: "1",
+  contact: "2",
   partnerPage: "3",
   contractsPage: "2",
   servicesPage: "3",
