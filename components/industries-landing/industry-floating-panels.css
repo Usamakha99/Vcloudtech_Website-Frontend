@@ -278,20 +278,34 @@
   filter: brightness(0.96);
 }
 
+/* Soft bottom lift only near the title — not a full-image wash */
 .ind-panels__media-fade {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: auto;
+  bottom: 0;
+  top: auto;
   z-index: 1;
+  width: min(46%, 11.25rem);
+  height: 42%;
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(4, 19, 41, 0.05) 0%,
-    rgba(4, 19, 41, 0.08) 40%,
-    rgba(4, 19, 41, 0.62) 72%,
-    rgba(4, 19, 41, 0.88) 100%
+    transparent 0%,
+    rgba(4, 19, 41, 0.35) 45%,
+    rgba(4, 19, 41, 0.72) 100%
   );
+  transition:
+    width 320ms var(--panel-ease),
+    opacity 280ms var(--panel-ease);
 }
 
+.ind-panels__panel:hover .ind-panels__media-fade,
+.ind-panels__panel:hover .ind-panels__media-fade-left {
+  opacity: 0;
+}
+
+/* Left scrim only under title/copy — rest of image stays clear */
 .ind-panels__media-fade-left {
   position: absolute;
   left: 0;
@@ -299,15 +313,18 @@
   top: 0;
   bottom: 0;
   z-index: 1;
-  width: min(68%, 16.5rem);
+  width: min(46%, 11.25rem);
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(4, 19, 41, 0.82) 0%,
-    rgba(4, 19, 41, 0.48) 48%,
-    rgba(4, 19, 41, 0.12) 78%,
+    rgba(4, 19, 41, 0.72) 0%,
+    rgba(4, 19, 41, 0.35) 50%,
+    rgba(4, 19, 41, 0.08) 82%,
     transparent 100%
   );
+  transition:
+    width 320ms var(--panel-ease),
+    opacity 280ms var(--panel-ease);
 }
 
 /* Pinned to card bottom — description fades in over image, height stays fixed */
