@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   images: {
+    // Industry floating panels (and others) use quality={90}; default allowlist is [75] only.
+    qualities: [75, 90],
     remotePatterns: [
       {
         protocol: "https",
