@@ -285,7 +285,7 @@
   bottom: 0.35rem;
   height: 1.5px;
   border-radius: 9999px;
-  background: #b3b3b3;
+  background: #e55614;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
@@ -309,7 +309,7 @@
 
 .dt-global-nav__link--active .dt-global-nav__link-underline {
   transform: scaleX(1);
-  background: linear-gradient(90deg, #b3b3b3 0%, rgba(179, 179, 179, 0.55) 100%);
+  background: #e55614;
 }
 
 /* Dark text on light sections */
@@ -329,7 +329,7 @@
 
 .dt-global-nav--surface-light .dt-global-nav__link-underline,
 .dt-global-nav--surface-light .dt-global-nav__link--active .dt-global-nav__link-underline {
-  background: linear-gradient(90deg, #041329 0%, rgba(4, 19, 41, 0.35) 100%);
+  background: #e55614;
 }
 
 .dt-global-nav--surface-light .dt-global-nav__menu-btn {
@@ -357,7 +357,7 @@
 .dt-global-nav--surface-light .dt-global-nav__mobile-link--active {
   color: #041329;
   background: rgba(4, 19, 41, 0.05);
-  box-shadow: inset 3px 0 0 #041329;
+  box-shadow: inset 3px 0 0 #e55614;
 }
 
 .dt-global-nav__actions {
@@ -536,7 +536,7 @@
   color: #fff;
   font-weight: 600;
   background: rgba(179, 179, 179, 0.08);
-  box-shadow: inset 3px 0 0 #b3b3b3;
+  box-shadow: inset 3px 0 0 #e55614;
 }
 
 .dt-global-nav__mobile-cta-wrap {
