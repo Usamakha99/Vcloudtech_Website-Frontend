@@ -7,7 +7,7 @@
 
 export const assetVersions = {
   industries: "11",
-  industriesPage: "3",
+  industriesPage: "4",
   industriesDaylight: "2",
   blog: "11",
   about: "19",
