@@ -297,12 +297,10 @@
   );
   transition:
     width 320ms var(--panel-ease),
+    height 320ms var(--panel-ease),
+    right 320ms var(--panel-ease),
+    background 320ms var(--panel-ease),
     opacity 280ms var(--panel-ease);
-}
-
-.ind-panels__panel:hover .ind-panels__media-fade,
-.ind-panels__panel:hover .ind-panels__media-fade-left {
-  opacity: 0;
 }
 
 /* Left scrim only under title/copy — rest of image stays clear */
@@ -325,6 +323,26 @@
   transition:
     width 320ms var(--panel-ease),
     opacity 280ms var(--panel-ease);
+}
+
+/* Daylight hover: full-width bottom gradient from text start → card end */
+.ind-panels__panel:hover .ind-panels__media-fade {
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 58%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(2, 12, 28, 0.2) 18%,
+    rgba(2, 12, 28, 0.55) 42%,
+    rgba(2, 12, 28, 0.82) 70%,
+    rgba(2, 12, 28, 0.94) 100%
+  );
+}
+
+.ind-panels__panel:hover .ind-panels__media-fade-left {
+  opacity: 0;
 }
 
 /* Pinned to card bottom — description fades in over image, height stays fixed */
@@ -351,6 +369,12 @@
   line-height: 1.25;
   color: var(--dt-text);
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+}
+
+.ind-panels__panel:hover .ind-panels__title {
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.7),
+    0 2px 16px rgba(0, 0, 0, 0.6);
 }
 
 .ind-panels__hover {
@@ -381,12 +405,14 @@
   max-width: 34ch;
   font-size: 0.84rem;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255, 255, 255, 0.94);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.65),
+    0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .ind-panels__cta {
@@ -398,10 +424,12 @@
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.96);
   text-decoration: none;
   pointer-events: auto;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.6),
+    0 2px 12px rgba(0, 0, 0, 0.45);
   transition: color 350ms var(--panel-ease);
 }
 
