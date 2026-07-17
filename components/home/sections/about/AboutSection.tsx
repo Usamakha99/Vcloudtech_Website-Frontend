@@ -109,8 +109,6 @@ export function HomeAboutSection() {
             />
           </figure>
         </div>
-
-        <div className="about-minimal__section-close" aria-hidden />
       </div>
     </section>
   );
