@@ -61,6 +61,30 @@ export function partnerLogoDimensions(name: PartnerLogo["name"]) {
 
 const boostedPartnerLogos = new Set<PartnerLogo["name"]>(["Veeam"]);
 
+/** Logos that fill the asset canvas too much — tone down on the strip. */
+const stripCompactPartners = new Set<PartnerLogo["name"]>([
+  "HP",
+  "ThreatDown",
+  "Palo Alto",
+  "Lansweeper",
+  "Commvault",
+  "Zscaler",
+]);
+
+/** Logos with too much padding / small marks — boost on the strip. */
+const stripBoostPartners = new Set<PartnerLogo["name"]>([
+  "Zoom",
+  "Fortinet",
+  "Intel",
+  "Samsung",
+  "SolarWinds",
+  "SentinelOne",
+  "Rapid7",
+  "Omnissa",
+  "Dell",
+  "IBM",
+]);
+
 const strategicStripTunedPartners = new Set<PartnerLogo["name"]>([
   "Palo Alto",
   "Lansweeper",
@@ -78,10 +102,12 @@ export function partnerLogoStripClass(name: PartnerLogo["name"]) {
   if (name === "Apple") return "tp__strategic-strip-logo--apple";
   if (name === "Google") return "tp__strategic-strip-logo--google";
   if (name === "HPE") return "tp__strategic-strip-logo--hpe";
-  if (name === "HP") return "tp__strategic-strip-logo--hp";
-  if (name === "Zscaler") return "tp__strategic-strip-logo--zscaler";
+  if (name === "Supermicro") return "tp__strategic-strip-logo--supermicro";
   if (boostedPartnerLogos.has(name)) return "tp__strategic-strip-logo--boost";
-  if (strategicStripTunedPartners.has(name)) return `tp__strategic-strip-logo--${partnerLogoSlug(name)}`;
+  if (stripCompactPartners.has(name)) return "tp__strategic-strip-logo--compact";
+  if (stripBoostPartners.has(name)) return "tp__strategic-strip-logo--enlarge";
+  if (name === "CrowdStrike") return "tp__strategic-strip-logo--crowdstrike";
+  if (name === "ServiceNow") return "tp__strategic-strip-logo--servicenow";
   return "";
 }
 
