@@ -4,7 +4,7 @@ import { IndustryFloatingPanelsSection } from "@/components/industries-landing/I
 export function IndustriesLandingPage() {
   return (
     <div className="marketing-page industry-page" data-nav-surface="dark">
-      <IndustryFloatingPanelsSection />
+      <IndustryFloatingPanelsSection embedded={false} />
     </div>
   );
 }

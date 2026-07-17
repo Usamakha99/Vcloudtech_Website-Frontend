@@ -17,6 +17,12 @@
   color: var(--dt-text);
 }
 
+/* Homepage (after About) — drop nav-occupancy pad so gap isn't huge */
+.ind-panels--embedded {
+  padding-top: clamp(1.25rem, 2.5vw, 2rem);
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
 .ind-panels__inner {
   width: 100%;
   max-width: 88rem;

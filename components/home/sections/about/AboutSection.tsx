@@ -56,7 +56,7 @@ export function HomeAboutSection() {
   return (
     <section
       id="about"
-      className={`about-minimal relative z-20 scroll-mt-24 py-14 sm:py-16 lg:py-20 ${dt.sectionBorder}`}
+      className={`about-minimal relative z-20 scroll-mt-24 pt-14 pb-8 sm:pt-16 sm:pb-10 lg:pt-20 lg:pb-12 ${dt.sectionBorder}`}
       aria-labelledby="about-snapshot-heading"
     >
       <div className="about-minimal__inner">

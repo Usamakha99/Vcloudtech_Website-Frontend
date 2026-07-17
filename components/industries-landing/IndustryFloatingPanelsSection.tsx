@@ -24,6 +24,8 @@ type IndustryFloatingPanelsProps = {
   /** Bright / daylight artwork shown on card hover. */
   hoverAssets?: IndustryAssets;
   title?: string;
+  /** Homepage mid-page: tighter top spacing (no nav-occupancy pad). */
+  embedded?: boolean;
 };
 
 function buildIndustries(assets: IndustryAssets, hoverAssets?: IndustryAssets) {
@@ -97,13 +99,14 @@ function IndustryFloatingPanels({
   assets,
   hoverAssets,
   title = "Industries We Serve",
+  embedded = false,
 }: IndustryFloatingPanelsProps) {
   const industries = buildIndustries(assets, hoverAssets);
 
   return (
     <section
       id={id}
-      className={`ind-panels relative z-10 scroll-mt-24 ${dt.sectionBorder}`}
+      className={`ind-panels relative z-10 scroll-mt-24 ${embedded ? "ind-panels--embedded" : ""} ${dt.sectionBorder}`.trim()}
       aria-labelledby={headingId}
       data-nav-surface="dark"
     >
@@ -189,8 +192,12 @@ function IndustryFloatingPanels({
   );
 }
 
-/** Night cards by default; daylight artwork on hover. */
-export function IndustryFloatingPanelsSection() {
+/** Night cards by default; daylight artwork on hover. Homepage uses tighter top spacing. */
+export function IndustryFloatingPanelsSection({
+  embedded = true,
+}: {
+  embedded?: boolean;
+} = {}) {
   return (
     <IndustryFloatingPanels
       id="industries-network"
@@ -198,6 +205,7 @@ export function IndustryFloatingPanelsSection() {
       assets={publicAssets.industriesPage}
       hoverAssets={publicAssets.industriesDaylight}
       title="Industries We Serve"
+      embedded={embedded}
     />
   );
 }
