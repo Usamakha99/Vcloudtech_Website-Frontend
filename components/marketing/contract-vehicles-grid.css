@@ -208,7 +208,7 @@ button.cv-grid__chip {
 }
 
 .cv-detail__card--split {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(229, 86, 20, 0.45);
   border-radius: 0.875rem;
   background: rgba(17, 31, 52, 0.55);
   overflow: hidden;

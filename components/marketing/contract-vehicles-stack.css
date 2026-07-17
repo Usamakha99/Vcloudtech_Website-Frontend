@@ -197,7 +197,7 @@
 
 .cv-stack__item--passed .cv-stack__card-inner {
   max-height: 2.65rem;
-  border-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(229, 86, 20, 0.28);
   box-shadow: none;
 }
 
@@ -225,13 +225,13 @@
 }
 
 .cv-stack__item--active .cv-stack__card-inner {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(229, 86, 20, 0.55);
   box-shadow: 0 16px 36px -16px rgba(0, 0, 0, 0.75);
 }
 
 .cv-stack__card,
 .cv-stack__card-inner {
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(229, 86, 20, 0.45);
   border-radius: 0.9rem;
   background: var(--cv-stack-card);
   overflow: hidden;
