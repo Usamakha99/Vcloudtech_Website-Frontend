@@ -46,7 +46,7 @@ export function AboutValuesSection({ badge, title, items }: Props) {
                   {/* Native img keeps PNG alpha; next/image can flatten transparent PNGs */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    className="about-page__value-card-media-img"
+                    className={`about-page__value-card-media-img about-page__value-card-media-img--${value.id}`}
                     src={publicAssets.values[iconById[value.id]]}
                     alt=""
                     width={320}
