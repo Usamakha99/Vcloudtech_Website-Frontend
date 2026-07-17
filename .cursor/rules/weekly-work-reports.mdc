@@ -1,0 +1,55 @@
+---
+description: Weekly/manager work report format for Usama — use when user asks for a report, weekly report, or progress update for manager/CEO
+alwaysApply: true
+---
+
+# Weekly Work Reports (Manager-ready)
+
+When the user asks for a **work report**, **weekly report**, **progress report**, or similar for their manager/CEO:
+
+## How to produce it
+
+1. Base content on **git commits** for the requested date range (`git log --since=… --until=…`) plus recent conversation work if relevant.
+2. Prefer **English**, professional, manager-friendly tone (same style as prior reports for this project).
+3. Save under `reports/` as markdown when useful, e.g. `reports/work-report-YYYY-MM-DD-to-YYYY-MM-DD.md`.
+4. If they ask for multiple reports (e.g. 3 weeks), split by week (Mon–Fri) and explain each week separately.
+
+## Required style — explain everything
+
+Do **not** dump raw commit messages. For each item:
+
+- Say **what** was done in plain language
+- Briefly say **why it matters** (business/UX value) where helpful
+- Group by **day** or clear themes (Hero, About, Contracts, Blog, etc.)
+- Include a short **Week Summary** at the top and an **Outcomes for Management** table or bullets at the bottom
+
+## Structure template
+
+```markdown
+# Weekly Work Report
+**Project:** vCloudTech Marketing Website
+**Period:** [dates]
+**Prepared by:** Usama Khan
+**For:** Manager / Leadership Review
+
+## Week Summary
+[2–4 sentences]
+
+## [Day], [Date]
+### [Theme]
+- What was done…
+- Why it matters (when useful)…
+
+## Outcomes for Management
+| Area | Outcome |
+|------|---------|
+
+## Notes
+[Optional carry-over / next focus]
+```
+
+## Quality bar
+
+- Clearer and more polished than a commit log — “better more” each time if possible
+- Honest: only claim work backed by commits or verified conversation work
+- Keep day-by-day explanation readable for someone who did not watch the coding session
