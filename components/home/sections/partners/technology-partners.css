@@ -572,6 +572,11 @@
   margin: 0;
 }
 
+/* Hover strip → slow the marquee so logos are easier to read */
+.tp__trusted-strip-marquee:hover .tp__trusted-strip-track:not(.tp__trusted-strip-track--static) {
+  animation-duration: 140s;
+}
+
 .tp__trusted-strip-track--static {
   animation: none;
   flex-shrink: 0;
@@ -587,10 +592,18 @@
   will-change: transform;
 }
 
+.tp__trusted-strip-marquee:hover .tp__strategic-marquee-group {
+  animation-duration: 200s;
+}
+
 @media (min-width: 640px) {
   .tp__strategic-marquee-group {
     gap: 0.45rem;
     animation-duration: 55s;
+  }
+
+  .tp__trusted-strip-marquee:hover .tp__strategic-marquee-group {
+    animation-duration: 180s;
   }
 }
 
@@ -598,6 +611,10 @@
   .tp__strategic-marquee-group {
     gap: 0.5rem;
     animation-duration: 50s;
+  }
+
+  .tp__trusted-strip-marquee:hover .tp__strategic-marquee-group {
+    animation-duration: 160s;
   }
 }
 
