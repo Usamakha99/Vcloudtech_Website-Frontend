@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 import { dt } from "@/components/marketing/design-test-theme";
-import { partnerLogoStripClass, partnerLogos } from "@/lib/marketing/partner-logos";
+import { partnerLogoStripClass, strategicPartnerLogos } from "@/lib/marketing/partner-logos";
 
 import "../partners/technology-partners.css";
 
 function StrategicPartnerLogoItems({ idPrefix }: { idPrefix: string }) {
-  return partnerLogos.map((partner) => (
+  return strategicPartnerLogos.map((partner) => (
     <li key={`${idPrefix}-${partner.src}`} className="tp__trusted-strip-logo-box tp__trusted-strip-logo-box--equal">
       <div className="tp__strategic-strip-slot">
         <Image

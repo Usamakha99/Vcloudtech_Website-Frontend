@@ -1,4 +1,6 @@
 /** Partner marks in `public/partners/` — use lowercase filenames (Linux/production paths are case-sensitive). */
+
+/** Major Partners grid (homepage + /partners). */
 export const partnerLogos = [
   { name: "Adobe", src: "/partners/adobe.png" },
   { name: "Apple", src: "/partners/apple.png" },
@@ -24,6 +26,10 @@ export const partnerLogos = [
   { name: "CrowdStrike", src: "/partners/crowdstrike.png" },
   { name: "Commvault", src: "/partners/commvault.png" },
   { name: "Zscaler", src: "/partners/zscaler.png" },
+] as const;
+
+/** Extra logos — Strategic Partners strip only (not Major Partners grid). */
+const strategicOnlyPartnerLogos = [
   { name: "Red Hat", src: "/partners/redhat.png?v=3" },
   { name: "Lenovo", src: "/partners/lenovo.png?v=3" },
   { name: "Eaton", src: "/partners/eaton.png?v=3" },
@@ -38,10 +44,15 @@ export const partnerLogos = [
   { name: "Splunk", src: "/partners/splunk.png?v=3" },
 ] as const;
 
-export type PartnerLogo = (typeof partnerLogos)[number];
+/** Strategic partners marquee — major set + the 12 strip-only logos. */
+export const strategicPartnerLogos = [
+  ...partnerLogos,
+  ...strategicOnlyPartnerLogos,
+] as const;
 
-/** Strategic partners strip — same set as major partners grid. */
-export const strategicPartnerLogos = partnerLogos;
+export type PartnerLogo =
+  | (typeof partnerLogos)[number]
+  | (typeof strategicOnlyPartnerLogos)[number];
 
 export function partnerLogoDimensions(name: PartnerLogo["name"]) {
   if (name === "Microsoft" || name === "Veeam") return { width: 200, height: 200 };
