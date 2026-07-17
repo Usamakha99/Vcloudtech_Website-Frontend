@@ -18,7 +18,7 @@ export const assetVersions = {
   blogPage: "2",
   topContractHolders: "2",
   services: "10",
-  hero: "9",
+  hero: "10",
   intro: "3",
   locations: "3",
   values: "5",
