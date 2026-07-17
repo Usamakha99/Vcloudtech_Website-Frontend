@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { dt } from "@/components/marketing/design-test-theme";
-import { publicAssets, assetVersions } from "@/lib/public-assets";
+import { publicAssets } from "@/lib/public-assets";
 import type { ReactNode } from "react";
 
 import { OrgMetricsRail } from "@/components/home/sections/about/OrgMetricsRail";
@@ -48,45 +48,6 @@ const sectors: {
     icon: PublicSectorIcon,
   },
 ];
-
-const industryImageSectors = [
-  {
-    name: "Government",
-    tagline: "Mission-Critical Infrastructure for Mission-Critical Work",
-    image: publicAssets.industries.government,
-    href: "/services",
-  },
-  {
-    name: "Education",
-    tagline: " Infrastructure Built for the Pace of Modern Learning",
-    image: publicAssets.industries.education,
-    href: "/services",
-  },
-  {
-    name: "Healthcare",
-    tagline: " HIPAA Is the Floor. Patient Safety Is the Ceiling.",
-    image: publicAssets.industries.healthcare,
-    href: "/services",
-  },
-  {
-    name: "Financial Services",
-    tagline: " A Four-Hour Outage Can Cost More Than an Annual IT Contract",
-    image: publicAssets.industries.financial,
-    href: "/services",
-  },
-  {
-    name: "Public sector",
-    tagline: "Infrastructure That Earns and Protects Public Trust.",
-    image: publicAssets.industries.publicSector,
-    href: "/services",
-  },
-  {
-    name: "Commercial / Enterprise",
-    tagline: "  Enterprise-Grade Infrastructure for Enterprise-Level Ambition.",
-    image: publicAssets.industries.commercial,
-    href: "/services",
-  },
-] as const;
 
 const industryImageStackZ = ["z-10", "z-20", "z-30", "z-40", "z-50", "z-[60]"] as const;
 
@@ -150,10 +111,6 @@ export function HomeAboutSection() {
         </div>
 
         <div className="about-minimal__section-close" aria-hidden />
-
-        {/* <SectorsRowSection /> */}
-
-        <IndustriesImageGridSection />
       </div>
     </section>
   );
@@ -198,100 +155,6 @@ function SectorsRowSection() {
         </ul>
       </div>
     </div>
-  );
-}
-
-function IndustriesImageGridSection() {
-  return (
-    <div className="about-enterprise__industry-image-grid about-enterprise__reveal about-enterprise__reveal--6 mt-14 sm:mt-16 lg:mt-20">
-      {/* <DesignTestCredentialsStrip embedded /> */}
-
-      <header className="about-enterprise__sectors-header about-enterprise__sectors-header--center">
-        <div>
-          <p className={dt.badge}>Sectors</p>
-          <h2
-            id="industries-we-serve-heading"
-            className="about-enterprise__sectors-headline"
-          >
-            Industries We{" "}
-            <span className="text-white">Serve</span>
-          </h2>
-        </div>
-      </header>
-
-      <ul
-        className="about-enterprise__industry-image-stack"
-        aria-labelledby="industries-we-serve-heading"
-      >
-        {industryImageSectors.map((sector, index) => (
-          <li key={sector.name} className="about-enterprise__industry-image-stack-item">
-            <IndustryImageCard sector={sector} index={index} />
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function IndustryImageCard({
-  sector,
-  index,
-}: {
-  sector: (typeof industryImageSectors)[number];
-  index: number;
-}) {
-  const number = String(index + 1).padStart(2, "0");
-
-  return (
-    <article className="about-enterprise__industry-image-card group/image-card">
-      <div className="about-enterprise__industry-image-visual">
-        <span className="about-enterprise__industry-image-index" aria-hidden>
-          {number}
-        </span>
-
-        <div className="about-enterprise__industry-image-stage">
-          <div className="about-enterprise__industry-image-frame">
-            <Image
-              key={`${sector.name}-${assetVersions.industries}`}
-              src={sector.image}
-              alt={sector.name}
-              fill
-              className="about-enterprise__industry-image-asset"
-              sizes="(max-width: 1023px) 84vw, 17vw"
-              priority={index < 2}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="about-enterprise__industry-image-body">
-        <h3 className="about-enterprise__industry-image-title">{sector.name}</h3>
-        <p className="about-enterprise__industry-image-tagline">{sector.tagline}</p>
-        <Link href={sector.href} className="about-enterprise__industry-image-link">
-          Explore industry
-          <IndustryImageArrowIcon />
-        </Link>
-      </div>
-    </article>
-  );
-}
-
-function IndustryImageArrowIcon() {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      className="h-3.5 w-3.5 text-[#b3b3b3] transition-transform duration-300 group-hover/image-card:translate-x-0.5 group-hover/image-card:text-white"
-      aria-hidden
-    >
-      <path
-        d="M3 8h10M9 4l4 4-4 4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }
 
