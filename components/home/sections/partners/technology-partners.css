@@ -244,6 +244,7 @@
 
 .tp__partner-logo-slot {
   position: relative;
+  z-index: 2;
   width: min(100%, 7.75rem);
   height: 3.1rem;
   flex-shrink: 0;
@@ -296,33 +297,27 @@
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--hp {
-  transform: scale(1.58);
-  filter: drop-shadow(0 10px 18px rgba(4, 19, 41, 0.16));
+  transform: scale(1.4);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo {
-  transform: scale(1.32);
-  filter: drop-shadow(0 10px 18px rgba(4, 19, 41, 0.16));
+  transform: scale(1.14);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--square {
-  transform: scale(2.22);
-  filter: drop-shadow(0 10px 18px rgba(4, 19, 41, 0.16));
+  transform: scale(1.96);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--boost {
-  transform: scale(1.84);
-  filter: drop-shadow(0 10px 18px rgba(4, 19, 41, 0.16));
+  transform: scale(1.62);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--google {
-  transform: scale(2.28);
-  filter: drop-shadow(0 10px 18px rgba(4, 19, 41, 0.16));
+  transform: scale(2);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--hpe {
-  transform: scale(2.32);
-  filter: drop-shadow(0 10px 18px rgba(4, 19, 41, 0.16));
+  transform: scale(2.05);
 }
 
 .tp__partner-cell {
@@ -341,13 +336,12 @@
     0 1px 2px rgba(0, 0, 0, 0.04),
     0 4px 14px -6px rgba(0, 0, 0, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  will-change: transform, box-shadow, filter;
+  will-change: transform, box-shadow;
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (min-width: 640px) {
@@ -364,66 +358,24 @@
   }
 }
 
-.tp__partner-cell::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  z-index: 0;
-  border-radius: inherit;
-  opacity: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(179, 179, 179, 0.12) 45%,
-    transparent 70%
-  );
-  box-shadow:
-    0 0 0 1px rgba(179, 179, 179, 0.22),
-    0 0 36px rgba(179, 179, 179, 0.28),
-    0 0 64px rgba(4, 19, 41, 0.12);
-  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
+.tp__partner-cell::before,
 .tp__partner-cell::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  background:
-    radial-gradient(circle at 50% 110%, rgba(179, 179, 179, 0.22), transparent 55%),
-    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.65), transparent 42%);
-  opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  pointer-events: none;
+  content: none;
+  display: none;
 }
 
 .tp__partner-cell:hover {
   z-index: 2;
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(179, 179, 179, 0.7);
-  backdrop-filter: blur(10px) saturate(1.15);
-  -webkit-backdrop-filter: blur(10px) saturate(1.15);
   box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.04),
-    0 12px 24px -10px rgba(0, 0, 0, 0.18),
-    0 28px 56px -18px rgba(0, 0, 0, 0.28),
-    0 40px 72px -24px rgba(4, 19, 41, 0.22),
-    0 0 0 1px rgba(179, 179, 179, 0.18),
-    0 0 48px rgba(179, 179, 179, 0.28);
+    0 12px 24px -10px rgba(0, 0, 0, 0.16),
+    0 28px 52px -18px rgba(0, 0, 0, 0.22);
   transform: translateY(-12px) scale(1.07);
-  filter: drop-shadow(0 18px 28px rgba(4, 19, 41, 0.18));
-}
-
-.tp__partner-cell:hover::before,
-.tp__partner-cell:hover::after {
-  opacity: 1;
 }
 
 .tp__partner-logo {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   height: auto;
   max-height: 3.15rem;
   width: auto;
@@ -431,9 +383,8 @@
   object-fit: contain;
   transform-origin: center center;
   backface-visibility: hidden;
-  transition:
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: none;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (min-width: 640px) {
@@ -464,20 +415,21 @@
 }
 
 .tp__partner-cell:hover .tp__partner-logo {
-  transform: scale(1.1);
-  filter: drop-shadow(0 8px 14px rgba(4, 19, 41, 0.14));
+  /* Logo stays as-is — only the plate behind frosts */
+  transform: none;
+  filter: none;
 }
 
 .tp__partner-cell:hover .tp__partner-logo--microsoft {
-  transform: scale(1.52);
+  transform: scale(1.38);
 }
 
 .tp__partner-cell:hover .tp__partner-logo--boost {
-  transform: scale(1.56);
+  transform: scale(1.42);
 }
 
 .tp__partner-cell:hover .tp__partner-logo--google {
-  transform: scale(1.9);
+  transform: scale(1.72);
 }
 
 /* Trusted by — strategic-strip layout (dark heading + full-width white rail) */
@@ -1007,11 +959,11 @@
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--lansweeper,
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--servicenow,
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--commvault {
-  transform: scale(1.19);
+  transform: scale(1.08);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--crowdstrike {
-  transform: scale(1.34);
+  transform: scale(1.22);
 }
 
 .tp__partner-grid--all .tp__partner-logo--splunk {
@@ -1025,11 +977,11 @@
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--apple,
 .tp__partner-cell:hover .tp__partner-logo--apple {
-  transform: scale(0.97);
+  transform: scale(0.88);
 }
 
 .tp__partner-grid--all .tp__partner-cell:hover .tp__partner-logo--splunk {
-  transform: scale(1.1);
+  transform: scale(1);
 }
 
 .tp__trusted-strip-logo {
@@ -1139,11 +1091,6 @@
     filter: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-  }
-
-  .tp__partner-cell:hover::before,
-  .tp__partner-cell:hover::after {
-    opacity: 0;
   }
 
   .tp__partner-cell:hover .tp__partner-logo {
