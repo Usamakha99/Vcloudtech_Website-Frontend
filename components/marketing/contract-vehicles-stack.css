@@ -33,18 +33,16 @@
   background: transparent;
   box-shadow: none;
   overflow: visible;
-  animation: cv-stack-in 240ms ease;
+  animation: cv-stack-in 360ms ease-out;
 }
 
 @keyframes cv-stack-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -154,10 +152,8 @@
   color: #b3b3b3;
   cursor: pointer;
   text-align: left;
-  transition:
-    color 140ms ease,
-    border-color 140ms ease,
-    background-color 140ms ease;
+  /* Instant active swap — animated chip styles caused hitch on next */
+  transition: none;
 }
 
 .cv-stack__id-chip:hover {
@@ -301,8 +297,8 @@
   flex: 1 1 auto;
   width: 100%;
   height: auto;
-  min-height: calc(var(--cv-stack-card-h) + 6rem);
-  padding-block: 0.5rem 5rem;
+  min-height: calc(var(--cv-stack-card-h) + 8rem);
+  padding-block: 0.5rem 7rem;
   background: transparent;
   overflow: visible;
   touch-action: pan-y;
@@ -332,28 +328,23 @@
   box-shadow: 0 12px 32px -20px rgba(0, 0, 0, 0.55);
   overflow: hidden;
   transform-origin: center center;
+  transform: translate3d(0, 0, 0);
   transition: none;
-  will-change: transform;
   pointer-events: none;
   isolation: isolate;
-  opacity: 1 !important;
+  contain: layout style paint;
   backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-.cv-stack__card--under,
-.cv-stack__card--peeling,
-.cv-stack__card--front {
-  background: var(--cv-stack-card);
-}
-
-.cv-stack__card--front {
+.cv-stack__card--deck[data-layer="front"] {
   pointer-events: auto;
 }
 
-.cv-stack__card--gone {
+.cv-stack__card--deck[data-layer="peeling"],
+.cv-stack__card--deck[data-layer="forward"],
+.cv-stack__card--deck[data-layer="under"] {
   pointer-events: none;
-  visibility: hidden;
-  opacity: 0 !important;
 }
 
 .cv-stack__card-inner {
@@ -361,12 +352,6 @@
   flex-direction: column;
   height: 100%;
   min-height: 0;
-  background: var(--cv-stack-card);
-}
-
-.cv-stack__card--under .cv-stack__card-inner,
-.cv-stack__card--peeling .cv-stack__card-inner,
-.cv-stack__card--front .cv-stack__card-inner {
   background: var(--cv-stack-card);
 }
 

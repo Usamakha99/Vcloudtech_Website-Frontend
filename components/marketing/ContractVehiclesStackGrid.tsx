@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties, useEffect, useRef, useState } from "react";
+import { type CSSProperties, startTransition, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import { contractVehicleDetails } from "@/lib/marketing/contract-vehicle-details";
@@ -32,15 +32,28 @@ export function ContractVehiclesStackGrid({ href = "/contact" }: Props) {
   useEffect(() => {
     if (!selectedId || !detailRef.current) return;
 
-    const frame = window.requestAnimationFrame(() => {
-      detailRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
+    const el = detailRef.current;
+    // Wait for layout + fade-in paint so scroll doesn't fight the mount
+    const timer = window.setTimeout(() => {
+      const rect = el.getBoundingClientRect();
+      const topPad = 96;
+      const bottomPad = 48;
+      const needsNudge =
+        rect.top < topPad || rect.bottom > window.innerHeight - bottomPad;
 
-    return () => window.cancelAnimationFrame(frame);
+      if (needsNudge) {
+        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }, 80);
+
+    return () => window.clearTimeout(timer);
   }, [selectedId]);
+
+  const selectVehicle = (id: string | null) => {
+    startTransition(() => {
+      setSelectedId(id);
+    });
+  };
 
   return (
     <div className="cv-grid-wrap cv-stack-grid-wrap">
@@ -58,7 +71,7 @@ export function ContractVehiclesStackGrid({ href = "/contact" }: Props) {
                   className={`cv-grid__chip${isActive ? " cv-grid__chip--active" : ""}`}
                   aria-expanded={isActive}
                   aria-controls={isActive ? `cv-stack-detail-${vehicle.id}` : undefined}
-                  onClick={() => setSelectedId(isActive ? null : vehicle.id)}
+                  onClick={() => selectVehicle(isActive ? null : vehicle.id)}
                 >
                   {vehicle.label}
                 </button>
@@ -86,7 +99,7 @@ export function ContractVehiclesStackGrid({ href = "/contact" }: Props) {
           <ContractVehicleDetailStack
             title={selectedVehicle.label}
             details={selectedDetails}
-            onClose={() => setSelectedId(null)}
+            onClose={() => selectVehicle(null)}
           />
         </div>
       ) : null}

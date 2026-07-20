@@ -1,6 +1,13 @@
 "use client";
 
-import { type CSSProperties, useCallback, useEffect, useRef, useState } from "react";
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 
 import type { ContractVehicleDetail } from "@/lib/marketing/contract-vehicle-details";
 
@@ -22,12 +29,57 @@ const detailRows: { key: keyof ContractVehicleDetail; label: string; prominent?:
 ];
 
 const BOX_PEEK = 8;
-/** Peel travel — kept modest so cards stay inside the stage on all viewports. */
-const PEEL_Y = 96;
-const PEEL_X = 28;
-const STEP_MS = 380;
+const FORWARD_Y = 108;
+const FORWARD_X = 36;
+const FORWARD_STEP = 10;
+const STEP_MS = 420;
 
-function StackDetailRows({ detail }: { detail: ContractVehicleDetail }) {
+type Layer = "under" | "front" | "peeling" | "forward";
+
+function layoutForOffset(offset: number, index: number, count: number) {
+  let layer: Layer = "under";
+  let tx = 0;
+  let ty = 0;
+  let scale = 1;
+  let zIndex = count - index + 2;
+
+  if (offset >= 1) {
+    layer = "forward";
+    const depth = Math.min(4, offset);
+    tx = FORWARD_X + (depth - 1) * FORWARD_STEP * 0.35;
+    ty = FORWARD_Y + (depth - 1) * FORWARD_STEP;
+    scale = 0.97 - Math.min(0.04, (depth - 1) * 0.01);
+    zIndex = Math.max(1, count - Math.floor(depth));
+  } else if (offset > 0) {
+    layer = "peeling";
+    tx = FORWARD_X * offset;
+    ty = FORWARD_Y * offset;
+    scale = 1 - offset * 0.03;
+    zIndex = count + 10;
+  } else if (offset > -0.001) {
+    layer = "front";
+    zIndex = count + 5;
+  } else {
+    layer = "under";
+    const depth = Math.min(2, -offset);
+    tx = -BOX_PEEK * depth * 0.35;
+    ty = -BOX_PEEK * depth * 0.35;
+    scale = 1 - depth * 0.015;
+    zIndex = count - index;
+  }
+
+  return {
+    layer,
+    zIndex,
+    transform: `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`,
+  };
+}
+
+const StackDetailRows = memo(function StackDetailRows({
+  detail,
+}: {
+  detail: ContractVehicleDetail;
+}) {
   return (
     <dl className="cv-stack__list">
       {detailRows.map((row) => (
@@ -41,35 +93,69 @@ function StackDetailRows({ detail }: { detail: ContractVehicleDetail }) {
       ))}
     </dl>
   );
+});
+
+function easeInOutCubic(t: number) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
-function easeOutCubic(t: number) {
-  return 1 - Math.pow(1 - t, 3);
-}
+type IdBarProps = {
+  details: ContractVehicleDetail[];
+  activeIndex: number;
+  onSelect: (index: number) => void;
+};
+
+const StackIdBar = memo(function StackIdBar({ details, activeIndex, onSelect }: IdBarProps) {
+  return (
+    <div className="cv-stack__id-bar" role="tablist" aria-label="Select contract by ID">
+      {details.map((detail, index) => (
+        <button
+          key={`id-${detail.contractNumber}`}
+          type="button"
+          role="tab"
+          aria-selected={index === activeIndex}
+          className={`cv-stack__id-chip${index === activeIndex ? " cv-stack__id-chip--active" : ""}`}
+          onClick={() => onSelect(index)}
+        >
+          <span className="cv-stack__id-chip-n">{index + 1}</span>
+          <span className="cv-stack__id-chip-id">{detail.contractNumber}</span>
+        </button>
+      ))}
+    </div>
+  );
+});
 
 /**
- * Box-stack contract browser: one card at a time via scroll/swipe/buttons.
- * Discrete steps (no invisible scroll runway) — avoids live jerk and keeps
- * card content fully scrollable on the last page.
+ * Card transforms are painted via DOM during rAF — React does not re-render
+ * every frame (that was the hitch when the next card appeared).
  */
 export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
   const multiple = details.length > 1;
   const lastIndex = Math.max(0, details.length - 1);
+  const count = details.length;
   const stageRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const progressRef = useRef(0);
   const animFrameRef = useRef<number | null>(null);
   const wheelLockRef = useRef(false);
-  const [progress, setProgress] = useState(0);
+  const wheelAccRef = useRef(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const activeIndex = Math.min(lastIndex, Math.max(0, Math.round(progress)));
-
-  const applyProgress = useCallback(
-    (value: number) => {
-      const next = Math.min(lastIndex, Math.max(0, value));
-      progressRef.current = next;
-      setProgress(next);
+  const paintCards = useCallback(
+    (progress: number) => {
+      const cards = cardRefs.current;
+      for (let index = 0; index < count; index += 1) {
+        const el = cards[index];
+        if (!el) continue;
+        const { layer, zIndex, transform } = layoutForOffset(progress - index, index, count);
+        el.style.transform = transform;
+        el.style.zIndex = String(zIndex);
+        if (el.dataset.layer !== layer) {
+          el.dataset.layer = layer;
+        }
+      }
     },
-    [lastIndex],
+    [count],
   );
 
   const goToIndex = useCallback(
@@ -77,36 +163,47 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
       if (!multiple) return;
       const target = Math.max(0, Math.min(lastIndex, nextIndex));
       const from = progressRef.current;
-      if (Math.abs(from - target) < 0.001) return;
+      if (Math.abs(from - target) < 0.001) {
+        setActiveIndex(target);
+        paintCards(target);
+        return;
+      }
+
+      setActiveIndex(target);
 
       if (animFrameRef.current != null) {
         cancelAnimationFrame(animFrameRef.current);
         animFrameRef.current = null;
       }
 
-      // Long jump (ID chips): land directly — no intermediate flash
-      if (Math.abs(target - from) > 1.05) {
-        applyProgress(target);
-        return;
-      }
-
+      const distance = Math.abs(target - from);
+      const duration = Math.min(720, STEP_MS + Math.max(0, distance - 1) * 160);
       const start = performance.now();
+
       const tick = (now: number) => {
-        const t = Math.min(1, (now - start) / STEP_MS);
-        applyProgress(from + (target - from) * easeOutCubic(t));
+        const t = Math.min(1, (now - start) / duration);
+        const value = from + (target - from) * easeInOutCubic(t);
+        progressRef.current = value;
+        paintCards(value);
         if (t < 1) {
           animFrameRef.current = requestAnimationFrame(tick);
         } else {
-          applyProgress(target);
+          progressRef.current = target;
+          paintCards(target);
           animFrameRef.current = null;
         }
       };
       animFrameRef.current = requestAnimationFrame(tick);
     },
-    [multiple, lastIndex, applyProgress],
+    [multiple, lastIndex, paintCards],
   );
 
-  // Wheel / trackpad: one card per gesture (no continuous scroll mapping = no jerk)
+  useLayoutEffect(() => {
+    progressRef.current = 0;
+    setActiveIndex(0);
+    paintCards(0);
+  }, [details.length, details[0]?.contractNumber, paintCards]);
+
   useEffect(() => {
     if (!multiple) return;
     const stage = stageRef.current;
@@ -114,7 +211,6 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
 
     const onWheel = (event: WheelEvent) => {
       const target = event.target as HTMLElement | null;
-      // Let the open card's detail list scroll when content overflows
       if (target?.closest(".cv-stack__list")) {
         const list = target.closest(".cv-stack__list") as HTMLElement;
         const atTop = list.scrollTop <= 0;
@@ -125,26 +221,34 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
       }
 
       event.preventDefault();
-      if (wheelLockRef.current || animFrameRef.current != null) return;
+      if (wheelLockRef.current) return;
 
       const delta = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
-      if (Math.abs(delta) < 10) return;
+      wheelAccRef.current += delta;
+      if (Math.abs(wheelAccRef.current) < 28) return;
 
+      const direction = wheelAccRef.current > 0 ? 1 : -1;
+      wheelAccRef.current = 0;
       wheelLockRef.current = true;
-      const current = Math.round(progressRef.current);
-      if (delta > 0) goToIndex(current + 1);
-      else goToIndex(current - 1);
+
+      const current = progressRef.current;
+      const next =
+        direction > 0
+          ? Math.min(lastIndex, Math.floor(current + 0.001) + 1)
+          : Math.max(0, Math.ceil(current - 0.001) - 1);
+
+      goToIndex(next);
 
       window.setTimeout(() => {
         wheelLockRef.current = false;
-      }, STEP_MS + 60);
+        wheelAccRef.current = 0;
+      }, STEP_MS + 80);
     };
 
     stage.addEventListener("wheel", onWheel, { passive: false });
     return () => stage.removeEventListener("wheel", onWheel);
-  }, [multiple, goToIndex]);
+  }, [multiple, lastIndex, goToIndex]);
 
-  // Touch swipe: up = next, down = previous
   useEffect(() => {
     if (!multiple) return;
     const stage = stageRef.current;
@@ -159,15 +263,16 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
     };
 
     const onEnd = (event: TouchEvent) => {
+      if (wheelLockRef.current || animFrameRef.current != null) return;
       const endX = event.changedTouches[0]?.clientX ?? startX;
       const endY = event.changedTouches[0]?.clientY ?? startY;
       const dx = endX - startX;
       const dy = endY - startY;
       if (Math.abs(dy) < 40 || Math.abs(dy) < Math.abs(dx)) return;
 
-      const current = Math.round(progressRef.current);
-      if (dy < 0) goToIndex(current + 1);
-      else goToIndex(current - 1);
+      const current = progressRef.current;
+      if (dy < 0) goToIndex(Math.min(lastIndex, Math.floor(current + 0.001) + 1));
+      else goToIndex(Math.max(0, Math.ceil(current - 0.001) - 1));
     };
 
     stage.addEventListener("touchstart", onStart, { passive: true });
@@ -176,16 +281,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
       stage.removeEventListener("touchstart", onStart);
       stage.removeEventListener("touchend", onEnd);
     };
-  }, [multiple, goToIndex]);
-
-  useEffect(() => {
-    progressRef.current = 0;
-    setProgress(0);
-    if (animFrameRef.current != null) {
-      cancelAnimationFrame(animFrameRef.current);
-      animFrameRef.current = null;
-    }
-  }, [details.length, details[0]?.contractNumber]);
+  }, [multiple, lastIndex, goToIndex]);
 
   useEffect(() => {
     return () => {
@@ -203,9 +299,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
         <div className="cv-stack__header-copy">
           <p className="cv-stack__eyebrow">Contract</p>
           <h3 className="cv-stack__title">{title}</h3>
-          {multiple ? (
-            <p className="cv-stack__meta">{details.length} contracts</p>
-          ) : null}
+          {multiple ? <p className="cv-stack__meta">{details.length} contracts</p> : null}
         </div>
         <button type="button" className="cv-stack__close" onClick={onClose} aria-label="Close">
           <span aria-hidden>×</span>
@@ -214,28 +308,14 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
 
       {multiple ? (
         <>
-          <div className="cv-stack__id-bar" role="tablist" aria-label="Select contract by ID">
-            {details.map((detail, index) => (
-              <button
-                key={`id-${detail.contractNumber}`}
-                type="button"
-                role="tab"
-                aria-selected={index === activeIndex}
-                className={`cv-stack__id-chip${index === activeIndex ? " cv-stack__id-chip--active" : ""}`}
-                onClick={() => goToIndex(index)}
-              >
-                <span className="cv-stack__id-chip-n">{index + 1}</span>
-                <span className="cv-stack__id-chip-id">{detail.contractNumber}</span>
-              </button>
-            ))}
-          </div>
+          <StackIdBar details={details} activeIndex={activeIndex} onSelect={goToIndex} />
 
           <div className="cv-stack__controls">
             <button
               type="button"
               className="cv-stack__nav-btn"
-              onClick={() => goToIndex(Math.round(progressRef.current) - 1)}
-              disabled={progress <= 0.02}
+              onClick={() => goToIndex(Math.max(0, activeIndex - 1))}
+              disabled={activeIndex <= 0}
               aria-label="Previous contract"
             >
               ↑
@@ -246,8 +326,8 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
             <button
               type="button"
               className="cv-stack__nav-btn"
-              onClick={() => goToIndex(Math.round(progressRef.current) + 1)}
-              disabled={progress >= lastIndex - 0.02}
+              onClick={() => goToIndex(Math.min(lastIndex, activeIndex + 1))}
+              disabled={activeIndex >= lastIndex}
               aria-label="Next contract"
             >
               ↓
@@ -255,83 +335,32 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
           </div>
 
           <div ref={stageRef} className="cv-stack__deck-stage">
-            <div
-              className="cv-stack__deck"
-              style={{ ["--cv-stack-count"]: details.length } as CSSProperties}
-            >
-              {details.map((detail, index) => {
-                const offset = progress - index;
-                let layer: "under" | "front" | "peeling" | "gone" = "under";
-                let tx = 0;
-                let ty = 0;
-                let scale = 1;
-                let zIndex = details.length - index + 2;
-
-                if (offset >= 1) {
-                  layer = "gone";
-                  tx = PEEL_X;
-                  ty = PEEL_Y;
-                  scale = 0.96;
-                  zIndex = 0;
-                } else if (offset > 0.001) {
-                  layer = "peeling";
-                  tx = PEEL_X * offset;
-                  ty = PEEL_Y * offset;
-                  scale = 1;
-                  zIndex = details.length + 10;
-                } else if (offset > -0.001) {
-                  layer = "front";
-                  tx = 0;
-                  ty = 0;
-                  scale = 1;
-                  zIndex = details.length + 5;
-                } else {
-                  layer = "under";
-                  const depth = Math.min(2, -offset);
-                  tx = -BOX_PEEK * depth * 0.35;
-                  ty = -BOX_PEEK * depth * 0.35;
-                  scale = 1 - depth * 0.015;
-                  zIndex = details.length - index;
-                }
-
-                const showContent =
-                  layer === "front" ||
-                  layer === "peeling" ||
-                  (layer === "under" && offset > -1.15);
-
-                return (
-                  <article
-                    key={detail.contractNumber}
-                    className={`cv-stack__card cv-stack__card--deck cv-stack__card--${layer}`}
-                    style={
-                      {
-                        zIndex,
-                        transform: `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`,
-                      } as CSSProperties
-                    }
-                    aria-label={`Contract ${detail.contractNumber}`}
-                    aria-hidden={layer === "gone" ? true : undefined}
-                  >
-                    <div className="cv-stack__card-inner">
-                      <header className="cv-stack__card-head">
-                        <p className="cv-stack__card-label">
-                          <strong>
-                            Contract {index + 1} of {details.length}
-                          </strong>
-                        </p>
-                        <h4 className="cv-stack__card-number">
-                          <strong>{detail.contractNumber}</strong>
-                        </h4>
-                      </header>
-                      {showContent ? (
-                        <StackDetailRows detail={detail} />
-                      ) : (
-                        <div className="cv-stack__card-blank" aria-hidden />
-                      )}
-                    </div>
-                  </article>
-                );
-              })}
+            <div className="cv-stack__deck">
+              {details.map((detail, index) => (
+                <article
+                  key={detail.contractNumber}
+                  ref={(node) => {
+                    cardRefs.current[index] = node;
+                  }}
+                  className="cv-stack__card cv-stack__card--deck"
+                  data-layer={index === 0 ? "front" : "under"}
+                  aria-label={`Contract ${detail.contractNumber}`}
+                >
+                  <div className="cv-stack__card-inner">
+                    <header className="cv-stack__card-head">
+                      <p className="cv-stack__card-label">
+                        <strong>
+                          Contract {index + 1} of {details.length}
+                        </strong>
+                      </p>
+                      <h4 className="cv-stack__card-number">
+                        <strong>{detail.contractNumber}</strong>
+                      </h4>
+                    </header>
+                    <StackDetailRows detail={detail} />
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </>
@@ -339,6 +368,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
         <div className="cv-stack__single">
           <article
             className="cv-stack__card cv-stack__card--deck"
+            data-layer="front"
             aria-label={`Contract ${details[0]?.contractNumber}`}
           >
             <div className="cv-stack__card-inner">
