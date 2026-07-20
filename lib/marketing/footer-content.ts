@@ -10,7 +10,8 @@ export const designTestFooterLocations = {
     ariaLabel: "Open VCloud Tech Headquarters in Google Maps",
   },
   office: {
-    region: "California",
+    country: "California",
+    region: "Office",
     lines: [
       "609 Deep Valley Drive Suite 200",
       "Rolling Hills Estates, CA 90274",

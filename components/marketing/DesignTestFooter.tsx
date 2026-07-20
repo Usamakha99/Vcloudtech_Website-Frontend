@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 
@@ -10,7 +9,8 @@ import {
   designTestFooterLocations,
   designTestFooterSocial,
 } from "@/lib/marketing/footer-content";
-import { publicAssets } from "@/lib/public-assets";
+// import Image from "next/image";
+// import { publicAssets } from "@/lib/public-assets";
 
 import "./design-test-footer.css";
 
@@ -184,6 +184,7 @@ export function DesignTestFooter() {
           <FooterContactInfo />
         </div>
 
+        {/* vCloudTech logo mark — hidden for now
         <div className="dt-footer__mark" aria-hidden>
           <Image
             src={publicAssets.brand.markOutline}
@@ -196,6 +197,7 @@ export function DesignTestFooter() {
           />
           <span className="dt-footer__mark-shine" />
         </div>
+        */}
 
         <div className="dt-footer__bottom">
           <p className="dt-footer__copyright">&copy; 2026 All Rights Reserved</p>
