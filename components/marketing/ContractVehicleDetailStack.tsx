@@ -21,13 +21,11 @@ const detailRows: { key: keyof ContractVehicleDetail; label: string; prominent?:
   { key: "term", label: "Term" },
 ];
 
-const BOX_PEEK = 10;
-const PEEL_Y = 140;
-const PEEL_X = 36;
-/** Adjacent step duration (ms). */
-const STEP_MS = 320;
-/** Long jump (skip cards) — quick settle, no middle-card flash. */
-const JUMP_MS = 180;
+const BOX_PEEK = 8;
+/** Peel travel — kept modest so cards stay inside the stage on all viewports. */
+const PEEL_Y = 96;
+const PEEL_X = 28;
+const STEP_MS = 380;
 
 function StackDetailRows({ detail }: { detail: ContractVehicleDetail }) {
   return (
@@ -45,63 +43,34 @@ function StackDetailRows({ detail }: { detail: ContractVehicleDetail }) {
   );
 }
 
-function easeInOutCubic(t: number) {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+function easeOutCubic(t: number) {
+  return 1 - Math.pow(1 - t, 3);
 }
 
 /**
- * Continuous stack progress: 0 = first card front, N-1 = last card front.
- * Scroll and buttons drive the same value — no snap/jerk between systems.
+ * Box-stack contract browser: one card at a time via scroll/swipe/buttons.
+ * Discrete steps (no invisible scroll runway) — avoids live jerk and keeps
+ * card content fully scrollable on the last page.
  */
 export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
   const multiple = details.length > 1;
   const lastIndex = Math.max(0, details.length - 1);
-  const scrollerRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef(0);
   const animFrameRef = useRef<number | null>(null);
-  const drivingRef = useRef<"scroll" | "button" | null>(null);
+  const wheelLockRef = useRef(false);
   const [progress, setProgress] = useState(0);
 
   const activeIndex = Math.min(lastIndex, Math.max(0, Math.round(progress)));
 
-  const applyProgress = useCallback((value: number) => {
-    const next = Math.min(lastIndex, Math.max(0, value));
-    progressRef.current = next;
-    setProgress(next);
-  }, [lastIndex]);
-
-  const syncScrollerToProgress = useCallback(
-    (value: number, smooth: boolean) => {
-      const scroller = scrollerRef.current;
-      if (!scroller || !multiple) return;
-      const max = scroller.scrollHeight - scroller.clientHeight;
-      if (max <= 0) return;
-      const top = lastIndex === 0 ? 0 : (value / lastIndex) * max;
-      if (smooth) {
-        scroller.scrollTo({ top, behavior: "smooth" });
-      } else {
-        scroller.scrollTop = top;
-      }
+  const applyProgress = useCallback(
+    (value: number) => {
+      const next = Math.min(lastIndex, Math.max(0, value));
+      progressRef.current = next;
+      setProgress(next);
     },
-    [multiple, lastIndex],
+    [lastIndex],
   );
-
-  const syncProgressFromScroll = useCallback(() => {
-    if (drivingRef.current === "button") return;
-    const scroller = scrollerRef.current;
-    if (!scroller || !multiple) return;
-
-    const max = scroller.scrollHeight - scroller.clientHeight;
-    if (max <= 0) return;
-
-    drivingRef.current = "scroll";
-    const raw = Math.min(1, Math.max(0, scroller.scrollTop / max));
-    applyProgress(raw * lastIndex);
-    // release on next frame so button clicks aren't blocked forever
-    requestAnimationFrame(() => {
-      if (drivingRef.current === "scroll") drivingRef.current = null;
-    });
-  }, [multiple, lastIndex, applyProgress]);
 
   const goToIndex = useCallback(
     (nextIndex: number) => {
@@ -115,64 +84,114 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
         animFrameRef.current = null;
       }
 
-      drivingRef.current = "button";
-      const distance = Math.abs(target - from);
-
-      // Jumping across cards (e.g. 1 → 4): land directly — no flash of #2/#3
-      if (distance > 1.05) {
+      // Long jump (ID chips): land directly — no intermediate flash
+      if (Math.abs(target - from) > 1.05) {
         applyProgress(target);
-        syncScrollerToProgress(target, false);
-        window.setTimeout(() => {
-          drivingRef.current = null;
-        }, JUMP_MS);
         return;
       }
 
       const start = performance.now();
       const tick = (now: number) => {
         const t = Math.min(1, (now - start) / STEP_MS);
-        const eased = easeInOutCubic(t);
-        const value = from + (target - from) * eased;
-        applyProgress(value);
-        syncScrollerToProgress(value, false);
-
+        applyProgress(from + (target - from) * easeOutCubic(t));
         if (t < 1) {
           animFrameRef.current = requestAnimationFrame(tick);
         } else {
           applyProgress(target);
-          syncScrollerToProgress(target, false);
           animFrameRef.current = null;
-          drivingRef.current = null;
         }
       };
-
       animFrameRef.current = requestAnimationFrame(tick);
     },
-    [multiple, lastIndex, applyProgress, syncScrollerToProgress],
+    [multiple, lastIndex, applyProgress],
   );
 
+  // Wheel / trackpad: one card per gesture (no continuous scroll mapping = no jerk)
   useEffect(() => {
     if (!multiple) return;
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
+    const stage = stageRef.current;
+    if (!stage) return;
 
-    syncProgressFromScroll();
-    scroller.addEventListener("scroll", syncProgressFromScroll, { passive: true });
-    window.addEventListener("resize", syncProgressFromScroll);
-    return () => {
-      scroller.removeEventListener("scroll", syncProgressFromScroll);
-      window.removeEventListener("resize", syncProgressFromScroll);
-      if (animFrameRef.current != null) cancelAnimationFrame(animFrameRef.current);
+    const onWheel = (event: WheelEvent) => {
+      const target = event.target as HTMLElement | null;
+      // Let the open card's detail list scroll when content overflows
+      if (target?.closest(".cv-stack__list")) {
+        const list = target.closest(".cv-stack__list") as HTMLElement;
+        const atTop = list.scrollTop <= 0;
+        const atBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 1;
+        if ((event.deltaY < 0 && !atTop) || (event.deltaY > 0 && !atBottom)) {
+          return;
+        }
+      }
+
+      event.preventDefault();
+      if (wheelLockRef.current || animFrameRef.current != null) return;
+
+      const delta = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+      if (Math.abs(delta) < 10) return;
+
+      wheelLockRef.current = true;
+      const current = Math.round(progressRef.current);
+      if (delta > 0) goToIndex(current + 1);
+      else goToIndex(current - 1);
+
+      window.setTimeout(() => {
+        wheelLockRef.current = false;
+      }, STEP_MS + 60);
     };
-  }, [multiple, details.length, syncProgressFromScroll]);
+
+    stage.addEventListener("wheel", onWheel, { passive: false });
+    return () => stage.removeEventListener("wheel", onWheel);
+  }, [multiple, goToIndex]);
+
+  // Touch swipe: up = next, down = previous
+  useEffect(() => {
+    if (!multiple) return;
+    const stage = stageRef.current;
+    if (!stage) return;
+
+    let startX = 0;
+    let startY = 0;
+
+    const onStart = (event: TouchEvent) => {
+      startX = event.touches[0]?.clientX ?? 0;
+      startY = event.touches[0]?.clientY ?? 0;
+    };
+
+    const onEnd = (event: TouchEvent) => {
+      const endX = event.changedTouches[0]?.clientX ?? startX;
+      const endY = event.changedTouches[0]?.clientY ?? startY;
+      const dx = endX - startX;
+      const dy = endY - startY;
+      if (Math.abs(dy) < 40 || Math.abs(dy) < Math.abs(dx)) return;
+
+      const current = Math.round(progressRef.current);
+      if (dy < 0) goToIndex(current + 1);
+      else goToIndex(current - 1);
+    };
+
+    stage.addEventListener("touchstart", onStart, { passive: true });
+    stage.addEventListener("touchend", onEnd, { passive: true });
+    return () => {
+      stage.removeEventListener("touchstart", onStart);
+      stage.removeEventListener("touchend", onEnd);
+    };
+  }, [multiple, goToIndex]);
 
   useEffect(() => {
     progressRef.current = 0;
     setProgress(0);
-    drivingRef.current = null;
-    const scroller = scrollerRef.current;
-    if (scroller) scroller.scrollTop = 0;
+    if (animFrameRef.current != null) {
+      cancelAnimationFrame(animFrameRef.current);
+      animFrameRef.current = null;
+    }
   }, [details.length, details[0]?.contractNumber]);
+
+  useEffect(() => {
+    return () => {
+      if (animFrameRef.current != null) cancelAnimationFrame(animFrameRef.current);
+    };
+  }, []);
 
   return (
     <div
@@ -185,7 +204,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
           <p className="cv-stack__eyebrow">Contract</p>
           <h3 className="cv-stack__title">{title}</h3>
           {multiple ? (
-            <p className="cv-stack__meta">{details.length} contracts · scroll to browse</p>
+            <p className="cv-stack__meta">{details.length} contracts</p>
           ) : null}
         </div>
         <button type="button" className="cv-stack__close" onClick={onClose} aria-label="Close">
@@ -235,42 +254,44 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
             </button>
           </div>
 
-          <div className="cv-stack__deck-stage">
+          <div ref={stageRef} className="cv-stack__deck-stage">
             <div
               className="cv-stack__deck"
               style={{ ["--cv-stack-count"]: details.length } as CSSProperties}
             >
-              <span className="cv-stack__box-frame cv-stack__box-frame--2" aria-hidden />
-              <span className="cv-stack__box-frame cv-stack__box-frame--1" aria-hidden />
-
               {details.map((detail, index) => {
                 const offset = progress - index;
                 let layer: "under" | "front" | "peeling" | "gone" = "under";
                 let tx = 0;
                 let ty = 0;
                 let scale = 1;
+                let zIndex = details.length - index + 2;
 
                 if (offset >= 1) {
                   layer = "gone";
                   tx = PEEL_X;
                   ty = PEEL_Y;
                   scale = 0.96;
+                  zIndex = 0;
                 } else if (offset > 0.001) {
                   layer = "peeling";
                   tx = PEEL_X * offset;
                   ty = PEEL_Y * offset;
                   scale = 1;
+                  zIndex = details.length + 10;
                 } else if (offset > -0.001) {
                   layer = "front";
                   tx = 0;
                   ty = 0;
                   scale = 1;
+                  zIndex = details.length + 5;
                 } else {
                   layer = "under";
                   const depth = Math.min(2, -offset);
                   tx = -BOX_PEEK * depth * 0.35;
                   ty = -BOX_PEEK * depth * 0.35;
                   scale = 1 - depth * 0.015;
+                  zIndex = details.length - index;
                 }
 
                 const showContent =
@@ -284,7 +305,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
                     className={`cv-stack__card cv-stack__card--deck cv-stack__card--${layer}`}
                     style={
                       {
-                        zIndex: details.length - index + 2,
+                        zIndex,
                         transform: `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`,
                       } as CSSProperties
                     }
@@ -311,19 +332,6 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
                   </article>
                 );
               })}
-            </div>
-
-            <div
-              ref={scrollerRef}
-              className="cv-stack__scroll-drive"
-              style={{ ["--cv-stack-count"]: details.length } as CSSProperties}
-              tabIndex={0}
-              aria-label="Scroll to browse contracts in the stack"
-            >
-              <div
-                className="cv-stack__scroll-runway"
-                style={{ height: `${Math.max(2, details.length) * 120}%` }}
-              />
             </div>
           </div>
         </>
