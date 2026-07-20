@@ -380,7 +380,6 @@ a.dt-footer__contact-row-value:hover {
 .dt-footer__contact-row-value--plain {
   color: #a1a1aa;
 }
-
 .dt-footer__contact-note {
   margin: 0.85rem 0 0;
   padding-top: 0.85rem;
@@ -390,3 +389,4 @@ a.dt-footer__contact-row-value:hover {
   font-weight: 400;
   color: #71717a;
 }
+

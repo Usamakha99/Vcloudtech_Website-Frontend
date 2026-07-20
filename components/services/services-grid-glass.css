@@ -86,12 +86,12 @@
 }
 
 .service-content-card__cta-wrap:hover .service-content-card__cta {
-  background: #f0651f;
-  border-color: #f0651f;
-  color: #fff;
+  background: #b3b3b3;
+  border-color: #b3b3b3;
+  color: #041329;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.14) inset,
-    0 14px 32px -10px rgba(229, 86, 20, 0.75);
+    0 1px 0 rgba(255, 255, 255, 0.2) inset,
+    0 14px 32px -10px rgba(179, 179, 179, 0.45);
   transform: translateY(-1px);
 }
 
