@@ -138,6 +138,14 @@ export function DesignTestFooter() {
                 mapsUrl={designTestFooterLocations.office.mapsUrl}
                 ariaLabel={designTestFooterLocations.office.ariaLabel}
               />
+              <FooterLocationDivider />
+              <FooterLocationLink
+                country={designTestFooterLocations.canada.country}
+                region={designTestFooterLocations.canada.region}
+                lines={designTestFooterLocations.canada.lines}
+                mapsUrl={designTestFooterLocations.canada.mapsUrl}
+                ariaLabel={designTestFooterLocations.canada.ariaLabel}
+              />
             </div>
             <FooterSocialLinks links={designTestFooterSocial} />
           </div>

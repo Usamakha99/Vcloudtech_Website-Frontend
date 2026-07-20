@@ -18,6 +18,16 @@ export const designTestFooterLocations = {
     mapsUrl: "https://maps.app.goo.gl/vGG2BifQVrR58kYN6",
     ariaLabel: "Open VCloud Tech Office Location in Google Maps",
   },
+  canada: {
+    country: "Canada",
+    region: "Ontario",
+    lines: [
+      "130 King Street West, Suite 1900",
+      "Toronto, Ontario, M5X 1E3",
+    ],
+    mapsUrl: "https://maps.app.goo.gl/GYNPojK2Ek2yRn8o8",
+    ariaLabel: "Open VCloud Tech Canada office in Google Maps",
+  },
 } as const;
 
 export const designTestFooterLinks = {
