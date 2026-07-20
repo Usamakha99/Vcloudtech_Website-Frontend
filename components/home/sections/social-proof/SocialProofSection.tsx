@@ -8,7 +8,7 @@ import { partnerLogoStripClass, strategicPartnerLogos } from "@/lib/marketing/pa
 
 import "../partners/technology-partners.css";
 
-const SPEED_NORMAL = 0.34;
+const SPEED_NORMAL = 0.16;
 const SPEED_SLOW = 0.07;
 
 function StrategicPartnerLogoItems({ idPrefix }: { idPrefix: string }) {
