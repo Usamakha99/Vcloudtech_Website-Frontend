@@ -616,8 +616,14 @@
   will-change: transform;
 }
 
-.tp__trusted-strip-marquee:hover .tp__strategic-marquee-group {
-  animation-play-state: paused;
+/* JS-driven strip — slow in place on hover (no CSS pause / duration jump) */
+.tp__strategic-marquee-group--js {
+  animation: none;
+  will-change: transform;
+}
+
+.tp__trusted-strip-marquee:hover .tp__strategic-marquee-group:not(.tp__strategic-marquee-group--js) {
+  animation-duration: 200s;
 }
 
 @media (min-width: 640px) {
@@ -626,8 +632,8 @@
     animation-duration: 55s;
   }
 
-  .tp__trusted-strip-marquee:hover .tp__strategic-marquee-group {
-    animation-play-state: paused;
+  .tp__trusted-strip-marquee:hover .tp__strategic-marquee-group:not(.tp__strategic-marquee-group--js) {
+    animation-duration: 180s;
   }
 }
 
@@ -637,8 +643,8 @@
     animation-duration: 50s;
   }
 
-  .tp__trusted-strip-marquee:hover .tp__strategic-marquee-group {
-    animation-play-state: paused;
+  .tp__trusted-strip-marquee:hover .tp__strategic-marquee-group:not(.tp__strategic-marquee-group--js) {
+    animation-duration: 160s;
   }
 }
 
