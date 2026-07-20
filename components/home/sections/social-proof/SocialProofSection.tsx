@@ -16,6 +16,7 @@ function StrategicPartnerLogoItems({ idPrefix }: { idPrefix: string }) {
           className={`tp__strategic-strip-logo ${partnerLogoStripClass(partner.name)}`.trim()}
           sizes="(max-width: 640px) 160px, 200px"
         />
+        <span className="tp__strategic-strip-name">{partner.name}</span>
       </div>
     </li>
   ));
