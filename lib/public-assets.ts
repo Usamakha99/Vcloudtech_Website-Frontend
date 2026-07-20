@@ -7,8 +7,8 @@
 
 export const assetVersions = {
   industries: "11",
-  industriesPage: "4",
-  industriesDaylight: "2",
+  industriesPage: "5",
+  industriesDaylight: "3",
   blog: "11",
   about: "22",
   contact: "2",
@@ -163,7 +163,7 @@ export const publicAssets = {
       assetVersions.industriesPage,
     ),
     commercial: withAssetVersion(
-      "/assets/Updated Industries We Serve Night/Commercial  Enterprise Night.png",
+      "/assets/Updated Industries We Serve Night/Commercial-Enterprise-Night.png",
       assetVersions.industriesPage,
     ),
   },
@@ -194,7 +194,7 @@ export const publicAssets = {
       assetVersions.industriesDaylight,
     ),
     commercial: withAssetVersion(
-      "/assets/Updated Industries We Serve Day/Commercial, Enterprise.png",
+      "/assets/Updated Industries We Serve Day/Commercial-Enterprise.png",
       assetVersions.industriesDaylight,
     ),
   },
