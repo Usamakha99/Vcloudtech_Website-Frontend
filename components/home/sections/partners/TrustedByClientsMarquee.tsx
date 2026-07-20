@@ -23,7 +23,6 @@ function TrustedClientLogoItems({ idPrefix }: { idPrefix: string }) {
           className="tp__trusted-strip-logo"
           sizes="(max-width: 640px) 160px, 220px"
         />
-        <span className="tp__trusted-strip-name">{client.name}</span>
       </div>
     </li>
   ));
