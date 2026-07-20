@@ -2,7 +2,7 @@ export const designTestFaqItems = [
   {
     question: "What IT products do you offer?",
     answer:
-      "We source and deliver enterprise hardware, software licensing, cloud subscriptions, security appliances, and AI marketplace solutions with contract vehicles and vendor accountability built in.",
+      "We source and deliver enterprise hardware, software licensing, cloud subscriptions, security appliances, and AI marketplace solutions with contracts and vendor accountability built in.",
   },
   {
     question: "How do procurement requests work?",

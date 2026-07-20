@@ -182,7 +182,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
     >
       <div className="cv-stack__header">
         <div className="cv-stack__header-copy">
-          <p className="cv-stack__eyebrow">Contract vehicle</p>
+          <p className="cv-stack__eyebrow">Contract</p>
           <h3 className="cv-stack__title">{title}</h3>
           {multiple ? (
             <p className="cv-stack__meta">{details.length} contracts · scroll to browse</p>

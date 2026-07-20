@@ -44,7 +44,7 @@ export function ContractVehiclesStackGrid({ href = "/contact" }: Props) {
 
   return (
     <div className="cv-grid-wrap cv-stack-grid-wrap">
-      <ul className="cv-grid" aria-label="Contract vehicles — stack view">
+      <ul className="cv-grid" aria-label="Contracts — stack view">
         {contractVehicles.map((vehicle) => {
           const details = contractVehicleDetails[vehicle.id];
 

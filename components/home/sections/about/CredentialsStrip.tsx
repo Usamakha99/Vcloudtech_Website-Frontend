@@ -7,7 +7,7 @@ export function DesignTestCredentialsStrip({ embedded = false }: { embedded?: bo
   return (
     <section
       className={`dt-cred-strip${embedded ? " dt-cred-strip--embedded" : ""}`}
-      aria-label="Certifications and contract vehicles"
+      aria-label="Certifications and contracts"
     >
       <div className="dt-cred-strip__inner">
         <ul className="dt-cred-strip__list">

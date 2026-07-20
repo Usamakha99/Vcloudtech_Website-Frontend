@@ -40,7 +40,7 @@ export function ContractVehiclesGrid({ href = "/contact" }: ContractVehiclesGrid
 
   return (
     <div className="cv-grid-wrap">
-      <ul className="cv-grid" aria-label="Contract vehicles">
+      <ul className="cv-grid" aria-label="Contracts">
         {contractVehicles.map((vehicle) => {
           const details = contractVehicleDetails[vehicle.id];
 

@@ -76,7 +76,7 @@ export const contactWhyCards = [
     id: "partners",
     title: "Certified Technology Partners",
     description:
-      "Authorized relationships with leading hardware, cloud, and security vendors plus GSA, Sourcewell, and TIPS contract vehicles.",
+      "Authorized relationships with leading hardware, cloud, and security vendors plus GSA, Sourcewell, and TIPS contracts.",
   },
   {
     id: "response",

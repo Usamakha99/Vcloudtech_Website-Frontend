@@ -9,7 +9,7 @@ import {
 import "@/components/marketing/marketing-page-hero.css";
 import "./contracts-landing.css";
 
-/** Contracts landing page — hero + corporate contracts vehicle grid. */
+/** Contracts landing page — hero + corporate contracts grid. */
 export function ContractsLandingPage() {
   return (
     <div className="marketing-page contracts-page" data-nav-surface="dark">
@@ -44,10 +44,6 @@ export function ContractsLandingPage() {
             <h2 id="contracts-stack-heading" className="contracts-page__corporate-title">
               Browse by stack
             </h2>
-            <p className="contracts-page__corporate-desc">
-              Select a vehicle — cards stack as a box pile; scroll to peel down, scroll up to
-              restack.
-            </p>
           </header>
 
           <ContractVehiclesStackGrid href="/contact" />
