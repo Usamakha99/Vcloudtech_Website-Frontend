@@ -48,7 +48,7 @@ export function PartnersLandingPage() {
         >
           <div className="tp__subsection-inner tp__subsection-inner--major">
             <h3 id="partners-major-heading" className="tp__trusted-heading">
-              Major Partners
+              Global Partners
             </h3>
             <ul className="tp__partner-grid tp__partner-grid--all" data-nav-surface="light">
               {partnerLogos.map((partner) => (
