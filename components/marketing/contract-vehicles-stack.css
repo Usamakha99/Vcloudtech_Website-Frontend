@@ -270,10 +270,13 @@
     0 14px 28px -18px rgba(0, 0, 0, 0.65);
   overflow: hidden;
   transform-origin: center center;
-  transition: transform 80ms linear;
+  /* No CSS transition — progress drives transforms directly (avoids scroll jerk) */
+  transition: none;
+  will-change: transform;
   pointer-events: auto;
   isolation: isolate;
   opacity: 1 !important;
+  backface-visibility: hidden;
 }
 
 .cv-stack__card--under,
@@ -424,7 +427,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scrollbar-width: none;
   background: transparent;
   -webkit-overflow-scrolling: touch;
@@ -435,7 +438,6 @@
 }
 
 .cv-stack__scroll-runway {
-  height: calc(var(--cv-stack-count, 2) * 85%);
   min-height: 220%;
   pointer-events: none;
 }

@@ -21,12 +21,11 @@ const detailRows: { key: keyof ContractVehicleDetail; label: string; prominent?:
   { key: "term", label: "Term" },
 ];
 
-/** Box-stack peek (back plate offset) — like stacked squares icon. */
 const BOX_PEEK = 10;
-/** How far a card travels down when peeled off the stack. */
 const PEEL_Y = 140;
-/** Slight horizontal drift while peeling (crossing motion). */
 const PEEL_X = 36;
+/** Button / dot step duration (ms). */
+const STEP_MS = 380;
 
 function StackDetailRows({ detail }: { detail: ContractVehicleDetail }) {
   return (
@@ -44,47 +43,99 @@ function StackDetailRows({ detail }: { detail: ContractVehicleDetail }) {
   );
 }
 
+function easeInOutCubic(t: number) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
 /**
- * Box-stack deck: all cards piled in one place.
- * Scroll down → front cards peel/cross downward; scroll up → restack.
+ * Continuous stack progress: 0 = first card front, N-1 = last card front.
+ * Scroll and buttons drive the same value — no snap/jerk between systems.
  */
 export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
   const multiple = details.length > 1;
+  const lastIndex = Math.max(0, details.length - 1);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [peelProgress, setPeelProgress] = useState(0);
+  const progressRef = useRef(0);
+  const animFrameRef = useRef<number | null>(null);
+  const drivingRef = useRef<"scroll" | "button" | null>(null);
+  const [progress, setProgress] = useState(0);
 
-  const syncFromScroll = useCallback(() => {
+  const activeIndex = Math.min(lastIndex, Math.max(0, Math.round(progress)));
+
+  const applyProgress = useCallback((value: number) => {
+    const next = Math.min(lastIndex, Math.max(0, value));
+    progressRef.current = next;
+    setProgress(next);
+  }, [lastIndex]);
+
+  const syncScrollerToProgress = useCallback(
+    (value: number, smooth: boolean) => {
+      const scroller = scrollerRef.current;
+      if (!scroller || !multiple) return;
+      const max = scroller.scrollHeight - scroller.clientHeight;
+      if (max <= 0) return;
+      const top = lastIndex === 0 ? 0 : (value / lastIndex) * max;
+      if (smooth) {
+        scroller.scrollTo({ top, behavior: "smooth" });
+      } else {
+        scroller.scrollTop = top;
+      }
+    },
+    [multiple, lastIndex],
+  );
+
+  const syncProgressFromScroll = useCallback(() => {
+    if (drivingRef.current === "button") return;
     const scroller = scrollerRef.current;
     if (!scroller || !multiple) return;
 
     const max = scroller.scrollHeight - scroller.clientHeight;
-    if (max <= 0) {
-      setActiveIndex(0);
-      setPeelProgress(0);
-      return;
-    }
+    if (max <= 0) return;
 
-    const raw = scroller.scrollTop / max;
-    const segments = Math.max(1, details.length - 1);
-    const scaled = raw * segments;
-    const index = Math.min(details.length - 1, Math.floor(scaled));
-    const local = scaled - index;
+    drivingRef.current = "scroll";
+    const raw = Math.min(1, Math.max(0, scroller.scrollTop / max));
+    applyProgress(raw * lastIndex);
+    // release on next frame so button clicks aren't blocked forever
+    requestAnimationFrame(() => {
+      if (drivingRef.current === "scroll") drivingRef.current = null;
+    });
+  }, [multiple, lastIndex, applyProgress]);
 
-    setActiveIndex(index);
-    setPeelProgress(local);
-  }, [multiple, details.length]);
+  const goToIndex = useCallback(
+    (nextIndex: number) => {
+      if (!multiple) return;
+      const target = Math.max(0, Math.min(lastIndex, nextIndex));
+      const from = progressRef.current;
+      if (Math.abs(from - target) < 0.001) return;
 
-  const scrollToIndex = useCallback(
-    (index: number) => {
-      const scroller = scrollerRef.current;
-      if (!scroller || !multiple) return;
-      const max = scroller.scrollHeight - scroller.clientHeight;
-      const segments = Math.max(1, details.length - 1);
-      const target = segments === 0 ? 0 : (index / segments) * max;
-      scroller.scrollTo({ top: target, behavior: "smooth" });
+      if (animFrameRef.current != null) {
+        cancelAnimationFrame(animFrameRef.current);
+        animFrameRef.current = null;
+      }
+
+      drivingRef.current = "button";
+      const start = performance.now();
+
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - start) / STEP_MS);
+        const eased = easeInOutCubic(t);
+        const value = from + (target - from) * eased;
+        applyProgress(value);
+        syncScrollerToProgress(value, false);
+
+        if (t < 1) {
+          animFrameRef.current = requestAnimationFrame(tick);
+        } else {
+          applyProgress(target);
+          syncScrollerToProgress(target, false);
+          animFrameRef.current = null;
+          drivingRef.current = null;
+        }
+      };
+
+      animFrameRef.current = requestAnimationFrame(tick);
     },
-    [multiple, details.length],
+    [multiple, lastIndex, applyProgress, syncScrollerToProgress],
   );
 
   useEffect(() => {
@@ -92,14 +143,23 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
     const scroller = scrollerRef.current;
     if (!scroller) return;
 
-    syncFromScroll();
-    scroller.addEventListener("scroll", syncFromScroll, { passive: true });
-    window.addEventListener("resize", syncFromScroll);
+    syncProgressFromScroll();
+    scroller.addEventListener("scroll", syncProgressFromScroll, { passive: true });
+    window.addEventListener("resize", syncProgressFromScroll);
     return () => {
-      scroller.removeEventListener("scroll", syncFromScroll);
-      window.removeEventListener("resize", syncFromScroll);
+      scroller.removeEventListener("scroll", syncProgressFromScroll);
+      window.removeEventListener("resize", syncProgressFromScroll);
+      if (animFrameRef.current != null) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [multiple, details.length, syncFromScroll]);
+  }, [multiple, details.length, syncProgressFromScroll]);
+
+  useEffect(() => {
+    progressRef.current = 0;
+    setProgress(0);
+    drivingRef.current = null;
+    const scroller = scrollerRef.current;
+    if (scroller) scroller.scrollTop = 0;
+  }, [details.length, details[0]?.contractNumber]);
 
   return (
     <div
@@ -112,9 +172,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
           <p className="cv-stack__eyebrow">Contract vehicle</p>
           <h3 className="cv-stack__title">{title}</h3>
           {multiple ? (
-            <p className="cv-stack__meta">
-              {details.length} contracts · scroll to browse
-            </p>
+            <p className="cv-stack__meta">{details.length} contracts · scroll to browse</p>
           ) : null}
         </div>
         <button type="button" className="cv-stack__close" onClick={onClose} aria-label="Close">
@@ -128,19 +186,21 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
             <button
               type="button"
               className="cv-stack__nav-btn"
-              onClick={() => scrollToIndex(Math.max(0, activeIndex - 1))}
-              disabled={activeIndex <= 0 && peelProgress < 0.05}
+              onClick={() => goToIndex(Math.round(progressRef.current) - 1)}
+              disabled={progress <= 0.02}
               aria-label="Previous contract"
             >
               ↑
             </button>
-            <div className="cv-stack__rail" aria-hidden>
+            <div className="cv-stack__rail" role="tablist" aria-label="Contract pages">
               {details.map((_, index) => (
                 <button
                   key={`dot-${index}`}
                   type="button"
+                  role="tab"
+                  aria-selected={index === activeIndex}
                   className={`cv-stack__dot${index === activeIndex ? " cv-stack__dot--active" : ""}`}
-                  onClick={() => scrollToIndex(index)}
+                  onClick={() => goToIndex(index)}
                   aria-label={`Go to contract ${index + 1}`}
                 />
               ))}
@@ -148,8 +208,8 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
             <button
               type="button"
               className="cv-stack__nav-btn"
-              onClick={() => scrollToIndex(Math.min(details.length - 1, activeIndex + 1))}
-              disabled={activeIndex >= details.length - 1}
+              onClick={() => goToIndex(Math.round(progressRef.current) + 1)}
+              disabled={progress >= lastIndex - 0.02}
               aria-label="Next contract"
             >
               ↓
@@ -159,40 +219,45 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
           <div className="cv-stack__deck-stage">
             <div
               className="cv-stack__deck"
-              style={
-                {
-                  ["--cv-stack-count"]: details.length,
-                  ["--cv-box-peek"]: `${BOX_PEEK}px`,
-                } as CSSProperties
-              }
+              style={{ ["--cv-stack-count"]: details.length } as CSSProperties}
             >
-              {/* Decorative back frames — box-stack silhouette */}
               <span className="cv-stack__box-frame cv-stack__box-frame--2" aria-hidden />
               <span className="cv-stack__box-frame cv-stack__box-frame--1" aria-hidden />
 
               {details.map((detail, index) => {
+                const offset = progress - index;
                 let layer: "under" | "front" | "peeling" | "gone" = "under";
                 let tx = 0;
                 let ty = 0;
                 let scale = 1;
 
-                if (index < activeIndex) {
+                if (offset >= 1) {
                   layer = "gone";
-                  tx = PEEL_X * (0.6 + (activeIndex - index) * 0.15);
-                  ty = PEEL_Y * (1.15 + (activeIndex - index) * 0.2);
+                  tx = PEEL_X;
+                  ty = PEEL_Y;
                   scale = 0.96;
-                } else if (index === activeIndex) {
-                  layer = peelProgress > 0.02 ? "peeling" : "front";
-                  tx = PEEL_X * peelProgress;
-                  ty = PEEL_Y * peelProgress;
+                } else if (offset > 0.001) {
+                  layer = "peeling";
+                  tx = PEEL_X * offset;
+                  ty = PEEL_Y * offset;
+                  scale = 1;
+                } else if (offset > -0.001) {
+                  layer = "front";
+                  tx = 0;
+                  ty = 0;
                   scale = 1;
                 } else {
                   layer = "under";
-                  const depth = index - activeIndex;
-                  tx = -BOX_PEEK * Math.min(depth, 2) * 0.35;
-                  ty = -BOX_PEEK * Math.min(depth, 2) * 0.35;
+                  const depth = Math.min(2, -offset);
+                  tx = -BOX_PEEK * depth * 0.35;
+                  ty = -BOX_PEEK * depth * 0.35;
                   scale = 1 - depth * 0.015;
                 }
+
+                const showContent =
+                  layer === "front" ||
+                  layer === "peeling" ||
+                  (layer === "under" && offset > -1.15);
 
                 return (
                   <article
@@ -205,11 +270,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
                       } as CSSProperties
                     }
                     aria-label={`Contract ${detail.contractNumber}`}
-                    aria-hidden={
-                      layer === "gone" || (layer === "under" && index !== activeIndex + 1)
-                        ? true
-                        : undefined
-                    }
+                    aria-hidden={layer === "gone" ? true : undefined}
                   >
                     <div className="cv-stack__card-inner">
                       <header className="cv-stack__card-head">
@@ -222,9 +283,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
                           <strong>{detail.contractNumber}</strong>
                         </h4>
                       </header>
-                      {layer === "front" ||
-                      layer === "peeling" ||
-                      index === activeIndex + 1 ? (
+                      {showContent ? (
                         <StackDetailRows detail={detail} />
                       ) : (
                         <div className="cv-stack__card-blank" aria-hidden />
@@ -235,7 +294,6 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
               })}
             </div>
 
-            {/* Invisible scroll runway drives peel progress */}
             <div
               ref={scrollerRef}
               className="cv-stack__scroll-drive"
@@ -243,7 +301,10 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
               tabIndex={0}
               aria-label="Scroll to browse contracts in the stack"
             >
-              <div className="cv-stack__scroll-runway" />
+              <div
+                className="cv-stack__scroll-runway"
+                style={{ height: `${Math.max(2, details.length) * 120}%` }}
+              />
             </div>
           </div>
         </>
