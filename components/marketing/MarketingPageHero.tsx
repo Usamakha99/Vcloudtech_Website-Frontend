@@ -10,7 +10,7 @@ type MarketingPageHeroProps = {
   headingId: string;
 };
 
-/** Full-width marketing hero — image background, left gradient, left-aligned title. */
+/** Full-width marketing hero — image background, left gradient, left-aligned title (matches homepage inset). */
 export function MarketingPageHero({
   title,
   lede,

@@ -6,6 +6,8 @@
 .about-page {
   width: 100%;
   color: var(--dt-text, #ffffff);
+  --site-align-x: clamp(0.75rem, 4vw, 3rem);
+  --site-hero-copy-max: 40.625rem;
   /* Match global nav shell + bar inset so hero aligns on all screen sizes */
   --about-page-shell-pad: clamp(0.75rem, 3vw, 1.5rem);
   --about-page-content-pad: clamp(1rem, 2.5vw, 1.75rem);
@@ -87,7 +89,7 @@
   min-height: clamp(18rem, 40vw, 48rem);
   padding:
     calc(var(--dt-nav-occupancy, 5.75rem) + clamp(1.5rem, 3vw, 2.5rem))
-    var(--about-page-shell-pad)
+    var(--site-align-x)
     clamp(1.25rem, 2.5vw, 2rem);
   text-align: left;
   overflow: hidden;
@@ -191,18 +193,17 @@
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  max-width: 80rem;
-  margin-inline: auto;
-  padding-inline: max(var(--about-page-content-pad), env(safe-area-inset-left, 0px))
-    max(var(--about-page-content-pad), env(safe-area-inset-right, 0px));
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
 }
 
 .about-page__hero-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
-  max-width: min(36rem, 92vw);
+  width: min(var(--site-hero-copy-max), calc(100% - 1.5rem));
+  max-width: var(--site-hero-copy-max);
   margin-right: auto;
   margin-left: 0;
   text-align: left;
@@ -211,11 +212,18 @@
 .about-page__hero-title {
   margin: 0;
   width: 100%;
-  font-size: clamp(1.75rem, 3.8vw, 3rem);
+  font-size: clamp(1.875rem, 4.2vw, 3.125rem);
   font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   color: var(--dt-text, #ffffff);
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .about-page__hero-title {
+    font-size: clamp(2.125rem, 4.5vw, 3.375rem);
+  }
 }
 
 .about-page__hero-title-line {
@@ -245,12 +253,21 @@
 
 .about-page__hero-lede {
   display: block;
-  max-width: 32rem;
-  margin: 1rem 0 0;
-  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  max-width: var(--site-hero-copy-max);
+  margin: 1.25rem 0 0;
+  font-size: 0.9375rem;
+  font-weight: 400;
   line-height: 1.65;
   color: color-mix(in srgb, var(--dt-text, #ffffff) 88%, transparent);
   text-wrap: pretty;
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .about-page__hero-lede {
+    margin-top: 1.375rem;
+    font-size: 1.0625rem;
+  }
 }
 
 /* â”€â”€ Body â”€â”€ */

@@ -2,7 +2,7 @@ import { dt } from "@/components/marketing/design-test-theme";
 
 /**
  * Lightweight hero shell for marketing subpages (solutions, services, etc.).
- * Keeps typography and spacing aligned with the enterprise header.
+ * Left-aligned title/lede — matches other marketing heroes (homepage hero unchanged).
  */
 export function MarketingDocPage({
   eyebrow = "vCloudTech",
@@ -30,32 +30,34 @@ export function MarketingDocPage({
             : "border-b border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-white"
         }
       >
-        <div className="mx-auto max-w-3xl px-6 py-20 sm:py-24 lg:px-8">
-          <p
-            className={
-              dark
-                ? dt.metaLabel
-                : "text-xs font-semibold uppercase tracking-[0.2em] text-sky-700"
-            }
-          >
-            {eyebrow}
-          </p>
-          <h1
-            className={`mt-3 text-3xl font-semibold tracking-tight sm:text-4xl ${
-              dark ? "text-white" : "text-slate-900"
-            }`}
-          >
-            {title}
-          </h1>
-          {lede ? (
+        <div className="w-full px-[var(--site-align-x,clamp(0.75rem,4vw,3rem))] py-20 text-left sm:py-24">
+          <div className="w-full max-w-[var(--site-hero-copy-max,40.625rem)]">
             <p
-              className={`mt-5 max-w-2xl text-lg leading-relaxed ${
-                dark ? dt.body : "text-slate-600"
+              className={
+                dark
+                  ? dt.metaLabel
+                  : "text-xs font-semibold uppercase tracking-[0.2em] text-sky-700"
+              }
+            >
+              {eyebrow}
+            </p>
+            <h1
+              className={`mt-3 whitespace-nowrap text-[clamp(1.875rem,4.2vw,3.125rem)] font-semibold leading-[1.08] tracking-[-0.035em] max-sm:whitespace-normal sm:text-[clamp(2.125rem,4.5vw,3.375rem)] ${
+                dark ? "text-white" : "text-slate-900"
               }`}
             >
-              {lede}
-            </p>
-          ) : null}
+              {title}
+            </h1>
+            {lede ? (
+              <p
+                className={`mt-5 max-w-[650px] text-[0.9375rem] leading-relaxed sm:text-[1.0625rem] ${
+                  dark ? dt.body : "text-slate-600"
+                }`}
+              >
+                {lede}
+              </p>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

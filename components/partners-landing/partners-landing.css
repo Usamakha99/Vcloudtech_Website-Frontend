@@ -15,24 +15,24 @@
 
 .partners-page__intro {
   width: 100%;
-  max-width: 88rem;
-  margin-inline: auto;
-  padding-inline: clamp(1.5rem, 4vw, 3rem);
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: var(--site-align-x, clamp(0.75rem, 4vw, 3rem));
 }
 
 .partners-page__intro-header {
   width: 100%;
-  max-width: none;
-  margin-inline: auto;
+  max-width: var(--site-hero-copy-max, 40.625rem);
+  margin-inline: 0;
   margin-bottom: 2rem;
-  text-align: center;
+  text-align: left;
 }
 
 .partners-page__intro-title {
   display: block;
-  width: fit-content;
+  width: 100%;
   max-width: 100%;
-  margin: 0.75rem auto 0;
+  margin: 0.75rem 0 0;
   font-size: clamp(1.35rem, 3.2vw, 2.75rem);
   font-weight: 600;
   line-height: 1.15;
@@ -40,18 +40,38 @@
   color: #fff;
   white-space: nowrap;
   text-wrap: nowrap;
-  text-align: center;
+  text-align: left;
+}
+
+@media (max-width: 639px) {
+  .partners-page__intro-title {
+    white-space: normal;
+    text-wrap: pretty;
+  }
 }
 
 .partners-page__intro-lede {
-  margin: 0.75rem auto 0;
+  margin: 0.75rem 0 0;
   max-width: 40rem;
   font-size: clamp(0.9375rem, 1.5vw, 1rem);
   font-weight: 500;
   line-height: 1.55;
   color: #a1a1aa;
+  text-align: left;
 }
 
 .partners-page__major {
   margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-inline: var(--site-align-x, clamp(0.75rem, 4vw, 3rem));
+}
+
+/* Same left edge as hero — only on /partners (homepage strip unchanged) */
+.partners-page .tp__subsection-inner--major {
+  max-width: none;
+  margin-inline: 0;
+}
+
+.partners-page .tp__trusted-heading {
+  text-align: left;
+  white-space: nowrap;
 }

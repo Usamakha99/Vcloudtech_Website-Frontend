@@ -34,6 +34,7 @@
   letter-spacing: -0.03em;
   color: #ffffff;
   text-wrap: balance;
+  text-align: center;
 }
 
 .contracts-page__corporate-desc {
@@ -43,6 +44,7 @@
   font-weight: 500;
   line-height: 1.65;
   color: #a1a1aa;
+  text-align: center;
 }
 
 .contracts-page__corporate .cv-grid {
