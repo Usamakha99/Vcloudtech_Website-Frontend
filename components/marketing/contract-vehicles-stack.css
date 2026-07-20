@@ -56,9 +56,9 @@
   flex-shrink: 0;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
-  padding: 1.25rem clamp(1.25rem, 3vw, 2rem) 1rem;
+  padding: 1.25rem clamp(2.5rem, 5vw, 3.25rem) 1rem;
   border-bottom: 1px solid rgba(179, 179, 179, 0.28);
   background: var(--cv-stack-bg);
 }
@@ -66,10 +66,10 @@
 .cv-stack__header-copy {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.2rem;
   max-width: 40rem;
-  text-align: left;
+  text-align: center;
 }
 
 .cv-stack__eyebrow {
@@ -100,14 +100,16 @@
 }
 
 .cv-stack__close {
-  position: static;
+  position: absolute;
+  right: clamp(1.1rem, 3vw, 1.5rem);
+  top: 1.15rem;
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 1.75rem;
   height: 1.75rem;
-  margin-top: 0.1rem;
+  margin-top: 0;
   padding: 0;
   border: 1px solid rgba(179, 179, 179, 0.35);
   border-radius: 0.25rem;
