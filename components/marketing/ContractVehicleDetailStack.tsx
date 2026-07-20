@@ -113,7 +113,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
           <h3 className="cv-stack__title">{title}</h3>
           {multiple ? (
             <p className="cv-stack__meta">
-              {details.length} contracts — scroll to peel the stack; scroll up to restack.
+              {details.length} contracts · scroll to browse
             </p>
           ) : null}
         </div>
