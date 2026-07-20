@@ -130,15 +130,96 @@
   outline-offset: 2px;
 }
 
+.cv-stack__id-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  padding: 0.7rem clamp(1.25rem, 3vw, 2rem);
+  border-bottom: 1px solid rgba(179, 179, 179, 0.22);
+  background: color-mix(in srgb, var(--cv-stack-bg) 88%, #111f34);
+}
+
+.cv-stack__id-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  max-width: 100%;
+  padding: 0.4rem 0.65rem 0.4rem 0.4rem;
+  border: 1px solid rgba(179, 179, 179, 0.28);
+  border-radius: 0.3rem;
+  background: transparent;
+  color: #b3b3b3;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease,
+    background-color 140ms ease;
+}
+
+.cv-stack__id-chip:hover {
+  color: #ffffff;
+  border-color: rgba(229, 86, 20, 0.45);
+  background: rgba(229, 86, 20, 0.08);
+}
+
+.cv-stack__id-chip--active {
+  color: #ffffff;
+  border-color: rgba(229, 86, 20, 0.65);
+  background: rgba(229, 86, 20, 0.14);
+}
+
+.cv-stack__id-chip-n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.25rem;
+  border-radius: 0.2rem;
+  background: rgba(179, 179, 179, 0.16);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #b3b3b3;
+}
+
+.cv-stack__id-chip--active .cv-stack__id-chip-n {
+  background: rgba(229, 86, 20, 0.85);
+  color: #ffffff;
+}
+
+.cv-stack__id-chip-id {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .cv-stack__controls {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 0.65rem;
   flex-shrink: 0;
-  padding: 0.65rem clamp(1.25rem, 3vw, 2rem);
+  padding: 0.55rem clamp(1.25rem, 3vw, 2rem);
   border-bottom: 1px solid rgba(179, 179, 179, 0.22);
   background: var(--cv-stack-bg);
+}
+
+.cv-stack__controls-label {
+  margin: 0 0.15rem;
+  min-width: 2.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #b3b3b3;
+  text-align: center;
 }
 
 .cv-stack__nav-btn {

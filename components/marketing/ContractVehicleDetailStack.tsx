@@ -24,8 +24,10 @@ const detailRows: { key: keyof ContractVehicleDetail; label: string; prominent?:
 const BOX_PEEK = 10;
 const PEEL_Y = 140;
 const PEEL_X = 36;
-/** Button / dot step duration (ms). */
-const STEP_MS = 380;
+/** Adjacent step duration (ms). */
+const STEP_MS = 320;
+/** Long jump (skip cards) — quick settle, no middle-card flash. */
+const JUMP_MS = 180;
 
 function StackDetailRows({ detail }: { detail: ContractVehicleDetail }) {
   return (
@@ -114,8 +116,19 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
       }
 
       drivingRef.current = "button";
-      const start = performance.now();
+      const distance = Math.abs(target - from);
 
+      // Jumping across cards (e.g. 1 → 4): land directly — no flash of #2/#3
+      if (distance > 1.05) {
+        applyProgress(target);
+        syncScrollerToProgress(target, false);
+        window.setTimeout(() => {
+          drivingRef.current = null;
+        }, JUMP_MS);
+        return;
+      }
+
+      const start = performance.now();
       const tick = (now: number) => {
         const t = Math.min(1, (now - start) / STEP_MS);
         const eased = easeInOutCubic(t);
@@ -182,6 +195,22 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
 
       {multiple ? (
         <>
+          <div className="cv-stack__id-bar" role="tablist" aria-label="Select contract by ID">
+            {details.map((detail, index) => (
+              <button
+                key={`id-${detail.contractNumber}`}
+                type="button"
+                role="tab"
+                aria-selected={index === activeIndex}
+                className={`cv-stack__id-chip${index === activeIndex ? " cv-stack__id-chip--active" : ""}`}
+                onClick={() => goToIndex(index)}
+              >
+                <span className="cv-stack__id-chip-n">{index + 1}</span>
+                <span className="cv-stack__id-chip-id">{detail.contractNumber}</span>
+              </button>
+            ))}
+          </div>
+
           <div className="cv-stack__controls">
             <button
               type="button"
@@ -192,19 +221,9 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
             >
               ↑
             </button>
-            <div className="cv-stack__rail" role="tablist" aria-label="Contract pages">
-              {details.map((_, index) => (
-                <button
-                  key={`dot-${index}`}
-                  type="button"
-                  role="tab"
-                  aria-selected={index === activeIndex}
-                  className={`cv-stack__dot${index === activeIndex ? " cv-stack__dot--active" : ""}`}
-                  onClick={() => goToIndex(index)}
-                  aria-label={`Go to contract ${index + 1}`}
-                />
-              ))}
-            </div>
+            <p className="cv-stack__controls-label" aria-live="polite">
+              {activeIndex + 1} / {details.length}
+            </p>
             <button
               type="button"
               className="cv-stack__nav-btn"
