@@ -200,7 +200,7 @@ export function DesignTestFooter() {
         */}
 
         <div className="dt-footer__bottom">
-          <p className="dt-footer__copyright">&copy; 2026 All Rights Reserved</p>
+          <p className="dt-footer__copyright">vCloud Tech &copy; 2026  All Rights Reserved</p>
         </div>
       </div>
     </footer>
