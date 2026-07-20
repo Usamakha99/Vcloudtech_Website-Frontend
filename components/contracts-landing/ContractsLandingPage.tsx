@@ -45,7 +45,8 @@ export function ContractsLandingPage() {
               Browse by stack
             </h2>
             <p className="contracts-page__corporate-desc">
-              Select a vehicle — multiple contracts open in a calm stacked scroll.
+              Select a vehicle — cards stack as a box pile; scroll to peel down, scroll up to
+              restack.
             </p>
           </header>
 

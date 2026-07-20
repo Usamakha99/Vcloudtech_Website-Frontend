@@ -54,6 +54,23 @@
 }
 
 .contracts-page__corporate--stack {
+  max-width: 80rem;
+  width: 100%;
+  margin-inline: auto;
   padding-top: 1.5rem;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.contracts-page__corporate--stack .contracts-page__corporate-header {
+  padding-inline: 0;
+}
+
+.contracts-page__corporate--stack .cv-grid {
+  padding-inline: 0;
+}
+
+.contracts-page__corporate--stack .cv-detail-anchor {
+  width: 100%;
+  max-width: none;
 }
