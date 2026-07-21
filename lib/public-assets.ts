@@ -19,7 +19,7 @@ export const assetVersions = {
   topContractHolders: "2",
   services: "10",
   hero: "11",
-  intro: "3",
+  intro: "4",
   locations: "3",
   values: "5",
 } as const;
