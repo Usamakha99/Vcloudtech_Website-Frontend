@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono } from "next/font/google";
 
 import { montserrat } from "@/app/fonts/montserrat";
@@ -23,6 +23,12 @@ export const metadata: Metadata = {
     icon: [{ url: "/brand/favicon.png", type: "image/png" }],
     apple: [{ url: "/brand/favicon.png", type: "image/png" }],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
