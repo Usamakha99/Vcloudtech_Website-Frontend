@@ -350,13 +350,9 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
                   <div className="cv-stack__card-inner">
                     <header className="cv-stack__card-head">
                       <p className="cv-stack__card-label">
-                        <strong>
-                          Contract {index + 1} of {details.length}
-                        </strong>
+                        Contract {index + 1} of {details.length}
                       </p>
-                      <h4 className="cv-stack__card-number">
-                        <strong>{detail.contractNumber}</strong>
-                      </h4>
+                      <h4 className="cv-stack__card-number">{detail.contractNumber}</h4>
                     </header>
                     <StackDetailRows detail={detail} />
                   </div>
@@ -374,9 +370,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
           >
             <div className="cv-stack__card-inner">
               <header className="cv-stack__card-head">
-                <h4 className="cv-stack__card-number">
-                  <strong>{details[0]?.contractNumber}</strong>
-                </h4>
+                <h4 className="cv-stack__card-number">{details[0]?.contractNumber}</h4>
               </header>
               {details[0] ? <StackDetailRows detail={details[0]} /> : null}
             </div>
