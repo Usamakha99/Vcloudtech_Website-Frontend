@@ -4,6 +4,7 @@ import { Geist_Mono } from "next/font/google";
 import { montserrat } from "@/app/fonts/montserrat";
 import { IntroAppProvider } from "@/components/intro/IntroAppProvider";
 import { INTRO_BLOCK_SCRIPT } from "@/components/intro/intro-block-script";
+import { DISABLE_ZOOM_SCRIPT } from "@/components/layout/disable-zoom-script";
 import { publicAssets } from "@/lib/public-assets";
 import "./globals.css";
 
@@ -29,6 +30,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
@@ -44,6 +46,7 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: INTRO_BLOCK_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: DISABLE_ZOOM_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
         <IntroAppProvider src={publicAssets.intro.loaderVideo}>{children}</IntroAppProvider>
