@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { dt } from "@/components/marketing/design-test-theme";
 import { TrustedByClientsMarquee } from "@/components/home/sections/partners/TrustedByClientsMarquee";
+import { TiltCard } from "@/components/home/sections/partners/TiltCard";
 
 import "./technology-partners.css";
 
@@ -224,7 +225,7 @@ export function HomeTechnologyPartnersSection() {
           >
             {partnerLogos.map((partner) => (
               <motion.li key={partner.name} variants={fadeUpTight}>
-                <div className="tp__partner-cell group">
+                <TiltCard className="tp__partner-cell group">
                   <div className="tp__partner-logo-slot">
                     <Image
                       src={partner.src}
@@ -235,7 +236,7 @@ export function HomeTechnologyPartnersSection() {
                       sizes="(max-width: 640px) 124px, 152px"
                     />
                   </div>
-                </div>
+                </TiltCard>
               </motion.li>
             ))}
           </motion.ul>
