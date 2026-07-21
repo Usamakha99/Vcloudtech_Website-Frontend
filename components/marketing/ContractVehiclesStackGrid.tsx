@@ -97,6 +97,7 @@ export function ContractVehiclesStackGrid({ href = "/contact" }: Props) {
           style={{ ["--cv-stack-count" as string]: selectedDetails.length } as CSSProperties}
         >
           <ContractVehicleDetailStack
+            key={selectedVehicle.id}
             title={selectedVehicle.label}
             details={selectedDetails}
             onClose={() => selectVehicle(null)}

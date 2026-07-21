@@ -301,6 +301,8 @@
   padding-block: 0.5rem 7rem;
   background: transparent;
   overflow: visible;
+  perspective: 1500px;
+  perspective-origin: 50% 45%;
   touch-action: pan-y;
 }
 
@@ -314,6 +316,7 @@
   margin-inline: auto;
   overflow: visible;
   pointer-events: none;
+  transform-style: preserve-3d;
 }
 
 .cv-stack__card--deck {
@@ -327,13 +330,15 @@
   background: var(--cv-stack-card);
   box-shadow: 0 12px 32px -20px rgba(0, 0, 0, 0.55);
   overflow: hidden;
-  transform-origin: center center;
+  transform-origin: left center;
   transform: translate3d(0, 0, 0);
   transition: none;
   pointer-events: none;
   isolation: isolate;
   contain: layout style paint;
   backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -345,6 +350,16 @@
 .cv-stack__card--deck[data-layer="forward"],
 .cv-stack__card--deck[data-layer="under"] {
   pointer-events: none;
+}
+
+.cv-stack__card--deck[data-layer="peeling"] {
+  box-shadow:
+    10px 12px 24px -14px rgba(0, 0, 0, 0.72),
+    20px 18px 44px -24px rgba(0, 0, 0, 0.62);
+}
+
+.cv-stack__card--deck[data-layer="forward"] {
+  box-shadow: 4px 8px 18px -14px rgba(0, 0, 0, 0.62);
 }
 
 .cv-stack__card-inner {

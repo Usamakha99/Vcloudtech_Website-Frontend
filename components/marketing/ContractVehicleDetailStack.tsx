@@ -28,11 +28,9 @@ const detailRows: { key: keyof ContractVehicleDetail; label: string; prominent?:
   { key: "term", label: "Term" },
 ];
 
-const BOX_PEEK = 8;
-const FORWARD_Y = 108;
-const FORWARD_X = 36;
-const FORWARD_STEP = 10;
-const STEP_MS = 420;
+const PAGE_PEEK = 5;
+const PAGE_TURN_DEG = 86;
+const STEP_MS = 620;
 
 type Layer = "under" | "front" | "peeling" | "forward";
 
@@ -46,15 +44,15 @@ function layoutForOffset(offset: number, index: number, count: number) {
   if (offset >= 1) {
     layer = "forward";
     const depth = Math.min(4, offset);
-    tx = FORWARD_X + (depth - 1) * FORWARD_STEP * 0.35;
-    ty = FORWARD_Y + (depth - 1) * FORWARD_STEP;
-    scale = 0.97 - Math.min(0.04, (depth - 1) * 0.01);
+    tx = -PAGE_PEEK - (depth - 1) * 1.5;
+    ty = (depth - 1) * 1.5;
+    scale = 1 - Math.min(0.025, (depth - 1) * 0.008);
     zIndex = Math.max(1, count - Math.floor(depth));
   } else if (offset > 0) {
     layer = "peeling";
-    tx = FORWARD_X * offset;
-    ty = FORWARD_Y * offset;
-    scale = 1 - offset * 0.03;
+    tx = -PAGE_PEEK * offset;
+    ty = 0;
+    scale = 1;
     zIndex = count + 10;
   } else if (offset > -0.001) {
     layer = "front";
@@ -62,16 +60,23 @@ function layoutForOffset(offset: number, index: number, count: number) {
   } else {
     layer = "under";
     const depth = Math.min(2, -offset);
-    tx = -BOX_PEEK * depth * 0.35;
-    ty = -BOX_PEEK * depth * 0.35;
-    scale = 1 - depth * 0.015;
+    tx = PAGE_PEEK * depth;
+    ty = PAGE_PEEK * depth;
+    scale = 1 - depth * 0.012;
     zIndex = count - index;
   }
+
+  const rotateY =
+    offset >= 1
+      ? -PAGE_TURN_DEG
+      : offset > 0
+        ? -PAGE_TURN_DEG * offset
+        : 0;
 
   return {
     layer,
     zIndex,
-    transform: `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`,
+    transform: `translate3d(${tx}px, ${ty}px, 0) rotateY(${rotateY}deg) scale(${scale})`,
   };
 }
 
@@ -95,8 +100,8 @@ const StackDetailRows = memo(function StackDetailRows({
   );
 });
 
-function easeInOutCubic(t: number) {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+function easeInOutQuint(t: number) {
+  return t < 0.5 ? 16 * t ** 5 : 1 - Math.pow(-2 * t + 2, 5) / 2;
 }
 
 type IdBarProps = {
@@ -137,6 +142,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const progressRef = useRef(0);
   const animFrameRef = useRef<number | null>(null);
+  const animatingRef = useRef(false);
   const wheelLockRef = useRef(false);
   const wheelAccRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -160,7 +166,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
 
   const goToIndex = useCallback(
     (nextIndex: number) => {
-      if (!multiple) return;
+      if (!multiple || animatingRef.current) return;
       const target = Math.max(0, Math.min(lastIndex, nextIndex));
       const from = progressRef.current;
       if (Math.abs(from - target) < 0.001) {
@@ -169,20 +175,14 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
         return;
       }
 
-      setActiveIndex(target);
-
-      if (animFrameRef.current != null) {
-        cancelAnimationFrame(animFrameRef.current);
-        animFrameRef.current = null;
-      }
-
       const distance = Math.abs(target - from);
-      const duration = Math.min(720, STEP_MS + Math.max(0, distance - 1) * 160);
+      const duration = Math.min(860, STEP_MS + Math.max(0, distance - 1) * 120);
       const start = performance.now();
+      animatingRef.current = true;
 
       const tick = (now: number) => {
         const t = Math.min(1, (now - start) / duration);
-        const value = from + (target - from) * easeInOutCubic(t);
+        const value = from + (target - from) * easeInOutQuint(t);
         progressRef.current = value;
         paintCards(value);
         if (t < 1) {
@@ -191,6 +191,8 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
           progressRef.current = target;
           paintCards(target);
           animFrameRef.current = null;
+          animatingRef.current = false;
+          setActiveIndex(target);
         }
       };
       animFrameRef.current = requestAnimationFrame(tick);
@@ -200,9 +202,8 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
 
   useLayoutEffect(() => {
     progressRef.current = 0;
-    setActiveIndex(0);
     paintCards(0);
-  }, [details.length, details[0]?.contractNumber, paintCards]);
+  }, [paintCards]);
 
   useEffect(() => {
     if (!multiple) return;
