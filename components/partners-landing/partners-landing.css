@@ -13,6 +13,28 @@
   }
 }
 
+/* Taller hero so more of the art fits (globe + laptop) */
+.partners-page .marketing-page__hero {
+  min-height: clamp(24rem, 52vw, 60rem);
+}
+
+/* New hero art — balance globe (top) and laptop (bottom) in the crop */
+.partners-page .marketing-page__hero-image {
+  object-position: 62% 28%;
+}
+
+@media (min-width: 1024px) {
+  .partners-page .marketing-page__hero-image {
+    object-position: 58% 28%;
+  }
+}
+
+@media (max-width: 767px) {
+  .partners-page .marketing-page__hero-image {
+    object-position: 70% 28%;
+  }
+}
+
 .partners-page__intro {
   width: 100%;
   max-width: none;
