@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 
 const MAX_TILT_DEG = 8;
 
@@ -23,8 +23,14 @@ export function TiltCard({ className, children }: TiltCardProps) {
   const [mouseY, setMouseY] = useState(0);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const canHoverRef = useRef(false);
+
+  useEffect(() => {
+    canHoverRef.current = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  }, []);
 
   const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (!canHoverRef.current) return;
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
@@ -56,7 +62,9 @@ export function TiltCard({ className, children }: TiltCardProps) {
         className={className}
         data-tilt={isHovered ? "on" : "off"}
         onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={() => {
+          if (canHoverRef.current) setIsHovered(true);
+        }}
         onMouseLeave={handleMouseLeave}
         style={{
           transform: isHovered

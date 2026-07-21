@@ -336,11 +336,13 @@
   display: none;
 }
 
-.tp__partner-cell:hover,
-.tp__partner-cell[data-tilt="on"] {
-  z-index: 2;
-  border-color: rgba(201, 168, 76, 0.4);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+@media (hover: hover) and (pointer: fine) {
+  .tp__partner-cell:hover,
+  .tp__partner-cell[data-tilt="on"] {
+    z-index: 2;
+    border-color: rgba(201, 168, 76, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .tp__partner-logo {
@@ -390,13 +392,15 @@
   will-change: transform;
 }
 
-.tp__partner-cell:hover .tp__partner-logo-slot,
-.tp__partner-cell[data-tilt="on"] .tp__partner-logo-slot {
-  transform: scale(1.08);
-}
+@media (hover: hover) and (pointer: fine) {
+  .tp__partner-cell:hover .tp__partner-logo-slot,
+  .tp__partner-cell[data-tilt="on"] .tp__partner-logo-slot {
+    transform: scale(1.08);
+  }
 
-.tp__partner-cell:hover .tp__partner-logo {
-  filter: none;
+  .tp__partner-cell:hover .tp__partner-logo {
+    filter: none;
+  }
 }
 
 /* Trusted by — strategic-strip layout (dark heading + full-width white rail) */
