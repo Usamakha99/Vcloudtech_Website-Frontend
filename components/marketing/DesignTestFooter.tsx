@@ -133,7 +133,6 @@ export function DesignTestFooter() {
               />
               <FooterLocationDivider />
               <FooterLocationLink
-                country={designTestFooterLocations.office.country}
                 region={designTestFooterLocations.office.region}
                 lines={designTestFooterLocations.office.lines}
                 mapsUrl={designTestFooterLocations.office.mapsUrl}
