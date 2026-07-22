@@ -82,11 +82,6 @@ function FooterOfficeCard({
 }) {
   return (
     <li className="dt-footer__office">
-      <p className={`dt-footer__country${office.country ? "" : " dt-footer__country--spacer"}`}>
-        {office.country ?? "\u00A0"}
-      </p>
-      <p className="dt-footer__office-title">{office.title}</p>
-
       <div className="dt-footer__office-visual" aria-hidden>
         <Image
           src={office.iconSrc}
@@ -99,6 +94,11 @@ function FooterOfficeCard({
       </div>
 
       <div className="dt-footer__office-details">
+        <p className={`dt-footer__country${office.country ? "" : " dt-footer__country--spacer"}`}>
+          {office.country ?? "\u00A0"}
+        </p>
+        <p className="dt-footer__office-title">{office.title}</p>
+
         <a
           href={office.mapsUrl}
           className="dt-footer__office-meta"
@@ -141,36 +141,34 @@ function FooterOfficeCards() {
 function FooterContactInfo() {
   return (
     <div className="dt-footer__contact" aria-label="Contact information">
-      <div className="dt-footer__contact-card">
-        <p className="dt-footer__col-title">Contact</p>
-        <div className="dt-footer__contact-rows">
-          <div className="dt-footer__contact-row">
-            <span className="dt-footer__contact-row-label">Email</span>
-            <a
-              href={`mailto:${designTestContactInfo.email}`}
-              className="dt-footer__contact-row-value"
-            >
-              {designTestContactInfo.email}
-            </a>
-          </div>
-          <div className="dt-footer__contact-row">
-            <span className="dt-footer__contact-row-label">Phone</span>
-            <a
-              href={`tel:${designTestContactInfo.phone.replace(/\D/g, "")}`}
-              className="dt-footer__contact-row-value"
-            >
-              {designTestContactInfo.phone}
-            </a>
-          </div>
-          <div className="dt-footer__contact-row">
-            <span className="dt-footer__contact-row-label">Business hours</span>
-            <span className="dt-footer__contact-row-value dt-footer__contact-row-value--plain">
-              {designTestContactInfo.hours}
-            </span>
-          </div>
+      <p className="dt-footer__col-title">Contact</p>
+      <div className="dt-footer__contact-rows">
+        <div className="dt-footer__contact-row">
+          <span className="dt-footer__contact-row-label">Email</span>
+          <a
+            href={`mailto:${designTestContactInfo.email}`}
+            className="dt-footer__contact-row-value"
+          >
+            {designTestContactInfo.email}
+          </a>
         </div>
-        {/* <p className="dt-footer__contact-note">{designTestContactInfo.enterpriseNote}</p> */}
+        <div className="dt-footer__contact-row">
+          <span className="dt-footer__contact-row-label">Phone</span>
+          <a
+            href={`tel:${designTestContactInfo.phone.replace(/\D/g, "")}`}
+            className="dt-footer__contact-row-value"
+          >
+            {designTestContactInfo.phone}
+          </a>
+        </div>
+        <div className="dt-footer__contact-row">
+          <span className="dt-footer__contact-row-label">Business hours</span>
+          <span className="dt-footer__contact-row-value dt-footer__contact-row-value--plain">
+            {designTestContactInfo.hours}
+          </span>
+        </div>
       </div>
+      {/* <p className="dt-footer__contact-note">{designTestContactInfo.enterpriseNote}</p> */}
     </div>
   );
 }
