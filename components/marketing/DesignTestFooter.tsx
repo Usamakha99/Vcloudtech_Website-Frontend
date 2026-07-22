@@ -14,14 +14,9 @@ import { publicAssets } from "@/lib/public-assets";
 
 import "./design-test-footer.css";
 
-function FooterLocationPinIcon() {
+function FooterPinIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden
-      className="dt-footer__location-pin"
-    >
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden className="dt-footer__meta-icon">
       <path
         d="M12 21s7-4.35 7-10a7 7 0 1 0-14 0c0 5.65 7 10 7 10Z"
         stroke="currentColor"
@@ -33,81 +28,91 @@ function FooterLocationPinIcon() {
   );
 }
 
-type FooterLocationLinkProps = {
-  country?: string;
-  region: string;
-  lines: readonly string[];
-  mapsUrl: string;
-  ariaLabel: string;
-};
-
-function FooterLocationLink({
-  country,
-  region,
-  lines,
-  mapsUrl,
-  ariaLabel,
-}: FooterLocationLinkProps) {
+function FooterPhoneIcon() {
   return (
-    <a
-      href={mapsUrl}
-      className="dt-footer__location-link"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={ariaLabel}
-    >
-      {country ? <span className="dt-footer__location-country">{country}</span> : null}
-      <span className="dt-footer__location-region">{region}</span>
-      <span className="dt-footer__location-body">
-        <FooterLocationPinIcon />
-        <span className="dt-footer__location-address">
-          {lines.map((line, index) => (
-            <Fragment key={line}>
-              {index > 0 ? <br /> : null}
-              {line}
-            </Fragment>
-          ))}
-        </span>
-      </span>
-    </a>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden className="dt-footer__meta-icon">
+      <path
+        d="M7.2 3.8h2.4l1.2 3.2-1.5 1.5a12.5 12.5 0 0 0 5.7 5.7l1.5-1.5 3.2 1.2v2.4c0 .9-.7 1.7-1.6 1.8A15.8 15.8 0 0 1 3.4 5.4c.1-.9.9-1.6 1.8-1.6Z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
-function FooterLocationDivider() {
-  return <span className="dt-footer__location-divider" aria-hidden />;
-}
-
-const footerLandmarkIcons = [
+const footerOffices = [
   {
     id: "texas",
-    src: publicAssets.footerLocationIcons.texas,
-    alt: "Texas Headquarter — Texas State Capitol",
+    title: "Texas - Headquarter",
+    lines: designTestFooterLocations.headquarters.lines,
+    mapsUrl: designTestFooterLocations.headquarters.mapsUrl,
+    ariaLabel: designTestFooterLocations.headquarters.ariaLabel,
+    iconSrc: publicAssets.footerLocationIcons.texas,
+    iconAlt: "Texas State Capitol",
   },
   {
     id: "california",
-    src: publicAssets.footerLocationIcons.california,
-    alt: "California — Golden Gate Bridge",
+    title: "California",
+    lines: designTestFooterLocations.office.lines,
+    mapsUrl: designTestFooterLocations.office.mapsUrl,
+    ariaLabel: designTestFooterLocations.office.ariaLabel,
+    iconSrc: publicAssets.footerLocationIcons.california,
+    iconAlt: "Golden Gate Bridge, California",
   },
   {
     id: "canada",
-    src: publicAssets.footerLocationIcons.canada,
-    alt: "Canada — Toronto skyline",
+    title: "Ontario, Canada",
+    lines: designTestFooterLocations.canada.lines,
+    mapsUrl: designTestFooterLocations.canada.mapsUrl,
+    ariaLabel: designTestFooterLocations.canada.ariaLabel,
+    iconSrc: publicAssets.footerLocationIcons.canada,
+    iconAlt: "Toronto skyline, Canada",
   },
 ] as const;
 
-function FooterLandmarkIcons() {
+function FooterOfficeCards() {
+  const phoneHref = `tel:${designTestContactInfo.phone.replace(/\D/g, "")}`;
+
   return (
-    <ul className="dt-footer__landmarks" aria-label="Office location landmarks">
-      {footerLandmarkIcons.map((icon) => (
-        <li key={icon.id} className="dt-footer__landmark">
-          <Image
-            src={icon.src}
-            alt={icon.alt}
-            width={360}
-            height={220}
-            className="dt-footer__landmark-img"
-            sizes="(max-width: 767px) 28vw, 14rem"
-          />
+    <ul className="dt-footer__offices" aria-label="Office locations">
+      {footerOffices.map((office) => (
+        <li key={office.id} className="dt-footer__office">
+          <div className="dt-footer__office-visual" aria-hidden>
+            <Image
+              src={office.iconSrc}
+              alt=""
+              width={360}
+              height={220}
+              className="dt-footer__office-img"
+              sizes="(max-width: 767px) 70vw, 18rem"
+            />
+          </div>
+
+          <p className="dt-footer__office-title">{office.title}</p>
+
+          <a
+            href={office.mapsUrl}
+            className="dt-footer__office-meta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={office.ariaLabel}
+          >
+            <FooterPinIcon />
+            <span>
+              {office.lines.map((line, index) => (
+                <Fragment key={line}>
+                  {index > 0 ? <br /> : null}
+                  {line}
+                </Fragment>
+              ))}
+            </span>
+          </a>
+
+          <a href={phoneHref} className="dt-footer__office-meta">
+            <FooterPhoneIcon />
+            <span>{designTestContactInfo.phone}</span>
+          </a>
         </li>
       ))}
     </ul>
@@ -158,35 +163,9 @@ export function DesignTestFooter() {
       <div className="dt-footer__inner">
         <FooterNewsletter />
 
-        <div className="dt-footer__grid">
-          <div className="dt-footer__brand">
-            <div className="dt-footer__locations">
-              <FooterLocationLink
-                country={designTestFooterLocations.headquarters.country}
-                region={designTestFooterLocations.headquarters.region}
-                lines={designTestFooterLocations.headquarters.lines}
-                mapsUrl={designTestFooterLocations.headquarters.mapsUrl}
-                ariaLabel={designTestFooterLocations.headquarters.ariaLabel}
-              />
-              <FooterLocationDivider />
-              <FooterLocationLink
-                region={designTestFooterLocations.office.region}
-                lines={designTestFooterLocations.office.lines}
-                mapsUrl={designTestFooterLocations.office.mapsUrl}
-                ariaLabel={designTestFooterLocations.office.ariaLabel}
-              />
-              <FooterLocationDivider />
-              <FooterLocationLink
-                country={designTestFooterLocations.canada.country}
-                region={designTestFooterLocations.canada.region}
-                lines={designTestFooterLocations.canada.lines}
-                mapsUrl={designTestFooterLocations.canada.mapsUrl}
-                ariaLabel={designTestFooterLocations.canada.ariaLabel}
-              />
-            </div>
-            <FooterSocialLinks links={designTestFooterSocial} />
-          </div>
+        <FooterOfficeCards />
 
+        <div className="dt-footer__lower">
           <div className="dt-footer__mid">
             <div className="dt-footer__mid-links">
               <div>
@@ -218,8 +197,10 @@ export function DesignTestFooter() {
           </div>
 
           <FooterContactInfo />
+        </div>
 
-          <FooterLandmarkIcons />
+        <div className="dt-footer__social-wrap">
+          <FooterSocialLinks links={designTestFooterSocial} />
         </div>
 
         <div className="dt-footer__bottom">

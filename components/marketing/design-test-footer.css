@@ -35,21 +35,111 @@
   width: 100%;
 }
 
+/* Office cards — landmark on top, address + phone below (reference layout) */
+.dt-footer__offices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 1.5rem;
+  width: 100%;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .dt-footer__offices {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem 1.75rem;
+    margin-top: 2rem;
+  }
+}
+
+.dt-footer__office {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.dt-footer__office-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 6.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.dt-footer__office-img {
+  width: 100%;
+  max-width: 14rem;
+  height: auto;
+  max-height: 7.5rem;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (min-width: 1024px) {
+  .dt-footer__office-visual {
+    min-height: 8rem;
+  }
+
+  .dt-footer__office-img {
+    max-width: 16rem;
+    max-height: 9rem;
+  }
+}
+
+.dt-footer__office-title {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.dt-footer__office-meta {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  max-width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #b3b3b3;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.dt-footer__office-meta:hover,
+.dt-footer__office-meta:focus-visible {
+  color: #fff;
+}
+
+.dt-footer__meta-icon {
+  flex-shrink: 0;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.15rem;
+  color: #b3b3b3;
+}
+
+/* Services / Company / Contact — below office cards */
+.dt-footer__lower {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 @media (min-width: 768px) {
-  .dt-footer__grid {
-    grid-template-columns: 1.35fr 1.45fr 1.2fr;
-    gap: 1.5rem;
+  .dt-footer__lower {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2rem;
     align-items: start;
-  }
-
-  .dt-footer__brand {
-    grid-row: 1 / 3;
-  }
-
-  .dt-footer__landmarks {
-    grid-column: 2 / 4;
-    grid-row: 2;
-    align-self: end;
   }
 }
 
@@ -77,119 +167,8 @@
   }
 }
 
-.dt-footer__locations {
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-  margin-top: 0;
-  max-width: 22rem;
-}
-
-.dt-footer__location-divider {
-  display: block;
-  width: calc(100% - 1.6125rem);
-  height: 0;
-  margin-left: calc(1.0625rem + 0.55rem);
-  border-top: 1px solid rgba(179, 179, 179, 0.35);
-}
-
-.dt-footer__location-link {
-  display: block;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.dt-footer__location-country {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-.dt-footer__location-region {
-  display: block;
-  margin-bottom: 0.45rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: #fff;
-}
-
-.dt-footer__location-body {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  font-size: 0.875rem;
-  line-height: 1.65;
-}
-
-.dt-footer__location-pin {
-  flex-shrink: 0;
-  width: 1.0625rem;
-  height: 1.0625rem;
-  margin-top: 0.2rem;
-  color: #71717a;
-}
-
-.dt-footer__location-address {
-  display: block;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: #b3b3b3;
-  transition: color 0.25s ease;
-}
-
-.dt-footer__location-link:hover .dt-footer__location-address,
-.dt-footer__location-link:focus-visible .dt-footer__location-address {
-  color: #fff;
-}
-
-/* Large landmark row — mid center under Services / Company / Contact */
-.dt-footer__landmarks {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  width: 100%;
-  margin: 0.5rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.dt-footer__landmark {
-  display: flex;
-  flex: 1 1 0;
-  align-items: center;
-  justify-content: center;
-  max-width: 13rem;
-}
-
-.dt-footer__landmark-img {
-  width: 100%;
-  height: auto;
-  max-height: 7rem;
-  object-fit: contain;
-  object-position: center;
-}
-
-@media (min-width: 768px) {
-  .dt-footer__landmarks {
-    margin-top: 0.75rem;
-  }
-
-  .dt-footer__landmark-img {
-    max-height: 8.25rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .dt-footer__landmark-img {
-    max-height: 9.25rem;
-  }
+.dt-footer__social-wrap {
+  margin-top: 1.5rem;
 }
 
 .dt-footer__social {
@@ -197,7 +176,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 1.15rem;
+  margin-top: 0;
 }
 
 .dt-footer__social-link {
