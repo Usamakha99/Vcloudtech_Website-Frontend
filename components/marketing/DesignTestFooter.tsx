@@ -98,28 +98,30 @@ function FooterOfficeCard({
         />
       </div>
 
-      <a
-        href={office.mapsUrl}
-        className="dt-footer__office-meta"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={office.ariaLabel}
-      >
-        <FooterPinIcon />
-        <span>
-          {office.lines.map((line, index) => (
-            <Fragment key={line}>
-              {index > 0 ? <br /> : null}
-              {line}
-            </Fragment>
-          ))}
-        </span>
-      </a>
+      <div className="dt-footer__office-details">
+        <a
+          href={office.mapsUrl}
+          className="dt-footer__office-meta"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={office.ariaLabel}
+        >
+          <FooterPinIcon />
+          <span>
+            {office.lines.map((line, index) => (
+              <Fragment key={line}>
+                {index > 0 ? <br /> : null}
+                {line}
+              </Fragment>
+            ))}
+          </span>
+        </a>
 
-      <a href={phoneHref} className="dt-footer__office-meta">
-        <FooterPhoneIcon />
-        <span>{designTestContactInfo.phone}</span>
-      </a>
+        <a href={phoneHref} className="dt-footer__office-meta">
+          <FooterPhoneIcon />
+          <span>{designTestContactInfo.phone}</span>
+        </a>
+      </div>
     </li>
   );
 }
