@@ -240,10 +240,12 @@
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 0.875rem;
-  font-size: 0.8125rem;
+  font-family: inherit;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.2;
+  white-space: nowrap;
   color: rgba(255, 255, 255, 0.82);
   text-decoration: none;
   border-radius: 0.5rem;
@@ -264,7 +266,6 @@
 @media (min-width: 1280px) {
   .dt-global-nav__link {
     padding: 0.5rem 1rem;
-    font-size: 0.875rem;
   }
 }
 
@@ -304,7 +305,7 @@
 
 .dt-global-nav__link--active {
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .dt-global-nav__link--active .dt-global-nav__link-underline {
@@ -593,7 +594,12 @@
   border: 0;
   background: transparent;
   cursor: pointer;
-  font: inherit;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .dt-global-nav__dropdown-chevron {
