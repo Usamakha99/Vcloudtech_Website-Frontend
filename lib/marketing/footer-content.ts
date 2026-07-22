@@ -4,7 +4,8 @@ export const designTestFooterLocations = {
     region: "Texas - Headquarter",
     lines: [
       // "vCloud Tech Inc.",
-      "2601 E State Highway 121 Business, Suite 509M, Lewisville, TX 75067",
+      "2601 E State Highway 121 Business, Suite 509M",
+      "Lewisville, TX 75067",
     ],
     mapsUrl: "https://maps.app.goo.gl/kqTMFYHWSD9PbBRz8",
     ariaLabel: "Open VCloud Tech Headquarters in Google Maps",

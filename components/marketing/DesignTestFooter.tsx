@@ -41,9 +41,10 @@ function FooterPhoneIcon() {
   );
 }
 
-const footerUsOffices = [
+const footerOffices = [
   {
     id: "texas",
+    country: "United States",
     title: "Texas - Headquarter",
     lines: designTestFooterLocations.headquarters.lines,
     mapsUrl: designTestFooterLocations.headquarters.mapsUrl,
@@ -52,31 +53,25 @@ const footerUsOffices = [
   },
   {
     id: "california",
+    country: null,
     title: "California",
     lines: designTestFooterLocations.office.lines,
     mapsUrl: designTestFooterLocations.office.mapsUrl,
     ariaLabel: designTestFooterLocations.office.ariaLabel,
     iconSrc: publicAssets.footerLocationIcons.california,
   },
+  {
+    id: "canada",
+    country: "Canada",
+    title: "Ontario",
+    lines: designTestFooterLocations.canada.lines,
+    mapsUrl: designTestFooterLocations.canada.mapsUrl,
+    ariaLabel: designTestFooterLocations.canada.ariaLabel,
+    iconSrc: publicAssets.footerLocationIcons.canada,
+  },
 ] as const;
 
-const footerCanadaOffice = {
-  id: "canada",
-  title: "Ontario",
-  lines: designTestFooterLocations.canada.lines,
-  mapsUrl: designTestFooterLocations.canada.mapsUrl,
-  ariaLabel: designTestFooterLocations.canada.ariaLabel,
-  iconSrc: publicAssets.footerLocationIcons.canada,
-} as const;
-
-type FooterOffice = {
-  id: string;
-  title: string;
-  lines: readonly string[];
-  mapsUrl: string;
-  ariaLabel: string;
-  iconSrc: string;
-};
+type FooterOffice = (typeof footerOffices)[number];
 
 function FooterOfficeCard({
   office,
@@ -86,17 +81,22 @@ function FooterOfficeCard({
   phoneHref: string;
 }) {
   return (
-    <li className="dt-footer__office">
+    <li
+      className={`dt-footer__office${office.id === "canada" ? " dt-footer__office--canada" : ""}`}
+    >
+      <p className={`dt-footer__country${office.country ? "" : " dt-footer__country--spacer"}`}>
+        {office.country ?? "\u00A0"}
+      </p>
       <p className="dt-footer__office-title">{office.title}</p>
 
       <div className="dt-footer__office-visual" aria-hidden>
         <Image
           src={office.iconSrc}
           alt=""
-          width={420}
-          height={260}
+          width={520}
+          height={320}
           className="dt-footer__office-img"
-          sizes="(max-width: 767px) 80vw, 18rem"
+          sizes="(max-width: 767px) 85vw, 28vw"
         />
       </div>
 
@@ -130,25 +130,11 @@ function FooterOfficeCards() {
   const phoneHref = `tel:${designTestContactInfo.phone.replace(/\D/g, "")}`;
 
   return (
-    <div className="dt-footer__offices" aria-label="Office locations">
-      <section className="dt-footer__offices-group dt-footer__offices-group--us" aria-label="United States">
-        <p className="dt-footer__country">United States</p>
-        <ul className="dt-footer__offices-row">
-          {footerUsOffices.map((office) => (
-            <FooterOfficeCard key={office.id} office={office} phoneHref={phoneHref} />
-          ))}
-        </ul>
-      </section>
-
-      <div className="dt-footer__offices-divider" aria-hidden />
-
-      <section className="dt-footer__offices-group dt-footer__offices-group--canada" aria-label="Canada">
-        <p className="dt-footer__country">Canada</p>
-        <ul className="dt-footer__offices-row">
-          <FooterOfficeCard office={footerCanadaOffice} phoneHref={phoneHref} />
-        </ul>
-      </section>
-    </div>
+    <ul className="dt-footer__offices" aria-label="Office locations">
+      {footerOffices.map((office) => (
+        <FooterOfficeCard key={office.id} office={office} phoneHref={phoneHref} />
+      ))}
+    </ul>
   );
 }
 
