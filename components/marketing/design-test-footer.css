@@ -128,13 +128,13 @@
   display: block;
   font-size: 0.875rem;
   line-height: 1.65;
-  color: #fff;
+  color: #b3b3b3;
   transition: color 0.25s ease;
 }
 
 .dt-footer__location-link:hover .dt-footer__location-address,
 .dt-footer__location-link:focus-visible .dt-footer__location-address {
-  color: #b3b3b3;
+  color: #fff;
 }
 
 .dt-footer__social {
