@@ -30,7 +30,7 @@ const detailRows: { key: keyof ContractVehicleDetail; label: string; prominent?:
 
 const PAGE_PEEK = 5;
 const PAGE_TURN_DEG = 86;
-const STEP_MS = 1300;
+const STEP_MS = 950;
 
 type Layer = "under" | "front" | "peeling" | "forward";
 
@@ -176,7 +176,7 @@ export function ContractVehicleDetailStack({ title, details, onClose }: Props) {
       }
 
       const distance = Math.abs(target - from);
-      const duration = Math.min(1650, STEP_MS + Math.max(0, distance - 1) * 120);
+      const duration = Math.min(1200, STEP_MS + Math.max(0, distance - 1) * 100);
       const start = performance.now();
       animatingRef.current = true;
 
