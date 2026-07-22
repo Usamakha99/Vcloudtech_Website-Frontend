@@ -171,7 +171,7 @@ export function HomeResourceHubSection() {
         </ul>
 
         <div className={`rh__cta-wrap ${cardsVisible ? "is-visible" : ""}`}>
-          <Link href="/posts" className="rh__cta">
+          <Link href="/blog" className="rh__cta">
             View All Articles
             <span className="rh__cta-arrow" aria-hidden>
               →
