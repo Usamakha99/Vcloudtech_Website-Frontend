@@ -29,12 +29,6 @@
   }
 }
 
-.dt-footer__grid {
-  display: grid;
-  gap: 1.35rem;
-  width: 100%;
-}
-
 /* Office cards — landmark on top, address + phone below (reference layout) */
 .dt-footer__offices {
   display: grid;
