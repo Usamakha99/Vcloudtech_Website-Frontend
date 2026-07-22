@@ -3,6 +3,13 @@
   width: 100%;
   margin-inline: 0;
   padding-inline: 0;
+  padding-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .contracts-page__body {
+    padding-bottom: 1.5rem;
+  }
 }
 
 .contracts-page__corporate {
@@ -16,6 +23,18 @@
   .contracts-page__corporate {
     padding-top: 4rem;
     padding-bottom: 5.5rem;
+  }
+}
+
+.contracts-page__corporate.contracts-page__corporate--stack {
+  padding-top: 0.5rem;
+  padding-bottom: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .contracts-page__corporate.contracts-page__corporate--stack {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
   }
 }
 
@@ -73,16 +92,9 @@
   max-width: 72rem;
   width: 100%;
   margin-inline: auto;
-  padding-top: 0.5rem;
-  padding-bottom: 2rem;
+  margin-bottom: 0;
   padding-inline: clamp(1.25rem, 4vw, 2.5rem);
   border-top: none;
-}
-
-@media (min-width: 1024px) {
-  .contracts-page__corporate--stack {
-    padding-bottom: 2.5rem;
-  }
 }
 
 .contracts-page__corporate--stack .contracts-page__corporate-header {
@@ -96,4 +108,14 @@
 .contracts-page__corporate--stack .cv-detail-anchor {
   width: 100%;
   max-width: none;
+  margin-bottom: 0;
+}
+
+.contracts-page__corporate--stack .cv-stack-grid-wrap {
+  margin-bottom: 0;
+  gap: 0.75rem;
+}
+
+.contracts-page__corporate--stack .cv-stack {
+  margin-bottom: 0;
 }

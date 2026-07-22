@@ -8,7 +8,8 @@
 .cv-stack-grid-wrap .cv-detail-anchor {
   width: 100%;
   max-width: none;
-  margin-top: 2.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0;
 }
 
 .cv-stack {
