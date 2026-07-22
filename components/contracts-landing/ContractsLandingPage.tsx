@@ -1,4 +1,4 @@
-import { ContractVehiclesGrid } from "@/components/marketing/ContractVehiclesGrid";
+// import { ContractVehiclesGrid } from "@/components/marketing/ContractVehiclesGrid";
 import { ContractVehiclesStackGrid } from "@/components/marketing/ContractVehiclesStackGrid";
 import { MarketingPageHero } from "@/components/marketing/MarketingPageHero";
 import {
@@ -9,7 +9,7 @@ import {
 import "@/components/marketing/marketing-page-hero.css";
 import "./contracts-landing.css";
 
-/** Contracts landing page — hero + corporate contracts grid. */
+/** Contracts landing page — hero + corporate contracts stack. */
 export function ContractsLandingPage() {
   return (
     <div className="marketing-page contracts-page" data-nav-surface="dark">
@@ -23,7 +23,7 @@ export function ContractsLandingPage() {
 
       <div className="marketing-page__body contracts-page__body">
         <section
-          className="contracts-page__corporate"
+          className="contracts-page__corporate contracts-page__corporate--heading-only"
           aria-labelledby="contracts-corporate-heading"
         >
           <header className="contracts-page__corporate-header">
@@ -32,20 +32,15 @@ export function ContractsLandingPage() {
             </h2>
           </header>
 
-          <ContractVehiclesGrid href="/contact" />
+          {/* First grid — commented out; heading only */}
+          {/* <ContractVehiclesGrid href="/contact" /> */}
         </section>
 
-        {/* Alternate multi-card UX — stack scroller (existing grid above stays unchanged) */}
+        {/* Browse by stack */}
         <section
           className="contracts-page__corporate contracts-page__corporate--stack"
-          aria-labelledby="contracts-stack-heading"
+          aria-label="Contract vehicles"
         >
-          <header className="contracts-page__corporate-header">
-            <h2 id="contracts-stack-heading" className="contracts-page__corporate-title">
-              Browse by stack
-            </h2>
-          </header>
-
           <ContractVehiclesStackGrid href="/contact" />
         </section>
       </div>
