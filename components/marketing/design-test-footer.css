@@ -29,22 +29,95 @@
   }
 }
 
-/* Office cards — landmark on top, address + phone below (reference layout) */
+/* Office cards — US (Texas + California) | divider | Canada */
 .dt-footer__offices {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
   width: 100%;
   margin: 1.75rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .dt-footer__offices {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 2rem;
+  }
+}
+
+.dt-footer__offices-group {
+  min-width: 0;
+}
+
+.dt-footer__offices-group--us {
+  flex: 2 1 0;
+}
+
+.dt-footer__offices-group--canada {
+  flex: 1 1 0;
+}
+
+.dt-footer__country {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: left;
+}
+
+.dt-footer__offices-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 @media (min-width: 640px) {
-  .dt-footer__offices {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem 1.75rem;
-    margin-top: 2rem;
+  .dt-footer__offices-group--us .dt-footer__offices-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+  }
+}
+
+.dt-footer__offices-divider {
+  display: none;
+  width: 1px;
+  align-self: stretch;
+  margin-inline: 1.5rem;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(179, 179, 179, 0.45) 12%,
+    rgba(179, 179, 179, 0.45) 88%,
+    transparent 100%
+  );
+}
+
+@media (min-width: 900px) {
+  .dt-footer__offices-divider {
+    display: block;
+  }
+}
+
+@media (max-width: 899px) {
+  .dt-footer__offices-divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-inline: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(179, 179, 179, 0.4) 12%,
+      rgba(179, 179, 179, 0.4) 88%,
+      transparent 100%
+    );
   }
 }
 
@@ -54,44 +127,47 @@
   align-items: flex-start;
   gap: 0.7rem;
   min-width: 0;
-}
-
-.dt-footer__office-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 6.5rem;
-  margin-bottom: 0.35rem;
-}
-
-.dt-footer__office-img {
-  width: 100%;
-  max-width: 14rem;
-  height: auto;
-  max-height: 7.5rem;
-  object-fit: contain;
-  object-position: center;
-}
-
-@media (min-width: 1024px) {
-  .dt-footer__office-visual {
-    min-height: 8rem;
-  }
-
-  .dt-footer__office-img {
-    max-width: 16rem;
-    max-height: 9rem;
-  }
+  height: 100%;
 }
 
 .dt-footer__office-title {
   margin: 0;
+  width: 100%;
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #fff;
+  text-align: left;
+}
+
+.dt-footer__office-visual {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 8.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.dt-footer__office-img {
+  width: 100%;
+  max-width: 18rem;
+  height: auto;
+  max-height: 9.5rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (min-width: 1024px) {
+  .dt-footer__office-visual {
+    min-height: 10.5rem;
+  }
+
+  .dt-footer__office-img {
+    max-width: 20rem;
+    max-height: 11.5rem;
+  }
 }
 
 .dt-footer__office-meta {
