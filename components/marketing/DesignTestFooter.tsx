@@ -81,9 +81,7 @@ function FooterOfficeCard({
   phoneHref: string;
 }) {
   return (
-    <li
-      className={`dt-footer__office${office.id === "canada" ? " dt-footer__office--canada" : ""}`}
-    >
+    <li className="dt-footer__office">
       <p className={`dt-footer__country${office.country ? "" : " dt-footer__country--spacer"}`}>
         {office.country ?? "\u00A0"}
       </p>
@@ -93,10 +91,10 @@ function FooterOfficeCard({
         <Image
           src={office.iconSrc}
           alt=""
-          width={520}
-          height={320}
+          width={640}
+          height={400}
           className="dt-footer__office-img"
-          sizes="(max-width: 767px) 85vw, 28vw"
+          sizes="(max-width: 767px) 90vw, 30vw"
         />
       </div>
 
@@ -132,7 +130,12 @@ function FooterOfficeCards() {
   return (
     <ul className="dt-footer__offices" aria-label="Office locations">
       {footerOffices.map((office) => (
-        <FooterOfficeCard key={office.id} office={office} phoneHref={phoneHref} />
+        <Fragment key={office.id}>
+          {office.id === "canada" ? (
+            <li className="dt-footer__offices-divider" aria-hidden />
+          ) : null}
+          <FooterOfficeCard office={office} phoneHref={phoneHref} />
+        </Fragment>
       ))}
     </ul>
   );
