@@ -416,10 +416,16 @@
 }
 
 .dt-footer__contact-card {
-  padding: 1rem 1.05rem;
+  position: relative;
+  padding: 1.05rem 1.15rem 1.05rem 1.2rem;
   border-radius: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  background: rgba(17, 31, 52, 0.42);
+  border: 1px solid rgba(179, 179, 179, 0.18);
+  background:
+    linear-gradient(135deg, rgb(229 86 20 / 0.08) 0%, transparent 42%),
+    rgba(17, 31, 52, 0.55);
+  box-shadow:
+    inset 3px 0 0 0 #e55614,
+    0 0 24px -10px rgb(229 86 20 / 0.35);
 }
 
 .dt-footer__contact-rows {
