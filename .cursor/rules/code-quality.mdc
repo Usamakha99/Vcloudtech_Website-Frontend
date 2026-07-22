@@ -1,0 +1,109 @@
+---
+description: Code Quality Standards
+alwaysApply: true
+---
+
+# Code Quality
+
+Write production-ready code.
+
+Prefer readability over cleverness.
+
+Keep implementations simple.
+
+---
+
+# Reuse First
+
+Before creating:
+
+- Component
+- Hook
+- Utility
+- CSS
+- Animation
+
+Search the project first.
+
+Reuse existing implementations whenever possible.
+
+---
+
+# Keep Changes Small
+
+Modify only the files required.
+
+Do not refactor unrelated code.
+
+Do not rename files unless requested.
+
+Keep diffs focused.
+
+---
+
+# TypeScript
+
+Avoid using any.
+
+Reuse existing types.
+
+Prefer explicit types over implicit complex inference.
+
+---
+
+# Components
+
+Keep components focused.
+
+Avoid deeply nested JSX.
+
+Split components only when reuse or readability clearly benefits.
+
+---
+
+# CSS
+
+Do not duplicate styles.
+
+Reuse existing CSS classes.
+
+Reuse design tokens.
+
+---
+
+# Performance
+
+Avoid unnecessary state.
+
+Avoid unnecessary effects.
+
+Keep Client Components to a minimum.
+
+---
+
+# Accessibility
+
+Use semantic HTML.
+
+Provide alt text for images.
+
+Maintain keyboard accessibility.
+
+Respect reduced-motion preferences.
+
+---
+
+# Before Finishing
+
+Run this checklist mentally before responding:
+
+- Did I reuse existing components?
+- Did I preserve the project architecture?
+- Did I avoid duplicate CSS?
+- Did I avoid unnecessary complexity?
+- Did I touch only the required files?
+- Is the solution responsive?
+- Is the code consistent with the existing project?
+- Would a senior engineer approve this implementation?
+
+If any answer is "No", improve the implementation before presenting it.

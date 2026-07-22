@@ -1,0 +1,83 @@
+---
+description: Performance Standards
+alwaysApply: true
+---
+
+# Performance First
+
+Every UI should feel smooth.
+
+Never sacrifice performance for visual effects.
+
+## Rendering
+
+Prefer Server Components.
+
+Only use Client Components when interaction requires them.
+
+## Images
+
+Use next/image.
+
+Lazy load when appropriate.
+
+Avoid oversized images.
+
+## Animations
+
+Prefer CSS transitions.
+
+Use transform and opacity.
+
+Avoid animating:
+
+- width
+- height
+- left
+- top
+
+Avoid layout shifts.
+
+## Scrolling
+
+Scrolling should remain smooth.
+
+Avoid heavy scroll listeners.
+
+Avoid unnecessary requestAnimationFrame loops.
+
+No scroll hitching.
+
+## Components
+
+Avoid unnecessary re-renders.
+
+Memoize only when beneficial.
+
+Avoid deeply nested components.
+
+## CSS
+
+Avoid expensive selectors.
+
+Reuse existing styles.
+
+Avoid duplicate CSS.
+
+## JavaScript
+
+Avoid unnecessary effects.
+
+Avoid unnecessary state.
+
+Keep client-side JS minimal.
+
+## Before Completion
+
+Verify:
+
+- No layout shift
+- No animation jank
+- No unnecessary rerenders
+- Images optimized
+- Lighthouse performance not negatively impacted

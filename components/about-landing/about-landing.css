@@ -86,11 +86,12 @@
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: clamp(18rem, 40vw, 48rem);
+  /* Match MarketingPageHero / blog hero height */
+  min-height: clamp(16rem, 36vw, 42rem);
   padding:
-    calc(var(--dt-nav-occupancy, 5.75rem) + clamp(1.5rem, 3vw, 2.5rem))
+    calc(var(--dt-nav-occupancy, 5.75rem) + 2rem)
     var(--site-align-x)
-    clamp(1.25rem, 2.5vw, 2rem);
+    3rem;
   text-align: left;
   overflow: hidden;
 }
@@ -132,24 +133,6 @@
 @media (min-width: 1024px) {
   .about-page__hero-image--gif {
     object-position: 58% top;
-  }
-}
-
-@media (min-width: 1440px) {
-  .about-page__hero-image--gif {
-    object-fit: cover;
-    object-position: 55% top;
-  }
-
-  .about-page__hero-overlay {
-    background: linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--dt-bg, #041329) 94%, transparent) 0%,
-      color-mix(in srgb, var(--dt-bg, #041329) 84%, transparent) 24%,
-      color-mix(in srgb, var(--dt-bg, #041329) 58%, transparent) 42%,
-      color-mix(in srgb, var(--dt-bg, #041329) 24%, transparent) 58%,
-      transparent 76%
-    );
   }
 }
 

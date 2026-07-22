@@ -1,0 +1,180 @@
+---
+description: UI Design Standards for vCloudTech
+alwaysApply: true
+---
+
+# UI Design Philosophy
+
+Design for enterprise customers.
+
+Every interface should feel:
+
+- Professional
+- Premium
+- Clean
+- Modern
+- Trustworthy
+
+Avoid designs that look like generic templates.
+
+---
+
+# Design Before Coding
+
+Before building a UI:
+
+- Inspect existing sections.
+- Identify reusable components.
+- Match the existing design language.
+- Extend existing patterns before creating new ones.
+
+---
+
+# Layout
+
+Maintain consistent spacing throughout the page.
+
+Keep a clear visual hierarchy.
+
+Avoid clutter.
+
+Prefer balanced whitespace.
+
+Follow existing container widths and alignment.
+
+---
+
+# Hero Sections
+
+Hero sections should:
+
+- Have one clear primary message.
+- Include concise supporting copy.
+- Use a single primary CTA.
+- Keep visual balance between text and media.
+- Respect existing MarketingPageHero patterns unless a redesign is requested.
+
+---
+
+# Cards
+
+Cards should feel lightweight and premium.
+
+Reuse existing card styles before creating new ones.
+
+Keep:
+
+- consistent padding
+- consistent radius
+- consistent border treatment
+- subtle hover effects
+
+Avoid oversized cards.
+
+Avoid unnecessary shadows.
+
+---
+
+# Typography
+
+Use existing typography styles.
+
+Maintain clear heading hierarchy.
+
+Avoid long paragraphs.
+
+Keep line lengths readable.
+
+---
+
+# Buttons
+
+Reuse existing button styles.
+
+Maintain consistent spacing around CTAs.
+
+Avoid creating custom button styles unless requested.
+
+---
+
+# Colors
+
+Use existing design tokens.
+
+Reuse CSS variables.
+
+Never introduce random colors.
+
+Respect the project's dark theme.
+
+---
+
+# Icons
+
+Reuse existing icon components.
+
+Keep icon sizing consistent.
+
+Avoid mixing multiple icon styles.
+
+---
+
+# Images
+
+Use high-quality imagery.
+
+Maintain consistent aspect ratios.
+
+Do not stretch or distort images.
+
+Prefer existing asset helpers.
+
+---
+
+# Animations
+
+Animations should enhance usability.
+
+Keep animations subtle.
+
+Use transform and opacity.
+
+Avoid distracting motion.
+
+Respect prefers-reduced-motion.
+
+---
+
+# Responsive Design
+
+Design mobile-first while respecting existing project patterns.
+
+Ensure layouts adapt cleanly across breakpoints.
+
+Never sacrifice readability for aesthetics.
+
+---
+
+# Accessibility
+
+Maintain sufficient color contrast.
+
+Provide meaningful alt text.
+
+Ensure keyboard accessibility where applicable.
+
+Use semantic HTML.
+
+---
+
+# Before Completion
+
+Before finishing any UI work verify:
+
+- Existing components were reused where appropriate.
+- Existing design language was preserved.
+- Visual hierarchy is clear.
+- Spacing is consistent.
+- Responsive layout works.
+- Accessibility has not regressed.
+- No unnecessary visual complexity was introduced.

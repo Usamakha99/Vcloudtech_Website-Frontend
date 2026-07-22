@@ -10,12 +10,12 @@ export const assetVersions = {
   industriesPage: "5",
   industriesDaylight: "3",
   blog: "12",
-  about: "23",
-  contact: "2",
-  partnerPage: "4",
-  contractsPage: "2",
-  servicesPage: "4",
-  blogPage: "2",
+  about: "24",
+  contact: "3",
+  partnerPage: "5",
+  contractsPage: "3",
+  servicesPage: "5",
+  blogPage: "3",
   topContractHolders: "2",
   services: "10",
   hero: "11",
@@ -78,16 +78,16 @@ export const publicAssets = {
     hero: withAssetVersion("/assets/contact/contact-us.png", assetVersions.contact),
   },
   partnerPage: {
-    hero: withAssetVersion("/assets/partners/partner.png", assetVersions.partnerPage),
+    hero: withAssetVersion("/assets/partners/1.png", assetVersions.partnerPage),
   },
   contractsPage: {
-    hero: withAssetVersion("/assets/contracts/contracts.png", assetVersions.contractsPage),
+    hero: withAssetVersion("/assets/contracts/3.png", assetVersions.contractsPage),
   },
   servicesPage: {
     hero: withAssetVersion("/assets/services/service-hero.png", assetVersions.servicesPage),
   },
   blogPage: {
-    hero: withAssetVersion("/assets/blog hero/blog-hero.png", assetVersions.blogPage),
+    hero: withAssetVersion("/assets/blog hero/2.png", assetVersions.blogPage),
   },
   topContractHolders: {
     sourcewell: withAssetVersion(

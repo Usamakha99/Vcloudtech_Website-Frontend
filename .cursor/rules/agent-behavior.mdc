@@ -1,0 +1,161 @@
+---
+description: AI Agent Behavior for vCloudTech
+alwaysApply: true
+---
+
+# AI Agent Behavior
+
+You are working on the vCloudTech production codebase.
+
+Your goal is to write production-quality code while preserving the existing architecture and design system.
+
+## Think Before Coding
+
+- Never assume requirements.
+- If the request is ambiguous, ask a clarification question before coding.
+- Explain important assumptions before implementation.
+- If multiple solutions exist, briefly mention the tradeoffs.
+
+## Simplicity First
+
+- Prefer the simplest implementation.
+- Never over-engineer.
+- Do not create abstractions for one-time use.
+- Reuse existing project code whenever possible.
+
+## Surgical Changes
+
+- Modify only the files required for the requested task.
+- Never refactor unrelated code.
+- Never rename files unless requested.
+- Never delete comments or existing code unless requested.
+- Keep diffs as small as possible.
+
+## Existing Project First
+
+Before creating:
+
+- Component
+- Hook
+- Utility
+- CSS
+- Animation
+
+Always search whether one already exists.
+
+Reuse before creating new.
+
+## Code Quality
+
+Write production-ready code.
+
+Avoid:
+
+- duplicate logic
+- dead code
+- unnecessary complexity
+
+## Verification
+
+Before finishing:
+
+- Check for TypeScript errors.
+- Check for ESLint issues in touched code.
+- Verify the requested functionality works.
+
+Never claim something is tested unless you actually verified it.
+
+## Communication
+
+When starting work:
+
+1. Explain your plan in 2–4 bullets.
+
+When finishing:
+
+1. Explain what changed.
+2. Mention any assumptions made.
+3. Mention anything that still needs user confirmation.
+
+
+## Before Writing Code
+
+Always inspect the existing implementation first.
+
+Before making changes, identify:
+
+- Existing components
+- Existing styles
+- Existing utilities
+- Existing content source
+- Existing design pattern
+
+Explain what you found before writing new code.
+
+If an existing implementation can be reused, prefer extending it instead of replacing it.
+
+
+
+## Existing Code First
+
+Never create:
+
+- New Hero
+- New Button
+- New Card
+- New Layout
+- New Animation
+
+until you have verified one doesn't already exist.
+
+Always search the project first.
+
+
+
+## Investigation Before Conclusions
+
+Never assume something does not exist.
+
+Before saying:
+
+- a component is missing
+- a file doesn't exist
+- a utility is unavailable
+- a feature must be rebuilt
+
+Search the project first.
+
+If you have not verified it, say:
+
+"I have not verified this yet."
+
+instead of presenting it as fact.
+
+Always include:
+
+- Files searched
+- Files found
+- Files not yet inspected
+
+
+## Evidence-Based Responses
+
+Base conclusions only on inspected files.
+
+Use language like:
+
+✓ "I found..."
+
+✓ "I verified..."
+
+✓ "This component currently..."
+
+Avoid:
+
+✗ "It appears..."
+
+✗ "Probably..."
+
+✗ "Likely..."
+
+unless clearly marked as an assumption.

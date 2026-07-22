@@ -1,0 +1,116 @@
+---
+description: vCloudTech Architecture Rules
+alwaysApply: true
+---
+
+# Project Architecture
+
+This project uses the Next.js App Router architecture.
+
+Always follow the existing folder structure and project conventions.
+
+Never introduce a different architecture unless explicitly requested.
+
+---
+
+# Existing Before New
+
+Before creating:
+
+- Page
+- Layout
+- Component
+- Hook
+- Utility
+- CSS file
+
+Search the project first.
+
+Reuse existing implementations whenever possible.
+
+Do not duplicate functionality.
+
+---
+
+# Marketing Pages
+
+Marketing pages follow existing shared patterns.
+
+Before creating a new Hero, CTA, Card or Section:
+
+- Check existing marketing components.
+- Extend existing components if appropriate.
+- Only create a new component when reuse is not practical.
+
+---
+
+# Content
+
+Marketing copy belongs inside:
+
+lib/marketing/
+
+Never hardcode large text inside React components.
+
+---
+
+# Images
+
+Always use the project's existing asset system.
+
+Prefer existing public asset helpers.
+
+Do not hardcode asset paths if a helper already exists.
+
+---
+
+# Styling
+
+Follow the project's existing styling strategy.
+
+Reuse existing CSS.
+
+Reuse Tailwind utilities.
+
+Reuse design tokens.
+
+Do not introduce another styling framework.
+
+---
+
+# Components
+
+Keep components focused.
+
+Avoid components larger than necessary.
+
+Extract reusable pieces only after duplication exists.
+
+---
+
+# Imports
+
+Follow existing import style.
+
+Prefer project aliases over deep relative imports.
+
+---
+
+# File Changes
+
+Touch only the files required.
+
+Avoid unrelated refactoring.
+
+Never rename files unless requested.
+
+---
+
+# Before Completion
+
+Before completing work verify:
+
+- Existing architecture preserved
+- Existing design system respected
+- Existing reusable components considered
+- No duplicated logic introduced

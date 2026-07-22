@@ -1,24 +1,3 @@
-/* Same hero treatment as /partners — taller, balanced crop */
-.services-page .marketing-page__hero {
-  min-height: clamp(24rem, 52vw, 60rem);
-}
-
-.services-page .marketing-page__hero-image {
-  object-position: 62% 28%;
-}
-
-@media (min-width: 1024px) {
-  .services-page .marketing-page__hero-image {
-    object-position: 58% 28%;
-  }
-}
-
-@media (max-width: 767px) {
-  .services-page .marketing-page__hero-image {
-    object-position: 70% 28%;
-  }
-}
-
 .services-page__body {
   max-width: none;
   width: 100%;

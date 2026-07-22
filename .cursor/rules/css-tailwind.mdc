@@ -1,0 +1,90 @@
+---
+description: Styling Standards
+alwaysApply: true
+---
+
+# Styling Strategy
+
+Follow the project's existing styling conventions.
+
+Do not introduce a new styling framework.
+
+---
+
+# Tailwind
+
+Use Tailwind for:
+
+- Layout
+- Flex/Grid
+- Spacing
+- Responsive utilities
+
+Avoid creating utility CSS that Tailwind already provides.
+
+---
+
+# CSS
+
+Use CSS files for:
+
+- Complex animations
+- Component-specific styling
+- Media queries
+- Shared reusable styles
+
+Extend existing CSS before creating a new CSS file.
+
+---
+
+# Design Tokens
+
+Always reuse existing CSS variables.
+
+Never hardcode colors if a design token exists.
+
+Prefer existing spacing and typography variables.
+
+---
+
+# Reuse First
+
+Before writing CSS:
+
+- Search for an existing class.
+- Search for existing utilities.
+- Search for an existing animation.
+
+Reuse first.
+
+---
+
+# Animations
+
+Prefer CSS transitions.
+
+Avoid unnecessary Framer Motion.
+
+No layout shift.
+
+No scroll hitching.
+
+---
+
+# Responsive
+
+Desktop first if following existing patterns.
+
+Maintain existing breakpoints.
+
+Never break mobile layouts.
+
+---
+
+# Before Completion
+
+Verify:
+
+- No duplicate CSS
+- No unused classes
+- Existing styles reused
