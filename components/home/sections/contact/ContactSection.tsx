@@ -20,7 +20,7 @@ export function HomeContactSection() {
           <DtScrollReveal className="dt-contact__intro">
             <p className={`${dt.badge} dt-contact__badge`}>Contact</p>
             <h2 id="contact-heading" className="dt-contact__headline">
-              Contact us
+              Contact Us
             </h2>
             <p className="dt-contact__lede dt-contact__lede--prominent">
               Tell us about your environment, timeline, and priorities and our solutions team will

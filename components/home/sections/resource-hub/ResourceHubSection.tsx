@@ -152,7 +152,7 @@ export function HomeResourceHubSection() {
         <header className={`rh__header ${dt.sectionHeader} ${headerVisible ? "is-visible" : ""}`}>
           <p className={dt.badge}>Blog &amp; content</p>
           <h2 id="blog-content-heading" className={dt.sectionHeadlineTp}>
-            Latest insights
+            Latest Insights
           </h2>
           <p className={`${dt.sectionDesc} ${dt.headingSub}`}>
             Practical perspectives on procurement, cloud, security, and enterprise IT operations.

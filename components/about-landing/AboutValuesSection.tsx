@@ -40,9 +40,11 @@ export function AboutValuesSection({ badge, title, items }: Props) {
       <ul className="about-page__values-grid">
         {items.map((value, index) => (
           <li key={value.id}>
-            <DtScrollReveal delay={index * 0.07}>
+            <DtScrollReveal delay={index * 0.1}>
               <article className="about-page__value-card" tabIndex={0}>
+                <span className="about-page__value-card-glow" aria-hidden />
                 <div className="about-page__value-card-media" aria-hidden>
+                  <span className="about-page__value-card-media-aura" />
                   {/* Native img keeps PNG alpha; next/image can flatten transparent PNGs */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

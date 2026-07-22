@@ -172,9 +172,9 @@ export function HomeTechnologyPartnersSection() {
         >
           <p className={dt.badge}>Technology Partners</p>
           <h2 id="tech-partners-heading" className={dt.sectionHeadlineTp}>
-            World-class partners.{" "}
+            World-Class Partners.{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              One trusted platform.
+              One Trusted Platform.
             </span>
           </h2>
           <p className={`${dt.sectionDesc} ${dt.headingSub}`}>

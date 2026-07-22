@@ -63,9 +63,9 @@ export function HomeAboutSection() {
         <header className="about-minimal__header about-minimal__header--center">
           <p className={dt.badge}>The organization</p>
           <h2 id="about-snapshot-heading" className="about-minimal__headline">
-            Powering the Organizations That{" "}
+            Powering The Organizations That{" "}
             <span className="bg-gradient-to-r from-[#E55614] to-[#f06520] bg-clip-text text-transparent">
-              Power the World
+              Power The World
             </span>
           </h2>
         </header>

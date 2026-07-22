@@ -41,7 +41,7 @@ export const designTestFooterLinks = {
   company: [
     { label: "About", href: "/about" },
     { label: "Solutions", href: "/solutions" },
-    { label: "Resources", href: "/posts" },
+    { label: "Blogs", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
   contact: [

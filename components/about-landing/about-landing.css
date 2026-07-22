@@ -1139,12 +1139,22 @@
   inset: -2rem -1rem;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.045;
   background-image:
     linear-gradient(rgb(179 179 179 / 0.55) 1px, transparent 1px),
     linear-gradient(90deg, rgb(179 179 179 / 0.55) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+  animation: about-values-grid-drift 28s linear infinite;
+}
+
+@keyframes about-values-grid-drift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 28px 28px, 28px 28px;
+  }
 }
 
 .about-page__values .about-page__section-header {
@@ -1184,7 +1194,7 @@
   .about-page__values-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: 1fr;
-    gap: 1.35rem;
+    gap: clamp(1.5rem, 2.2vw, 2rem);
   }
 }
 
@@ -1201,30 +1211,85 @@
   border-radius: 20px;
   border: 1px solid rgba(179, 179, 179, 0.12);
   background:
-    linear-gradient(145deg, rgb(255 255 255 / 0.03) 0%, transparent 42%),
-    linear-gradient(165deg, #15263c 0%, var(--dt-card, #111f34) 48%, #0d1a2c 100%);
+    linear-gradient(145deg, rgb(255 255 255 / 0.02) 0%, transparent 40%),
+    linear-gradient(170deg, #142438 0%, var(--dt-card, #111f34) 55%, #0f1c30 100%);
   box-shadow:
     0 1px 0 rgb(255 255 255 / 0.04) inset,
     0 18px 40px -28px rgb(0 0 0 / 0.55);
   outline: none;
   overflow: hidden;
+  isolation: isolate;
+  will-change: transform;
   transition:
-    border-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    background 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    border-color 200ms cubic-bezier(0.34, 1.4, 0.64, 1),
+    box-shadow 200ms cubic-bezier(0.34, 1.4, 0.64, 1),
+    transform 200ms cubic-bezier(0.34, 1.4, 0.64, 1),
+    background 200ms ease;
 }
 
-.about-page__value-card:hover,
-.about-page__value-card:focus-visible {
-  border-color: rgba(179, 179, 179, 0.28);
+.about-page__value-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 28%,
+    rgb(255 255 255 / 0.16) 46%,
+    rgb(179 179 179 / 0.14) 52%,
+    transparent 68%
+  );
+  background-size: 240% 100%;
+  background-position: 130% 0;
+  opacity: 0;
+  transition:
+    opacity 160ms ease,
+    background-position 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-page__value-card-glow {
+  position: absolute;
+  inset: -50% -30%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
   background:
-    linear-gradient(145deg, rgb(255 255 255 / 0.055) 0%, transparent 46%),
-    linear-gradient(165deg, #1a2d45 0%, #15263c 48%, #111f34 100%);
-  box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.06) inset,
-    0 28px 56px -24px rgb(0 0 0 / 0.68);
-  transform: translateY(-4px);
+    radial-gradient(ellipse 65% 55% at 18% 30%, rgb(179 179 179 / 0.28), transparent 58%),
+    radial-gradient(ellipse 55% 45% at 80% 75%, rgb(179 179 179 / 0.12), transparent 65%);
+  transform: scale(0.8);
+  transition:
+    opacity 200ms cubic-bezier(0.34, 1.4, 0.64, 1),
+    transform 200ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-page__value-card:hover,
+  .about-page__value-card:focus-visible {
+    border-color: rgba(179, 179, 179, 0.55);
+    background:
+      linear-gradient(145deg, rgb(255 255 255 / 0.1) 0%, transparent 48%),
+      linear-gradient(165deg, #243a56 0%, #1a3550 42%, #111f34 100%);
+    box-shadow:
+      0 1px 0 rgb(255 255 255 / 0.12) inset,
+      0 0 0 1px rgb(179 179 179 / 0.22),
+      0 40px 70px -16px rgb(0 0 0 / 0.8),
+      0 0 48px -6px rgb(179 179 179 / 0.28),
+      0 18px 36px -12px rgb(179 179 179 / 0.18);
+    transform: translateY(-14px) scale(1.03);
+  }
+
+  .about-page__value-card:hover::after,
+  .about-page__value-card:focus-visible::after {
+    opacity: 1;
+    background-position: -50% 0;
+  }
+
+  .about-page__value-card:hover .about-page__value-card-glow,
+  .about-page__value-card:focus-visible .about-page__value-card-glow {
+    opacity: 1;
+    transform: scale(1.12);
+  }
 }
 
 .about-page__value-card-media {
@@ -1239,18 +1304,52 @@
   background: transparent;
 }
 
+.about-page__value-card-media-aura {
+  position: absolute;
+  inset: 12% 8%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(179 179 179 / 0.22), transparent 68%);
+  opacity: 0.35;
+  filter: blur(12px);
+  transform: scale(0.88);
+}
+
 .about-page__value-card-media-img {
   position: absolute;
-  inset: 0.75rem;
+  inset: 1rem;
+  z-index: 1;
   display: block;
-  width: calc(100% - 1.5rem);
-  height: calc(100% - 1.5rem);
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
   object-fit: contain;
   object-position: center;
   background: transparent;
   transform: scale(1);
   transform-origin: center center;
-  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: about-value-icon-float 4.8s ease-in-out infinite;
+}
+
+.about-page__values-grid > li:nth-child(2) .about-page__value-card-media-img {
+  animation-delay: -1.2s;
+}
+
+.about-page__values-grid > li:nth-child(3) .about-page__value-card-media-img {
+  animation-delay: -2.4s;
+}
+
+.about-page__values-grid > li:nth-child(4) .about-page__value-card-media-img {
+  animation-delay: -3.6s;
+}
+
+@keyframes about-value-icon-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -5px;
+  }
 }
 
 /* Match visual weight to Customer-Centric Innovation (reference) */
@@ -1270,27 +1369,9 @@
   transform: scale(0.74);
 }
 
-.about-page__value-card:hover .about-page__value-card-media-img--reliability,
-.about-page__value-card:focus-visible .about-page__value-card-media-img--reliability {
-  transform: scale(0.72);
-}
-
-.about-page__value-card:hover .about-page__value-card-media-img--integrity,
-.about-page__value-card:focus-visible .about-page__value-card-media-img--integrity {
-  transform: scale(0.82);
-}
-
-.about-page__value-card:hover .about-page__value-card-media-img--innovation,
-.about-page__value-card:focus-visible .about-page__value-card-media-img--innovation {
-  transform: scale(1.05);
-}
-
-.about-page__value-card:hover .about-page__value-card-media-img--security,
-.about-page__value-card:focus-visible .about-page__value-card-media-img--security {
-  transform: scale(0.78);
-}
-
 .about-page__value-card-divider {
+  position: relative;
+  z-index: 1;
   width: 1px;
   align-self: stretch;
   margin-block: clamp(1.5rem, 3vw, 2.25rem);
@@ -1301,21 +1382,28 @@
     rgb(179 179 179 / 0.14) 82%,
     transparent 100%
   );
-  transition: background 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    background 220ms ease,
+    box-shadow 220ms ease;
 }
 
-.about-page__value-card:hover .about-page__value-card-divider,
-.about-page__value-card:focus-visible .about-page__value-card-divider {
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgb(179 179 179 / 0.28) 18%,
-    rgb(179 179 179 / 0.28) 82%,
-    transparent 100%
-  );
+@media (hover: hover) and (pointer: fine) {
+  .about-page__value-card:hover .about-page__value-card-divider,
+  .about-page__value-card:focus-visible .about-page__value-card-divider {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      #b3b3b3 18%,
+      #b3b3b3 82%,
+      transparent 100%
+    );
+    box-shadow: 0 0 14px rgb(179 179 179 / 0.45);
+  }
 }
 
 .about-page__value-card-body {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1326,12 +1414,43 @@
 }
 
 .about-page__value-title {
+  position: relative;
   margin: 0;
   font-size: clamp(1.25rem, 2.2vw, 1.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.25;
   color: var(--dt-text, #ffffff);
+  transition: color 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-page__value-card:hover .about-page__value-title,
+  .about-page__value-card:focus-visible .about-page__value-title {
+    color: #ffffff;
+  }
+}
+
+.about-page__value-title::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  margin-top: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #b3b3b3, rgb(179 179 179 / 0.12));
+  box-shadow: 0 0 0 transparent;
+  transition:
+    width 200ms cubic-bezier(0.34, 1.4, 0.64, 1),
+    box-shadow 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-page__value-card:hover .about-page__value-title::after,
+  .about-page__value-card:focus-visible .about-page__value-title::after {
+    width: 4.25rem;
+    box-shadow: 0 0 10px rgb(179 179 179 / 0.45);
+  }
 }
 
 .about-page__value-desc {
@@ -1340,6 +1459,14 @@
   font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
   line-height: 1.6;
   color: var(--dt-muted, #a1a1aa);
+  transition: color 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-page__value-card:hover .about-page__value-desc,
+  .about-page__value-card:focus-visible .about-page__value-desc {
+    color: #d4d4d8;
+  }
 }
 
 @media (max-width: 639px) {
@@ -1371,26 +1498,6 @@
     transform: scale(0.74);
   }
 
-  .about-page__value-card:hover .about-page__value-card-media-img--reliability,
-  .about-page__value-card:focus-visible .about-page__value-card-media-img--reliability {
-    transform: scale(0.72);
-  }
-
-  .about-page__value-card:hover .about-page__value-card-media-img--integrity,
-  .about-page__value-card:focus-visible .about-page__value-card-media-img--integrity {
-    transform: scale(0.82);
-  }
-
-  .about-page__value-card:hover .about-page__value-card-media-img--innovation,
-  .about-page__value-card:focus-visible .about-page__value-card-media-img--innovation {
-    transform: scale(1.04);
-  }
-
-  .about-page__value-card:hover .about-page__value-card-media-img--security,
-  .about-page__value-card:focus-visible .about-page__value-card-media-img--security {
-    transform: scale(0.78);
-  }
-
   .about-page__value-card-divider {
     width: auto;
     height: 1px;
@@ -1404,15 +1511,18 @@
     );
   }
 
-  .about-page__value-card:hover .about-page__value-card-divider,
-  .about-page__value-card:focus-visible .about-page__value-card-divider {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgb(179 179 179 / 0.28) 18%,
-      rgb(179 179 179 / 0.28) 82%,
-      transparent 100%
-    );
+  @media (hover: hover) and (pointer: fine) {
+    .about-page__value-card:hover .about-page__value-card-divider,
+    .about-page__value-card:focus-visible .about-page__value-card-divider {
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #b3b3b3 18%,
+        #b3b3b3 82%,
+        transparent 100%
+      );
+      box-shadow: 0 0 12px rgb(179 179 179 / 0.4);
+    }
   }
 
   .about-page__value-card-body {
@@ -1427,10 +1537,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .about-page__values::before,
+  .about-page__value-card-media-img {
+    animation: none;
+  }
+
   .about-page__value-card,
-  .about-page__value-card-media-img,
-  .about-page__value-card-divider {
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  .about-page__value-card-divider,
+  .about-page__value-card-glow,
+  .about-page__value-title::after,
+  .about-page__value-desc {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
   }
 
   .about-page__value-card:hover,
@@ -1438,23 +1555,8 @@
     transform: none;
   }
 
-  .about-page__value-card:hover .about-page__value-card-media-img--reliability,
-  .about-page__value-card:focus-visible .about-page__value-card-media-img--reliability {
-    transform: scale(0.68);
-  }
-
-  .about-page__value-card:hover .about-page__value-card-media-img--integrity,
-  .about-page__value-card:focus-visible .about-page__value-card-media-img--integrity {
-    transform: scale(0.78);
-  }
-
-  .about-page__value-card:hover .about-page__value-card-media-img--innovation,
-  .about-page__value-card:focus-visible .about-page__value-card-media-img--innovation {
-    transform: scale(1);
-  }
-
-  .about-page__value-card:hover .about-page__value-card-media-img--security,
-  .about-page__value-card:focus-visible .about-page__value-card-media-img--security {
-    transform: scale(0.74);
+  .about-page__value-card:hover .about-page__value-title::after,
+  .about-page__value-card:focus-visible .about-page__value-title::after {
+    width: 4.25rem;
   }
 }
