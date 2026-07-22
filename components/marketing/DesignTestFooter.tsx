@@ -130,12 +130,7 @@ function FooterOfficeCards() {
   return (
     <ul className="dt-footer__offices" aria-label="Office locations">
       {footerOffices.map((office) => (
-        <Fragment key={office.id}>
-          {office.id === "canada" ? (
-            <li className="dt-footer__offices-divider" aria-hidden />
-          ) : null}
-          <FooterOfficeCard office={office} phoneHref={phoneHref} />
-        </Fragment>
+        <FooterOfficeCard key={office.id} office={office} phoneHref={phoneHref} />
       ))}
     </ul>
   );

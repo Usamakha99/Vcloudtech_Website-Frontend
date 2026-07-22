@@ -29,7 +29,7 @@
   }
 }
 
-/* Office cards — 3 equal columns + centered divider */
+/* Office cards — 3 equal columns, left inset, orange country underlines */
 .dt-footer__offices {
   display: grid;
   grid-template-columns: 1fr;
@@ -37,50 +37,33 @@
   width: 100%;
   margin: 1.75rem 0 0;
   padding: 0;
+  padding-inline-start: clamp(0.75rem, 3vw, 2.5rem);
   list-style: none;
   align-items: stretch;
 }
 
 @media (min-width: 768px) {
   .dt-footer__offices {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto minmax(0, 1fr);
-    column-gap: 1.75rem;
-    row-gap: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
     margin-top: 2rem;
+    padding-inline-start: clamp(1.25rem, 4vw, 3.5rem);
   }
 }
 
 @media (min-width: 1024px) {
   .dt-footer__offices {
-    column-gap: 2.25rem;
-  }
-}
-
-.dt-footer__offices-divider {
-  display: none;
-  list-style: none;
-}
-
-@media (min-width: 768px) {
-  .dt-footer__offices-divider {
-    display: block;
-    width: 1px;
-    align-self: stretch;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(179, 179, 179, 0.45) 12%,
-      rgba(179, 179, 179, 0.45) 88%,
-      transparent 100%
-    );
+    gap: 3rem;
+    padding-inline-start: clamp(1.75rem, 5vw, 4.5rem);
   }
 }
 
 .dt-footer__country {
+  display: inline-block;
   margin: 0 0 0.55rem;
   min-height: 1.35rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid #e55614;
   font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -92,6 +75,7 @@
 .dt-footer__country--spacer {
   visibility: hidden;
   user-select: none;
+  border-bottom-color: transparent;
 }
 
 .dt-footer__office {
