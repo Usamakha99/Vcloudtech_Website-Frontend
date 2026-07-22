@@ -167,7 +167,7 @@ function FooterContactInfo() {
             </span>
           </div>
         </div>
-        <p className="dt-footer__contact-note">{designTestContactInfo.enterpriseNote}</p>
+        {/* <p className="dt-footer__contact-note">{designTestContactInfo.enterpriseNote}</p> */}
       </div>
     </div>
   );

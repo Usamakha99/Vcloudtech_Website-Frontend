@@ -68,7 +68,7 @@ export function ContactLandingPage() {
               </h2>
               <p className={`${dt.body} contact-page__form-lede`}>
                 Complete the form and our solutions team will respond within one business day.
-                Enterprise accounts receive priority routing.
+                {/* Enterprise accounts receive priority routing. */}
               </p>
             </header>
 

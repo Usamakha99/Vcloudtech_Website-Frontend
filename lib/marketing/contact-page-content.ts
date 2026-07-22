@@ -38,7 +38,7 @@ export const contactInfoCards = [
     id: "hours",
     title: "Business Hours",
     lines: [designTestContactInfo.hours],
-    subline: designTestContactInfo.enterpriseNote,
+    // subline: designTestContactInfo.enterpriseNote,
   },
 ] as const;
 
