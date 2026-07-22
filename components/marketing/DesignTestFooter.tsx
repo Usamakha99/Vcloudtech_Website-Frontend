@@ -140,7 +140,7 @@ function FooterContactInfo() {
   return (
     <div className="dt-footer__contact" aria-label="Contact information">
       <div className="dt-footer__contact-card">
-        <p className="dt-footer__contact-card-title">Contact</p>
+        <p className="dt-footer__col-title">Contact</p>
         <div className="dt-footer__contact-rows">
           <div className="dt-footer__contact-row">
             <span className="dt-footer__contact-row-label">Email</span>
@@ -183,34 +183,30 @@ export function DesignTestFooter() {
         <FooterOfficeCards />
 
         <div className="dt-footer__lower">
-          <div className="dt-footer__mid">
-            <div className="dt-footer__mid-links">
-              <div>
-                <p className="dt-footer__col-title">Services</p>
-                <ul className="dt-footer__links">
-                  {designTestFooterLinks.services.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className="dt-footer__link">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div>
+            <p className="dt-footer__col-title">Services</p>
+            <ul className="dt-footer__links">
+              {designTestFooterLinks.services.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="dt-footer__link">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              <div>
-                <p className="dt-footer__col-title">Company</p>
-                <ul className="dt-footer__links">
-                  {designTestFooterLinks.company.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className="dt-footer__link">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+          <div>
+            <p className="dt-footer__col-title">Company</p>
+            <ul className="dt-footer__links">
+              {designTestFooterLinks.company.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="dt-footer__link">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <FooterContactInfo />
