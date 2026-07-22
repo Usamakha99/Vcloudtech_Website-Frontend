@@ -41,6 +41,16 @@
     gap: 1.5rem;
     align-items: start;
   }
+
+  .dt-footer__brand {
+    grid-row: 1 / 3;
+  }
+
+  .dt-footer__landmarks {
+    grid-column: 2 / 4;
+    grid-row: 2;
+    align-self: end;
+  }
 }
 
 .dt-footer__brand {
@@ -135,6 +145,51 @@
 .dt-footer__location-link:hover .dt-footer__location-address,
 .dt-footer__location-link:focus-visible .dt-footer__location-address {
   color: #fff;
+}
+
+/* Large landmark row — mid center under Services / Company / Contact */
+.dt-footer__landmarks {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  width: 100%;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dt-footer__landmark {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  max-width: 13rem;
+}
+
+.dt-footer__landmark-img {
+  width: 100%;
+  height: auto;
+  max-height: 7rem;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (min-width: 768px) {
+  .dt-footer__landmarks {
+    margin-top: 0.75rem;
+  }
+
+  .dt-footer__landmark-img {
+    max-height: 8.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dt-footer__landmark-img {
+    max-height: 9.25rem;
+  }
 }
 
 .dt-footer__social {

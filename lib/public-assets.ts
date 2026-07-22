@@ -21,6 +21,7 @@ export const assetVersions = {
   hero: "11",
   intro: "4",
   locations: "3",
+  footerLocationIcons: "1",
   values: "5",
 } as const;
 
@@ -116,6 +117,20 @@ export const publicAssets = {
     california: withAssetVersion(
       "/assets/locations/california.png",
       assetVersions.locations,
+    ),
+  },
+  footerLocationIcons: {
+    texas: withAssetVersion(
+      "/assets/Footer Location Icons/Texas.png",
+      assetVersions.footerLocationIcons,
+    ),
+    california: withAssetVersion(
+      "/assets/Footer Location Icons/California.png",
+      assetVersions.footerLocationIcons,
+    ),
+    canada: withAssetVersion(
+      "/assets/Footer Location Icons/Canada.png",
+      assetVersions.footerLocationIcons,
     ),
   },
   blog: {

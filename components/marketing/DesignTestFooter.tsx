@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 
@@ -9,8 +10,7 @@ import {
   designTestFooterLocations,
   designTestFooterSocial,
 } from "@/lib/marketing/footer-content";
-// import Image from "next/image";
-// import { publicAssets } from "@/lib/public-assets";
+import { publicAssets } from "@/lib/public-assets";
 
 import "./design-test-footer.css";
 
@@ -75,6 +75,43 @@ function FooterLocationLink({
 
 function FooterLocationDivider() {
   return <span className="dt-footer__location-divider" aria-hidden />;
+}
+
+const footerLandmarkIcons = [
+  {
+    id: "texas",
+    src: publicAssets.footerLocationIcons.texas,
+    alt: "Texas Headquarter — Texas State Capitol",
+  },
+  {
+    id: "california",
+    src: publicAssets.footerLocationIcons.california,
+    alt: "California — Golden Gate Bridge",
+  },
+  {
+    id: "canada",
+    src: publicAssets.footerLocationIcons.canada,
+    alt: "Canada — Toronto skyline",
+  },
+] as const;
+
+function FooterLandmarkIcons() {
+  return (
+    <ul className="dt-footer__landmarks" aria-label="Office location landmarks">
+      {footerLandmarkIcons.map((icon) => (
+        <li key={icon.id} className="dt-footer__landmark">
+          <Image
+            src={icon.src}
+            alt={icon.alt}
+            width={360}
+            height={220}
+            className="dt-footer__landmark-img"
+            sizes="(max-width: 767px) 28vw, 14rem"
+          />
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 function FooterContactInfo() {
@@ -181,22 +218,9 @@ export function DesignTestFooter() {
           </div>
 
           <FooterContactInfo />
-        </div>
 
-        {/* vCloudTech logo mark — hidden for now
-        <div className="dt-footer__mark" aria-hidden>
-          <Image
-            src={publicAssets.brand.markOutline}
-            alt=""
-            width={1600}
-            height={360}
-            className="dt-footer__mark-img"
-            sizes="100vw"
-            priority={false}
-          />
-          <span className="dt-footer__mark-shine" />
+          <FooterLandmarkIcons />
         </div>
-        */}
 
         <div className="dt-footer__bottom">
           <p className="dt-footer__copyright">vCloud Tech &copy; 2026  All Rights Reserved</p>
