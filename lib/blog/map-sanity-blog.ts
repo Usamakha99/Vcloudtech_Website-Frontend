@@ -124,6 +124,23 @@ export function mapSanityBlogPost(post: SanityBlogPost, includeBody = false): Bl
   const image = imageUrl(post.mainImage);
   const readingTimeMinutes = estimateReadingTime(post.body, post.readingTimeMinutes);
 
+  const faq =
+    post.faq
+      ?.filter((item) => item.question && item.answer)
+      .map((item) => ({
+        question: item.question!,
+        answer: item.answer!,
+      })) ?? undefined;
+
+  const tableOfContents = extractTableOfContents(post.body);
+  if (faq?.length) {
+    tableOfContents.push({
+      id: "blog-faq-heading",
+      title: "Frequently asked questions",
+      level: 2,
+    });
+  }
+
   return {
     slug: post.slug,
     title: post.title,
@@ -138,14 +155,9 @@ export function mapSanityBlogPost(post: SanityBlogPost, includeBody = false): Bl
     imageAlt: post.mainImage?.alt ?? post.title,
     featured: post.featured ?? false,
     tags: post.tags ?? [],
-    tableOfContents: extractTableOfContents(post.body),
+    tableOfContents,
     body: includeBody ? post.body : undefined,
-    faq: post.faq
-      ?.filter((item) => item.question && item.answer)
-      .map((item) => ({
-        question: item.question!,
-        answer: item.answer!,
-      })),
+    faq,
     relatedSlugs:
       post.relatedPosts
         ?.map((related) => related.slug)
