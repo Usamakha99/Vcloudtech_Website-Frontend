@@ -11,6 +11,8 @@ import "./ai-data-center-orbital.css";
 const ICONS = publicAssets.services.solutionIcons;
 
 type OrbitItem = (typeof SERVICES_GRID_ITEMS)[number] & { iconSrc: string };
+type OrbitSlot = "top" | "mid" | "bot";
+type OrbitSide = "left" | "right";
 
 /**
  * Design image 1 order + Solution icons by visual meaning:
@@ -29,18 +31,66 @@ const RIGHT_ITEMS: readonly OrbitItem[] = [
   { ...SERVICES_GRID_ITEMS[5], iconSrc: ICONS.lifecycleManagement },
 ];
 
+/** Mid = flat to equator; top/bot = steep arrows into the globe (viewBox 0 0 200 120). */
+const CONNECTOR_PATHS: Record<OrbitSide, Record<OrbitSlot, string>> = {
+  left: {
+    top: "M 4 60 C 55 62, 120 100, 196 110",
+    mid: "M 4 60 C 70 60, 140 60, 196 60",
+    bot: "M 4 60 C 55 58, 120 20, 196 10",
+  },
+  right: {
+    top: "M 196 60 C 145 62, 80 100, 4 110",
+    mid: "M 196 60 C 130 60, 60 60, 4 60",
+    bot: "M 196 60 C 145 58, 80 20, 4 10",
+  },
+};
+
+const CONNECTOR_ENDS: Record<OrbitSide, Record<OrbitSlot, { x: number; y: number }>> = {
+  left: { top: { x: 196, y: 110 }, mid: { x: 196, y: 60 }, bot: { x: 196, y: 10 } },
+  right: { top: { x: 4, y: 110 }, mid: { x: 4, y: 60 }, bot: { x: 4, y: 10 } },
+};
+
+const PULSE_DELAYS: Record<OrbitSide, Record<OrbitSlot, string>> = {
+  left: { top: "0s", mid: "0.45s", bot: "0.9s" },
+  right: { top: "0.2s", mid: "0.65s", bot: "1.1s" },
+};
+
 function OrbitCard({
   item,
   side,
   slot,
 }: {
   item: OrbitItem;
-  side: "left" | "right";
-  slot: "top" | "mid" | "bot";
+  side: OrbitSide;
+  slot: OrbitSlot;
 }) {
+  const path = CONNECTOR_PATHS[side][slot];
+  const end = CONNECTOR_ENDS[side][slot];
+  const pulseDelay = PULSE_DELAYS[side][slot];
+
   return (
     <li className={`ai-orbit__card ai-orbit__card--${side} ai-orbit__card--${slot}`}>
-      <span className="ai-orbit__connector" aria-hidden />
+      <span className="ai-orbit__connector" aria-hidden>
+        <svg
+          className="ai-orbit__connector-svg"
+          viewBox="0 0 200 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path className="ai-orbit__connector-path" d={path} />
+          <circle className="ai-orbit__connector-endpoint" r="3.2" cx={end.x} cy={end.y} />
+          <circle className="ai-orbit__connector-pulse" r="2.4" cx="0" cy="0">
+            <animateMotion
+              dur="2.6s"
+              repeatCount="indefinite"
+              path={path}
+              begin={pulseDelay}
+              calcMode="linear"
+            />
+          </circle>
+        </svg>
+        <span className="ai-orbit__connector-card-node" />
+      </span>
       <Link href={item.href} className="ai-orbit__card-inner">
         <span className="ai-orbit__icon-wrap" aria-hidden>
           <Image
@@ -73,7 +123,7 @@ export function AiDataCenterOrbitalSection() {
       <div className="ai-orbit__inner">
         <header className="ai-orbit__header">
           <DtScrollReveal>
-            <p className={dt.badge}>Solutions</p>
+            <p className={`${dt.badge} ai-orbit__badge`}>Solutions</p>
             <h2 id="ai-orbit-heading" className="ai-orbit__headline">
               AI Data Center Solution
             </h2>
@@ -97,6 +147,7 @@ export function AiDataCenterOrbitalSection() {
           </ul>
 
           <div className="ai-orbit__globe-wrap" aria-hidden>
+            <div className="ai-orbit__globe-vignette" />
             <div className="ai-orbit__globe-glow" />
             <div className="ai-orbit__globe">
               <Image
@@ -125,7 +176,9 @@ export function AiDataCenterOrbitalSection() {
         <div className="ai-orbit__cta-wrap">
           <Link href="/solutions" className="ai-orbit__cta">
             View all solutions
-            <span aria-hidden>→</span>
+            <span className="ai-orbit__cta-arrow" aria-hidden>
+              →
+            </span>
           </Link>
         </div>
       </div>
