@@ -2,6 +2,7 @@ import { DesignTestFooter } from "@/components/marketing/DesignTestFooter";
 import { DesignTestGlobalNavbar } from "@/components/marketing/global-nav";
 import { HomeMeetExpertsSection } from "@/components/home/sections/meet-experts/MeetExpertsCtaSection";
 import { PageIngredientBackground } from "@/components/layout/PageIngredientBackground";
+import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
 import { poppins } from "@/lib/fonts/poppins";
 
 type Props = {
@@ -32,6 +33,7 @@ export function MarketingLayoutShell({ children }: Props) {
         <HomeMeetExpertsSection />
       </main>
       <DesignTestFooter />
+      <ScrollToTopButton />
     </div>
   );
 }
