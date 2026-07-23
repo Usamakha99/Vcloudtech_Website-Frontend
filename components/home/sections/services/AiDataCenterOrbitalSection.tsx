@@ -49,7 +49,7 @@ function OrbitCard({
             width={128}
             height={128}
             className="ai-orbit__icon-img"
-            sizes="80px"
+            sizes="96px"
           />
         </span>
         <span className="ai-orbit__card-copy">

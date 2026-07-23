@@ -172,10 +172,10 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.9rem;
   width: 100%;
-  min-height: 5rem;
-  padding: 0.55rem 1.25rem 0.55rem 0.55rem;
+  min-height: 5.75rem;
+  padding: 0.45rem 1.25rem 0.45rem 0.45rem;
   border-radius: 9999px;
   border: 1px solid rgb(125 211 252 / 0.28);
   background: linear-gradient(
@@ -205,35 +205,39 @@
     inset 0 1px 0 rgb(255 255 255 / 0.08);
 }
 
-/* Circular icon slot — solution icons centered inside */
+/* Circular icon slot — larger + brighter */
 .ai-orbit__icon-wrap {
   position: relative;
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 4.15rem;
-  height: 4.15rem;
+  width: 5.1rem;
+  height: 5.1rem;
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid rgb(125 211 252 / 0.28);
+  border: 1px solid rgb(125 211 252 / 0.4);
   background:
-    radial-gradient(circle at 50% 42%, rgb(56 140 220 / 0.35) 0%, rgb(4 19 41 / 0.9) 72%);
+    radial-gradient(circle at 50% 40%, rgb(56 160 240 / 0.45) 0%, rgb(4 19 41 / 0.95) 70%);
   box-shadow:
-    0 0 20px rgb(56 189 248 / 0.28),
-    inset 0 0 12px rgb(56 189 248 / 0.12);
+    0 0 28px rgb(56 189 248 / 0.45),
+    inset 0 0 14px rgb(56 189 248 / 0.18);
 }
 
 .ai-orbit__icon-img {
   position: relative;
-  width: 92%;
-  height: 92%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center;
-  /* Drop black PNG backdrop; keep blue glow */
+  /* Drop black PNG backdrop; boost visibility */
   mix-blend-mode: screen;
-  transform: scale(1.12);
-  filter: drop-shadow(0 0 6px rgb(56 189 248 / 0.45));
+  transform: scale(1.38);
+  filter:
+    brightness(1.35)
+    contrast(1.2)
+    saturate(1.15)
+    drop-shadow(0 0 10px rgb(56 189 248 / 0.65));
 }
 
 .ai-orbit__card-copy {
