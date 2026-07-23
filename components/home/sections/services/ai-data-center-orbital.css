@@ -8,6 +8,11 @@
   color: #fff;
 }
 
+/* Standalone solutions page: guarantee heading clears the fixed navbar */
+.marketing-page .ai-orbit {
+  padding-top: calc(var(--dt-nav-occupancy, 5.75rem) + clamp(1.5rem, 3vw, 2.75rem));
+}
+
 /* Faint grid overlay */
 .ai-orbit::before {
   content: "";
@@ -231,9 +236,9 @@
 
 .ai-orbit__card-inner:hover {
   transform: translateY(-4px);
-  border-color: rgb(229 86 20 / 0.55);
+  border-color: rgb(186 230 253 / 0.5);
   box-shadow:
-    0 0 0 1px rgb(229 86 20 / 0.18),
+    0 0 0 1px rgb(0 0 0 / 0.25),
     0 0 36px rgb(59 130 246 / 0.35),
     0 18px 36px -18px rgb(0 0 0 / 0.75),
     inset 0 1px 0 rgb(255 255 255 / 0.1);
@@ -316,11 +321,23 @@
     overflow: visible;
   }
 
-  /* Top/bottom: long + tall so lines dive into the globe like the green arrows */
+  /* Top/bottom cards sit above/below the sphere: box extends down/up so the
+     line can swoop onto the globe's upper/lower flank */
   .ai-orbit__card--top .ai-orbit__connector,
   .ai-orbit__card--bot .ai-orbit__connector {
-    width: clamp(13rem, 28vw, 24rem);
-    height: clamp(9rem, 18vw, 15rem);
+    width: clamp(6.5rem, 13vw, 12.5rem);
+    height: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .ai-orbit__card--top .ai-orbit__connector {
+    top: 50%;
+    transform: none;
+  }
+
+  .ai-orbit__card--bot .ai-orbit__connector {
+    top: auto;
+    bottom: 50%;
+    transform: none;
   }
 
   .ai-orbit__card--left .ai-orbit__connector {
@@ -369,6 +386,15 @@
       0 0 0 2px rgb(56 189 248 / 0.25),
       0 0 10px rgb(125 211 252 / 0.9);
     transform: translateY(-50%);
+  }
+
+  /* Align node dot with the path start (y=8 / y=112 of the 120-unit viewBox) */
+  .ai-orbit__card--top .ai-orbit__connector-card-node {
+    top: 6.7%;
+  }
+
+  .ai-orbit__card--bot .ai-orbit__connector-card-node {
+    top: 93.3%;
   }
 
   .ai-orbit__card--left .ai-orbit__connector-card-node {

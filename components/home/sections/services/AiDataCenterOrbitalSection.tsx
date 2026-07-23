@@ -31,23 +31,27 @@ const RIGHT_ITEMS: readonly OrbitItem[] = [
   { ...SERVICES_GRID_ITEMS[5], iconSrc: ICONS.lifecycleManagement },
 ];
 
-/** Mid = flat to equator; top/bot = steep arrows into the globe (viewBox 0 0 200 120). */
+/**
+ * Mid = flat line into the globe equator. Top/bot cards sit above/below the sphere,
+ * so their lines swoop gently down/up to land on the globe's upper/lower flank
+ * (viewBox 0 0 200 120).
+ */
 const CONNECTOR_PATHS: Record<OrbitSide, Record<OrbitSlot, string>> = {
   left: {
-    top: "M 4 60 C 55 62, 120 100, 196 110",
-    mid: "M 4 60 C 70 60, 140 60, 196 60",
-    bot: "M 4 60 C 55 58, 120 20, 196 10",
+    top: "M 4 8 C 80 14, 150 44, 194 110",
+    mid: "M 4 60 C 70 54, 130 54, 196 60",
+    bot: "M 4 112 C 80 106, 150 76, 194 10",
   },
   right: {
-    top: "M 196 60 C 145 62, 80 100, 4 110",
-    mid: "M 196 60 C 130 60, 60 60, 4 60",
-    bot: "M 196 60 C 145 58, 80 20, 4 10",
+    top: "M 196 8 C 120 14, 50 44, 6 110",
+    mid: "M 196 60 C 130 54, 70 54, 4 60",
+    bot: "M 196 112 C 120 106, 50 76, 6 10",
   },
 };
 
 const CONNECTOR_ENDS: Record<OrbitSide, Record<OrbitSlot, { x: number; y: number }>> = {
-  left: { top: { x: 196, y: 110 }, mid: { x: 196, y: 60 }, bot: { x: 196, y: 10 } },
-  right: { top: { x: 4, y: 110 }, mid: { x: 4, y: 60 }, bot: { x: 4, y: 10 } },
+  left: { top: { x: 194, y: 110 }, mid: { x: 196, y: 60 }, bot: { x: 194, y: 10 } },
+  right: { top: { x: 6, y: 110 }, mid: { x: 4, y: 60 }, bot: { x: 6, y: 10 } },
 };
 
 const PULSE_DELAYS: Record<OrbitSide, Record<OrbitSlot, string>> = {
