@@ -63,6 +63,16 @@ export const contactOfficeLocations = [
     image: publicAssets.locations.california,
     imageAlt: "Golden Gate Bridge and San Francisco skyline at night",
   },
+  {
+    id: "canada",
+    label: "Office",
+    region: designTestFooterLocations.canada.region,
+    lines: [...designTestFooterLocations.canada.lines],
+    mapsUrl: designTestFooterLocations.canada.mapsUrl,
+    mapsLabel: "Open in Google Maps",
+    image: publicAssets.locations.ontario,
+    imageAlt: "Toronto skyline and Ontario waterfront at dusk",
+  },
 ] as const;
 
 export const contactWhyCards = [

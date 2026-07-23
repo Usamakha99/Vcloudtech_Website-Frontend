@@ -120,6 +120,7 @@ export const publicAssets = {
       "/assets/locations/california.png",
       assetVersions.locations,
     ),
+    ontario: withAssetVersion("/assets/locations/ontario.png", assetVersions.locations),
   },
   footerLocationIcons: {
     texas: withAssetVersion(

@@ -483,6 +483,11 @@
   filter: brightness(1.02) contrast(1.02) saturate(0.98);
 }
 
+.contact-page__location-media--canada .contact-page__location-media-img {
+  object-position: center 40% !important;
+  filter: brightness(1.03) contrast(1.02) saturate(1.02);
+}
+
 .contact-page__location-scrim {
   position: absolute;
   inset: 0;
