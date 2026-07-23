@@ -1300,6 +1300,10 @@
   color: var(--blog-muted);
 }
 
+.blog-toc__list li::marker {
+  content: none;
+}
+
 .blog-toc__item {
   margin: 0;
 }
