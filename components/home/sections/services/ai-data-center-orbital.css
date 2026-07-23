@@ -1,0 +1,464 @@
+/* AI Data Center — circular / orbital layout (design image 1) */
+
+.ai-orbit {
+  position: relative;
+  overflow: clip;
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+  background: #041329;
+  color: #fff;
+}
+
+.ai-orbit__inner {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 1.75rem);
+}
+
+.ai-orbit__header {
+  max-width: 42rem;
+  margin-inline: auto;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.ai-orbit__headline {
+  margin: 0.85rem 0 0;
+  font-size: clamp(1.75rem, 3.6vw, 2.625rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.ai-orbit__lede {
+  margin: 0.9rem auto 0;
+  max-width: 38rem;
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  line-height: 1.65;
+  color: #a1a1aa;
+}
+
+.ai-orbit__stage {
+  position: relative;
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+  isolation: isolate;
+  overflow: visible;
+}
+
+@media (min-width: 1024px) {
+  .ai-orbit__stage {
+    grid-template-columns: minmax(17rem, 1.05fr) minmax(28rem, 38rem) minmax(17rem, 1.05fr);
+    /* Tight gap so lines reach the globe */
+    gap: 0.5rem 0.35rem;
+    min-height: 42rem;
+    align-items: stretch;
+  }
+}
+
+/* Soft orbital ellipses behind the globe — removed (looked noisy) */
+
+.ai-orbit__col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 3;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .ai-orbit__col {
+    /* Spread cards along the globe height — top ones sit high, gaps stay open */
+    justify-content: space-between;
+    align-self: stretch;
+    gap: 0;
+    min-height: 100%;
+    padding-block: 0.25rem;
+  }
+
+  /* Orbital arc: top a bit lower, bottom a bit higher — lines meet mid-globe */
+  .ai-orbit__col--left .ai-orbit__card:nth-child(1) {
+    transform: translate(1rem, 0.35rem);
+  }
+
+  .ai-orbit__col--right .ai-orbit__card:nth-child(1) {
+    transform: translate(-1rem, 0.35rem);
+  }
+
+  .ai-orbit__col--left .ai-orbit__card:nth-child(3) {
+    transform: translate(1rem, -0.35rem);
+  }
+
+  .ai-orbit__col--right .ai-orbit__card:nth-child(3) {
+    transform: translate(-1rem, -0.35rem);
+  }
+}
+
+.ai-orbit__globe-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: min(34rem, 92vw);
+  margin-inline: auto;
+  aspect-ratio: 1492 / 1054;
+}
+
+@media (min-width: 1024px) {
+  .ai-orbit__globe-wrap {
+    width: 112%;
+    max-width: none;
+    margin-inline: -6%;
+    align-self: center;
+  }
+}
+
+.ai-orbit__globe-glow {
+  position: absolute;
+  inset: 4% 8%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(56 140 220 / 0.4) 0%,
+    rgb(56 140 220 / 0.14) 46%,
+    transparent 72%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.ai-orbit__globe {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  animation: ai-orbit-globe-sway 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ai-orbit__globe-img {
+  object-fit: contain;
+  object-position: center center;
+  transform: translateX(-2%);
+  transform-origin: center center;
+  filter: drop-shadow(0 0 28px rgb(56 189 248 / 0.28));
+}
+
+@keyframes ai-orbit-globe-sway {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.ai-orbit__card {
+  position: relative;
+  margin: 0;
+}
+
+/* Capsule cards — matches design image 1 */
+.ai-orbit__card-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 5rem;
+  padding: 0.55rem 1.25rem 0.55rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(125 211 252 / 0.28);
+  background: linear-gradient(
+    145deg,
+    rgb(20 42 72 / 0.94) 0%,
+    rgb(10 26 48 / 0.88) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.3),
+    0 0 32px -8px rgb(56 189 248 / 0.32),
+    inset 0 1px 0 rgb(255 255 255 / 0.06);
+  text-decoration: none;
+  color: inherit;
+  backdrop-filter: blur(10px);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.ai-orbit__card-inner:hover {
+  transform: translateY(-3px);
+  border-color: rgb(186 230 253 / 0.5);
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.25),
+    0 0 40px -6px rgb(56 189 248 / 0.48),
+    inset 0 1px 0 rgb(255 255 255 / 0.08);
+}
+
+/* Circular icon slot — solution icons centered inside */
+.ai-orbit__icon-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 4.15rem;
+  height: 4.15rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgb(125 211 252 / 0.28);
+  background:
+    radial-gradient(circle at 50% 42%, rgb(56 140 220 / 0.35) 0%, rgb(4 19 41 / 0.9) 72%);
+  box-shadow:
+    0 0 20px rgb(56 189 248 / 0.28),
+    inset 0 0 12px rgb(56 189 248 / 0.12);
+}
+
+.ai-orbit__icon-img {
+  position: relative;
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+  object-position: center;
+  /* Drop black PNG backdrop; keep blue glow */
+  mix-blend-mode: screen;
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 6px rgb(56 189 248 / 0.45));
+}
+
+.ai-orbit__card-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.38rem;
+  padding-inline-end: 0.25rem;
+}
+
+.ai-orbit__card-title {
+  font-size: clamp(0.8125rem, 1.2vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.ai-orbit__card-rule {
+  display: block;
+  width: 2.1rem;
+  height: 2px;
+  border-radius: 999px;
+  background: #e55614;
+}
+
+/* Connector lines + nodes — converge onto the globe mid-sides */
+.ai-orbit__connector {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .ai-orbit__connector {
+    position: absolute;
+    top: 50%;
+    z-index: 4;
+    display: block;
+    width: clamp(5rem, 11vw, 9.5rem);
+    height: 2px;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgb(56 189 248 / 0.5);
+  }
+
+  /* Left cards: line grows toward globe (right) */
+  .ai-orbit__card--left .ai-orbit__connector {
+    right: 0;
+    transform: translate(100%, -50%);
+    transform-origin: left center;
+    background: linear-gradient(
+      90deg,
+      rgb(125 211 252 / 0.15),
+      rgb(224 242 254 / 1)
+    );
+  }
+
+  /* Right cards: line grows toward globe (left) */
+  .ai-orbit__card--right .ai-orbit__connector {
+    left: 0;
+    transform: translate(-100%, -50%);
+    transform-origin: right center;
+    background: linear-gradient(
+      270deg,
+      rgb(125 211 252 / 0.15),
+      rgb(224 242 254 / 1)
+    );
+  }
+
+  /*
+   * Top cards: start lower on the card, steep angle down
+   * so the node lands near mid-globe (meets bottom lines visually)
+   */
+  .ai-orbit__card--left.ai-orbit__card--top .ai-orbit__connector {
+    top: 68%;
+    width: clamp(6.75rem, 13.5vw, 12rem);
+    transform: translate(100%, -50%) rotate(28deg);
+  }
+
+  .ai-orbit__card--right.ai-orbit__card--top .ai-orbit__connector {
+    top: 68%;
+    width: clamp(6.75rem, 13.5vw, 12rem);
+    transform: translate(-100%, -50%) rotate(-28deg);
+  }
+
+  /*
+   * Bottom cards: start higher on the card, steep angle up
+   * so the node meets the same mid-globe band as the top lines
+   */
+  .ai-orbit__card--left.ai-orbit__card--bot .ai-orbit__connector {
+    top: 32%;
+    width: clamp(6.75rem, 13.5vw, 12rem);
+    transform: translate(100%, -50%) rotate(-28deg);
+  }
+
+  .ai-orbit__card--right.ai-orbit__card--bot .ai-orbit__connector {
+    top: 32%;
+    width: clamp(6.75rem, 13.5vw, 12rem);
+    transform: translate(-100%, -50%) rotate(28deg);
+  }
+
+  /* Small node at card edge */
+  .ai-orbit__connector::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background: #bae6fd;
+    box-shadow: 0 0 8px rgb(125 211 252 / 0.9);
+  }
+
+  .ai-orbit__card--left .ai-orbit__connector::before {
+    left: 0;
+    transform: translate(-35%, -50%);
+  }
+
+  .ai-orbit__card--right .ai-orbit__connector::before {
+    right: 0;
+    transform: translate(35%, -50%);
+  }
+
+  /* Larger node on the globe surface */
+  .ai-orbit__connector::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:
+      0 0 0 3px rgb(56 189 248 / 0.35),
+      0 0 14px rgb(125 211 252 / 1),
+      0 0 28px rgb(56 189 248 / 0.65);
+    animation: ai-orbit-node-pulse 2.8s ease-in-out infinite;
+  }
+
+  .ai-orbit__card--left .ai-orbit__connector::after {
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  .ai-orbit__card--right .ai-orbit__connector::after {
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes ai-orbit-node-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px rgb(56 189 248 / 0.18),
+      0 0 10px rgb(125 211 252 / 0.8),
+      0 0 18px rgb(56 189 248 / 0.35);
+  }
+  50% {
+    box-shadow:
+      0 0 0 5px rgb(56 189 248 / 0.32),
+      0 0 16px rgb(186 230 253 / 1),
+      0 0 30px rgb(56 189 248 / 0.6);
+  }
+}
+
+.ai-orbit__cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.ai-orbit__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding-inline: 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  background: rgb(255 255 255 / 0.04);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ai-orbit__cta:hover {
+  background: rgb(255 255 255 / 0.08);
+  border-color: rgb(255 255 255 / 0.22);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1023px) {
+  .ai-orbit__stage {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-orbit__globe-wrap {
+    order: -1;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-orbit__globe {
+    animation: none;
+  }
+
+  .ai-orbit__connector::after {
+    animation: none;
+  }
+
+  .ai-orbit__card-inner,
+  .ai-orbit__cta {
+    transition: none;
+  }
+
+  .ai-orbit__card-inner:hover,
+  .ai-orbit__cta:hover {
+    transform: none;
+  }
+}

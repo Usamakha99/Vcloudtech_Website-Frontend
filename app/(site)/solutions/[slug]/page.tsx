@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { AiDataCenterOrbitalSection } from "@/components/home/sections/services/AiDataCenterOrbitalSection";
 import { MarketingDocPage } from "@/components/layout/MarketingDocPage";
+import { AI_DATA_CENTER_OVERVIEW_SLUG } from "@/lib/navigation/ai-data-center-solutions";
 import {
   SOLUTION_SLUGS,
   type SolutionSlug,
@@ -108,7 +110,15 @@ function isSolutionSlug(s: string): s is SolutionSlug {
 export default async function SolutionDetailPage({ params }: Props) {
   const { slug } = await params;
   if (!isSolutionSlug(slug)) notFound();
-  const { title, lede } = copy[slug];
 
+  if (slug === AI_DATA_CENTER_OVERVIEW_SLUG) {
+    return (
+      <div className="marketing-page" data-nav-surface="dark">
+        <AiDataCenterOrbitalSection />
+      </div>
+    );
+  }
+
+  const { title, lede } = copy[slug];
   return <MarketingDocPage theme="dark" title={title} lede={lede} />;
 }

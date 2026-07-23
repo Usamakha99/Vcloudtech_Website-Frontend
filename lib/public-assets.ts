@@ -18,6 +18,8 @@ export const assetVersions = {
   blogPage: "3",
   topContractHolders: "2",
   services: "10",
+  solutionsGlobe: "6",
+  solutionIcons: "1",
   hero: "11",
   intro: "5",
   locations: "3",
@@ -232,6 +234,34 @@ export const publicAssets = {
       "/assets/services/lifecycle-management.png",
       assetVersions.services,
     ),
+    aiDataCenterGlobe: withAssetVersion(
+      "/assets/Ai Data Center Solutions/solution without background.png",
+      assetVersions.solutionsGlobe,
+    ),
+    /** Orbital card icons — `public/assets/Solution icons/` (matched to design image 1). */
+    solutionIcons: {
+      aiProcurement: withAssetVersion(
+        "/assets/Solution icons/6.png",
+        assetVersions.solutionIcons,
+      ),
+      dataCenterHardware: withAssetVersion(
+        "/assets/Solution icons/5.png",
+        assetVersions.solutionIcons,
+      ),
+      networking: withAssetVersion("/assets/Solution icons/3.png", assetVersions.solutionIcons),
+      cybersecurity: withAssetVersion(
+        "/assets/Solution icons/4.png",
+        assetVersions.solutionIcons,
+      ),
+      powerInfrastructure: withAssetVersion(
+        "/assets/Solution icons/2.png",
+        assetVersions.solutionIcons,
+      ),
+      lifecycleManagement: withAssetVersion(
+        "/assets/Solution icons/1.png",
+        assetVersions.solutionIcons,
+      ),
+    },
   },
   credentials: {
     iso: "/assets/credentials/iso-9001-2015-white.png",
