@@ -32,26 +32,26 @@ const RIGHT_ITEMS: readonly OrbitItem[] = [
 ];
 
 /**
- * Mid = flat line into the globe equator. Top/bot cards sit above/below the sphere,
- * so their lines swoop gently down/up to land on the globe's upper/lower flank
- * (viewBox 0 0 200 120).
+ * Paths dock flush to the card edge (x=0 / x=200) and land on the globe.
+ * All rows use the same swoop style; mid bows gently into the equator.
+ * viewBox 0 0 200 120
  */
 const CONNECTOR_PATHS: Record<OrbitSide, Record<OrbitSlot, string>> = {
   left: {
-    top: "M 4 8 C 80 14, 150 44, 194 110",
-    mid: "M 4 60 C 70 54, 130 54, 196 60",
-    bot: "M 4 112 C 80 106, 150 76, 194 10",
+    top: "M 0 0 C 70 8, 145 48, 198 112",
+    mid: "M 0 60 C 70 40, 145 40, 198 60",
+    bot: "M 0 120 C 70 112, 145 72, 198 8",
   },
   right: {
-    top: "M 196 8 C 120 14, 50 44, 6 110",
-    mid: "M 196 60 C 130 54, 70 54, 4 60",
-    bot: "M 196 112 C 120 106, 50 76, 6 10",
+    top: "M 200 0 C 130 8, 55 48, 2 112",
+    mid: "M 200 60 C 130 40, 55 40, 2 60",
+    bot: "M 200 120 C 130 112, 55 72, 2 8",
   },
 };
 
 const CONNECTOR_ENDS: Record<OrbitSide, Record<OrbitSlot, { x: number; y: number }>> = {
-  left: { top: { x: 194, y: 110 }, mid: { x: 196, y: 60 }, bot: { x: 194, y: 10 } },
-  right: { top: { x: 6, y: 110 }, mid: { x: 4, y: 60 }, bot: { x: 6, y: 10 } },
+  left: { top: { x: 198, y: 112 }, mid: { x: 198, y: 60 }, bot: { x: 198, y: 8 } },
+  right: { top: { x: 2, y: 112 }, mid: { x: 2, y: 60 }, bot: { x: 2, y: 8 } },
 };
 
 const PULSE_DELAYS: Record<OrbitSide, Record<OrbitSlot, string>> = {
@@ -93,7 +93,6 @@ function OrbitCard({
             />
           </circle>
         </svg>
-        <span className="ai-orbit__connector-card-node" />
       </span>
       <Link href={item.href} className="ai-orbit__card-inner">
         <span className="ai-orbit__icon-wrap" aria-hidden>

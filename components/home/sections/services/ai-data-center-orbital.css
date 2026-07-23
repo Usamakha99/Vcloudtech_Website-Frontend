@@ -308,44 +308,44 @@
 }
 
 @media (min-width: 1024px) {
-  /* Middle cards: short flat line to equator (already correct) */
+  /* Same connector box for all 6 cards — docks to card, swoops onto globe */
   .ai-orbit__connector {
     position: absolute;
     top: 50%;
     z-index: 4;
     display: block;
-    width: clamp(5.5rem, 11vw, 10.5rem);
-    height: 3.75rem;
-    transform: translateY(-50%);
+    width: clamp(8rem, 16vw, 14.5rem);
+    height: clamp(5.5rem, 11vw, 9.5rem);
     pointer-events: none;
     overflow: visible;
   }
 
-  /* Top/bottom cards sit above/below the sphere: box extends down/up so the
-     line can swoop onto the globe's upper/lower flank */
-  .ai-orbit__card--top .ai-orbit__connector,
-  .ai-orbit__card--bot .ai-orbit__connector {
-    width: clamp(6.5rem, 13vw, 12.5rem);
-    height: clamp(4.5rem, 9vw, 8rem);
+  /* Left cards: pin to card's right edge, extend toward globe */
+  .ai-orbit__card--left .ai-orbit__connector {
+    left: 100%;
+    right: auto;
+    transform: translateY(-50%);
   }
 
+  /* Right cards: pin to card's left edge, extend toward globe */
+  .ai-orbit__card--right .ai-orbit__connector {
+    right: 100%;
+    left: auto;
+    transform: translateY(-50%);
+  }
+
+  /* Top: box hangs down from card mid so the path can dive onto the globe */
   .ai-orbit__card--top .ai-orbit__connector {
     top: 50%;
+    bottom: auto;
     transform: none;
   }
 
+  /* Bottom: box rises up from card mid so the path can climb onto the globe */
   .ai-orbit__card--bot .ai-orbit__connector {
     top: auto;
     bottom: 50%;
     transform: none;
-  }
-
-  .ai-orbit__card--left .ai-orbit__connector {
-    left: 100%;
-  }
-
-  .ai-orbit__card--right .ai-orbit__connector {
-    right: 100%;
   }
 
   .ai-orbit__connector-svg {
@@ -373,36 +373,6 @@
     fill: #e0f2fe;
     opacity: 0.95;
     filter: drop-shadow(0 0 6px rgb(186 230 253 / 1));
-  }
-
-  .ai-orbit__connector-card-node {
-    position: absolute;
-    top: 50%;
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 50%;
-    background: #bae6fd;
-    box-shadow:
-      0 0 0 2px rgb(56 189 248 / 0.25),
-      0 0 10px rgb(125 211 252 / 0.9);
-    transform: translateY(-50%);
-  }
-
-  /* Align node dot with the path start (y=8 / y=112 of the 120-unit viewBox) */
-  .ai-orbit__card--top .ai-orbit__connector-card-node {
-    top: 6.7%;
-  }
-
-  .ai-orbit__card--bot .ai-orbit__connector-card-node {
-    top: 93.3%;
-  }
-
-  .ai-orbit__card--left .ai-orbit__connector-card-node {
-    left: 0;
-  }
-
-  .ai-orbit__card--right .ai-orbit__connector-card-node {
-    right: 0;
   }
 }
 
