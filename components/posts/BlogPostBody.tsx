@@ -91,7 +91,7 @@ const components: PortableTextComponents = {
 
 export function BlogPostBody({value}: {value: NonNullable<unknown>}) {
   return (
-    <div className="blog-article-content">
+    <div id="blog-article-content" className="blog-article-content">
       <PortableText value={value as never} components={components} />
     </div>
   );

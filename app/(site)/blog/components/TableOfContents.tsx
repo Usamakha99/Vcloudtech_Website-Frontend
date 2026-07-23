@@ -10,7 +10,7 @@ type Props = {
 export function TableOfContents({ items, readingTimeMinutes }: Props) {
   return (
     <nav className="blog-toc" aria-label="Table of contents">
-      <p className="blog-toc__label">On this page</p>
+      <p className="blog-toc__label">In this article</p>
       <ol className="blog-toc__list">
         {items.map((item) => (
           <li

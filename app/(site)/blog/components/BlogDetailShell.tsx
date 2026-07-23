@@ -1,11 +1,12 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { BlogImage } from "./BlogImage";
 import Link from "next/link";
 
 import type { BlogArticle } from "@/lib/blog/types";
+import { BlogImage } from "./BlogImage";
 import { ReadingProgress } from "./ReadingProgress";
+import { TableOfContents } from "./TableOfContents";
 
 type Props = {
   article: BlogArticle;
@@ -57,7 +58,7 @@ export function BlogDetailHero({ article }: { article: BlogArticle }) {
           fill
           priority
           className="blog-detail__hero-img"
-          sizes="(max-width: 768px) 100vw, 52rem"
+          sizes="(max-width: 1023px) 100vw, 44rem"
         />
       </div>
     </header>
@@ -65,13 +66,30 @@ export function BlogDetailHero({ article }: { article: BlogArticle }) {
 }
 
 export function BlogDetailShell({ article, children }: Props) {
+  const hasToc = article.tableOfContents.length > 0;
+
   return (
     <>
       <ReadingProgress />
       <article className="blog-detail">
         <div className="blog-container blog-detail__container">
-          <BlogDetailHero article={article} />
-          {children}
+          <div
+            className={`blog-detail__layout${hasToc ? " blog-detail__layout--with-toc" : ""}`}
+          >
+            <div className="blog-detail__main">
+              <BlogDetailHero article={article} />
+              {children}
+            </div>
+
+            {hasToc ? (
+              <aside className="blog-detail__aside">
+                <TableOfContents
+                  items={article.tableOfContents}
+                  readingTimeMinutes={article.readingTimeMinutes}
+                />
+              </aside>
+            ) : null}
+          </div>
         </div>
       </article>
     </>
