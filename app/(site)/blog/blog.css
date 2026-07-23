@@ -1321,7 +1321,7 @@
   padding: 0;
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 .blog-toc__link:hover,
@@ -1329,6 +1329,14 @@
   color: var(--blog-text);
   text-decoration: underline;
   text-underline-offset: 0.18em;
+}
+
+.blog-toc__link--active {
+  color: var(--blog-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1.5px;
 }
 
 .blog-toc__time {
