@@ -1186,6 +1186,8 @@
     position: sticky;
     top: calc(var(--dt-nav-occupancy, 5.75rem) + 1rem);
     align-self: start;
+    /* Sit lower like the reference — below title/meta, near body start */
+    margin-top: clamp(10rem, 22vw, 16rem);
   }
 }
 
