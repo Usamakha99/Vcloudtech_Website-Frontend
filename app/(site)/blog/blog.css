@@ -1159,8 +1159,8 @@
 
 @media (min-width: 1024px) {
   .blog-detail__layout--with-toc {
-    grid-template-columns: minmax(0, 1fr) 19.5rem;
-    gap: 3rem;
+    grid-template-columns: minmax(0, 1fr) 18.5rem;
+    gap: 1.75rem;
     align-items: start;
   }
 }
@@ -1172,8 +1172,7 @@
 
 @media (min-width: 1024px) {
   .blog-detail__layout--with-toc .blog-detail__main {
-    max-width: 44rem;
-    justify-self: start;
+    max-width: none;
   }
 }
 
@@ -1187,10 +1186,9 @@
     position: sticky;
     top: calc(var(--dt-nav-occupancy, 5.75rem) + 1rem);
     align-self: start;
-    justify-self: end;
-    width: 19.5rem;
-    /* Sit lower like the reference — below title/meta, near body start */
-    margin-top: clamp(10rem, 22vw, 16rem);
+    width: 18.5rem;
+    /* Slightly below title — closer to body without a huge empty band */
+    margin-top: clamp(8.5rem, 17vw, 13.5rem);
   }
 }
 
