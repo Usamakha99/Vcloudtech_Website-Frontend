@@ -215,7 +215,11 @@ export function HomeTechnologyPartnersSection() {
         transition={{ duration: 0.6, ease, delay: 0.05 }}
       >
         <div className="tp__subsection-inner tp__subsection-inner--major">
-          <h3 className="tp__trusted-heading">Global Partners</h3>
+          <h3 className="tp__trusted-heading">Global Partner</h3>
+          <p className="tp__trusted-lede">
+            Partnering with the world&apos;s leading technology innovators to deliver secure,
+            scalable, and future-ready solutions.
+          </p>
           <motion.ul
             className="tp__partner-grid tp__partner-grid--all"
             data-nav-surface="light"

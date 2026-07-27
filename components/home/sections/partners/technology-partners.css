@@ -954,11 +954,20 @@
 }
 
 .tp__subsection-inner--major .tp__trusted-heading {
+  margin-bottom: 0.65rem;
+}
+
+.tp__subsection-inner--major .tp__trusted-lede {
+  margin-top: 0;
   margin-bottom: 1.15rem;
 }
 
 @media (min-width: 640px) {
   .tp__subsection-inner--major .tp__trusted-heading {
+    margin-bottom: 0.75rem;
+  }
+
+  .tp__subsection-inner--major .tp__trusted-lede {
     margin-bottom: 1.35rem;
   }
 }

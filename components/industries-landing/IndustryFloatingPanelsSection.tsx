@@ -118,8 +118,8 @@ function IndustryFloatingPanels({
               {title}
             </h2>
             <p className="ind-panels__lede">
-              Secure, connected infrastructure for the organizations that keep critical systems
-              running nationwide.
+              Delivering industry-focused technology solutions that solve complex challenges,
+              accelerate innovation, and create lasting business value.
             </p>
           </DtScrollReveal>
         </header>
