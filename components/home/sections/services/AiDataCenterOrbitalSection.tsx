@@ -31,6 +31,16 @@ const RIGHT_ITEMS: readonly OrbitItem[] = [
   { ...SERVICES_GRID_ITEMS[5], iconSrc: ICONS.lifecycleManagement },
 ];
 
+/** One-line hover blurbs — minimal, not full service descriptions */
+const CARD_BLURBS: Record<string, string> = {
+  "/solutions/ai-infrastructure-procurement": "GPUs, accelerators, and AI servers at scale.",
+  "/solutions/cybersecurity": "Proactive protection for critical infrastructure.",
+  "/solutions/power-infrastructure": "Resilient power and precision cooling.",
+  "/solutions/data-center-hardware": "Compute, storage, and rack infrastructure.",
+  "/solutions/data-center-networking": "Secure, high-throughput from edge to core.",
+  "/solutions/lifecycle-management": "From procurement through secure disposal.",
+};
+
 /**
  * Paths dock flush to the card edge (x=0 / x=200) and land on the globe.
  * All rows use the same swoop style; mid bows gently into the equator.
@@ -110,6 +120,7 @@ function OrbitCard({
           <span className="ai-orbit__card-rule" aria-hidden />
         </span>
       </Link>
+      <span className="ai-orbit__card-desc">{CARD_BLURBS[item.href]}</span>
     </li>
   );
 }

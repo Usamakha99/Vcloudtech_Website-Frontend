@@ -320,6 +320,40 @@
   background: #e55614;
 }
 
+/* Short hover blurb — collapsed until hover/focus */
+.ai-orbit__card-desc {
+  display: block;
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: rgb(161 161 170 / 0.95);
+  text-wrap: pretty;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.25s ease,
+    margin 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ai-orbit__card-inner:hover .ai-orbit__card-desc,
+  .ai-orbit__card-inner:focus-visible .ai-orbit__card-desc {
+    max-height: 2.6rem;
+    margin-top: 0.15rem;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-orbit__card-desc {
+    transition: none;
+  }
+}
+
 /* Curved SVG connectors + traveling pulse */
 .ai-orbit__connector {
   display: none;
