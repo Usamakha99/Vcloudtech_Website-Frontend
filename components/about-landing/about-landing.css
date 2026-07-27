@@ -318,19 +318,19 @@
   z-index: 1;
   max-width: min(52rem, 94vw);
   width: 100%;
-  margin-inline: 0;
+  margin-inline: auto;
   margin-bottom: clamp(2.25rem, 4.5vw, 3.25rem);
   padding-inline: clamp(1.25rem, 4vw, 2.5rem);
-  text-align: left;
+  text-align: center;
   box-sizing: border-box;
 }
 
 .about-page__story-header .about-page__badge {
-  margin-inline: 0;
+  margin-inline: auto;
 }
 
 .about-page__story-title {
-  margin-inline: 0;
+  margin-inline: auto;
 }
 
 .about-page__story-title-line {
@@ -1076,13 +1076,16 @@
 }
 
 .about-page__journey .about-page__section-header {
+  margin-inline: auto;
   padding-inline: clamp(0.5rem, 2vw, 1rem);
   margin-bottom: clamp(1.5rem, 4vw, 2.75rem);
+  text-align: center;
 }
 
 .about-page__journey .about-page__section-title {
   text-wrap: balance;
   max-width: 42rem;
+  margin-inline: auto;
 }
 
 @media (max-width: 479px) {
@@ -1160,7 +1163,9 @@
 .about-page__values .about-page__section-header {
   position: relative;
   z-index: 1;
+  margin-inline: auto;
   margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  text-align: center;
 }
 
 .about-page__values-grid {

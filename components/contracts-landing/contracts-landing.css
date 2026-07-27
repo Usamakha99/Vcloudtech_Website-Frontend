@@ -50,9 +50,9 @@
 
 .contracts-page__corporate-header {
   max-width: 44rem;
-  margin-inline: 0;
+  margin-inline: auto;
   margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
-  text-align: left;
+  text-align: center;
 }
 
 .contracts-page__corporate--heading-only .contracts-page__corporate-header {
@@ -67,7 +67,7 @@
   letter-spacing: -0.03em;
   color: #ffffff;
   text-wrap: balance;
-  text-align: left;
+  text-align: center;
 }
 
 .contracts-page__corporate-desc {

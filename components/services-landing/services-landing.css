@@ -3,10 +3,13 @@
   width: 100%;
   margin-inline: 0;
   padding-inline: 0;
+  padding-top: 3rem;
 }
 
-.services-page__grid {
-  padding-top: 0 !important;
+@media (min-width: 1024px) {
+  .services-page__body {
+    padding-top: 4rem;
+  }
 }
 
 .services-page__grid > .mx-auto {

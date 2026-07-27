@@ -25,7 +25,7 @@ export function ServicesLandingPage() {
           heading={servicesPageGrid.heading}
           subheading=""
           surface="glass"
-          className="services-page__grid pt-0"
+          className="services-page__grid"
         />
       </div>
     </div>

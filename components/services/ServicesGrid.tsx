@@ -159,7 +159,7 @@ export function ServicesGrid({
       aria-labelledby="services-grid-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <header className="max-w-3xl text-left lg:max-w-5xl">
+        <header className="mx-auto max-w-3xl text-center lg:max-w-5xl">
           {pillLabel ? <p className={dt.badge}>{pillLabel}</p> : null}
           <h2
             id="services-grid-heading"
