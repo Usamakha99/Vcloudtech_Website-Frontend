@@ -110,7 +110,16 @@ function OrbitCard({
           <span className="ai-orbit__card-rule" aria-hidden />
         </span>
       </Link>
-      <span className="ai-orbit__card-desc">{item.description}</span>
+      <div className="ai-orbit__card-tip">
+        <p className="ai-orbit__card-tip-desc">{item.description}</p>
+        {item.bullets && item.bullets.length > 0 ? (
+          <ul className="ai-orbit__card-tip-list">
+            {item.bullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
     </li>
   );
 }

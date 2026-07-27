@@ -321,44 +321,76 @@
   background: #e55614;
 }
 
-/* Hover description — same copy as old flip cards, below the capsule */
-.ai-orbit__card-desc {
+/* Minimal hover tip — description + bullets below the capsule */
+.ai-orbit__card-tip {
   position: absolute;
-  left: 0.35rem;
-  right: 0.35rem;
+  left: 0.25rem;
+  right: 0.25rem;
   top: calc(100% + 0.4rem);
   z-index: 6;
   margin: 0;
-  padding: 0.55rem 0.7rem;
+  padding: 0.65rem 0.75rem 0.7rem;
   border-radius: 0.55rem;
-  background: rgb(4 19 41 / 0.94);
-  border: 1px solid rgb(125 211 252 / 0.18);
+  background: rgb(4 19 41 / 0.95);
+  border: 1px solid rgb(125 211 252 / 0.16);
   box-shadow: 0 12px 28px -14px rgb(0 0 0 / 0.75);
-  font-size: 0.75rem;
-  font-weight: 400;
-  line-height: 1.45;
-  letter-spacing: 0.01em;
-  color: rgb(186 186 194);
-  text-align: left;
-  text-wrap: pretty;
   opacity: 0;
   transform: translateY(-6px);
   pointer-events: none;
   transition:
-    opacity 0.22s ease,
-    transform 0.22s ease;
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ai-orbit__card-tip-desc {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: rgb(186 186 194);
+  text-wrap: pretty;
+}
+
+.ai-orbit__card-tip-list {
+  margin: 0.45rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.ai-orbit__card-tip-list li {
+  position: relative;
+  padding-left: 0.7rem;
+  font-size: 0.625rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: rgb(148 163 184);
+}
+
+.ai-orbit__card-tip-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4em;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background: rgb(229 86 20 / 0.85);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .ai-orbit__card:hover .ai-orbit__card-desc,
-  .ai-orbit__card:focus-within .ai-orbit__card-desc {
+  .ai-orbit__card:hover .ai-orbit__card-tip,
+  .ai-orbit__card:focus-within .ai-orbit__card-tip {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ai-orbit__card-desc {
+  .ai-orbit__card-tip {
     transition: none;
   }
 }
