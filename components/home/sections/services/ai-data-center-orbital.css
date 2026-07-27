@@ -139,6 +139,8 @@
   margin-inline: auto;
   aspect-ratio: 1492 / 1054;
   pointer-events: none;
+  /* Optical center of the sphere (PNG is shifted slightly left) */
+  --globe-center-x: 48.5%;
 }
 
 @media (min-width: 1024px) {
@@ -321,12 +323,12 @@
   background: #e55614;
 }
 
-/* Preview card — position follows hovered capsule row (top / mid / bot) */
+/* Preview card — locked to globe optical center; vertical follows capsule row */
 .ai-orbit__globe-preview {
   position: absolute;
-  left: 50%;
+  left: var(--globe-center-x, 48.5%);
   z-index: 6;
-  width: min(21rem, 78%);
+  width: min(19.5rem, 52%);
   margin: 0;
   padding: 1.15rem 1.25rem 1.2rem;
   border-radius: 0.95rem;
@@ -339,28 +341,31 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: translateX(-50%);
   transition:
     opacity 0.28s ease,
     visibility 0.28s ease;
 }
 
-/* Mid — center of globe (fade only, no scale jerk on hide) */
+/* Mid row — dead center of sphere */
 .ai-orbit__globe-preview--mid {
   top: 50%;
+  bottom: auto;
   transform: translate(-50%, -50%);
 }
 
-/* Top row capsules — upper area of globe */
+/* Top row — top-center of sphere */
 .ai-orbit__globe-preview--top {
-  top: 14%;
-  transform: translate(-50%, 0);
+  top: 15%;
+  bottom: auto;
+  transform: translateX(-50%);
 }
 
-/* Bottom row capsules — lower area of globe */
+/* Bottom row — bottom-center of sphere */
 .ai-orbit__globe-preview--bot {
   top: auto;
-  bottom: 12%;
-  transform: translate(-50%, 0);
+  bottom: 14%;
+  transform: translateX(-50%);
 }
 
 .ai-orbit__globe-preview--visible {
