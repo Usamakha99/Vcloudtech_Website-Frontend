@@ -411,7 +411,7 @@
   width: 0.2rem;
   height: 0.2rem;
   border-radius: 50%;
-  background: rgb(125 211 252 / 0.95);
+  background: #e55614;
 }
 
 .ai-orbit__card--active .ai-orbit__card-inner {
