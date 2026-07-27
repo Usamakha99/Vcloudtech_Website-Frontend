@@ -340,7 +340,7 @@
   .tp__partner-cell:hover,
   .tp__partner-cell[data-tilt="on"] {
     z-index: 2;
-    border-color: rgba(201, 168, 76, 0.4);
+    border-color: #d1d5db;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 }

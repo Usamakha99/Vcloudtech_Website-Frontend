@@ -14,13 +14,11 @@ type TiltCardProps = {
 };
 
 /**
- * 3D magnetic tilt card — tracks the cursor and tilts toward it (max ±8°),
- * with a gold spotlight glow following the pointer. No external tilt library.
+ * 3D magnetic tilt card — tracks the cursor and tilts toward it (max ±8°).
+ * No external tilt library.
  */
 export function TiltCard({ className, children }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [mouseX, setMouseX] = useState(0);
-  const [mouseY, setMouseY] = useState(0);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const canHoverRef = useRef(false);
@@ -38,8 +36,6 @@ export function TiltCard({ className, children }: TiltCardProps) {
     const y = event.clientY - rect.top;
     const halfW = rect.width / 2 || 1;
     const halfH = rect.height / 2 || 1;
-    setMouseX(x);
-    setMouseY(y);
     setTilt({
       x: clamp(((x - halfW) / halfW) * MAX_TILT_DEG, -MAX_TILT_DEG, MAX_TILT_DEG),
       y: clamp((-(y - halfH) / halfH) * MAX_TILT_DEG, -MAX_TILT_DEG, MAX_TILT_DEG),
@@ -77,19 +73,6 @@ export function TiltCard({ className, children }: TiltCardProps) {
           willChange: "transform",
         }}
       >
-        <span
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 1,
-            borderRadius: "inherit",
-            pointerEvents: "none",
-            background: `radial-gradient(140px circle at ${mouseX}px ${mouseY}px, rgba(201, 168, 76, 0.15), transparent 70%)`,
-            opacity: isHovered ? 1 : 0,
-            transition: isHovered ? "opacity 200ms ease-out" : "opacity 400ms ease-out",
-          }}
-        />
         {children}
       </div>
     </div>
