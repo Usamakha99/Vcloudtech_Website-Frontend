@@ -224,6 +224,7 @@
 .ai-orbit__card {
   position: relative;
   margin: 0;
+  overflow: visible;
 }
 
 .ai-orbit__card-inner {
@@ -320,31 +321,39 @@
   background: #e55614;
 }
 
-/* Short hover blurb — collapsed until hover/focus */
+/* Short hover blurb — outside the capsule, below the card */
 .ai-orbit__card-desc {
-  display: block;
-  max-height: 0;
+  position: absolute;
+  left: 0.65rem;
+  right: 0.65rem;
+  top: calc(100% + 0.4rem);
+  z-index: 6;
   margin: 0;
-  overflow: hidden;
-  opacity: 0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.5rem;
+  background: rgb(4 19 41 / 0.92);
+  border: 1px solid rgb(125 211 252 / 0.18);
+  box-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.7);
   font-size: 0.6875rem;
   font-weight: 400;
-  line-height: 1.35;
+  line-height: 1.4;
   letter-spacing: 0.01em;
-  color: rgb(161 161 170 / 0.95);
+  color: rgb(186 186 194);
+  text-align: center;
   text-wrap: pretty;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
   transition:
-    max-height 0.3s ease,
-    opacity 0.25s ease,
-    margin 0.3s ease;
+    opacity 0.22s ease,
+    transform 0.22s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .ai-orbit__card-inner:hover .ai-orbit__card-desc,
-  .ai-orbit__card-inner:focus-visible .ai-orbit__card-desc {
-    max-height: 2.6rem;
-    margin-top: 0.15rem;
+  .ai-orbit__card:hover .ai-orbit__card-desc,
+  .ai-orbit__card:focus-within .ai-orbit__card-desc {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
