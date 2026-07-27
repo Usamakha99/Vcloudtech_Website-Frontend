@@ -21,7 +21,7 @@ export const assetVersions = {
   solutionsGlobe: "6",
   solutionIcons: "1",
   hero: "11",
-  intro: "5",
+  intro: "6",
   locations: "3",
   footerLocationIcons: "1",
   values: "5",
