@@ -228,3 +228,53 @@ export function ChipIcon(props: IconProps) {
     </svg>
   );
 }
+
+/** Contact — Enterprise AI Experts */
+export function AiExpertsIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="7.5" y="7.5" width="9" height="9" rx="1.75" />
+      <path
+        d="M9.5 7.5V5M12 7.5V4.5M14.5 7.5V5M9.5 16.5V19M12 16.5V19.5M14.5 16.5V19M7.5 9.5H5M7.5 12H4.5M7.5 14.5H5M16.5 9.5H19M16.5 12H19.5M16.5 14.5H19"
+        strokeLinecap="round"
+      />
+      <path d="M10.2 12h1l.7-1.4.7 2.8.7-1.4h1" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** Contact — Certified Technology Partners */
+export function CertifiedBadgeIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="11" r="6.5" />
+      <path d="M9.75 11.1l1.6 1.6 3.1-3.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9.2 16.8L8 21l4-1.6L16 21l-1.2-4.2" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** Contact — Fast Response Time */
+export function ResponseTimeIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="8.25" />
+      <path d="M12 7.25V12l3.1 1.85" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16.8 5.2l1.5-1.5M19.4 8.2h2.1" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** Contact — End-to-End IT Solutions */
+export function EndToEndIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3.5" y="8.5" width="5" height="7" rx="1.25" />
+      <rect x="15.5" y="8.5" width="5" height="7" rx="1.25" />
+      <path d="M8.5 12h7" strokeLinecap="round" />
+      <path d="M13.4 10.2L15.5 12l-2.1 1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="6" cy="12" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="18" cy="12" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}

@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
-  HandshakeIcon,
-  RocketIcon,
-  ServerIcon,
-  SolutionsIcon,
+  AiExpertsIcon,
+  CertifiedBadgeIcon,
+  EndToEndIcon,
+  ResponseTimeIcon,
 } from "@/components/icons/section-icons";
 import { dt } from "@/components/marketing/design-test-theme";
 import { HomeContactForm } from "@/components/home/sections/contact/HomeContactForm";
@@ -19,10 +19,10 @@ import {
 import "./contact-landing.css";
 
 const whyIcons = {
-  experts: ServerIcon,
-  partners: HandshakeIcon,
-  response: RocketIcon,
-  solutions: SolutionsIcon,
+  experts: AiExpertsIcon,
+  partners: CertifiedBadgeIcon,
+  response: ResponseTimeIcon,
+  solutions: EndToEndIcon,
 } as const;
 
 /** Premium enterprise contact page — hero, form, locations, and why cards. */
