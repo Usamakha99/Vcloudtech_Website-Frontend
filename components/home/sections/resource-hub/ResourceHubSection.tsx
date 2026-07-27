@@ -155,7 +155,8 @@ export function HomeResourceHubSection() {
             Latest Insights
           </h2>
           <p className={`${dt.sectionDesc} ${dt.headingSub}`}>
-            Practical perspectives on procurement, cloud, security, and enterprise IT operations.
+            Explore expert insights, industry trends on AI, cloud, cybersecurity and modern
+            infrastructure.
           </p>
         </header>
 

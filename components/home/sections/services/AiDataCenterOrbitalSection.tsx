@@ -176,11 +176,12 @@ export function AiDataCenterOrbitalSection() {
           <DtScrollReveal>
             <p className={`${dt.badge} ai-orbit__badge`}>Solutions</p>
             <h2 id="ai-orbit-heading" className="ai-orbit__headline">
-              AI Data Center Solution
+              AI Data Center Solutions
             </h2>
             <p className="ai-orbit__lede">
-              Empowering enterprises with AI Data Center Solutions designed to deliver performance,
-              reliability, and scalability across every stage of the infrastructure lifecycle.
+              Building next-generation data center environments that combine intelligent
+              infrastructure, secure connectivity, and resilient architecture to accelerate
+              AI-driven innovation.
             </p>
           </DtScrollReveal>
         </header>

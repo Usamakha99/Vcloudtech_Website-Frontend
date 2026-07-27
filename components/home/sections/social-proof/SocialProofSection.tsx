@@ -123,6 +123,10 @@ export function HomeSocialProofSection({ belowHero = false }: { belowHero?: bool
           <h2 id="strategic-partners-heading" className={`${dt.sectionHeadline} text-white`}>
             Strategic Partners
           </h2>
+          <p className={`${dt.sectionDesc} ${dt.headingSub} mt-3 max-w-3xl text-center text-[#A1A1AA]`}>
+            Proudly partnered with the world&apos;s leading technology innovators to deliver trusted,
+            enterprise-grade solutions.
+          </p>
         </header>
 
         <StrategicPartnerMarquee />

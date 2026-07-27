@@ -26,6 +26,10 @@ export function HomeTopContractsSection() {
           <h2 id="top-contracts-heading" className="tc__heading">
             Top Performing Contracts
           </h2>
+          <p className={`${dt.sectionDesc} ${dt.headingSub} mt-4`}>
+            Trusted contract partnerships that simplify procurement and accelerate technology
+            acquisition.
+          </p>
         </header>
 
         <ul className="tc__logos tp__partner-grid tp__partner-grid--all">

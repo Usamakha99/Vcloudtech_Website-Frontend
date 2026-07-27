@@ -90,6 +90,10 @@ export function TrustedByClientsMarquee() {
         <h3 id="trusted-clients-heading" className="tp__trusted-heading">
           Our Trusted Clients
         </h3>
+        <p className="tp__trusted-lede">
+          A growing portfolio of clients who rely on our expertise, reliability, and long-term
+          partnership.
+        </p>
       </header>
 
       <div className="tp__trusted-strip-white" data-nav-surface="light">

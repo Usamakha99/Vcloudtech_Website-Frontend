@@ -18,9 +18,9 @@ export function FooterNewsletter() {
   return (
     <DtScrollReveal className="dt-newsletter">
       <div className="dt-newsletter__copy">
-        <h2 className="dt-newsletter__headline">Stay Updated with Technology Insights</h2>
+        <h2 className="dt-newsletter__headline">Insights That Keep You Ahead</h2>
         <p className="dt-newsletter__desc">
-          Subscribe to receive industry updates, technology trends, and product announcements.
+          Stay informed with the latest updates and insights.
         </p>
       </div>
 

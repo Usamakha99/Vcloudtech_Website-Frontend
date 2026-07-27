@@ -82,8 +82,8 @@ export function HomeIndustriesNetworkSection() {
               <span className="ind-net__headline-accent">Serve</span>
             </h2>
             <p className="ind-net__lede">
-              Secure, connected infrastructure for the organizations that keep critical systems
-              running nationwide.
+              Delivering industry-focused technology solutions that solve complex challenges,
+              accelerate innovation, and create lasting business value.
             </p>
           </DtScrollReveal>
         </header>

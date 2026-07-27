@@ -15,7 +15,7 @@ const copy: Record<
 > = {
   "ai-data-center": {
     title: "AI Data Center Solutions",
-    lede: "Empowering enterprises with AI Data Center Solutions designed to deliver performance, reliability, and scalability across every stage of the infrastructure lifecycle.",
+    lede: "Building next-generation data center environments that combine intelligent infrastructure, secure connectivity, and resilient architecture to accelerate AI-driven innovation.",
     meta: "AI data center solutions for procurement, deployment, and operations from vCloudTech.",
   },
   "ai-infrastructure-procurement": {

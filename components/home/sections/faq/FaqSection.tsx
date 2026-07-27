@@ -110,8 +110,7 @@ export function HomeFaqSection() {
             Frequently Asked Questions
           </h2>
           <p className="dt-faq__lede mt-4 text-[#A1A1AA]">
-            Straightforward answers on procurement, managed services, and how we support
-            your team.
+            Find the answers you&apos;re looking for.
           </p>
         </DtScrollReveal>
 

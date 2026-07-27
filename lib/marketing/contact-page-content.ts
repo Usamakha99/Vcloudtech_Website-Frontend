@@ -3,9 +3,9 @@ import { designTestFooterLocations } from "@/lib/marketing/footer-content";
 import { publicAssets } from "@/lib/public-assets";
 
 export const contactPageHero = {
-  title: "Contact us",
+  title: "Contact Us",
   lede:
-    "Speak with our solutions architects about AI infrastructure, data center buildouts, and enterprise IT. We help you plan, deploy, and scale with confidence.",
+    "Connect with our experts to explore the right strategy, the right solutions, and the right outcomes for your business.",
   image: publicAssets.contact.hero,
   imageAlt: "Enterprise technology and data analytics",
   ctaLabel: "Send a message",
