@@ -418,11 +418,11 @@
 }
 
 .tp__trusted-strip--below-hero {
-  margin-top: clamp(1.5rem, 5vw, 3.25rem);
+  margin-top: clamp(0.5rem, 2vw, 1.25rem);
 }
 
 .tp__trusted-strip--below-hero .tp__trusted-strip-header {
-  padding-top: clamp(1.25rem, 3.5vw, 2.5rem);
+  padding-top: clamp(0.75rem, 2vw, 1.25rem);
   padding-bottom: 0;
   margin-bottom: 0;
   border-bottom: none;
@@ -449,11 +449,11 @@
 
 @media (min-width: 1024px) {
   .tp__trusted-strip--below-hero {
-    margin-top: clamp(2rem, 4.5vw, 4.25rem);
+    margin-top: clamp(0.75rem, 2vw, 1.5rem);
   }
 
   .tp__trusted-strip--below-hero .tp__trusted-strip-header {
-    padding-top: clamp(1.5rem, 3vw, 3rem);
+    padding-top: clamp(1rem, 2vw, 1.5rem);
   }
 }
 
