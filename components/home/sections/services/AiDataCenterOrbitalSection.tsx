@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 import { DtScrollReveal } from "@/components/home/shared/DtScrollReveal";
 import { dt } from "@/components/marketing/design-test-theme";
@@ -63,17 +66,31 @@ function OrbitCard({
   item,
   side,
   slot,
+  onActivate,
+  onDeactivate,
+  isActive,
 }: {
   item: OrbitItem;
   side: OrbitSide;
   slot: OrbitSlot;
+  onActivate: () => void;
+  onDeactivate: () => void;
+  isActive: boolean;
 }) {
   const path = CONNECTOR_PATHS[side][slot];
   const end = CONNECTOR_ENDS[side][slot];
   const pulseDelay = PULSE_DELAYS[side][slot];
 
   return (
-    <li className={`ai-orbit__card ai-orbit__card--${side} ai-orbit__card--${slot}`}>
+    <li
+      className={`ai-orbit__card ai-orbit__card--${side} ai-orbit__card--${slot}${
+        isActive ? " ai-orbit__card--active" : ""
+      }`}
+      onMouseEnter={onActivate}
+      onMouseLeave={onDeactivate}
+      onFocus={onActivate}
+      onBlur={onDeactivate}
+    >
       <span className="ai-orbit__connector" aria-hidden>
         <svg
           className="ai-orbit__connector-svg"
@@ -110,22 +127,43 @@ function OrbitCard({
           <span className="ai-orbit__card-rule" aria-hidden />
         </span>
       </Link>
-      <div className="ai-orbit__card-tip">
-        <p className="ai-orbit__card-tip-desc">{item.description}</p>
-        {item.bullets && item.bullets.length > 0 ? (
-          <ul className="ai-orbit__card-tip-list">
-            {item.bullets.map((bullet) => (
-              <li key={bullet}>{bullet}</li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
     </li>
   );
 }
 
 /** Circular / orbital AI Data Center Solution section (homepage). */
 export function AiDataCenterOrbitalSection() {
+  const [previewItem, setPreviewItem] = useState<OrbitItem | null>(null);
+  const [previewSlot, setPreviewSlot] = useState<OrbitSlot | null>(null);
+  const [previewVisible, setPreviewVisible] = useState(false);
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    };
+  }, []);
+
+  const activate = (item: OrbitItem, slot: OrbitSlot) => {
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
+    setPreviewItem(item);
+    setPreviewSlot(slot);
+    setPreviewVisible(true);
+  };
+
+  const deactivate = () => {
+    setPreviewVisible(false);
+    /* Keep content mounted through fade-out so hide doesn't jerk */
+    hideTimerRef.current = setTimeout(() => {
+      setPreviewItem(null);
+      setPreviewSlot(null);
+      hideTimerRef.current = null;
+    }, 280);
+  };
+
   return (
     <section
       id="solutions"
@@ -149,17 +187,23 @@ export function AiDataCenterOrbitalSection() {
 
         <div className="ai-orbit__stage">
           <ul className="ai-orbit__col ai-orbit__col--left" aria-label="AI solutions left">
-            {LEFT_ITEMS.map((item, i) => (
-              <OrbitCard
-                key={item.href}
-                item={item}
-                side="left"
-                slot={(["top", "mid", "bot"] as const)[i]}
-              />
-            ))}
+            {LEFT_ITEMS.map((item, i) => {
+              const slot = (["top", "mid", "bot"] as const)[i];
+              return (
+                <OrbitCard
+                  key={item.href}
+                  item={item}
+                  side="left"
+                  slot={slot}
+                  isActive={previewVisible && previewItem?.href === item.href}
+                  onActivate={() => activate(item, slot)}
+                  onDeactivate={deactivate}
+                />
+              );
+            })}
           </ul>
 
-          <div className="ai-orbit__globe-wrap" aria-hidden>
+          <div className="ai-orbit__globe-wrap" aria-hidden={!previewVisible}>
             <div className="ai-orbit__globe-occluder" />
             <div className="ai-orbit__globe-vignette" />
             <div className="ai-orbit__globe-glow" />
@@ -173,17 +217,48 @@ export function AiDataCenterOrbitalSection() {
                 priority={false}
               />
             </div>
+
+            <div
+              className={[
+                "ai-orbit__globe-preview",
+                previewVisible ? "ai-orbit__globe-preview--visible" : "",
+                previewSlot ? `ai-orbit__globe-preview--${previewSlot}` : "ai-orbit__globe-preview--mid",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              aria-live="polite"
+            >
+              {previewItem ? (
+                <>
+                  <p className="ai-orbit__globe-preview-title">{previewItem.title}</p>
+                  <p className="ai-orbit__globe-preview-desc">{previewItem.description}</p>
+                  {previewItem.bullets && previewItem.bullets.length > 0 ? (
+                    <ul className="ai-orbit__globe-preview-list">
+                      {previewItem.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </>
+              ) : null}
+            </div>
           </div>
 
           <ul className="ai-orbit__col ai-orbit__col--right" aria-label="AI solutions right">
-            {RIGHT_ITEMS.map((item, i) => (
-              <OrbitCard
-                key={item.href}
-                item={item}
-                side="right"
-                slot={(["top", "mid", "bot"] as const)[i]}
-              />
-            ))}
+            {RIGHT_ITEMS.map((item, i) => {
+              const slot = (["top", "mid", "bot"] as const)[i];
+              return (
+                <OrbitCard
+                  key={item.href}
+                  item={item}
+                  side="right"
+                  slot={slot}
+                  isActive={previewVisible && previewItem?.href === item.href}
+                  onActivate={() => activate(item, slot)}
+                  onDeactivate={deactivate}
+                />
+              );
+            })}
           </ul>
         </div>
 
