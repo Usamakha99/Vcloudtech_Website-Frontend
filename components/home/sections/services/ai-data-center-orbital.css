@@ -321,25 +321,25 @@
   background: #e55614;
 }
 
-/* Short hover blurb — outside the capsule, below the card */
+/* Hover description — same copy as old flip cards, below the capsule */
 .ai-orbit__card-desc {
   position: absolute;
-  left: 0.65rem;
-  right: 0.65rem;
+  left: 0.35rem;
+  right: 0.35rem;
   top: calc(100% + 0.4rem);
   z-index: 6;
   margin: 0;
-  padding: 0.35rem 0.55rem;
-  border-radius: 0.5rem;
-  background: rgb(4 19 41 / 0.92);
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.55rem;
+  background: rgb(4 19 41 / 0.94);
   border: 1px solid rgb(125 211 252 / 0.18);
-  box-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.7);
-  font-size: 0.6875rem;
+  box-shadow: 0 12px 28px -14px rgb(0 0 0 / 0.75);
+  font-size: 0.75rem;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.45;
   letter-spacing: 0.01em;
   color: rgb(186 186 194);
-  text-align: center;
+  text-align: left;
   text-wrap: pretty;
   opacity: 0;
   transform: translateY(-6px);
