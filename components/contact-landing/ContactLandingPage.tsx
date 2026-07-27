@@ -81,7 +81,7 @@ export function ContactLandingPage() {
 
         {/* 3. Why contact us */}
         <section className="contact-page__section" aria-labelledby="contact-why-heading">
-          <header className="contact-page__section-header contact-page__section-header--center">
+          <header className="contact-page__section-header">
             <p className={dt.metaLabel}>Why vCloud Tech</p>
             <h2 id="contact-why-heading" className="contact-page__section-title">
               Why contact us

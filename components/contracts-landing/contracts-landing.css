@@ -50,9 +50,9 @@
 
 .contracts-page__corporate-header {
   max-width: 44rem;
-  margin-inline: auto;
+  margin-inline: 0;
   margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
-  text-align: center;
+  text-align: left;
 }
 
 .contracts-page__corporate--heading-only .contracts-page__corporate-header {
@@ -67,17 +67,17 @@
   letter-spacing: -0.03em;
   color: #ffffff;
   text-wrap: balance;
-  text-align: center;
+  text-align: left;
 }
 
 .contracts-page__corporate-desc {
-  margin: 1rem auto 0;
+  margin: 1rem 0 0;
   max-width: 40rem;
   font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
   font-weight: 500;
   line-height: 1.65;
   color: #a1a1aa;
-  text-align: center;
+  text-align: left;
 }
 
 .contracts-page__corporate .cv-grid {
