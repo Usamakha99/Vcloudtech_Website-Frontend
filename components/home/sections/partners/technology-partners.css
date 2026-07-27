@@ -608,8 +608,8 @@
 
 .tp__trusted-strip-logo-box--clients {
   width: 12rem;
-  height: 6.25rem;
-  padding: 0.45rem 0.55rem;
+  height: 5.25rem;
+  padding: 0.3rem 0.55rem;
   overflow: visible;
   isolation: isolate;
   z-index: 0;
@@ -627,8 +627,8 @@
 
   .tp__trusted-strip-logo-box--clients {
     width: 13.5rem;
-    height: 6.75rem;
-    padding: 0.5rem 0.6rem;
+    height: 5.65rem;
+    padding: 0.35rem 0.6rem;
   }
 }
 
@@ -640,24 +640,24 @@
 
   .tp__trusted-strip-logo-box--clients {
     width: 14.5rem;
-    height: 7.25rem;
-    padding: 0.55rem 0.65rem;
+    height: 6rem;
+    padding: 0.4rem 0.65rem;
   }
 }
 
 .tp__trusted-strip-marquee--clients {
-  padding-block: 1.35rem;
+  padding-block: 0.85rem;
 }
 
 @media (min-width: 640px) {
   .tp__trusted-strip-marquee--clients {
-    padding-block: 1.5rem;
+    padding-block: 0.95rem;
   }
 }
 
 @media (min-width: 1024px) {
   .tp__trusted-strip-marquee--clients {
-    padding-block: 1.65rem;
+    padding-block: 1.05rem;
   }
 }
 
