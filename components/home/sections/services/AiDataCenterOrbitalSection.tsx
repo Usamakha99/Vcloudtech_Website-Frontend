@@ -150,6 +150,7 @@ export function AiDataCenterOrbitalSection() {
           </ul>
 
           <div className="ai-orbit__globe-wrap" aria-hidden>
+            <div className="ai-orbit__globe-occluder" />
             <div className="ai-orbit__globe-vignette" />
             <div className="ai-orbit__globe-glow" />
             <div className="ai-orbit__globe">
