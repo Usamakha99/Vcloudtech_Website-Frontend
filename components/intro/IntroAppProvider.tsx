@@ -119,14 +119,40 @@ export function IntroAppProvider({
     document.body.style.overflow = "hidden";
 
     clearIntroTimeout();
-    introTimeoutRef.current = window.setTimeout(finish, INTRO_MAX_MS);
 
     const video = videoRef.current;
+    let started = false;
+
+    const startPlayback = () => {
+      if (started) return;
+      started = true;
+      introTimeoutRef.current = window.setTimeout(finish, INTRO_MAX_MS);
+      if (video) {
+        video.currentTime = 0;
+        void video.play().catch(() => {
+          /* Timer still controls duration */
+        });
+      }
+    };
+
     if (video) {
-      video.currentTime = 0;
-      void video.play().catch(() => {
-        /* Timer still controls duration */
-      });
+      // Wait until enough data is buffered so live playback doesn't stutter.
+      if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+        startPlayback();
+      } else {
+        const onReady = () => startPlayback();
+        video.addEventListener("canplay", onReady, { once: true });
+        // Fallback if canplay never fires (slow network / decode issues).
+        const readyFallback = window.setTimeout(startPlayback, 2500);
+        return () => {
+          document.body.style.overflow = prevOverflow;
+          clearIntroTimeout();
+          window.clearTimeout(readyFallback);
+          video.removeEventListener("canplay", onReady);
+        };
+      }
+    } else {
+      startPlayback();
     }
 
     return () => {

@@ -43,6 +43,12 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: INTRO_BLOCK_SCRIPT }} />
+        <link
+          rel="preload"
+          href={publicAssets.intro.loaderVideo}
+          as="video"
+          type="video/mp4"
+        />
       </head>
       <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
         <IntroAppProvider src={publicAssets.intro.loaderVideo}>{children}</IntroAppProvider>
