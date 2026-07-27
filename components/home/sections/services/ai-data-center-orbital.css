@@ -44,14 +44,6 @@
   text-align: center;
 }
 
-.ai-orbit__badge {
-  letter-spacing: 0.1em;
-  border-color: rgb(229 86 20 / 0.35);
-  box-shadow:
-    0 0 0 1px rgb(229 86 20 / 0.12),
-    0 0 18px rgb(229 86 20 / 0.18);
-}
-
 .ai-orbit__headline {
   margin: 0.85rem 0 0;
   font-size: clamp(1.75rem, 3.6vw, 2.625rem);

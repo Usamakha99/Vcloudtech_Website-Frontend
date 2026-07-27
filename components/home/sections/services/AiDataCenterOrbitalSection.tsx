@@ -174,7 +174,7 @@ export function AiDataCenterOrbitalSection() {
       <div className="ai-orbit__inner">
         <header className="ai-orbit__header">
           <DtScrollReveal>
-            <p className={`${dt.badge} ai-orbit__badge`}>Solutions</p>
+            <p className={dt.badge}>Solutions</p>
             <h2 id="ai-orbit-heading" className="ai-orbit__headline">
               AI Data Center Solutions
             </h2>
